@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mustafa Üner | Ar-Ge Lideri & Mekanik Tasarım Uzmanı</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+        body { font-family: 'Inter', sans-serif; letter-spacing: -0.01em; }
+        .mono { font-family: 'JetBrains+Mono', monospace; }
+
+        /* Teknik Izgara Arkaplanı */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: radial-gradient(circle, #e2e8f0 1px, transparent 1px);
+        }
+
+        .grayscale-hover {
+            filter: grayscale(100%);
+            transition: all 0.5s ease;
+        }
+        .grayscale-hover:hover {
+            filter: grayscale(0%);
+            transform: scale(1.02);
+        }
+
+        /* Proje Kartı Efektleri */
+        .tech-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        .tech-card:hover {
+            border-left-color: #0f172a;
+            background-color: #ffffff;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-[#fcfcfd] text-[#1e293b] bg-grid">
+
+    <!-- Navigasyon -->
+    <nav class="border-b border-slate-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-slate-900 rounded flex items-center justify-center text-white text-xs font-bold">MÜ</div>
+                <span class="mono font-bold tracking-tighter text-slate-900 uppercase">Mustafa Üner // M.Sc.</span>
+            </div>
+            <div class="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest text-slate-500">
+                <a href="#deneyim" class="hover:text-slate-900 transition-colors">Deneyim</a>
+                <a href="#projeler" class="hover:text-slate-900 transition-colors">Projeler</a>
+                <a href="#yetkinlik" class="hover:text-slate-900 transition-colors">Yetenekler</a>
+                <a href="#otomasyon" class="hover:text-slate-900 transition-colors text-blue-600">Ar-Ge Otomasyon</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero / Giriş -->
+    <header class="py-20 border-b border-slate-200 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-16 items-center">
+                <!-- Profil Fotoğrafı -->
+                <div class="w-56 h-56 md:w-80 md:h-80 shrink-0 overflow-hidden rounded-3xl border border-slate-200 shadow-2xl relative">
+                    <img src="cv2.jpeg" alt="Mustafa Üner" class="w-full h-full object-cover grayscale-hover" onerror="this.src='https://via.placeholder.com/400x400?text=Mustafa+Uner'">
+                </div>
+
+                <div class="flex-grow">
+                    <div class="inline-block px-3 py-1 bg-slate-100 text-slate-500 text-[10px] font-bold uppercase tracking-[0.2em] rounded-full mb-6">
+                        Senior R&D Project Leader
+                    </div>
+                    <h1 class="text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">Mustafa Üner</h1>
+                    <p class="text-xl text-slate-600 mb-8 leading-relaxed font-light max-w-2xl">
+                        Yüksek hassasiyetli mekanik tasarım ve Ar-Ge yönetiminde <span class="font-bold text-slate-900">15+ yıllık tecrübe</span>. Geleneksel mühendisliği Python otomasyonu ve dijitalleşme ile modernize ediyorum.
+                    </p>
+
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mb-10 border-t border-slate-100 pt-8">
+                        <div>
+                            <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest">Konum</span>
+                            <span class="text-sm font-semibold text-slate-700">İstanbul, Türkiye</span>
+                        </div>
+                        <div>
+                            <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest">E-Posta</span>
+                            <a href="mailto:mustafauner@hotmail.com.tr" class="text-sm font-semibold text-blue-600 hover:underline">mustafauner@hotmail.com.tr</a>
+                        </div>
+                        <div class="col-span-2 md:col-span-1">
+                            <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest">Sosyal Medya</span>
+                            <a href="https://www.linkedin.com/in/mustafa-uner-engineer/" target="_blank" class="text-sm font-semibold text-slate-700 hover:text-blue-600 transition-colors">
+                                <i class="fa-brands fa-linkedin mr-1"></i> linkedin.com/in/mustafa-uner-engineer
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-20">
+
+        <!-- Deneyim Bölümü -->
+        <section id="deneyim" class="mb-32">
+            <div class="flex items-center justify-between mb-12 border-b border-slate-200 pb-4">
+                <h3 class="text-2xl font-bold text-slate-900 uppercase tracking-tighter">Mesleki Geçmiş</h3>
+                <span class="mono text-xs text-slate-400 font-bold">EXPERIENCE_LOG_V2.0</span>
+            </div>
+
+            <div class="space-y-16">
+                <div class="relative pl-10 border-l-2 border-slate-900">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white border-4 border-slate-900"></div>
+
+                    <div class="flex flex-col md:flex-row justify-between items-start mb-6">
+                        <div>
+                            <h4 class="text-xl font-bold text-slate-900">Kıdemli Ar-Ge Proje Lideri</h4>
+                            <a href="https://www.kaban.com.tr/" target="_blank" class="text-blue-600 font-bold text-sm hover:underline flex items-center gap-1 mt-1">
+                                Kaban Makina <i class="fa-solid fa-external-link text-[10px]"></i>
+                            </a>
+                        </div>
+                        <span class="px-3 py-1 bg-slate-100 rounded-md text-xs mono font-bold text-slate-500 mt-2 md:mt-0 italic">2011 — GÜNÜMÜZ</span>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="space-y-4">
+                            <div class="p-5 bg-white border border-slate-100 rounded-xl shadow-sm">
+                                <span class="text-[10px] font-bold text-blue-600 uppercase mb-2 block">Devlet Destekli Projeler (TÜBİTAK 1501)</span>
+                                <ul class="text-sm text-slate-600 space-y-3">
+                                    <li class="flex gap-2">
+                                        <span class="text-slate-900 font-bold tracking-tighter">•</span>
+                                        <span><strong>Proje No: 3180059:</strong> 13.5m stroklu 5-Eksenli CNC İşleme Merkezi'nin Ar-Ge yaşam döngüsü liderliği. (~165.000 USD bütçe yönetimi).</span>
+                                    </li>
+                                    <li class="flex gap-2">
+                                        <span class="text-slate-900 font-bold tracking-tighter">•</span>
+                                        <span><strong>Proje No: 3140118:</strong> Gelişmiş CNC Profil İşleme Merkezi Ar-Ge döngüsü ve teknik doğrulama (PRODİS) süreçleri.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="space-y-4 text-sm text-slate-600 leading-relaxed">
+                            <p><strong>Ürün İnovasyonu:</strong> ZC 3050 & 3060 amiral gemisi serisinde mikron seviyesinde hassasiyet için modüler şasi mimarisi geliştirilmesi.</p>
+                            <p><strong>Faydalı Model:</strong> TR 2014 01271 Y numaralı patent ile korunan yenilikçi mengene ve talaş tahliye sistemlerinin tasarımı.</p>
+                            <p><strong>Verimlilik:</strong> SolidWorks API ve Python ile tasarım süreçlerinde <strong>%20 zaman tasarrufu</strong> sağlayan otomasyon altyapısının kurulması.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projeler - Teknik Kartlar -->
+        <section id="projeler" class="mb-32">
+            <h3 class="text-2xl font-bold text-slate-900 uppercase tracking-tighter mb-12 border-b border-slate-200 pb-4">Teknik Portfolyo</h3>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="tech-card p-6 bg-slate-50 rounded-xl border border-slate-100">
+                    <i class="fa-solid fa-microchip text-slate-400 mb-4 text-xl"></i>
+                    <h5 class="font-bold text-slate-900 mb-2">ZC 4040 Serisi</h5>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-4">Tam kapalı 4-eksenli merkezlerin Ar-Ge süreç liderliği ve modüler ünite entegrasyonu.</p>
+                    <span class="text-[9px] mono bg-white px-2 py-1 rounded border border-slate-200 uppercase font-bold text-slate-400">Ar-Ge Liderliği</span>
+                </div>
+                <div class="tech-card p-6 bg-slate-50 rounded-xl border border-slate-100">
+                    <i class="fa-solid fa-robot text-slate-400 mb-4 text-xl"></i>
+                    <h5 class="font-bold text-slate-900 mb-2">ZE 3010 Robotik Kesim</h5>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-4">Servo kontrollü robotik besleme ve "Slide & Release" mekanizmalarının mekanik tasarımı.</p>
+                    <span class="text-[9px] mono bg-white px-2 py-1 rounded border border-slate-200 uppercase font-bold text-slate-400">Mekanik Tasarım</span>
+                </div>
+                <div class="tech-card p-6 bg-slate-50 rounded-xl border border-slate-100">
+                    <i class="fa-solid fa-code text-slate-400 mb-4 text-xl"></i>
+                    <h5 class="font-bold text-slate-900 mb-2">SW-API Otomasyonu</h5>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-4">Python tabanlı BOM (Malzeme Listesi) oluşturma ve tasarım görevi otomasyon araçları.</p>
+                    <span class="text-[9px] mono bg-white px-2 py-1 rounded border border-slate-200 uppercase font-bold text-slate-400">Python / API</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ar-Ge Otomasyon Paneli -->
+        <section id="otomasyon" class="mb-32 p-10 bg-slate-900 rounded-[2rem] text-white shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+
+            <div class="flex flex-col lg:flex-row gap-16 items-center relative z-10">
+                <div class="lg:w-1/2">
+                    <div class="flex items-center gap-2 mb-6 text-blue-400 mono text-xs font-bold uppercase tracking-widest">
+                        <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span> Terminal // Mühendislik Otomasyonu
+                    </div>
+                    <h3 class="text-3xl font-bold mb-6 tracking-tight">Dijital Mühendislik İş Akışları</h3>
+                    <p class="text-slate-400 leading-relaxed mb-8">
+                        Ar-Ge verimliliğini artırmak için Python tabanlı araçlar geliştiriyorum. SolidWorks API entegrasyonu ile manuel süreçleri dijitalleştirerek hata payını minimize ediyor ve teknik dökümantasyon süreçlerini (LLM/AI) optimize ediyorum.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4 p-4 bg-white/5 rounded-lg border border-white/10">
+                            <i class="fa-solid fa-terminal text-blue-500 mt-1"></i>
+                            <div>
+                                <h6 class="text-sm font-bold">Python & SW API</h6>
+                                <p class="text-xs text-slate-500">Tasarım sürelerinde %20 kısalma sağlayan özel scriptler.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- İnteraktif Hesaplayıcı -->
+                <div class="lg:w-1/2 w-full bg-[#0f172a] p-8 rounded-2xl border border-slate-700 shadow-inner">
+                    <div class="flex items-center justify-between mb-8 border-b border-slate-800 pb-4">
+                        <h4 class="text-xs font-bold text-slate-500 uppercase tracking-widest">Kesme Hızı Analizörü (Vc)</h4>
+                        <div class="flex gap-1.5">
+                            <span class="w-2.5 h-2.5 rounded-full bg-red-500/20 border border-red-500/50"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/20 border border-yellow-500/50"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-green-500/20 border border-green-500/50"></span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8">
+                        <div>
+                            <div class="flex justify-between mb-3 text-xs mono uppercase text-slate-400">
+                                <span>Takım Çapı (D)</span>
+                                <span id="d-val" class="text-blue-400 font-bold">50 mm</span>
+                            </div>
+                            <input type="range" id="diameter" min="1" max="250" value="50" class="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-blue-500">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-3 text-xs mono uppercase text-slate-400">
+                                <span>Devir (n)</span>
+                                <span id="n-val" class="text-blue-400 font-bold">1200 rpm</span>
+                            </div>
+                            <input type="range" id="rpm" min="100" max="10000" value="1200" class="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-blue-500">
+                        </div>
+
+                        <div class="p-8 bg-slate-900/50 border border-blue-500/20 rounded-xl text-center">
+                            <div class="text-[10px] text-slate-500 uppercase mb-2 font-bold tracking-[0.3em]">Hesaplanan Vc</div>
+                            <div class="text-5xl mono font-bold text-white tracking-tighter">
+                                <span id="result">188.50</span> <span class="text-sm font-sans text-slate-600 font-normal">m/dk</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Yetkinlik Grid -->
+        <section id="yetkinlik" class="grid md:grid-cols-2 gap-16 border-t border-slate-200 pt-20">
+            <div>
+                <h3 class="text-xl font-bold text-slate-900 uppercase tracking-tighter mb-8 flex items-center gap-2">
+                    <i class="fa-solid fa-graduation-cap text-slate-400"></i> Akademik & Uzmanlık
+                </h3>
+                <div class="space-y-8">
+                    <div class="p-6 bg-white border border-slate-100 rounded-xl shadow-sm">
+                        <h4 class="font-bold text-slate-900">Mühendislik Yönetimi (M.Sc.)</h4>
+                        <p class="text-sm text-slate-500">Marmara Üniversitesi // 2018-2019</p>
+                    </div>
+                    <div class="p-6 bg-white border border-slate-100 rounded-xl shadow-sm">
+                        <h4 class="font-bold text-slate-900">Makine Mühendisliği (Lisans)</h4>
+                        <p class="text-sm text-slate-500">Aksaray Üniversitesi // 2004-2009</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold text-slate-900 uppercase tracking-tighter mb-8 flex items-center gap-2">
+                    <i class="fa-solid fa-award text-slate-400"></i> Sertifikasyonlar
+                </h3>
+                <div class="space-y-3 text-sm font-medium">
+                    <div class="flex items-center justify-between p-4 bg-slate-50 rounded-lg border border-slate-100">
+                        <span>Project Management Professional (PMP)</span>
+                        <span class="text-[10px] mono text-slate-400">İTÜ</span>
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-slate-50 rounded-lg border border-slate-100">
+                        <span>İleri Kaizen ve Tasarım FMEA</span>
+                        <span class="text-[10px] mono text-slate-400">GEMBA ACADEMY</span>
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-slate-50 rounded-lg border border-slate-100">
+                        <span>TRIZ (Yaratıcı Problem Çözme)</span>
+                        <span class="text-[10px] mono text-slate-400">GEMBA ACADEMY</span>
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-slate-50 rounded-lg border border-slate-100">
+                        <span>MSc Apex: FEA ve Statik Analiz</span>
+                        <span class="text-[10px] mono text-slate-400">BİAS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Alt Bilgi -->
+    <footer class="bg-white border-t border-slate-200 py-16">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start gap-2 mb-4">
+                    <div class="w-6 h-6 bg-slate-900 rounded flex items-center justify-center text-white text-[10px] font-bold">MÜ</div>
+                    <span class="mono font-bold tracking-tighter text-slate-900 uppercase">Mustafa Üner</span>
+                </div>
+                <p class="text-[10px] text-slate-400 mono uppercase tracking-[0.4em]">Designed for Engineering Excellence</p>
+            </div>
+            <div class="flex gap-8">
+                <a href="mailto:mustafauner@hotmail.com.tr" class="text-slate-400 hover:text-slate-900 transition-colors text-xl"><i class="fa-regular fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/mustafa-uner-engineer/" target="_blank" class="text-slate-400 hover:text-slate-900 transition-colors text-xl"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hesaplama Motoru
+        const diameterInput = document.getElementById('diameter');
+        const rpmInput = document.getElementById('rpm');
+        const dVal = document.getElementById('d-val');
+        const nVal = document.getElementById('n-val');
+        const resultDisplay = document.getElementById('result');
+
+        function calculate() {
+            const D = parseFloat(diameterInput.value);
+            const n = parseFloat(rpmInput.value);
+            // Vc = (π * D * n) / 1000
+            const Vc = (Math.PI * D * n) / 1000;
+
+            dVal.textContent = D + ' mm';
+            nVal.textContent = n + ' rpm';
+            resultDisplay.textContent = Vc.toFixed(2);
+        }
+
+        diameterInput.addEventListener('input', calculate);
+        rpmInput.addEventListener('input', calculate);
+
+        // İlk hesaplama
+        calculate();
+    </script>
+</body>
+</html>
