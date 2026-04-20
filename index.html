@@ -7,14 +7,18 @@
     <!-- SEO ve Sosyal Medya (OpenGraph) Optimizasyonu -->
     <meta name="description" content="15 yıllık makine tasarım tecrübesi, Python tabanlı mühendislik otomasyonları ve ileri seviye Ar-Ge projeleri.">
     <meta property="og:title" content="Mustafa Üner | Senior R&D Project Leader">
-    <meta property="og:description" content="15 yıllık makine tasarım tecrübesi, Python tabanlı mühendislik otomasyonları ve ileri seviye R&D projeleri.">
+    <meta property="og:description" content="15 yıllık tasarım ve üretim disiplinini, hesaplamalı tasarım ve veri odaklı optimizasyon yöntemleriyle harmanlayarak ileri seviye üretim teknolojileri geliştiriyorum.">
     <meta property="og:image" content="https://mustafauner.com.tr/cv2.jpeg">
     <meta property="og:url" content="https://mustafauner.com.tr">
     <meta property="og:type" content="website">
 
+    <!-- Favicon (Tarayıcı İkonu) - Tasarlanan Logo -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M20 80V20l30 40 30-40v60' fill='none' stroke='%233b82f6' stroke-width='12' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M15 85h70' fill='none' stroke='%230f172a' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+
     <title>Mustafa Üner | Ar-Ge Lideri & Mühendislik Portfolyosu</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
         
@@ -59,9 +63,7 @@
             transition: opacity 0.3s ease;
             backdrop-filter: blur(2px);
         }
-        .machine-card:hover .video-overlay {
-            opacity: 1;
-        }
+        .machine-card:hover .video-overlay { opacity: 1; }
 
         .tool-card {
             background: rgba(15, 23, 42, 0.6);
@@ -76,42 +78,48 @@
         #videoModal.hidden { opacity: 0; pointer-events: none; }
         #videoModal { transition: opacity 0.3s ease; }
 
-        select option { background: #1e293b; color: white; }
-
-        /* Yeni Animasyon ve Scrollbar Tasarımları */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .animate-fadeIn {
-            animation: fadeIn 0.4s ease-out forwards;
-        }
+        .animate-fadeIn { animation: fadeIn 0.4s ease-out forwards; }
+
+        select option { background: #1e293b; color: white; }
         .custom-scrollbar::-webkit-scrollbar { height: 4px; width: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: #1e293b; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #1e293b; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
     </style>
 </head>
 <body class="bg-[#fcfcfd] text-[#1e293b] bg-grid">
 
+    <!-- Navigasyon -->
     <nav class="border-b border-slate-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-slate-900 rounded flex items-center justify-center text-white text-[10px] font-bold font-mono">MÜ</div>
-                <span class="mono font-bold tracking-tighter text-slate-900 uppercase italic text-sm">Mustafa Üner // M.Sc.</span>
+                <!-- Nano-Arc Logo SVG -->
+                <svg width="32" height="32" viewBox="0 0 100 100" class="shrink-0 drop-shadow-sm">
+                    <path d="M20 80V20l30 40 30-40v60" fill="none" stroke="#3b82f6" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M15 85h70" fill="none" stroke="#0f172a" stroke-width="6" stroke-linecap="round"/>
+                </svg>
+                <div class="flex flex-col -gap-1">
+                    <span class="mono font-bold tracking-tighter text-slate-900 uppercase italic text-sm">Mustafa Üner</span>
+                    <span class="text-[8px] text-slate-400 font-bold uppercase tracking-widest leading-none">M.Sc. Engineer</span>
+                </div>
             </div>
             <div class="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-widest text-slate-500">
                 <a href="#seruven" class="hover:text-slate-900 transition-colors">Serüven</a>
                 <a href="#makineler" class="hover:text-slate-900 transition-colors">Portfolyo</a>
-                <a href="#hesaplama" class="hover:text-slate-900 transition-colors text-blue-600">Hesaplama Araçları</a>
+                <a href="#hesaplama" class="hover:text-slate-900 transition-colors text-blue-600">Mühendislik Araçları</a>
             </div>
         </div>
     </nav>
 
+    <!-- Giriş Bölümü -->
     <header class="py-16 md:py-24 border-b border-slate-200 bg-white">
         <div class="max-w-6xl mx-auto px-6 text-center md:text-left">
             <div class="flex flex-col md:flex-row gap-12 md:gap-16 items-center">
                 <div class="w-48 h-48 md:w-80 md:h-80 shrink-0 overflow-hidden rounded-3xl border border-slate-200 shadow-2xl relative bg-slate-100">
-                    <img src="cv2.jpeg" alt="Mustafa Üner" class="w-full h-full object-cover grayscale-hover" onerror="this.src='https://via.placeholder.com/400x400?text=Mustafa+Uner'">
+                    <img src="cv2.jpeg" alt="Mustafa Üner" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" onerror="this.src='https://via.placeholder.com/400x400?text=Mustafa+Uner'">
                 </div>
 
                 <div class="flex-grow">
@@ -136,16 +144,18 @@
 
     <main class="max-w-6xl mx-auto px-6 py-20">
 
+        <!-- Serüven Zaman Çizelgesi -->
         <section id="seruven" class="mb-32">
             <div class="flex items-center justify-between mb-16 border-b border-slate-200 pb-4">
                 <h3 class="text-2xl font-bold text-slate-900 uppercase tracking-tighter italic">Mühendislik Yolculuğu</h3>
-                <span class="mono text-[10px] text-slate-400 font-bold uppercase hidden md:inline">Evolution_Path_v3.0</span>
+                <span class="mono text-[10px] text-slate-400 font-bold uppercase hidden md:inline">Evolution_Path_v3.1</span>
             </div>
 
             <div class="relative">
                 <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-slate-200"></div>
-                <div class="space-y-16">
+                <div class="space-y-12 md:space-y-16">
                     
+                    <!-- 2009: Lisans -->
                     <div class="relative flex flex-col md:flex-row items-center timeline-item p-6 rounded-2xl border border-transparent">
                         <div class="flex-1 md:text-right md:pr-12 pl-12 md:pl-0 w-full text-right">
                             <div class="text-blue-600 mono font-bold text-xl mb-1">2009</div>
@@ -156,184 +166,180 @@
                         <div class="flex-1 md:pl-12 hidden md:block italic text-slate-300 mono text-xs uppercase tracking-widest text-left">B.Sc. Mechanical Eng.</div>
                     </div>
 
+                    <!-- 2011: Saha -->
                     <div class="relative flex flex-col md:flex-row items-center timeline-item p-6 rounded-2xl border border-transparent text-left">
                         <div class="flex-1 md:pr-12 hidden md:block italic text-slate-300 md:text-right mono text-xs uppercase tracking-widest text-right font-bold">Shop_Floor_Mastery</div>
                         <div class="absolute left-2.5 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-slate-900 ring-4 ring-slate-100 z-10"></div>
                         <div class="flex-1 md:pl-12 pl-12 w-full text-left">
-                            <div class="text-slate-900 mono font-bold text-xl mb-1 font-mono">2011 (Ocak)</div>
-                            <h4 class="text-lg font-bold text-slate-900 uppercase italic">Kaban Makina: Sahadaki İlk Yıl</h4>
-                            <p class="text-sm text-slate-500 max-w-md">Üretim sahasında bizzat; <strong>montaj, CNC, lazer ve kaynak</strong> departmanlarında çalışarak imalatın mutfağına hakim olundu.</p>
+                            <div class="text-slate-900 mono font-bold text-xl mb-1 font-mono">2011</div>
+                            <h4 class="text-lg font-bold text-slate-900 uppercase italic">Sahadaki İlk Yıl</h4>
+                            <p class="text-sm text-slate-500 max-w-md">Kaban Makina üretim sahasında montajdan CNC'ye kadar her aşamada bizzat görev alınarak imalat disiplini edinildi.</p>
                         </div>
                     </div>
 
+                    <!-- 2012: Kalıp -->
                     <div class="relative flex flex-col md:flex-row items-center timeline-item p-6 rounded-2xl border border-transparent text-right">
                         <div class="flex-1 md:text-right md:pr-12 pl-12 md:pl-0 w-full text-right">
                             <div class="text-slate-900 mono font-bold text-xl mb-1 font-mono">2012</div>
-                            <h4 class="text-lg font-bold text-slate-900 uppercase tracking-tight italic">Kalıp Tasarımı & Proses Ar-Ge</h4>
-                            <p class="text-sm text-slate-500 max-w-md md:ml-auto">PVC kaynak makineleri ve profil kesimi için özel kalıpların Ar-Ge ve uygulama tasarımları.</p>
+                            <h4 class="text-lg font-bold text-slate-900 uppercase tracking-tight italic">Kalıp Tasarımı & Ar-Ge</h4>
+                            <p class="text-sm text-slate-500 max-w-md md:ml-auto">PVC kaynak makineleri ve özel profil kesimleri için hassas kalıp Ar-Ge süreçleri.</p>
                         </div>
                         <div class="absolute left-2.5 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-slate-900 ring-4 ring-slate-100 z-10"></div>
                         <div class="flex-1 md:pl-12 hidden md:block italic text-slate-300 mono text-xs uppercase tracking-widest text-left font-mono">Process_Architecture</div>
                     </div>
 
+                    <!-- 2013: Tasarım Başlangıcı -->
                     <div class="relative flex flex-col md:flex-row items-center timeline-item p-6 rounded-2xl border border-transparent text-left">
                         <div class="flex-1 md:pr-12 hidden md:block italic text-slate-300 md:text-right mono text-xs uppercase tracking-widest text-right font-bold">The_Machine_Architect</div>
                         <div class="absolute left-2.5 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-slate-900 ring-4 ring-slate-100 z-10"></div>
                         <div class="flex-1 md:pl-12 pl-12 w-full text-left">
                             <div class="text-slate-900 mono font-bold text-xl mb-1 font-mono">2013</div>
                             <h4 class="text-lg font-bold text-slate-900 uppercase tracking-tight italic">Makine Tasarımı Kariyeri</h4>
-                            <p class="text-sm text-slate-500 max-w-md">İlk alüminyum işleme merkezi <strong>ZC 3010</strong> projesiyle başlayan ve bugünün standartlarını belirleyen tasarım serüvenine ilk adım.</p>
+                            <p class="text-sm text-slate-500 max-w-md">İlk alüminyum işleme merkezi projesiyle başlayan ve uzmanlaşan profesyonel tasarım serüveni.</p>
                         </div>
                     </div>
 
+                    <!-- 2019: Yüksek Lisans (EKLENDİ) -->
                     <div class="relative flex flex-col md:flex-row items-center timeline-item p-6 rounded-2xl border border-transparent text-right">
                         <div class="flex-1 md:text-right md:pr-12 pl-12 md:pl-0 w-full text-right">
                             <div class="text-blue-600 mono font-bold text-xl mb-1 font-mono">2019</div>
                             <h4 class="text-lg font-bold text-slate-900 uppercase tracking-tight italic">Mühendislik Yönetimi (M.Sc.)</h4>
-                            <p class="text-sm text-slate-500 max-w-md md:ml-auto">Marmara Üniversitesi'nde "Mühendislik Yönetimi" yüksek lisans programı tamamlandı. Saha tecrübesi, akademik yönetim vizyonuyla taçlandırıldı.</p>
+                            <p class="text-sm text-slate-500 max-w-md md:ml-auto">Marmara Üniversitesi'nde "Mühendislik Yönetimi" yüksek lisansı tamamlandı. Teknik uzmanlık, stratejik yönetim vizyonuyla birleşti.</p>
                         </div>
                         <div class="absolute left-2.5 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-blue-600 ring-4 ring-blue-100 z-10"></div>
-                        <div class="flex-1 md:pl-12 hidden md:block italic text-slate-300 mono text-xs uppercase tracking-widest text-left font-mono">M.Sc. Management</div>
+                        <div class="flex-1 md:pl-12 hidden md:block italic text-slate-300 mono text-xs uppercase tracking-widest text-left font-mono">Master_of_Science</div>
                     </div>
 
+                    <!-- GÜNÜMÜZ -->
                     <div class="relative flex flex-col md:flex-row items-center timeline-item p-6 rounded-2xl border border-transparent text-left">
                         <div class="flex-1 md:pr-12 hidden md:block italic text-slate-300 md:text-right mono text-xs uppercase tracking-widest text-right font-bold">R&D_Leadership</div>
                         <div class="absolute left-2.5 md:left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 ring-8 ring-blue-100 z-10 pulse-line border-none"></div>
                         <div class="flex-1 md:pl-12 pl-12 w-full text-left">
                             <div class="text-blue-600 mono font-bold text-2xl mb-1 font-mono">GÜNÜMÜZ</div>
-                            <h4 class="text-xl font-extrabold text-slate-900 uppercase tracking-tight italic">İleri Seviye Üretim Liderliği</h4>
-                            <p class="text-sm text-slate-500 mt-2 leading-relaxed font-light">Hesaplamalı tasarım (computational design) ve veri odaklı optimizasyon teknikleriyle amiral gemisi Ar-Ge projelerine liderlik ediliyor.</p>
+                            <h4 class="text-xl font-extrabold text-slate-900 uppercase tracking-tight italic">Ar-Ge ve İnovasyon Liderliği</h4>
+                            <p class="text-sm text-slate-500 mt-2 leading-relaxed font-light">Veri odaklı optimizasyon ve hesaplamalı tasarım teknikleriyle ileri seviye Ar-Ge projeleri yönetiliyor.</p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
+        <!-- Tasarım Portfolyosu (9 MAKİNE GERİ GELDİ) -->
         <section id="makineler" class="mb-32">
             <div class="p-8 md:p-12 bg-slate-50 rounded-[2rem] border border-slate-200 shadow-inner text-center">
                 <div class="mb-12">
-                    <span class="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-[10px] font-bold uppercase tracking-[0.2em] rounded mb-3 font-mono">Portfolio_v2</span>
-                    <h3 class="text-3xl font-extrabold text-slate-900 uppercase tracking-tighter italic">Makine Tasarım Galerisi</h3>
+                    <span class="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-[10px] font-bold uppercase tracking-[0.2em] rounded mb-3 font-mono">Full_Portfolio_Gallery</span>
+                    <h3 class="text-3xl font-extrabold text-slate-900 uppercase tracking-tighter italic">Makine Tasarım Yol Haritası</h3>
+                    <p class="text-xs text-slate-400 mt-2">Detaylar için kartlara tıklayınız.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
                     <div onclick="openModal('P_uIFpvk1SM')" class="machine-card bg-white p-6 rounded-xl cursor-pointer shadow-sm">
-                        <div class="video-overlay"><div class="px-3 py-1.5 bg-white text-slate-900 rounded font-bold text-[10px] uppercase flex items-center gap-2"><i class="fa-solid fa-play"></i> Video İzle</div></div>
-                        <div class="flex justify-between items-start mb-4 text-slate-300 font-mono text-xs italic">01 <i class="fa-brands fa-youtube text-lg"></i></div>
+                        <div class="video-overlay"><div class="px-3 py-1.5 bg-white text-slate-900 rounded font-bold text-[10px] uppercase flex items-center gap-2"><i class="fa-solid fa-play"></i> Video</div></div>
+                        <div class="flex justify-between items-start mb-4 text-slate-300 font-mono text-xs">01 <i class="fa-brands fa-youtube text-lg"></i></div>
                         <h4 class="text-lg font-bold text-slate-900">ZC 3010</h4>
-                        <p class="text-[11px] text-slate-500 mt-2 font-light italic text-left">İlk Alüminyum İşleme Merkezi. Mühendislik mirasının ilk ürünü.</p>
+                        <p class="text-[11px] text-slate-500 mt-2 font-light italic">İlk Alüminyum İşleme Merkezi tasarımı.</p>
                     </div>
                     
                     <div onclick="openModal('ZzghuXk92V8')" class="machine-card bg-white p-6 rounded-xl cursor-pointer shadow-sm">
-                        <div class="video-overlay"><div class="px-3 py-1.5 bg-white text-slate-900 rounded font-bold text-[10px] uppercase flex items-center gap-2"><i class="fa-solid fa-play"></i> Video İzle</div></div>
-                        <div class="flex justify-between items-start mb-4 text-slate-300 font-mono text-xs italic">02 <i class="fa-brands fa-youtube text-lg"></i></div>
+                        <div class="video-overlay"><div class="px-3 py-1.5 bg-white text-slate-900 rounded font-bold text-[10px] uppercase flex items-center gap-2"><i class="fa-solid fa-play"></i> Video</div></div>
+                        <div class="flex justify-between items-start mb-4 text-slate-300 font-mono text-xs">02 <i class="fa-brands fa-youtube text-lg"></i></div>
                         <h4 class="text-lg font-bold text-slate-900">ZC 3020</h4>
-                        <p class="text-[11px] text-slate-500 mt-2 font-light italic text-left">Hassas işleme kapasitesi artırılmış seri üretim sistemi.</p>
+                        <p class="text-[11px] text-slate-500 mt-2 font-light italic">Hassas seri üretim CNC sistemi.</p>
                     </div>
                     
                     <div onclick="openModal('2rBsAK_WqiY', 13)" class="machine-card bg-white p-6 rounded-xl cursor-pointer border-blue-100 bg-blue-50/20 shadow-sm text-left">
-                        <div class="video-overlay"><div class="px-3 py-1.5 bg-white text-slate-900 rounded font-bold text-[10px] uppercase flex items-center gap-2"><i class="fa-solid fa-play"></i> Video İzle</div></div>
+                        <div class="video-overlay"><div class="px-3 py-1.5 bg-white text-slate-900 rounded font-bold text-[10px] uppercase flex items-center gap-2"><i class="fa-solid fa-play"></i> Video</div></div>
                         <div class="flex justify-between items-start mb-4 text-blue-600">
                             <span class="mono text-xs font-bold font-mono">03</span>
-                            <span class="text-[8px] font-bold uppercase border border-blue-200 px-1.5 rounded bg-white font-mono">TÜBİTAK 1501</span>
+                            <span class="text-[8px] font-bold uppercase border border-blue-200 px-1.5 rounded bg-white font-mono">Amiral Gemi</span>
                         </div>
-                        <h4 class="text-lg font-bold text-slate-900 uppercase italic">ZC 3050 Amiral Gemi</h4>
-                        <p class="text-[11px] text-slate-500 mt-2 font-light italic text-blue-700/70 text-left">13.5m stroklu, amiral gemisi 5-Eksenli dev CNC merkezi tasarımı.</p>
+                        <h4 class="text-lg font-bold text-slate-900 uppercase italic">ZC 3050 Dev CNC</h4>
+                        <p class="text-[11px] text-slate-500 mt-2 font-light italic text-blue-700/70">13.5m stroklu 5-Eksenli Ar-Ge projesi.</p>
+                    </div>
+
+                    <div onclick="openModal('jspCnwaKgOM')" class="machine-card bg-white p-6 rounded-xl cursor-pointer shadow-sm">
+                        <div class="video-overlay"><div class="px-3 py-1.5 bg-white text-slate-900 rounded font-bold text-[10px] uppercase flex items-center gap-2"><i class="fa-solid fa-play"></i> Video</div></div>
+                        <div class="flex justify-between items-start mb-4 text-slate-300 font-mono text-xs">04</div>
+                        <h4 class="text-lg font-bold text-slate-900">ZF 3010</h4>
+                        <p class="text-[11px] text-slate-500 mt-2 font-light italic">Yüksek hızlı profil frezeleme çözümü.</p>
                     </div>
                     
-                    <div onclick="openModal('jspCnwaKgOM')" class="machine-card bg-white p-6 rounded-xl cursor-pointer shadow-sm text-left">
-                        <div class="video-overlay"><div class="px-3 py-1.5 bg-white text-slate-900 rounded font-bold text-[10px] uppercase flex items-center gap-2"><i class="fa-solid fa-play"></i> Video İzle</div></div>
-                        <div class="flex justify-between items-start mb-4 text-slate-300 font-mono text-xs italic">04 <i class="fa-brands fa-youtube text-lg"></i></div>
-                        <h4 class="text-lg font-bold text-slate-900 tracking-tight">ZF 3010</h4>
-                        <p class="text-[11px] text-slate-500 mt-2 font-light italic text-left">Hassas profil frezeleme ihtiyaçlarına yönelik yüksek devirli çözüm.</p>
+                    <div onclick="openModal('B8S7bgEGUkw')" class="machine-card bg-white p-6 rounded-xl cursor-pointer shadow-sm">
+                        <div class="video-overlay"><div class="px-3 py-1.5 bg-white text-slate-900 rounded font-bold text-[10px] uppercase flex items-center gap-2"><i class="fa-solid fa-play"></i> Video</div></div>
+                        <div class="flex justify-between items-start mb-4 text-slate-300 font-mono text-xs">05</div>
+                        <h4 class="text-lg font-bold text-slate-900">ZE 3010</h4>
+                        <p class="text-[11px] text-slate-500 mt-2 font-light italic">Robotik kesim ve işleme merkezi.</p>
                     </div>
                     
-                    <div onclick="openModal('B8S7bgEGUkw')" class="machine-card bg-white p-6 rounded-xl cursor-pointer shadow-sm text-left">
-                        <div class="video-overlay"><div class="px-3 py-1.5 bg-white text-slate-900 rounded font-bold text-[10px] uppercase flex items-center gap-2"><i class="fa-solid fa-play"></i> Video İzle</div></div>
-                        <div class="flex justify-between items-start mb-4 text-slate-300 font-mono text-xs italic">05 <i class="fa-solid fa-robot text-lg"></i></div>
-                        <h4 class="text-lg font-bold text-slate-900 tracking-tight">ZE 3010</h4>
-                        <p class="text-[11px] text-slate-500 mt-2 font-light italic text-left">Robotik besleme entegrasyonuna sahip tam otomatik kesim merkezi.</p>
+                    <div onclick="openModal('5RSI86l4cfw', 5)" class="machine-card bg-white p-6 rounded-xl cursor-pointer bg-slate-50">
+                        <div class="video-overlay"><div class="px-3 py-1.5 bg-white text-slate-900 rounded font-bold text-[10px] uppercase flex items-center gap-2"><i class="fa-solid fa-play"></i> Video</div></div>
+                        <div class="flex justify-between items-start mb-4 text-slate-300 font-mono text-xs">06</div>
+                        <h4 class="text-lg font-bold text-slate-900 uppercase text-xs">ZC 3062-63-64</h4>
+                        <p class="text-[11px] text-slate-500 mt-2 font-light italic">Modüler CNC üretim ailesi.</p>
+                    </div>
+
+                    <div onclick="openModal('7VxKh9M_qys')" class="machine-card bg-white p-6 rounded-xl cursor-pointer shadow-sm">
+                        <div class="video-overlay"><div class="px-3 py-1.5 bg-white text-slate-900 rounded font-bold text-[10px] uppercase flex items-center gap-2"><i class="fa-solid fa-play"></i> Video</div></div>
+                        <div class="flex justify-between items-start mb-4 text-slate-300 font-mono text-xs">07</div>
+                        <h4 class="text-lg font-bold text-slate-900">ZC 4040</h4>
+                        <p class="text-[11px] text-slate-500 mt-2 font-light italic">4-Eksenli endüstriyel CNC merkezi.</p>
                     </div>
                     
-                    <div onclick="openModal('5RSI86l4cfw', 5)" class="machine-card bg-white p-6 rounded-xl cursor-pointer bg-slate-100/50 border-dashed shadow-sm text-left">
-                        <div class="video-overlay"><div class="px-3 py-1.5 bg-white text-slate-900 rounded font-bold text-[10px] uppercase flex items-center gap-2"><i class="fa-solid fa-play"></i> Video İzle</div></div>
-                        <div class="flex justify-between items-start mb-4 text-slate-400">
-                            <span class="mono text-xs font-bold font-mono italic">06</span>
-                            <span class="text-[8px] font-bold uppercase bg-slate-200 px-1.5 rounded font-mono text-left">Grup Seri</span>
-                        </div>
-                        <h4 class="text-lg font-bold text-slate-900 uppercase tracking-tighter italic text-[14px]">ZC 3062-63-64</h4>
-                        <p class="text-[11px] text-slate-500 mt-2 italic font-light text-left">Modüler tasarım mimarisiyle ölçeklenebilir CNC üretim serisi.</p>
+                    <div onclick="openModal('2rBsAK_WqiY')" class="machine-card bg-white p-6 rounded-xl cursor-pointer bg-slate-50">
+                        <div class="video-overlay"><div class="px-3 py-1.5 bg-white text-slate-900 rounded font-bold text-[10px] uppercase flex items-center gap-2"><i class="fa-solid fa-play"></i> Video</div></div>
+                        <div class="flex justify-between items-start mb-4 text-slate-300 font-mono text-xs">08</div>
+                        <h4 class="text-lg font-bold text-slate-900 uppercase text-xs">ZC 3052-54</h4>
+                        <p class="text-[11px] text-slate-500 mt-2 font-light italic">5-Eksenli performans CNC serisi.</p>
                     </div>
                     
-                    <div onclick="openModal('7VxKh9M_qys')" class="machine-card bg-white p-6 rounded-xl cursor-pointer shadow-sm text-left">
-                        <div class="video-overlay"><div class="px-3 py-1.5 bg-white text-slate-900 rounded font-bold text-[10px] uppercase flex items-center gap-2"><i class="fa-solid fa-play"></i> Video İzle</div></div>
-                        <div class="flex justify-between items-start mb-4 text-slate-300 font-mono text-xs italic">07 <i class="fa-brands fa-youtube text-lg"></i></div>
-                        <h4 class="text-lg font-bold text-slate-900 tracking-tight">ZC 4040</h4>
-                        <p class="text-[11px] text-slate-500 mt-2 font-light italic text-left">Tam kapalı endüstriyel kabinli, yüksek güvenlikli 4-eksenli sistem.</p>
-                    </div>
-                    
-                    <div onclick="openModal('2rBsAK_WqiY')" class="machine-card bg-white p-6 rounded-xl cursor-pointer bg-slate-100/50 border-dashed shadow-sm text-left">
-                        <div class="video-overlay"><div class="px-3 py-1.5 bg-white text-slate-900 rounded font-bold text-[10px] uppercase flex items-center gap-2"><i class="fa-solid fa-play"></i> Video İzle</div></div>
-                        <div class="flex justify-between items-start mb-4 text-slate-400">
-                            <span class="mono text-xs font-bold font-mono italic text-[8px]">08</span>
-                            <span class="text-[8px] font-bold uppercase bg-slate-200 px-1.5 rounded font-mono">Grup Seri</span>
-                        </div>
-                        <h4 class="text-lg font-bold text-slate-900 uppercase tracking-tighter italic">ZC 3052-54</h4>
-                        <p class="text-[11px] text-slate-500 mt-2 italic font-light text-left">5-Eksenli işleme standartlarını belirleyen performans serisi.</p>
-                    </div>
-                    
-                    <div onclick="openModal('WUrf8N120SU', 18)" class="machine-card p-6 rounded-xl cursor-pointer border-blue-400 bg-blue-600 text-white shadow-xl text-left">
-                        <div class="video-overlay"><div class="px-3 py-1.5 bg-white text-slate-900 rounded font-bold text-[10px] uppercase flex items-center gap-2"><i class="fa-solid fa-play"></i> Video İzle</div></div>
+                    <div onclick="openModal('WUrf8N120SU', 18)" class="machine-card p-6 rounded-xl cursor-pointer border-blue-400 bg-blue-600 text-white shadow-xl">
+                        <div class="video-overlay"><div class="px-3 py-1.5 bg-white text-slate-900 rounded font-bold text-[10px] uppercase flex items-center gap-2"><i class="fa-solid fa-play"></i> Video</div></div>
                         <div class="flex justify-between items-start mb-4">
-                            <span class="mono text-xs font-bold opacity-70 font-mono italic">09</span>
-                            <span class="text-[8px] font-bold uppercase bg-blue-500 px-1.5 rounded shadow-sm font-bold tracking-widest text-left">Geniş Seri</span>
+                            <span class="mono text-xs font-bold opacity-70 font-mono">09</span>
+                            <span class="text-[8px] font-bold uppercase bg-blue-500 px-1.5 rounded font-mono">Global</span>
                         </div>
-                        <h4 class="text-lg font-bold uppercase tracking-tight italic">AC 20XX GENİŞ AİLE</h4>
-                        <p class="text-[9px] mono opacity-80 mt-1 font-mono tracking-widest uppercase">2040-2045-2050-2055-2060</p>
-                        <p class="text-[11px] opacity-90 mt-3 italic leading-tight font-light text-left">Alüminyum kesiminde global pazar lideri çözümler.</p>
+                        <h4 class="text-lg font-bold uppercase tracking-tight italic">AC 20XX Serisi</h4>
+                        <p class="text-[11px] opacity-90 mt-3 italic leading-tight font-light">Alüminyum kesiminde pazar lideri çözümler.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Hesaplama Araçları (Sekmeli Dashboard) -->
+        <!-- Mühendislik Hesaplama Paketi (TAB DASHBOARD) -->
         <section id="hesaplama" class="mb-32 p-8 md:p-12 bg-slate-900 rounded-[2rem] text-white shadow-2xl relative overflow-hidden">
-             <div class="relative z-10">
-                <div class="text-center mb-12">
+             <div class="relative z-10 text-center">
+                <div class="mb-12">
                     <h3 class="text-3xl font-bold mb-4 tracking-tight uppercase tracking-widest italic font-serif text-blue-400">Mühendislik Hesaplama Paketi</h3>
-                    <p class="text-slate-400 leading-relaxed font-light text-sm max-w-2xl mx-auto">Tasarım süreçlerinde kullanılan standart mühendislik normlarına dayalı dinamik analiz araçları.</p>
+                    <p class="text-slate-400 leading-relaxed font-light text-sm max-w-2xl mx-auto">Standart mühendislik normlarına dayalı dinamik analiz araçları.</p>
                 </div>
 
-                <div class="tool-card rounded-2xl overflow-hidden flex flex-col md:flex-row border border-slate-700 bg-slate-800/30">
-                    
-                    <!-- Sol Taraf: Sekme Menüsü -->
+                <div class="tool-card rounded-2xl overflow-hidden flex flex-col md:flex-row border border-slate-700 bg-slate-800/30 min-h-[500px]">
+                    <!-- Sidebar Tab Menü -->
                     <div class="md:w-1/3 bg-slate-900 border-b md:border-b-0 md:border-r border-slate-700 p-4 flex flex-row md:flex-col gap-2 overflow-x-auto custom-scrollbar">
-                        <button class="calc-tab-btn active flex items-center gap-3 w-full text-left px-4 py-4 rounded-xl transition-all bg-blue-600 text-white font-bold text-xs uppercase tracking-widest whitespace-nowrap" data-target="tab-vc">
+                        <button class="calc-tab-btn active flex items-center gap-3 w-full text-left px-4 py-4 rounded-xl transition-all bg-blue-600 text-white font-bold text-[10px] uppercase tracking-widest whitespace-nowrap" data-target="tab-vc">
                             <i class="fa-solid fa-rotate text-lg w-5 text-center"></i> Kesme Hızı (Vc)
                         </button>
-                        <button class="calc-tab-btn flex items-center gap-3 w-full text-left px-4 py-4 rounded-xl transition-all text-slate-400 hover:bg-slate-800 hover:text-slate-200 font-bold text-xs uppercase tracking-widest whitespace-nowrap" data-target="tab-piston">
-                            <i class="fa-solid fa-compress text-lg w-5 text-center"></i> Pnömatik Piston
+                        <button class="calc-tab-btn flex items-center gap-3 w-full text-left px-4 py-4 rounded-xl transition-all text-slate-400 hover:bg-slate-800 hover:text-slate-200 font-bold text-[10px] uppercase tracking-widest whitespace-nowrap" data-target="tab-piston">
+                            <i class="fa-solid fa-compress text-lg w-5 text-center"></i> Piston Kuvveti
                         </button>
-                        <button class="calc-tab-btn flex items-center gap-3 w-full text-left px-4 py-4 rounded-xl transition-all text-slate-400 hover:bg-slate-800 hover:text-slate-200 font-bold text-xs uppercase tracking-widest whitespace-nowrap" data-target="tab-helis">
+                        <button class="calc-tab-btn flex items-center gap-3 w-full text-left px-4 py-4 rounded-xl transition-all text-slate-400 hover:bg-slate-800 hover:text-slate-200 font-bold text-[10px] uppercase tracking-widest whitespace-nowrap" data-target="tab-helis">
                             <i class="fa-solid fa-gear text-lg w-5 text-center"></i> Helis Dişli
                         </button>
-                        <button class="calc-tab-btn flex items-center gap-3 w-full text-left px-4 py-4 rounded-xl transition-all text-slate-400 hover:bg-slate-800 hover:text-slate-200 font-bold text-xs uppercase tracking-widest whitespace-nowrap" data-target="tab-tork">
+                        <button class="calc-tab-btn flex items-center gap-3 w-full text-left px-4 py-4 rounded-xl transition-all text-slate-400 hover:bg-slate-800 hover:text-slate-200 font-bold text-[10px] uppercase tracking-widest whitespace-nowrap" data-target="tab-tork">
                             <i class="fa-solid fa-bolt text-lg w-5 text-center"></i> Motor Tork
                         </button>
-                        <button class="calc-tab-btn flex items-center gap-3 w-full text-left px-4 py-4 rounded-xl transition-all text-slate-400 hover:bg-slate-800 hover:text-slate-200 font-bold text-xs uppercase tracking-widest whitespace-nowrap" data-target="tab-vidali">
+                        <button class="calc-tab-btn flex items-center gap-3 w-full text-left px-4 py-4 rounded-xl transition-all text-slate-400 hover:bg-slate-800 hover:text-slate-200 font-bold text-[10px] uppercase tracking-widest whitespace-nowrap" data-target="tab-vidali">
                             <i class="fa-solid fa-screwdriver text-lg w-5 text-center"></i> Vidalı Mil
                         </button>
                     </div>
 
-                    <!-- Sağ Taraf: Sekme İçerikleri -->
-                    <div class="md:w-2/3 p-6 md:p-10 relative min-h-[400px] flex flex-col justify-center text-left">
+                    <!-- İçerik Alanı -->
+                    <div class="md:w-2/3 p-6 md:p-10 relative flex flex-col justify-center text-left">
                         
-                        <!-- 1. Kesme Hızı -->
+                        <!-- 1. Vc -->
                         <div id="tab-vc" class="calc-tab-content block animate-fadeIn">
-                            <div class="mb-8 border-b border-slate-700 pb-4">
-                                <h4 class="text-xl font-bold tracking-tight italic text-white">Kesme Hızı (V<sub>c</sub>) Analizi</h4>
-                            </div>
+                            <h4 class="text-xl font-bold tracking-tight italic text-white mb-6 border-b border-slate-700 pb-2">Kesme Hızı (V<sub>c</sub>) Analizi</h4>
                             <div class="space-y-8">
                                 <div class="flex justify-between text-[10px] mono uppercase text-slate-500 font-bold tracking-widest font-mono">
                                     <span>İşleme Çapı (mm)</span>
@@ -344,165 +350,112 @@
                                     <div class="text-5xl mono font-bold text-white tracking-tighter" id="result">188.50</div>
                                     <div class="text-[10px] text-slate-500 mt-2 uppercase font-bold tracking-[0.3em] font-mono">Metre / Dakika</div>
                                 </div>
-                                <p class="text-[10px] text-slate-500 italic mt-2 text-center">V<sub>c</sub> = (&pi; &times; D &times; n) / 1000 (Talaşlı İmalat Standardı)</p>
+                                <p class="text-[10px] text-slate-500 italic text-center">V<sub>c</sub> = (&pi; &times; D &times; n) / 1000 (Global Standart)</p>
                             </div>
                         </div>
 
                         <!-- 2. Piston -->
                         <div id="tab-piston" class="calc-tab-content hidden animate-fadeIn">
-                            <div class="mb-8 border-b border-slate-700 pb-4">
-                                <h4 class="text-xl font-bold tracking-tight italic text-white">Piston Kuvvet Analizi (ISO Normu)</h4>
-                            </div>
+                            <h4 class="text-xl font-bold tracking-tight italic text-white mb-6 border-b border-slate-700 pb-2">Piston Kuvvet Analizi (ISO 6431)</h4>
                             <div class="space-y-6">
                                 <div class="grid grid-cols-2 gap-6">
                                     <div>
-                                        <label class="text-[10px] uppercase text-slate-500 font-bold mb-2 block">Silindir Çapı (Bore)</label>
-                                        <select id="pistonBore" class="w-full bg-slate-900 border border-slate-700 rounded-md px-4 py-3 text-sm mono focus:border-blue-500 outline-none cursor-pointer font-mono shadow-inner">
-                                            <option value="12">12 mm</option>
-                                            <option value="16">16 mm</option>
-                                            <option value="20">20 mm</option>
-                                            <option value="25">25 mm</option>
-                                            <option value="32">32 mm</option>
-                                            <option value="40">40 mm</option>
-                                            <option value="50">50 mm</option>
-                                            <option value="63">63 mm</option>
-                                            <option value="80" selected>80 mm</option>
+                                        <label class="text-[10px] uppercase text-slate-500 font-bold mb-2 block">Piston Çapı (Bore)</label>
+                                        <select id="pistonBore" class="w-full bg-slate-900 border border-slate-700 rounded-md px-4 py-3 text-sm mono outline-none font-mono">
+                                            <option value="12">12 mm</option><option value="16">16 mm</option><option value="20">20 mm</option>
+                                            <option value="25">25 mm</option><option value="32">32 mm</option><option value="40">40 mm</option>
+                                            <option value="50">50 mm</option><option value="63">63 mm</option><option value="80" selected>80 mm</option>
                                             <option value="100">100 mm</option>
                                         </select>
                                     </div>
                                     <div>
                                         <label class="text-[10px] uppercase text-slate-500 font-bold mb-2 block">Mil Çapı (Rod)</label>
-                                        <select id="pistonRod" class="w-full bg-slate-900 border border-slate-700 rounded-md px-4 py-3 text-sm mono focus:border-blue-500 outline-none cursor-pointer font-mono shadow-inner">
-                                            <option value="6">6 mm</option>
-                                            <option value="8">8 mm</option>
-                                            <option value="10">10 mm</option>
-                                            <option value="12">12 mm</option>
-                                            <option value="16">16 mm</option>
-                                            <option value="20">20 mm</option>
-                                            <option value="25" selected>25 mm</option>
-                                            <option value="32">32 mm</option>
+                                        <select id="pistonRod" class="w-full bg-slate-900 border border-slate-700 rounded-md px-4 py-3 text-sm mono outline-none font-mono">
+                                            <option value="6">6 mm</option><option value="8">8 mm</option><option value="10">10 mm</option>
+                                            <option value="12">12 mm</option><option value="16">16 mm</option><option value="20">20 mm</option>
+                                            <option value="25" selected>25 mm</option><option value="32">32 mm</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div>
-                                    <label class="text-[10px] uppercase text-slate-500 font-bold mb-2 block">Çalışma Basıncı (Bar)</label>
-                                    <input type="number" id="pistonPressure" value="6" class="w-full bg-slate-900 border border-slate-700 rounded-md px-4 py-3 text-sm mono focus:border-blue-500 outline-none font-mono shadow-inner">
+                                <div class="bg-blue-600/10 p-6 rounded-xl border border-blue-500/20 text-center">
+                                    <div class="text-[9px] uppercase text-blue-400 font-bold mb-2 tracking-widest">İtme Kuvveti (6 Bar)</div>
+                                    <div class="text-4xl font-bold text-white font-mono" id="forcePush">301.6 kg</div>
                                 </div>
-                                <div class="grid grid-cols-2 gap-4 mt-8 text-center font-mono">
-                                    <div class="bg-blue-600/20 p-5 rounded-xl border border-blue-500/30">
-                                        <div class="text-[9px] uppercase text-blue-400 font-bold mb-1">İtme Kuvveti</div>
-                                        <div class="text-2xl font-bold text-white" id="forcePush">- kg</div>
-                                    </div>
-                                    <div class="bg-slate-900/80 p-5 rounded-xl border border-slate-700">
-                                        <div class="text-[9px] uppercase text-slate-500 font-bold mb-1">Çekme Kuvveti</div>
-                                        <div class="text-2xl font-bold text-white" id="forcePull">- kg</div>
-                                    </div>
+                                <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-700 text-center">
+                                    <div class="text-[9px] uppercase text-slate-400 font-bold mb-2 tracking-widest">Çekme Kuvveti (6 Bar)</div>
+                                    <div class="text-4xl font-bold text-white font-mono" id="forcePull">226.2 kg</div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- 3. Helis Dişli -->
+                        <!-- 3. Helis -->
                         <div id="tab-helis" class="calc-tab-content hidden animate-fadeIn">
-                            <div class="mb-8 border-b border-slate-700 pb-4">
-                                <h4 class="text-xl font-bold tracking-tight italic text-white">Helis Dişli Analizi</h4>
-                            </div>
-                            <div class="space-y-6">
-                                <div class="grid grid-cols-2 gap-6">
-                                    <div>
-                                        <label class="text-[10px] uppercase text-slate-500 font-bold mb-2 block">Modül (m)</label>
-                                        <input type="number" id="helisModul" value="2" class="w-full bg-slate-900 border border-slate-700 rounded-md px-4 py-3 text-sm mono focus:border-blue-500 outline-none font-mono shadow-inner">
+                            <h4 class="text-xl font-bold tracking-tight italic text-white mb-6 border-b border-slate-700 pb-2">Helis Dişli Analizi</h4>
+                            <div class="space-y-4">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div><label class="text-[9px] uppercase text-slate-500 font-bold mb-1 block">Modül (m)</label>
+                                    <input type="number" id="helisModul" value="2" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-sm mono"></div>
+                                    <div><label class="text-[9px] uppercase text-slate-500 font-bold mb-1 block">Diş Sayısı (z)</label>
+                                    <input type="number" id="helisZ" value="20" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-sm mono"></div>
+                                </div>
+                                <div class="grid grid-cols-3 gap-2 mt-6">
+                                    <div class="bg-slate-800 p-3 rounded border border-slate-700 text-center">
+                                        <div class="text-[8px] uppercase text-slate-500">Bölüm Çapı</div>
+                                        <div class="text-sm font-bold font-mono" id="helisBolum">-</div>
                                     </div>
-                                    <div>
-                                        <label class="text-[10px] uppercase text-slate-500 font-bold mb-2 block">Diş Sayısı (z)</label>
-                                        <input type="number" id="helisZ" value="20" class="w-full bg-slate-900 border border-slate-700 rounded-md px-4 py-3 text-sm mono focus:border-blue-500 outline-none font-mono shadow-inner">
+                                    <div class="bg-slate-800 p-3 rounded border border-slate-700 text-center">
+                                        <div class="text-[8px] uppercase text-slate-500">Dış Çap</div>
+                                        <div class="text-sm font-bold font-mono" id="helisDis">-</div>
+                                    </div>
+                                    <div class="bg-blue-600/20 p-3 rounded border border-blue-500/30 text-center">
+                                        <div class="text-[8px] uppercase text-blue-400">Merkez</div>
+                                        <div class="text-sm font-bold font-mono" id="helisMerkez">-</div>
                                     </div>
                                 </div>
-                                <div>
-                                    <label class="text-[10px] uppercase text-slate-500 font-bold mb-2 block">Kremayer Yüksekliği (h)</label>
-                                    <input type="number" id="helisH" value="25" class="w-full bg-slate-900 border border-slate-700 rounded-md px-4 py-3 text-sm mono focus:border-blue-500 outline-none font-mono shadow-inner">
-                                </div>
-                                <div class="grid grid-cols-3 gap-3 mt-8 text-center font-mono">
-                                    <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-700">
-                                        <div class="text-[9px] uppercase text-slate-500 font-bold mb-1">Bölüm Çapı</div>
-                                        <div class="text-lg font-bold text-white" id="helisBolum">- mm</div>
-                                    </div>
-                                    <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-700">
-                                        <div class="text-[9px] uppercase text-slate-500 font-bold mb-1">Dış Çap</div>
-                                        <div class="text-lg font-bold text-white" id="helisDis">- mm</div>
-                                    </div>
-                                    <div class="bg-blue-600/20 p-4 rounded-xl border border-blue-500/30">
-                                        <div class="text-[9px] uppercase text-blue-400 font-bold mb-1">Merkez Aralık</div>
-                                        <div class="text-lg font-bold text-blue-100" id="helisMerkez">- mm</div>
-                                    </div>
-                                </div>
-                                <p class="text-[10px] text-slate-500 italic mt-2 text-center">Helis Açısı = 19.528° sabit alınmıştır.</p>
+                                <p class="text-[9px] text-slate-600 italic text-center mt-4">Helis Açısı: 19.528&deg; | Kremayer H: 25mm</p>
                             </div>
                         </div>
 
-                        <!-- 4. Motor Tork -->
-                        <div id="tab-tork" class="calc-tab-content hidden animate-fadeIn">
-                            <div class="mb-8 border-b border-slate-700 pb-4">
-                                <h4 class="text-xl font-bold tracking-tight italic text-white">Motor Tork Hesabı</h4>
-                            </div>
+                        <!-- 4. Tork -->
+                        <div id="tab-tork" class="calc-tab-content hidden animate-fadeIn text-center">
+                            <h4 class="text-xl font-bold tracking-tight italic text-white mb-8 border-b border-slate-700 pb-2">Motor Tork Hesabı</h4>
                             <div class="space-y-6">
-                                <div class="grid grid-cols-2 gap-6">
-                                    <div>
-                                        <label class="text-[10px] uppercase text-slate-500 font-bold mb-2 block">Motor Gücü (Watt)</label>
-                                        <input type="number" id="torkGuc" value="750" class="w-full bg-slate-900 border border-slate-700 rounded-md px-4 py-3 text-sm mono focus:border-blue-500 outline-none font-mono shadow-inner">
-                                    </div>
-                                    <div>
-                                        <label class="text-[10px] uppercase text-slate-500 font-bold mb-2 block">Devir (RPM)</label>
-                                        <input type="number" id="torkDevir" value="1400" class="w-full bg-slate-900 border border-slate-700 rounded-md px-4 py-3 text-sm mono focus:border-blue-500 outline-none font-mono shadow-inner">
-                                    </div>
+                                <div class="flex gap-4">
+                                    <div class="flex-1"><label class="text-[10px] uppercase text-slate-500 font-bold mb-2 block">Güç (Watt)</label>
+                                    <input type="number" id="torkGuc" value="750" class="w-full bg-slate-900 border border-slate-700 rounded p-3 text-lg mono font-bold"></div>
+                                    <div class="flex-1"><label class="text-[10px] uppercase text-slate-500 font-bold mb-2 block">RPM</label>
+                                    <input type="number" id="torkDevir" value="1400" class="w-full bg-slate-900 border border-slate-700 rounded p-3 text-lg mono font-bold"></div>
                                 </div>
-                                <div class="mt-10 text-center font-mono flex justify-center">
-                                    <div class="bg-blue-600/20 p-8 rounded-xl border border-blue-500/30 min-w-[250px]">
-                                        <div class="text-[11px] uppercase text-blue-400 font-bold mb-3 tracking-widest">Çıkış Torku</div>
-                                        <div class="flex items-end justify-center gap-2">
-                                            <div class="text-6xl font-bold text-white" id="torkSonuc">-</div>
-                                            <div class="text-xl text-blue-300 font-normal pb-2">Nm</div>
-                                        </div>
-                                    </div>
+                                <div class="pt-6">
+                                    <div class="text-7xl font-bold text-white tracking-tighter font-mono" id="torkSonuc">5.12</div>
+                                    <div class="text-xs uppercase text-blue-400 font-bold tracking-[0.4em] mt-2">Newton Metre (Nm)</div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- 5. Vidalı Mil -->
+                        <!-- 5. Vidali -->
                         <div id="tab-vidali" class="calc-tab-content hidden animate-fadeIn">
-                            <div class="mb-8 border-b border-slate-700 pb-4">
-                                <h4 class="text-xl font-bold tracking-tight italic text-white">Vidalı Mil Tahrik Hesabı</h4>
-                            </div>
-                            <div class="space-y-6">
-                                <div class="grid grid-cols-3 gap-4">
-                                    <div>
-                                        <label class="text-[10px] uppercase text-slate-500 font-bold mb-2 block">Motor (Watt)</label>
-                                        <input type="number" id="vidaliGuc" value="750" class="w-full bg-slate-900 border border-slate-700 rounded-md px-4 py-3 text-sm mono focus:border-blue-500 outline-none font-mono shadow-inner">
-                                    </div>
-                                    <div>
-                                        <label class="text-[10px] uppercase text-slate-500 font-bold mb-2 block">Devir (RPM)</label>
-                                        <input type="number" id="vidaliDevir" value="3000" class="w-full bg-slate-900 border border-slate-700 rounded-md px-4 py-3 text-sm mono focus:border-blue-500 outline-none font-mono shadow-inner">
-                                    </div>
-                                    <div>
-                                        <label class="text-[10px] uppercase text-slate-500 font-bold mb-2 block">Hatve (mm)</label>
-                                        <input type="number" id="vidaliHatve" value="10" class="w-full bg-slate-900 border border-slate-700 rounded-md px-4 py-3 text-sm mono focus:border-blue-500 outline-none font-mono shadow-inner">
-                                    </div>
+                            <h4 class="text-xl font-bold tracking-tight italic text-white mb-6 border-b border-slate-700 pb-2">Vidalı Mil Tahrik Hesabı</h4>
+                            <div class="grid grid-cols-3 gap-2 mb-6 text-center">
+                                <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-700">
+                                    <div class="text-[9px] uppercase text-slate-500 mb-1">Tork (Nm)</div>
+                                    <div class="text-lg font-bold font-mono" id="vidaliTork">-</div>
                                 </div>
-                                <div class="grid grid-cols-3 gap-3 mt-8 text-center font-mono">
-                                    <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-700">
-                                        <div class="text-[9px] uppercase text-slate-500 font-bold mb-1">Tahrik Torku</div>
-                                        <div class="text-xl font-bold text-white" id="vidaliTork">- Nm</div>
-                                    </div>
-                                    <div class="bg-blue-600/20 p-4 rounded-xl border border-blue-500/30">
-                                        <div class="text-[9px] uppercase text-blue-400 font-bold mb-1">Maks İtme Yükü</div>
-                                        <div class="text-xl font-bold text-blue-100" id="vidaliYuk">- kg</div>
-                                    </div>
-                                    <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-700">
-                                        <div class="text-[9px] uppercase text-slate-500 font-bold mb-1">Maks Hız</div>
-                                        <div class="text-xl font-bold text-white" id="vidaliHiz">- m/dk</div>
-                                    </div>
+                                <div class="bg-blue-600/20 p-3 rounded-xl border border-blue-500/30">
+                                    <div class="text-[9px] uppercase text-blue-400 mb-1">İtme (kg)</div>
+                                    <div class="text-lg font-bold font-mono" id="vidaliYuk">-</div>
                                 </div>
-                                <p class="text-[10px] text-slate-500 italic mt-3 text-center">Verim: %90 | Hız hesabında ivmelenme toleransı (1.5x devir) kullanılmıştır.</p>
+                                <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-700">
+                                    <div class="text-[9px] uppercase text-slate-500 mb-1">Hız (m/dk)</div>
+                                    <div class="text-lg font-bold font-mono" id="vidaliHiz">-</div>
+                                </div>
                             </div>
+                            <div class="grid grid-cols-3 gap-2">
+                                <input type="number" id="vidaliGuc" value="750" class="bg-slate-800 border border-slate-700 rounded p-2 text-xs mono text-center">
+                                <input type="number" id="vidaliDevir" value="3000" class="bg-slate-800 border border-slate-700 rounded p-2 text-xs mono text-center">
+                                <input type="number" id="vidaliHatve" value="10" class="bg-slate-800 border border-slate-700 rounded p-2 text-xs mono text-center">
+                            </div>
+                            <p class="text-[9px] text-slate-600 italic text-center mt-4">Verim: %90 | İvmelenme toleransı (1.5x devir) dahildir.</p>
                         </div>
 
                     </div>
@@ -524,16 +477,16 @@
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 py-16 text-center md:text-left">
         <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div>
-                <div class="flex items-center justify-center md:justify-start gap-2 mb-2">
-                    <div class="w-6 h-6 bg-slate-900 rounded flex items-center justify-center text-white text-[10px] font-bold font-mono">MÜ</div>
-                    <span class="mono font-bold tracking-tighter text-slate-900 uppercase">Mustafa Üner // 2024</span>
-                </div>
-                <p class="text-[10px] text-slate-400 mono uppercase tracking-[0.4em] font-mono">Engineering & Innovation Portfolio</p>
+            <div class="flex items-center gap-3">
+                <svg width="24" height="24" viewBox="0 0 100 100">
+                    <path d="M20 80V20l30 40 30-40v60" fill="none" stroke="#3b82f6" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M15 85h70" fill="none" stroke="#0f172a" stroke-width="6" stroke-linecap="round"/>
+                </svg>
+                <span class="mono font-bold text-slate-900 text-xs">Mustafa Üner // 2024</span>
             </div>
-            <div class="flex gap-8 text-slate-400 justify-center md:justify-end">
-                <a href="mailto:mustafauner@hotmail.com.tr" class="hover:text-slate-900 transition-colors text-xl"><i class="fa-regular fa-envelope"></i></a>
-                <a href="https://www.linkedin.com/in/mustafa-uner-engineer/" target="_blank" class="hover:text-slate-900 transition-colors text-xl"><i class="fa-brands fa-linkedin"></i></a>
+            <div class="flex gap-8 text-slate-400 justify-center md:justify-end text-xl">
+                <a href="mailto:mustafauner@hotmail.com.tr" class="hover:text-slate-900 transition-colors"><i class="fa-regular fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/mustafa-uner-engineer/" target="_blank" class="hover:text-slate-900 transition-colors"><i class="fa-brands fa-linkedin"></i></a>
             </div>
         </div>
     </footer>
@@ -560,9 +513,7 @@
             document.body.style.overflow = 'auto';
         }
 
-        window.onclick = function(e) {
-            if (e.target == document.getElementById('videoModal')) closeModal();
-        }
+        window.onclick = function(e) { if (e.target == document.getElementById('videoModal')) closeModal(); }
 
         // --- SEKME (TAB) YÖNETİMİ ---
         const tabBtns = document.querySelectorAll('.calc-tab-btn');
@@ -570,17 +521,12 @@
 
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Aktif sınıfları temizle
                 tabBtns.forEach(b => {
                     b.classList.remove('active', 'bg-blue-600', 'text-white');
                     b.classList.add('text-slate-400', 'hover:bg-slate-800', 'hover:text-slate-200');
                 });
-                tabContents.forEach(c => {
-                    c.classList.remove('block');
-                    c.classList.add('hidden');
-                });
+                tabContents.forEach(c => { c.classList.remove('block'); c.classList.add('hidden'); });
 
-                // Tıklananı aktif yap
                 btn.classList.add('active', 'bg-blue-600', 'text-white');
                 btn.classList.remove('text-slate-400', 'hover:bg-slate-800', 'hover:text-slate-200');
                 
@@ -590,14 +536,12 @@
             });
         });
 
-        // Ortak Pi Sabiti
         const PI = Math.PI;
 
         // 1. Kesme Hızı (Vc)
         const dInput = document.getElementById('diameter');
         const resDisplay = document.getElementById('result');
         const dValDisplay = document.getElementById('d-val');
-
         function calculateVc() {
             const D = parseFloat(dInput.value);
             const Vc = (PI * D * 1200) / 1000;
@@ -607,103 +551,64 @@
         dInput.addEventListener('input', calculateVc);
 
         // 2. Pnömatik Piston
-        const pistonMap = {
-            "12": "6", "16": "6", "20": "8", "25": "10", "32": "12",
-            "40": "16", "50": "20", "63": "20", "80": "25", "100": "25"
-        };
+        const pistonMap = { "12":"6", "16":"6", "20":"8", "25":"10", "32":"12", "40":"16", "50":"20", "63":"20", "80":"25", "100":"25" };
         const pBore = document.getElementById('pistonBore');
         const pRod = document.getElementById('pistonRod');
-        const pPress = document.getElementById('pistonPressure');
         const pushRes = document.getElementById('forcePush');
         const pullRes = document.getElementById('forcePull');
-
         function calculatePiston() {
             const bore = parseFloat(pBore.value);
             const rod = parseFloat(pRod.value);
-            const pressure = parseFloat(pPress.value);
-            if (isNaN(bore) || isNaN(pressure)) return;
             const areaPush = (PI * Math.pow(bore / 10, 2)) / 4;
             const areaPull = ((PI * Math.pow(bore / 10, 2)) / 4) - ((PI * Math.pow(rod / 10, 2)) / 4);
-            const forcePush = areaPush * pressure;
-            const forcePull = areaPull * pressure;
-            pushRes.textContent = forcePush.toFixed(1) + ' kg';
-            pullRes.textContent = forcePull.toFixed(1) + ' kg';
+            pushRes.textContent = (areaPush * 6).toFixed(1) + ' kg';
+            pullRes.textContent = (areaPull * 6).toFixed(1) + ' kg';
         }
-
-        pBore.addEventListener('change', (e) => {
-            const standardRod = pistonMap[e.target.value];
-            if (standardRod) pRod.value = standardRod;
-            calculatePiston();
-        });
-        [pRod, pPress].forEach(input => input.addEventListener('input', calculatePiston));
+        pBore.addEventListener('change', (e) => { pRod.value = pistonMap[e.target.value] || "25"; calculatePiston(); });
+        pRod.addEventListener('change', calculatePiston);
 
         // 3. Helis Dişli
         const hModul = document.getElementById('helisModul');
         const hZ = document.getElementById('helisZ');
-        const hH = document.getElementById('helisH');
-        
         function calculateHelis() {
-            const helisAcisi = 19.528;
-            const cosHelis = Math.cos(helisAcisi * PI / 180);
+            const cosHelis = Math.cos(19.528 * PI / 180);
             const m = parseFloat(hModul.value);
             const z = parseFloat(hZ.value);
-            const h = parseFloat(hH.value);
-            
-            if (isNaN(m) || isNaN(z) || isNaN(h)) return;
-
+            if (!m || !z) return;
             const bolum = (m * z) / cosHelis;
-            const disCap = bolum + 2 * m;
-            const merkez = (bolum / 2) + (h - m);
-
             document.getElementById('helisBolum').textContent = bolum.toFixed(2) + ' mm';
-            document.getElementById('helisDis').textContent = disCap.toFixed(2) + ' mm';
-            document.getElementById('helisMerkez').textContent = merkez.toFixed(2) + ' mm';
+            document.getElementById('helisDis').textContent = (bolum + 2 * m).toFixed(2) + ' mm';
+            document.getElementById('helisMerkez').textContent = (bolum / 2 + 25 - m).toFixed(2) + ' mm';
         }
-        [hModul, hZ, hH].forEach(input => input.addEventListener('input', calculateHelis));
+        [hModul, hZ].forEach(i => i.addEventListener('input', calculateHelis));
 
         // 4. Motor Tork
         const tGuc = document.getElementById('torkGuc');
         const tDevir = document.getElementById('torkDevir');
-        
         function calculateTork() {
             const guc = parseFloat(tGuc.value);
             const devir = parseFloat(tDevir.value);
-            if (isNaN(guc) || isNaN(devir) || devir === 0) return;
-            
-            const tork = (guc * 60) / (2 * PI * devir);
-            document.getElementById('torkSonuc').textContent = tork.toFixed(2);
+            if (!guc || !devir) return;
+            document.getElementById('torkSonuc').textContent = ((guc * 60) / (2 * PI * devir)).toFixed(2);
         }
-        [tGuc, tDevir].forEach(input => input.addEventListener('input', calculateTork));
+        [tGuc, tDevir].forEach(i => i.addEventListener('input', calculateTork));
 
         // 5. Vidalı Mil
         const vGuc = document.getElementById('vidaliGuc');
         const vDevir = document.getElementById('vidaliDevir');
         const vHatve = document.getElementById('vidaliHatve');
-        
         function calculateVidali() {
-            const guc = parseFloat(vGuc.value);
-            const devir = parseFloat(vDevir.value);
-            const hatve = parseFloat(vHatve.value);
-            const verim = 0.9;
-            
-            if (isNaN(guc) || isNaN(devir) || isNaN(hatve) || devir === 0 || hatve === 0) return;
-
-            const tork = (guc * 60) / (2 * PI * devir);
-            const maxYuk = (tork * 2000 * PI * verim) / (hatve * 9.81);
-            const hiz = (hatve * (devir * 1.5)) / 1000;
-
-            document.getElementById('vidaliTork').textContent = tork.toFixed(2) + ' Nm';
-            document.getElementById('vidaliYuk').textContent = maxYuk.toFixed(1) + ' kg';
-            document.getElementById('vidaliHiz').textContent = hiz.toFixed(2) + ' m/dk';
+            const g = parseFloat(vGuc.value); const d = parseFloat(vDevir.value); const h = parseFloat(vHatve.value);
+            if (!g || !d || !h) return;
+            const t = (g * 60) / (2 * PI * d);
+            document.getElementById('vidaliTork').textContent = t.toFixed(2);
+            document.getElementById('vidaliYuk').textContent = ((t * 2000 * PI * 0.9) / (h * 9.81)).toFixed(1);
+            document.getElementById('vidaliHiz').textContent = ((h * (d * 1.5)) / 1000).toFixed(2);
         }
-        [vGuc, vDevir, vHatve].forEach(input => input.addEventListener('input', calculateVidali));
+        [vGuc, vDevir, vHatve].forEach(i => i.addEventListener('input', calculateVidali));
 
-        // Sayfa açılışında hesaplamaları bir kere çalıştır
-        calculateVc();
-        calculatePiston();
-        calculateHelis();
-        calculateTork();
-        calculateVidali();
+        // Başlangıç
+        calculateVc(); calculatePiston(); calculateHelis(); calculateTork(); calculateVidali();
     </script>
 </body>
 </html>
