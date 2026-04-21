@@ -190,16 +190,8 @@ section { padding: 100px 24px; }
 .blog-card.active .blog-card-title { color: var(--amber); }
 
 .blog-content-area { background: var(--ink-3); display: flex; flex-direction: column; position: relative; }
-/* Terminal Header */
-.terminal-header { background: var(--ink-2); padding: 12px 24px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(245,158,11,0.1); font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--mist); }
-.terminal-dots { display: flex; gap: 6px; }
-.terminal-dots span { width: 10px; height: 10px; border-radius: 50%; background: var(--steel); }
-.terminal-dots span:nth-child(1) { background: var(--danger); }
-.terminal-dots span:nth-child(2) { background: var(--gold); }
-.terminal-dots span:nth-child(3) { background: #22c55e; }
-.terminal-path { color: rgba(245,158,11,0.7); letter-spacing: 0.1em; margin-left: 10px; }
 
-.blog-reader { padding: 40px 60px; overflow-y: auto; max-height: calc(600px - 45px); transition: opacity 0.3s ease; }
+.blog-reader { padding: 40px 60px; overflow-y: auto; max-height: 600px; transition: opacity 0.3s ease; }
 .blog-reader.fade-out { opacity: 0; }
 .article-header { border-bottom: 1px solid rgba(245,158,11,0.1); padding-bottom: 24px; margin-bottom: 32px; }
 .article-title { font-family: 'Bebas Neue', sans-serif; font-size: 42px; color: var(--white); letter-spacing: 0.04em; line-height: 1.1; margin-bottom: 16px; }
@@ -615,7 +607,7 @@ footer { background: var(--ink); border-top: 1px solid rgba(245,158,11,0.1); pad
       <!-- Sol Sidebar: Makale Listesi -->
       <div class="blog-sidebar">
         <div class="blog-sidebar-header">
-          <div class="blog-sidebar-title"><i class="fa-solid fa-terminal"></i> system.articles</div>
+          <div class="blog-sidebar-title"><i class="fa-solid fa-book-open"></i> YAZILAR</div>
         </div>
         <div class="blog-list" id="blog-list-container">
           <!-- JS ile doldurulacak makale kartları buraya gelecek -->
@@ -624,10 +616,6 @@ footer { background: var(--ink); border-top: 1px solid rgba(245,158,11,0.1); pad
 
       <!-- Sağ İçerik: Okuma Alanı -->
       <div class="blog-content-area">
-        <div class="terminal-header">
-          <div class="terminal-dots"><span></span><span></span><span></span></div>
-          <div class="terminal-path" id="terminal-path">~/knowledge-base/loading.md</div>
-        </div>
         <div class="blog-reader" id="blog-reader">
           <!-- JS ile doldurulacak makale içeriği buraya gelecek -->
         </div>
@@ -766,7 +754,7 @@ footer { background: var(--ink); border-top: 1px solid rgba(245,158,11,0.1); pad
       <div class="footer-name">Mustafa Üner</div>
       <div class="footer-sub">Senior R&D Project Leader · Istanbul, TR</div>
     </div>
-    <div class="footer-copy">© 2024 mustafauner.com.tr</div>
+    <div class="footer-copy">© 2026 mustafauner.com.tr</div>
     <div class="footer-links">
       <a href="mailto:mustafauner@hotmail.com.tr" class="footer-link"><i class="fa-regular fa-envelope"></i></a>
       <a href="https://www.linkedin.com/in/mustafa-uner-engineer/" target="_blank" class="footer-link"><i class="fa-brands fa-linkedin"></i></a>
@@ -784,46 +772,13 @@ footer { background: var(--ink); border-top: 1px solid rgba(245,158,11,0.1); pad
 
 <script>
 // ─── BLOG VERİ TABANI (DATABASE) ───
-// Yeni makale eklemek için sadece bu listeye yeni bir obje ekleyin. HTML otomatik güncellenir.
 const articles = [
   {
     id: "art-1",
-    date: "14 MART 2026",
-    tags: ["PYTHON", "OTOMASYON"],
-    title: "Parametrik Tasarım: Makine Mühendisliğinde Python Entegrasyonu",
-    readTime: "4 Dk",
-    fileName: "python-parametric-design.md",
-    content: `
-      <h2>Gelenekselden Algoritmik Tasarıma Geçiş</h2>
-      <p>Yıllarca CAD programlarının arayüzlerine hapsolduktan sonra, makine tasarım süreçlerinin aslında ne kadar <strong>tekrar eden matematiksel döngülerden</strong> ibaret olduğunu fark ediyorsunuz. İşte bu noktada Python devreye giriyor.</p>
-      
-      <p>Örneğin bir konveyör şasisinin rijitlik hesabını veya bir motor montaj plakasının civata delik koordinatlarını her seferinde manuel hesaplamak yerine, süreci kod ile optimize edebiliriz.</p>
-      
-      <pre><code>def calculate_rigidity(mass, velocity):
-    # Basit bir kinetik enerji / rijitlik korelasyon algoritması
-    energy = 0.5 * mass * (velocity ** 2)
-    safety_factor = 1.5
-    return energy * safety_factor
-
-print("Required Rigidity Index:", calculate_rigidity(1200, 2.5))</code></pre>
-      
-      <p>Bu basit yaklaşım bile tasarımcının masasında saatler kazandırıyor. Bir sonraki projede, bu Python çıktısını doğrudan SolidWorks API'sine bağlayarak <strong>sıfır tık (zero-click) modeli</strong> oluşturmayı hedefliyoruz.</p>
-      
-      <h2>Sonuç</h2>
-      <ul>
-        <li>Tasarım sürelerinde %40'a varan kısalma.</li>
-        <li>İnsan faktörlü matematiksel hata payının sıfıra inmesi.</li>
-        <li>Revizyon süreçlerinde dinamik modelin anında güncellenmesi.</li>
-      </ul>
-    `
-  },
-  {
-    id: "art-2",
     date: "22 OCAK 2026",
     tags: ["CNC", "AR-GE"],
     title: "5-Eksenli Dev CNC Sistemlerde Titreşim (Chatter) Kontrolü",
     readTime: "6 Dk",
-    fileName: "5-axis-chatter-control.md",
     content: `
       <h2>Strok Büyüdükçe Artan Kriz: Rezonans</h2>
       <p>ZC 3050 gibi 13.5 metre stroka sahip devasa bir alüminyum işleme merkezi tasarlıyorsanız, en büyük düşmanınız servo motorların gücü değil, <strong>yapısal frekans ve titreşimdir (Chatter).</strong></p>
@@ -846,7 +801,6 @@ print("Required Rigidity Index:", calculate_rigidity(1200, 2.5))</code></pre>
 // ─── BLOG İŞLEVLERİ (RENDER) ───
 const blogListContainer = document.getElementById('blog-list-container');
 const blogReader = document.getElementById('blog-reader');
-const terminalPath = document.getElementById('terminal-path');
 
 function renderBlogList() {
   blogListContainer.innerHTML = '';
@@ -866,19 +820,16 @@ function renderBlogList() {
   });
 }
 
-function loadArticle(id, cardElement) {
-  // Aktif kartı güncelle
+function loadArticle(id, cardElement, isInitialLoad = false) {
   document.querySelectorAll('.blog-card').forEach(c => c.classList.remove('active'));
   if(cardElement) cardElement.classList.add('active');
 
   const article = articles.find(a => a.id === id);
   if(!article) return;
 
-  // Fade-out efekti
   blogReader.classList.add('fade-out');
   
   setTimeout(() => {
-    terminalPath.textContent = `~/knowledge-base/${article.fileName}`;
     blogReader.innerHTML = `
       <div class="article-header">
         <h1 class="article-title">${article.title}</h1>
@@ -890,11 +841,11 @@ function loadArticle(id, cardElement) {
       </div>
       <div class="prose">${article.content}</div>
     `;
-    // Fade-in efekti
+    
     blogReader.classList.remove('fade-out');
 
-    // Mobilde tıklanınca makale alanına otomatik kaydır
-    if(window.innerWidth <= 768) {
+    // Eğer ilk yükleme (sayfa açılışı) DEĞİLSE ve mobildeysek aşağı kaydır
+    if(!isInitialLoad && window.innerWidth <= 768) {
       document.querySelector('.blog-content-area').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }, 300);
@@ -982,7 +933,9 @@ document.getElementById('videoModal').addEventListener('click', function(e) { if
 // Sayfa yüklendiğinde Başlat
 calcVc(); calcPiston(); calcHelis(); calcTork(); calcVidali();
 renderBlogList();
-if(articles.length > 0) loadArticle(articles[0].id, null); // İlk makaleyi otomatik yükle
+
+// İlk makaleyi otomatik yükle ama sayfayı AŞAĞI KAYDIRMA (isInitialLoad = true)
+if(articles.length > 0) loadArticle(articles[0].id, null, true); 
 
 </script>
 </body>
