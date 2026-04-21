@@ -210,6 +210,15 @@ section { padding: 100px 24px; }
 .prose code { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #38bdf8; }
 .prose p code { background: rgba(56, 189, 248, 0.1); padding: 2px 6px; border-radius: 2px; }
 
+/* Article Tables */
+.prose .table-wrap { overflow-x: auto; margin-bottom: 32px; border: 1px solid rgba(245,158,11,0.2); border-radius: 6px; background: var(--ink-4); }
+.prose table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
+.prose th { background: rgba(245,158,11,0.05); color: var(--amber); padding: 14px 16px; border-bottom: 1px solid rgba(245,158,11,0.2); font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; white-space: nowrap; }
+.prose td { padding: 14px 16px; border-bottom: 1px solid rgba(51,65,85,0.4); color: var(--light); vertical-align: top; line-height: 1.6; }
+.prose tr:last-child td { border-bottom: none; }
+.prose td strong { color: var(--white); font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+.prose tr:hover td { background: rgba(245,158,11,0.02); }
+
 /* ─── ENGINEERING TOOLS ─── */
 #tools { background: var(--ink-2); }
 .tools-layout { display: grid; grid-template-columns: 280px 1fr; gap: 2px; background: var(--ink-3); border: 1px solid rgba(245,158,11,0.1); border-radius: 8px; overflow: hidden; min-height: 560px; }
@@ -773,6 +782,86 @@ footer { background: var(--ink); border-top: 1px solid rgba(245,158,11,0.1); pad
 <script>
 // ─── BLOG VERİ TABANI (DATABASE) ───
 const articles = [
+  {
+    id: "art-tolerance",
+    date: "21 NİSAN 2026",
+    tags: ["ISO 286", "METROLOJİ", "TALAŞLI İMALAT"],
+    title: "Makine Tasarımında Toleranslar ve Geçme Sistemleri: Kapsamlı Analiz",
+    readTime: "12 Dk",
+    content: `
+      <h2>Tolerans İhtiyacının Felsefesi ve Mühendislik Temelleri</h2>
+      <p>Modern makine tasarımı ve talaşlı imalat teknolojilerinde, mühendislik çizimlerinde belirtilen teorik boyutların fiziksel üretim ortamında mutlak bir kesinlikle (sıfır hata ile) elde edilmesi fiziksel ve termodinamik olarak imkansızdır. Üretim süreçlerinin doğasında var olan takım aşınmaları, kesici uçların deformasyonu, iş mili titreşimleri (run-out), malzeme iç gerilmelerinin işleme sırasında serbest kalması, tezgah esneklikleri, ortam sıcaklığındaki dalgalanmalar ve operatör becerisindeki farklılıklar gibi sayısız değişken, nihai ürünün boyutlarında kaçınılmaz sapmalara yol açmaktadır.</p>
+      
+      <p>Endüstriyel devrimin erken dönemlerinde parçalar birbirine özel olarak alıştırılarak üretilirken, modern seri üretim anlayışı parçaların <strong>"değiştirilebilirliği" (interchangeability)</strong> prensibi üzerine kurulmuştur. Bir makine elemanının tasarım amacına uygun çalışabilmesi için kusursuz ölçülerde üretilmesine gerek yoktur; parçanın görevini aksatmayacak, kabul edilebilir en büyük ve en küçük ölçü sınırlarının belirlenmesi yeterlidir. Tasarımcı tarafından teknik resim üzerinde belirlenen bu iki sınır arasındaki farka <strong>"tolerans"</strong> adı verilir.</p>
+
+      <h2>TS EN ISO 286 Standart Sisteminin Anatomisi</h2>
+      <p>Uluslararası Standartlar Örgütü (ISO) tarafından geliştirilen TS EN ISO 286 standardı, makine elemanlarının eşlenebilirliğini garanti altına alan temel tolerans iskeletini oluşturur. Sistem, iki temel değişkenin matematiksel bir kombinasyonu olarak çalışır: <strong>Standart Tolerans Kaliteleri (IT)</strong> ve <strong>Temel Sapmalar (Harfler)</strong>.</p>
+      
+      <ul>
+        <li><strong>IT5 ve IT6 Sınıfları:</strong> Ekstrem hassasiyet gerektiren, yüksek devirlerde çalışan rotasyonel parçalar, hassas rulman muyluları ve ince ayar mekanizmaları içindir. Silindirik taşlama (grinding), lepleme veya honlama gerektirir.</li>
+        <li><strong>IT7 Kalitesi:</strong> Endüstride standartları belirleyen "iş atı" referans noktasıdır. H7/g6 veya H7/k6 geçmelerinin temel deliği daima IT7 hassasiyetindedir. Yüksek performanslı CNC operasyonlarını temsil eder.</li>
+        <li><strong>Harf Kodlaması:</strong> Büyük harfler (A'dan ZC'ye) daima <strong>Delikler</strong> için; küçük harfler (a'dan zc'ye) ise daima <strong>Miller</strong> için kullanılır. H ve h harfleri sistemin "Sıfır Çizgisi"ni (baseline) oluşturur.</li>
+      </ul>
+
+      <h2>Boşluklu Geçmeler (Clearance Fits)</h2>
+      <p>Tasarımın temel amacı, mekanizmaların montajı esnasında birbirine takılmasını kolaylaştırmak, kinematik hareketlere olanak tanımak, termal genleşmeleri sönümlemek ve hidrodinamik yağ filminin oluşması için hacim yaratmaktır.</p>
+      
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Delik Bazlı</th><th>Mil Bazlı</th><th>Karakteristik Özellikler</th><th>Kritik Endüstriyel Uygulamalar</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>H11/c11</strong></td><td><strong>C11/h11</strong></td><td>Tolerans bölgelerinin geniş olduğu, çok gevşek çalışma geçmesidir. (Loose running fit)</td><td>Kaba ortamlara maruz kalan tarım makineleri, kaba kilit mekanizmaları.</td></tr>
+            <tr><td><strong>H9/d9</strong></td><td><strong>D9/h9</strong></td><td>Standart toleranslardan daha büyük boşluk üreten serbest çalışma geçmesidir.</td><td>Yüksek devirli şaftlar, termal genleşme payı gereken sistemler.</td></tr>
+            <tr><td><strong>H8/f7</strong></td><td><strong>F8/h7</strong></td><td>İmalat hassasiyeti gerektiren dar kayıcı geçmedir. (Close running fit)</td><td>Takım tezgahları ana milleri, hidrolik pistonlar, yönlendirme kızakları.</td></tr>
+            <tr><td><strong>H7/g6</strong></td><td><strong>G7/h6</strong></td><td>Sanayide "kayıcı geçme" denildiğinde akla ilk gelendir. Boşta sarsılmaz, mükemmel yağ filmi boşluğu bırakır.</td><td>Pnömatik/hidrolik rod burçları, merkezleme pilotları, torna/freze kızakları. Endüstrinin iş atı.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Geçiş Geçmeleri (Transition Fits): Konumlandırma Stratejileri</h2>
+      <p>Bu kategoride, operatörün tezgahtaki üretimine bağlı olarak milimetrenin yüzde biri oranında pozitif (ince boşluk) bazen de negatif (ince sıkılık) çıkma ihtimali vardır. Amacı, parçaların mutlak eksenel hizaya (concentricity) getirilmesi ve manuel aletlerle sökülebilmesidir.</p>
+      
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Delik Bazlı</th><th>Mil Bazlı</th><th>Karakteristik Özellikler</th><th>Kritik Endüstriyel Uygulamalar</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>H7/k6</strong></td><td><strong>K7/h6</strong></td><td>Konumlandırmada optimum uzlaşma sunan geçiş geçmesidir. Plastik çekiçle tatlı-sert tıklatılarak monte edilir.</td><td>Kalıplardaki merkezleme pimleri (dowel pins), ayar kasnakları, manuel çarklar.</td></tr>
+            <tr><td><strong>H7/n6</strong></td><td><strong>N7/h6</strong></td><td>Daha büyük negatif sıkılık eğilimine sahip rijit konumlandırma geçmesidir. Hafif atölye presi gerekebilir.</td><td>Elektrik motoru armatür montajı, sarsıntıya maruz yönlendirme burçları.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Sıkı Geçmeler ve Pres Geçmeleri (Interference Fits)</h2>
+      <p>Bu kategoride mil daima delikten fiziksel olarak daha büyüktür. Montaj işlemi hidrolik presler (soğuk presleme) veya dış parçayı ısıtıp iç parçayı sıvı nitrojenle dondurarak (shrink fitting) gerçekleştirilir.</p>
+      
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Delik Bazlı</th><th>Mil Bazlı</th><th>Karakteristik Özellikler</th><th>Kritik Endüstriyel Uygulamalar</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>H7/p6</strong></td><td><strong>P7/h6</strong></td><td>Aşırı yuva genişletme basıncı yaratmadan rijitlik ve hizalama sağlayan hafif pres geçmesidir.</td><td>Motor şaftları üzeri rulman iç bilezikleri, gevşememesi gereken kilit pimleri.</td></tr>
+            <tr><td><strong>H7/s6</strong></td><td><strong>S7/h6</strong></td><td>Alaşımlı çelik parçalar için ağır tahrikli pres geçmesidir. Dökme demirle kullanılabilen en sıkı toleranstır.</td><td>Dönme torku aktaran çelik kasnak göbekleri, ağır iş makinesi pim yuvaları.</td></tr>
+            <tr><td><strong>H7/u6</strong></td><td><strong>U7/h6</strong></td><td>Mekanik olarak preslenmesi çok zor olan, ısıtılarak dondurma (shrink fitting) gerektiren kuvvet geçmesidir.</td><td>Tren tekerlekleri dingil montajı, devasa konveyör göbek-mil bağlantıları.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Tasarım Ekonomisi ve 80/20 Kuralı</h2>
+      <p>Mühendislik tasarımında her teorik tolerans tahsisi, imalat bütçesinde doğrudan bir maliyet kalemidir. Bir toleransı standart IT11 sınıfından hassas IT7 sınıfına çekmek, üretim maliyetini kabaca dört kat (4x) artırır.</p>
+      <p>Endüstriyel "80/20 Kuralı" makine tasarımında temel ekseni oluşturur:</p>
+      <ul>
+        <li>Hassas yağlamalı kayıcı sistemlerde: <strong>H7/g6</strong></li>
+        <li>Lokasyon tespit pimlerinde (dowel pins): <strong>H7/k6</strong></li>
+        <li>Yarı kalıcı pres ve rulman iç yataklarında: <strong>H7/p6</strong></li>
+      </ul>
+      <p>Optimizasyonu yüksek, sessiz ve titreşimsiz bir makine tasarımı; masa başında atılan bu mikron değerlerini, atölye tezgâhlarının titreşim frekansları ile harmanlayabilen çok disiplinli mühendislik bilincinin doğal bir sonucudur.</p>
+    `
+  },
   {
     id: "art-1",
     date: "22 OCAK 2026",
