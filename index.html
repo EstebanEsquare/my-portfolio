@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="15 yıllık makine tasarım tecrübesi, Python tabanlı mühendislik otomasyonları ve ileri seviye Ar-Ge projeleri.">
 <meta property="og:title" content="Mustafa Üner | Senior R&D Project Leader">
-<meta property="og:description" content="15 yıllık tasarım and üretim disiplinini, hesaplamalı tasarım ve veri odaklı optimizasyon yöntemleriyle harmanlayarak ileri seviye üretim teknolojileri geliştiriyorum.">
+<meta property="og:description" content="15 yıllık tasarım ve üretim disiplinini, hesaplamalı tasarım ve veri odaklı optimizasyon yöntemleriyle harmanlayarak ileri seviye üretim teknolojileri geliştiriyorum.">
 <meta property="og:image" content="https://mustafauner.com.tr/cv2.jpeg">
 <meta property="og:url" content="https://mustafauner.com.tr">
 <meta property="og:type" content="website">
@@ -16,7 +16,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
@@ -37,32 +37,18 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--ink);
-  color: var(--light);
-  overflow-x: hidden;
-  line-height: 1.6;
-}
-
+body { font-family: 'DM Sans', sans-serif; background: var(--ink); color: var(--light); overflow-x: hidden; line-height: 1.6; }
 .mono { font-family: 'JetBrains Mono', monospace; }
 .display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.04em; }
 
 /* ─── NOISE OVERLAY ─── */
 body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
+  content: ''; position: fixed; inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.025;
-  pointer-events: none;
-  z-index: 9999;
+  opacity: 0.025; pointer-events: none; z-index: 9999;
 }
 
-/* ─── SCROLLBAR ─── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--ink-2); }
 ::-webkit-scrollbar-thumb { background: var(--amber); border-radius: 2px; }
@@ -74,709 +60,251 @@ body::before {
 .reveal-left.visible { opacity: 1; transform: translateX(0); }
 .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .reveal-right.visible { opacity: 1; transform: translateX(0); }
-
-.d1 { transition-delay: 0.1s; }
-.d2 { transition-delay: 0.2s; }
-.d3 { transition-delay: 0.3s; }
-.d4 { transition-delay: 0.4s; }
-.d5 { transition-delay: 0.5s; }
+.d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
+.d4 { transition-delay: 0.4s; } .d5 { transition-delay: 0.5s; }
 
 /* ─── NAV ─── */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid rgba(245,158,11,0.12);
-  background: rgba(8,8,16,0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  transition: border-color 0.3s;
-}
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 64px; display: flex; align-items: center; border-bottom: 1px solid rgba(245,158,11,0.12); background: rgba(8,8,16,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); transition: border-color 0.3s; }
 nav.scrolled { border-bottom-color: rgba(245,158,11,0.25); }
-
-.nav-inner {
-  max-width: 1200px; margin: 0 auto; padding: 0 24px;
-  width: 100%;
-  display: flex; align-items: center; justify-content: space-between;
-}
-
+.nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; display: flex; align-items: center; justify-content: space-between; }
 .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .nav-logo-name { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.08em; color: var(--white); }
 .nav-logo-title { font-size: 8px; color: var(--amber); font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
-
 .nav-links { display: flex; gap: 32px; }
-.nav-links a {
-  font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em;
-  color: var(--mist); text-decoration: none;
-  transition: color 0.2s;
-  position: relative;
-}
-.nav-links a::after {
-  content: '';
-  position: absolute; bottom: -4px; left: 0; right: 0; height: 1px;
-  background: var(--amber); transform: scaleX(0); transform-origin: right;
-  transition: transform 0.25s ease;
-}
+.nav-links a { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--mist); text-decoration: none; transition: color 0.2s; position: relative; }
+.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--amber); transform: scaleX(0); transform-origin: right; transition: transform 0.25s ease; }
 .nav-links a:hover { color: var(--white); }
 .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
-
-.nav-cta {
-  padding: 8px 20px;
-  border: 1px solid var(--amber);
-  color: var(--amber);
-  border-radius: 4px;
-  font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
-  text-decoration: none; font-family: 'JetBrains Mono', monospace;
-  transition: all 0.2s;
-}
+.nav-cta { padding: 8px 20px; border: 1px solid var(--amber); color: var(--amber); border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; font-family: 'JetBrains Mono', monospace; transition: all 0.2s; }
 .nav-cta:hover { background: var(--amber); color: var(--ink); }
 
 /* ─── HERO ─── */
-#hero {
-  min-height: 100vh;
-  display: flex; align-items: center;
-  padding: 80px 24px 40px;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-grid-bg {
-  position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(245,158,11,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(245,158,11,0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse at 50% 50%, black 40%, transparent 80%);
-}
-
-.hero-glow {
-  position: absolute;
-  width: 600px; height: 600px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(245,158,11,0.07) 0%, transparent 70%);
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-
-.hero-inner {
-  max-width: 1200px; margin: 0 auto; width: 100%;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
-}
-
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 6px 14px;
-  border: 1px solid rgba(245,158,11,0.3);
-  border-radius: 2px;
-  font-size: 9px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--amber); font-family: 'JetBrains Mono', monospace;
-  margin-bottom: 20px;
-  background: rgba(245,158,11,0.05);
-}
-.hero-badge::before {
-  content: '';
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--amber);
-  animation: pulse-dot 2s ease-in-out infinite;
-}
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.7); }
-}
-
-.hero-name {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(56px, 8vw, 96px);
-  line-height: 0.92;
-  letter-spacing: 0.03em;
-  color: var(--white);
-  margin-bottom: 4px;
-}
+#hero { min-height: 100vh; display: flex; align-items: center; padding: 80px 24px 40px; position: relative; overflow: hidden; }
+.hero-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(245,158,11,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(245,158,11,0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse at 50% 50%, black 40%, transparent 80%); }
+.hero-glow { position: absolute; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(245,158,11,0.07) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; }
+.hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border: 1px solid rgba(245,158,11,0.3); border-radius: 2px; font-size: 9px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--amber); font-family: 'JetBrains Mono', monospace; margin-bottom: 20px; background: rgba(245,158,11,0.05); }
+.hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--amber); animation: pulse-dot 2s ease-in-out infinite; }
+@keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.7); } }
+.hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(56px, 8vw, 96px); line-height: 0.92; letter-spacing: 0.03em; color: var(--white); margin-bottom: 4px; }
 .hero-name span { color: var(--amber); }
-
-.hero-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(28px, 4vw, 48px);
-  letter-spacing: 0.08em;
-  color: var(--steel);
-  margin-bottom: 28px;
-}
-
-.hero-desc {
-  font-size: 15px; font-weight: 300; color: var(--mist);
-  line-height: 1.75; max-width: 480px;
-  font-style: italic;
-  border-left: 2px solid var(--amber);
-  padding-left: 20px;
-  margin-bottom: 36px;
-}
-
+.hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 4vw, 48px); letter-spacing: 0.08em; color: var(--steel); margin-bottom: 28px; }
+.hero-desc { font-size: 15px; font-weight: 300; color: var(--mist); line-height: 1.75; max-width: 480px; font-style: italic; border-left: 2px solid var(--amber); padding-left: 20px; margin-bottom: 36px; }
 .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-
-.btn-primary {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 14px 28px;
-  background: var(--amber);
-  color: var(--ink);
-  border: none; border-radius: 4px;
-  font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
-  text-decoration: none; cursor: pointer; font-family: 'JetBrains Mono', monospace;
-  transition: all 0.2s;
-}
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: var(--amber); color: var(--ink); border: none; border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; cursor: pointer; font-family: 'JetBrains Mono', monospace; transition: all 0.2s; }
 .btn-primary:hover { background: var(--gold); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,158,11,0.3); }
-
-.btn-ghost {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 14px 28px;
-  background: transparent;
-  color: var(--mist);
-  border: 1px solid var(--steel); border-radius: 4px;
-  font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
-  text-decoration: none; cursor: pointer; font-family: 'JetBrains Mono', monospace;
-  transition: all 0.2s;
-}
+.btn-ghost { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: transparent; color: var(--mist); border: 1px solid var(--steel); border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; cursor: pointer; font-family: 'JetBrains Mono', monospace; transition: all 0.2s; }
 .btn-ghost:hover { border-color: var(--light); color: var(--white); }
-
-/* Hero right — photo */
-.hero-photo-wrap {
-  position: relative;
-  display: flex; justify-content: center; align-items: center;
-}
-.hero-photo-frame {
-  position: relative;
-  width: 340px; height: 420px;
-}
-.hero-photo-frame::before {
-  content: '';
-  position: absolute; top: -12px; left: -12px; right: 12px; bottom: 12px;
-  border: 1px solid rgba(245,158,11,0.25);
-  border-radius: 6px;
-  z-index: 0;
-}
-.hero-photo-frame::after {
-  content: '';
-  position: absolute; top: 12px; left: 12px; right: -12px; bottom: -12px;
-  border: 1px solid rgba(245,158,11,0.1);
-  border-radius: 6px;
-  z-index: 0;
-}
-.hero-photo-frame img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  border-radius: 4px;
-  filter: grayscale(30%) contrast(1.05);
-  transition: filter 0.5s;
-  position: relative; z-index: 1;
-}
+.hero-photo-wrap { position: relative; display: flex; justify-content: center; align-items: center; }
+.hero-photo-frame { position: relative; width: 340px; height: 420px; }
+.hero-photo-frame::before { content: ''; position: absolute; top: -12px; left: -12px; right: 12px; bottom: 12px; border: 1px solid rgba(245,158,11,0.25); border-radius: 6px; z-index: 0; }
+.hero-photo-frame::after { content: ''; position: absolute; top: 12px; left: 12px; right: -12px; bottom: -12px; border: 1px solid rgba(245,158,11,0.1); border-radius: 6px; z-index: 0; }
+.hero-photo-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; filter: grayscale(30%) contrast(1.05); transition: filter 0.5s; position: relative; z-index: 1; }
 .hero-photo-frame:hover img { filter: grayscale(0%) contrast(1); }
-
-.hero-photo-label {
-  position: absolute; bottom: -20px; left: -20px;
-  background: var(--ink-3); border: 1px solid rgba(245,158,11,0.3);
-  padding: 10px 16px; border-radius: 4px; z-index: 2;
-}
-.hero-photo-label span {
-  display: block; font-size: 9px; font-weight: 700; letter-spacing: 0.2em;
-  text-transform: uppercase; font-family: 'JetBrains Mono', monospace;
-}
+.hero-photo-label { position: absolute; bottom: -20px; left: -20px; background: var(--ink-3); border: 1px solid rgba(245,158,11,0.3); padding: 10px 16px; border-radius: 4px; z-index: 2; }
+.hero-photo-label span { display: block; font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
 .hero-photo-label span:first-child { color: var(--amber); margin-bottom: 2px; }
 .hero-photo-label span:last-child { color: var(--mist); }
 
 /* ─── STATS BAR ─── */
-#stats {
-  border-top: 1px solid rgba(245,158,11,0.1);
-  border-bottom: 1px solid rgba(245,158,11,0.1);
-  background: var(--ink-2);
-  padding: 40px 24px;
-}
-.stats-inner {
-  max-width: 1200px; margin: 0 auto;
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
-}
-.stat-item {
-  padding: 24px 40px; text-align: center;
-  border-right: 1px solid rgba(245,158,11,0.1);
-}
+#stats { border-top: 1px solid rgba(245,158,11,0.1); border-bottom: 1px solid rgba(245,158,11,0.1); background: var(--ink-2); padding: 40px 24px; }
+.stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+.stat-item { padding: 24px 40px; text-align: center; border-right: 1px solid rgba(245,158,11,0.1); }
 .stat-item:last-child { border-right: none; }
-.stat-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 52px; line-height: 1;
-  color: var(--amber);
-  letter-spacing: 0.04em;
-}
-.stat-label {
-  font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--mist); margin-top: 6px;
-  font-family: 'JetBrains Mono', monospace;
-}
+.stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 52px; line-height: 1; color: var(--amber); letter-spacing: 0.04em; }
+.stat-label { font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mist); margin-top: 6px; font-family: 'JetBrains Mono', monospace; }
 
 /* ─── SECTION LAYOUT ─── */
 section { padding: 100px 24px; }
 .section-inner { max-width: 1200px; margin: 0 auto; }
-
-.section-label {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-size: 9px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase;
-  color: var(--amber); font-family: 'JetBrains Mono', monospace;
-  margin-bottom: 16px;
-}
-.section-label::before {
-  content: '';
-  width: 24px; height: 1px;
-  background: var(--amber);
-}
-
-.section-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(36px, 5vw, 56px);
-  letter-spacing: 0.04em;
-  color: var(--white);
-  line-height: 1;
-  margin-bottom: 12px;
-}
+.section-label { display: inline-flex; align-items: center; gap: 10px; font-size: 9px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--amber); font-family: 'JetBrains Mono', monospace; margin-bottom: 16px; }
+.section-label::before { content: ''; width: 24px; height: 1px; background: var(--amber); }
+.section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 5vw, 56px); letter-spacing: 0.04em; color: var(--white); line-height: 1; margin-bottom: 12px; }
 .section-title span { color: var(--amber); }
-.section-sub {
-  font-size: 14px; font-weight: 300; color: var(--mist);
-  max-width: 540px; line-height: 1.7;
-  margin-bottom: 60px;
-}
+.section-sub { font-size: 14px; font-weight: 300; color: var(--mist); max-width: 540px; line-height: 1.7; margin-bottom: 60px; }
 
 /* ─── TIMELINE ─── */
 #journey { background: var(--ink-2); }
-
 .timeline { position: relative; }
-.timeline::before {
-  content: '';
-  position: absolute; left: 50%; transform: translateX(-50%);
-  top: 0; bottom: 0; width: 1px;
-  background: linear-gradient(to bottom, transparent, rgba(245,158,11,0.3) 10%, rgba(245,158,11,0.3) 90%, transparent);
-}
-
-.tl-item {
-  display: grid; grid-template-columns: 1fr 48px 1fr;
-  gap: 0; margin-bottom: 0; position: relative;
-  min-height: 120px;
-}
-
-.tl-left, .tl-right {
-  padding: 32px 48px;
-  display: flex; flex-direction: column; justify-content: center;
-}
-.tl-left { text-align: right; }
-.tl-right { text-align: left; }
-
-.tl-center {
-  display: flex; align-items: center; justify-content: center; position: relative; z-index: 1;
-}
-
-.tl-dot {
-  width: 14px; height: 14px; border-radius: 50%;
-  border: 2px solid var(--amber);
-  background: var(--ink-2);
-  position: relative; z-index: 2;
-  transition: all 0.3s;
-}
-.tl-dot.active {
-  background: var(--amber);
-  width: 18px; height: 18px;
-  box-shadow: 0 0 0 6px rgba(245,158,11,0.15);
-  animation: tl-pulse 2s ease-in-out infinite;
-}
-@keyframes tl-pulse {
-  0%, 100% { box-shadow: 0 0 0 6px rgba(245,158,11,0.15); }
-  50% { box-shadow: 0 0 0 12px rgba(245,158,11,0.05); }
-}
-
-.tl-year {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 42px; letter-spacing: 0.04em;
-  color: rgba(245,158,11,0.15); line-height: 1;
-  margin-bottom: 4px;
-}
+.timeline::before { content: ''; position: absolute; left: 50%; transform: translateX(-50%); top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent, rgba(245,158,11,0.3) 10%, rgba(245,158,11,0.3) 90%, transparent); }
+.tl-item { display: grid; grid-template-columns: 1fr 48px 1fr; gap: 0; margin-bottom: 0; position: relative; min-height: 120px; }
+.tl-left, .tl-right { padding: 32px 48px; display: flex; flex-direction: column; justify-content: center; }
+.tl-left { text-align: right; } .tl-right { text-align: left; }
+.tl-center { display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; }
+.tl-dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--amber); background: var(--ink-2); position: relative; z-index: 2; transition: all 0.3s; }
+.tl-dot.active { background: var(--amber); width: 18px; height: 18px; box-shadow: 0 0 0 6px rgba(245,158,11,0.15); animation: tl-pulse 2s ease-in-out infinite; }
+@keyframes tl-pulse { 0%, 100% { box-shadow: 0 0 0 6px rgba(245,158,11,0.15); } 50% { box-shadow: 0 0 0 12px rgba(245,158,11,0.05); } }
+.tl-year { font-family: 'Bebas Neue', sans-serif; font-size: 42px; letter-spacing: 0.04em; color: rgba(245,158,11,0.15); line-height: 1; margin-bottom: 4px; }
 .tl-year.highlight { color: var(--amber); }
-
-.tl-heading {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 20px; letter-spacing: 0.06em;
-  color: var(--white); margin-bottom: 6px;
-}
+.tl-heading { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.06em; color: var(--white); margin-bottom: 6px; }
 .tl-desc { font-size: 12px; color: var(--mist); font-weight: 300; line-height: 1.6; }
-.tl-tag {
-  display: inline-block; margin-top: 8px;
-  padding: 3px 10px; border-radius: 2px;
-  font-size: 8px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
-  font-family: 'JetBrains Mono', monospace;
-  background: rgba(245,158,11,0.1); color: var(--amber);
-  border: 1px solid rgba(245,158,11,0.2);
-}
+.tl-tag { display: inline-block; margin-top: 8px; padding: 3px 10px; border-radius: 2px; font-size: 8px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; background: rgba(245,158,11,0.1); color: var(--amber); border: 1px solid rgba(245,158,11,0.2); }
 
 /* ─── SKILLS ─── */
 #skills { background: var(--ink); }
-
 .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
-.skill-group {
-  background: var(--ink-3);
-  padding: 32px;
-  transition: background 0.2s;
-}
+.skill-group { background: var(--ink-3); padding: 32px; transition: background 0.2s; }
 .skill-group:hover { background: var(--ink-4); }
-.skill-group-title {
-  font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--amber); font-family: 'JetBrains Mono', monospace;
-  margin-bottom: 20px;
-  display: flex; align-items: center; gap: 8px;
-}
-
+.skill-group-title { font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); font-family: 'JetBrains Mono', monospace; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
 .skill-bar-wrap { margin-bottom: 14px; }
-.skill-bar-top {
-  display: flex; justify-content: space-between; align-items: baseline;
-  margin-bottom: 6px;
-}
+.skill-bar-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
 .skill-name { font-size: 12px; font-weight: 500; color: var(--light); }
 .skill-pct { font-size: 10px; font-family: 'JetBrains Mono', monospace; color: var(--mist); }
 .skill-bar-bg { height: 2px; background: var(--steel); border-radius: 1px; overflow: hidden; }
-.skill-bar-fill {
-  height: 100%; background: var(--amber); border-radius: 1px;
-  transform-origin: left; transform: scaleX(0);
-  transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
-}
+.skill-bar-fill { height: 100%; background: var(--amber); border-radius: 1px; transform-origin: left; transform: scaleX(0); transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1); }
 .skill-bar-fill.animated { transform: scaleX(1); }
 
 /* ─── PORTFOLIO ─── */
 #portfolio { background: var(--ink-2); }
-
-.portfolio-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
-}
-
-.machine-card {
-  background: var(--ink-3);
-  position: relative; overflow: hidden; cursor: pointer;
-  aspect-ratio: 4/3;
-  transition: all 0.4s ease;
-}
-
-.machine-card-inner {
-  position: absolute; inset: 0; padding: 28px;
-  display: flex; flex-direction: column; justify-content: flex-end;
-  background: linear-gradient(to top, rgba(8,8,16,0.95) 0%, rgba(8,8,16,0.4) 50%, transparent 100%);
-  transition: all 0.4s ease;
-}
-
-.machine-num {
-  position: absolute; top: 20px; left: 20px;
-  font-family: 'JetBrains Mono', monospace; font-size: 9px;
-  color: rgba(245,158,11,0.4); font-weight: 700; letter-spacing: 0.2em;
-}
-.machine-badge {
-  position: absolute; top: 20px; right: 20px;
-  padding: 4px 10px; font-size: 8px; font-weight: 700; letter-spacing: 0.15em;
-  text-transform: uppercase; font-family: 'JetBrains Mono', monospace;
-  background: var(--amber); color: var(--ink); border-radius: 2px;
-}
-
-.machine-title {
-  font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.06em;
-  color: var(--white); line-height: 1; margin-bottom: 4px;
-}
+.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.machine-card { background: var(--ink-3); position: relative; overflow: hidden; cursor: pointer; aspect-ratio: 4/3; transition: all 0.4s ease; }
+.machine-card-inner { position: absolute; inset: 0; padding: 28px; display: flex; flex-direction: column; justify-content: flex-end; background: linear-gradient(to top, rgba(8,8,16,0.95) 0%, rgba(8,8,16,0.4) 50%, transparent 100%); transition: all 0.4s ease; }
+.machine-num { position: absolute; top: 20px; left: 20px; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: rgba(245,158,11,0.4); font-weight: 700; letter-spacing: 0.2em; }
+.machine-badge { position: absolute; top: 20px; right: 20px; padding: 4px 10px; font-size: 8px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; background: var(--amber); color: var(--ink); border-radius: 2px; }
+.machine-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.06em; color: var(--white); line-height: 1; margin-bottom: 4px; }
 .machine-desc { font-size: 11px; color: rgba(226,232,240,0.6); font-weight: 300; }
-
-.machine-play {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  opacity: 0; transition: opacity 0.3s;
-}
-.play-btn {
-  width: 56px; height: 56px; border-radius: 50%;
-  background: rgba(245,158,11,0.9);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--ink); font-size: 18px;
-  transform: scale(0.8); transition: transform 0.3s;
-}
-
+.machine-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+.play-btn { width: 56px; height: 56px; border-radius: 50%; background: rgba(245,158,11,0.9); display: flex; align-items: center; justify-content: center; color: var(--ink); font-size: 18px; transform: scale(0.8); transition: transform 0.3s; }
 .machine-card:hover { z-index: 2; }
 .machine-card:hover .machine-play { opacity: 1; }
 .machine-card:hover .play-btn { transform: scale(1); }
 .machine-card:hover .machine-card-inner { background: linear-gradient(to top, rgba(8,8,16,0.98) 0%, rgba(8,8,16,0.6) 60%, rgba(8,8,16,0.2) 100%); }
-
 .machine-card.featured { grid-column: span 2; aspect-ratio: auto; min-height: 280px; }
-
-.machine-card-bg {
-  position: absolute; inset: 0;
-  background:
-    repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(245,158,11,0.02) 20px, rgba(245,158,11,0.02) 40px),
-    var(--ink-4);
-  transition: opacity 0.4s;
-}
+.machine-card-bg { position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(245,158,11,0.02) 20px, rgba(245,158,11,0.02) 40px), var(--ink-4); transition: opacity 0.4s; }
 .machine-card:hover .machine-card-bg { opacity: 0.5; }
 
+/* ─── KNOWLEDGE BASE (BLOG) ─── */
+#blog { background: var(--ink); }
+.blog-layout { display: grid; grid-template-columns: 350px 1fr; gap: 2px; background: var(--ink-3); border: 1px solid rgba(245,158,11,0.1); border-radius: 8px; overflow: hidden; min-height: 600px; }
+.blog-sidebar { background: var(--ink-4); display: flex; flex-direction: column; max-height: 600px; }
+.blog-sidebar-header { padding: 24px; border-bottom: 1px solid rgba(245,158,11,0.1); }
+.blog-sidebar-title { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--amber); letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+.blog-list { overflow-y: auto; display: flex; flex-direction: column; gap: 2px; }
+.blog-list::-webkit-scrollbar { width: 2px; }
+.blog-card { padding: 20px 24px; background: var(--ink-3); cursor: pointer; transition: all 0.2s; border-left: 2px solid transparent; }
+.blog-card:hover { background: rgba(245,158,11,0.03); }
+.blog-card.active { background: rgba(245,158,11,0.05); border-left-color: var(--amber); }
+.blog-meta { display: flex; justify-content: space-between; margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--mist); letter-spacing: 0.1em; }
+.blog-meta-tags span { color: var(--amber); }
+.blog-card-title { font-size: 14px; font-weight: 600; color: var(--light); line-height: 1.4; transition: color 0.2s; }
+.blog-card.active .blog-card-title { color: var(--amber); }
+
+.blog-content-area { background: var(--ink-3); display: flex; flex-direction: column; position: relative; }
+/* Terminal Header */
+.terminal-header { background: var(--ink-2); padding: 12px 24px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(245,158,11,0.1); font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--mist); }
+.terminal-dots { display: flex; gap: 6px; }
+.terminal-dots span { width: 10px; height: 10px; border-radius: 50%; background: var(--steel); }
+.terminal-dots span:nth-child(1) { background: var(--danger); }
+.terminal-dots span:nth-child(2) { background: var(--gold); }
+.terminal-dots span:nth-child(3) { background: #22c55e; }
+.terminal-path { color: rgba(245,158,11,0.7); letter-spacing: 0.1em; margin-left: 10px; }
+
+.blog-reader { padding: 40px 60px; overflow-y: auto; max-height: calc(600px - 45px); transition: opacity 0.3s ease; }
+.blog-reader.fade-out { opacity: 0; }
+.article-header { border-bottom: 1px solid rgba(245,158,11,0.1); padding-bottom: 24px; margin-bottom: 32px; }
+.article-title { font-family: 'Bebas Neue', sans-serif; font-size: 42px; color: var(--white); letter-spacing: 0.04em; line-height: 1.1; margin-bottom: 16px; }
+.article-info { display: flex; gap: 16px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--amber); letter-spacing: 0.1em; }
+.article-info i { margin-right: 4px; }
+
+/* Article Prose (Typography for reading) */
+.prose { color: var(--light); font-size: 14px; line-height: 1.8; font-weight: 300; }
+.prose h2 { font-size: 20px; color: var(--white); font-weight: 600; margin: 32px 0 16px 0; border-left: 3px solid var(--amber); padding-left: 12px; }
+.prose p { margin-bottom: 24px; color: #cbd5e1; }
+.prose strong { color: var(--amber); font-weight: 500; }
+.prose ul { list-style: none; padding: 0; margin: 0 0 24px 0; }
+.prose li { position: relative; padding-left: 20px; margin-bottom: 8px; color: #cbd5e1; }
+.prose li::before { content: '>'; position: absolute; left: 0; color: var(--amber); font-family: 'JetBrains Mono', monospace; font-weight: 700; }
+.prose pre { background: var(--ink-2); border: 1px solid var(--steel); border-radius: 4px; padding: 16px; overflow-x: auto; margin-bottom: 24px; }
+.prose code { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #38bdf8; }
+.prose p code { background: rgba(56, 189, 248, 0.1); padding: 2px 6px; border-radius: 2px; }
+
 /* ─── ENGINEERING TOOLS ─── */
-#tools { background: var(--ink); }
-
-.tools-layout {
-  display: grid; grid-template-columns: 280px 1fr; gap: 2px;
-  background: var(--ink-3);
-  border: 1px solid rgba(245,158,11,0.1);
-  border-radius: 8px; overflow: hidden;
-  min-height: 560px;
-}
-
-.tools-sidebar {
-  background: var(--ink-4);
-  padding: 8px;
-  display: flex; flex-direction: column; gap: 4px;
-}
-
-.tool-tab {
-  display: flex; align-items: center; gap: 12px;
-  padding: 14px 16px; border-radius: 6px;
-  cursor: pointer; transition: all 0.2s;
-  border: 1px solid transparent;
-}
-.tool-tab i {
-  font-size: 14px; width: 18px; text-align: center;
-  color: var(--mist); transition: color 0.2s;
-}
+#tools { background: var(--ink-2); }
+.tools-layout { display: grid; grid-template-columns: 280px 1fr; gap: 2px; background: var(--ink-3); border: 1px solid rgba(245,158,11,0.1); border-radius: 8px; overflow: hidden; min-height: 560px; }
+.tools-sidebar { background: var(--ink-4); padding: 8px; display: flex; flex-direction: column; gap: 4px; }
+.tool-tab { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 6px; cursor: pointer; transition: all 0.2s; border: 1px solid transparent; }
+.tool-tab i { font-size: 14px; width: 18px; text-align: center; color: var(--mist); transition: color 0.2s; }
 .tool-tab-text { flex: 1; }
-.tool-tab-name {
-  font-size: 11px; font-weight: 600; color: var(--mist);
-  display: block; transition: color 0.2s;
-}
-.tool-tab-sub {
-  font-size: 9px; font-family: 'JetBrains Mono', monospace;
-  color: rgba(148,163,184,0.5); display: block; margin-top: 1px;
-  letter-spacing: 0.1em;
-}
-
+.tool-tab-name { font-size: 11px; font-weight: 600; color: var(--mist); display: block; transition: color 0.2s; }
+.tool-tab-sub { font-size: 9px; font-family: 'JetBrains Mono', monospace; color: rgba(148,163,184,0.5); display: block; margin-top: 1px; letter-spacing: 0.1em; }
 .tool-tab:hover { background: rgba(245,158,11,0.05); border-color: rgba(245,158,11,0.1); }
 .tool-tab:hover .tool-tab-name, .tool-tab:hover i { color: var(--light); }
-
-.tool-tab.active {
-  background: rgba(245,158,11,0.08);
-  border-color: rgba(245,158,11,0.25);
-}
+.tool-tab.active { background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.25); }
 .tool-tab.active .tool-tab-name { color: var(--amber); }
 .tool-tab.active i { color: var(--amber); }
 
-.tools-content { 
-  padding: 40px 48px; 
-  display: flex; 
-  flex-direction: column; 
-  justify-content: center; 
-  background: var(--ink-3); 
-  position: relative; 
-}
-
-/* SENTEZ EKLENTİSİ: SVG WATERMARKS */
-.tool-watermark {
-  position: absolute;
-  right: 48px;
-  top: 40px;
-  opacity: 0.08; 
-  pointer-events: none;
-  z-index: 0;
-}
+.tools-content { padding: 40px 48px; display: flex; flex-direction: column; justify-content: center; background: var(--ink-3); position: relative; }
+.tool-watermark { position: absolute; right: 48px; top: 40px; opacity: 0.08; pointer-events: none; z-index: 0; }
 .tool-panel { display: none; position: relative; z-index: 1; }
 .tool-panel.active { display: block; }
-
-.tool-panel-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 28px; letter-spacing: 0.06em; color: var(--white);
-  margin-bottom: 4px;
-}
-.tool-panel-formula {
-  font-size: 10px; font-family: 'JetBrains Mono', monospace;
-  color: rgba(245,158,11,0.5); margin-bottom: 32px;
-  letter-spacing: 0.05em;
-}
-
-.result-box {
-  background: var(--ink-4);
-  border: 1px solid rgba(245,158,11,0.15);
-  border-radius: 6px; padding: 28px;
-  text-align: center; margin-bottom: 28px;
-  position: relative; overflow: hidden;
-}
-.result-box::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--amber), transparent);
-}
-.result-value {
-  font-family: 'Bebas Neue', sans-serif; font-size: 64px;
-  color: var(--amber); letter-spacing: 0.04em; line-height: 1;
-}
-.result-unit {
-  font-size: 10px; font-family: 'JetBrains Mono', monospace;
-  color: var(--mist); letter-spacing: 0.25em; text-transform: uppercase; margin-top: 6px;
-}
-
+.tool-panel-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.06em; color: var(--white); margin-bottom: 4px; }
+.tool-panel-formula { font-size: 10px; font-family: 'JetBrains Mono', monospace; color: rgba(245,158,11,0.5); margin-bottom: 32px; letter-spacing: 0.05em; }
+.result-box { background: var(--ink-4); border: 1px solid rgba(245,158,11,0.15); border-radius: 6px; padding: 28px; text-align: center; margin-bottom: 28px; position: relative; overflow: hidden; }
+.result-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--amber), transparent); }
+.result-value { font-family: 'Bebas Neue', sans-serif; font-size: 64px; color: var(--amber); letter-spacing: 0.04em; line-height: 1; }
+.result-unit { font-size: 10px; font-family: 'JetBrains Mono', monospace; color: var(--mist); letter-spacing: 0.25em; text-transform: uppercase; margin-top: 6px; }
 .input-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
 .input-label { font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mist); font-family: 'JetBrains Mono', monospace; }
 .input-val { font-size: 10px; font-family: 'JetBrains Mono', monospace; color: var(--amber); }
 
-input[type="range"] {
-  width: 100%; height: 2px;
-  background: var(--steel); border-radius: 1px;
-  outline: none; cursor: pointer; appearance: none; -webkit-appearance: none;
-  margin-bottom: 28px;
-}
-input[type="range"]::-webkit-slider-thumb {
-  appearance: none; -webkit-appearance: none;
-  width: 14px; height: 14px; border-radius: 50%;
-  background: var(--amber); cursor: pointer;
-  box-shadow: 0 0 8px rgba(245,158,11,0.5);
-}
-
-.tool-input {
-  width: 100%; background: var(--ink-4);
-  border: 1px solid var(--steel); border-radius: 4px;
-  padding: 10px 14px; color: var(--white);
-  font-family: 'JetBrains Mono', monospace; font-size: 14px;
-  outline: none; transition: border-color 0.2s;
-}
-.tool-input:focus { border-color: var(--amber); }
-
-.tool-select {
-  width: 100%; background: var(--ink-4);
-  border: 1px solid var(--steel); border-radius: 4px;
-  padding: 10px 14px; color: var(--white);
-  font-family: 'JetBrains Mono', monospace; font-size: 14px;
-  outline: none; cursor: pointer; transition: border-color 0.2s;
-}
-.tool-select:focus { border-color: var(--amber); }
+input[type="range"] { width: 100%; height: 2px; background: var(--steel); border-radius: 1px; outline: none; cursor: pointer; appearance: none; -webkit-appearance: none; margin-bottom: 28px; }
+input[type="range"]::-webkit-slider-thumb { appearance: none; -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: var(--amber); cursor: pointer; box-shadow: 0 0 8px rgba(245,158,11,0.5); }
+.tool-input, .tool-select { width: 100%; background: var(--ink-4); border: 1px solid var(--steel); border-radius: 4px; padding: 10px 14px; color: var(--white); font-family: 'JetBrains Mono', monospace; font-size: 14px; outline: none; transition: border-color 0.2s; }
+.tool-input:focus, .tool-select:focus { border-color: var(--amber); }
 .tool-select option { background: var(--ink-4); }
 
 .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
 .input-field label { font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mist); font-family: 'JetBrains Mono', monospace; display: block; margin-bottom: 6px; }
-
 .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.result-card {
-  background: var(--ink-4); border: 1px solid var(--steel);
-  border-radius: 6px; padding: 18px; text-align: center;
-}
+.result-card { background: var(--ink-4); border: 1px solid var(--steel); border-radius: 6px; padding: 18px; text-align: center; }
 .result-card.highlight { border-color: rgba(245,158,11,0.4); background: rgba(245,158,11,0.05); }
 .result-card-label { font-size: 8px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mist); font-family: 'JetBrains Mono', monospace; margin-bottom: 8px; display: block; }
 .result-card-value { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--white); letter-spacing: 0.04em; }
 .result-card.highlight .result-card-value { color: var(--amber); }
-
 .result-triple { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 .result-triple .result-card { padding: 14px; }
 .result-triple .result-card-value { font-size: 22px; }
 
 /* Disclaimer */
-.disclaimer {
-  margin-top: 48px; padding: 20px 28px;
-  background: rgba(245,158,11,0.03);
-  border: 1px solid rgba(245,158,11,0.08);
-  border-radius: 6px;
-  display: flex; gap: 16px; align-items: flex-start;
-}
+.disclaimer { margin-top: 48px; padding: 20px 28px; background: rgba(245,158,11,0.03); border: 1px solid rgba(245,158,11,0.08); border-radius: 6px; display: flex; gap: 16px; align-items: flex-start; }
 .disclaimer i { color: rgba(245,158,11,0.6); font-size: 20px; flex-shrink: 0; margin-top: 2px; }
 .disclaimer p { font-size: 11px; color: rgba(148,163,184,0.7); line-height: 1.7; }
 .disclaimer strong { color: rgba(245,158,11,0.9); letter-spacing: 0.05em; text-transform: uppercase; font-size: 10px; display: block; margin-bottom: 4px; }
 
 /* ─── MODAL ─── */
-#videoModal {
-  position: fixed; inset: 0; z-index: 9000;
-  background: rgba(0,0,0,0.95);
-  display: none; align-items: center; justify-content: center;
-  padding: 24px;
-  backdrop-filter: blur(10px);
-}
+#videoModal { position: fixed; inset: 0; z-index: 9000; background: rgba(0,0,0,0.95); display: none; align-items: center; justify-content: center; padding: 24px; backdrop-filter: blur(10px); }
 #videoModal.open { display: flex; }
-
-.modal-inner {
-  position: relative; width: 100%; max-width: 900px;
-}
-.modal-close {
-  position: absolute; top: -44px; right: 0;
-  background: none; border: none; cursor: pointer;
-  color: var(--mist); font-family: 'JetBrains Mono', monospace;
-  font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
-  display: flex; align-items: center; gap: 8px;
-  padding: 8px; transition: color 0.2s;
-}
+.modal-inner { position: relative; width: 100%; max-width: 900px; }
+.modal-close { position: absolute; top: -44px; right: 0; background: none; border: none; cursor: pointer; color: var(--mist); font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; display: flex; align-items: center; gap: 8px; padding: 8px; transition: color 0.2s; }
 .modal-close:hover { color: var(--amber); }
 .modal-video { width: 100%; aspect-ratio: 16/9; border-radius: 4px; overflow: hidden; }
 .modal-video iframe { width: 100%; height: 100%; border: none; }
 
 /* ─── FOOTER ─── */
-footer {
-  background: var(--ink-2);
-  border-top: 1px solid rgba(245,158,11,0.1);
-  padding: 60px 24px;
-}
-.footer-inner {
-  max-width: 1200px; margin: 0 auto;
-  display: flex; justify-content: space-between; align-items: center;
-}
-.footer-left .footer-name {
-  font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.06em;
-  color: var(--white);
-}
-.footer-left .footer-sub {
-  font-size: 9px; font-family: 'JetBrains Mono', monospace;
-  color: var(--mist); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 2px;
-}
+footer { background: var(--ink); border-top: 1px solid rgba(245,158,11,0.1); padding: 60px 24px; }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.footer-left .footer-name { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.06em; color: var(--white); }
+.footer-left .footer-sub { font-size: 9px; font-family: 'JetBrains Mono', monospace; color: var(--mist); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 2px; }
 .footer-links { display: flex; gap: 16px; }
-.footer-link {
-  width: 40px; height: 40px; border-radius: 50%;
-  border: 1px solid var(--steel);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--mist); text-decoration: none; font-size: 14px;
-  transition: all 0.2s;
-}
+.footer-link { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--steel); display: flex; align-items: center; justify-content: center; color: var(--mist); text-decoration: none; font-size: 14px; transition: all 0.2s; }
 .footer-link:hover { border-color: var(--amber); color: var(--amber); }
-.footer-copy {
-  font-size: 10px; color: rgba(148,163,184,0.35);
-  font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em;
-}
+.footer-copy { font-size: 10px; color: rgba(148,163,184,0.35); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; }
 
 /* ─── MOBILE ─── */
 @media (max-width: 768px) {
   .hero-inner { grid-template-columns: 1fr; gap: 40px; }
   .hero-photo-wrap { order: -1; }
   .hero-photo-frame { width: 240px; height: 300px; }
-  
-  /* Stats düzenlemesi: Yazıların sığması için font boyutunu küçülttüm */
   .stats-inner { grid-template-columns: repeat(2, 1fr); }
   .stat-item { border-right: none; border-bottom: 1px solid rgba(245,158,11,0.1); padding: 20px 10px; }
   .stat-num { font-size: 32px !important; }
   .stat-label { font-size: 8px; }
 
-  /* MÜHENDİSLİK YOLCULUĞU MOBİL DÜZELTME */
+  /* TIMELINE MOBILE */
   .timeline::before { left: 20px; transform: none; }
-  .tl-item { 
-    grid-template-columns: 1fr; 
-    margin-bottom: 40px; 
-    padding-left: 45px; 
-    min-height: auto;
-  }
-  
-  /* Hem sol hem sağ içerikleri mobilde aynı formatta göster */
-  .tl-left, .tl-right { 
-    display: block !important; 
-    text-align: left !important; 
-    padding: 0 !important; 
-    width: 100% !important;
-  }
-  
-  /* Timeline noktalarını (dots) çizgi üzerine hizala */
-  .tl-center { 
-    position: absolute; 
-    left: 20px; 
-    top: 10px; 
-    transform: translateX(-50%); 
-    padding: 0;
-    width: auto;
-    display: block;
-  }
-  
+  .tl-item { grid-template-columns: 1fr; margin-bottom: 40px; padding-left: 45px; min-height: auto; }
+  .tl-left, .tl-right { display: block !important; text-align: left !important; padding: 0 !important; width: 100% !important; }
+  .tl-center { position: absolute; left: 20px; top: 10px; transform: translateX(-50%); padding: 0; width: auto; display: block; }
   .tl-year { font-size: 28px; }
   .tl-heading { font-size: 16px; margin-top: 4px; }
   .tl-desc { font-size: 11px; }
@@ -784,17 +312,23 @@ footer {
   .portfolio-grid { grid-template-columns: 1fr; }
   .machine-card.featured { grid-column: span 1; }
   .skills-grid { grid-template-columns: 1fr; }
+  
+  /* BLOG MOBILE */
+  .blog-layout { grid-template-columns: 1fr; min-height: auto; }
+  .blog-sidebar { max-height: 350px; border-bottom: 1px solid rgba(245,158,11,0.2); }
+  .blog-reader { padding: 30px 24px; max-height: none; overflow-y: visible; }
+  .article-title { font-size: 32px; }
+
   .tools-layout { grid-template-columns: 1fr; }
   .tools-sidebar { flex-direction: row; overflow-x: auto; }
+  .tools-content { padding: 30px 20px; }
   .tool-tab-sub { display: none; }
   .tool-watermark { display: none; } 
   .nav-links { display: none; }
   .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
 }
 
-/* ─── UTILITIES ─── */
 .amber { color: var(--amber); }
-.fade-in-initial { opacity: 0; }
 </style>
 </head>
 <body>
@@ -814,8 +348,8 @@ footer {
     </a>
     <nav class="nav-links">
       <a href="#journey">Serüven</a>
-      <a href="#skills">Yetkinlikler</a>
       <a href="#portfolio">Portfolyo</a>
+      <a href="#blog">Bilgi Bankası</a>
       <a href="#tools">Araçlar</a>
     </nav>
     <a href="mailto:mustafauner@hotmail.com.tr" class="nav-cta">İletişim</a>
@@ -887,7 +421,6 @@ footer {
     </div>
 
     <div class="timeline">
-
       <div class="tl-item">
         <div class="tl-left reveal-right d1">
           <div class="tl-year">2009</div>
@@ -898,7 +431,6 @@ footer {
         <div class="tl-center"><div class="tl-dot"></div></div>
         <div class="tl-right"></div>
       </div>
-
       <div class="tl-item">
         <div class="tl-left"></div>
         <div class="tl-center"><div class="tl-dot"></div></div>
@@ -909,7 +441,6 @@ footer {
           <span class="tl-tag">Shop Floor Mastery</span>
         </div>
       </div>
-
       <div class="tl-item">
         <div class="tl-left reveal-right d1">
           <div class="tl-year">2012</div>
@@ -920,7 +451,6 @@ footer {
         <div class="tl-center"><div class="tl-dot"></div></div>
         <div class="tl-right"></div>
       </div>
-
       <div class="tl-item">
         <div class="tl-left"></div>
         <div class="tl-center"><div class="tl-dot"></div></div>
@@ -931,7 +461,6 @@ footer {
           <span class="tl-tag">Machine Architect</span>
         </div>
       </div>
-
       <div class="tl-item">
         <div class="tl-left reveal-right d1">
           <div class="tl-year highlight">2019</div>
@@ -942,7 +471,6 @@ footer {
         <div class="tl-center"><div class="tl-dot"></div></div>
         <div class="tl-right"></div>
       </div>
-
       <div class="tl-item">
         <div class="tl-left"></div>
         <div class="tl-center"><div class="tl-dot active"></div></div>
@@ -953,7 +481,6 @@ footer {
           <span class="tl-tag">R&D Leadership</span>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -961,45 +488,27 @@ footer {
 <!-- ────────── SKILLS ────────── -->
 <section id="skills">
   <div class="section-inner">
-    <div class="reveal">
-      <div class="section-label">Yetkinlikler</div>
-      <h2 class="section-title">TEKNİK<br><span>DOKU</span></h2>
-      <p class="section-sub">Her mühendislik kararının arkasındaki araçlar, metodolojiler ve uzmanlık alanları.</p>
-    </div>
     <div class="skills-grid">
-
       <div class="skill-group reveal d1">
         <div class="skill-group-title"><i class="fa-solid fa-drafting-compass"></i> Makine Tasarımı</div>
-        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">SolidWorks / CAD Modelleme</span><span class="skill-pct">95%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.95"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">5-Eksenli CNC Tasarımı</span><span class="skill-pct">92%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.92"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">FEA / Yapısal Analiz</span><span class="skill-pct">85%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.85"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Kalıp & Takım Tasarımı</span><span class="skill-pct">88%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.88"></div></div></div>
+        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">SolidWorks / CAD</span><span class="skill-pct">95%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.95"></div></div></div>
+        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">5-Eksen CNC Tasarımı</span><span class="skill-pct">92%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.92"></div></div></div>
       </div>
-
       <div class="skill-group reveal d2">
         <div class="skill-group-title"><i class="fa-solid fa-code"></i> Hesaplamalı Mühendislik</div>
         <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Python / Otomasyon</span><span class="skill-pct">80%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.80"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Computational Design</span><span class="skill-pct">82%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.82"></div></div></div>
         <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Veri Odaklı Optimizasyon</span><span class="skill-pct">78%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.78"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Mühendislik Araç Geliştirme</span><span class="skill-pct">85%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.85"></div></div></div>
       </div>
-
       <div class="skill-group reveal d3">
         <div class="skill-group-title"><i class="fa-solid fa-industry"></i> Üretim & Proses</div>
-        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Alüminyum İşleme Teknolojisi</span><span class="skill-pct">95%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.95"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Pnömatik / Hidrolik Sistemler</span><span class="skill-pct">90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.90"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Robotik Otomasyon</span><span class="skill-pct">75%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.75"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Saha Yönetimi / İmalat</span><span class="skill-pct">93%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.93"></div></div></div>
+        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Alüminyum İşleme</span><span class="skill-pct">95%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.95"></div></div></div>
+        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Pnömatik Sistemler</span><span class="skill-pct">90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.90"></div></div></div>
       </div>
-
       <div class="skill-group reveal d4">
         <div class="skill-group-title"><i class="fa-solid fa-chart-line"></i> Ar-Ge Liderliği</div>
         <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Proje Yönetimi</span><span class="skill-pct">90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.90"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Ar-Ge Süreç Tasarımı</span><span class="skill-pct">88%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.88"></div></div></div>
         <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">ISO / DIN Standartları</span><span class="skill-pct">92%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.92"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Stratejik İnovasyon</span><span class="skill-pct">85%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.85"></div></div></div>
       </div>
-
     </div>
   </div>
 </section>
@@ -1092,6 +601,42 @@ footer {
   </div>
 </section>
 
+<!-- ────────── KNOWLEDGE BASE (BLOG) ────────── -->
+<section id="blog">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Makale & Analiz</div>
+      <h2 class="section-title">MÜHENDİSLİK<br><span>GÜNLÜĞÜ</span></h2>
+      <p class="section-sub">Tasarım felsefesi, hesaplamalı mühendislik deneyimleri ve sektör analizleri.</p>
+    </div>
+
+    <div class="blog-layout reveal">
+      
+      <!-- Sol Sidebar: Makale Listesi -->
+      <div class="blog-sidebar">
+        <div class="blog-sidebar-header">
+          <div class="blog-sidebar-title"><i class="fa-solid fa-terminal"></i> system.articles</div>
+        </div>
+        <div class="blog-list" id="blog-list-container">
+          <!-- JS ile doldurulacak makale kartları buraya gelecek -->
+        </div>
+      </div>
+
+      <!-- Sağ İçerik: Okuma Alanı -->
+      <div class="blog-content-area">
+        <div class="terminal-header">
+          <div class="terminal-dots"><span></span><span></span><span></span></div>
+          <div class="terminal-path" id="terminal-path">~/knowledge-base/loading.md</div>
+        </div>
+        <div class="blog-reader" id="blog-reader">
+          <!-- JS ile doldurulacak makale içeriği buraya gelecek -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ────────── TOOLS ────────── -->
 <section id="tools">
   <div class="section-inner">
@@ -1103,104 +648,41 @@ footer {
 
     <div class="tools-layout reveal">
       <div class="tools-sidebar">
-        <div class="tool-tab active" data-target="t-vc">
-          <i class="fa-solid fa-rotate"></i>
-          <div class="tool-tab-text">
-            <span class="tool-tab-name">Kesme Hızı</span>
-            <span class="tool-tab-sub">Vc Analysis</span>
-          </div>
-        </div>
-        <div class="tool-tab" data-target="t-piston">
-          <i class="fa-solid fa-compress"></i>
-          <div class="tool-tab-text">
-            <span class="tool-tab-name">Piston Kuvveti</span>
-            <span class="tool-tab-sub">ISO 6431</span>
-          </div>
-        </div>
-        <div class="tool-tab" data-target="t-helis">
-          <i class="fa-solid fa-gear"></i>
-          <div class="tool-tab-text">
-            <span class="tool-tab-name">Helis Dişli</span>
-            <span class="tool-tab-sub">Gear Analysis</span>
-          </div>
-        </div>
-        <div class="tool-tab" data-target="t-tork">
-          <i class="fa-solid fa-bolt"></i>
-          <div class="tool-tab-text">
-            <span class="tool-tab-name">Motor Tork</span>
-            <span class="tool-tab-sub">T = P / ω</span>
-          </div>
-        </div>
-        <div class="tool-tab" data-target="t-vidali">
-          <i class="fa-solid fa-screwdriver"></i>
-          <div class="tool-tab-text">
-            <span class="tool-tab-name">Vidalı Mil</span>
-            <span class="tool-tab-sub">Lead Screw</span>
-          </div>
-        </div>
+        <div class="tool-tab active" data-target="t-vc"><i class="fa-solid fa-rotate"></i><div class="tool-tab-text"><span class="tool-tab-name">Kesme Hızı</span><span class="tool-tab-sub">Vc Analysis</span></div></div>
+        <div class="tool-tab" data-target="t-piston"><i class="fa-solid fa-compress"></i><div class="tool-tab-text"><span class="tool-tab-name">Piston Kuvveti</span><span class="tool-tab-sub">ISO 6431</span></div></div>
+        <div class="tool-tab" data-target="t-helis"><i class="fa-solid fa-gear"></i><div class="tool-tab-text"><span class="tool-tab-name">Helis Dişli</span><span class="tool-tab-sub">Gear Analysis</span></div></div>
+        <div class="tool-tab" data-target="t-tork"><i class="fa-solid fa-bolt"></i><div class="tool-tab-text"><span class="tool-tab-name">Motor Tork</span><span class="tool-tab-sub">T = P / ω</span></div></div>
+        <div class="tool-tab" data-target="t-vidali"><i class="fa-solid fa-screwdriver"></i><div class="tool-tab-text"><span class="tool-tab-name">Vidalı Mil</span><span class="tool-tab-sub">Lead Screw</span></div></div>
       </div>
 
       <div class="tools-content">
         <div id="t-vc" class="tool-panel active">
           <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M40 10v30m20-30v30" stroke-width="4"/>
-            <path d="M30 40h40v20H30z" stroke-width="3"/>
-            <path d="M35 40l-5 20m15-20l-5 20m15-20l-5 20m15-20l-5 20"/>
-            <path d="M20 60h60v30H20z" stroke="currentColor" opacity="0.5"/>
-            <path d="M65 25a15 15 0 1 1-30 0" stroke-dasharray="4 4"/>
-            <path d="M35 25l-5-5m0 10l5-5"/>
+            <path d="M40 10v30m20-30v30" stroke-width="4"/><path d="M30 40h40v20H30z" stroke-width="3"/><path d="M35 40l-5 20m15-20l-5 20m15-20l-5 20m15-20l-5 20"/><path d="M20 60h60v30H20z" stroke="currentColor" opacity="0.5"/><path d="M65 25a15 15 0 1 1-30 0" stroke-dasharray="4 4"/><path d="M35 25l-5-5m0 10l5-5"/>
           </svg>
           <div class="tool-panel-title">Kesme Hızı Analizi — Vc</div>
           <div class="tool-panel-formula">Vc = (π × D × n) / 1000 &nbsp;|&nbsp; Birim: m/dak</div>
-          <div class="result-box">
-            <div class="result-value" id="vc-result">188.5</div>
-            <div class="result-unit">Metre / Dakika</div>
-          </div>
+          <div class="result-box"><div class="result-value" id="vc-result">188.5</div><div class="result-unit">Metre / Dakika</div></div>
           <div class="input-grid">
-            <div class="input-field">
-              <label>İşleme Çapı D (mm)</label>
-              <input type="range" id="vc-d" min="1" max="250" value="50">
-              <div class="input-row"><span class="input-label">D =</span><span class="input-val" id="vc-d-val">50 mm</span></div>
-            </div>
-            <div class="input-field">
-              <label>Devir n (rpm)</label>
-              <input type="range" id="vc-n" min="100" max="24000" value="1200">
-              <div class="input-row"><span class="input-label">n =</span><span class="input-val" id="vc-n-val">1200 rpm</span></div>
-            </div>
+            <div class="input-field"><label>İşleme Çapı D (mm)</label><input type="range" id="vc-d" min="1" max="250" value="50"><div class="input-row"><span class="input-label">D =</span><span class="input-val" id="vc-d-val">50 mm</span></div></div>
+            <div class="input-field"><label>Devir n (rpm)</label><input type="range" id="vc-n" min="100" max="24000" value="1200"><div class="input-row"><span class="input-label">n =</span><span class="input-val" id="vc-n-val">1200 rpm</span></div></div>
           </div>
         </div>
 
         <div id="t-piston" class="tool-panel">
           <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="20" y="30" width="50" height="40" rx="2" stroke-width="3"/>
-            <path d="M25 25v5m40-5v5" stroke-width="2"/>
-            <rect x="45" y="30" width="8" height="40" fill="var(--amber)" fill-opacity="0.2"/>
-            <path d="M53 45h35m-35 10h35" stroke-width="2"/>
-            <path d="M88 43v14" stroke-width="3"/>
-            <path d="M70 20h20m-5-5l5 5-5 5" stroke-dasharray="2 2"/>
-            <path d="M40 80H20m5-5l-5 5 5 5" stroke-dasharray="2 2"/>
+            <rect x="20" y="30" width="50" height="40" rx="2" stroke-width="3"/><path d="M25 25v5m40-5v5" stroke-width="2"/><rect x="45" y="30" width="8" height="40" fill="var(--amber)" fill-opacity="0.2"/><path d="M53 45h35m-35 10h35" stroke-width="2"/><path d="M88 43v14" stroke-width="3"/><path d="M70 20h20m-5-5l5 5-5 5" stroke-dasharray="2 2"/><path d="M40 80H20m5-5l-5 5 5 5" stroke-dasharray="2 2"/>
           </svg>
           <div class="tool-panel-title">Piston Kuvvet Analizi — ISO 6431</div>
           <div class="tool-panel-formula">F_itme = (π/4) × D² × P &nbsp;|&nbsp; F_çekme = (π/4) × (D² − d²) × P</div>
           <div class="input-grid" style="margin-bottom:20px;">
             <div class="input-field">
               <label>Piston Çapı / Bore (mm)</label>
-              <select id="p-bore" class="tool-select">
-                <option value="12">12 mm</option><option value="16">16 mm</option>
-                <option value="20">20 mm</option><option value="25">25 mm</option>
-                <option value="32">32 mm</option><option value="40">40 mm</option>
-                <option value="50">50 mm</option><option value="63">63 mm</option>
-                <option value="80" selected>80 mm</option><option value="100">100 mm</option>
-              </select>
+              <select id="p-bore" class="tool-select"><option value="12">12 mm</option><option value="16">16 mm</option><option value="20">20 mm</option><option value="25">25 mm</option><option value="32">32 mm</option><option value="40">40 mm</option><option value="50">50 mm</option><option value="63">63 mm</option><option value="80" selected>80 mm</option><option value="100">100 mm</option></select>
             </div>
             <div class="input-field">
               <label>Mil Çapı / Rod (mm)</label>
-              <select id="p-rod" class="tool-select">
-                <option value="6">6 mm</option><option value="8">8 mm</option>
-                <option value="10">10 mm</option><option value="12">12 mm</option>
-                <option value="16">16 mm</option><option value="20">20 mm</option>
-                <option value="25" selected>25 mm</option><option value="32">32 mm</option>
-              </select>
+              <select id="p-rod" class="tool-select"><option value="6">6 mm</option><option value="8">8 mm</option><option value="10">10 mm</option><option value="12">12 mm</option><option value="16">16 mm</option><option value="20">20 mm</option><option value="25" selected>25 mm</option><option value="32">32 mm</option></select>
             </div>
           </div>
           <div class="input-field" style="margin-bottom:20px;">
@@ -1209,35 +691,20 @@ footer {
             <div class="input-row"><span class="input-label">P =</span><span class="input-val" id="p-bar-val">6 Bar</span></div>
           </div>
           <div class="result-grid">
-            <div class="result-card highlight">
-              <span class="result-card-label">İtme Kuvveti</span>
-              <div class="result-card-value" id="p-push">301.6 kg</div>
-            </div>
-            <div class="result-card">
-              <span class="result-card-label">Çekme Kuvveti</span>
-              <div class="result-card-value" id="p-pull">226.2 kg</div>
-            </div>
+            <div class="result-card highlight"><span class="result-card-label">İtme Kuvveti</span><div class="result-card-value" id="p-push">301.6 kg</div></div>
+            <div class="result-card"><span class="result-card-label">Çekme Kuvveti</span><div class="result-card-value" id="p-pull">226.2 kg</div></div>
           </div>
         </div>
 
         <div id="t-helis" class="tool-panel">
           <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="50" cy="50" r="40" stroke-width="3" stroke-dasharray="10 5"/>
-            <circle cx="50" cy="50" r="10" stroke-width="2"/>
-            <circle cx="50" cy="50" r="14" stroke-dasharray="2 2"/>
-            <path d="M20 25l60 30M15 40l60 30M25 15l60 30M15 60l50 25M35 10l55 25"/>
+            <circle cx="50" cy="50" r="40" stroke-width="3" stroke-dasharray="10 5"/><circle cx="50" cy="50" r="10" stroke-width="2"/><circle cx="50" cy="50" r="14" stroke-dasharray="2 2"/><path d="M20 25l60 30M15 40l60 30M25 15l60 30M15 60l50 25M35 10l55 25"/>
           </svg>
           <div class="tool-panel-title">Helis Dişli Analizi</div>
           <div class="tool-panel-formula">d = (m × z) / cos β &nbsp;|&nbsp; β = 19.528° &nbsp;|&nbsp; da = d + 2m</div>
           <div class="input-grid" style="margin-bottom:20px;">
-            <div class="input-field">
-              <label>Modül m</label>
-              <input type="number" id="h-m" value="2" min="0.5" step="0.5" class="tool-input">
-            </div>
-            <div class="input-field">
-              <label>Diş Sayısı z</label>
-              <input type="number" id="h-z" value="20" min="5" class="tool-input">
-            </div>
+            <div class="input-field"><label>Modül m</label><input type="number" id="h-m" value="2" min="0.5" step="0.5" class="tool-input"></div>
+            <div class="input-field"><label>Diş Sayısı z</label><input type="number" id="h-z" value="20" min="5" class="tool-input"></div>
           </div>
           <div class="result-triple">
             <div class="result-card"><span class="result-card-label">Bölüm Çapı</span><div class="result-card-value" id="h-d">42.47 mm</div></div>
@@ -1248,49 +715,26 @@ footer {
 
         <div id="t-tork" class="tool-panel">
           <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="20" y="20" width="50" height="60" rx="5"/>
-            <path d="M25 30h40M25 40h40M25 50h40M25 60h40M25 70h40" stroke-width="1.5"/>
-            <path d="M70 30h10v40H70M80 45h15v10H80" stroke-width="3"/>
-            <path d="M85 30a20 20 0 1 1-10 0" stroke-dasharray="4 4"/>
-            <path d="M80 25l-5 5 5 5"/>
+            <rect x="20" y="20" width="50" height="60" rx="5"/><path d="M25 30h40M25 40h40M25 50h40M25 60h40M25 70h40" stroke-width="1.5"/><path d="M70 30h10v40H70M80 45h15v10H80" stroke-width="3"/><path d="M85 30a20 20 0 1 1-10 0" stroke-dasharray="4 4"/><path d="M80 25l-5 5 5 5"/>
           </svg>
           <div class="tool-panel-title">Motor Tork Hesabı</div>
           <div class="tool-panel-formula">T = (P × 60) / (2π × n) &nbsp;|&nbsp; Birim: Nm</div>
-          <div class="result-box">
-            <div class="result-value" id="tork-result">5.12</div>
-            <div class="result-unit">Newton · Metre</div>
-          </div>
+          <div class="result-box"><div class="result-value" id="tork-result">5.12</div><div class="result-unit">Newton · Metre</div></div>
           <div class="input-grid">
-            <div class="input-field">
-              <label>Motor Gücü P (Watt)</label>
-              <input type="number" id="tork-p" value="750" class="tool-input">
-            </div>
-            <div class="input-field">
-              <label>Devir n (rpm)</label>
-              <input type="number" id="tork-n" value="1400" class="tool-input">
-            </div>
+            <div class="input-field"><label>Motor Gücü P (Watt)</label><input type="number" id="tork-p" value="750" class="tool-input"></div>
+            <div class="input-field"><label>Devir n (rpm)</label><input type="number" id="tork-n" value="1400" class="tool-input"></div>
           </div>
         </div>
 
         <div id="t-vidali" class="tool-panel">
           <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M10 45h80M10 55h80" stroke-width="2"/>
-            <path d="M15 45l5 10M25 45l5 10M35 45l5 10M75 45l5 10M85 45l5 10"/>
-            <rect x="45" y="35" width="20" height="30" rx="2" stroke-width="3"/>
-            <path d="M45 40h20M45 60h20" stroke-width="1"/>
-            <path d="M30 25h40m-5-5l5 5-5 5" stroke-dasharray="4 4" stroke-width="2"/>
+            <path d="M10 45h80M10 55h80" stroke-width="2"/><path d="M15 45l5 10M25 45l5 10M35 45l5 10M75 45l5 10M85 45l5 10"/><rect x="45" y="35" width="20" height="30" rx="2" stroke-width="3"/><path d="M45 40h20M45 60h20" stroke-width="1"/><path d="M30 25h40m-5-5l5 5-5 5" stroke-dasharray="4 4" stroke-width="2"/>
           </svg>
           <div class="tool-panel-title">Vidalı Mil Tahrik Analizi</div>
           <div class="tool-panel-formula">η = 0.90 &nbsp;|&nbsp; F = (T × 2π × η) / h &nbsp;|&nbsp; v = (h × n) / 1000</div>
           <div class="input-grid" style="margin-bottom:20px;">
-            <div class="input-field">
-              <label>Motor Gücü P (W)</label>
-              <input type="number" id="v-p" value="750" class="tool-input">
-            </div>
-            <div class="input-field">
-              <label>Devir n (rpm)</label>
-              <input type="number" id="v-n" value="3000" class="tool-input">
-            </div>
+            <div class="input-field"><label>Motor Gücü P (W)</label><input type="number" id="v-p" value="750" class="tool-input"></div>
+            <div class="input-field"><label>Devir n (rpm)</label><input type="number" id="v-n" value="3000" class="tool-input"></div>
           </div>
           <div class="input-field" style="margin-bottom:20px;">
             <label>Hatve h (mm/devir)</label>
@@ -1333,60 +777,151 @@ footer {
 <!-- ────────── VIDEO MODAL ────────── -->
 <div id="videoModal">
   <div class="modal-inner">
-    <button class="modal-close" onclick="closeModal()">
-      Kapat <i class="fa-solid fa-xmark"></i>
-    </button>
-    <div class="modal-video">
-      <iframe id="videoFrame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    </div>
+    <button class="modal-close" onclick="closeModal()">Kapat <i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-video"><iframe id="videoFrame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
   </div>
 </div>
 
 <script>
+// ─── BLOG VERİ TABANI (DATABASE) ───
+// Yeni makale eklemek için sadece bu listeye yeni bir obje ekleyin. HTML otomatik güncellenir.
+const articles = [
+  {
+    id: "art-1",
+    date: "14 MART 2026",
+    tags: ["PYTHON", "OTOMASYON"],
+    title: "Parametrik Tasarım: Makine Mühendisliğinde Python Entegrasyonu",
+    readTime: "4 Dk",
+    fileName: "python-parametric-design.md",
+    content: `
+      <h2>Gelenekselden Algoritmik Tasarıma Geçiş</h2>
+      <p>Yıllarca CAD programlarının arayüzlerine hapsolduktan sonra, makine tasarım süreçlerinin aslında ne kadar <strong>tekrar eden matematiksel döngülerden</strong> ibaret olduğunu fark ediyorsunuz. İşte bu noktada Python devreye giriyor.</p>
+      
+      <p>Örneğin bir konveyör şasisinin rijitlik hesabını veya bir motor montaj plakasının civata delik koordinatlarını her seferinde manuel hesaplamak yerine, süreci kod ile optimize edebiliriz.</p>
+      
+      <pre><code>def calculate_rigidity(mass, velocity):
+    # Basit bir kinetik enerji / rijitlik korelasyon algoritması
+    energy = 0.5 * mass * (velocity ** 2)
+    safety_factor = 1.5
+    return energy * safety_factor
+
+print("Required Rigidity Index:", calculate_rigidity(1200, 2.5))</code></pre>
+      
+      <p>Bu basit yaklaşım bile tasarımcının masasında saatler kazandırıyor. Bir sonraki projede, bu Python çıktısını doğrudan SolidWorks API'sine bağlayarak <strong>sıfır tık (zero-click) modeli</strong> oluşturmayı hedefliyoruz.</p>
+      
+      <h2>Sonuç</h2>
+      <ul>
+        <li>Tasarım sürelerinde %40'a varan kısalma.</li>
+        <li>İnsan faktörlü matematiksel hata payının sıfıra inmesi.</li>
+        <li>Revizyon süreçlerinde dinamik modelin anında güncellenmesi.</li>
+      </ul>
+    `
+  },
+  {
+    id: "art-2",
+    date: "22 OCAK 2026",
+    tags: ["CNC", "AR-GE"],
+    title: "5-Eksenli Dev CNC Sistemlerde Titreşim (Chatter) Kontrolü",
+    readTime: "6 Dk",
+    fileName: "5-axis-chatter-control.md",
+    content: `
+      <h2>Strok Büyüdükçe Artan Kriz: Rezonans</h2>
+      <p>ZC 3050 gibi 13.5 metre stroka sahip devasa bir alüminyum işleme merkezi tasarlıyorsanız, en büyük düşmanınız servo motorların gücü değil, <strong>yapısal frekans ve titreşimdir (Chatter).</strong></p>
+      
+      <p>Özellikle köprü (gantry) tipi eksenlerde, yüksek ivmelenme anlarında ortaya çıkan mikro sarsıntılar, işlenen parçanın yüzey kalitesini doğrudan bozar. Bu durum sadece görsel bir hata değil, aynı zamanda kesici takımın (elmasın) ömrünü de %60 oranında kısaltır.</p>
+
+      <h2>Çözüm Yaklaşımımız</h2>
+      <p>Titreşimi engellemek için sadece daha fazla çelik kullanmak (kütleyi artırmak) eski nesil bir çözümdür. Bizim Ar-Ge stratejimiz şu yönde oldu:</p>
+      <ul>
+        <li>Sonlu Elemanlar Analizi (FEA) ile şasinin doğal frekanslarını haritalamak.</li>
+        <li>Kritik bölgelerde kaynaklı çelik yerine, titreşim sönümleme katsayısı yüksek olan <strong>Polimer Beton (Mineral Döküm)</strong> dolgular kullanmak.</li>
+        <li>Kremayer ve pinyon dişli sisteminde boşluksuz (anti-backlash) redüktör topolojisine geçmek.</li>
+      </ul>
+      
+      <p>Sonuç olarak, makine ivmelenmesini 1.5G seviyesine çıkarırken titreşimi endüstriyel toleransların altına çekmeyi başardık.</p>
+    `
+  }
+];
+
+// ─── BLOG İŞLEVLERİ (RENDER) ───
+const blogListContainer = document.getElementById('blog-list-container');
+const blogReader = document.getElementById('blog-reader');
+const terminalPath = document.getElementById('terminal-path');
+
+function renderBlogList() {
+  blogListContainer.innerHTML = '';
+  articles.forEach((article, index) => {
+    const card = document.createElement('div');
+    card.className = `blog-card ${index === 0 ? 'active' : ''}`;
+    card.onclick = () => loadArticle(article.id, card);
+    
+    card.innerHTML = `
+      <div class="blog-meta">
+        <span>${article.date}</span>
+        <div class="blog-meta-tags"><span>[</span>${article.tags[0]}<span>]</span></div>
+      </div>
+      <div class="blog-card-title">${article.title}</div>
+    `;
+    blogListContainer.appendChild(card);
+  });
+}
+
+function loadArticle(id, cardElement) {
+  // Aktif kartı güncelle
+  document.querySelectorAll('.blog-card').forEach(c => c.classList.remove('active'));
+  if(cardElement) cardElement.classList.add('active');
+
+  const article = articles.find(a => a.id === id);
+  if(!article) return;
+
+  // Fade-out efekti
+  blogReader.classList.add('fade-out');
+  
+  setTimeout(() => {
+    terminalPath.textContent = `~/knowledge-base/${article.fileName}`;
+    blogReader.innerHTML = `
+      <div class="article-header">
+        <h1 class="article-title">${article.title}</h1>
+        <div class="article-info">
+          <span><i class="fa-regular fa-calendar"></i> ${article.date}</span>
+          <span><i class="fa-regular fa-clock"></i> ${article.readTime}</span>
+          <span><i class="fa-solid fa-tag"></i> ${article.tags.join(', ')}</span>
+        </div>
+      </div>
+      <div class="prose">${article.content}</div>
+    `;
+    // Fade-in efekti
+    blogReader.classList.remove('fade-out');
+
+    // Mobilde tıklanınca makale alanına otomatik kaydır
+    if(window.innerWidth <= 768) {
+      document.querySelector('.blog-content-area').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, 300);
+}
+
+// ─── MEVCUT KODLAR (UI, SCROLL, MODAL, HESAPLAMALAR) ───
 const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 40);
-});
+window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 40); });
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
     const el = entry.target;
-    if (el.classList.contains('reveal') || el.classList.contains('reveal-left') || el.classList.contains('reveal-right')) {
-      el.classList.add('visible');
-    }
+    if (el.classList.contains('reveal') || el.classList.contains('reveal-left') || el.classList.contains('reveal-right')) el.classList.add('visible');
     if (el.classList.contains('skill-group')) {
-      el.querySelectorAll('.skill-bar-fill').forEach((bar, i) => {
-        setTimeout(() => {
-          bar.style.transform = `scaleX(${bar.dataset.width})`;
-          bar.classList.add('animated');
-        }, i * 120);
-      });
+      el.querySelectorAll('.skill-bar-fill').forEach((bar, i) => { setTimeout(() => { bar.style.transform = `scaleX(${bar.dataset.width})`; bar.classList.add('animated'); }, i * 120); });
     }
-    if (el.classList.contains('counter')) {
-      animateCounter(el);
-    }
+    if (el.classList.contains('counter')) animateCounter(el);
     observer.unobserve(el);
   });
 }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .skill-group, .counter').forEach(el => {
-  observer.observe(el);
-});
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .skill-group, .counter').forEach(el => { observer.observe(el); });
 
 function animateCounter(el) {
-  const target = parseInt(el.dataset.target);
-  let current = 0;
-  const step = target / 40;
-  const timer = setInterval(() => {
-    current += step;
-    if (current >= target) {
-      el.textContent = target;
-      clearInterval(timer);
-    } else {
-      el.textContent = Math.floor(current);
-    }
-  }, 30);
+  const target = parseInt(el.dataset.target); let current = 0; const step = target / 40;
+  const timer = setInterval(() => { current += step; if (current >= target) { el.textContent = target; clearInterval(timer); } else { el.textContent = Math.floor(current); } }, 30);
 }
 
 document.querySelectorAll('.tool-tab').forEach(tab => {
@@ -1399,96 +934,56 @@ document.querySelectorAll('.tool-tab').forEach(tab => {
 });
 
 const PI = Math.PI;
-
-function calcVc() {
-  const D = parseFloat(document.getElementById('vc-d').value);
-  const n = parseFloat(document.getElementById('vc-n').value);
-  document.getElementById('vc-d-val').textContent = D + ' mm';
-  document.getElementById('vc-n-val').textContent = n + ' rpm';
-  document.getElementById('vc-result').textContent = ((PI * D * n) / 1000).toFixed(1);
-}
-document.getElementById('vc-d').addEventListener('input', calcVc);
-document.getElementById('vc-n').addEventListener('input', calcVc);
+function calcVc() { const D = parseFloat(document.getElementById('vc-d').value); const n = parseFloat(document.getElementById('vc-n').value); document.getElementById('vc-d-val').textContent = D + ' mm'; document.getElementById('vc-n-val').textContent = n + ' rpm'; document.getElementById('vc-result').textContent = ((PI * D * n) / 1000).toFixed(1); }
+document.getElementById('vc-d').addEventListener('input', calcVc); document.getElementById('vc-n').addEventListener('input', calcVc);
 
 const pistonMap = { "12":"6","16":"6","20":"8","25":"10","32":"12","40":"16","50":"20","63":"20","80":"25","100":"25" };
 function calcPiston() {
-  const D = parseFloat(document.getElementById('p-bore').value);
-  const d = parseFloat(document.getElementById('p-rod').value);
-  const bar = parseFloat(document.getElementById('p-bar').value);
+  const D = parseFloat(document.getElementById('p-bore').value); const d = parseFloat(document.getElementById('p-rod').value); const bar = parseFloat(document.getElementById('p-bar').value);
   document.getElementById('p-bar-val').textContent = bar + ' Bar';
-  const kgfPerBar = 1.0197;
-  const A_push = (PI * (D/10)**2) / 4;
-  const A_pull = (PI * ((D/10)**2 - (d/10)**2)) / 4;
-  document.getElementById('p-push').textContent = (A_push * bar * kgfPerBar).toFixed(1) + ' kg';
-  document.getElementById('p-pull').textContent = (A_pull * bar * kgfPerBar).toFixed(1) + ' kg';
+  const kgfPerBar = 1.0197; const A_push = (PI * (D/10)**2) / 4; const A_pull = (PI * ((D/10)**2 - (d/10)**2)) / 4;
+  document.getElementById('p-push').textContent = (A_push * bar * kgfPerBar).toFixed(1) + ' kg'; document.getElementById('p-pull').textContent = (A_pull * bar * kgfPerBar).toFixed(1) + ' kg';
 }
-document.getElementById('p-bore').addEventListener('change', (e) => {
-  document.getElementById('p-rod').value = pistonMap[e.target.value] || "25";
-  calcPiston();
-});
-document.getElementById('p-rod').addEventListener('change', calcPiston);
-document.getElementById('p-bar').addEventListener('input', calcPiston);
+document.getElementById('p-bore').addEventListener('change', (e) => { document.getElementById('p-rod').value = pistonMap[e.target.value] || "25"; calcPiston(); });
+document.getElementById('p-rod').addEventListener('change', calcPiston); document.getElementById('p-bar').addEventListener('input', calcPiston);
 
 function calcHelis() {
-  const m = parseFloat(document.getElementById('h-m').value);
-  const z = parseFloat(document.getElementById('h-z').value);
+  const m = parseFloat(document.getElementById('h-m').value); const z = parseFloat(document.getElementById('h-z').value);
   if (!m || !z || isNaN(m) || isNaN(z)) return;
-  const cosB = Math.cos(19.528 * PI / 180);
-  const d = (m * z) / cosB;
-  const da = d + 2 * m;
-  const c = d / 2 + 25 - m; 
-  document.getElementById('h-d').textContent  = d.toFixed(2) + ' mm';
-  document.getElementById('h-da').textContent = da.toFixed(2) + ' mm';
-  document.getElementById('h-c').textContent  = c.toFixed(2) + ' mm';
+  const cosB = Math.cos(19.528 * PI / 180); const d = (m * z) / cosB; const da = d + 2 * m; const c = d / 2 + 25 - m; 
+  document.getElementById('h-d').textContent  = d.toFixed(2) + ' mm'; document.getElementById('h-da').textContent = da.toFixed(2) + ' mm'; document.getElementById('h-c').textContent  = c.toFixed(2) + ' mm';
 }
-document.getElementById('h-m').addEventListener('input', calcHelis);
-document.getElementById('h-z').addEventListener('input', calcHelis);
+document.getElementById('h-m').addEventListener('input', calcHelis); document.getElementById('h-z').addEventListener('input', calcHelis);
 
 function calcTork() {
-  const P = parseFloat(document.getElementById('tork-p').value);
-  const n = parseFloat(document.getElementById('tork-n').value);
+  const P = parseFloat(document.getElementById('tork-p').value); const n = parseFloat(document.getElementById('tork-n').value);
   if (!P || !n || n === 0) return;
   document.getElementById('tork-result').textContent = ((P * 60) / (2 * PI * n)).toFixed(2);
 }
-document.getElementById('tork-p').addEventListener('input', calcTork);
-document.getElementById('tork-n').addEventListener('input', calcTork);
+document.getElementById('tork-p').addEventListener('input', calcTork); document.getElementById('tork-n').addEventListener('input', calcTork);
 
 function calcVidali() {
-  const P = parseFloat(document.getElementById('v-p').value);
-  const n = parseFloat(document.getElementById('v-n').value);
-  const h = parseFloat(document.getElementById('v-h').value);
+  const P = parseFloat(document.getElementById('v-p').value); const n = parseFloat(document.getElementById('v-n').value); const h = parseFloat(document.getElementById('v-h').value);
   if (!P || !n || !h || n === 0 || h === 0) return;
-  const T = (P * 60) / (2 * PI * n);
-  const F = (T * 2 * PI * 0.90 * 1000) / (h * 9.81); 
-  const v = (h * n) / 1000; 
-  document.getElementById('v-tork').textContent  = T.toFixed(2) + ' Nm';
-  document.getElementById('v-force').textContent = F.toFixed(1) + ' kg';
-  document.getElementById('v-speed').textContent = v.toFixed(1) + ' m/dk';
+  const T = (P * 60) / (2 * PI * n); const F = (T * 2 * PI * 0.90 * 1000) / (h * 9.81); const v = (h * n) / 1000; 
+  document.getElementById('v-tork').textContent  = T.toFixed(2) + ' Nm'; document.getElementById('v-force').textContent = F.toFixed(1) + ' kg'; document.getElementById('v-speed').textContent = v.toFixed(1) + ' m/dk';
 }
-document.getElementById('v-p').addEventListener('input', calcVidali);
-document.getElementById('v-n').addEventListener('input', calcVidali);
-document.getElementById('v-h').addEventListener('input', calcVidali);
-
-calcVc(); calcPiston(); calcHelis(); calcTork(); calcVidali();
+document.getElementById('v-p').addEventListener('input', calcVidali); document.getElementById('v-n').addEventListener('input', calcVidali); document.getElementById('v-h').addEventListener('input', calcVidali);
 
 function openModal(videoId, startTime = 0) {
-  let url = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-  if (startTime > 0) url += `&start=${startTime}`;
-  document.getElementById('videoFrame').src = url;
-  document.getElementById('videoModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
+  let url = `https://www.youtube.com/embed/${videoId}?autoplay=1`; if (startTime > 0) url += `&start=${startTime}`;
+  document.getElementById('videoFrame').src = url; document.getElementById('videoModal').classList.add('open'); document.body.style.overflow = 'hidden';
 }
-
-function closeModal() {
-  document.getElementById('videoFrame').src = '';
-  document.getElementById('videoModal').classList.remove('open');
-  document.body.style.overflow = '';
-}
+function closeModal() { document.getElementById('videoFrame').src = ''; document.getElementById('videoModal').classList.remove('open'); document.body.style.overflow = ''; }
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-document.getElementById('videoModal').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
+document.getElementById('videoModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+
+// Sayfa yüklendiğinde Başlat
+calcVc(); calcPiston(); calcHelis(); calcTork(); calcVidali();
+renderBlogList();
+if(articles.length > 0) loadArticle(articles[0].id, null); // İlk makaleyi otomatik yükle
+
 </script>
 </body>
 </html>
