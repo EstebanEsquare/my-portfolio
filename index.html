@@ -34,6 +34,7 @@
   --white:    #f8fafc;
   --danger:   #ef4444;
   --teal:     #0d9488;
+  --terminal-green: #22c55e;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -153,6 +154,29 @@ section { padding: 100px 24px; }
 .skill-bar-bg { height: 2px; background: var(--steel); border-radius: 1px; overflow: hidden; }
 .skill-bar-fill { height: 100%; background: var(--amber); border-radius: 1px; transform-origin: left; transform: scaleX(0); transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1); }
 .skill-bar-fill.animated { transform: scaleX(1); }
+
+/* ─── PYTHON TERMINAL SIMULATION ─── */
+#python-terminal { background: var(--ink-2); padding: 60px 24px; border-top: 1px solid rgba(245,158,11,0.1); border-bottom: 1px solid rgba(245,158,11,0.1); }
+.terminal-wrapper { max-width: 900px; margin: 0 auto; background: #050505; border: 1px solid rgba(51,65,85,0.6); border-radius: 8px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+.terminal-topbar { background: var(--ink-4); padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(51,65,85,0.6); }
+.term-dots { display: flex; gap: 6px; }
+.term-dots span { width: 12px; height: 12px; border-radius: 50%; }
+.term-dots span:nth-child(1) { background: #ff5f56; } .term-dots span:nth-child(2) { background: #ffbd2e; } .term-dots span:nth-child(3) { background: #27c93f; }
+.term-title { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--mist); display: flex; align-items: center; gap: 8px; }
+.term-title i { color: #38bdf8; } /* Python blue/yellow hint */
+.terminal-body { padding: 20px; font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.5; height: 320px; overflow-y: hidden; position: relative; }
+.terminal-body::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40px; background: linear-gradient(to bottom, transparent, #050505); pointer-events: none; }
+.term-line { display: flex; margin-bottom: 4px; opacity: 0; animation: termFadeIn 0.1s forwards; }
+@keyframes termFadeIn { to { opacity: 1; } }
+.term-prompt { color: var(--amber); margin-right: 12px; user-select: none; }
+.term-content { color: var(--light); word-break: break-all; }
+.term-content.info { color: #38bdf8; }
+.term-content.success { color: var(--terminal-green); }
+.term-content.warning { color: var(--gold); }
+.term-content.error { color: #ef4444; }
+.term-content.dim { color: #64748b; }
+.term-cursor { display: inline-block; width: 8px; height: 14px; background: var(--amber); margin-left: 4px; vertical-align: middle; animation: blink 1s step-end infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
 /* ─── PORTFOLIO ─── */
 #portfolio { background: var(--ink-2); }
@@ -300,8 +324,6 @@ footer { background: var(--ink); border-top: 1px solid rgba(245,158,11,0.1); pad
   .stat-item { border-right: none; border-bottom: 1px solid rgba(245,158,11,0.1); padding: 20px 10px; }
   .stat-num { font-size: 32px !important; }
   .stat-label { font-size: 8px; }
-
-  /* TIMELINE MOBILE */
   .timeline::before { left: 20px; transform: none; }
   .tl-item { grid-template-columns: 1fr; margin-bottom: 40px; padding-left: 45px; min-height: auto; }
   .tl-left, .tl-right { display: block !important; text-align: left !important; padding: 0 !important; width: 100% !important; }
@@ -309,17 +331,13 @@ footer { background: var(--ink); border-top: 1px solid rgba(245,158,11,0.1); pad
   .tl-year { font-size: 28px; }
   .tl-heading { font-size: 16px; margin-top: 4px; }
   .tl-desc { font-size: 11px; }
-
   .portfolio-grid { grid-template-columns: 1fr; }
   .machine-card.featured { grid-column: span 1; }
   .skills-grid { grid-template-columns: 1fr; }
-  
-  /* BLOG MOBILE */
   .blog-layout { grid-template-columns: 1fr; min-height: auto; }
   .blog-sidebar { max-height: 350px; border-bottom: 1px solid rgba(245,158,11,0.2); }
   .blog-reader { padding: 30px 24px; max-height: none; overflow-y: visible; }
   .article-title { font-size: 32px; }
-
   .tools-layout { grid-template-columns: 1fr; }
   .tools-sidebar { flex-direction: row; overflow-x: auto; }
   .tools-content { padding: 30px 20px; }
@@ -327,6 +345,8 @@ footer { background: var(--ink); border-top: 1px solid rgba(245,158,11,0.1); pad
   .tool-watermark { display: none; } 
   .nav-links { display: none; }
   .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
+  #python-terminal { padding: 40px 16px; }
+  .terminal-body { height: 240px; font-size: 10px; }
 }
 
 .amber { color: var(--amber); }
@@ -496,7 +516,7 @@ footer { background: var(--ink); border-top: 1px solid rgba(245,158,11,0.1); pad
         <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">5-Eksen CNC Tasarımı</span><span class="skill-pct">92%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.92"></div></div></div>
       </div>
       <div class="skill-group reveal d2">
-        <div class="skill-group-title"><i class="fa-solid fa-code"></i> Hesaplamalı Mühendislik</div>
+        <div class="skill-group-title"><i class="fa-brands fa-python"></i> Hesaplamalı Mühendislik</div>
         <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Python / Otomasyon</span><span class="skill-pct">80%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.80"></div></div></div>
         <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Veri Odaklı Optimizasyon</span><span class="skill-pct">78%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.78"></div></div></div>
       </div>
@@ -513,6 +533,20 @@ footer { background: var(--ink); border-top: 1px solid rgba(245,158,11,0.1); pad
     </div>
   </div>
 </section>
+
+<!-- ────────── PYTHON TERMINAL SIMULATION ────────── -->
+<div id="python-terminal">
+  <div class="terminal-wrapper reveal">
+    <div class="terminal-topbar">
+      <div class="term-dots"><span></span><span></span><span></span></div>
+      <div class="term-title"><i class="fa-brands fa-python"></i> optimize_chassis.py — sys_admin@uner_r&d</div>
+      <div style="width: 40px;"></div> <!-- Spacer -->
+    </div>
+    <div class="terminal-body" id="term-body">
+      <!-- JS will inject lines here -->
+    </div>
+  </div>
+</div>
 
 <!-- ────────── PORTFOLIO ────────── -->
 <section id="portfolio">
@@ -612,8 +646,6 @@ footer { background: var(--ink); border-top: 1px solid rgba(245,158,11,0.1); pad
     </div>
 
     <div class="blog-layout reveal">
-      
-      <!-- Sol Sidebar: Makale Listesi -->
       <div class="blog-sidebar">
         <div class="blog-sidebar-header">
           <div class="blog-sidebar-title"><i class="fa-solid fa-book-open"></i> YAZILAR</div>
@@ -622,14 +654,11 @@ footer { background: var(--ink); border-top: 1px solid rgba(245,158,11,0.1); pad
           <!-- JS ile doldurulacak makale kartları buraya gelecek -->
         </div>
       </div>
-
-      <!-- Sağ İçerik: Okuma Alanı -->
       <div class="blog-content-area">
         <div class="blog-reader" id="blog-reader">
           <!-- JS ile doldurulacak makale içeriği buraya gelecek -->
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -861,29 +890,6 @@ const articles = [
       </ul>
       <p>Optimizasyonu yüksek, sessiz ve titreşimsiz bir makine tasarımı; masa başında atılan bu mikron değerlerini, atölye tezgâhlarının titreşim frekansları ile harmanlayabilen çok disiplinli mühendislik bilincinin doğal bir sonucudur.</p>
     `
-  },
-  {
-    id: "art-1",
-    date: "22 OCAK 2026",
-    tags: ["CNC", "AR-GE"],
-    title: "5-Eksenli Dev CNC Sistemlerde Titreşim (Chatter) Kontrolü",
-    readTime: "6 Dk",
-    content: `
-      <h2>Strok Büyüdükçe Artan Kriz: Rezonans</h2>
-      <p>ZC 3050 gibi 13.5 metre stroka sahip devasa bir alüminyum işleme merkezi tasarlıyorsanız, en büyük düşmanınız servo motorların gücü değil, <strong>yapısal frekans ve titreşimdir (Chatter).</strong></p>
-      
-      <p>Özellikle köprü (gantry) tipi eksenlerde, yüksek ivmelenme anlarında ortaya çıkan mikro sarsıntılar, işlenen parçanın yüzey kalitesini doğrudan bozar. Bu durum sadece görsel bir hata değil, aynı zamanda kesici takımın (elmasın) ömrünü de %60 oranında kısaltır.</p>
-
-      <h2>Çözüm Yaklaşımımız</h2>
-      <p>Titreşimi engellemek için sadece daha fazla çelik kullanmak (kütleyi artırmak) eski nesil bir çözümdür. Bizim Ar-Ge stratejimiz şu yönde oldu:</p>
-      <ul>
-        <li>Sonlu Elemanlar Analizi (FEA) ile şasinin doğal frekanslarını haritalamak.</li>
-        <li>Kritik bölgelerde kaynaklı çelik yerine, titreşim sönümleme katsayısı yüksek olan <strong>Polimer Beton (Mineral Döküm)</strong> dolgular kullanmak.</li>
-        <li>Kremayer ve pinyon dişli sisteminde boşluksuz (anti-backlash) redüktör topolojisine geçmek.</li>
-      </ul>
-      
-      <p>Sonuç olarak, makine ivmelenmesini 1.5G seviyesine çıkarırken titreşimi endüstriyel toleransların altına çekmeyi başardık.</p>
-    `
   }
 ];
 
@@ -933,12 +939,93 @@ function loadArticle(id, cardElement, isInitialLoad = false) {
     
     blogReader.classList.remove('fade-out');
 
-    // Eğer ilk yükleme (sayfa açılışı) DEĞİLSE ve mobildeysek aşağı kaydır
     if(!isInitialLoad && window.innerWidth <= 768) {
       document.querySelector('.blog-content-area').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }, 300);
 }
+
+// ─── PYTHON TERMINAL SIMULATION SCRIPT ───
+const termLines = [
+  { text: "import numpy as np", type: "normal", delay: 800 },
+  { text: "import pandas as pd", type: "normal", delay: 300 },
+  { text: "from fea_solver import run_modal_analysis", type: "normal", delay: 500 },
+  { text: "Initializing SolidWorks API connection...", type: "info", delay: 1200 },
+  { text: "Connection established. Hooking active document: ZC-3050-Gantry.sldasm", type: "success", delay: 800 },
+  { text: "Extracting mass properties and boundary conditions...", type: "normal", delay: 1500 },
+  { text: "[WARN] Interference detected at node 402: Spindle Housing", type: "warning", delay: 1000 },
+  { text: "Applying auto-correction to bolt hole pattern (-0.15mm shift)", type: "info", delay: 900 },
+  { text: "Starting dynamic resonance simulation (Iterations: 5000)", type: "normal", delay: 600 },
+  { text: "Calculating eigenfrequencies...", type: "dim", delay: 200 },
+  { text: "Mode 1: 42.5 Hz", type: "dim", delay: 100 },
+  { text: "Mode 2: 85.1 Hz", type: "dim", delay: 100 },
+  { text: "Mode 3: 132.8 Hz (Critical)", type: "error", delay: 400 },
+  { text: "Optimizing rib structure to shift resonance > 150 Hz...", type: "info", delay: 1800 },
+  { text: "New iteration calculating...", type: "dim", delay: 800 },
+  { text: "Success! Mode 3 shifted to 165.4 Hz.", type: "success", delay: 500 },
+  { text: "Exporting optimized CAD parameters to master model.", type: "normal", delay: 1200 },
+  { text: "Done in 14.2s. Ready for next process.", type: "success", delay: 2000 }
+];
+
+const termBody = document.getElementById('term-body');
+let currentLineIdx = 0;
+
+function addTermLine(lineObj) {
+  const lineDiv = document.createElement('div');
+  lineDiv.className = 'term-line';
+  
+  const promptSpan = document.createElement('span');
+  promptSpan.className = 'term-prompt';
+  promptSpan.textContent = '>';
+  
+  const contentSpan = document.createElement('span');
+  contentSpan.className = `term-content ${lineObj.type}`;
+  contentSpan.textContent = lineObj.text;
+  
+  lineDiv.appendChild(promptSpan);
+  lineDiv.appendChild(contentSpan);
+  termBody.appendChild(lineDiv);
+  
+  // Auto scroll to bottom
+  termBody.scrollTop = termBody.scrollHeight;
+}
+
+function runTerminal() {
+  if (currentLineIdx >= termLines.length) {
+    // Reset and loop the simulation
+    setTimeout(() => {
+      termBody.innerHTML = '';
+      currentLineIdx = 0;
+      runTerminal();
+    }, 5000); // Wait 5 seconds before restarting
+    return;
+  }
+  
+  const line = termLines[currentLineIdx];
+  setTimeout(() => {
+    // Add the cursor to the current line temporarily if it's the last one
+    const cursor = document.createElement('span');
+    cursor.className = 'term-cursor';
+    
+    addTermLine(line);
+    
+    // Move cursor to the end
+    const lastLine = termBody.lastChild;
+    lastLine.appendChild(cursor);
+    
+    // Remove previous cursors
+    Array.from(termBody.children).forEach((child, idx) => {
+      if (idx !== termBody.children.length - 1) {
+        const oldCursor = child.querySelector('.term-cursor');
+        if (oldCursor) oldCursor.remove();
+      }
+    });
+
+    currentLineIdx++;
+    runTerminal();
+  }, line.delay);
+}
+
 
 // ─── MEVCUT KODLAR (UI, SCROLL, MODAL, HESAPLAMALAR) ───
 const navbar = document.getElementById('navbar');
@@ -949,6 +1036,12 @@ const observer = new IntersectionObserver((entries) => {
     if (!entry.isIntersecting) return;
     const el = entry.target;
     if (el.classList.contains('reveal') || el.classList.contains('reveal-left') || el.classList.contains('reveal-right')) el.classList.add('visible');
+    
+    if (el.classList.contains('terminal-wrapper') && !el.dataset.started) {
+      el.dataset.started = "true";
+      setTimeout(runTerminal, 1000); // Start terminal when visible
+    }
+
     if (el.classList.contains('skill-group')) {
       el.querySelectorAll('.skill-bar-fill').forEach((bar, i) => { setTimeout(() => { bar.style.transform = `scaleX(${bar.dataset.width})`; bar.classList.add('animated'); }, i * 120); });
     }
@@ -957,7 +1050,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .skill-group, .counter').forEach(el => { observer.observe(el); });
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .skill-group, .counter, .terminal-wrapper').forEach(el => { observer.observe(el); });
 
 function animateCounter(el) {
   const target = parseInt(el.dataset.target); let current = 0; const step = target / 40;
@@ -1022,8 +1115,6 @@ document.getElementById('videoModal').addEventListener('click', function(e) { if
 // Sayfa yüklendiğinde Başlat
 calcVc(); calcPiston(); calcHelis(); calcTork(); calcVidali();
 renderBlogList();
-
-// İlk makaleyi otomatik yükle ama sayfayı AŞAĞI KAYDIRMA (isInitialLoad = true)
 if(articles.length > 0) loadArticle(articles[0].id, null, true); 
 
 </script>
