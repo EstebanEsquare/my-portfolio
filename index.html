@@ -206,9 +206,12 @@ section { padding: 100px 24px; }
 .tubitak-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--amber); }
 .tubitak-card-bg { position: absolute; right: -20px; top: -20px; opacity: 0.03; font-size: 200px; color: var(--white); pointer-events: none; transition: opacity 0.3s; }
 .tubitak-card:hover .tubitak-card-bg { opacity: 0.06; }
-.tubitak-logo-wrap { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
-.tubitak-logo-img { height: 28px; width: auto; display: block; filter: grayscale(1) brightness(1.8) opacity(0.4); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); transform-origin: left center; }
+.tubitak-logo-wrap { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
+.tubitak-brand { display: flex; align-items: center; gap: 16px; }
+.tubitak-logo-img { height: 36px; width: auto; display: block; filter: grayscale(1) brightness(1.8) opacity(0.4); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); transform-origin: left center; }
 .tubitak-card:hover .tubitak-logo-img { filter: grayscale(0) brightness(1) opacity(1); transform: scale(1.05); }
+.t-logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.06em; color: var(--mist); line-height: 1; margin-top: 4px; transition: all 0.4s ease; opacity: 0.7; }
+.tubitak-card:hover .t-logo-text { color: var(--white); opacity: 1; transform: translateX(6px); }
 .t-badge-group { display: flex; gap: 8px; flex-wrap: wrap; }
 .t-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; font-size: 8px; font-family: 'JetBrains Mono', monospace; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 3px; }
 .t-badge.program { background: rgba(0,75,135,0.15); color: #60a5fa; border: 1px solid rgba(96,165,250,0.3); }
@@ -681,7 +684,10 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
       <div class="tubitak-card reveal d1">
         <i class="fa-solid fa-microchip tubitak-card-bg"></i>
         <div class="tubitak-logo-wrap">
-          <img src="tubitak-logo.svg" alt="TÜBİTAK" class="tubitak-logo-img" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/05/T%C3%9CB%C4%B0TAK_logo.svg'">
+          <div class="tubitak-brand">
+            <img src="tubitak-logo.svg" alt="TÜBİTAK" class="tubitak-logo-img" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/05/T%C3%9CB%C4%B0TAK_logo.svg'">
+            <span class="t-logo-text">TÜBİTAK</span>
+          </div>
           <div class="t-badge success"><i class="fa-solid fa-check"></i> Başarıyla Tamamlandı</div>
         </div>
         <div class="t-badge-group">
@@ -714,7 +720,10 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
       <div class="tubitak-card reveal d2">
         <i class="fa-solid fa-gears tubitak-card-bg"></i>
         <div class="tubitak-logo-wrap">
-          <img src="tubitak-logo.svg" alt="TÜBİTAK" class="tubitak-logo-img" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/05/T%C3%9CB%C4%B0TAK_logo.svg'">
+          <div class="tubitak-brand">
+            <img src="tubitak-logo.svg" alt="TÜBİTAK" class="tubitak-logo-img" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/05/T%C3%9CB%C4%B0TAK_logo.svg'">
+            <span class="t-logo-text">TÜBİTAK</span>
+          </div>
           <div class="t-badge success"><i class="fa-solid fa-check"></i> Başarıyla Tamamlandı</div>
         </div>
         <div class="t-badge-group">
