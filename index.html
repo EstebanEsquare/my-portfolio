@@ -207,8 +207,8 @@ section { padding: 100px 24px; }
 .tubitak-card-bg { position: absolute; right: -20px; top: -20px; opacity: 0.03; font-size: 200px; color: var(--white); pointer-events: none; transition: opacity 0.3s; }
 .tubitak-card:hover .tubitak-card-bg { opacity: 0.06; }
 .tubitak-logo-wrap { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
-.tubitak-logo { width: 150px; height: 28px; display: block; flex-shrink: 0; filter: grayscale(1) brightness(0.6) invert(1); transition: all 0.4s ease; opacity: 0.8; }
-.tubitak-card:hover .tubitak-logo { filter: grayscale(0) brightness(1) invert(0); opacity: 1; }
+.tubitak-text-logo { font-family: 'Arial Black', Impact, sans-serif; font-size: 26px; font-weight: 900; letter-spacing: -1.5px; color: var(--mist); transition: all 0.4s ease; line-height: 1; transform: scaleY(0.95); transform-origin: left center; }
+.tubitak-card:hover .tubitak-text-logo { color: #004b87; text-shadow: 0px 4px 12px rgba(0,75,135,0.3); transform: scaleY(0.95) scaleX(1.02); }
 .t-badge-group { display: flex; gap: 8px; flex-wrap: wrap; }
 .t-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; font-size: 8px; font-family: 'JetBrains Mono', monospace; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 3px; }
 .t-badge.program { background: rgba(0,75,135,0.15); color: #60a5fa; border: 1px solid rgba(96,165,250,0.3); }
@@ -681,9 +681,7 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
       <div class="tubitak-card reveal d1">
         <i class="fa-solid fa-microchip tubitak-card-bg"></i>
         <div class="tubitak-logo-wrap">
-          <svg class="tubitak-logo" viewBox="0 0 170 32" width="170" height="32" xmlns="http://www.w3.org/2000/svg">
-            <text x="0" y="26" font-family="'Arial Black', Arial, sans-serif" font-size="32" font-weight="900" fill="#004b87" letter-spacing="-1.5" transform="scale(1, 0.95)">TÜBİTAK</text>
-          </svg>
+          <div class="tubitak-text-logo">TÜBİTAK</div>
           <div class="t-badge success"><i class="fa-solid fa-check"></i> Başarıyla Tamamlandı</div>
         </div>
         <div class="t-badge-group">
@@ -716,9 +714,7 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
       <div class="tubitak-card reveal d2">
         <i class="fa-solid fa-gears tubitak-card-bg"></i>
         <div class="tubitak-logo-wrap">
-          <svg class="tubitak-logo" viewBox="0 0 170 32" width="170" height="32" xmlns="http://www.w3.org/2000/svg">
-            <text x="0" y="26" font-family="'Arial Black', Arial, sans-serif" font-size="32" font-weight="900" fill="#004b87" letter-spacing="-1.5" transform="scale(1, 0.95)">TÜBİTAK</text>
-          </svg>
+          <div class="tubitak-text-logo">TÜBİTAK</div>
           <div class="t-badge success"><i class="fa-solid fa-check"></i> Başarıyla Tamamlandı</div>
         </div>
         <div class="t-badge-group">
