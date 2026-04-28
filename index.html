@@ -381,14 +381,17 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
   .mobile-menu-btn { display: block; }
   
   .nav-links { 
-    position: absolute; top: 64px; left: 0; right: 0; 
-    background: rgba(8,8,16,0.98); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-    flex-direction: column; padding: 32px 24px; gap: 24px; 
-    border-bottom: 1px solid rgba(245,158,11,0.2);
-    display: none; align-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    position: fixed; top: 64px; right: -100%; left: auto; bottom: 0; width: 260px;
+    background: rgba(8,8,16,0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    flex-direction: column; padding: 40px 32px; gap: 32px; 
+    border-left: 1px solid rgba(245,158,11,0.2); border-bottom: none;
+    display: flex; align-items: flex-start; box-shadow: -20px 0 50px rgba(0,0,0,0.8);
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .nav-links.active-mobile { display: flex; animation: fadeDown 0.3s ease forwards; }
-  @keyframes fadeDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+  .nav-links.active-mobile { right: 0; animation: none; }
+  .nav-links a { font-size: 13px; letter-spacing: 0.2em; width: 100%; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .nav-links a::after { bottom: -1px; }
+  .nav-cta.mobile-only { width: 100%; text-align: center; margin-top: 16px; padding: 12px; }
   
   .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
   #python-terminal { padding: 40px 16px; }
