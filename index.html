@@ -35,6 +35,7 @@
   --danger:   #ef4444;
   --teal:     #0d9488;
   --terminal-green: #22c55e;
+  --tubitak-blue: #004b87;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -163,7 +164,7 @@ section { padding: 100px 24px; }
 .term-dots span { width: 12px; height: 12px; border-radius: 50%; }
 .term-dots span:nth-child(1) { background: #ff5f56; } .term-dots span:nth-child(2) { background: #ffbd2e; } .term-dots span:nth-child(3) { background: #27c93f; }
 .term-title { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--mist); display: flex; align-items: center; gap: 8px; }
-.term-title i { color: #38bdf8; } /* Python blue/yellow hint */
+.term-title i { color: #38bdf8; } 
 .terminal-body { padding: 20px; font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.5; height: 320px; overflow-y: hidden; position: relative; }
 .terminal-body::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40px; background: linear-gradient(to bottom, transparent, #050505); pointer-events: none; }
 .term-line { display: flex; margin-bottom: 4px; opacity: 0; animation: termFadeIn 0.1s forwards; }
@@ -197,8 +198,28 @@ section { padding: 100px 24px; }
 .machine-card-bg { position: absolute; inset: -2px; background-size: cover; background-position: center; filter: brightness(0.25) grayscale(0.8); transition: all 0.5s ease; z-index: 0; }
 .machine-card:hover .machine-card-bg { filter: brightness(0.5) grayscale(0.2); transform: scale(1.03); }
 
+/* ─── TUBITAK AR-GE PROJECTS ─── */
+#tubitak { background: var(--ink); border-top: 1px solid rgba(245,158,11,0.05); }
+.tubitak-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.tubitak-card { background: var(--ink-3); border: 1px solid rgba(245,158,11,0.15); border-radius: 6px; padding: 40px; position: relative; overflow: hidden; transition: all 0.3s ease; }
+.tubitak-card:hover { border-color: rgba(245,158,11,0.4); transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.tubitak-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--amber); }
+.tubitak-card-bg { position: absolute; right: -20px; top: -20px; opacity: 0.03; font-size: 200px; color: var(--white); pointer-events: none; transition: opacity 0.3s; }
+.tubitak-card:hover .tubitak-card-bg { opacity: 0.06; }
+.tubitak-logo-wrap { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+.tubitak-logo { height: 28px; filter: grayscale(1) brightness(0.6) invert(1); transition: all 0.4s ease; opacity: 0.8; }
+.tubitak-card:hover .tubitak-logo { filter: grayscale(0) brightness(1) invert(0); opacity: 1; }
+.t-badge-group { display: flex; gap: 8px; flex-wrap: wrap; }
+.t-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; font-size: 8px; font-family: 'JetBrains Mono', monospace; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 3px; }
+.t-badge.program { background: rgba(0,75,135,0.15); color: #60a5fa; border: 1px solid rgba(96,165,250,0.3); }
+.t-badge.success { background: rgba(34,197,94,0.1); color: var(--terminal-green); border: 1px solid rgba(34,197,94,0.3); }
+.t-project-name { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.04em; color: var(--white); line-height: 1.2; margin-bottom: 16px; }
+.t-details { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; border-top: 1px solid rgba(245,158,11,0.1); padding-top: 20px; margin-top: 20px; }
+.t-detail-item .label { font-size: 8px; font-family: 'JetBrains Mono', monospace; color: var(--mist); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 4px; display: block; }
+.t-detail-item .val { font-size: 13px; color: var(--amber); font-weight: 500; }
+
 /* ─── KNOWLEDGE BASE (BLOG) ─── */
-#blog { background: var(--ink); }
+#blog { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.05); }
 .blog-layout { display: grid; grid-template-columns: 350px 1fr; gap: 2px; background: var(--ink-3); border: 1px solid rgba(245,158,11,0.1); border-radius: 8px; overflow: hidden; min-height: 600px; }
 .blog-sidebar { background: var(--ink-4); display: flex; flex-direction: column; max-height: 600px; }
 .blog-sidebar-header { padding: 24px; border-bottom: 1px solid rgba(245,158,11,0.1); }
@@ -222,7 +243,7 @@ section { padding: 100px 24px; }
 .article-info { display: flex; gap: 16px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--amber); letter-spacing: 0.1em; }
 .article-info i { margin-right: 4px; }
 
-/* Article Prose (Typography for reading) */
+/* Article Prose */
 .prose { color: var(--light); font-size: 14px; line-height: 1.8; font-weight: 300; overflow-wrap: break-word; word-wrap: break-word; hyphens: auto; max-width: 95%; padding-right: 16px; }
 .prose h2 { font-size: 20px; color: var(--white); font-weight: 600; margin: 32px 0 16px 0; border-left: 3px solid var(--amber); padding-left: 12px; }
 .prose p { margin-bottom: 24px; color: #cbd5e1; text-align: justify; }
@@ -244,7 +265,7 @@ section { padding: 100px 24px; }
 .prose tr:hover td { background: rgba(245,158,11,0.02); }
 
 /* ─── ENGINEERING TOOLS ─── */
-#tools { background: var(--ink-2); }
+#tools { background: var(--ink); border-top: 1px solid rgba(245,158,11,0.05); }
 .tools-layout { display: grid; grid-template-columns: 280px 1fr; gap: 2px; background: var(--ink-3); border: 1px solid rgba(245,158,11,0.1); border-radius: 8px; overflow: hidden; min-height: 560px; }
 .tools-sidebar { background: var(--ink-4); padding: 8px; display: flex; flex-direction: column; gap: 4px; }
 .tool-tab { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 6px; cursor: pointer; transition: all 0.2s; border: 1px solid transparent; }
@@ -306,7 +327,7 @@ input[type="range"]::-webkit-slider-thumb { appearance: none; -webkit-appearance
 .modal-video iframe { width: 100%; height: 100%; border: none; }
 
 /* ─── FOOTER ─── */
-footer { background: var(--ink); border-top: 1px solid rgba(245,158,11,0.1); padding: 60px 24px; }
+footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); padding: 60px 24px; }
 .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
 .footer-left .footer-name { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.06em; color: var(--white); }
 .footer-left .footer-sub { font-size: 9px; font-family: 'JetBrains Mono', monospace; color: var(--mist); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 2px; }
@@ -333,6 +354,7 @@ footer { background: var(--ink); border-top: 1px solid rgba(245,158,11,0.1); pad
   .tl-desc { font-size: 11px; }
   .portfolio-grid { grid-template-columns: 1fr; }
   .machine-card.featured { grid-column: span 1; }
+  .tubitak-grid { grid-template-columns: 1fr; }
   .skills-grid { grid-template-columns: 1fr; }
   .blog-layout { grid-template-columns: 1fr; min-height: auto; }
   .blog-sidebar { max-height: 350px; border-bottom: 1px solid rgba(245,158,11,0.2); }
@@ -369,7 +391,7 @@ footer { background: var(--ink); border-top: 1px solid rgba(245,158,11,0.1); pad
     </a>
     <nav class="nav-links">
       <a href="#journey">Serüven</a>
-      <a href="#portfolio">Portfolyo</a>
+      <a href="#portfolio">Portfolyo & Ar-Ge</a>
       <a href="#blog">Bilgi Bankası</a>
       <a href="#tools">Araçlar</a>
     </nav>
@@ -527,8 +549,8 @@ footer { background: var(--ink); border-top: 1px solid rgba(245,158,11,0.1); pad
       </div>
       <div class="skill-group reveal d4">
         <div class="skill-group-title"><i class="fa-solid fa-chart-line"></i> Ar-Ge Liderliği</div>
-        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Proje Yönetimi</span><span class="skill-pct">90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.90"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">ISO / DIN Standartları</span><span class="skill-pct">92%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.92"></div></div></div>
+        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Proje Yönetimi (PMP Altyapısı)</span><span class="skill-pct">90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.90"></div></div></div>
+        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">TÜBİTAK 1501 Süreç Yönetimi</span><span class="skill-pct">98%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.98"></div></div></div>
       </div>
     </div>
   </div>
@@ -640,6 +662,85 @@ footer { background: var(--ink); border-top: 1px solid rgba(245,158,11,0.1); pad
           <div><div class="machine-title" style="font-size:40px;">AC 20XX SERİSİ</div><div class="machine-desc">Alüminyum kesiminde pazar lideri çözümler</div></div>
         </div>
         <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── TUBITAK AR-GE PROJECTS ────────── -->
+<section id="tubitak">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Devlet Destekli Akreditasyon</div>
+      <h2 class="section-title">ULUSAL AR-GE<br><span>PROJELERİ</span></h2>
+      <p class="section-sub">Akademik hakem heyetleri tarafından denetlenmiş ve "Proje Yürütücüsü" sıfatıyla uçtan uca yönetilip tam notla kapatılmış TÜBİTAK 1501 Sanayi Ar-Ge projeleri.</p>
+    </div>
+
+    <div class="tubitak-grid">
+      <!-- Proje 1 -->
+      <div class="tubitak-card reveal d1">
+        <i class="fa-solid fa-microchip tubitak-card-bg"></i>
+        <div class="tubitak-logo-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/tr/b/b3/T%C3%9CB%C4%B0TAK_logo.svg" alt="TÜBİTAK" class="tubitak-logo">
+          <div class="t-badge success"><i class="fa-solid fa-check"></i> Başarıyla Tamamlandı</div>
+        </div>
+        <div class="t-badge-group">
+          <span class="t-badge program">1501 Sanayi Ar-Ge Programı</span>
+          <span class="t-badge program" style="background: rgba(245,158,11,0.1); color: var(--amber); border-color: rgba(245,158,11,0.3);">Proje Yürütücüsü</span>
+        </div>
+        <h3 class="t-project-name">13,5 Metre Stroklu Alüminyum Profilleri İşlemek İçin Geliştirilen CNC Kontrollü 5 Eksen Makinenin Geliştirilmesi</h3>
+        
+        <div class="t-details">
+          <div class="t-detail-item">
+            <span class="label">Proje Referans Kodu</span>
+            <span class="val">No: 3180059</span>
+          </div>
+          <div class="t-detail-item">
+            <span class="label">Teknoloji Grubu</span>
+            <span class="val">MAKİTEG (Makina İmalat)</span>
+          </div>
+          <div class="t-detail-item">
+            <span class="label">Başvuru / Onay Yılı</span>
+            <span class="val">2018</span>
+          </div>
+          <div class="t-detail-item">
+            <span class="label">Tasarım Eşleşmesi</span>
+            <span class="val" style="color:var(--white);"><i class="fa-solid fa-link" style="color:var(--amber); font-size:10px;"></i> ZC 3050 Dev CNC</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proje 2 -->
+      <div class="tubitak-card reveal d2">
+        <i class="fa-solid fa-gears tubitak-card-bg"></i>
+        <div class="tubitak-logo-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/tr/b/b3/T%C3%9CB%C4%B0TAK_logo.svg" alt="TÜBİTAK" class="tubitak-logo">
+          <div class="t-badge success"><i class="fa-solid fa-check"></i> Başarıyla Tamamlandı</div>
+        </div>
+        <div class="t-badge-group">
+          <span class="t-badge program">1501 Sanayi Ar-Ge Programı</span>
+          <span class="t-badge program" style="background: rgba(245,158,11,0.1); color: var(--amber); border-color: rgba(245,158,11,0.3);">Proje Yürütücüsü</span>
+        </div>
+        <h3 class="t-project-name">Alüminyum Profil İşlemek İçin Geliştirilmiş CNC Kontrollü Makine</h3>
+        
+        <div class="t-details" style="margin-top: 48px;">
+          <div class="t-detail-item">
+            <span class="label">Proje Referans Kodu</span>
+            <span class="val">No: 3140118</span>
+          </div>
+          <div class="t-detail-item">
+            <span class="label">Teknoloji Grubu</span>
+            <span class="val">MAKİTEG (Makina İmalat)</span>
+          </div>
+          <div class="t-detail-item">
+            <span class="label">Başvuru / Onay Yılı</span>
+            <span class="val">2014</span>
+          </div>
+          <div class="t-detail-item">
+            <span class="label">Tasarım Eşleşmesi</span>
+            <span class="val" style="color:var(--white);"><i class="fa-solid fa-link" style="color:var(--amber); font-size:10px;"></i> ZC 3010 Merkezi</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1001,28 +1102,24 @@ function addTermLine(lineObj) {
 
 function runTerminal() {
   if (currentLineIdx >= termLines.length) {
-    // Reset and loop the simulation
     setTimeout(() => {
       termBody.innerHTML = '';
       currentLineIdx = 0;
       runTerminal();
-    }, 5000); // Wait 5 seconds before restarting
+    }, 5000); 
     return;
   }
   
   const line = termLines[currentLineIdx];
   setTimeout(() => {
-    // Add the cursor to the current line temporarily if it's the last one
     const cursor = document.createElement('span');
     cursor.className = 'term-cursor';
     
     addTermLine(line);
     
-    // Move cursor to the end
     const lastLine = termBody.lastChild;
     lastLine.appendChild(cursor);
     
-    // Remove previous cursors
     Array.from(termBody.children).forEach((child, idx) => {
       if (idx !== termBody.children.length - 1) {
         const oldCursor = child.querySelector('.term-cursor');
@@ -1036,7 +1133,7 @@ function runTerminal() {
 }
 
 
-// ─── MEVCUT KODLAR (UI, SCROLL, MODAL, HESAPLAMALAR) ───
+// ─── MEVCUT KODLAR ───
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 40); });
 
@@ -1048,7 +1145,7 @@ const observer = new IntersectionObserver((entries) => {
     
     if (el.classList.contains('terminal-wrapper') && !el.dataset.started) {
       el.dataset.started = "true";
-      setTimeout(runTerminal, 1000); // Start terminal when visible
+      setTimeout(runTerminal, 1000); 
     }
 
     if (el.classList.contains('skill-group')) {
