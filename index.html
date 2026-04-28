@@ -342,6 +342,10 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
 .footer-link:hover { border-color: var(--amber); color: var(--amber); }
 .footer-copy { font-size: 10px; color: rgba(148,163,184,0.35); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; }
 
+/* ─── MOBILE UTILS ─── */
+.mobile-menu-btn { display: none; background: none; border: none; color: var(--amber); font-size: 24px; cursor: pointer; padding: 4px; }
+.mobile-only { display: none; }
+
 /* ─── MOBILE ─── */
 @media (max-width: 768px) {
   .hero-inner { grid-template-columns: 1fr; gap: 40px; }
@@ -371,7 +375,21 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
   .tools-content { padding: 30px 20px; }
   .tool-tab-sub { display: none; }
   .tool-watermark { display: none; } 
-  .nav-links { display: none; }
+  
+  .hidden-mobile { display: none !important; }
+  .mobile-only { display: inline-flex !important; }
+  .mobile-menu-btn { display: block; }
+  
+  .nav-links { 
+    position: absolute; top: 64px; left: 0; right: 0; 
+    background: rgba(8,8,16,0.98); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    flex-direction: column; padding: 32px 24px; gap: 24px; 
+    border-bottom: 1px solid rgba(245,158,11,0.2);
+    display: none; align-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  .nav-links.active-mobile { display: flex; animation: fadeDown 0.3s ease forwards; }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+  
   .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
   #python-terminal { padding: 40px 16px; }
   .terminal-body { height: 240px; font-size: 10px; }
@@ -395,12 +413,16 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
         <div class="nav-logo-title">M.Sc. Engineer</div>
       </div>
     </a>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menü">
+      <i class="fa-solid fa-bars"></i>
+    </button>
     <nav class="nav-links">
       <a href="#/" id="nav-home">Portfolyo</a>
       <a href="#/blog" id="nav-blog">Bilgi Bankası</a>
       <a href="#/tools" id="nav-tools">Hesaplama Araçları</a>
+      <a href="mailto:mustafauner@hotmail.com.tr" class="nav-cta mobile-only" style="margin-top: 8px;">İletişim</a>
     </nav>
-    <a href="mailto:mustafauner@hotmail.com.tr" class="nav-cta">İletişim</a>
+    <a href="mailto:mustafauner@hotmail.com.tr" class="nav-cta hidden-mobile">İletişim</a>
   </div>
 </nav>
 
@@ -427,6 +449,9 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
           </a>
           <a href="#/tools" class="btn-ghost">
             <i class="fa-solid fa-calculator"></i> Hesaplama Araçları
+          </a>
+          <a href="#/blog" class="btn-ghost">
+            <i class="fa-solid fa-book-open"></i> Bilgi Bankası
           </a>
         </div>
       </div>
@@ -1129,6 +1154,29 @@ function router() {
 window.addEventListener('hashchange', router);
 window.addEventListener('load', router);
 
+// ─── MOBİL MENÜ İŞLEVİ ───
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const navLinksContainer = document.querySelector('.nav-links');
+
+mobileMenuBtn.addEventListener('click', () => {
+  navLinksContainer.classList.toggle('active-mobile');
+  const icon = mobileMenuBtn.querySelector('i');
+  if(navLinksContainer.classList.contains('active-mobile')) {
+    icon.classList.remove('fa-bars');
+    icon.classList.add('fa-xmark');
+  } else {
+    icon.classList.remove('fa-xmark');
+    icon.classList.add('fa-bars');
+  }
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinksContainer.classList.remove('active-mobile');
+    mobileMenuBtn.querySelector('i').classList.remove('fa-xmark');
+    mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+  });
+});
 
 // ─── BLOG İŞLEVLERİ (RENDER) ───
 const blogListContainer = document.getElementById('blog-list-container');
