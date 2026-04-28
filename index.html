@@ -415,10 +415,28 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
   .terminal-body { height: 240px; font-size: 10px; }
 }
 
+/* ─── FAZ 3: MOUSE GLOW (AMBIENT LIGHT) ─── */
+#mouse-glow {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245,158,11,0.06) 0%, transparent 60%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9998;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+@media (max-width: 768px) { #mouse-glow { display: none; } }
+
 .amber { color: var(--amber); }
 </style>
 </head>
 <body>
+
+<!-- ────────── MOUSE GLOW (FAZ 3) ────────── -->
+<div id="mouse-glow"></div>
 
 <!-- ────────── NAV ────────── -->
 <nav id="navbar">
@@ -825,6 +843,8 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
           <div class="tool-tab" data-target="t-tork"><i class="fa-solid fa-bolt"></i><div class="tool-tab-text"><span class="tool-tab-name">Motor Tork</span><span class="tool-tab-sub">T = P / ω</span></div></div>
           <div class="tool-tab" data-target="t-vidali"><i class="fa-solid fa-screwdriver"></i><div class="tool-tab-text"><span class="tool-tab-name">Vidalı Mil</span><span class="tool-tab-sub">Lead Screw</span></div></div>
           <div class="tool-tab" data-target="t-tolerance-tool"><i class="fa-solid fa-layer-group"></i><div class="tool-tab-text"><span class="tool-tab-name">Tolerans Analizi</span><span class="tool-tab-sub">Stack-up / RSS</span></div></div>
+          <!-- FAZ 1: YENİ SEHİM ANALİZİ SEKMESİ -->
+          <div class="tool-tab" data-target="t-beam"><i class="fa-solid fa-ruler-horizontal"></i><div class="tool-tab-text"><span class="tool-tab-name">Sehim Analizi</span><span class="tool-tab-sub">Beam Deflection</span></div></div>
         </div>
 
         <div class="tools-content">
@@ -878,7 +898,7 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
               <div class="input-field"><label>Modül m</label><input type="number" id="h-m" value="2" min="0.5" step="0.5" class="tool-input"></div>
               <div class="input-field"><label>Diş Sayısı z</label><input type="number" id="h-z" value="20" min="5" class="tool-input"></div>
             </div>
-            <div class="result-triple">
+            <div class="result-grid" style="grid-template-columns: 1fr 1fr 1fr;">
               <div class="result-card"><span class="result-card-label">Bölüm Çapı</span><div class="result-card-value" id="h-d">42.47 mm</div></div>
               <div class="result-card highlight"><span class="result-card-label">Dış Çap da</span><div class="result-card-value" id="h-da">46.47 mm</div></div>
               <div class="result-card"><span class="result-card-label">Merkez Mes.</span><div class="result-card-value" id="h-c">45.24 mm</div></div>
@@ -912,7 +932,7 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
               <label>Hatve h (mm/devir)</label>
               <input type="number" id="v-h" value="10" class="tool-input">
             </div>
-            <div class="result-triple">
+            <div class="result-grid" style="grid-template-columns: 1fr 1fr 1fr;">
               <div class="result-card"><span class="result-card-label">Tork</span><div class="result-card-value" id="v-tork">2.39 Nm</div></div>
               <div class="result-card highlight"><span class="result-card-label">İtme Kuvveti</span><div class="result-card-value" id="v-force">135.3 kg</div></div>
               <div class="result-card"><span class="result-card-label">Hız</span><div class="result-card-value" id="v-speed">30.0 m/dk</div></div>
@@ -939,6 +959,34 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
               <div class="result-card highlight"><span class="result-card-label">İstatistiksel (RSS)</span><div class="result-card-value" id="tol-rss">± 0.062</div></div>
             </div>
           </div>
+
+          <!-- FAZ 1: YENİ KİRİŞ SEHİM PANELİ -->
+          <div id="t-beam" class="tool-panel">
+            <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 50h80M20 50v20M80 50v20" stroke-width="3"/><path d="M15 70h10M75 70h10"/><path d="M50 30v20M45 40l5 10 5-10" stroke-width="2"/><path d="M20 55 C40 65, 60 65, 80 55" stroke-dasharray="4 4" stroke-width="2"/>
+            </svg>
+            <div class="tool-panel-title">Kiriş Sehim Analizi</div>
+            <div class="tool-panel-formula">δ_max = (F × L³) / (48 × E × I) &nbsp;|&nbsp; Ortadan Tekil Yük</div>
+            <div class="result-box"><div class="result-value" id="beam-result">0.00</div><div class="result-unit">Milimetre (mm)</div></div>
+            <div class="input-grid" style="margin-bottom:20px;">
+              <div class="input-field"><label>Kuvvet F (Newton)</label><input type="number" id="beam-f" value="1000" class="tool-input"></div>
+              <div class="input-field"><label>Açıklık L (mm)</label><input type="number" id="beam-l" value="1000" class="tool-input"></div>
+              <div class="input-field">
+                <label>Elastisite Modülü E (GPa)</label>
+                <select id="beam-e" class="tool-select">
+                  <option value="210">Çelik (210 GPa)</option>
+                  <option value="70">Alüminyum (70 GPa)</option>
+                  <option value="110">Titanyum (110 GPa)</option>
+                </select>
+              </div>
+              <div class="input-field"><label>Atalet Momenti I (cm⁴)</label><input type="number" id="beam-i" value="10" class="tool-input"></div>
+            </div>
+          </div>
+
+          <!-- FAZ 1: EXPORT BUTTON -->
+          <button id="btn-export-report" class="btn-ghost" style="width:100%; font-size:10px; margin-top: 32px; justify-content:center; border-style: dashed; border-color: rgba(148,163,184,0.4); cursor:pointer;">
+             <i class="fa-regular fa-copy"></i> TEKNİK RAPORU KOPYALA
+          </button>
 
         </div>
       </div>
@@ -1194,6 +1242,17 @@ function router() {
 // URL değiştiğinde veya sayfa ilk yüklendiğinde router'ı çalıştır
 window.addEventListener('hashchange', router);
 window.addEventListener('load', router);
+
+// ─── FAZ 3: MOUSE GLOW (AMBIENT LIGHT) ───
+const mouseGlow = document.getElementById('mouse-glow');
+document.addEventListener('mousemove', (e) => {
+  if (window.innerWidth > 768) {
+    mouseGlow.style.opacity = '1';
+    mouseGlow.style.left = e.clientX + 'px';
+    mouseGlow.style.top = e.clientY + 'px';
+  }
+});
+document.addEventListener('mouseleave', () => mouseGlow.style.opacity = '0');
 
 // ─── YENİ NESİL MOBİL MENÜ İŞLEVİ ───
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -1468,6 +1527,85 @@ function calcDynamicTol() {
   document.getElementById('tol-rss').textContent = '± ' + Math.sqrt(rssSq).toFixed(3);
 }
 
+// ─── FAZ 1: KİRİŞ SEHİM ANALİZİ (BEAM DEFLECTION) ───
+function calcBeam() {
+  const F = parseFloat(document.getElementById('beam-f').value);
+  const L = parseFloat(document.getElementById('beam-l').value);
+  const E_GPa = parseFloat(document.getElementById('beam-e').value);
+  const I_cm4 = parseFloat(document.getElementById('beam-i').value);
+
+  if (!F || !L || !E_GPa || !I_cm4) return;
+
+  const E = E_GPa * 1000; // N/mm²'ye çevrildi (MPa)
+  const I = I_cm4 * 10000; // mm⁴'e çevrildi
+  const delta = (F * Math.pow(L, 3)) / (48 * E * I);
+
+  document.getElementById('beam-result').textContent = delta.toFixed(3);
+}
+document.getElementById('beam-f').addEventListener('input', calcBeam);
+document.getElementById('beam-l').addEventListener('input', calcBeam);
+document.getElementById('beam-e').addEventListener('change', calcBeam);
+document.getElementById('beam-i').addEventListener('input', calcBeam);
+
+// ─── FAZ 1: EXPORT (RAPOR KOPYALAMA) İŞLEVİ ───
+document.getElementById('btn-export-report').addEventListener('click', function() {
+  const activePanel = document.querySelector('.tool-panel.active');
+  if (!activePanel) return;
+
+  let report = `--- MÜHENDİSLİK HESAPLAMA RAPORU ---\n`;
+  report += `Araç: ${activePanel.querySelector('.tool-panel-title').textContent}\n`;
+  const formulaEl = activePanel.querySelector('.tool-panel-formula');
+  if (formulaEl) report += `Formül: ${formulaEl.textContent}\n`;
+  report += `\n[ GİRDİLER ]\n`;
+
+  activePanel.querySelectorAll('.input-field').forEach(field => {
+    const label = field.querySelector('label') ? field.querySelector('label').textContent : 'Değer';
+    let val = '';
+    const input = field.querySelector('input, select');
+    if(input) {
+        if (input.tagName === 'SELECT') val = input.options[input.selectedIndex].text;
+        else if (input.type === 'range') val = field.querySelector('.input-val') ? field.querySelector('.input-val').textContent : input.value;
+        else val = input.value;
+    } else if(field.querySelector('.input-val')) {
+        val = field.querySelector('.input-val').textContent;
+    }
+    report += `- ${label}: ${val}\n`;
+  });
+
+  report += `\n[ SONUÇLAR ]\n`;
+  const mainResult = activePanel.querySelector('.result-box');
+  if (mainResult) {
+    const rVal = mainResult.querySelector('.result-value') ? mainResult.querySelector('.result-value').textContent : '';
+    const rUnit = mainResult.querySelector('.result-unit') ? mainResult.querySelector('.result-unit').textContent : '';
+    report += `- Ana Sonuç: ${rVal} ${rUnit}\n`;
+  }
+
+  activePanel.querySelectorAll('.result-card').forEach(card => {
+    const label = card.querySelector('.result-card-label').textContent;
+    const val = card.querySelector('.result-card-value').textContent;
+    report += `- ${label}: ${val}\n`;
+  });
+
+  if(activePanel.id === 't-tolerance-tool') {
+      report += `\n[ TOLERANS PARÇALARI ]\n`;
+      tolRows.forEach((r, i) => { report += `- Parça ${i+1}: Max: ${r.u}, Min: ${r.l}\n`; });
+  }
+
+  report += `\n--------------------------------------\nMustafa Üner Portfolyo | mustafauner.com.tr`;
+
+  const textarea = document.createElement('textarea');
+  textarea.value = report;
+  document.body.appendChild(textarea);
+  textarea.select();
+  try { document.execCommand('copy'); } catch(e) {}
+  document.body.removeChild(textarea);
+
+  const btn = this; const originalText = btn.innerHTML;
+  btn.innerHTML = '<i class="fa-solid fa-check"></i> KOPYALANDI!';
+  btn.style.borderColor = 'var(--terminal-green)'; btn.style.color = 'var(--terminal-green)';
+  setTimeout(() => { btn.innerHTML = originalText; btn.style.borderColor = ''; btn.style.color = ''; }, 2000);
+});
+
 function openModal(videoId, startTime = 0) {
   let url = `https://www.youtube.com/embed/${videoId}?autoplay=1`; if (startTime > 0) url += `&start=${startTime}`;
   document.getElementById('videoFrame').src = url; document.getElementById('videoModal').classList.add('open'); document.body.style.overflow = 'hidden';
@@ -1478,7 +1616,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
 document.getElementById('videoModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
 
 // Sayfa yüklendiğinde Başlat
-calcVc(); calcPiston(); calcHelis(); calcTork(); calcVidali(); renderTolRows();
+calcVc(); calcPiston(); calcHelis(); calcTork(); calcVidali(); calcBeam(); renderTolRows();
 renderBlogList();
 
 </script>
