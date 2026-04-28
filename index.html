@@ -76,7 +76,7 @@ nav.scrolled { border-bottom-color: rgba(245,158,11,0.25); }
 .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .nav-logo-name { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.08em; color: var(--white); }
 .nav-logo-title { font-size: 8px; color: var(--amber); font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
-.nav-links { display: flex; gap: 32px; }
+.nav-links { display: flex; gap: 32px; align-items: center; }
 .nav-links a { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--mist); text-decoration: none; transition: color 0.2s; position: relative; }
 .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--amber); transform: scaleX(0); transform-origin: right; transition: transform 0.25s ease; }
 .nav-links a:hover, .nav-links a.active-link { color: var(--white); }
@@ -342,11 +342,37 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
 .footer-link:hover { border-color: var(--amber); color: var(--amber); }
 .footer-copy { font-size: 10px; color: rgba(148,163,184,0.35); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; }
 
-/* ─── MOBILE UTILS ─── */
-.mobile-menu-btn { display: none; background: none; border: none; color: var(--amber); font-size: 24px; cursor: pointer; padding: 4px; }
+/* ─── MOBILE UTILS & OVERLAY ─── */
+.mobile-menu-btn { display: none; background: none; border: none; color: var(--amber); font-size: 24px; cursor: pointer; padding: 4px; z-index: 10001; position: relative; }
 .mobile-only { display: none; }
 
-/* ─── MOBILE ─── */
+/* YEPYENİ KESİN ÇÖZÜM MOBİL MENÜ MİMARİSİ */
+.mobile-menu-overlay { 
+  position: fixed; top: 64px; left: 0; right: 0; bottom: 0; 
+  background: var(--ink); z-index: 99; 
+  display: flex; flex-direction: column; justify-content: center; align-items: center; 
+  opacity: 0; pointer-events: none; transition: opacity 0.3s ease; 
+}
+.mobile-menu-overlay.active { opacity: 1; pointer-events: auto; }
+.mobile-menu-content { 
+  display: flex; flex-direction: column; width: 100%; max-width: 400px; padding: 0 24px; gap: 16px; 
+  transform: translateY(20px); transition: transform 0.4s ease; 
+}
+.mobile-menu-overlay.active .mobile-menu-content { transform: translateY(0); }
+
+.m-link { 
+  display: flex; align-items: center; justify-content: flex-start; gap: 16px; 
+  width: 100%; padding: 20px 24px; 
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; 
+  color: var(--light); font-size: 13px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; 
+}
+.m-link i { font-size: 18px; width: 24px; text-align: center; color: var(--mist); }
+.m-link.active-link { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.3); color: var(--amber); }
+.m-link.active-link i { color: var(--amber); }
+.m-cta { background: var(--amber) !important; color: var(--ink) !important; justify-content: center; margin-top: 16px; }
+.m-cta i { color: var(--ink) !important; }
+
+/* ─── MOBILE RESPONSIVE ─── */
 @media (max-width: 768px) {
   .hero-inner { grid-template-columns: 1fr; gap: 40px; }
   .hero-photo-wrap { order: -1; }
@@ -376,43 +402,10 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
   .tool-tab-sub { display: none; }
   .tool-watermark { display: none; } 
   
+  /* ESKİ CSS KALINTILARINI VE CACHE'İ İPTAL EDEN KISIM */
+  .nav-links { display: none !important; } /* Desktop menüyü tamamen yok et */
   .hidden-mobile { display: none !important; }
-  .mobile-only { display: inline-flex !important; }
   .mobile-menu-btn { display: block; }
-  
-  /* ESKİ CSS KALINTILARINI EZMEK İÇİN !important EKLENDİ */
-  .nav-links { 
-    position: fixed !important; top: 64px !important; right: -100% !important; left: auto !important; bottom: 0 !important; width: 100% !important;
-    background: var(--ink) !important; 
-    flex-direction: column !important; padding: 40px 24px !important; gap: 16px !important; 
-    border: none !important;
-    display: flex !important; /* En kritik satır! Eski kod burayı gizliyordu */
-    align-items: center !important; justify-content: flex-start !important;
-    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    overflow-y: auto !important;
-    z-index: 99 !important;
-  }
-  .nav-links.active-mobile { right: 0 !important; animation: none !important; }
-  
-  .nav-links a { display: flex !important; visibility: visible !important; opacity: 1 !important; color: var(--light) !important; }
-  .nav-links a:not(.nav-cta) { 
-    font-size: 13px; letter-spacing: 0.2em; width: 100%; text-align: center; 
-    padding: 20px; 
-    background: rgba(255,255,255,0.03); 
-    border: 1px solid rgba(255,255,255,0.05);
-    border-radius: 8px;
-    transition: all 0.2s ease;
-  }
-  .nav-links a:not(.nav-cta)::after { display: none; }
-  .nav-links a:not(.nav-cta):hover, .nav-links a:not(.nav-cta).active-link { 
-    background: rgba(245,158,11,0.1) !important; 
-    border-color: rgba(245,158,11,0.3) !important; 
-    color: var(--amber) !important; 
-  }
-  .nav-cta.mobile-only { 
-    width: 100%; text-align: center; margin-top: 16px !important; padding: 20px; 
-    background: var(--amber) !important; color: var(--ink) !important; border: none !important; font-size: 13px !important;
-  }
   
   .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
   #python-terminal { padding: 40px 16px; }
@@ -437,18 +430,39 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
         <div class="nav-logo-title">M.Sc. Engineer</div>
       </div>
     </a>
+    
     <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menü">
       <i class="fa-solid fa-bars"></i>
     </button>
-    <nav class="nav-links">
+    
+    <!-- Desktop Menü (Sadece PC'de görünür) -->
+    <div class="nav-links">
       <a href="#/" id="nav-home">Portfolyo</a>
       <a href="#/blog" id="nav-blog">Bilgi Bankası</a>
       <a href="#/tools" id="nav-tools">Hesaplama Araçları</a>
-      <a href="mailto:mustafauner@hotmail.com.tr" class="nav-cta mobile-only" style="margin-top: 8px;">İletişim</a>
-    </nav>
+    </div>
+    
     <a href="mailto:mustafauner@hotmail.com.tr" class="nav-cta hidden-mobile">İletişim</a>
   </div>
 </nav>
+
+<!-- ────────── TAMAMEN YENİ MOBİL MENÜ KATMANI (Sıfır Hata Garantili) ────────── -->
+<div id="mobileMenuOverlay" class="mobile-menu-overlay">
+  <div class="mobile-menu-content">
+    <a href="#/" class="m-link" id="m-nav-home">
+      <i class="fa-solid fa-briefcase"></i> Portfolyo
+    </a>
+    <a href="#/blog" class="m-link" id="m-nav-blog">
+      <i class="fa-solid fa-book-open"></i> Bilgi Bankası
+    </a>
+    <a href="#/tools" class="m-link" id="m-nav-tools">
+      <i class="fa-solid fa-calculator"></i> Hesaplama Araçları
+    </a>
+    <a href="mailto:mustafauner@hotmail.com.tr" class="m-link m-cta">
+      <i class="fa-regular fa-envelope"></i> İletişim
+    </a>
+  </div>
+</div>
 
 <!-- ========================================== -->
 <!-- ============= VIEW: HOME ================= -->
@@ -1142,32 +1156,32 @@ function router() {
     view.classList.remove('active');
   });
 
-  // 3. Menü aktiflik durumunu sıfırla
-  document.querySelectorAll('.nav-links a').forEach(link => {
+  // 3. Menü aktiflik durumunu hem Masaüstü hem Mobil linklerden sıfırla
+  document.querySelectorAll('.nav-links a, .m-link').forEach(link => {
     link.classList.remove('active-link');
   });
 
-  // 4. Hash'e göre ilgili görünümü aç ve menüyü işaretle
+  // 4. Hash'e göre ilgili görünümü aç ve menüleri işaretle
   if (hash.startsWith('#/blog')) {
     document.getElementById('view-blog').classList.add('active');
     document.getElementById('nav-blog').classList.add('active-link');
+    document.getElementById('m-nav-blog').classList.add('active-link');
     
-    // Eğer linkte makale ID'si varsa o makaleyi aç
     const urlParams = new URLSearchParams(hash.split('?')[1]);
     const articleId = urlParams.get('id');
     if(articleId) {
        loadArticle(articleId, null);
     } else {
-       // Yoksa ilk makaleyi aç
        loadArticle(articles[0].id, null, true);
     }
-
   } else if (hash.startsWith('#/tools')) {
     document.getElementById('view-tools').classList.add('active');
     document.getElementById('nav-tools').classList.add('active-link');
+    document.getElementById('m-nav-tools').classList.add('active-link');
   } else {
     document.getElementById('view-home').classList.add('active');
     document.getElementById('nav-home').classList.add('active-link');
+    document.getElementById('m-nav-home').classList.add('active-link');
   }
   
   // 5. Sayfayı en üste kaydır
@@ -1178,18 +1192,18 @@ function router() {
 window.addEventListener('hashchange', router);
 window.addEventListener('load', router);
 
-// ─── MOBİL MENÜ İŞLEVİ ───
+// ─── YENİ NESİL MOBİL MENÜ İŞLEVİ ───
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const navLinksContainer = document.querySelector('.nav-links');
+const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
 
 mobileMenuBtn.addEventListener('click', () => {
-  navLinksContainer.classList.toggle('active-mobile');
+  mobileMenuOverlay.classList.toggle('active');
   
-  // Menü açıkken arkadaki sitenin kaymasını engeller (Profesyonel UX)
-  document.body.style.overflow = navLinksContainer.classList.contains('active-mobile') ? 'hidden' : '';
+  // Menü açıkken arkadaki sitenin kaymasını engeller
+  document.body.style.overflow = mobileMenuOverlay.classList.contains('active') ? 'hidden' : '';
   
   const icon = mobileMenuBtn.querySelector('i');
-  if(navLinksContainer.classList.contains('active-mobile')) {
+  if(mobileMenuOverlay.classList.contains('active')) {
     icon.classList.remove('fa-bars');
     icon.classList.add('fa-xmark');
   } else {
@@ -1198,10 +1212,11 @@ mobileMenuBtn.addEventListener('click', () => {
   }
 });
 
-document.querySelectorAll('.nav-links a').forEach(link => {
+// Linklere tıklayınca menüyü kapat
+document.querySelectorAll('.m-link').forEach(link => {
   link.addEventListener('click', () => {
-    navLinksContainer.classList.remove('active-mobile');
-    document.body.style.overflow = ''; // Tıklanınca kaydırma kilidini kaldırır
+    mobileMenuOverlay.classList.remove('active');
+    document.body.style.overflow = ''; 
     mobileMenuBtn.querySelector('i').classList.remove('fa-xmark');
     mobileMenuBtn.querySelector('i').classList.add('fa-bars');
   });
@@ -1217,7 +1232,7 @@ function renderBlogList() {
   const currentId = new URLSearchParams(currentHash.split('?')[1]).get('id') || articles[0].id;
 
   articles.forEach((article) => {
-    const card = document.createElement('a'); // Artık div değil, fiziksel bir link
+    const card = document.createElement('a');
     card.href = `#/blog?id=${article.id}`;
     card.className = `blog-card ${currentId === article.id ? 'active' : ''}`;
     
@@ -1233,7 +1248,6 @@ function renderBlogList() {
 }
 
 function loadArticle(id, cardElement, isInitialLoad = false) {
-  // Sol menüdeki aktif class'ı güncelle
   document.querySelectorAll('.blog-card').forEach(c => {
     c.classList.remove('active');
     if(c.getAttribute('href') === `#/blog?id=${id}`) c.classList.add('active');
@@ -1344,7 +1358,6 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-// Sadece o anki aktif olan view içindeki elementleri observe et (Performans için)
 function reObserve() {
   document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .skill-group, .counter, .terminal-wrapper').forEach(el => { observer.observe(el); });
 }
