@@ -380,17 +380,21 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
   .mobile-only { display: inline-flex !important; }
   .mobile-menu-btn { display: block; }
   
+  /* ESKİ CSS KALINTILARINI EZMEK İÇİN !important EKLENDİ */
   .nav-links { 
-    position: fixed; top: 64px; right: -100%; left: auto; bottom: 0; width: 100%;
-    background: var(--ink); /* Şeffaflık ve blur kaldırılıp %100 katı siyah (ink) renge dönüldü */
-    flex-direction: column; padding: 40px 24px; gap: 16px; 
-    border: none;
-    display: flex; align-items: center; justify-content: flex-start;
-    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow-y: auto; /* Küçük ekranlarda menünün kendi içinde kaydırılabilmesini sağlar */
+    position: fixed !important; top: 64px !important; right: -100% !important; left: auto !important; bottom: 0 !important; width: 100% !important;
+    background: var(--ink) !important; 
+    flex-direction: column !important; padding: 40px 24px !important; gap: 16px !important; 
+    border: none !important;
+    display: flex !important; /* En kritik satır! Eski kod burayı gizliyordu */
+    align-items: center !important; justify-content: flex-start !important;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    overflow-y: auto !important;
+    z-index: 99 !important;
   }
-  .nav-links.active-mobile { right: 0; animation: none; }
+  .nav-links.active-mobile { right: 0 !important; animation: none !important; }
   
+  .nav-links a { display: flex !important; visibility: visible !important; opacity: 1 !important; color: var(--light) !important; }
   .nav-links a:not(.nav-cta) { 
     font-size: 13px; letter-spacing: 0.2em; width: 100%; text-align: center; 
     padding: 20px; 
@@ -401,13 +405,13 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
   }
   .nav-links a:not(.nav-cta)::after { display: none; }
   .nav-links a:not(.nav-cta):hover, .nav-links a:not(.nav-cta).active-link { 
-    background: rgba(245,158,11,0.1); 
-    border-color: rgba(245,158,11,0.3); 
-    color: var(--amber); 
+    background: rgba(245,158,11,0.1) !important; 
+    border-color: rgba(245,158,11,0.3) !important; 
+    color: var(--amber) !important; 
   }
   .nav-cta.mobile-only { 
     width: 100%; text-align: center; margin-top: 16px !important; padding: 20px; 
-    background: var(--amber); color: var(--ink); border: none; font-size: 13px;
+    background: var(--amber) !important; color: var(--ink) !important; border: none !important; font-size: 13px !important;
   }
   
   .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
