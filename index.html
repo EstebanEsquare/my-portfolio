@@ -382,11 +382,12 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
   
   .nav-links { 
     position: fixed; top: 64px; right: -100%; left: auto; bottom: 0; width: 100%;
-    background: rgba(8,8,16,0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    background: var(--ink); /* Şeffaflık ve blur kaldırılıp %100 katı siyah (ink) renge dönüldü */
     flex-direction: column; padding: 40px 24px; gap: 16px; 
     border: none;
     display: flex; align-items: center; justify-content: flex-start;
     transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto; /* Küçük ekranlarda menünün kendi içinde kaydırılabilmesini sağlar */
   }
   .nav-links.active-mobile { right: 0; animation: none; }
   
@@ -1179,6 +1180,10 @@ const navLinksContainer = document.querySelector('.nav-links');
 
 mobileMenuBtn.addEventListener('click', () => {
   navLinksContainer.classList.toggle('active-mobile');
+  
+  // Menü açıkken arkadaki sitenin kaymasını engeller (Profesyonel UX)
+  document.body.style.overflow = navLinksContainer.classList.contains('active-mobile') ? 'hidden' : '';
+  
   const icon = mobileMenuBtn.querySelector('i');
   if(navLinksContainer.classList.contains('active-mobile')) {
     icon.classList.remove('fa-bars');
@@ -1192,6 +1197,7 @@ mobileMenuBtn.addEventListener('click', () => {
 document.querySelectorAll('.nav-links a').forEach(link => {
   link.addEventListener('click', () => {
     navLinksContainer.classList.remove('active-mobile');
+    document.body.style.overflow = ''; // Tıklanınca kaydırma kilidini kaldırır
     mobileMenuBtn.querySelector('i').classList.remove('fa-xmark');
     mobileMenuBtn.querySelector('i').classList.add('fa-bars');
   });
