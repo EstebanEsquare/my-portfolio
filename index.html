@@ -54,6 +54,11 @@ body::before {
 ::-webkit-scrollbar-track { background: var(--ink-2); }
 ::-webkit-scrollbar-thumb { background: var(--amber); border-radius: 2px; }
 
+/* ─── SPA VIEW ANIMATIONS ─── */
+.spa-view { display: none; opacity: 0; }
+.spa-view.active { display: block; animation: fadeUp 0.5s ease forwards; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
 /* ─── REVEAL ANIMATIONS ─── */
 .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -74,8 +79,8 @@ nav.scrolled { border-bottom-color: rgba(245,158,11,0.25); }
 .nav-links { display: flex; gap: 32px; }
 .nav-links a { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--mist); text-decoration: none; transition: color 0.2s; position: relative; }
 .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--amber); transform: scaleX(0); transform-origin: right; transition: transform 0.25s ease; }
-.nav-links a:hover { color: var(--white); }
-.nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+.nav-links a:hover, .nav-links a.active-link { color: var(--white); }
+.nav-links a:hover::after, .nav-links a.active-link::after { transform: scaleX(1); transform-origin: left; }
 .nav-cta { padding: 8px 20px; border: 1px solid var(--amber); color: var(--amber); border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; font-family: 'JetBrains Mono', monospace; transition: all 0.2s; }
 .nav-cta:hover { background: var(--amber); color: var(--ink); }
 
@@ -221,14 +226,14 @@ section { padding: 100px 24px; }
 .t-detail-item .val { font-size: 13px; color: var(--amber); font-weight: 500; }
 
 /* ─── KNOWLEDGE BASE (BLOG) ─── */
-#blog { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.05); }
+#blog { background: var(--ink-2); }
 .blog-layout { display: grid; grid-template-columns: 350px 1fr; gap: 2px; background: var(--ink-3); border: 1px solid rgba(245,158,11,0.1); border-radius: 8px; overflow: hidden; min-height: 700px; }
 .blog-sidebar { background: var(--ink-4); display: flex; flex-direction: column; max-height: 700px; }
 .blog-sidebar-header { padding: 24px; border-bottom: 1px solid rgba(245,158,11,0.1); }
 .blog-sidebar-title { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--amber); letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; display: flex; align-items: center; gap: 8px; }
 .blog-list { overflow-y: auto; display: flex; flex-direction: column; gap: 2px; }
 .blog-list::-webkit-scrollbar { width: 2px; }
-.blog-card { padding: 20px 24px; background: var(--ink-3); cursor: pointer; transition: all 0.2s; border-left: 2px solid transparent; }
+.blog-card { padding: 20px 24px; background: var(--ink-3); cursor: pointer; transition: all 0.2s; border-left: 2px solid transparent; text-decoration: none; display: block; }
 .blog-card:hover { background: rgba(245,158,11,0.03); }
 .blog-card.active { background: rgba(245,158,11,0.05); border-left-color: var(--amber); }
 .blog-meta { display: flex; justify-content: space-between; margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--mist); letter-spacing: 0.1em; }
@@ -269,7 +274,7 @@ section { padding: 100px 24px; }
 .prose td { padding: 14px 16px; border-bottom: 1px solid rgba(51,65,85,0.4); color: var(--light); vertical-align: top; line-height: 1.6; }
 
 /* ─── ENGINEERING TOOLS ─── */
-#tools { background: var(--ink); border-top: 1px solid rgba(245,158,11,0.05); }
+#tools { background: var(--ink); }
 .tools-layout { display: grid; grid-template-columns: 280px 1fr; gap: 2px; background: var(--ink-3); border: 1px solid rgba(245,158,11,0.1); border-radius: 8px; overflow: hidden; min-height: 560px; }
 .tools-sidebar { background: var(--ink-4); padding: 8px; display: flex; flex-direction: column; gap: 4px; }
 .tool-tab { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 6px; cursor: pointer; transition: all 0.2s; border: 1px solid transparent; }
@@ -380,7 +385,7 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
 <!-- ────────── NAV ────────── -->
 <nav id="navbar">
   <div class="nav-inner">
-    <a href="#hero" class="nav-logo">
+    <a href="#/" class="nav-logo">
       <svg width="28" height="28" viewBox="0 0 100 100">
         <path d="M20 80V20l30 40 30-40v60" fill="none" stroke="#f59e0b" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M15 85h70" fill="none" stroke="#f59e0b" stroke-width="6" stroke-linecap="round"/>
@@ -391,539 +396,497 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
       </div>
     </a>
     <nav class="nav-links">
-      <a href="#journey">Serüven</a>
-      <a href="#portfolio">Portfolyo & Ar-Ge</a>
-      <a href="#blog">Bilgi Bankası</a>
-      <a href="#tools">Araçlar</a>
+      <a href="#/" id="nav-home">Portfolyo</a>
+      <a href="#/blog" id="nav-blog">Bilgi Bankası</a>
+      <a href="#/tools" id="nav-tools">Hesaplama Araçları</a>
     </nav>
     <a href="mailto:mustafauner@hotmail.com.tr" class="nav-cta">İletişim</a>
   </div>
 </nav>
 
-<!-- ────────── HERO ────────── -->
-<section id="hero">
-  <div class="hero-grid-bg"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-inner">
-    <div>
-      <div class="hero-badge reveal d1">Senior R&D Project Leader</div>
-      <h1 class="hero-name reveal d2">MUSTAFA<br><span>ÜNER</span></h1>
-      <div class="hero-title reveal d3">M.Sc. Makine Mühendisi</div>
-      <p class="hero-desc reveal d4">
-        15 yıllık tasarım ve üretim disiplinini, hesaplamalı tasarım ve veri odaklı optimizasyon yöntemleriyle harmanlayarak ileri seviye üretim teknolojileri geliştiriyorum.
-      </p>
-      <div class="hero-actions reveal d5">
-        <a href="https://www.linkedin.com/in/mustafa-uner-engineer/" target="_blank" class="btn-primary">
-          <i class="fa-brands fa-linkedin"></i> LinkedIn
-        </a>
-        <a href="mailto:mustafauner@hotmail.com.tr" class="btn-ghost">
-          <i class="fa-regular fa-envelope"></i> İletişime Geç
-        </a>
-      </div>
-    </div>
-    <div class="hero-photo-wrap reveal-right d3">
-      <div class="hero-photo-frame">
-        <img src="cv2.jpeg" alt="Mustafa Üner" onerror="this.style.display='none'; this.parentElement.style.background='#1e1e30'">
-        <div class="hero-photo-label">
-          <span>Istanbul, TR</span>
-          <span>Kaban Makina · Ar-Ge</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ────────── STATS ────────── -->
-<div id="stats">
-  <div class="stats-inner">
-    <div class="stat-item reveal d1">
-      <div class="stat-num counter" data-target="15">0</div>
-      <div class="stat-label">Yıl Deneyim</div>
-    </div>
-    <div class="stat-item reveal d2">
-      <div class="stat-num" style="font-size:38px; letter-spacing: 0.06em;">UÇTAN UCA</div>
-      <div class="stat-label">Ar-Ge & Revizyon Yönetimi</div>
-    </div>
-    <div class="stat-item reveal d3">
-      <div class="stat-num" style="font-size:38px; letter-spacing: 0.06em;">BÜTÜNCÜL</div>
-      <div class="stat-label">Makine & Sistem Tasarımı</div>
-    </div>
-    <div class="stat-item reveal d4">
-      <div class="stat-num" style="font-size:42px;">M.Sc.</div>
-      <div class="stat-label">Mühendislik Yönetimi</div>
-    </div>
-  </div>
-</div>
-
-<!-- ────────── JOURNEY ────────── -->
-<section id="journey">
-  <div class="section-inner">
-    <div class="reveal">
-      <div class="section-label">Kariyer Haritası</div>
-      <h2 class="section-title">MÜHENDİSLİK<br><span>YOLCULUĞU</span></h2>
-      <p class="section-sub">Sahadan akademiye, tasarım masasından Ar-Ge liderliğine uzanan 15 yıllık evrim.</p>
-    </div>
-
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-left reveal-right d1">
-          <div class="tl-year">2009</div>
-          <div class="tl-heading">AKADEMİK TEMEL</div>
-          <div class="tl-desc">Makine Mühendisliği mezuniyeti. Analitik düşünce ve mühendislik teorisinin temeli.</div>
-          <span class="tl-tag">B.Sc. Mech. Eng.</span>
-        </div>
-        <div class="tl-center"><div class="tl-dot"></div></div>
-        <div class="tl-right"></div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-left"></div>
-        <div class="tl-center"><div class="tl-dot"></div></div>
-        <div class="tl-right reveal-left d1">
-          <div class="tl-year">2011</div>
-          <div class="tl-heading">SAHA DENEYİMİ</div>
-          <div class="tl-desc">Kaban Makina üretim sahasında montajdan CNC tezgâhına kadar her aşamada bizzat görev. İmalat disiplini sahada edinildi.</div>
-          <span class="tl-tag">Shop Floor Mastery</span>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-left reveal-right d1">
-          <div class="tl-year">2012</div>
-          <div class="tl-heading">KALIP & AR-GE</div>
-          <div class="tl-desc">PVC kaynak makineleri ve özel profil kesimleri için hassas kalıp Ar-Ge süreçleri. Proses mimarisinin temeli.</div>
-          <span class="tl-tag">Process Architecture</span>
-        </div>
-        <div class="tl-center"><div class="tl-dot"></div></div>
-        <div class="tl-right"></div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-left"></div>
-        <div class="tl-center"><div class="tl-dot"></div></div>
-        <div class="tl-right reveal-left d1">
-          <div class="tl-year">2013</div>
-          <div class="tl-heading">MAKİNE TASARIMI</div>
-          <div class="tl-desc">İlk alüminyum işleme merkezi ZC 3010 projesiyle başlayan uzmanlaşma serüveni. Tasarımdan prototype'a tam döngü.</div>
-          <span class="tl-tag">Machine Architect</span>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-left reveal-right d1">
-          <div class="tl-year highlight">2019</div>
-          <div class="tl-heading">YÜKSEK LİSANS</div>
-          <div class="tl-desc">Marmara Üniversitesi'nde Mühendislik Yönetimi M.Sc. Teknik uzmanlık, stratejik yönetim vizyonuyla birleşti.</div>
-          <span class="tl-tag">M.Sc. Eng. Management</span>
-        </div>
-        <div class="tl-center"><div class="tl-dot"></div></div>
-        <div class="tl-right"></div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-left"></div>
-        <div class="tl-center"><div class="tl-dot active"></div></div>
-        <div class="tl-right reveal-left d1">
-          <div class="tl-year highlight" style="font-size:28px; font-family:'JetBrains Mono',monospace; letter-spacing:0.04em;">GÜNÜMÜZ</div>
-          <div class="tl-heading">AR-GE LİDERLİĞİ</div>
-          <div class="tl-desc">Veri odaklı optimizasyon ve hesaplamalı tasarım teknikleriyle ileri seviye Ar-Ge projeleri yönetimi. 5-eksenli devasa CNC sistemlerden robotik otomasyon çözümlerine.</div>
-          <span class="tl-tag">R&D Leadership</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ────────── SKILLS ────────── -->
-<section id="skills">
-  <div class="section-inner">
-    <div class="skills-grid">
-      <div class="skill-group reveal d1">
-        <div class="skill-group-title"><i class="fa-solid fa-drafting-compass"></i> Makine Tasarımı</div>
-        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">SolidWorks / CAD</span><span class="skill-pct">95%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.95"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">5-Eksen CNC Tasarımı</span><span class="skill-pct">92%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.92"></div></div></div>
-      </div>
-      <div class="skill-group reveal d2">
-        <div class="skill-group-title"><i class="fa-brands fa-python"></i> Hesaplamalı Mühendislik</div>
-        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Python / Otomasyon</span><span class="skill-pct">80%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.80"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Veri Odaklı Optimizasyon</span><span class="skill-pct">78%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.78"></div></div></div>
-      </div>
-      <div class="skill-group reveal d3">
-        <div class="skill-group-title"><i class="fa-solid fa-industry"></i> Üretim & Proses</div>
-        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Alüminyum İşleme</span><span class="skill-pct">95%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.95"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Pnömatik Sistemler</span><span class="skill-pct">90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.90"></div></div></div>
-      </div>
-      <div class="skill-group reveal d4">
-        <div class="skill-group-title"><i class="fa-solid fa-chart-line"></i> Ar-Ge Liderliği</div>
-        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Proje Yönetimi (PMP Altyapısı)</span><span class="skill-pct">90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.90"></div></div></div>
-        <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">TÜBİTAK 1501 Süreç Yönetimi</span><span class="skill-pct">98%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.98"></div></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ────────── PYTHON TERMINAL SIMULATION ────────── -->
-<div id="python-terminal">
-  <div class="terminal-wrapper reveal">
-    <div class="terminal-topbar">
-      <div class="term-dots"><span></span><span></span><span></span></div>
-      <div class="term-title"><i class="fa-brands fa-python"></i> optimize_chassis.py — sys_admin@uner_r&d</div>
-      <div style="width: 40px;"></div> <!-- Spacer -->
-    </div>
-    <div class="terminal-body" id="term-body">
-      <!-- JS will inject lines here -->
-    </div>
-  </div>
-</div>
-
-<!-- ────────── PORTFOLIO ────────── -->
-<section id="portfolio">
-  <div class="section-inner">
-    <div class="reveal">
-      <div class="section-label">Tasarım Portfolyosu</div>
-      <h2 class="section-title">MAKİNE<br><span>MİRASI</span></h2>
-      <p class="section-sub">2013'ten bugüne sıfırdan tasarlanan onlarca makine ve uçtan uca yönetilen sistem revizyonları arasından seçilmiş amiral gemisi projeler.</p>
-    </div>
-
-    <div class="portfolio-grid">
-      <div class="machine-card reveal d1" onclick="openModal('P_uIFpvk1SM')">
-        <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/P_uIFpvk1SM/maxresdefault.jpg'), url('https://i.ytimg.com/vi/P_uIFpvk1SM/hqdefault.jpg');"></div>
-        <div class="machine-card-inner">
-          <div class="machine-num">01</div>
-          <div><div class="machine-title">ZC 3010</div><div class="machine-desc">İlk Alüminyum İşleme Merkezi</div></div>
-        </div>
-        <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
-      </div>
-      
-      <div class="machine-card reveal d2" onclick="openModal('O4QWRVjYops')">
-        <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/O4QWRVjYops/hqdefault.jpg');"></div>
-        <div class="machine-card-inner">
-          <div class="machine-num">02</div>
-          <div><div class="machine-title">ZC 3020</div><div class="machine-desc">Hassas Seri Üretim CNC</div></div>
-        </div>
-        <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
-      </div>
-      
-      <div class="machine-card reveal d3" onclick="openModal('2rBsAK_WqiY', 13)">
-        <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/2rBsAK_WqiY/maxresdefault.jpg'), url('https://i.ytimg.com/vi/2rBsAK_WqiY/hqdefault.jpg');"></div>
-        <div class="machine-card-inner">
-          <div class="machine-num">03</div>
-          <div><div class="machine-title">ZC 3050</div><div class="machine-desc">13.5m Stroklu 5-Eksenli Ar-Ge</div></div>
-        </div>
-        <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
-      </div>
-      
-      <div class="machine-card reveal d1" onclick="openModal('jspCnwaKgOM')">
-        <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/jspCnwaKgOM/maxresdefault.jpg'), url('https://i.ytimg.com/vi/jspCnwaKgOM/hqdefault.jpg');"></div>
-        <div class="machine-card-inner">
-          <div class="machine-num">04</div>
-          <div><div class="machine-title">ZF 3010</div><div class="machine-desc">Yüksek Hızlı Profil Frezeleme</div></div>
-        </div>
-        <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
-      </div>
-      
-      <div class="machine-card reveal d2" onclick="openModal('B8S7bgEGUkw')">
-        <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/B8S7bgEGUkw/maxresdefault.jpg'), url('https://i.ytimg.com/vi/B8S7bgEGUkw/hqdefault.jpg');"></div>
-        <div class="machine-card-inner">
-          <div class="machine-num">05</div>
-          <div><div class="machine-title">ZE 3010</div><div class="machine-desc">Robotik Kesim & İşleme Merkezi</div></div>
-        </div>
-        <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
-      </div>
-      
-      <div class="machine-card reveal d3" onclick="openModal('5RSI86l4cfw', 5)">
-        <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/5RSI86l4cfw/maxresdefault.jpg'), url('https://i.ytimg.com/vi/5RSI86l4cfw/hqdefault.jpg');"></div>
-        <div class="machine-badge">Amiral Gemi</div>
-        <div class="machine-card-inner">
-          <div class="machine-num">06</div>
-          <div><div class="machine-title">ZC 3062-64</div><div class="machine-desc">Modüler CNC Üretim Ailesi</div></div>
-        </div>
-        <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
-      </div>
-      
-      <div class="machine-card reveal d1" onclick="openModal('7VxKh9M_qys')">
-        <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/7VxKh9M_qys/hqdefault.jpg');"></div>
-        <div class="machine-card-inner">
-          <div class="machine-num">07</div>
-          <div><div class="machine-title">ZC 4040</div><div class="machine-desc">4-Eksenli Endüstriyel CNC</div></div>
-        </div>
-        <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
-      </div>
-      
-      <div class="machine-card reveal d2" onclick="openModal('2rBsAK_WqiY')">
-        <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/2rBsAK_WqiY/maxresdefault.jpg'), url('https://i.ytimg.com/vi/2rBsAK_WqiY/hqdefault.jpg');"></div>
-        <div class="machine-badge">Amiral Gemi</div>
-        <div class="machine-card-inner">
-          <div class="machine-num">08</div>
-          <div><div class="machine-title">ZC 3052-54</div><div class="machine-desc">5-Eksenli Performans CNC Serisi</div></div>
-        </div>
-        <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
-      </div>
-      
-      <div class="machine-card featured reveal d3" onclick="openModal('WUrf8N120SU', 18)">
-        <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/WUrf8N120SU/maxresdefault.jpg'), url('https://i.ytimg.com/vi/WUrf8N120SU/hqdefault.jpg');"></div>
-        <div class="machine-badge">Yeni Seri</div>
-        <div class="machine-card-inner">
-          <div class="machine-num">09</div>
-          <div><div class="machine-title" style="font-size:40px;">AC 20XX SERİSİ</div><div class="machine-desc">Alüminyum kesiminde pazar lideri çözümler</div></div>
-        </div>
-        <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ────────── TUBITAK AR-GE PROJECTS ────────── -->
-<section id="tubitak">
-  <div class="section-inner">
-    <div class="reveal">
-      <div class="section-label">Devlet Destekli Akreditasyon</div>
-      <h2 class="section-title">ULUSAL AR-GE<br><span>PROJELERİ</span></h2>
-      <p class="section-sub">Akademik hakem heyetleri tarafından denetlenmiş ve "Proje Yürütücüsü" sıfatıyla uçtan uca yönetilip tam notla kapatılmış TÜBİTAK 1501 Sanayi Ar-Ge projeleri.</p>
-    </div>
-
-    <div class="tubitak-grid">
-      <!-- Proje 1 -->
-      <div class="tubitak-card reveal d1">
-        <i class="fa-solid fa-microchip tubitak-card-bg"></i>
-        <div class="tubitak-logo-wrap">
-          <div class="tubitak-brand">
-            <img src="tubitak-logo.svg" alt="TÜBİTAK" class="tubitak-logo-img" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/05/T%C3%9CB%C4%B0TAK_logo.svg'">
-            <span class="t-logo-text">TÜBİTAK</span>
-          </div>
-          <div class="t-badge success"><i class="fa-solid fa-check"></i> Başarıyla Tamamlandı</div>
-        </div>
-        <div class="t-badge-group">
-          <span class="t-badge program">1501 Sanayi Ar-Ge Programı</span>
-          <span class="t-badge program" style="background: rgba(245,158,11,0.1); color: var(--amber); border-color: rgba(245,158,11,0.3);">Proje Yürütücüsü</span>
-        </div>
-        <h3 class="t-project-name">13,5 Metre Stroklu Alüminyum Profilleri İşlemek İçin Geliştirilen CNC Kontrollü 5 Eksen Makinenin Geliştirilmesi</h3>
-        
-        <div class="t-details">
-          <div class="t-detail-item">
-            <span class="label">Proje Referans Kodu</span>
-            <span class="val">No: 3180059</span>
-          </div>
-          <div class="t-detail-item">
-            <span class="label">Teknoloji Grubu</span>
-            <span class="val">MAKİTEG (Makina İmalat)</span>
-          </div>
-          <div class="t-detail-item">
-            <span class="label">Başvuru / Onay Yılı</span>
-            <span class="val">2018</span>
-          </div>
-          <div class="t-detail-item">
-            <span class="label">Tasarım Eşleşmesi</span>
-            <span class="val" style="color:var(--white);"><i class="fa-solid fa-link" style="color:var(--amber); font-size:10px;"></i> ZC 3050 Dev CNC</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Proje 2 -->
-      <div class="tubitak-card reveal d2">
-        <i class="fa-solid fa-gears tubitak-card-bg"></i>
-        <div class="tubitak-logo-wrap">
-          <div class="tubitak-brand">
-            <img src="tubitak-logo.svg" alt="TÜBİTAK" class="tubitak-logo-img" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/05/T%C3%9CB%C4%B0TAK_logo.svg'">
-            <span class="t-logo-text">TÜBİTAK</span>
-          </div>
-          <div class="t-badge success"><i class="fa-solid fa-check"></i> Başarıyla Tamamlandı</div>
-        </div>
-        <div class="t-badge-group">
-          <span class="t-badge program">1501 Sanayi Ar-Ge Programı</span>
-          <span class="t-badge program" style="background: rgba(245,158,11,0.1); color: var(--amber); border-color: rgba(245,158,11,0.3);">Proje Yürütücüsü</span>
-        </div>
-        <h3 class="t-project-name">Alüminyum Profil İşlemek İçin Geliştirilmiş CNC Kontrollü Makine</h3>
-        
-        <div class="t-details" style="margin-top: 48px;">
-          <div class="t-detail-item">
-            <span class="label">Proje Referans Kodu</span>
-            <span class="val">No: 3140118</span>
-          </div>
-          <div class="t-detail-item">
-            <span class="label">Teknoloji Grubu</span>
-            <span class="val">MAKİTEG (Makina İmalat)</span>
-          </div>
-          <div class="t-detail-item">
-            <span class="label">Başvuru / Onay Yılı</span>
-            <span class="val">2014</span>
-          </div>
-          <div class="t-detail-item">
-            <span class="label">Tasarım Eşleşmesi</span>
-            <span class="val" style="color:var(--white);"><i class="fa-solid fa-link" style="color:var(--amber); font-size:10px;"></i> ZC 3010 Merkezi</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ────────── KNOWLEDGE BASE (BLOG) ────────── -->
-<section id="blog">
-  <div class="section-inner">
-    <div class="reveal">
-      <div class="section-label">Makale & Analiz</div>
-      <h2 class="section-title">MÜHENDİSLİK<br><span>GÜNLÜĞÜ</span></h2>
-      <p class="section-sub">Tasarım felsefesi, hesaplamalı mühendislik deneyimleri ve saha tecrübeleri.</p>
-    </div>
-
-    <div class="blog-layout reveal">
-      <div class="blog-sidebar">
-        <div class="blog-sidebar-header">
-          <div class="blog-sidebar-title"><i class="fa-solid fa-book-open"></i> YAZILAR</div>
-        </div>
-        <div class="blog-list" id="blog-list-container">
-          <!-- JS ile doldurulacak makale kartları buraya gelecek -->
-        </div>
-      </div>
-      <div class="blog-content-area">
-        <div class="blog-reader" id="blog-reader">
-          <!-- JS ile doldurulacak makale içeriği buraya gelecek -->
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ────────── TOOLS ────────── -->
-<section id="tools">
-  <div class="section-inner">
-    <div class="reveal">
-      <div class="section-label">Mühendislik Araçları</div>
-      <h2 class="section-title">HESAPLAMA<br><span>PANELİ</span></h2>
-      <p class="section-sub">ISO / DIN standartlarına dayalı, anlık hesaplama araçları. Ön tasarım süreçlerini hızlandırın.</p>
-    </div>
-
-    <div class="tools-layout reveal">
-      <div class="tools-sidebar">
-        <div class="tool-tab active" data-target="t-vc"><i class="fa-solid fa-rotate"></i><div class="tool-tab-text"><span class="tool-tab-name">Kesme Hızı</span><span class="tool-tab-sub">Vc Analysis</span></div></div>
-        <div class="tool-tab" data-target="t-piston"><i class="fa-solid fa-compress"></i><div class="tool-tab-text"><span class="tool-tab-name">Piston Kuvveti</span><span class="tool-tab-sub">ISO 6431</span></div></div>
-        <div class="tool-tab" data-target="t-helis"><i class="fa-solid fa-gear"></i><div class="tool-tab-text"><span class="tool-tab-name">Helis Dişli</span><span class="tool-tab-sub">Gear Analysis</span></div></div>
-        <div class="tool-tab" data-target="t-tork"><i class="fa-solid fa-bolt"></i><div class="tool-tab-text"><span class="tool-tab-name">Motor Tork</span><span class="tool-tab-sub">T = P / ω</span></div></div>
-        <div class="tool-tab" data-target="t-vidali"><i class="fa-solid fa-screwdriver"></i><div class="tool-tab-text"><span class="tool-tab-name">Vidalı Mil</span><span class="tool-tab-sub">Lead Screw</span></div></div>
-        <div class="tool-tab" data-target="t-tolerance-tool"><i class="fa-solid fa-layer-group"></i><div class="tool-tab-text"><span class="tool-tab-name">Tolerans Analizi</span><span class="tool-tab-sub">Stack-up / RSS</span></div></div>
-      </div>
-
-      <div class="tools-content">
-        <div id="t-vc" class="tool-panel active">
-          <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M40 10v30m20-30v30" stroke-width="4"/><path d="M30 40h40v20H30z" stroke-width="3"/><path d="M35 40l-5 20m15-20l-5 20m15-20l-5 20m15-20l-5 20"/><path d="M20 60h60v30H20z" stroke="currentColor" opacity="0.5"/><path d="M65 25a15 15 0 1 1-30 0" stroke-dasharray="4 4"/><path d="M35 25l-5-5m0 10l5-5"/>
-          </svg>
-          <div class="tool-panel-title">Kesme Hızı Analizi — Vc</div>
-          <div class="tool-panel-formula">Vc = (π × D × n) / 1000 &nbsp;|&nbsp; Birim: m/dak</div>
-          <div class="result-box"><div class="result-value" id="vc-result">188.5</div><div class="result-unit">Metre / Dakika</div></div>
-          <div class="input-grid">
-            <div class="input-field"><label>İşleme Çapı D (mm)</label><input type="range" id="vc-d" min="1" max="250" value="50"><div class="input-row"><span class="input-label">D =</span><span class="input-val" id="vc-d-val">50 mm</span></div></div>
-            <div class="input-field"><label>Devir n (rpm)</label><input type="range" id="vc-n" min="100" max="24000" value="1200"><div class="input-row"><span class="input-label">n =</span><span class="input-val" id="vc-n-val">1200 rpm</span></div></div>
-          </div>
-        </div>
-
-        <div id="t-piston" class="tool-panel">
-          <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="20" y="30" width="50" height="40" rx="2" stroke-width="3"/><path d="M25 25v5m40-5v5" stroke-width="2"/><rect x="45" y="30" width="8" height="40" fill="var(--amber)" fill-opacity="0.2"/><path d="M53 45h35m-35 10h35" stroke-width="2"/><path d="M88 43v14" stroke-width="3"/><path d="M70 20h20m-5-5l5 5-5 5" stroke-dasharray="2 2"/><path d="M40 80H20m5-5l-5 5 5 5" stroke-dasharray="2 2"/>
-          </svg>
-          <div class="tool-panel-title">Piston Kuvvet Analizi — ISO 6431</div>
-          <div class="tool-panel-formula">F_itme = (π/4) × D² × P &nbsp;|&nbsp; F_çekme = (π/4) × (D² − d²) × P</div>
-          <div class="input-grid" style="margin-bottom:20px;">
-            <div class="input-field">
-              <label>Piston Çapı / Bore (mm)</label>
-              <select id="p-bore" class="tool-select"><option value="12">12 mm</option><option value="16">16 mm</option><option value="20">20 mm</option><option value="25">25 mm</option><option value="32">32 mm</option><option value="40">40 mm</option><option value="50">50 mm</option><option value="63">63 mm</option><option value="80" selected>80 mm</option><option value="100">100 mm</option></select>
-            </div>
-            <div class="input-field">
-              <label>Mil Çapı / Rod (mm)</label>
-              <select id="p-rod" class="tool-select"><option value="6">6 mm</option><option value="8">8 mm</option><option value="10">10 mm</option><option value="12">12 mm</option><option value="16">16 mm</option><option value="20">20 mm</option><option value="25" selected>25 mm</option><option value="32">32 mm</option></select>
-            </div>
-          </div>
-          <div class="input-field" style="margin-bottom:20px;">
-            <label>Çalışma Basıncı (Bar)</label>
-            <input type="range" id="p-bar" min="1" max="10" value="6" step="0.5">
-            <div class="input-row"><span class="input-label">P =</span><span class="input-val" id="p-bar-val">6 Bar</span></div>
-          </div>
-          <div class="result-grid">
-            <div class="result-card highlight"><span class="result-card-label">İtme Kuvveti</span><div class="result-card-value" id="p-push">301.6 kg</div></div>
-            <div class="result-card"><span class="result-card-label">Çekme Kuvveti</span><div class="result-card-value" id="p-pull">226.2 kg</div></div>
-          </div>
-        </div>
-
-        <div id="t-helis" class="tool-panel">
-          <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="50" cy="50" r="40" stroke-width="3" stroke-dasharray="10 5"/><circle cx="50" cy="50" r="10" stroke-width="2"/><circle cx="50" cy="50" r="14" stroke-dasharray="2 2"/><path d="M20 25l60 30M15 40l60 30M25 15l60 30M15 60l50 25M35 10l55 25"/>
-          </svg>
-          <div class="tool-panel-title">Helis Dişli Analizi</div>
-          <div class="tool-panel-formula">d = (m × z) / cos β &nbsp;|&nbsp; β = 19.528° &nbsp;|&nbsp; da = d + 2m</div>
-          <div class="input-grid" style="margin-bottom:20px;">
-            <div class="input-field"><label>Modül m</label><input type="number" id="h-m" value="2" min="0.5" step="0.5" class="tool-input"></div>
-            <div class="input-field"><label>Diş Sayısı z</label><input type="number" id="h-z" value="20" min="5" class="tool-input"></div>
-          </div>
-          <div class="result-triple">
-            <div class="result-card"><span class="result-card-label">Bölüm Çapı</span><div class="result-card-value" id="h-d">42.47 mm</div></div>
-            <div class="result-card highlight"><span class="result-card-label">Dış Çap da</span><div class="result-card-value" id="h-da">46.47 mm</div></div>
-            <div class="result-card"><span class="result-card-label">Merkez Mes.</span><div class="result-card-value" id="h-c">45.24 mm</div></div>
-          </div>
-        </div>
-
-        <div id="t-tork" class="tool-panel">
-          <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="20" y="20" width="50" height="60" rx="5"/><path d="M25 30h40M25 40h40M25 50h40M25 60h40M25 70h40" stroke-width="1.5"/><path d="M70 30h10v40H70M80 45h15v10H80" stroke-width="3"/><path d="M85 30a20 20 0 1 1-10 0" stroke-dasharray="4 4"/><path d="M80 25l-5 5 5 5"/>
-          </svg>
-          <div class="tool-panel-title">Motor Tork Hesabı</div>
-          <div class="tool-panel-formula">T = (P × 60) / (2π × n) &nbsp;|&nbsp; Birim: Nm</div>
-          <div class="result-box"><div class="result-value" id="tork-result">5.12</div><div class="result-unit">Newton · Metre</div></div>
-          <div class="input-grid">
-            <div class="input-field"><label>Motor Gücü P (Watt)</label><input type="number" id="tork-p" value="750" class="tool-input"></div>
-            <div class="input-field"><label>Devir n (rpm)</label><input type="number" id="tork-n" value="1400" class="tool-input"></div>
-          </div>
-        </div>
-
-        <div id="t-vidali" class="tool-panel">
-          <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M10 45h80M10 55h80" stroke-width="2"/><path d="M15 45l5 10M25 45l5 10M35 45l5 10M75 45l5 10M85 45l5 10"/><rect x="45" y="35" width="20" height="30" rx="2" stroke-width="3"/><path d="M45 40h20M45 60h20" stroke-width="1"/><path d="M30 25h40m-5-5l5 5-5 5" stroke-dasharray="4 4" stroke-width="2"/>
-          </svg>
-          <div class="tool-panel-title">Vidalı Mil Tahrik Analizi</div>
-          <div class="tool-panel-formula">η = 0.90 &nbsp;|&nbsp; F = (T × 2π × η) / h &nbsp;|&nbsp; v = (h × n) / 1000</div>
-          <div class="input-grid" style="margin-bottom:20px;">
-            <div class="input-field"><label>Motor Gücü P (W)</label><input type="number" id="v-p" value="750" class="tool-input"></div>
-            <div class="input-field"><label>Devir n (rpm)</label><input type="number" id="v-n" value="3000" class="tool-input"></div>
-          </div>
-          <div class="input-field" style="margin-bottom:20px;">
-            <label>Hatve h (mm/devir)</label>
-            <input type="number" id="v-h" value="10" class="tool-input">
-          </div>
-          <div class="result-triple">
-            <div class="result-card"><span class="result-card-label">Tork</span><div class="result-card-value" id="v-tork">2.39 Nm</div></div>
-            <div class="result-card highlight"><span class="result-card-label">İtme Kuvveti</span><div class="result-card-value" id="v-force">135.3 kg</div></div>
-            <div class="result-card"><span class="result-card-label">Hız</span><div class="result-card-value" id="v-speed">30.0 m/dk</div></div>
-          </div>
-        </div>
-
-        <div id="t-tolerance-tool" class="tool-panel">
-          <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="20" y="20" width="60" height="15" rx="2" stroke-dasharray="4 4"/><rect x="20" y="45" width="40" height="15" rx="2"/><rect x="65" y="45" width="15" height="15" rx="2"/><path d="M20 70h60m-60 -5v10m60 -10v10"/><path d="M40 65l-5 5 5 5m20 -10l5 5-5 5" stroke-width="1.5"/>
-          </svg>
-          <div class="tool-panel-title">Dinamik Tolerans Yığılma Analizi</div>
-          <div class="tool-panel-formula">T_eff = |Üst - Alt| / 2 &nbsp;|&nbsp; WC = ΣT_eff &nbsp;|&nbsp; RSS = √(ΣT_eff²)</div>
-          
-          <div id="dynamic-tol-list" style="max-height: 220px; overflow-y: auto; margin-bottom: 12px; padding-right: 6px;">
-            <!-- JS ile doldurulacak dinamik satırlar -->
-          </div>
-          
-          <button onclick="addTolRow()" class="btn-ghost" style="width:100%; padding: 12px; font-size: 10px; margin-bottom: 24px; justify-content:center; border-style: dashed; border-color: rgba(245,158,11,0.4); color: var(--amber);">
-             <i class="fa-solid fa-plus"></i> YENİ PARÇA EKLE
-          </button>
-
-          <div class="result-grid">
-            <div class="result-card"><span class="result-card-label">En Kötü Durum (WC)</span><div class="result-card-value" id="tol-wc">± 0.100</div></div>
-            <div class="result-card highlight"><span class="result-card-label">İstatistiksel (RSS)</span><div class="result-card-value" id="tol-rss">± 0.062</div></div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="disclaimer reveal" style="margin-top:32px;">
-      <i class="fa-solid fa-shield-halved"></i>
+<!-- ========================================== -->
+<!-- ============= VIEW: HOME ================= -->
+<!-- ========================================== -->
+<div id="view-home" class="spa-view">
+  
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-inner">
       <div>
-        <strong>Mühendislik Sorumluluk Reddi</strong>
-        <p>Bu platformdaki algoritmalar ve hesaplama araçları, ön tasarım (konsept) süreçlerini hızlandırmak amacıyla hazırlanmıştır. Nihai imalat ve üretim kararlarında ilgili global regülasyonların (ISO, DIN vb.) ve makine mühendisliği güvenlik katsayılarının uygulanması kullanıcının kendi sorumluluğundadır. Bu verilerin doğrudan imalata entegrasyonundan doğacak teknik uyuşmazlıklarda geliştirici sorumlu tutulamaz.</p>
+        <div class="hero-badge reveal d1">Senior R&D Project Leader</div>
+        <h1 class="hero-name reveal d2">MUSTAFA<br><span>ÜNER</span></h1>
+        <div class="hero-title reveal d3">M.Sc. Makine Mühendisi</div>
+        <p class="hero-desc reveal d4">
+          15 yıllık tasarım ve üretim disiplinini, hesaplamalı tasarım ve veri odaklı optimizasyon yöntemleriyle harmanlayarak ileri seviye üretim teknolojileri geliştiriyorum.
+        </p>
+        <div class="hero-actions reveal d5">
+          <a href="https://www.linkedin.com/in/mustafa-uner-engineer/" target="_blank" class="btn-primary">
+            <i class="fa-brands fa-linkedin"></i> LinkedIn
+          </a>
+          <a href="#/tools" class="btn-ghost">
+            <i class="fa-solid fa-calculator"></i> Hesaplama Araçları
+          </a>
+        </div>
+      </div>
+      <div class="hero-photo-wrap reveal-right d3">
+        <div class="hero-photo-frame">
+          <img src="cv2.jpeg" alt="Mustafa Üner" onerror="this.style.display='none'; this.parentElement.style.background='#1e1e30'">
+          <div class="hero-photo-label">
+            <span>Istanbul, TR</span>
+            <span>Kaban Makina · Ar-Ge</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div id="stats">
+    <div class="stats-inner">
+      <div class="stat-item reveal d1">
+        <div class="stat-num counter" data-target="15">0</div>
+        <div class="stat-label">Yıl Deneyim</div>
+      </div>
+      <div class="stat-item reveal d2">
+        <div class="stat-num" style="font-size:38px; letter-spacing: 0.06em;">UÇTAN UCA</div>
+        <div class="stat-label">Ar-Ge & Revizyon Yönetimi</div>
+      </div>
+      <div class="stat-item reveal d3">
+        <div class="stat-num" style="font-size:38px; letter-spacing: 0.06em;">BÜTÜNCÜL</div>
+        <div class="stat-label">Makine & Sistem Tasarımı</div>
+      </div>
+      <div class="stat-item reveal d4">
+        <div class="stat-num" style="font-size:42px;">M.Sc.</div>
+        <div class="stat-label">Mühendislik Yönetimi</div>
       </div>
     </div>
   </div>
-</section>
+
+  <!-- JOURNEY -->
+  <section id="journey">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-label">Kariyer Haritası</div>
+        <h2 class="section-title">MÜHENDİSLİK<br><span>YOLCULUĞU</span></h2>
+        <p class="section-sub">Sahadan akademiye, tasarım masasından Ar-Ge liderliğine uzanan 15 yıllık evrim.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-left reveal-right d1">
+            <div class="tl-year">2009</div>
+            <div class="tl-heading">AKADEMİK TEMEL</div>
+            <div class="tl-desc">Makine Mühendisliği mezuniyeti. Analitik düşünce ve mühendislik teorisinin temeli.</div>
+            <span class="tl-tag">B.Sc. Mech. Eng.</span>
+          </div>
+          <div class="tl-center"><div class="tl-dot"></div></div>
+          <div class="tl-right"></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"></div>
+          <div class="tl-center"><div class="tl-dot"></div></div>
+          <div class="tl-right reveal-left d1">
+            <div class="tl-year">2011</div>
+            <div class="tl-heading">SAHA DENEYİMİ</div>
+            <div class="tl-desc">Kaban Makina üretim sahasında montajdan CNC tezgâhına kadar her aşamada bizzat görev. İmalat disiplini sahada edinildi.</div>
+            <span class="tl-tag">Shop Floor Mastery</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left reveal-right d1">
+            <div class="tl-year">2012</div>
+            <div class="tl-heading">KALIP & AR-GE</div>
+            <div class="tl-desc">PVC kaynak makineleri ve özel profil kesimleri için hassas kalıp Ar-Ge süreçleri. Proses mimarisinin temeli.</div>
+            <span class="tl-tag">Process Architecture</span>
+          </div>
+          <div class="tl-center"><div class="tl-dot"></div></div>
+          <div class="tl-right"></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"></div>
+          <div class="tl-center"><div class="tl-dot"></div></div>
+          <div class="tl-right reveal-left d1">
+            <div class="tl-year">2013</div>
+            <div class="tl-heading">MAKİNE TASARIMI</div>
+            <div class="tl-desc">İlk alüminyum işleme merkezi ZC 3010 projesiyle başlayan uzmanlaşma serüveni. Tasarımdan prototype'a tam döngü.</div>
+            <span class="tl-tag">Machine Architect</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left reveal-right d1">
+            <div class="tl-year highlight">2019</div>
+            <div class="tl-heading">YÜKSEK LİSANS</div>
+            <div class="tl-desc">Marmara Üniversitesi'nde Mühendislik Yönetimi M.Sc. Teknik uzmanlık, stratejik yönetim vizyonuyla birleşti.</div>
+            <span class="tl-tag">M.Sc. Eng. Management</span>
+          </div>
+          <div class="tl-center"><div class="tl-dot"></div></div>
+          <div class="tl-right"></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-left"></div>
+          <div class="tl-center"><div class="tl-dot active"></div></div>
+          <div class="tl-right reveal-left d1">
+            <div class="tl-year highlight" style="font-size:28px; font-family:'JetBrains Mono',monospace; letter-spacing:0.04em;">GÜNÜMÜZ</div>
+            <div class="tl-heading">AR-GE LİDERLİĞİ</div>
+            <div class="tl-desc">Veri odaklı optimizasyon ve hesaplamalı tasarım teknikleriyle ileri seviye Ar-Ge projeleri yönetimi. 5-eksenli devasa CNC sistemlerden robotik otomasyon çözümlerine.</div>
+            <span class="tl-tag">R&D Leadership</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-inner">
+      <div class="skills-grid">
+        <div class="skill-group reveal d1">
+          <div class="skill-group-title"><i class="fa-solid fa-drafting-compass"></i> Makine Tasarımı</div>
+          <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">SolidWorks / CAD</span><span class="skill-pct">95%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.95"></div></div></div>
+          <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">5-Eksen CNC Tasarımı</span><span class="skill-pct">92%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.92"></div></div></div>
+        </div>
+        <div class="skill-group reveal d2">
+          <div class="skill-group-title"><i class="fa-brands fa-python"></i> Hesaplamalı Mühendislik</div>
+          <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Python / Otomasyon</span><span class="skill-pct">80%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.80"></div></div></div>
+          <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Veri Odaklı Optimizasyon</span><span class="skill-pct">78%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.78"></div></div></div>
+        </div>
+        <div class="skill-group reveal d3">
+          <div class="skill-group-title"><i class="fa-solid fa-industry"></i> Üretim & Proses</div>
+          <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Alüminyum İşleme</span><span class="skill-pct">95%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.95"></div></div></div>
+          <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Pnömatik Sistemler</span><span class="skill-pct">90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.90"></div></div></div>
+        </div>
+        <div class="skill-group reveal d4">
+          <div class="skill-group-title"><i class="fa-solid fa-chart-line"></i> Ar-Ge Liderliği</div>
+          <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Proje Yönetimi (PMP Altyapısı)</span><span class="skill-pct">90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.90"></div></div></div>
+          <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">TÜBİTAK 1501 Süreç Yönetimi</span><span class="skill-pct">98%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.98"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PYTHON TERMINAL SIMULATION -->
+  <div id="python-terminal">
+    <div class="terminal-wrapper reveal">
+      <div class="terminal-topbar">
+        <div class="term-dots"><span></span><span></span><span></span></div>
+        <div class="term-title"><i class="fa-brands fa-python"></i> optimize_chassis.py — sys_admin@uner_r&d</div>
+        <div style="width: 40px;"></div>
+      </div>
+      <div class="terminal-body" id="term-body"></div>
+    </div>
+  </div>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-label">Tasarım Portfolyosu</div>
+        <h2 class="section-title">MAKİNE<br><span>MİRASI</span></h2>
+        <p class="section-sub">2013'ten bugüne sıfırdan tasarlanan onlarca makine ve uçtan uca yönetilen sistem revizyonları arasından seçilmiş amiral gemisi projeler.</p>
+      </div>
+
+      <div class="portfolio-grid">
+        <div class="machine-card reveal d1" onclick="openModal('P_uIFpvk1SM')">
+          <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/P_uIFpvk1SM/maxresdefault.jpg'), url('https://i.ytimg.com/vi/P_uIFpvk1SM/hqdefault.jpg');"></div>
+          <div class="machine-card-inner"><div class="machine-num">01</div><div><div class="machine-title">ZC 3010</div><div class="machine-desc">İlk Alüminyum İşleme Merkezi</div></div></div>
+          <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
+        </div>
+        
+        <div class="machine-card reveal d2" onclick="openModal('O4QWRVjYops')">
+          <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/O4QWRVjYops/hqdefault.jpg');"></div>
+          <div class="machine-card-inner"><div class="machine-num">02</div><div><div class="machine-title">ZC 3020</div><div class="machine-desc">Hassas Seri Üretim CNC</div></div></div>
+          <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
+        </div>
+        
+        <div class="machine-card reveal d3" onclick="openModal('2rBsAK_WqiY', 13)">
+          <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/2rBsAK_WqiY/maxresdefault.jpg'), url('https://i.ytimg.com/vi/2rBsAK_WqiY/hqdefault.jpg');"></div>
+          <div class="machine-card-inner"><div class="machine-num">03</div><div><div class="machine-title">ZC 3050</div><div class="machine-desc">13.5m Stroklu 5-Eksenli Ar-Ge</div></div></div>
+          <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
+        </div>
+        
+        <div class="machine-card reveal d1" onclick="openModal('jspCnwaKgOM')">
+          <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/jspCnwaKgOM/maxresdefault.jpg'), url('https://i.ytimg.com/vi/jspCnwaKgOM/hqdefault.jpg');"></div>
+          <div class="machine-card-inner"><div class="machine-num">04</div><div><div class="machine-title">ZF 3010</div><div class="machine-desc">Yüksek Hızlı Profil Frezeleme</div></div></div>
+          <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
+        </div>
+        
+        <div class="machine-card reveal d2" onclick="openModal('B8S7bgEGUkw')">
+          <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/B8S7bgEGUkw/maxresdefault.jpg'), url('https://i.ytimg.com/vi/B8S7bgEGUkw/hqdefault.jpg');"></div>
+          <div class="machine-card-inner"><div class="machine-num">05</div><div><div class="machine-title">ZE 3010</div><div class="machine-desc">Robotik Kesim & İşleme Merkezi</div></div></div>
+          <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
+        </div>
+        
+        <div class="machine-card reveal d3" onclick="openModal('5RSI86l4cfw', 5)">
+          <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/5RSI86l4cfw/maxresdefault.jpg'), url('https://i.ytimg.com/vi/5RSI86l4cfw/hqdefault.jpg');"></div>
+          <div class="machine-badge">Amiral Gemi</div>
+          <div class="machine-card-inner"><div class="machine-num">06</div><div><div class="machine-title">ZC 3062-64</div><div class="machine-desc">Modüler CNC Üretim Ailesi</div></div></div>
+          <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
+        </div>
+        
+        <div class="machine-card reveal d1" onclick="openModal('7VxKh9M_qys')">
+          <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/7VxKh9M_qys/hqdefault.jpg');"></div>
+          <div class="machine-card-inner"><div class="machine-num">07</div><div><div class="machine-title">ZC 4040</div><div class="machine-desc">4-Eksenli Endüstriyel CNC</div></div></div>
+          <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
+        </div>
+        
+        <div class="machine-card reveal d2" onclick="openModal('2rBsAK_WqiY')">
+          <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/2rBsAK_WqiY/maxresdefault.jpg'), url('https://i.ytimg.com/vi/2rBsAK_WqiY/hqdefault.jpg');"></div>
+          <div class="machine-badge">Amiral Gemi</div>
+          <div class="machine-card-inner"><div class="machine-num">08</div><div><div class="machine-title">ZC 3052-54</div><div class="machine-desc">5-Eksenli Performans CNC Serisi</div></div></div>
+          <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
+        </div>
+        
+        <div class="machine-card featured reveal d3" onclick="openModal('WUrf8N120SU', 18)">
+          <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/WUrf8N120SU/maxresdefault.jpg'), url('https://i.ytimg.com/vi/WUrf8N120SU/hqdefault.jpg');"></div>
+          <div class="machine-badge">Yeni Seri</div>
+          <div class="machine-card-inner"><div class="machine-num">09</div><div><div class="machine-title" style="font-size:40px;">AC 20XX SERİSİ</div><div class="machine-desc">Alüminyum kesiminde pazar lideri çözümler</div></div></div>
+          <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TUBITAK AR-GE PROJECTS -->
+  <section id="tubitak">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-label">Devlet Destekli Akreditasyon</div>
+        <h2 class="section-title">ULUSAL AR-GE<br><span>PROJELERİ</span></h2>
+        <p class="section-sub">Akademik hakem heyetleri tarafından denetlenmiş ve "Proje Yürütücüsü" sıfatıyla uçtan uca yönetilip tam notla kapatılmış TÜBİTAK 1501 Sanayi Ar-Ge projeleri.</p>
+      </div>
+
+      <div class="tubitak-grid">
+        <!-- Proje 1 -->
+        <div class="tubitak-card reveal d1">
+          <i class="fa-solid fa-microchip tubitak-card-bg"></i>
+          <div class="tubitak-logo-wrap">
+            <div class="tubitak-brand">
+              <img src="tubitak-logo.svg" alt="TÜBİTAK" class="tubitak-logo-img" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/05/T%C3%9CB%C4%B0TAK_logo.svg'">
+              <span class="t-logo-text">TÜBİTAK</span>
+            </div>
+            <div class="t-badge success"><i class="fa-solid fa-check"></i> Başarıyla Tamamlandı</div>
+          </div>
+          <div class="t-badge-group">
+            <span class="t-badge program">1501 Sanayi Ar-Ge Programı</span>
+            <span class="t-badge program" style="background: rgba(245,158,11,0.1); color: var(--amber); border-color: rgba(245,158,11,0.3);">Proje Yürütücüsü</span>
+          </div>
+          <h3 class="t-project-name">13,5 Metre Stroklu Alüminyum Profilleri İşlemek İçin Geliştirilen CNC Kontrollü 5 Eksen Makinenin Geliştirilmesi</h3>
+          <div class="t-details">
+            <div class="t-detail-item"><span class="label">Proje Referans Kodu</span><span class="val">No: 3180059</span></div>
+            <div class="t-detail-item"><span class="label">Teknoloji Grubu</span><span class="val">MAKİTEG (Makina İmalat)</span></div>
+            <div class="t-detail-item"><span class="label">Başvuru / Onay Yılı</span><span class="val">2018</span></div>
+            <div class="t-detail-item"><span class="label">Tasarım Eşleşmesi</span><span class="val" style="color:var(--white);"><i class="fa-solid fa-link" style="color:var(--amber); font-size:10px;"></i> ZC 3050 Dev CNC</span></div>
+          </div>
+        </div>
+
+        <!-- Proje 2 -->
+        <div class="tubitak-card reveal d2">
+          <i class="fa-solid fa-gears tubitak-card-bg"></i>
+          <div class="tubitak-logo-wrap">
+            <div class="tubitak-brand">
+              <img src="tubitak-logo.svg" alt="TÜBİTAK" class="tubitak-logo-img" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/05/T%C3%9CB%C4%B0TAK_logo.svg'">
+              <span class="t-logo-text">TÜBİTAK</span>
+            </div>
+            <div class="t-badge success"><i class="fa-solid fa-check"></i> Başarıyla Tamamlandı</div>
+          </div>
+          <div class="t-badge-group">
+            <span class="t-badge program">1501 Sanayi Ar-Ge Programı</span>
+            <span class="t-badge program" style="background: rgba(245,158,11,0.1); color: var(--amber); border-color: rgba(245,158,11,0.3);">Proje Yürütücüsü</span>
+          </div>
+          <h3 class="t-project-name">Alüminyum Profil İşlemek İçin Geliştirilmiş CNC Kontrollü Makine</h3>
+          <div class="t-details" style="margin-top: 48px;">
+            <div class="t-detail-item"><span class="label">Proje Referans Kodu</span><span class="val">No: 3140118</span></div>
+            <div class="t-detail-item"><span class="label">Teknoloji Grubu</span><span class="val">MAKİTEG (Makina İmalat)</span></div>
+            <div class="t-detail-item"><span class="label">Başvuru / Onay Yılı</span><span class="val">2014</span></div>
+            <div class="t-detail-item"><span class="label">Tasarım Eşleşmesi</span><span class="val" style="color:var(--white);"><i class="fa-solid fa-link" style="color:var(--amber); font-size:10px;"></i> ZC 3010 Merkezi</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========================================== -->
+<!-- ============= VIEW: BLOG ================= -->
+<!-- ========================================== -->
+<div id="view-blog" class="spa-view">
+  <section id="blog" style="min-height: 100vh; padding-top: 120px;">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-label">Makale & Analiz</div>
+        <h2 class="section-title">MÜHENDİSLİK<br><span>GÜNLÜĞÜ</span></h2>
+        <p class="section-sub">Tasarım felsefesi, hesaplamalı mühendislik deneyimleri ve saha tecrübeleri.</p>
+      </div>
+
+      <div class="blog-layout reveal">
+        <div class="blog-sidebar">
+          <div class="blog-sidebar-header">
+            <div class="blog-sidebar-title"><i class="fa-solid fa-book-open"></i> YAZILAR</div>
+          </div>
+          <div class="blog-list" id="blog-list-container">
+            <!-- JS ile doldurulacak makale kartları buraya gelecek -->
+          </div>
+        </div>
+        <div class="blog-content-area">
+          <div class="blog-reader" id="blog-reader">
+            <!-- JS ile doldurulacak makale içeriği buraya gelecek -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========================================== -->
+<!-- ============= VIEW: TOOLS ================ -->
+<!-- ========================================== -->
+<div id="view-tools" class="spa-view">
+  <section id="tools" style="min-height: 100vh; padding-top: 120px;">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-label">Mühendislik Araçları</div>
+        <h2 class="section-title">HESAPLAMA<br><span>PANELİ</span></h2>
+        <p class="section-sub">ISO / DIN standartlarına dayalı, anlık hesaplama araçları. Ön tasarım süreçlerini hızlandırın.</p>
+      </div>
+
+      <div class="tools-layout reveal">
+        <div class="tools-sidebar">
+          <div class="tool-tab active" data-target="t-vc"><i class="fa-solid fa-rotate"></i><div class="tool-tab-text"><span class="tool-tab-name">Kesme Hızı</span><span class="tool-tab-sub">Vc Analysis</span></div></div>
+          <div class="tool-tab" data-target="t-piston"><i class="fa-solid fa-compress"></i><div class="tool-tab-text"><span class="tool-tab-name">Piston Kuvveti</span><span class="tool-tab-sub">ISO 6431</span></div></div>
+          <div class="tool-tab" data-target="t-helis"><i class="fa-solid fa-gear"></i><div class="tool-tab-text"><span class="tool-tab-name">Helis Dişli</span><span class="tool-tab-sub">Gear Analysis</span></div></div>
+          <div class="tool-tab" data-target="t-tork"><i class="fa-solid fa-bolt"></i><div class="tool-tab-text"><span class="tool-tab-name">Motor Tork</span><span class="tool-tab-sub">T = P / ω</span></div></div>
+          <div class="tool-tab" data-target="t-vidali"><i class="fa-solid fa-screwdriver"></i><div class="tool-tab-text"><span class="tool-tab-name">Vidalı Mil</span><span class="tool-tab-sub">Lead Screw</span></div></div>
+          <div class="tool-tab" data-target="t-tolerance-tool"><i class="fa-solid fa-layer-group"></i><div class="tool-tab-text"><span class="tool-tab-name">Tolerans Analizi</span><span class="tool-tab-sub">Stack-up / RSS</span></div></div>
+        </div>
+
+        <div class="tools-content">
+          <div id="t-vc" class="tool-panel active">
+            <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M40 10v30m20-30v30" stroke-width="4"/><path d="M30 40h40v20H30z" stroke-width="3"/><path d="M35 40l-5 20m15-20l-5 20m15-20l-5 20m15-20l-5 20"/><path d="M20 60h60v30H20z" stroke="currentColor" opacity="0.5"/><path d="M65 25a15 15 0 1 1-30 0" stroke-dasharray="4 4"/><path d="M35 25l-5-5m0 10l5-5"/>
+            </svg>
+            <div class="tool-panel-title">Kesme Hızı Analizi — Vc</div>
+            <div class="tool-panel-formula">Vc = (π × D × n) / 1000 &nbsp;|&nbsp; Birim: m/dak</div>
+            <div class="result-box"><div class="result-value" id="vc-result">188.5</div><div class="result-unit">Metre / Dakika</div></div>
+            <div class="input-grid">
+              <div class="input-field"><label>İşleme Çapı D (mm)</label><input type="range" id="vc-d" min="1" max="250" value="50"><div class="input-row"><span class="input-label">D =</span><span class="input-val" id="vc-d-val">50 mm</span></div></div>
+              <div class="input-field"><label>Devir n (rpm)</label><input type="range" id="vc-n" min="100" max="24000" value="1200"><div class="input-row"><span class="input-label">n =</span><span class="input-val" id="vc-n-val">1200 rpm</span></div></div>
+            </div>
+          </div>
+
+          <div id="t-piston" class="tool-panel">
+            <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="20" y="30" width="50" height="40" rx="2" stroke-width="3"/><path d="M25 25v5m40-5v5" stroke-width="2"/><rect x="45" y="30" width="8" height="40" fill="var(--amber)" fill-opacity="0.2"/><path d="M53 45h35m-35 10h35" stroke-width="2"/><path d="M88 43v14" stroke-width="3"/><path d="M70 20h20m-5-5l5 5-5 5" stroke-dasharray="2 2"/><path d="M40 80H20m5-5l-5 5 5 5" stroke-dasharray="2 2"/>
+            </svg>
+            <div class="tool-panel-title">Piston Kuvvet Analizi — ISO 6431</div>
+            <div class="tool-panel-formula">F_itme = (π/4) × D² × P &nbsp;|&nbsp; F_çekme = (π/4) × (D² − d²) × P</div>
+            <div class="input-grid" style="margin-bottom:20px;">
+              <div class="input-field">
+                <label>Piston Çapı / Bore (mm)</label>
+                <select id="p-bore" class="tool-select"><option value="12">12 mm</option><option value="16">16 mm</option><option value="20">20 mm</option><option value="25">25 mm</option><option value="32">32 mm</option><option value="40">40 mm</option><option value="50">50 mm</option><option value="63">63 mm</option><option value="80" selected>80 mm</option><option value="100">100 mm</option></select>
+              </div>
+              <div class="input-field">
+                <label>Mil Çapı / Rod (mm)</label>
+                <select id="p-rod" class="tool-select"><option value="6">6 mm</option><option value="8">8 mm</option><option value="10">10 mm</option><option value="12">12 mm</option><option value="16">16 mm</option><option value="20">20 mm</option><option value="25" selected>25 mm</option><option value="32">32 mm</option></select>
+              </div>
+            </div>
+            <div class="input-field" style="margin-bottom:20px;">
+              <label>Çalışma Basıncı (Bar)</label>
+              <input type="range" id="p-bar" min="1" max="10" value="6" step="0.5">
+              <div class="input-row"><span class="input-label">P =</span><span class="input-val" id="p-bar-val">6 Bar</span></div>
+            </div>
+            <div class="result-grid">
+              <div class="result-card highlight"><span class="result-card-label">İtme Kuvveti</span><div class="result-card-value" id="p-push">301.6 kg</div></div>
+              <div class="result-card"><span class="result-card-label">Çekme Kuvveti</span><div class="result-card-value" id="p-pull">226.2 kg</div></div>
+            </div>
+          </div>
+
+          <div id="t-helis" class="tool-panel">
+            <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="50" cy="50" r="40" stroke-width="3" stroke-dasharray="10 5"/><circle cx="50" cy="50" r="10" stroke-width="2"/><circle cx="50" cy="50" r="14" stroke-dasharray="2 2"/><path d="M20 25l60 30M15 40l60 30M25 15l60 30M15 60l50 25M35 10l55 25"/>
+            </svg>
+            <div class="tool-panel-title">Helis Dişli Analizi</div>
+            <div class="tool-panel-formula">d = (m × z) / cos β &nbsp;|&nbsp; β = 19.528° &nbsp;|&nbsp; da = d + 2m</div>
+            <div class="input-grid" style="margin-bottom:20px;">
+              <div class="input-field"><label>Modül m</label><input type="number" id="h-m" value="2" min="0.5" step="0.5" class="tool-input"></div>
+              <div class="input-field"><label>Diş Sayısı z</label><input type="number" id="h-z" value="20" min="5" class="tool-input"></div>
+            </div>
+            <div class="result-triple">
+              <div class="result-card"><span class="result-card-label">Bölüm Çapı</span><div class="result-card-value" id="h-d">42.47 mm</div></div>
+              <div class="result-card highlight"><span class="result-card-label">Dış Çap da</span><div class="result-card-value" id="h-da">46.47 mm</div></div>
+              <div class="result-card"><span class="result-card-label">Merkez Mes.</span><div class="result-card-value" id="h-c">45.24 mm</div></div>
+            </div>
+          </div>
+
+          <div id="t-tork" class="tool-panel">
+            <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="20" y="20" width="50" height="60" rx="5"/><path d="M25 30h40M25 40h40M25 50h40M25 60h40M25 70h40" stroke-width="1.5"/><path d="M70 30h10v40H70M80 45h15v10H80" stroke-width="3"/><path d="M85 30a20 20 0 1 1-10 0" stroke-dasharray="4 4"/><path d="M80 25l-5 5 5 5"/>
+            </svg>
+            <div class="tool-panel-title">Motor Tork Hesabı</div>
+            <div class="tool-panel-formula">T = (P × 60) / (2π × n) &nbsp;|&nbsp; Birim: Nm</div>
+            <div class="result-box"><div class="result-value" id="tork-result">5.12</div><div class="result-unit">Newton · Metre</div></div>
+            <div class="input-grid">
+              <div class="input-field"><label>Motor Gücü P (Watt)</label><input type="number" id="tork-p" value="750" class="tool-input"></div>
+              <div class="input-field"><label>Devir n (rpm)</label><input type="number" id="tork-n" value="1400" class="tool-input"></div>
+            </div>
+          </div>
+
+          <div id="t-vidali" class="tool-panel">
+            <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 45h80M10 55h80" stroke-width="2"/><path d="M15 45l5 10M25 45l5 10M35 45l5 10M75 45l5 10M85 45l5 10"/><rect x="45" y="35" width="20" height="30" rx="2" stroke-width="3"/><path d="M45 40h20M45 60h20" stroke-width="1"/><path d="M30 25h40m-5-5l5 5-5 5" stroke-dasharray="4 4" stroke-width="2"/>
+            </svg>
+            <div class="tool-panel-title">Vidalı Mil Tahrik Analizi</div>
+            <div class="tool-panel-formula">η = 0.90 &nbsp;|&nbsp; F = (T × 2π × η) / h &nbsp;|&nbsp; v = (h × n) / 1000</div>
+            <div class="input-grid" style="margin-bottom:20px;">
+              <div class="input-field"><label>Motor Gücü P (W)</label><input type="number" id="v-p" value="750" class="tool-input"></div>
+              <div class="input-field"><label>Devir n (rpm)</label><input type="number" id="v-n" value="3000" class="tool-input"></div>
+            </div>
+            <div class="input-field" style="margin-bottom:20px;">
+              <label>Hatve h (mm/devir)</label>
+              <input type="number" id="v-h" value="10" class="tool-input">
+            </div>
+            <div class="result-triple">
+              <div class="result-card"><span class="result-card-label">Tork</span><div class="result-card-value" id="v-tork">2.39 Nm</div></div>
+              <div class="result-card highlight"><span class="result-card-label">İtme Kuvveti</span><div class="result-card-value" id="v-force">135.3 kg</div></div>
+              <div class="result-card"><span class="result-card-label">Hız</span><div class="result-card-value" id="v-speed">30.0 m/dk</div></div>
+            </div>
+          </div>
+
+          <div id="t-tolerance-tool" class="tool-panel">
+            <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="20" y="20" width="60" height="15" rx="2" stroke-dasharray="4 4"/><rect x="20" y="45" width="40" height="15" rx="2"/><rect x="65" y="45" width="15" height="15" rx="2"/><path d="M20 70h60m-60 -5v10m60 -10v10"/><path d="M40 65l-5 5 5 5m20 -10l5 5-5 5" stroke-width="1.5"/>
+            </svg>
+            <div class="tool-panel-title">Dinamik Tolerans Yığılma Analizi</div>
+            <div class="tool-panel-formula">T_eff = |Üst - Alt| / 2 &nbsp;|&nbsp; WC = ΣT_eff &nbsp;|&nbsp; RSS = √(ΣT_eff²)</div>
+            
+            <div id="dynamic-tol-list" style="max-height: 220px; overflow-y: auto; margin-bottom: 12px; padding-right: 6px;">
+              <!-- JS ile doldurulacak dinamik satırlar -->
+            </div>
+            
+            <button onclick="addTolRow()" class="btn-ghost" style="width:100%; padding: 12px; font-size: 10px; margin-bottom: 24px; justify-content:center; border-style: dashed; border-color: rgba(245,158,11,0.4); color: var(--amber);">
+               <i class="fa-solid fa-plus"></i> YENİ PARÇA EKLE
+            </button>
+
+            <div class="result-grid">
+              <div class="result-card"><span class="result-card-label">En Kötü Durum (WC)</span><div class="result-card-value" id="tol-wc">± 0.100</div></div>
+              <div class="result-card highlight"><span class="result-card-label">İstatistiksel (RSS)</span><div class="result-card-value" id="tol-rss">± 0.062</div></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="disclaimer reveal" style="margin-top:32px;">
+        <i class="fa-solid fa-shield-halved"></i>
+        <div>
+          <strong>Mühendislik Sorumluluk Reddi</strong>
+          <p>Bu platformdaki algoritmalar ve hesaplama araçları, ön tasarım (konsept) süreçlerini hızlandırmak amacıyla hazırlanmıştır. Nihai imalat ve üretim kararlarında ilgili global regülasyonların (ISO, DIN vb.) ve makine mühendisliği güvenlik katsayılarının uygulanması kullanıcının kendi sorumluluğundadır. Bu verilerin doğrudan imalata entegrasyonundan doğacak teknik uyuşmazlıklarda geliştirici sorumlu tutulamaz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 
 <!-- ────────── FOOTER ────────── -->
 <footer>
@@ -1120,16 +1083,66 @@ const articles = [
   }
 ];
 
+// ─── SPA ROUTING (YÖNLENDİRİCİ) MİMARİSİ ───
+function router() {
+  // 1. Mevcut URL hash'ini al (Yoksa ana sayfa '#/')
+  const hash = window.location.hash || '#/';
+  
+  // 2. Tüm görünümleri (view) gizle
+  document.querySelectorAll('.spa-view').forEach(view => {
+    view.classList.remove('active');
+  });
+
+  // 3. Menü aktiflik durumunu sıfırla
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.classList.remove('active-link');
+  });
+
+  // 4. Hash'e göre ilgili görünümü aç ve menüyü işaretle
+  if (hash.startsWith('#/blog')) {
+    document.getElementById('view-blog').classList.add('active');
+    document.getElementById('nav-blog').classList.add('active-link');
+    
+    // Eğer linkte makale ID'si varsa o makaleyi aç
+    const urlParams = new URLSearchParams(hash.split('?')[1]);
+    const articleId = urlParams.get('id');
+    if(articleId) {
+       loadArticle(articleId, null);
+    } else {
+       // Yoksa ilk makaleyi aç
+       loadArticle(articles[0].id, null, true);
+    }
+
+  } else if (hash.startsWith('#/tools')) {
+    document.getElementById('view-tools').classList.add('active');
+    document.getElementById('nav-tools').classList.add('active-link');
+  } else {
+    document.getElementById('view-home').classList.add('active');
+    document.getElementById('nav-home').classList.add('active-link');
+  }
+  
+  // 5. Sayfayı en üste kaydır
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// URL değiştiğinde veya sayfa ilk yüklendiğinde router'ı çalıştır
+window.addEventListener('hashchange', router);
+window.addEventListener('load', router);
+
+
 // ─── BLOG İŞLEVLERİ (RENDER) ───
 const blogListContainer = document.getElementById('blog-list-container');
 const blogReader = document.getElementById('blog-reader');
 
 function renderBlogList() {
   blogListContainer.innerHTML = '';
-  articles.forEach((article, index) => {
-    const card = document.createElement('div');
-    card.className = `blog-card ${index === 0 ? 'active' : ''}`;
-    card.onclick = () => loadArticle(article.id, card);
+  const currentHash = window.location.hash;
+  const currentId = new URLSearchParams(currentHash.split('?')[1]).get('id') || articles[0].id;
+
+  articles.forEach((article) => {
+    const card = document.createElement('a'); // Artık div değil, fiziksel bir link
+    card.href = `#/blog?id=${article.id}`;
+    card.className = `blog-card ${currentId === article.id ? 'active' : ''}`;
     
     card.innerHTML = `
       <div class="blog-meta">
@@ -1143,8 +1156,11 @@ function renderBlogList() {
 }
 
 function loadArticle(id, cardElement, isInitialLoad = false) {
-  document.querySelectorAll('.blog-card').forEach(c => c.classList.remove('active'));
-  if(cardElement) cardElement.classList.add('active');
+  // Sol menüdeki aktif class'ı güncelle
+  document.querySelectorAll('.blog-card').forEach(c => {
+    c.classList.remove('active');
+    if(c.getAttribute('href') === `#/blog?id=${id}`) c.classList.add('active');
+  });
 
   const article = articles.find(a => a.id === id);
   if(!article) return;
@@ -1230,7 +1246,7 @@ function runTerminal() {
   }, line.delay);
 }
 
-// ─── MEVCUT KODLAR ───
+// ─── MEVCUT KODLAR (Scroll & Animations) ───
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 40); });
 
@@ -1251,13 +1267,19 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .skill-group, .counter, .terminal-wrapper').forEach(el => { observer.observe(el); });
+// Sadece o anki aktif olan view içindeki elementleri observe et (Performans için)
+function reObserve() {
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .skill-group, .counter, .terminal-wrapper').forEach(el => { observer.observe(el); });
+}
+window.addEventListener('hashchange', () => setTimeout(reObserve, 100));
+setTimeout(reObserve, 100);
 
 function animateCounter(el) {
   const target = parseInt(el.dataset.target); let current = 0; const step = target / 40;
   const timer = setInterval(() => { current += step; if (current >= target) { el.textContent = target; clearInterval(timer); } else { el.textContent = Math.floor(current); } }, 30);
 }
 
+// ─── ARAÇLAR (TOOLS) TAB SİSTEMİ ───
 document.querySelectorAll('.tool-tab').forEach(tab => {
   tab.addEventListener('click', () => {
     document.querySelectorAll('.tool-tab').forEach(t => t.classList.remove('active'));
@@ -1267,6 +1289,7 @@ document.querySelectorAll('.tool-tab').forEach(tab => {
   });
 });
 
+// ─── HESAPLAMA FONKSİYONLARI ───
 const PI = Math.PI;
 function calcVc() { const D = parseFloat(document.getElementById('vc-d').value); const n = parseFloat(document.getElementById('vc-n').value); document.getElementById('vc-d-val').textContent = D + ' mm'; document.getElementById('vc-n-val').textContent = n + ' rpm'; document.getElementById('vc-result').textContent = ((PI * D * n) / 1000).toFixed(1); }
 document.getElementById('vc-d').addEventListener('input', calcVc); document.getElementById('vc-n').addEventListener('input', calcVc);
@@ -1364,7 +1387,6 @@ document.getElementById('videoModal').addEventListener('click', function(e) { if
 // Sayfa yüklendiğinde Başlat
 calcVc(); calcPiston(); calcHelis(); calcTork(); calcVidali(); renderTolRows();
 renderBlogList();
-if(articles.length > 0) loadArticle(articles[0].id, null, true); 
 
 </script>
 </body>
