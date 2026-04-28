@@ -35,7 +35,6 @@
   --danger:   #ef4444;
   --teal:     #0d9488;
   --terminal-green: #22c55e;
-  --tubitak-blue: #004b87;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -798,6 +797,7 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
         <div class="tool-tab" data-target="t-helis"><i class="fa-solid fa-gear"></i><div class="tool-tab-text"><span class="tool-tab-name">Helis Dişli</span><span class="tool-tab-sub">Gear Analysis</span></div></div>
         <div class="tool-tab" data-target="t-tork"><i class="fa-solid fa-bolt"></i><div class="tool-tab-text"><span class="tool-tab-name">Motor Tork</span><span class="tool-tab-sub">T = P / ω</span></div></div>
         <div class="tool-tab" data-target="t-vidali"><i class="fa-solid fa-screwdriver"></i><div class="tool-tab-text"><span class="tool-tab-name">Vidalı Mil</span><span class="tool-tab-sub">Lead Screw</span></div></div>
+        <div class="tool-tab" data-target="t-tolerance-tool"><i class="fa-solid fa-layer-group"></i><div class="tool-tab-text"><span class="tool-tab-name">Tolerans Analizi</span><span class="tool-tab-sub">Stack-up / RSS</span></div></div>
       </div>
 
       <div class="tools-content">
@@ -891,6 +891,28 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
             <div class="result-card"><span class="result-card-label">Hız</span><div class="result-card-value" id="v-speed">30.0 m/dk</div></div>
           </div>
         </div>
+
+        <div id="t-tolerance-tool" class="tool-panel">
+          <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="20" y="20" width="60" height="15" rx="2" stroke-dasharray="4 4"/><rect x="20" y="45" width="40" height="15" rx="2"/><rect x="65" y="45" width="15" height="15" rx="2"/><path d="M20 70h60m-60 -5v10m60 -10v10"/><path d="M40 65l-5 5 5 5m20 -10l5 5-5 5" stroke-width="1.5"/>
+          </svg>
+          <div class="tool-panel-title">Dinamik Tolerans Yığılma Analizi</div>
+          <div class="tool-panel-formula">T_eff = |Üst - Alt| / 2 &nbsp;|&nbsp; WC = ΣT_eff &nbsp;|&nbsp; RSS = √(ΣT_eff²)</div>
+          
+          <div id="dynamic-tol-list" style="max-height: 220px; overflow-y: auto; margin-bottom: 12px; padding-right: 6px;">
+            <!-- JS ile doldurulacak dinamik satırlar -->
+          </div>
+          
+          <button onclick="addTolRow()" class="btn-ghost" style="width:100%; padding: 12px; font-size: 10px; margin-bottom: 24px; justify-content:center; border-style: dashed; border-color: rgba(245,158,11,0.4); color: var(--amber);">
+             <i class="fa-solid fa-plus"></i> YENİ PARÇA EKLE
+          </button>
+
+          <div class="result-grid">
+            <div class="result-card"><span class="result-card-label">En Kötü Durum (WC)</span><div class="result-card-value" id="tol-wc">± 0.100</div></div>
+            <div class="result-card highlight"><span class="result-card-label">İstatistiksel (RSS)</span><div class="result-card-value" id="tol-rss">± 0.062</div></div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -930,6 +952,66 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
 <script>
 // ─── BLOG VERİ TABANI (DATABASE) ───
 const articles = [
+  {
+    id: "art-stackup",
+    date: "14 MAYIS 2026",
+    tags: ["MONTAJ KİNEMATİĞİ", "TOLERANS YIĞILMASI", "TASARIM"],
+    title: "[TASARIM] Tolerans Yığılması (Tolerance Stack-up) Analizi: Hassas Montajın Matematiksel Güvencesi",
+    readTime: "8 Dk",
+    content: `
+      <h2>Tasarım Felsefesi ve Montajın Kinematiği</h2>
+      <p>Tekil bir parçanın toleranslandırılması (ISO 286), o parçanın imalat başarısını belirlerken; bu parçaların bir araya gelerek oluşturduğu montaj gruplarında durum çok daha kritik bir boyuta taşınır. Makine tasarımında sıklıkla karşılaşılan <em>"parçalar tek tek doğru ama montajda neden kasılıyor?"</em> veya <em>"neden bu boşluk (clearance) beklediğimden fazla çıktı?"</em> sorularının cevabı, <strong>Tolerans Yığılması (Tolerance Stack-up)</strong> analizinde gizlidir.</p>
+      <p>Tolerans yığılması, bir montaj zincirindeki parçaların bağımsız toleranslarının, toplam bir fonksiyonel ölçü üzerindeki birikimli etkisidir. Modern seri üretimde, parçaların birbirine alıştırılmadan (hand-fitting) takılabilmesi için bu zincirin matematiksel olarak yönetilmesi gerekir.</p>
+
+      <h2>Tolerans Analizinde İki Temel Yaklaşım</h2>
+      <p>Tasarım aşamasında hangi yöntemi seçeceğiniz, projenin bütçesini ve üretim sahasındaki "fire" oranlarını doğrudan etkiler.</p>
+
+      <p><strong>1. En Kötü Durum Analizi (Worst-Case Analysis)</strong></p>
+      <p>Bu yöntem, zincirdeki tüm parçaların aynı anda en ekstrem (en büyük veya en küçük) sınırlarında üretildiğini varsayar.</p>
+      <ul>
+        <li><strong>Karakteristik:</strong> %100 güvenli montaj garantisi verir.</li>
+        <li><strong>Dezavantajı:</strong> Toleranslar çok daralır, imalat maliyeti (IT kalitesi yükseldiği için) katlanır.</li>
+        <li><strong>Kullanım Alanı:</strong> Kritik emniyet parçaları, düşük adetli hassas mekanizmalar.</li>
+      </ul>
+
+      <p><strong>2. İstatistiksel Analiz (RSS - Root Sum Square)</strong></p>
+      <p>Parçaların imalatında ölçülerin normal dağılım (Gaussian) sergilediği varsayımına dayanır. Tüm parçaların aynı anda "en kötü" sınırda olma ihtimalinin düşüklüğünü kullanır.</p>
+      <ul>
+        <li><strong>Matematiksel Model:</strong> <code>T_toplam = √(T₁² + T₂² + ... + Tₙ²)</code></li>
+        <li><strong>Avantajı:</strong> İmalatçıya daha geniş tolerans alanı sağlar, maliyeti düşürür.</li>
+        <li><strong>Risk:</strong> Çok düşük bir ihtimalle de olsa bazı montajlarda limit dışı kalma riski vardır (6 Sigma yaklaşımı ile yönetilir).</li>
+      </ul>
+
+      <h2>Analiz Metodolojisi ve Uygulama Tablosu</h2>
+      <p>Bir tolerans zinciri oluşturulurken, ölçü yönleri (vektörel) dikkate alınarak bir döngü oluşturulur. Aşağıdaki tablo, tipik bir yataklama grubundaki yığılma analizinin mantığını temsil eder:</p>
+      
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Parça / Ölçü Bileşeni</th><th>Nominal (mm)</th><th>Tolerans (±)</th><th>Etki Yönü (+/-)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Gövde Yatağı Derinliği</td><td>50.00</td><td>0.05</td><td><strong>+</strong></td></tr>
+            <tr><td>Rulman Genişliği</td><td>15.00</td><td>0.02</td><td><strong>-</strong></td></tr>
+            <tr><td>Segman Kanalı Mesafesi</td><td>34.00</td><td>0.03</td><td><strong>-</strong></td></tr>
+            <tr><td><strong>Net Boşluk (Gap)</strong></td><td><strong>1.00</strong></td><td><strong>En Kötü: 0.10</strong></td><td>Fonksiyonel Sınır</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Tasarım Ekonomisi: Yığılmayı Azaltma Stratejileri</h2>
+      <p>15 yıllık tasarım tecrübesinin bize öğrettiği en önemli ders; toleransları daraltmanın çözüm değil, bir mühendislik maliyeti olduğudur. Yığılmayı yönetmek için şu stratejiler izlenmelidir:</p>
+      <ul>
+        <li><strong>Referans (Datum) Seçimi:</strong> Ölçü zincirini kısaltın. Parçaları birbirine bağlarken ölçüleri ortak bir referans yüzeyinden vererek zincirdeki halka sayısını azaltın.</li>
+        <li><strong>Yönlendirilmiş Toleranslar:</strong> Boşluk gereken yerlerde tek yönlü (unilateral) tolerans kullanarak istatistiksel sapmayı tasarım lehine çevirin.</li>
+        <li><strong>Montaj Aparatları (Jig & Fixture):</strong> Bazı durumlarda toleransı parçada değil, montaj aparatında çözerek imalat serbestliği kazanın.</li>
+        <li><strong>Python ile Simülasyon:</strong> Karmaşık mekanizmalarda (örneğin 5-eksenli sistemler) manuel hesap yerine Monte Carlo simülasyonları yürüten basit Python scriptleri ile binlerce olasılığı saniyeler içinde test edin.</li>
+      </ul>
+
+      <h2>Sonuç</h2>
+      <p>Hassas bir makine, sadece "sıkı" toleranslarla değil, doğru hesaplanmış "yığılma" toleranslarıyla hayat bulur. Mühendislik, mikronlar arasında boğulmak değil; o mikronların toplamda nasıl bir armoni oluşturacağını yönetme sanatıdır. Ar-Ge süreçlerinde bu analizi atlamak, prototip aşamasında eğe ve taşlama ile vakit kaybetmenin en garanti yoludur.</p>
+    `
+  },
   {
     id: "art-tolerance",
     date: "21 NİSAN 2026",
@@ -1218,6 +1300,55 @@ function calcVidali() {
 }
 document.getElementById('v-p').addEventListener('input', calcVidali); document.getElementById('v-n').addEventListener('input', calcVidali); document.getElementById('v-h').addEventListener('input', calcVidali);
 
+// ─── DİNAMİK TOLERANS ARACI ───
+let tolRows = [{u: 0.05, l: -0.05}, {u: 0.05, l: 0.00}, {u: 0.00, l: -0.03}];
+function renderTolRows() {
+  const container = document.getElementById('dynamic-tol-list');
+  container.innerHTML = `
+    <div style="display:grid; grid-template-columns: 1fr 60px 60px 24px; gap:8px; margin-bottom: 6px; padding: 0 12px;">
+      <span></span>
+      <span style="font-size:8px; color:var(--amber); text-align:center; font-family:'JetBrains Mono',monospace; letter-spacing:1px;">ÜST (Max)</span>
+      <span style="font-size:8px; color:var(--amber); text-align:center; font-family:'JetBrains Mono',monospace; letter-spacing:1px;">ALT (Min)</span>
+      <span></span>
+    </div>
+  `;
+  tolRows.forEach((val, idx) => {
+    container.innerHTML += `
+      <div style="display:grid; grid-template-columns: 1fr 60px 60px 24px; gap:8px; align-items:center; background:var(--ink-4); padding:8px 12px; border-radius:6px; margin-bottom:6px; border: 1px solid rgba(51,65,85,0.4);">
+        <span class="input-label" style="margin:0; font-size:9px;">Parça ${idx + 1}</span>
+        <input type="number" value="${val.u}" step="0.01" oninput="updateTolRow(${idx}, 'u', this.value)" class="tool-input" style="padding:4px 6px; font-size:11px; height:auto; text-align:center;" title="Üst Tolerans Limit">
+        <input type="number" value="${val.l}" step="0.01" oninput="updateTolRow(${idx}, 'l', this.value)" class="tool-input" style="padding:4px 6px; font-size:11px; height:auto; text-align:center;" title="Alt Tolerans Limit">
+        <button onclick="removeTolRow(${idx})" style="background:none; border:none; color:var(--danger); cursor:pointer; padding:4px; opacity:0.7; transition:0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.7"><i class="fa-solid fa-trash"></i></button>
+      </div>
+    `;
+  });
+  calcDynamicTol();
+}
+function updateTolRow(idx, type, val) { 
+  tolRows[idx][type] = parseFloat(val) || 0; 
+  calcDynamicTol(); 
+}
+function addTolRow() { 
+  tolRows.push({u: 0.01, l: -0.01}); 
+  renderTolRows(); 
+}
+function removeTolRow(idx) { 
+  tolRows.splice(idx, 1); 
+  if(tolRows.length === 0) tolRows.push({u: 0, l: 0}); 
+  renderTolRows(); 
+}
+function calcDynamicTol() {
+  let wc = 0; let rssSq = 0;
+  tolRows.forEach(t => { 
+    // Eşdeğer Çift Yönlü Çevrim (Equal-Bilateral Conversion)
+    let t_eff = Math.abs(t.u - t.l) / 2;
+    wc += t_eff; 
+    rssSq += (t_eff * t_eff); 
+  });
+  document.getElementById('tol-wc').textContent = '± ' + wc.toFixed(3);
+  document.getElementById('tol-rss').textContent = '± ' + Math.sqrt(rssSq).toFixed(3);
+}
+
 function openModal(videoId, startTime = 0) {
   let url = `https://www.youtube.com/embed/${videoId}?autoplay=1`; if (startTime > 0) url += `&start=${startTime}`;
   document.getElementById('videoFrame').src = url; document.getElementById('videoModal').classList.add('open'); document.body.style.overflow = 'hidden';
@@ -1228,7 +1359,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
 document.getElementById('videoModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
 
 // Sayfa yüklendiğinde Başlat
-calcVc(); calcPiston(); calcHelis(); calcTork(); calcVidali();
+calcVc(); calcPiston(); calcHelis(); calcTork(); calcVidali(); renderTolRows();
 renderBlogList();
 if(articles.length > 0) loadArticle(articles[0].id, null, true); 
 
