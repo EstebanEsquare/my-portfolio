@@ -194,8 +194,8 @@ section { padding: 100px 24px; }
 .machine-card:hover .play-btn { transform: scale(1); }
 .machine-card:hover .machine-card-inner { background: linear-gradient(to top, rgba(8,8,16,0.98) 0%, rgba(8,8,16,0.6) 60%, rgba(8,8,16,0.2) 100%); }
 .machine-card.featured { grid-column: span 2; aspect-ratio: auto; min-height: 280px; }
-.machine-card-bg { position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(245,158,11,0.02) 20px, rgba(245,158,11,0.02) 40px), var(--ink-4); transition: opacity 0.4s; }
-.machine-card:hover .machine-card-bg { opacity: 0.5; }
+.machine-card-bg { position: absolute; inset: -2px; background-size: cover; background-position: center; filter: brightness(0.25) grayscale(0.8); transition: all 0.5s ease; z-index: 0; }
+.machine-card:hover .machine-card-bg { filter: brightness(0.5) grayscale(0.2); transform: scale(1.03); }
 
 /* ─── KNOWLEDGE BASE (BLOG) ─── */
 #blog { background: var(--ink); }
@@ -559,73 +559,82 @@ footer { background: var(--ink); border-top: 1px solid rgba(245,158,11,0.1); pad
 
     <div class="portfolio-grid">
       <div class="machine-card reveal d1" onclick="openModal('P_uIFpvk1SM')">
-        <div class="machine-card-bg"></div>
+        <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/P_uIFpvk1SM/maxresdefault.jpg'), url('https://i.ytimg.com/vi/P_uIFpvk1SM/hqdefault.jpg');"></div>
         <div class="machine-card-inner">
           <div class="machine-num">01</div>
           <div><div class="machine-title">ZC 3010</div><div class="machine-desc">İlk Alüminyum İşleme Merkezi</div></div>
         </div>
         <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
       </div>
-      <div class="machine-card reveal d2" onclick="openModal('ZzghuXk92V8')">
-        <div class="machine-card-bg"></div>
+      
+      <div class="machine-card reveal d2" onclick="openModal('O4QWRVjYops')">
+        <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/O4QWRVjYops/hqdefault.jpg');"></div>
         <div class="machine-card-inner">
           <div class="machine-num">02</div>
           <div><div class="machine-title">ZC 3020</div><div class="machine-desc">Hassas Seri Üretim CNC</div></div>
         </div>
         <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
       </div>
-      <div class="machine-card reveal d3" onclick="openModal('2rBsAK_WqiY', 13)" style="background: rgba(245,158,11,0.03);">
-        <div class="machine-card-bg"></div>
-        <div class="machine-badge">Amiral Gemi</div>
+      
+      <div class="machine-card reveal d3" onclick="openModal('2rBsAK_WqiY', 13)">
+        <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/2rBsAK_WqiY/maxresdefault.jpg'), url('https://i.ytimg.com/vi/2rBsAK_WqiY/hqdefault.jpg');"></div>
         <div class="machine-card-inner">
           <div class="machine-num">03</div>
           <div><div class="machine-title">ZC 3050</div><div class="machine-desc">13.5m Stroklu 5-Eksenli Ar-Ge</div></div>
         </div>
         <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
       </div>
+      
       <div class="machine-card reveal d1" onclick="openModal('jspCnwaKgOM')">
-        <div class="machine-card-bg"></div>
+        <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/jspCnwaKgOM/maxresdefault.jpg'), url('https://i.ytimg.com/vi/jspCnwaKgOM/hqdefault.jpg');"></div>
         <div class="machine-card-inner">
           <div class="machine-num">04</div>
           <div><div class="machine-title">ZF 3010</div><div class="machine-desc">Yüksek Hızlı Profil Frezeleme</div></div>
         </div>
         <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
       </div>
+      
       <div class="machine-card reveal d2" onclick="openModal('B8S7bgEGUkw')">
-        <div class="machine-card-bg"></div>
+        <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/B8S7bgEGUkw/maxresdefault.jpg'), url('https://i.ytimg.com/vi/B8S7bgEGUkw/hqdefault.jpg');"></div>
         <div class="machine-card-inner">
           <div class="machine-num">05</div>
           <div><div class="machine-title">ZE 3010</div><div class="machine-desc">Robotik Kesim & İşleme Merkezi</div></div>
         </div>
         <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
       </div>
+      
       <div class="machine-card reveal d3" onclick="openModal('5RSI86l4cfw', 5)">
-        <div class="machine-card-bg"></div>
+        <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/5RSI86l4cfw/maxresdefault.jpg'), url('https://i.ytimg.com/vi/5RSI86l4cfw/hqdefault.jpg');"></div>
+        <div class="machine-badge">Amiral Gemi</div>
         <div class="machine-card-inner">
           <div class="machine-num">06</div>
           <div><div class="machine-title">ZC 3062-64</div><div class="machine-desc">Modüler CNC Üretim Ailesi</div></div>
         </div>
         <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
       </div>
+      
       <div class="machine-card reveal d1" onclick="openModal('7VxKh9M_qys')">
-        <div class="machine-card-bg"></div>
+        <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/7VxKh9M_qys/hqdefault.jpg');"></div>
         <div class="machine-card-inner">
           <div class="machine-num">07</div>
           <div><div class="machine-title">ZC 4040</div><div class="machine-desc">4-Eksenli Endüstriyel CNC</div></div>
         </div>
         <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
       </div>
+      
       <div class="machine-card reveal d2" onclick="openModal('2rBsAK_WqiY')">
-        <div class="machine-card-bg"></div>
+        <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/2rBsAK_WqiY/maxresdefault.jpg'), url('https://i.ytimg.com/vi/2rBsAK_WqiY/hqdefault.jpg');"></div>
+        <div class="machine-badge">Amiral Gemi</div>
         <div class="machine-card-inner">
           <div class="machine-num">08</div>
           <div><div class="machine-title">ZC 3052-54</div><div class="machine-desc">5-Eksenli Performans CNC Serisi</div></div>
         </div>
         <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
       </div>
-      <div class="machine-card featured reveal d3" onclick="openModal('WUrf8N120SU', 18)" style="background: rgba(245,158,11,0.04);">
-        <div class="machine-card-bg"></div>
-        <div class="machine-badge">Global</div>
+      
+      <div class="machine-card featured reveal d3" onclick="openModal('WUrf8N120SU', 18)">
+        <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/WUrf8N120SU/maxresdefault.jpg'), url('https://i.ytimg.com/vi/WUrf8N120SU/hqdefault.jpg');"></div>
+        <div class="machine-badge">Yeni Seri</div>
         <div class="machine-card-inner">
           <div class="machine-num">09</div>
           <div><div class="machine-title" style="font-size:40px;">AC 20XX SERİSİ</div><div class="machine-desc">Alüminyum kesiminde pazar lideri çözümler</div></div>
