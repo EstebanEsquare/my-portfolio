@@ -1029,8 +1029,133 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
 // ─── BLOG VERİ TABANI (DATABASE) ───
 const articles = [
   {
-    id: "art-bolts",
+    id: "art-gdt",
     date: "28 NİSAN 2026",
+    tags: ["GD&T", "İMALAT", "METROLOJİ"],
+    title: "Geometrik Boyutlandırma ve Toleranslandırma (GD&T): İmalatın Kusursuz Dili",
+    readTime: "15 Dk",
+    content: `
+      <h2>Klasik Ölçülendirme (±) Neden Yetmez?</h2>
+      <p>Teknik resim kağıdında mükemmel düzlükte çizilmiş bir silindirik mil düşünün. Çapına <strong>10.00 ±0.05 mm</strong> tolerans verdiniz. İmalattan gelen parçayı kumpas veya mikrometre ile on farklı yerinden ölçtünüz ve hepsinde 10.02 mm okudunuz. Parça teknik resme "boyutsal" olarak tam uygundur. Peki, bu mili 10.10 mm'lik hassas bir deliğe sokmaya çalıştığınızda neden sıkışır?</p>
+      
+      <p>Çünkü kumpas sadece karşılıklı iki nokta arasındaki mesafeyi (boyutu) ölçer; parçanın eğriliğini (formunu) ölçemez. Parçanız bir "muz" gibi eğilmiş olabilir! S.B. Parker'ın 1938'de tespit ettiği temel sorun da tam olarak buydu. İmalat teknolojileri geliştikçe sadece boyut vermek yetersiz kaldı; <strong>şekil, yönelim, konum ve yalpalama</strong> unsurlarını da evrensel bir dille kısıtlamak gerekti. İşte <strong>GD&T (Geometric Dimensioning and Tolerancing)</strong> bu ihtiyacın bir sonucudur.</p>
+
+      <div class="tech-diagram-wrap">
+        <svg width="400" height="160" viewBox="0 0 400 160" fill="none">
+          <!-- Muz Mil (Eğri Silindirik Mil 3D Efektli) -->
+          <!-- Sol silindir yüzü (3D efekti için) -->
+          <ellipse cx="40" cy="75" rx="8" ry="15" fill="var(--ink-2)" stroke="var(--mist)" stroke-width="2"/>
+          <!-- Gövde -->
+          <path d="M 40 60 Q 200 -20 360 60 A 8 15 0 0 1 360 90 Q 200 10 40 90 A 8 15 0 0 0 40 60" fill="var(--ink-4)" stroke="var(--mist)" stroke-width="2"/>
+          
+          <!-- Ölçü Çizgileri ve Oklar -->
+          <line x1="200" y1="20" x2="200" y2="50" stroke="var(--danger)" stroke-width="2"/>
+          <polygon points="200,20 196,26 204,26" fill="var(--danger)"/>
+          <polygon points="200,50 196,44 204,44" fill="var(--danger)"/>
+          
+          <text x="212" y="39" fill="var(--danger)" font-family="JetBrains Mono" font-size="12" font-weight="bold">Çap (⌀): 10.02</text>
+          
+          <!-- Açıklama Metni (İki satıra bölündü) -->
+          <text x="10" y="125" fill="var(--white)" font-family="JetBrains Mono" font-size="11">Kumpas her yerde 10.02 mm okur (boyut doğrudur),</text>
+          <text x="10" y="145" fill="var(--danger)" font-family="JetBrains Mono" font-size="11">ancak parça eğik (muz formunda) olduğu için montaj YAPILAMAZ!</text>
+        </svg>
+      </div>
+
+      <h2>Tolerans Çerçevesi (Feature Control Frame)</h2>
+      <p>Tüm geometrik kısıtlamalar, teknik resimde "Tolerans Çerçevesi" adı verilen kutucuklarla ifade edilir. Bu çerçeve üç temel soruyu cevaplar: <em>Neyi kısıtlıyorsun? Ne kadar tolerans veriyorsun? Nereye göre referans alıyorsun?</em></p>
+
+      <div class="tech-diagram-wrap">
+        <svg width="400" height="130" viewBox="0 0 400 130">
+          <!-- Tolerans Çerçevesi -->
+          <rect x="50" y="45" width="300" height="40" fill="var(--ink-4)" stroke="var(--amber)" stroke-width="2"/>
+          <line x1="100" y1="45" x2="100" y2="85" stroke="var(--amber)" stroke-width="2"/>
+          <line x1="220" y1="45" x2="220" y2="85" stroke="var(--amber)" stroke-width="2"/>
+          <line x1="260" y1="45" x2="260" y2="85" stroke="var(--amber)" stroke-width="2"/>
+          <line x1="300" y1="45" x2="300" y2="85" stroke="var(--amber)" stroke-width="2"/>
+          
+          <!-- Konum Sembolü -->
+          <circle cx="75" cy="65" r="10" fill="none" stroke="var(--white)" stroke-width="2"/>
+          <line x1="60" y1="65" x2="90" y2="65" stroke="var(--white)" stroke-width="2"/>
+          <line x1="75" y1="50" x2="75" y2="80" stroke="var(--white)" stroke-width="2"/>
+
+          <!-- Tolerans ve MMC -->
+          <text x="115" y="72" fill="var(--white)" font-family="JetBrains Mono" font-size="18">⌀ 0.1</text>
+          <circle cx="195" cy="65" r="9" fill="none" stroke="var(--mist)" stroke-width="1.5"/>
+          <text x="190" y="69" fill="var(--mist)" font-family="JetBrains Mono" font-size="12">M</text>
+
+          <!-- Datumlar -->
+          <text x="233" y="72" fill="var(--amber)" font-family="JetBrains Mono" font-size="18" font-weight="bold">A</text>
+          <text x="273" y="72" fill="var(--amber)" font-family="JetBrains Mono" font-size="18" font-weight="bold">B</text>
+          <text x="319" y="72" fill="var(--amber)" font-family="JetBrains Mono" font-size="18" font-weight="bold">C</text>
+
+          <!-- 1. Açıklama: Karakteristik -->
+          <path d="M 75 45 L 75 25 L 10 25" stroke="var(--mist)" stroke-width="1" fill="none"/>
+          <text x="10" y="20" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">1. KARAKTERİSTİK (Konum)</text>
+          
+          <!-- 2. Açıklama: Tolerans Bölgesi -->
+          <path d="M 160 85 L 160 105 L 10 105" stroke="var(--mist)" stroke-width="1" fill="none"/>
+          <text x="10" y="120" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">2. TOLERANS BÖLGESİ (Çap 0.1, MMC ile)</text>
+
+          <!-- 3. Açıklama: Datum Referansları -->
+          <path d="M 285 45 L 285 25 L 390 25" stroke="var(--mist)" stroke-width="1" fill="none"/>
+          <text x="390" y="20" fill="var(--mist)" font-size="10" font-family="JetBrains Mono" text-anchor="end">3. DATUM REFERANSLARI</text>
+        </svg>
+      </div>
+
+      <h2>Datum Sistemi: Uzayda Kilitlenmek (3-2-1 Kuralı)</h2>
+      <p>Uzayda serbest halde duran bir parçanın 6 serbestlik derecesi (3 öteleme, 3 dönme) vardır. Montaj sırasında bir parçayı doğru yere konumlandırmak için bu hareketleri kısıtlamamız gerekir. Buna <strong>3-2-1 Datum Prensibi</strong> denir:</p>
+      <ul>
+        <li><strong>Birincil Datum (A):</strong> Parçanın oturduğu ana yüzeydir. 3 noktadan temas eder, 3 serbestlik derecesini (1 öteleme, 2 dönme) kilitler.</li>
+        <li><strong>İkincil Datum (B):</strong> Parçanın dayandığı ikinci yüzeydir. 2 noktadan temas eder, 2 serbestlik derecesini daha kilitler.</li>
+        <li><strong>Üçüncül Datum (C):</strong> Parçayı tamamen sabitleyen son noktadır. Kalan son öteleme hareketini kilitler.</li>
+      </ul>
+
+      <h2>Geometrik Karakteristikler ve Semboller</h2>
+      <p>ASME Y14.5 ve ISO 1101 standartlarında tanımlanan 14 temel sembol, 5 ana kategoriye ayrılır:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Kategori</th><th>Özellik</th><th>Sembol</th><th>Datum Gerekir mi?</th></tr>
+          </thead>
+          <tbody>
+            <tr><td rowspan="4" style="color:var(--amber); font-weight:bold;">ŞEKİL (FORM)<br><span style="font-size:9px; color:var(--mist); font-weight:normal;">Sadece parçanın kendine aittir.</span></td><td>Doğrusallık</td><td>—</td><td>Hayır</td></tr>
+            <tr><td>Düzlemsellik</td><td>▱</td><td>Hayır</td></tr>
+            <tr><td>Dairesellik</td><td>◯</td><td>Hayır</td></tr>
+            <tr><td>Silindiriklik</td><td>⌭</td><td>Hayır</td></tr>
+            <tr><td rowspan="3" style="color:var(--amber); font-weight:bold;">YÖNELİM (ORIENTATION)</td><td>Paralellik</td><td>//</td><td>Evet</td></tr>
+            <tr><td>Diklik</td><td>⊥</td><td>Evet</td></tr>
+            <tr><td>Açısallık</td><td>∠</td><td>Evet</td></tr>
+            <tr><td rowspan="3" style="color:var(--amber); font-weight:bold;">KONUM (LOCATION)</td><td>Konum (Position)</td><td>⌖</td><td>Evet</td></tr>
+            <tr><td>Eşmerkezlilik</td><td>◎</td><td>Evet</td></tr>
+            <tr><td>Simetri</td><td>≎</td><td>Evet</td></tr>
+            <tr><td rowspan="2" style="color:var(--amber); font-weight:bold;">YALPALAMA (RUNOUT)</td><td>Dairesel Yalpalama</td><td>↗</td><td>Evet (Eksen)</td></tr>
+            <tr><td>Toplam Yalpalama</td><td>⌅</td><td>Evet (Eksen)</td></tr>
+            <tr><td rowspan="2" style="color:var(--amber); font-weight:bold;">PROFİL (PROFILE)</td><td>Çizgi Profili</td><td>⌒</td><td>Opsiyonel</td></tr>
+            <tr><td>Yüzey Profili</td><td>⌓</td><td>Opsiyonel</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tech-callout">
+        <h4>Bağımsızlık Sembolü ve İlkesi</h4>
+        <p>Klasik (Zarf) kuralına göre bir parçanın boyutu en kötü durumdayken (Maksimum Malzeme), formu mükemmel olmak zorundadır. Ancak tolerans çerçevesinde veya resim antetinde <strong>Bağımsızlık (Independency)</strong> belirtilirse, form toleransı boyut toleransından tamamen ayrı değerlendirilir ve ondan daha büyük olabilir.</p>
+      </div>
+
+      <h2>Tasarımcının Can Simidi: MMC ve Bonus Tolerans</h2>
+      <p>Bir matkapla delik deldiğinizi düşünün. Hedefiniz deliğin merkeze tam olarak <strong>X=50, Y=50</strong> koordinatında konumlanmasıdır. Bu konuma ⌀ 0.1 mm tolerans verdiniz. Ancak deliği açarken matkap biraz büyük bir delik açtı (Boyutsal olarak toleransın üst sınırında). Bu durumda civata zaten o delikten rahatça geçecektir. O halde deliğin merkeze olan <em>konum hassasiyeti</em> üzerinde bu kadar katı durmaya gerek var mıdır?</p>
+      
+      <p>İşte <strong>Maksimum Malzeme Durumu (MMC - Ⓜ)</strong> bu aşamada devreye girer. Parça (delik) maksimum malzeme durumundan uzaklaştıkça (yani delik büyüdükçe), büyüyen miktar kadar <strong>Bonus Tolerans</strong> kazanırsınız. İmalatta hurda (fire) oranını dramatik şekilde düşüren, maliyetleri kurtaran müthiş bir yaklaşımdır.</p>
+
+      <h2>İstatistiksel Tolerans Uygulaması</h2>
+      <p>Özellikle montaj hatlarında, her parçanın aynı anda "en kötü durumda" üretilip bir araya gelme ihtimali matematiksel olarak çok düşüktür. İTÜ kaynaklı çalışmalarda da vurgulandığı üzere, <strong>İstatistiksel Tolerans</strong> kullanılarak montajda beklenen tolerans yığılması <em>karekök formülüyle (Root Sum Square - RSS)</em> hesaplanabilir. Bu sayede parça bazında verilen toleranslar rahatlatılabilir ve doğrudan imalat maliyeti düşürülür.</p>
+
+      <p><em>Özetle GD&T; neyin kesinlikle kusursuz olması gerektiğini ve neyin o kadar da önemli olmadığını imalathaneye net bir şekilde aktaran, mühendisliğin hukuki sözleşmesidir.</em></p>
+    `
+  },
+  {
+    id: "art-bolts",
+    date: "12 NİSAN 2026",
     tags: ["DİNAMİK DAYANIM", "CI_VATA TASARIMI", "AR-GE"],
     title: "Cıvata Bağlantılarında Dinamik Dayanım: Neden Gevşer, Neden Kopar?",
     readTime: "10 Dk",
@@ -1113,7 +1238,7 @@ const articles = [
   },
   {
     id: "art-stackup",
-    date: "14 MAYIS 2026",
+    date: "15 MART 2026",
     tags: ["MONTAJ KİNEMATİĞİ", "TOLERANS YIĞILMASI", "TASARIM"],
     title: "[TASARIM] Tolerans Yığılması (Tolerance Stack-up) Analizi: Hassas Montajın Matematiksel Güvencesi",
     readTime: "8 Dk",
@@ -1164,7 +1289,7 @@ const articles = [
   },
   {
     id: "art-tolerance",
-    date: "21 NİSAN 2026",
+    date: "20 ŞUBAT 2026",
     tags: ["ISO 286", "METROLOJİ", "TALAŞLI İMALAT"],
     title: "Makine Tasarımında Toleranslar ve Geçme Sistemleri: Kapsamlı Analiz",
     readTime: "12 Dk",
