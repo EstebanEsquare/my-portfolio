@@ -877,14 +877,24 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
                 <select id="p-rod" class="tool-select"><option value="6">6 mm</option><option value="8">8 mm</option><option value="10">10 mm</option><option value="12">12 mm</option><option value="16">16 mm</option><option value="20">20 mm</option><option value="25" selected>25 mm</option><option value="32">32 mm</option></select>
               </div>
             </div>
-            <div class="input-field" style="margin-bottom:20px;">
-              <label>Çalışma Basıncı (Bar)</label>
-              <input type="range" id="p-bar" min="1" max="10" value="6" step="0.5">
-              <div class="input-row"><span class="input-label">P =</span><span class="input-val" id="p-bar-val">6 Bar</span></div>
+            <div class="input-grid" style="margin-bottom:20px;">
+              <div class="input-field">
+                <label>Çalışma Basıncı (Bar)</label>
+                <input type="range" id="p-bar" min="1" max="10" value="6" step="0.5">
+                <div class="input-row"><span class="input-label">P =</span><span class="input-val" id="p-bar-val">6 Bar</span></div>
+              </div>
+              <div class="input-field">
+                <label>Çıktı Birimi</label>
+                <select id="p-unit" class="tool-select">
+                  <option value="N">Newton (N)</option>
+                  <option value="daN">dekaNewton (daN) - Pnömatik Kat.</option>
+                  <option value="kgf" selected>Kilogram-kuvvet (kgf)</option>
+                </select>
+              </div>
             </div>
             <div class="result-grid">
-              <div class="result-card highlight"><span class="result-card-label">İtme Kuvveti</span><div class="result-card-value" id="p-push">301.6 kg</div></div>
-              <div class="result-card"><span class="result-card-label">Çekme Kuvveti</span><div class="result-card-value" id="p-pull">226.2 kg</div></div>
+              <div class="result-card highlight"><span class="result-card-label">İtme Kuvveti</span><div class="result-card-value" id="p-push">307.5 kgf</div></div>
+              <div class="result-card"><span class="result-card-label">Çekme Kuvveti</span><div class="result-card-value" id="p-pull">230.6 kgf</div></div>
             </div>
           </div>
 
@@ -1573,13 +1583,41 @@ document.getElementById('vc-d').addEventListener('input', calcVc); document.getE
 
 const pistonMap = { "12":"6","16":"6","20":"8","25":"10","32":"12","40":"16","50":"20","63":"20","80":"25","100":"25" };
 function calcPiston() {
-  const D = parseFloat(document.getElementById('p-bore').value); const d = parseFloat(document.getElementById('p-rod').value); const bar = parseFloat(document.getElementById('p-bar').value);
+  const D = parseFloat(document.getElementById('p-bore').value); 
+  const d = parseFloat(document.getElementById('p-rod').value); 
+  const bar = parseFloat(document.getElementById('p-bar').value);
+  const unit = document.getElementById('p-unit').value;
+  
   document.getElementById('p-bar-val').textContent = bar + ' Bar';
-  const kgfPerBar = 1.0197; const A_push = (PI * (D/10)**2) / 4; const A_pull = (PI * ((D/10)**2 - (d/10)**2)) / 4;
-  document.getElementById('p-push').textContent = (A_push * bar * kgfPerBar).toFixed(1) + ' kg'; document.getElementById('p-pull').textContent = (A_pull * bar * kgfPerBar).toFixed(1) + ' kg';
+  
+  const A_push = (PI * Math.pow(D/10, 2)) / 4; 
+  const A_pull = (PI * (Math.pow(D/10, 2) - Math.pow(d/10, 2))) / 4;
+  
+  let F_push_daN = A_push * bar;
+  let F_pull_daN = A_pull * bar;
+  
+  let resPush, resPull, textUnit;
+  if (unit === 'N') {
+    resPush = (F_push_daN * 10).toFixed(0);
+    resPull = (F_pull_daN * 10).toFixed(0);
+    textUnit = ' N';
+  } else if (unit === 'daN') {
+    resPush = F_push_daN.toFixed(1);
+    resPull = F_pull_daN.toFixed(1);
+    textUnit = ' daN';
+  } else {
+    resPush = (F_push_daN * 1.0197).toFixed(1);
+    resPull = (F_pull_daN * 1.0197).toFixed(1);
+    textUnit = ' kgf';
+  }
+  
+  document.getElementById('p-push').textContent = resPush + textUnit; 
+  document.getElementById('p-pull').textContent = resPull + textUnit;
 }
 document.getElementById('p-bore').addEventListener('change', (e) => { document.getElementById('p-rod').value = pistonMap[e.target.value] || "25"; calcPiston(); });
-document.getElementById('p-rod').addEventListener('change', calcPiston); document.getElementById('p-bar').addEventListener('input', calcPiston);
+document.getElementById('p-rod').addEventListener('change', calcPiston); 
+document.getElementById('p-bar').addEventListener('input', calcPiston);
+document.getElementById('p-unit').addEventListener('change', calcPiston);
 
 function calcHelis() {
   const m = parseFloat(document.getElementById('h-m').value); const z = parseFloat(document.getElementById('h-z').value);
