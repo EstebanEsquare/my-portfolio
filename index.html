@@ -1754,6 +1754,13 @@ document.getElementById('btn-export-report').addEventListener('click', function(
       tolRows.forEach((r, i) => { report += `- Parça ${i+1}: Max: ${r.u}, Min: ${r.l}\n`; });
   }
 
+  // --- YENİ EKLENEN SORUMLULUK REDDİ KISMI ---
+  report += `\n[ MÜHENDİSLİK SORUMLULUK REDDİ ]\n`;
+  report += `Bu rapordaki değerler, ön tasarım ve konsept analizlerini hızlandırmak\n`;
+  report += `amacıyla teorik formüllerle hesaplanmıştır. Nihai imalat ve mekanik\n`;
+  report += `tasarım kararlarında, ilgili standartların (ISO, DIN vb.) ve makine\n`;
+  report += `mühendisliği güvenlik katsayılarının uygulanması kullanıcının sorumluluğundadır.\n`;
+
   report += `\n--------------------------------------\nMustafa Üner Portfolyo | mustafauner.com.tr`;
 
   const textarea = document.createElement('textarea');
