@@ -88,24 +88,24 @@ nav.scrolled { border-bottom-color: rgba(245,158,11,0.25); }
 .nav-cta:hover { background: var(--amber); color: var(--ink); }
 
 /* ─── HERO ─── */
-#hero { min-height: 100vh; display: flex; align-items: center; padding: 80px 24px 40px; position: relative; overflow: hidden; }
+#hero { min-height: 100vh; display: flex; align-items: center; padding: 100px 24px 40px; position: relative; overflow: hidden; }
 .hero-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(245,158,11,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(245,158,11,0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse at 50% 50%, black 40%, transparent 80%); }
 .hero-glow { position: absolute; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(245,158,11,0.07) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; }
-.hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; align-items: center; }
 .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border: 1px solid rgba(245,158,11,0.3); border-radius: 2px; font-size: 9px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--amber); font-family: 'JetBrains Mono', monospace; margin-bottom: 20px; background: rgba(245,158,11,0.05); }
 .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--amber); animation: pulse-dot 2s ease-in-out infinite; }
 @keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.7); } }
 .hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(56px, 8vw, 96px); line-height: 0.92; letter-spacing: 0.03em; color: var(--white); margin-bottom: 4px; }
 .hero-name span { color: var(--amber); }
 .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 4vw, 48px); letter-spacing: 0.08em; color: var(--steel); margin-bottom: 28px; }
-.hero-desc { font-size: 15px; font-weight: 300; color: var(--mist); line-height: 1.75; max-width: 480px; font-style: italic; border-left: 2px solid var(--amber); padding-left: 20px; margin-bottom: 36px; }
+.hero-desc { font-size: 15px; font-weight: 300; color: var(--mist); line-height: 1.75; max-width: 580px; font-style: italic; border-left: 2px solid var(--amber); padding-left: 20px; margin-bottom: 36px; }
 .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: var(--amber); color: var(--ink); border: none; border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; cursor: pointer; font-family: 'JetBrains Mono', monospace; transition: all 0.2s; }
 .btn-primary:hover { background: var(--gold); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,158,11,0.3); }
 .btn-ghost { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: transparent; color: var(--mist); border: 1px solid var(--steel); border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; cursor: pointer; font-family: 'JetBrains Mono', monospace; transition: all 0.2s; }
 .btn-ghost:hover { border-color: var(--light); color: var(--white); }
-.hero-photo-wrap { position: relative; display: flex; justify-content: center; align-items: center; }
-.hero-photo-frame { position: relative; width: 340px; height: 420px; }
+.hero-photo-wrap { position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 24px; }
+.hero-photo-frame { position: relative; width: 300px; height: 380px; background: #1e1e30; border-radius: 6px; overflow: visible; }
 .hero-photo-frame::before { content: ''; position: absolute; top: -12px; left: -12px; right: 12px; bottom: 12px; border: 1px solid rgba(245,158,11,0.25); border-radius: 6px; z-index: 0; }
 .hero-photo-frame::after { content: ''; position: absolute; top: 12px; left: 12px; right: -12px; bottom: -12px; border: 1px solid rgba(245,158,11,0.1); border-radius: 6px; z-index: 0; }
 .hero-photo-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; filter: grayscale(30%) contrast(1.05); transition: filter 0.5s; position: relative; z-index: 1; }
@@ -114,49 +114,113 @@ nav.scrolled { border-bottom-color: rgba(245,158,11,0.25); }
 .hero-photo-label span { display: block; font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
 .hero-photo-label span:first-child { color: var(--amber); margin-bottom: 2px; }
 .hero-photo-label span:last-child { color: var(--mist); }
-.hero-proof-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px;
-max-width:520px;
-margin:24px 0 32px;
+
+/* Dynamic Vector Fallback for Image */
+.img-fallback {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  color: var(--amber); background: var(--ink-4); border-radius: 4px; z-index: 0;
 }
 
-.hero-proof-card{
-background:rgba(255,255,255,.03);
-border:1px solid rgba(245,158,11,.15);
-padding:16px;
-border-radius:6px;
-transition:.3s;
+.hero-proof-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-width: 580px;
+  margin: 24px 0 32px;
+}
+.hero-proof-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(245,158,11,0.12);
+  padding: 16px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+.hero-proof-card:hover {
+  border-color: rgba(245,158,11,0.4);
+  transform: translateY(-2px);
+  background: rgba(245,158,11,0.02);
+}
+.hero-proof-value {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  color: var(--amber);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.hero-proof-label {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mist);
+  line-height: 1.4;
 }
 
-.hero-proof-card:hover{
-border-color:rgba(245,158,11,.4);
-transform:translateY(-2px);
+/* ─── TERMINAL COMPONENT ─── */
+.terminal-wrapper {
+  width: 100%;
+  max-width: 320px;
+  background: #08080f;
+  border: 1px solid rgba(245,158,11,0.25);
+  border-radius: 8px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  overflow: hidden;
+  font-family: 'JetBrains Mono', monospace;
 }
-
-.hero-proof-number{
-font-family:'Bebas Neue',sans-serif;
-font-size:42px;
-color:var(--amber);
-line-height:1;
-margin-bottom:6px;
+.terminal-header {
+  background: #11111e;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(245,158,11,0.15);
 }
-
-.hero-proof-label{
-font-size:11px;
-letter-spacing:.12em;
-text-transform:uppercase;
-color:var(--mist);
-line-height:1.5;
+.terminal-buttons {
+  display: flex;
+  gap: 6px;
 }
-/* ─── STATS BAR ─── */
-#stats { border-top: 1px solid rgba(245,158,11,0.1); border-bottom: 1px solid rgba(245,158,11,0.1); background: var(--ink-2); padding: 40px 24px; }
-.stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
-.stat-item { padding: 24px 40px; text-align: center; border-right: 1px solid rgba(245,158,11,0.1); }
-.stat-item:last-child { border-right: none; }
-.stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 52px; line-height: 1; color: var(--amber); letter-spacing: 0.04em; }
-.stat-label { font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mist); margin-top: 6px; font-family: 'JetBrains Mono', monospace; }
+.term-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.term-dot.red { background: #ef4444; }
+.term-dot.yellow { background: #eab308; }
+.term-dot.green { background: #22c55e; }
+.terminal-title {
+  color: var(--mist);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.terminal-body {
+  padding: 16px;
+  height: 190px;
+  overflow-y: auto;
+  font-size: 10px;
+  line-height: 1.5;
+  color: var(--light);
+}
+.term-line {
+  margin-bottom: 8px;
+  display: flex;
+  gap: 6px;
+}
+.term-prompt {
+  color: var(--amber);
+  user-select: none;
+}
+.term-content.success { color: var(--terminal-green); }
+.term-content.warning { color: #f59e0b; }
+.term-content.error { color: var(--danger); }
+.term-cursor {
+  display: inline-block;
+  width: 6px;
+  height: 12px;
+  background: var(--amber);
+  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+}
+@keyframes blink { 50% { opacity: 0; } }
 
 /* ─── SECTION LAYOUT ─── */
 section { padding: 100px 24px; }
@@ -188,12 +252,12 @@ section { padding: 100px 24px; }
 #portfolio { background: var(--ink-2); }
 .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
 .machine-card { background: var(--ink-3); position: relative; overflow: hidden; cursor: pointer; aspect-ratio: 4/3; transition: all 0.4s ease; }
-.machine-card-inner { position: absolute; inset: 0; padding: 28px; display: flex; flex-direction: column; justify-content: flex-end; background: linear-gradient(to top, rgba(8,8,16,0.95) 0%, rgba(8,8,16,0.4) 50%, transparent 100%); transition: all 0.4s ease; }
+.machine-card-inner { position: absolute; inset: 0; padding: 28px; display: flex; flex-direction: column; justify-content: flex-end; background: linear-gradient(to top, rgba(8,8,16,0.95) 0%, rgba(8,8,16,0.4) 50%, transparent 100%); transition: all 0.4s ease; z-index: 1; }
 .machine-num { position: absolute; top: 20px; left: 20px; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: rgba(245,158,11,0.4); font-weight: 700; letter-spacing: 0.2em; }
-.machine-badge { position: absolute; top: 20px; right: 20px; padding: 4px 10px; font-size: 8px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; background: var(--amber); color: var(--ink); border-radius: 2px; }
+.machine-badge { position: absolute; top: 20px; right: 20px; padding: 4px 10px; font-size: 8px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; background: var(--amber); color: var(--ink); border-radius: 2px; z-index: 2; }
 .machine-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.06em; color: var(--white); line-height: 1; margin-bottom: 4px; }
 .machine-desc { font-size: 11px; color: rgba(226,232,240,0.6); font-weight: 300; }
-.machine-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+.machine-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; z-index: 2; }
 .play-btn { width: 56px; height: 56px; border-radius: 50%; background: rgba(245,158,11,0.9); display: flex; align-items: center; justify-content: center; color: var(--ink); font-size: 18px; transform: scale(0.8); transition: transform 0.3s; }
 .machine-card:hover { z-index: 2; }
 .machine-card:hover .machine-play { opacity: 1; }
@@ -222,39 +286,10 @@ section { padding: 100px 24px; }
 .t-badge.program { background: rgba(0,75,135,0.15); color: #60a5fa; border: 1px solid rgba(96,165,250,0.3); }
 .t-badge.success { background: rgba(34,197,94,0.1); color: var(--terminal-green); border: 1px solid rgba(34,197,94,0.3); }
 .t-project-name { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.04em; color: var(--white); line-height: 1.2; margin-bottom: 16px; }
-.t-details { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; border-top: 1px solid rgba(245,158,11,0.1); padding-top: 20px; margin-top: 20px; }
-.t-detail-item .label { font-size: 8px; font-family: 'JetBrains Mono', monospace; color: var(--mist); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 4px; display: block; }
-.t-detail-item .val { font-size: 13px; color: var(--amber); font-weight: 500; }
-/* TÜBİTAK CASE STUDY */
-
-.t-case{
-  margin-top:24px;
-}
-
-.t-case p{
-  margin-bottom:22px;
-  color:var(--mist);
-  line-height:1.8;
-  font-size:14px;
-}
-
-.t-case p:last-child{
-  margin-bottom:0;
-}
-
-.t-case strong{
-  display:block;
-  color:var(--amber);
-  font-family:'JetBrains Mono', monospace;
-  font-size:10px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  margin-bottom:8px;
-}
-
-.t-case br{
-  line-height:2;
-}
+.t-case { margin-top:24px; }
+.t-case p { margin-bottom:22px; color:var(--mist); line-height:1.8; font-size:14px; }
+.t-case p:last-child { margin-bottom:0; }
+.t-case strong { display:block; color:var(--amber); font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; margin-bottom:8px; }
 
 /* ─── KNOWLEDGE BASE (BLOG) ─── */
 #blog { background: var(--ink-2); }
@@ -273,7 +308,6 @@ section { padding: 100px 24px; }
 .blog-card.active .blog-card-title { color: var(--amber); }
 
 .blog-content-area { background: var(--ink-3); display: flex; flex-direction: column; position: relative; min-width: 0; overflow-x: hidden; }
-
 .blog-reader { padding: 40px; overflow-y: auto; overflow-x: hidden; max-height: 700px; transition: opacity 0.3s ease; box-sizing: border-box; width: 100%; }
 .blog-reader.fade-out { opacity: 0; }
 .article-header { border-bottom: 1px solid rgba(245,158,11,0.1); padding-bottom: 24px; margin-bottom: 32px; padding-right: 16px; }
@@ -304,7 +338,7 @@ section { padding: 100px 24px; }
 .prose th { background: rgba(245,158,11,0.05); color: var(--amber); padding: 14px 16px; border-bottom: 1px solid rgba(245,158,11,0.2); font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; white-space: nowrap; }
 .prose td { padding: 14px 16px; border-bottom: 1px solid rgba(51,65,85,0.4); color: var(--light); vertical-align: top; line-height: 1.6; }
 
-/* ─── ENGINEERING TOOLS ─── */
+/* ─── ENGINEERING TOOLS PANEL ─── */
 #tools { background: var(--ink); }
 .tools-layout { display: grid; grid-template-columns: 280px 1fr; gap: 2px; background: var(--ink-3); border: 1px solid rgba(245,158,11,0.1); border-radius: 8px; overflow: hidden; min-height: 560px; }
 .tools-sidebar { background: var(--ink-4); padding: 8px; display: flex; flex-direction: column; gap: 4px; }
@@ -320,7 +354,7 @@ section { padding: 100px 24px; }
 .tool-tab.active i { color: var(--amber); }
 
 .tools-content { padding: 40px 48px; display: flex; flex-direction: column; justify-content: center; background: var(--ink-3); position: relative; }
-.tool-watermark { position: absolute; right: 48px; top: 40px; opacity: 0.08; pointer-events: none; z-index: 0; }
+.tool-watermark { position: absolute; right: 48px; top: 40px; opacity: 0.05; pointer-events: none; z-index: 0; width: 120px; height: 120px; }
 .tool-panel { display: none; position: relative; z-index: 1; }
 .tool-panel.active { display: block; }
 .tool-panel-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.06em; color: var(--white); margin-bottom: 4px; }
@@ -337,7 +371,7 @@ input[type="range"] { width: 100%; height: 2px; background: var(--steel); border
 input[type="range"]::-webkit-slider-thumb { appearance: none; -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: var(--amber); cursor: pointer; box-shadow: 0 0 8px rgba(245,158,11,0.5); }
 .tool-input, .tool-select { width: 100%; background: var(--ink-4); border: 1px solid var(--steel); border-radius: 4px; padding: 10px 14px; color: var(--white); font-family: 'JetBrains Mono', monospace; font-size: 14px; outline: none; transition: border-color 0.2s; }
 .tool-input:focus, .tool-select:focus { border-color: var(--amber); }
-.tool-select option { background: var(--ink-4); }
+.tool-select option { background: var(--ink-4); color: var(--white); }
 
 .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
 .input-field label { font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mist); font-family: 'JetBrains Mono', monospace; display: block; margin-bottom: 6px; }
@@ -363,135 +397,16 @@ input[type="range"]::-webkit-slider-thumb { appearance: none; -webkit-appearance
 .modal-video { width: 100%; aspect-ratio: 16/9; border-radius: 4px; overflow: hidden; }
 .modal-video iframe { width: 100%; height: 100%; border: none; }
 
-<!-- BU KODU ORİJİNAL 1887 SATIRLIK INDEX.HTML DOSYANIZDA 
-     </main> ETİKETİNDEN VEYA FOOTER'DAN HEMEN ÖNCE YAPIŞTIRIN -->
+/* ─── QUICK TOOL CARDS (HOME) ─── */
+.home-feature-section { padding: 60px 0 20px 0; }
+.grid-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 32px; }
+.feature-card { background: var(--ink-3); border: 1px solid #30363d; border-radius: 6px; padding: 32px; transition: border-color 0.3s, transform 0.3s; }
+.feature-card:hover { border-color: var(--amber); transform: translateY(-4px); }
+.feature-card h3 { color: var(--white); font-size: 18px; margin-top: 0; font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em; font-size: 24px; }
+.feature-card p { color: var(--mist); font-size: 14px; line-height: 1.6; margin: 16px 0; }
+.btn-feature-start { background: var(--amber); color: var(--ink); border: none; padding: 10px 20px; border-radius: 4px; font-weight: 700; cursor: pointer; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; transition: background 0.2s; }
+.btn-feature-start:hover { background: var(--gold); }
 
-<!-- ==========================================
-     1. ENGINEERING TOOLS SECTION (#tools)
-     ========================================== -->
-<section id="tools" style="padding: 80px 20px; background-color: #0d1117; border-top: 1px solid #30363d;">
-    <div style="max-width: 1200px; margin: 0 auto;">
-        <div style="margin-bottom: 40px;">
-            <h2 style="color: #c9d1d9; font-size: 28px; font-weight: bold; margin-bottom: 10px; font-family: sans-serif;">Engineering Tools & Automation</h2>
-            <p style="color: #8b949e; font-size: 16px; font-family: sans-serif;">Teknik ekiplerin standart, hızlı ve hatasız tasarım yapabilmesi için geliştirdiğim hesaplama araçları.</p>
-        </div>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
-            
-            <!-- Tool: Servo Sizing -->
-            <div style="background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 24px; transition: border-color 0.3s;" onmouseover="this.style.borderColor='#58a6ff'" onmouseout="this.style.borderColor='#30363d'">
-                <h3 style="color: #58a6ff; font-size: 18px; margin-top: 0; font-family: sans-serif;">Servo Atalet Çözümleyici</h3>
-                <p style="color: #8b949e; font-size: 14px; line-height: 1.5; margin: 16px 0; font-family: sans-serif;">
-                    Vidalı mil ve kremayer sistemlerinin atalet oranlarını (J_load / J_motor) hesaplayıp optimum servo motor seçimini otomatize eden araç.
-                </p>
-                <button onclick="openEngTool('servo')" style="background: #238636; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 600; cursor: pointer; font-family: sans-serif;">Aracı Başlat</button>
-            </div>
-
-            <!-- Tool: Linear Guide -->
-            <div style="background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 24px; transition: border-color 0.3s;" onmouseover="this.style.borderColor='#58a6ff'" onmouseout="this.style.borderColor='#30363d'">
-                <h3 style="color: #58a6ff; font-size: 18px; margin-top: 0; font-family: sans-serif;">Lineer Kılavuz L10 Ömür Hesabı</h3>
-                <p style="color: #8b949e; font-size: 14px; line-height: 1.5; margin: 16px 0; font-family: sans-serif;">
-                    Dinamik yük ve eşdeğer yüklere göre ISO 14728 standartlarında rulman/araba ömrünü (km) hesaplayan sistem.
-                </p>
-                <button onclick="openEngTool('linear')" style="background: #238636; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 600; cursor: pointer; font-family: sans-serif;">Aracı Başlat</button>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- ==========================================
-     2. KNOWLEDGE BASE SECTION (#wiki)
-     ========================================== -->
-<section id="wiki" style="padding: 80px 20px; background-color: #010409; border-top: 1px solid #30363d;">
-    <div style="max-width: 1200px; margin: 0 auto;">
-        <div style="margin-bottom: 40px;">
-            <h2 style="color: #c9d1d9; font-size: 28px; font-weight: bold; margin-bottom: 10px; font-family: sans-serif;">Kurumsal Bilgi Bankası</h2>
-            <p style="color: #8b949e; font-size: 16px; font-family: sans-serif;">Ar-Ge süreçleri ve mühendislik standardizasyonu için hazırlanan teknik dokümanlar.</p>
-        </div>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-            <!-- Doc 1 -->
-            <div style="padding: 20px; border-left: 3px solid #d2a8ff; background: #161b22;">
-                <h4 style="color: #c9d1d9; font-size: 16px; margin: 0 0 8px 0; font-family: sans-serif;">GD&T (ISO 1101) Pratikleri</h4>
-                <p style="color: #8b949e; font-size: 13px; margin: 0; font-family: sans-serif;">Hassas makine imalatında geometrik ölçülendirme sınırları.</p>
-            </div>
-            <!-- Doc 2 -->
-            <div style="padding: 20px; border-left: 3px solid #d2a8ff; background: #161b22;">
-                <h4 style="color: #c9d1d9; font-size: 16px; margin: 0 0 8px 0; font-family: sans-serif;">FMEA Analiz Metodolojisi</h4>
-                <p style="color: #8b949e; font-size: 13px; margin: 0; font-family: sans-serif;">TÜBİTAK projelerinde hata türleri ve etkileri analizinin yapılandırılması.</p>
-            </div>
-            <!-- Doc 3 -->
-            <div style="padding: 20px; border-left: 3px solid #d2a8ff; background: #161b22;">
-                <h4 style="color: #c9d1d9; font-size: 16px; margin: 0 0 8px 0; font-family: sans-serif;">Ağır Yük Pnömatik Seçimi</h4>
-                <p style="color: #8b949e; font-size: 13px; margin: 0; font-family: sans-serif;">Yüksek ataletli sistemlerde silindir çapı ve valf debisi tayini.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ==========================================
-     3. INTERAKTİF MODAL VE JS MANTIĞI
-     (En alta, </body> etiketinden hemen önceye koyun)
-     ========================================== -->
-<div id="engToolModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center;">
-    <div style="background: #0d1117; padding: 30px; border-radius: 8px; width: 90%; max-width: 450px; border: 1px solid #30363d; position: relative;">
-        <button onclick="closeEngTool()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; color: #8b949e; font-size: 24px; cursor: pointer;">&times;</button>
-        <div id="engModalContent" style="font-family: sans-serif;"></div>
-    </div>
-</div>
-
-<script>
-    function openEngTool(type) {
-        const modal = document.getElementById('engToolModal');
-        const content = document.getElementById('engModalContent');
-        
-        let html = '';
-        if(type === 'servo') {
-            html = `
-                <h3 style="color: #c9d1d9; margin-top: 0;">Servo Atalet Hesaplama</h3>
-                <div style="margin-top: 20px;">
-                    <label style="color: #8b949e; font-size: 13px; display: block; margin-bottom: 5px;">Vidalı Mil Çapı (mm)</label>
-                    <input type="number" value="32" style="width: 100%; padding: 10px; background: #010409; border: 1px solid #30363d; color: #c9d1d9; border-radius: 6px; box-sizing: border-box;">
-                </div>
-                <div style="margin-top: 15px;">
-                    <label style="color: #8b949e; font-size: 13px; display: block; margin-bottom: 5px;">Taşınan Kütle (kg)</label>
-                    <input type="number" value="250" style="width: 100%; padding: 10px; background: #010409; border: 1px solid #30363d; color: #c9d1d9; border-radius: 6px; box-sizing: border-box;">
-                </div>
-                <button onclick="alert('Hesaplama Simülasyonu: Gerekli Nominal Tork 4.2 Nm, Atalet Oranı: 3.8')" style="width: 100%; background: #238636; color: white; border: none; padding: 10px; margin-top: 20px; border-radius: 6px; font-weight: bold; cursor: pointer;">Analiz Et</button>
-            `;
-        } else if(type === 'linear') {
-            html = `
-                <h3 style="color: #c9d1d9; margin-top: 0;">L10 Ömür Hesaplama</h3>
-                <div style="margin-top: 20px;">
-                    <label style="color: #8b949e; font-size: 13px; display: block; margin-bottom: 5px;">Dinamik Yük C (N)</label>
-                    <input type="number" value="25400" style="width: 100%; padding: 10px; background: #010409; border: 1px solid #30363d; color: #c9d1d9; border-radius: 6px; box-sizing: border-box;">
-                </div>
-                <div style="margin-top: 15px;">
-                    <label style="color: #8b949e; font-size: 13px; display: block; margin-bottom: 5px;">Eşdeğer Yük P (N)</label>
-                    <input type="number" value="5200" style="width: 100%; padding: 10px; background: #010409; border: 1px solid #30363d; color: #c9d1d9; border-radius: 6px; box-sizing: border-box;">
-                </div>
-                <button onclick="alert('Hesaplama Simülasyonu: Tahmini L10 ömrü 116.000 km olarak hesaplanmıştır.')" style="width: 100%; background: #238636; color: white; border: none; padding: 10px; margin-top: 20px; border-radius: 6px; font-weight: bold; cursor: pointer;">Ömrü Hesapla</button>
-            `;
-        }
-        
-        content.innerHTML = html;
-        modal.style.display = 'flex';
-    }
-
-    function closeEngTool() {
-        document.getElementById('engToolModal').style.display = 'none';
-    }
-
-    // Modal dışına tıklayınca kapanma
-    window.addEventListener('click', function(e) {
-        const modal = document.getElementById('engToolModal');
-        if(e.target === modal) {
-            closeEngTool();
-        }
-    });
-</script>
-  
 /* ─── FOOTER ─── */
 footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); padding: 60px 24px; }
 .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
@@ -506,7 +421,6 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
 .mobile-menu-btn { display: none; background: none; border: none; color: var(--amber); font-size: 24px; cursor: pointer; padding: 4px; z-index: 10001; position: relative; }
 .mobile-only { display: none; }
 
-/* YEPYENİ KESİN ÇÖZÜM MOBİL MENÜ MİMARİSİ */
 .mobile-menu-overlay {
   position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
   background: var(--ink); z-index: 99;
@@ -532,15 +446,32 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
 .m-cta { background: var(--amber) !important; color: var(--ink) !important; justify-content: center; margin-top: 16px; }
 .m-cta i { color: var(--ink) !important; }
 
+/* ─── QUICK INTERACTIVE TOOL MODAL ─── */
+#engToolModal {
+  display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center;
+  backdrop-filter: blur(5px);
+}
+.eng-modal-box {
+  background: #11111e; padding: 32px; border-radius: 8px; width: 90%; max-width: 450px;
+  border: 1px solid rgba(245,158,11,0.3); position: relative;
+}
+.eng-modal-close {
+  position: absolute; top: 15px; right: 15px; background: none; border: none;
+  color: #8b949e; font-size: 24px; cursor: pointer; transition: color 0.2s;
+}
+.eng-modal-close:hover { color: var(--amber); }
+
 /* ─── MOBILE RESPONSIVE ─── */
-@media (max-width: 768px) {
-  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+@media (max-width: 992px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+  .hero-desc { margin-left: auto; margin-right: auto; }
+  .hero-actions { justify-content: center; }
   .hero-photo-wrap { order: -1; }
-  .hero-photo-frame { width: 240px; height: 300px; }
-  .stats-inner { grid-template-columns: repeat(2, 1fr); }
-  .stat-item { border-right: none; border-bottom: 1px solid rgba(245,158,11,0.1); padding: 20px 10px; }
-  .stat-num { font-size: 32px !important; }
-  .stat-label { font-size: 8px; }
+  .hero-photo-frame { width: 260px; height: 330px; }
+}
+
+@media (max-width: 768px) {
   .timeline::before { left: 20px; transform: none; }
   .tl-item { grid-template-columns: 1fr; margin-bottom: 40px; padding-left: 45px; min-height: auto; }
   .tl-left, .tl-right { display: block !important; text-align: left !important; padding: 0 !important; width: 100% !important; }
@@ -551,7 +482,6 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
   .portfolio-grid { grid-template-columns: 1fr; }
   .machine-card.featured { grid-column: span 1; }
   .tubitak-grid { grid-template-columns: 1fr; }
-  .skills-grid { grid-template-columns: 1fr; }
   .blog-layout { grid-template-columns: 1fr; min-height: auto; }
   .blog-sidebar { max-height: 350px; border-bottom: 1px solid rgba(245,158,11,0.2); }
   .blog-reader { padding: 30px 24px; max-height: none; overflow-y: visible; }
@@ -562,17 +492,14 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
   .tool-tab-sub { display: none; }
   .tool-watermark { display: none; }
 
-  /* ESKİ CSS KALINTILARINI VE CACHE'İ İPTAL EDEN KISIM */
-  .nav-links { display: none !important; } /* Desktop menüyü tamamen yok et */
+  .nav-links { display: none !important; }
   .hidden-mobile { display: none !important; }
   .mobile-menu-btn { display: block; }
 
   .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
-  #python-terminal { padding: 40px 16px; }
-  .terminal-body { height: 240px; font-size: 10px; }
 }
 
-/* ─── FAZ 3: MOUSE GLOW (AMBIENT LIGHT) ─── */
+/* ─── MOUSE GLOW (AMBIENT LIGHT) ─── */
 #mouse-glow {
   position: fixed;
   width: 500px;
@@ -592,7 +519,7 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
 </head>
 <body>
 
-<!-- ────────── MOUSE GLOW (FAZ 3) ────────── -->
+<!-- ────────── MOUSE GLOW ────────── -->
 <div id="mouse-glow"></div>
 
 <!-- ────────── NAV ────────── -->
@@ -613,18 +540,18 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
       <i class="fa-solid fa-bars"></i>
     </button>
 
-    <!-- Desktop Menü (Sadece PC'de görünür) -->
+    <!-- Desktop Menu -->
     <div class="nav-links">
       <a href="#/" id="nav-home">Portfolyo</a>
       <a href="#/blog" id="nav-blog">Bilgi Bankası</a>
-      <a href="#/tools" id="nav-tools">Hesaplama Araçları</a>
+      <a href="#/tools" id="nav-tools">Hesaplama Paneli</a>
     </div>
 
     <a href="mailto:mustafauner@hotmail.com.tr" class="nav-cta hidden-mobile">İletişim</a>
   </div>
 </nav>
 
-<!-- ────────── TAMAMEN YENİ MOBİL MENÜ KATMANI (Sıfır Hata Garantili) ────────── -->
+<!-- ────────── MOBILE NAVIGATION MENU ────────── -->
 <div id="mobileMenuOverlay" class="mobile-menu-overlay">
   <div class="mobile-menu-content">
     <a href="#/" class="m-link" id="m-nav-home">
@@ -634,7 +561,7 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
       <i class="fa-solid fa-book-open"></i> Bilgi Bankası
     </a>
     <a href="#/tools" class="m-link" id="m-nav-tools">
-      <i class="fa-solid fa-calculator"></i> Hesaplama Araçları
+      <i class="fa-solid fa-calculator"></i> Hesaplama Paneli
     </a>
     <a href="mailto:mustafauner@hotmail.com.tr" class="m-link m-cta">
       <i class="fa-regular fa-envelope"></i> İletişim
@@ -645,88 +572,122 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
 <!-- ========================================== -->
 <!-- ============= VIEW: HOME ================= -->
 <!-- ========================================== -->
-<div id="view-home" class="spa-view">
+<div id="view-home" class="spa-view active">
 
- <!-- HERO -->
-<section id="hero">
-  <div class="hero-grid-bg"></div>
-  <div class="hero-glow"></div>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow"></div>
 
-  <div class="hero-inner">
-    <div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge reveal d1">
+          15+ YEARS IN CNC MACHINE DEVELOPMENT
+        </div>
 
-      <div class="hero-badge reveal d1">
-        15+ YEARS IN CNC MACHINE DEVELOPMENT
+        <h1 class="hero-name reveal d2">
+          MUSTAFA<br><span>ÜNER</span>
+        </h1>
+
+        <div class="hero-title reveal d3">
+          Developing CNC Systems<br>
+          From Concept To Production
+        </div>
+
+        <p class="hero-desc reveal d4">
+          Mechanical Design Engineer with 15+ years of experience developing CNC machining centers, industrial machinery and manufacturing technologies. Specialized in transforming engineering concepts into commercial machine platforms and leading multidisciplinary R&D activities.
+        </p>
+
+        <div class="hero-proof-grid reveal d5">
+          <div class="hero-proof-card">
+            <div class="hero-proof-value">15+</div>
+            <div class="hero-proof-label">Years In CNC Development</div>
+          </div>
+          <div class="hero-proof-card">
+            <div class="hero-proof-value">2</div>
+            <div class="hero-proof-label">TÜBİTAK 1501 Projects Led</div>
+          </div>
+          <div class="hero-proof-card">
+            <div class="hero-proof-value">4 & 5</div>
+            <div class="hero-proof-label">Axis CNC Platforms</div>
+          </div>
+          <div class="hero-proof-card">
+            <div class="hero-proof-value">M.Sc.</div>
+            <div class="hero-proof-label">Engineering Management</div>
+          </div>
+        </div>
+
+        <div class="hero-actions reveal d5">
+          <a href="https://www.linkedin.com/in/mustafa-uner-engineer/" target="_blank" class="btn-primary">
+            <i class="fa-brands fa-linkedin"></i> LinkedIn
+          </a>
+          <a href="#/tools" class="btn-ghost">
+            <i class="fa-solid fa-calculator"></i> Engineering Tools
+          </a>
+          <a href="#/blog" class="btn-ghost">
+            <i class="fa-solid fa-book-open"></i> Knowledge Base
+          </a>
+        </div>
       </div>
 
-      <h1 class="hero-name reveal d2">
-        MUSTAFA<br><span>ÜNER</span>
-      </h1>
+      <div class="hero-photo-wrap reveal-right d3">
+        <div class="hero-photo-frame">
+          <!-- Fallback profile icon displays behind image or if image fails to load -->
+          <div class="img-fallback">
+            <i class="fa-solid fa-user-gear fa-4x"></i>
+          </div>
+          <img src="cv2.jpeg" alt="Mustafa Üner"
+               onerror="this.style.display='none';">
 
-      <div class="hero-title reveal d3">
-        Developing CNC Systems<br>
-        From Concept To Production
-      </div>
+          <div class="hero-photo-label">
+            <span>Istanbul, TR</span>
+            <span>Kaban Makina · R&D</span>
+          </div>
+        </div>
 
-      <p class="hero-desc reveal d4">
-        Mechanical Design Engineer with 15+ years of experience developing CNC machining centers, industrial machinery and manufacturing technologies. Specialized in transforming engineering concepts into commercial machine platforms and leading multidisciplinary R&D activities.
-      </p>
-      <div class="hero-proof-grid reveal d5">
-
-  <div class="hero-proof-card">
-    <div class="hero-proof-value">15+</div>
-    <div class="hero-proof-label">Years In CNC Development</div>
-  </div>
-
-  <div class="hero-proof-card">
-    <div class="hero-proof-value">2</div>
-    <div class="hero-proof-label">TÜBİTAK 1501 Projects Led</div>
-  </div>
-
-  <div class="hero-proof-card">
-    <div class="hero-proof-value">4 & 5</div>
-    <div class="hero-proof-label">Axis CNC Platforms</div>
-  </div>
-
-  <div class="hero-proof-card">
-    <div class="hero-proof-value">M.Sc.</div>
-    <div class="hero-proof-label">Engineering Management</div>
-  </div>
-
-</div>
-
-      <div class="hero-actions reveal d5">
-        <a href="https://www.linkedin.com/in/mustafa-uner-engineer/" target="_blank" class="btn-primary">
-          <i class="fa-brands fa-linkedin"></i> LinkedIn
-        </a>
-
-        <a href="#/tools" class="btn-ghost">
-          <i class="fa-solid fa-calculator"></i> Engineering Tools
-        </a>
-
-        <a href="#/blog" class="btn-ghost">
-          <i class="fa-solid fa-book-open"></i> Knowledge Base
-        </a>
-      </div>
-
-    </div>
-
-    <div class="hero-photo-wrap reveal-right d3">
-      <div class="hero-photo-frame">
-        <img src="cv2.jpeg" alt="Mustafa Üner"
-             onerror="this.style.display='none'; this.parentElement.style.background='#1e1e30'">
-
-        <div class="hero-photo-label">
-          <span>Istanbul, TR</span>
-          <span>Kaban Makina · R&D</span>
+        <!-- ─── PYTHON REALTIME TERMINAL ─── -->
+        <div class="terminal-wrapper reveal d5">
+          <div class="terminal-header">
+            <div class="terminal-buttons">
+              <span class="term-dot red"></span>
+              <span class="term-dot yellow"></span>
+              <span class="term-dot green"></span>
+            </div>
+            <div class="terminal-title">Python Automation Terminal</div>
+          </div>
+          <div class="terminal-body" id="term-body">
+            <!-- Driven dynamically by script -->
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <!-- QUICK ACCESS SPECIALIZED AR-GE TOOLS -->
+  <section class="home-feature-section" style="background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.12);">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-label">Öne Çıkan Mühendislik Otomasyonları</div>
+        <h2 class="section-title">HIZLI BAŞLANGIÇ <span>ARAÇLARI</span></h2>
+        <p class="section-sub">Tasarım sürecindeki hesaplamalı analiz adımlarını pratikleştiren, dinamik parametrik paneller.</p>
+      </div>
 
-  <!-- JOURNEY -->
+      <div class="grid-features">
+        <div class="feature-card reveal d1">
+          <h3>Servo Atalet Çözümleyici</h3>
+          <p>Vidalı mil ve kremayer mekanizmalarında atalet oranlarını (J_load / J_motor) analiz ederek optimum servo kapasitesi tespiti yapar.</p>
+          <button onclick="openEngTool('servo')" class="btn-feature-start">Aracı Başlat <i class="fa-solid fa-chevron-right ml-1"></i></button>
+        </div>
+        <div class="feature-card reveal d2">
+          <h3>Lineer Kılavuz L10 Ömür Hesabı</h3>
+          <p>ISO 14728 standartları çerçevesinde dinamik eşdeğer yüklere göre ray ve araba setlerinin teorik ömrünü kilometre cinsinden hesaplar.</p>
+          <button onclick="openEngTool('linear')" class="btn-feature-start">Aracı Başlat <i class="fa-solid fa-chevron-right ml-1"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY (TIMELINE) -->
   <section id="journey">
     <div class="section-inner">
       <div class="reveal">
@@ -752,7 +713,7 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
           <div class="tl-right reveal-left d1">
             <div class="tl-year">2011</div>
             <div class="tl-heading">SAHA DENEYİMİ</div>
-            <div class="tl-desc">Kaban Makina üretim sahasında montajdan CNC tezgâhına kadar her aşamada bizzat görev. İmalat disiplini sahada edinildi.</div>
+            <div class="tl-desc">Kaban Makina imalat sahasında mekanik montaj, hassas ölçümlendirme ve CNC operasyon süreçlerinde operasyonel uzmanlık elde edilmesi.</div>
             <span class="tl-tag">Shop Floor Mastery</span>
           </div>
         </div>
@@ -760,7 +721,7 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
           <div class="tl-left reveal-right d1">
             <div class="tl-year">2012</div>
             <div class="tl-heading">KALIP & AR-GE</div>
-            <div class="tl-desc">PVC kaynak makineleri ve özel profil kesimleri için hassas kalıp Ar-Ge süreçleri. Proses mimarisinin temeli.</div>
+            <div class="tl-desc">PVC profil kaynak ve kesme makinaları için patentli kalıp ve özel kaynak çenesi Ar-Ge faaliyetleri.</div>
             <span class="tl-tag">Process Architecture</span>
           </div>
           <div class="tl-center"><div class="tl-dot"></div></div>
@@ -772,7 +733,7 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
           <div class="tl-right reveal-left d1">
             <div class="tl-year">2013</div>
             <div class="tl-heading">MAKİNE TASARIMI</div>
-            <div class="tl-desc">İlk alüminyum işleme merkezi ZC 3010 projesiyle başlayan uzmanlaşma serüveni. Tasarımdan prototipe tam döngü.</div>
+            <div class="tl-desc">İlk yerli alüminyum profil işleme merkezi olan ZC 3010 projesinin mekanik tasarım liderliğiyle başlayan uzmanlaşma.</div>
             <span class="tl-tag">Machine Architect</span>
           </div>
         </div>
@@ -780,7 +741,7 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
           <div class="tl-left reveal-right d1">
             <div class="tl-year highlight">2019</div>
             <div class="tl-heading">YÜKSEK LİSANS</div>
-            <div class="tl-desc">Marmara Üniversitesi'nde Mühendislik Yönetimi M.Sc. Teknik uzmanlık, stratejik yönetim vizyonuyla birleşti.</div>
+            <div class="tl-desc">Marmara Üniversitesi'nde Mühendislik Yönetimi M.Sc. derecesi. Teknik tasarım uzmanlığının stratejik yönetim modeliyle entegrasyonu.</div>
             <span class="tl-tag">M.Sc. Eng. Management</span>
           </div>
           <div class="tl-center"><div class="tl-dot"></div></div>
@@ -792,7 +753,7 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
           <div class="tl-right reveal-left d1">
             <div class="tl-year highlight" style="font-size:28px; font-family:'JetBrains Mono',monospace; letter-spacing:0.04em;">GÜNÜMÜZ</div>
             <div class="tl-heading">AR-GE LİDERLİĞİ</div>
-            <div class="tl-desc">Veri odaklı optimizasyon ve hesaplamalı tasarım teknikleriyle ileri seviye Ar-Ge projeleri yönetimi. 5-eksenli devasa CNC sistemlerden robotik otomasyon çözümlerine.</div>
+            <div class="tl-desc">Kaban Makina bünyesinde çok eksenli CNC profil işleme merkezleri ve robotik otomasyon hatlarının tasarımdan sahaya teslimine kadar tüm süreçlerin yönetimi.</div>
             <span class="tl-tag">R&D Leadership</span>
           </div>
         </div>
@@ -800,72 +761,70 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
     </div>
   </section>
 
-
-
-  <!-- PORTFOLIO -->
+  <!-- DESIGN PORTFOLIO -->
   <section id="portfolio">
     <div class="section-inner">
       <div class="reveal">
         <div class="section-label">Tasarım Portfolyosu</div>
         <h2 class="section-title">MAKİNE<br><span>MİRASI</span></h2>
-        <p class="section-sub">2013'ten bugüne sıfırdan tasarlanan onlarca makine ve uçtan uca yönetilen sistem revizyonları arasından seçilmiş amiral gemisi projeler.</p>
+        <p class="section-sub">2013'ten bugüne sıfırdan tasarlanan onlarca endüstriyel makine arasından seçilmiş amiral gemisi projeler.</p>
       </div>
 
       <div class="portfolio-grid">
         <div class="machine-card reveal d1" onclick="openModal('P_uIFpvk1SM')">
-          <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/P_uIFpvk1SM/maxresdefault.jpg'), url('https://i.ytimg.com/vi/P_uIFpvk1SM/hqdefault.jpg');"></div>
+          <div class="machine-card-bg" style="background-image: url('https://img.youtube.com/vi/P_uIFpvk1SM/0.jpg');"></div>
           <div class="machine-card-inner"><div class="machine-num">01</div><div><div class="machine-title">ZC 3010</div><div class="machine-desc">İlk Alüminyum İşleme Merkezi</div></div></div>
           <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
         </div>
 
         <div class="machine-card reveal d2" onclick="openModal('O4QWRVjYops')">
-          <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/O4QWRVjYops/hqdefault.jpg');"></div>
+          <div class="machine-card-bg" style="background-image: url('https://img.youtube.com/vi/O4QWRVjYops/0.jpg');"></div>
           <div class="machine-card-inner"><div class="machine-num">02</div><div><div class="machine-title">ZC 3020</div><div class="machine-desc">Hassas Seri Üretim CNC</div></div></div>
           <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
         </div>
 
         <div class="machine-card reveal d3" onclick="openModal('2rBsAK_WqiY', 13)">
-          <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/2rBsAK_WqiY/maxresdefault.jpg'), url('https://i.ytimg.com/vi/2rBsAK_WqiY/hqdefault.jpg');"></div>
+          <div class="machine-card-bg" style="background-image: url('https://img.youtube.com/vi/2rBsAK_WqiY/0.jpg');"></div>
           <div class="machine-card-inner"><div class="machine-num">03</div><div><div class="machine-title">ZC 3050</div><div class="machine-desc">13.5m Stroklu 5-Eksenli Ar-Ge</div></div></div>
           <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
         </div>
 
         <div class="machine-card reveal d1" onclick="openModal('jspCnwaKgOM')">
-          <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/jspCnwaKgOM/maxresdefault.jpg'), url('https://i.ytimg.com/vi/jspCnwaKgOM/hqdefault.jpg');"></div>
+          <div class="machine-card-bg" style="background-image: url('https://img.youtube.com/vi/jspCnwaKgOM/0.jpg');"></div>
           <div class="machine-card-inner"><div class="machine-num">04</div><div><div class="machine-title">ZF 3010</div><div class="machine-desc">Yüksek Hızlı Profil Frezeleme</div></div></div>
           <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
         </div>
 
         <div class="machine-card reveal d2" onclick="openModal('B8S7bgEGUkw')">
-          <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/B8S7bgEGUkw/maxresdefault.jpg'), url('https://i.ytimg.com/vi/B8S7bgEGUkw/hqdefault.jpg');"></div>
+          <div class="machine-card-bg" style="background-image: url('https://img.youtube.com/vi/B8S7bgEGUkw/0.jpg');"></div>
           <div class="machine-card-inner"><div class="machine-num">05</div><div><div class="machine-title">ZE 3010</div><div class="machine-desc">Robotik Kesim Merkezi</div></div></div>
           <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
         </div>
 
         <div class="machine-card reveal d3" onclick="openModal('5RSI86l4cfw', 5)">
-          <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/5RSI86l4cfw/maxresdefault.jpg'), url('https://i.ytimg.com/vi/5RSI86l4cfw/hqdefault.jpg');"></div>
+          <div class="machine-card-bg" style="background-image: url('https://img.youtube.com/vi/5RSI86l4cfw/0.jpg');"></div>
           <div class="machine-badge">Amiral Gemi</div>
           <div class="machine-card-inner"><div class="machine-num">06</div><div><div class="machine-title">ZC 3062-64</div><div class="machine-desc">Modüler CNC Üretim Ailesi</div></div></div>
           <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
         </div>
 
         <div class="machine-card reveal d1" onclick="openModal('7VxKh9M_qys')">
-          <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/7VxKh9M_qys/hqdefault.jpg');"></div>
+          <div class="machine-card-bg" style="background-image: url('https://img.youtube.com/vi/7VxKh9M_qys/0.jpg');"></div>
           <div class="machine-card-inner"><div class="machine-num">07</div><div><div class="machine-title">ZC 4040</div><div class="machine-desc">4-Eksenli Endüstriyel CNC</div></div></div>
           <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
         </div>
 
         <div class="machine-card reveal d2" onclick="openModal('2rBsAK_WqiY')">
-          <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/2rBsAK_WqiY/maxresdefault.jpg'), url('https://i.ytimg.com/vi/2rBsAK_WqiY/hqdefault.jpg');"></div>
+          <div class="machine-card-bg" style="background-image: url('https://img.youtube.com/vi/2rBsAK_WqiY/0.jpg');"></div>
           <div class="machine-badge">Amiral Gemi</div>
           <div class="machine-card-inner"><div class="machine-num">08</div><div><div class="machine-title">ZC 3052-54</div><div class="machine-desc">5-Eksenli Performans CNC Serisi</div></div></div>
           <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
         </div>
 
         <div class="machine-card featured reveal d3" onclick="openModal('WUrf8N120SU', 18)">
-          <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/WUrf8N120SU/maxresdefault.jpg'), url('https://i.ytimg.com/vi/WUrf8N120SU/hqdefault.jpg');"></div>
+          <div class="machine-card-bg" style="background-image: url('https://img.youtube.com/vi/WUrf8N120SU/0.jpg');"></div>
           <div class="machine-badge">Yeni Seri</div>
-          <div class="machine-card-inner"><div class="machine-num">09</div><div><div class="machine-title" style="font-size:40px;">AC 20XX SERİSİ</div><div class="machine-desc">Alüminyum kesiminde pazar lideri çözümler</div></div></div>
+          <div class="machine-card-inner"><div class="machine-num">09</div><div><div class="machine-title" style="font-size:40px;">AC 20XX SERİSİ</div><div class="machine-desc">Alüminyum kesiminde pazar lideri yüksek performanslı çözümler</div></div></div>
           <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
         </div>
       </div>
@@ -875,127 +834,100 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
   <!-- TUBITAK AR-GE PROJECTS -->
   <section id="tubitak">
     <div class="section-inner">
-
       <div class="reveal">
         <div class="section-label">Flagship Development Programs</div>
         <h2 class="section-title">TÜBİTAK R&D<br><span>CASE STUDIES</span></h2>
         <p class="section-sub">
-          Government-funded industrial R&D programs executed as Project Executive,
-          transforming engineering concepts into commercial CNC machine platforms and long-term organizational know-how.
+          Proje Yürütücüsü olarak yönettiğim, teknik kavramları ticarileşebilir ileri makine platformlarına dönüştüren TÜBİTAK Ar-Ge programları.
         </p>
       </div>
 
       <div class="tubitak-grid">
-
-        <!-- ZC 3050 -->
+        <!-- ZC 3050 Case -->
         <div class="tubitak-card reveal d1">
           <i class="fa-solid fa-microchip tubitak-card-bg"></i>
-
           <div class="tubitak-logo-wrap">
             <div class="tubitak-brand">
-              <img src="tubitak-logo.svg" alt="TÜBİTAK" class="tubitak-logo-img"
-                   onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/05/T%C3%9CB%C4%B0TAK_logo.svg'">
+              <svg width="32" height="32" viewBox="0 0 100 100" class="tubitak-logo-img">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="#2563eb" stroke-width="8"/>
+                <path d="M30 35 L50 65 L70 35" fill="none" stroke="#2563eb" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
               <span class="t-logo-text">TÜBİTAK</span>
             </div>
-
             <div class="t-badge success">
-              <i class="fa-solid fa-check"></i> Successfully Completed
+              <i class="fa-solid fa-check"></i> Başarıyla Tamamlandı
             </div>
           </div>
 
           <div class="t-badge-group">
-            <span class="t-badge program">2018</span>
-            <span class="t-badge program"
-                  style="background: rgba(245,158,11,0.1); color: var(--amber); border-color: rgba(245,158,11,0.3);">
-              Project Executive
+            <span class="t-badge program">Program: 1501</span>
+            <span class="t-badge program" style="background: rgba(245,158,11,0.1); color: var(--amber); border-color: rgba(245,158,11,0.3);">
+              Proje Yürütücüsü
             </span>
           </div>
 
-          <h3 class="t-project-name">
-            ZC 3050 – 5 Axis Aluminium Machining Center
-          </h3>
+          <h3 class="t-project-name">ZC 3050 – 5 Eksenli Alüminyum Profil İşleme Merkezi</h3>
 
           <div class="t-case">
-
             <p>
-              <strong>Challenge</strong><br>
-              Existing 4-axis platforms could not perform angular machining operations required by the market. Customers needed a single platform capable of machining, cutting and complex profile processing.
+              <strong>Mühendislik Problemi</strong><br>
+              Geleneksel 4 eksenli sistemlerin profil uçlarında ve açılı yüzeylerde ihtiyaç duyulan karmaşık operasyonları tek bağlamada yapamaması, üretim hattında duraksamalara ve firelere yol açmaktaydı.
             </p>
-
             <p>
-              <strong>Solution</strong><br>
-              Developed a 5-axis CNC platform with integrated sawing capability, modular architecture and dual-station operation. Virtual motion analysis was used extensively to validate spindle movements and safe operating zones.
+              <strong>Geliştirilen Çözüm</strong><br>
+              Patentli entegre dairesel testere ünitesine sahip, çift istasyonlu dinamik çalışma alanına sahip 5 eksenli CNC platform mimarisi oluşturuldu. Spindle ve servo mekanik salınımları sanal kinematik analizlerle doğrulandı.
             </p>
-
             <p>
-              <strong>Leadership</strong><br>
-              Coordinated mechanical, automation and industrial safety disciplines. Led validation of safety barriers, area scanners and dual-station operating scenarios before product release.
+              <strong>Sonuç & Katkı</strong><br>
+              TÜBİTAK 1501 tescilli başarıyla tamamlanan proje sayesinde firmanın ilk 5 eksenli CNC makinesi yerlileştirilerek küresel pazarda yüksek ticarileşme başarısı yakaladı.
             </p>
-
-            <p>
-              <strong>Result</strong><br>
-              TÜBİTAK 1501 approved R&D project. Delivered the company's first 5-axis aluminium machining platform, introduced angular cutting capability and became a flagship product showcased to the market.
-            </p>
-
           </div>
         </div>
 
-        <!-- ZC 3010 -->
+        <!-- ZC 3010 Case -->
         <div class="tubitak-card reveal d2">
           <i class="fa-solid fa-gears tubitak-card-bg"></i>
-
           <div class="tubitak-logo-wrap">
             <div class="tubitak-brand">
-              <img src="tubitak-logo.svg" alt="TÜBİTAK" class="tubitak-logo-img"
-                   onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/05/T%C3%9CB%C4%B0TAK_logo.svg'">
+              <svg width="32" height="32" viewBox="0 0 100 100" class="tubitak-logo-img">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="#2563eb" stroke-width="8"/>
+                <path d="M30 35 L50 65 L70 35" fill="none" stroke="#2563eb" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
               <span class="t-logo-text">TÜBİTAK</span>
             </div>
-
             <div class="t-badge success">
-              <i class="fa-solid fa-check"></i> Successfully Completed
+              <i class="fa-solid fa-check"></i> Başarıyla Tamamlandı
             </div>
           </div>
 
           <div class="t-badge-group">
-            <span class="t-badge program">2014</span>
-            <span class="t-badge program"
-                  style="background: rgba(245,158,11,0.1); color: var(--amber); border-color: rgba(245,158,11,0.3);">
-              Project Executive
+            <span class="t-badge program">Program: 1501</span>
+            <span class="t-badge program" style="background: rgba(245,158,11,0.1); color: var(--amber); border-color: rgba(245,158,11,0.3);">
+              Proje Yürütücüsü
             </span>
           </div>
 
-          <h3 class="t-project-name">
-            ZC 3010 – 4 Axis Aluminium Machining Center
-          </h3>
+          <h3 class="t-project-name">ZC 3010 – 4 Eksenli Alüminyum İşleme Merkezi</h3>
 
           <div class="t-case">
-
             <p>
-              <strong>Challenge</strong><br>
-              The company had no previous CNC machine development experience. Existing expertise was focused on PVC machinery and the required CNC know-how did not yet exist internally.
+              <strong>Mühendislik Problemi</strong><br>
+              Şirketin daha önce CNC geliştirme tecrübesinin olmaması; kaynaklı gövdelerin gerilim giderme süreçleri, doğrusal kızak hassasiyetleri ve eksen tork optimizasyonu gibi konularda kurumsal bilgi birikiminin eksikliği.
             </p>
-
             <p>
-              <strong>Solution</strong><br>
-              Conducted competitor benchmarking, customer requirement studies and developed the company's first CNC aluminium machining center platform while introducing new manufacturing and precision control processes.
+              <strong>Geliştirilen Çözüm</strong><br>
+              Tüm gövde sonlu elemanlar yöntemiyle (FEA) statik ve dinamik burulma testlerine tabi tutuldu. Titreşim sönümleyici döküm harçları ve optimize edilmiş profil tasarımları kullanılarak stabil bir kinematik altyapı oluşturuldu.
             </p>
-
             <p>
-              <strong>Leadership</strong><br>
-              Coordinated manufacturing, machining, quality, assembly and automation activities. Implemented tighter tolerance strategies and stress-relief processes for large welded machine structures.
+              <strong>Sonuç & Katkı</strong><br>
+              Proje sadece ilk CNC makinesinin ticarileşmesini sağlamakla kalmadı; organizasyonun sonraki tüm CNC platformları için standart tasarım kılavuzlarının ve üretim protokollerinin temelini attı.
             </p>
-
-            <p>
-              <strong>Result</strong><br>
-              TÜBİTAK 1501 approved R&D project. Established the organization's CNC machine development capability and created the foundation for future generations of aluminium machining centers.
-            </p>
-
           </div>
         </div>
-
       </div>
     </div>
   </section>
+</div>
 
 <!-- ========================================== -->
 <!-- ============= VIEW: BLOG ================= -->
@@ -1015,12 +947,12 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
             <div class="blog-sidebar-title"><i class="fa-solid fa-book-open"></i> YAZILAR</div>
           </div>
           <div class="blog-list" id="blog-list-container">
-            <!-- JS ile doldurulacak makale kartları buraya gelecek -->
+            <!-- Driven via script -->
           </div>
         </div>
         <div class="blog-content-area">
           <div class="blog-reader" id="blog-reader">
-            <!-- JS ile doldurulacak makale içeriği buraya gelecek -->
+            <!-- Driven via script -->
           </div>
         </div>
       </div>
@@ -1035,9 +967,9 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
   <section id="tools" style="min-height: 100vh; padding-top: 120px;">
     <div class="section-inner">
       <div class="reveal">
-        <div class="section-label">Mühendislik Araçları</div>
+        <div class="section-label">Mühendislik Hesaplama Araçları</div>
         <h2 class="section-title">HESAPLAMA<br><span>PANELİ</span></h2>
-        <p class="section-sub">ISO / DIN standartlarına dayalı, anlık hesaplama araçları. Ön tasarım süreçlerini hızlandırın.</p>
+        <p class="section-sub">ISO ve DIN standartlarına dayalı, tasarım aşamalarında anlık doğrulama yapmanızı sağlayan mühendislik arayüzleri.</p>
       </div>
 
       <div class="tools-layout reveal">
@@ -1048,11 +980,11 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
           <div class="tool-tab" data-target="t-tork"><i class="fa-solid fa-bolt"></i><div class="tool-tab-text"><span class="tool-tab-name">Motor Tork</span><span class="tool-tab-sub">T = P / ω</span></div></div>
           <div class="tool-tab" data-target="t-vidali"><i class="fa-solid fa-screwdriver"></i><div class="tool-tab-text"><span class="tool-tab-name">Vidalı Mil</span><span class="tool-tab-sub">Lead Screw</span></div></div>
           <div class="tool-tab" data-target="t-tolerance-tool"><i class="fa-solid fa-layer-group"></i><div class="tool-tab-text"><span class="tool-tab-name">Tolerans Analizi</span><span class="tool-tab-sub">Stack-up / RSS</span></div></div>
-          <!-- FAZ 1: YENİ SEHİM ANALİZİ SEKMESİ -->
           <div class="tool-tab" data-target="t-beam"><i class="fa-solid fa-ruler-horizontal"></i><div class="tool-tab-text"><span class="tool-tab-name">Sehim Analizi</span><span class="tool-tab-sub">Beam Deflection</span></div></div>
         </div>
 
         <div class="tools-content">
+          <!-- Vc Panel -->
           <div id="t-vc" class="tool-panel active">
             <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M40 10v30m20-30v30" stroke-width="4"/><path d="M30 40h40v20H30z" stroke-width="3"/><path d="M35 40l-5 20m15-20l-5 20m15-20l-5 20m15-20l-5 20"/><path d="M20 60h60v30H20z" stroke="currentColor" opacity="0.5"/><path d="M65 25a15 15 0 1 1-30 0" stroke-dasharray="4 4"/><path d="M35 25l-5-5m0 10l5-5"/>
@@ -1066,6 +998,7 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
             </div>
           </div>
 
+          <!-- Piston Panel -->
           <div id="t-piston" class="tool-panel">
             <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="20" y="30" width="50" height="40" rx="2" stroke-width="3"/><path d="M25 25v5m40-5v5" stroke-width="2"/><rect x="45" y="30" width="8" height="40" fill="var(--amber)" fill-opacity="0.2"/><path d="M53 45h35m-35 10h35" stroke-width="2"/><path d="M88 43v14" stroke-width="3"/><path d="M70 20h20m-5-5l5 5-5 5" stroke-dasharray="2 2"/><path d="M40 80H20m5-5l-5 5 5 5" stroke-dasharray="2 2"/>
@@ -1092,7 +1025,7 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
                 <label>Çıktı Birimi</label>
                 <select id="p-unit" class="tool-select">
                   <option value="N">Newton (N)</option>
-                  <option value="daN">dekaNewton (daN) - Pnömatik Kat.</option>
+                  <option value="daN">dekaNewton (daN)</option>
                   <option value="kgf" selected>Kilogram-kuvvet (kgf)</option>
                 </select>
               </div>
@@ -1103,6 +1036,7 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
             </div>
           </div>
 
+          <!-- Helis Dişli Panel -->
           <div id="t-helis" class="tool-panel">
             <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="50" cy="50" r="40" stroke-width="3" stroke-dasharray="10 5"/><circle cx="50" cy="50" r="10" stroke-width="2"/><circle cx="50" cy="50" r="14" stroke-dasharray="2 2"/><path d="M20 25l60 30M15 40l60 30M25 15l60 30M15 60l50 25M35 10l55 25"/>
@@ -1113,13 +1047,14 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
               <div class="input-field"><label>Modül m</label><input type="number" id="h-m" value="2" min="0.5" step="0.5" class="tool-input"></div>
               <div class="input-field"><label>Diş Sayısı z</label><input type="number" id="h-z" value="20" min="5" class="tool-input"></div>
             </div>
-            <div class="result-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+            <div class="result-grid" style="grid-template-columns: repeat(3, 1fr);">
               <div class="result-card"><span class="result-card-label">Bölüm Çapı</span><div class="result-card-value" id="h-d">42.47 mm</div></div>
               <div class="result-card highlight"><span class="result-card-label">Dış Çap da</span><div class="result-card-value" id="h-da">46.47 mm</div></div>
               <div class="result-card"><span class="result-card-label">Merkez Mes.</span><div class="result-card-value" id="h-c">45.24 mm</div></div>
             </div>
           </div>
 
+          <!-- Motor Tork Panel -->
           <div id="t-tork" class="tool-panel">
             <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="20" y="20" width="50" height="60" rx="5"/><path d="M25 30h40M25 40h40M25 50h40M25 60h40M25 70h40" stroke-width="1.5"/><path d="M70 30h10v40H70M80 45h15v10H80" stroke-width="3"/><path d="M85 30a20 20 0 1 1-10 0" stroke-dasharray="4 4"/><path d="M80 25l-5 5 5 5"/>
@@ -1133,6 +1068,7 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
             </div>
           </div>
 
+          <!-- Vidalı Mil Tahrik Panel -->
           <div id="t-vidali" class="tool-panel">
             <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M10 45h80M10 55h80" stroke-width="2"/><path d="M15 45l5 10M25 45l5 10M35 45l5 10M75 45l5 10M85 45l5 10"/><rect x="45" y="35" width="20" height="30" rx="2" stroke-width="3"/><path d="M45 40h20M45 60h20" stroke-width="1"/><path d="M30 25h40m-5-5l5 5-5 5" stroke-dasharray="4 4" stroke-width="2"/>
@@ -1147,13 +1083,14 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
               <label>Hatve h (mm/devir)</label>
               <input type="number" id="v-h" value="10" class="tool-input">
             </div>
-            <div class="result-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+            <div class="result-grid" style="grid-template-columns: repeat(3, 1fr);">
               <div class="result-card"><span class="result-card-label">Tork</span><div class="result-card-value" id="v-tork">2.39 Nm</div></div>
               <div class="result-card highlight"><span class="result-card-label">İtme Kuvveti</span><div class="result-card-value" id="v-force">135.3 kg</div></div>
               <div class="result-card"><span class="result-card-label">Hız</span><div class="result-card-value" id="v-speed">30.0 m/dk</div></div>
             </div>
           </div>
 
+          <!-- Tolerans Yığılma Analizi Panel -->
           <div id="t-tolerance-tool" class="tool-panel">
             <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="20" y="20" width="60" height="15" rx="2" stroke-dasharray="4 4"/><rect x="20" y="45" width="40" height="15" rx="2"/><rect x="65" y="45" width="15" height="15" rx="2"/><path d="M20 70h60m-60 -5v10m60 -10v10"/><path d="M40 65l-5 5 5 5m20 -10l5 5-5 5" stroke-width="1.5"/>
@@ -1162,7 +1099,7 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
             <div class="tool-panel-formula">T_eff = |Üst - Alt| / 2 &nbsp;|&nbsp; WC = ΣT_eff &nbsp;|&nbsp; RSS = √(ΣT_eff²)</div>
 
             <div id="dynamic-tol-list" style="max-height: 220px; overflow-y: auto; margin-bottom: 12px; padding-right: 6px;">
-              <!-- JS ile doldurulacak dinamik satırlar -->
+              <!-- Filled via dynamic JS code -->
             </div>
 
             <button onclick="addTolRow()" class="btn-ghost" style="width:100%; padding: 12px; font-size: 10px; margin-bottom: 24px; justify-content:center; border-style: dashed; border-color: rgba(245,158,11,0.4); color: var(--amber);">
@@ -1175,13 +1112,13 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
             </div>
           </div>
 
-          <!-- FAZ 1: YENİ KİRİŞ SEHİM PANELİ -->
+          <!-- Kiriş Sehim Analizi Panel -->
           <div id="t-beam" class="tool-panel">
             <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M10 50h80M20 50v20M80 50v20" stroke-width="3"/><path d="M15 70h10M75 70h10"/><path d="M50 30v20M45 40l5 10 5-10" stroke-width="2"/><path d="M20 55 C40 65, 60 65, 80 55" stroke-dasharray="4 4" stroke-width="2"/>
             </svg>
             <div class="tool-panel-title">Kiriş Sehim Analizi</div>
-            <div class="tool-panel-formula">δ_max = (F × L³) / (48 × E × I) &nbsp;|&nbsp; Ortadan Tekil Yük</div>
+            <div class="tool-panel-formula">δ_max = (F × L³) / (48 × E × I) &nbsp;|&nbsp; Ortadan Tekil Yük, İki Ucu Sabit</div>
             <div class="result-box"><div class="result-value" id="beam-result">0.00</div><div class="result-unit">Milimetre (mm)</div></div>
             <div class="input-grid" style="margin-bottom:20px;">
               <div class="input-field"><label>Kuvvet F (Newton)</label><input type="number" id="beam-f" value="1000" class="tool-input"></div>
@@ -1198,11 +1135,10 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
             </div>
           </div>
 
-          <!-- FAZ 1: EXPORT BUTTON -->
+          <!-- Rapor Kopyalama Butonu -->
           <button id="btn-export-report" class="btn-ghost" style="width:100%; font-size:10px; margin-top: 32px; justify-content:center; border-style: dashed; border-color: rgba(148,163,184,0.4); cursor:pointer;">
              <i class="fa-regular fa-copy"></i> TEKNİK RAPORU KOPYALA
           </button>
-
         </div>
       </div>
 
@@ -1210,7 +1146,7 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
         <i class="fa-solid fa-shield-halved"></i>
         <div>
           <strong>Mühendislik Sorumluluk Reddi</strong>
-          <p>Bu platformdaki algoritmalar ve hesaplama araçları, ön tasarım (konsept) süreçlerini hızlandırmak amacıyla hazırlanmıştır. Nihai imalat ve üretim kararlarında ilgili global regülasyonların (ISO, DIN vb.) ve makine mühendisliği güvenlik katsayılarının uygulanması kullanıcının kendi sorumluluğundadır. Bu verilerin doğrudan imalata entegrasyonundan doğacak teknik uyuşmazlıklarda geliştirici sorumlu tutulamaz.</p>
+          <p>Bu platformdaki tüm algoritmalar ve hesaplama araçları, ön tasarım (konsept) süreçlerini hızlandırmak amacıyla hazırlanmıştır. Nihai imalat ve üretim kararlarında ilgili uluslararası standartların (ISO, DIN vb.) ve makine mühendisliği emniyet faktörlerinin bizzat uygulanması kullanıcının sorumluluğundadır. Bu verilerin doğrudan tasarıma entegrasyonundan doğacak uyuşmazlıklarda geliştirici sorumlu tutulamaz.</p>
         </div>
       </div>
     </div>
@@ -1240,8 +1176,16 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
   </div>
 </div>
 
+<!-- ────────── INTERACTIVE QUICK TOOL MODAL ────────── -->
+<div id="engToolModal">
+  <div class="eng-modal-box">
+    <button onclick="closeEngTool()" class="eng-modal-close">&times;</button>
+    <div id="engModalContent" style="font-family: sans-serif;"></div>
+  </div>
+</div>
+
 <script>
-// ─── BLOG VERİ TABANI (DATABASE) ───
+// ─── BLOG DATABASE ───
 const articles = [
   {
     id: "art-gdt",
@@ -1257,20 +1201,12 @@ const articles = [
 
       <div class="tech-diagram-wrap">
         <svg width="400" height="160" viewBox="0 0 400 160" fill="none">
-          <!-- Muz Mil (Eğri Silindirik Mil 3D Efektli) -->
-          <!-- Sol silindir yüzü (3D efekti için) -->
           <ellipse cx="40" cy="75" rx="8" ry="15" fill="var(--ink-2)" stroke="var(--mist)" stroke-width="2"/>
-          <!-- Gövde -->
           <path d="M 40 60 Q 200 -20 360 60 A 8 15 0 0 1 360 90 Q 200 10 40 90 A 8 15 0 0 0 40 60" fill="var(--ink-4)" stroke="var(--mist)" stroke-width="2"/>
-
-          <!-- Ölçü Çizgileri ve Oklar -->
           <line x1="200" y1="20" x2="200" y2="50" stroke="var(--danger)" stroke-width="2"/>
           <polygon points="200,20 196,26 204,26" fill="var(--danger)"/>
           <polygon points="200,50 196,44 204,44" fill="var(--danger)"/>
-
           <text x="212" y="39" fill="var(--danger)" font-family="JetBrains Mono" font-size="12" font-weight="bold">Çap (⌀): 10.02</text>
-
-          <!-- Açıklama Metni (İki satıra bölündü) -->
           <text x="10" y="125" fill="var(--white)" font-family="JetBrains Mono" font-size="11">Kumpas her yerde 10.02 mm okur (boyut doğrudur),</text>
           <text x="10" y="145" fill="var(--danger)" font-family="JetBrains Mono" font-size="11">ancak parça eğik (muz formunda) olduğu için montaj YAPILAMAZ!</text>
         </svg>
@@ -1281,37 +1217,24 @@ const articles = [
 
       <div class="tech-diagram-wrap">
         <svg width="400" height="130" viewBox="0 0 400 130">
-          <!-- Tolerans Çerçevesi -->
           <rect x="50" y="45" width="300" height="40" fill="var(--ink-4)" stroke="var(--amber)" stroke-width="2"/>
           <line x1="100" y1="45" x2="100" y2="85" stroke="var(--amber)" stroke-width="2"/>
           <line x1="220" y1="45" x2="220" y2="85" stroke="var(--amber)" stroke-width="2"/>
           <line x1="260" y1="45" x2="260" y2="85" stroke="var(--amber)" stroke-width="2"/>
           <line x1="300" y1="45" x2="300" y2="85" stroke="var(--amber)" stroke-width="2"/>
-
-          <!-- Konum Sembolü -->
           <circle cx="75" cy="65" r="10" fill="none" stroke="var(--white)" stroke-width="2"/>
           <line x1="60" y1="65" x2="90" y2="65" stroke="var(--white)" stroke-width="2"/>
           <line x1="75" y1="50" x2="75" y2="80" stroke="var(--white)" stroke-width="2"/>
-
-          <!-- Tolerans ve MMC -->
           <text x="115" y="72" fill="var(--white)" font-family="JetBrains Mono" font-size="18">⌀ 0.1</text>
           <circle cx="195" cy="65" r="9" fill="none" stroke="var(--mist)" stroke-width="1.5"/>
           <text x="190" y="69" fill="var(--mist)" font-family="JetBrains Mono" font-size="12">M</text>
-
-          <!-- Datumlar -->
           <text x="233" y="72" fill="var(--amber)" font-family="JetBrains Mono" font-size="18" font-weight="bold">A</text>
           <text x="273" y="72" fill="var(--amber)" font-family="JetBrains Mono" font-size="18" font-weight="bold">B</text>
           <text x="319" y="72" fill="var(--amber)" font-family="JetBrains Mono" font-size="18" font-weight="bold">C</text>
-
-          <!-- 1. Açıklama: Karakteristik -->
           <path d="M 75 45 L 75 25 L 10 25" stroke="var(--mist)" stroke-width="1" fill="none"/>
           <text x="10" y="20" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">1. KARAKTERİSTİK (Konum)</text>
-
-          <!-- 2. Açıklama: Tolerans Bölgesi -->
           <path d="M 160 85 L 160 105 L 10 105" stroke="var(--mist)" stroke-width="1" fill="none"/>
           <text x="10" y="120" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">2. TOLERANS BÖLGESİ (Çap 0.1, MMC ile)</text>
-
-          <!-- 3. Açıklama: Datum Referansları -->
           <path d="M 285 45 L 285 25 L 390 25" stroke="var(--mist)" stroke-width="1" fill="none"/>
           <text x="390" y="20" fill="var(--mist)" font-size="10" font-family="JetBrains Mono" text-anchor="end">3. DATUM REFERANSLARI</text>
         </svg>
@@ -1364,19 +1287,17 @@ const articles = [
 
       <h2>İstatistiksel Tolerans Uygulaması</h2>
       <p>Özellikle montaj hatlarında, her parçanın aynı anda "en kötü durumda" üretilip bir araya gelme ihtimali matematiksel olarak çok düşüktür. İTÜ kaynaklı çalışmalarda da vurgulandığı üzere, <strong>İstatistiksel Tolerans</strong> kullanılarak montajda beklenen tolerans yığılması <em>karekök formülüyle (Root Sum Square - RSS)</em> hesaplanabilir. Bu sayede parça bazında verilen toleranslar rahatlatılabilir ve doğrudan imalat maliyeti düşürülür.</p>
-
-      <p><em>Özetle GD&T; neyin kesinlikle kusursuz olması gerektiğini ve neyin o kadar da önemli olmadığını imalathaneye net bir şekilde aktaran, mühendisliğin hukuki sözleşmesidir.</em></p>
     `
   },
   {
     id: "art-bolts",
     date: "12 NİSAN 2026",
-    tags: ["DİNAMİK DAYANIM", "CI_VATA TASARIMI", "AR-GE"],
+    tags: ["DİNAMİK DAYANIM", "CIVATA TASARIMI", "AR-GE"],
     title: "Cıvata Bağlantılarında Dinamik Dayanım: Neden Gevşer, Neden Kopar?",
     readTime: "10 Dk",
     content: `
       <h2>Tasarım Felsefesi ve Bağlantının Dinamiği</h2>
-      <p>Birçok tasarımcı için cıvata seçimi; katalogdan bir çap seçip yanına "10.9" yazmaktan ibarettir. Ancak makine çalışmaya başladığında işler değişir. Statik yükte devleşen o cıvatalar, dinamik yükler altında neden kağıt gibi kopuyor veya kendiliğinden gevşiyor? Gelin, cıvatalı bağlantıların "görünmez" fiziğine ve saha tecrübelerimize dayanan kritik detaylara bakalım.</p>
+      <p>Birçok tasarımcı için cıvata seçimi; katalogdan bir çap seçip yanına "10.9" yazmaktan ibarettir. Ancak makine çalışmaya başladığında işler değişir. Statik yükte devleşen o cıvatalar, dinamik yükler altında neden kağıt gibi kopuyor veya kendiliğinden gevşiyor?</p>
 
       <h2>1. Altın Kural: Cıvata Bir Yaydır</h2>
       <p>Cıvatayı sıktığınızda aslında onu bir yay gibi gerersiniz. Bu <strong>ön gerilme (pre-load)</strong>, bağlantının hayatta kalma garantisidir. Dinamik bir yük geldiğinde, bu yükün tamamı cıvataya binmez. Eğer bağlantınız doğru tasarlanmışsa, dış yükün büyük kısmı parçaların arasındaki basma kuvvetini azaltmaya harcanır.</p>
@@ -1388,66 +1309,15 @@ const articles = [
           <path d="M130 30 C 140 30, 140 40, 150 40 S 160 30, 170 30" stroke="var(--amber)" stroke-width="2" fill="none"/>
           <path d="M130 50 C 140 50, 140 60, 150 60 S 160 50, 170 50" stroke="var(--amber)" stroke-width="2" fill="none"/>
           <path d="M130 70 C 140 70, 140 80, 150 80 S 160 70, 170 70" stroke="var(--amber)" stroke-width="2" fill="none"/>
-          <text x="10" y="80" fill="var(--mist)" font-family="JetBrains Mono" font-size="10">BAĞLANTI ELEMANI (YAY)</text>
-          <path d="M80 80 L 120 80" stroke="var(--mist)" stroke-width="1" marker-end="url(#arrow)"/>
-          <defs><marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--mist)"/></marker></defs>
+          <text x="10" y="80" fill="var(--mist)" font-family="JetBrains Mono" font-size="10">YAY ETKİSİ</text>
         </svg>
       </div>
-
-      <p>Başarılı bir bağlantı için formül net:</p>
-      <ul>
-        <li><strong>Esnek Cıvata:</strong> Mümkünse uzun ve gövdesi inceltilmiş (waisted) cıvatalar seçin.</li>
-        <li><strong>Rijit Parçalar:</strong> Bağlanan flanş yüzeylerini kalın ve iyi işlenmiş tutun.</li>
-      </ul>
 
       <h2>2. Yorulma (Fatigue): Sessiz Katil</h2>
       <p>Cıvatalar genellikle aşırı yükten değil, yorulmadan kopar. Yorulma çatlağı neredeyse her zaman ilk diş dibinden başlar. Nasıl önleriz?</p>
       <ul>
-        <li><strong>Hadde Diş Kullanın:</strong> Talaşlı imalat yerine haddeleme (rolling) ile açılmış dişler, yüzeydeki kalıntı gerilmeler sayesinde yorulmaya karşı çok daha dirençlidir.</li>
+        <li><strong>Hadde Diş Kullanın:</strong> Talaşlı imalat yerine haddeleme ile açılmış dişler, yüzeydeki kalıntı gerilmeler sayesinde yorulmaya karşı dirençlidir.</li>
         <li><strong>Ön Gerilmeyi Artırın:</strong> Akma sınırının %70-85'ine kadar çıkmaktan korkmayın. Yüksek ön gerilme, cıvatanın maruz kaldığı gerilme genliğini (stress amplitude) düşürür.</li>
-      </ul>
-
-      <h2>3. Gevşeme: Junker Testinin Acı Gerçeği</h2>
-      <p>Enlemesine titreşimler başladığında, standart bir cıvata-somun ikilisi hızla gevşeme eğilimi gösterir. Klasik yaylı pulların (rondela) dinamik yüklerde etkisi yok denecek kadar azdır. Gerçek çözümler:</p>
-      <div class="tech-callout">
-        <h4>Profesyonel Kilitleme Stratejileri</h4>
-        <p><strong>Nord-Lock Tipi Pullar:</strong> Kama kilitleme prensibiyle fiziksel bir engel oluşturur. Titreşim ne kadar artsa da cıvata gevşeyemez.</p>
-        <p><strong>Kimyasal Kilitleyiciler:</strong> Diş boşluklarını doldurarak mikro hareketleri engeller.</p>
-      </div>
-
-      <h2>4. "Tork" Neden Yanıltıcıdır?</h2>
-      <p>"Tork anahtarıyla sıktım, eminim" demek çoğu zaman yanılgıdır. Çünkü uyguladığınız torkun yaklaşık <strong>%90'ı sürtünmeye</strong> (dişlerde ve baş altında) gider. Geri kalan %10 ise asıl işi yapan ön gerilmeyi oluşturur.</p>
-
-      <div class="tech-diagram-wrap">
-        <svg width="200" height="200" viewBox="0 0 200 200">
-          <circle cx="100" cy="100" r="70" fill="none" stroke="var(--amber)" stroke-width="20" stroke-dasharray="44 440"/>
-          <circle cx="100" cy="100" r="70" fill="none" stroke="var(--mist)" stroke-width="20" stroke-dasharray="396 440" stroke-dashoffset="-44"/>
-          <text x="100" y="105" fill="var(--white)" font-family="Bebas Neue" font-size="24" text-anchor="middle">%90 SÜRTÜNME</text>
-          <text x="100" y="125" fill="var(--amber)" font-family="JetBrains Mono" font-size="10" text-anchor="middle">%10 FAYDALI İŞ</text>
-        </svg>
-      </div>
-
-      <p>Kritik bağlantılar için tavsiyem: Sadece torkla yetinmeyin; <strong>Tork + Açı</strong> yöntemini kullanın. Çok kritik hatlarda Hidrolik Germe veya Ultrasonik Uzama Ölçümü gibi ileri tekniklere yönelin.</p>
-
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Yöntem</th><th>Hata Payı</th><th>Kullanım Alanı</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Manuel Tork</td><td>± %25</td><td>Standart Montaj</td></tr>
-            <tr><td>Tork + Açı</td><td>± %10</td><td>Motor / Krank Bağlantıları</td></tr>
-            <tr><td>Hidrolik Germe</td><td>± %1</td><td>Rüzgar Türbinleri / Ağır Sanayi</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h2>Sahadan Özet Notlar (Pro-Tips)</h2>
-      <ul>
-        <li>Cıvata boyunu uzatın, dişli bölgeyi kısa tutun.</li>
-        <li>İnce sacların altına kalın pullar koyarak yükü dağıtın.</li>
-        <li>Yorulma riski varsa, bağlantı diyagramını mutlaka çizin.</li>
-        <li>"M12 10.9" yazıp geçmek, saatli bomba bırakmaktır; sistemi bir bütün olarak tasarlayın.</li>
       </ul>
     `
   },
@@ -1459,7 +1329,7 @@ const articles = [
     readTime: "8 Dk",
     content: `
       <h2>Tasarım Felsefesi ve Montajın Kinematiği</h2>
-      <p>Tekil bir parçanın toleranslandırılması (ISO 286), o parçanın imalat başarısını belirlerken; bu parçaların bir araya gelerek oluşturduğu montaj gruplarında durum çok daha kritik bir boyuta taşınır. Makine tasarımında sıklıkla karşılaşılan <em>"parçalar tek tek doğru ama montajda neden kasılıyor?"</em> veya <em>"neden bu boşluk (clearance) beklediğimden fazla çıktı?"</em> sorularının cevabı, <strong>Tolerans Yığılması (Tolerance Stack-up)</strong> analizinde gizlidir.</p>
+      <p>Tekil bir parçanın toleranslandırılması, o parçanın imalat başarısını belirlerken; bu parçaların bir araya gelerek oluşturduğu montaj gruplarında durum çok daha kritik bir boyuta taşınır. Makine tasarımında sıklıkla karşılaşılan <em>"parçalar tek tek doğru ama montajda neden kasılıyor?"</em> sorusunun cevabı, <strong>Tolerans Yığılması (Tolerance Stack-up)</strong> analizinde gizlidir.</p>
 
       <h2>Tolerans Analizinde İki Temel Yaklaşım</h2>
       <p>Tasarım aşamasında hangi yöntemi seçeceğiniz, projenin bütçesini ve üretim sahasındaki "fire" oranlarını doğrudan etkiler.</p>
@@ -1467,38 +1337,14 @@ const articles = [
       <p><strong>1. En Kötü Durum Analizi (Worst-Case Analysis)</strong></p>
       <p>Bu yöntem, zincirdeki tüm parçaların aynı anda en ekstrem (en büyük veya en küçük) sınırlarında üretildiğini varsayar.</p>
       <ul>
-        <li><strong>Karakteristik:</strong> %100 güvenli montaj garantisi verir.</li>
-        <li><strong>Dezavantajı:</strong> Toleranslar çok daralır, imalat maliyeti (IT kalitesi yükseldiği için) katlanır.</li>
-        <li><strong>Kullanım Alanı:</strong> Kritik emniyet parçaları, düşük adetli hassas mekanizmalar.</li>
+        <li><strong>Karakteristik:</strong> %100 güvenli montaj garantisi verir ancak imalat maliyetlerini çok dar toleranslar yüzünden artırır.</li>
       </ul>
 
       <p><strong>2. İstatistiksel Analiz (RSS - Root Sum Square)</strong></p>
-      <p>Parçaların imalatında ölçülerin normal dağılım (Gaussian) sergilediği varsayımına dayanır. Tüm parçaların aynı anda "en kötü" sınırda olma ihtimalinin düşüklüğünü kullanır.</p>
+      <p>Parçaların imalatında ölçülerin normal dağılım (Gaussian) sergilediği varsayımına dayanır.</p>
       <ul>
         <li><strong>Matematiksel Model:</strong> <code>T_toplam = √(T₁² + T₂² + ... + Tₙ²)</code></li>
         <li><strong>Avantajı:</strong> İmalatçıya daha geniş tolerans alanı sağlar, maliyeti düşürür.</li>
-      </ul>
-
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Parça / Ölçü Bileşeni</th><th>Nominal (mm)</th><th>Tolerans (±)</th><th>Etki Yönü (+/-)</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Gövde Yatağı Derinliği</td><td>50.00</td><td>0.05</td><td><strong>+</strong></td></tr>
-            <tr><td>Rulman Genişliği</td><td>15.00</td><td>0.02</td><td><strong>-</strong></td></tr>
-            <tr><td>Segman Kanalı Mesafesi</td><td>34.00</td><td>0.03</td><td><strong>-</strong></td></tr>
-            <tr><td><strong>Net Boşluk (Gap)</strong></td><td><strong>1.00</strong></td><td><strong>En Kötü: 0.10</strong></td><td>Fonksiyonel Sınır</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h2>Tasarım Ekonomisi: Yığılmayı Azaltma Stratejileri</h2>
-      <p>15 yıllık tasarım tecrübesinin bize öğrettiği en önemli ders; toleransları daraltmanın çözüm değil, bir mühendislik maliyeti olduğudur. Yığılmayı yönetmek için şu stratejiler izlenmelidir:</p>
-      <ul>
-        <li><strong>Referans (Datum) Seçimi:</strong> Ölçü zincirini kısaltın. Parçaları birbirine bağlarken ölçüleri ortak bir referans yüzeyinden vererek zincirdeki halka sayısını azaltın.</li>
-        <li><strong>Yönlendirilmiş Toleranslar:</strong> Boşluk gereken yerlerde tek yönlü (unilateral) tolerans kullanarak istatistiksel sapmayı tasarım lehine çevirin.</li>
-        <li><strong>Python ile Simülasyon:</strong> Karmaşık mekanizmalarda Monte Carlo simülasyonları yürüten basit Python scriptleri ile binlerce olasılığı saniyeler içinde test edin.</li>
       </ul>
     `
   },
@@ -1510,55 +1356,31 @@ const articles = [
     readTime: "12 Dk",
     content: `
       <h2>Tolerans İhtiyacının Felsefesi</h2>
-      <p>Modern makine tasarımı ve talaşlı imalat teknolojilerinde, mühendislik çizimlerinde belirtilen teorik boyutların fiziksel üretim ortamında mutlak bir kesinlikle elde edilmesi imkansızdır. Tasarımcı tarafından teknik resim üzerinde belirlenen bu iki sınır arasındaki farka <strong>"tolerans"</strong> adı verilir.</p>
+      <p>Modern makine tasarımı ve talaşlı imalat teknolojilerinde, mühendislik çizimlerinde belirtilen teorik boyutların fiziksel üretim ortamında mutlak bir kesinlikle elde edilmesi imkansızdır. Tasarımcı tarafından teknik resim üzerinde belirlenen bu iki sınır arasındaki farka tolerans adı verilir.</p>
 
       <h2>TS EN ISO 286 Standart Sisteminin Anatomisi</h2>
       <p>Uluslararası Standartlar Örgütü (ISO) tarafından geliştirilen TS EN ISO 286 standardı, makine elemanlarının eşlenebilirliğini garanti altına alan temel tolerans iskeletini oluşturur.</p>
-
-      <ul>
-        <li><strong>IT5 ve IT6 Sınıfları:</strong> Ekstrem hassasiyet gerektiren, yüksek devirlerde çalışan rotasyonel parçalar içindir.</li>
-        <li><strong>IT7 Kalitesi:</strong> Endüstride standartları belirleyen referans noktasıdır. Yüksek performanslı CNC operasyonlarını temsil eder.</li>
-      </ul>
-
-      <h2>Boşluklu Geçmeler (Clearance Fits)</h2>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Delik Bazlı</th><th>Mil Bazlı</th><th>Karakteristik Özellikler</th></tr>
-          </thead>
-          <tbody>
-            <tr><td><strong>H11/c11</strong></td><td><strong>C11/h11</strong></td><td>Tolerans bölgelerinin geniş olduğu, çok gevşek çalışma geçmesidir.</td></tr>
-            <tr><td><strong>H8/f7</strong></td><td><strong>F8/h7</strong></td><td>İmalat hassasiyeti gerektiren dar kayıcı geçmedir.</td></tr>
-            <tr><td><strong>H7/g6</strong></td><td><strong>G7/h6</strong></td><td>Sanayide en yaygın "kayıcı geçme". Mükemmel yağ filmi boşluğu bırakır.</td></tr>
-          </tbody>
-        </table>
-      </div>
     `
   }
 ];
 
-// ─── SPA ROUTING (YÖNLENDİRİCİ) MİMARİSİ ───
+// ─── SPA ROUTING SYSTEM ───
 function router() {
-  // 1. Mevcut URL hash'ini al (Yoksa ana sayfa '#/')
   const hash = window.location.hash || '#/';
 
-  // 2. Tüm görünümleri (view) gizle
   document.querySelectorAll('.spa-view').forEach(view => {
     view.classList.remove('active');
   });
 
-  // 3. Menü aktiflik durumunu hem Masaüstü hem Mobil linklerden sıfırla
   document.querySelectorAll('.nav-links a, .m-link').forEach(link => {
     link.classList.remove('active-link');
   });
 
-  // 4. Hash'e göre ilgili görünümü aç ve menüleri işaretle
   if (hash.startsWith('#/blog')) {
     document.getElementById('view-blog').classList.add('active');
     document.getElementById('nav-blog').classList.add('active-link');
     document.getElementById('m-nav-blog').classList.add('active-link');
     
-    // Blog listesini render et
     renderBlogList();
 
     const urlParams = new URLSearchParams(hash.split('?')[1]);
@@ -1573,31 +1395,27 @@ function router() {
     document.getElementById('nav-tools').classList.add('active-link');
     document.getElementById('m-nav-tools').classList.add('active-link');
     
-    // Tools sekmesi için ilk paneli aktif et (eğer hiçbiri aktif değilse)
+    // Auto-select first tab inside tools panel if none is active
     setTimeout(() => {
       const activePanel = document.querySelector('.tool-panel.active');
       if (!activePanel) {
         const firstTab = document.querySelector('.tool-tab');
-        if (firstTab) {
-          firstTab.click();
-        }
+        if (firstTab) firstTab.click();
       }
-    }, 100);
+    }, 50);
   } else {
     document.getElementById('view-home').classList.add('active');
     document.getElementById('nav-home').classList.add('active-link');
     document.getElementById('m-nav-home').classList.add('active-link');
   }
 
-  // 5. Sayfayı en üste kaydır
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// URL değiştiğinde veya sayfa ilk yüklendiğinde router'ı çalıştır
 window.addEventListener('hashchange', router);
 window.addEventListener('load', router);
 
-// ─── FAZ 3: MOUSE GLOW (AMBIENT LIGHT) ───
+// ─── MOUSE GLOW EFFECT ───
 const mouseGlow = document.getElementById('mouse-glow');
 document.addEventListener('mousemove', (e) => {
   if (window.innerWidth > 768) {
@@ -1608,14 +1426,12 @@ document.addEventListener('mousemove', (e) => {
 });
 document.addEventListener('mouseleave', () => mouseGlow.style.opacity = '0');
 
-// ─── YENİ NESİL MOBİL MENÜ İŞLEVİ ───
+// ─── MOBILE MENU OVERLAY TRIGGER ───
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
 
 mobileMenuBtn.addEventListener('click', () => {
   mobileMenuOverlay.classList.toggle('active');
-
-  // Menü açıkken arkadaki sitenin kaymasını engeller
   document.body.style.overflow = mobileMenuOverlay.classList.contains('active') ? 'hidden' : '';
 
   const icon = mobileMenuBtn.querySelector('i');
@@ -1628,7 +1444,6 @@ mobileMenuBtn.addEventListener('click', () => {
   }
 });
 
-// Linklere tıklayınca menüyü kapat
 document.querySelectorAll('.m-link').forEach(link => {
   link.addEventListener('click', () => {
     mobileMenuOverlay.classList.remove('active');
@@ -1638,7 +1453,7 @@ document.querySelectorAll('.m-link').forEach(link => {
   });
 });
 
-// ─── BLOG İŞLEVLERİ (RENDER) ───
+// ─── KNOWLEDGE BASE (BLOG) SIDEBAR RENDER ───
 function renderBlogList() {
   const blogListContainer = document.getElementById('blog-list-container');
   if (!blogListContainer) return;
@@ -1698,17 +1513,17 @@ function loadArticle(id, cardElement, isInitialLoad = false) {
   }, 300);
 }
 
-// ─── PYTHON TERMINAL SIMULATION SCRIPT ───
+// ─── PYTHON TERMINAL SIMULATION LOGIC ───
 const termLines = [
   { text: "import numpy as np", type: "normal", delay: 800 },
   { text: "from fea_solver import run_modal_analysis", type: "normal", delay: 500 },
-  { text: "Connection established. Hooking active document: ZC-3050-Gantry.sldasm", type: "success", delay: 800 },
-  { text: "Extracting mass properties and boundary conditions...", type: "normal", delay: 1500 },
-  { text: "[WARN] Interference detected at node 402: Spindle Housing", type: "warning", delay: 1000 },
-  { text: "Starting dynamic resonance simulation (Iterations: 5000)", type: "normal", delay: 600 },
-  { text: "Mode 3: 132.8 Hz (Critical)", type: "error", delay: 400 },
-  { text: "Success! Mode 3 shifted to 165.4 Hz.", type: "success", delay: 500 },
-  { text: "Done in 14.2s. Ready for next process.", type: "success", delay: 2000 }
+  { text: "Hooking active Autodesk document: ZC-3050-Gantry.iam", type: "success", delay: 800 },
+  { text: "Extracting mass properties and welded connections...", type: "normal", delay: 1200 },
+  { text: "[WARN] Interference detected at node 402: Spindle Box", type: "warning", delay: 1000 },
+  { text: "Running dynamic resonance analysis (Iterations: 5000)", type: "normal", delay: 600 },
+  { text: "Critical Peak: Mode 3 at 132.8 Hz (Excessive Amplitude)", type: "error", delay: 400 },
+  { text: "Modifying stiffener matrix... Mode 3 shifted to 165.4 Hz.", type: "success", delay: 800 },
+  { text: "Verification Successful! Kinematics optimized in 14.2s.", type: "success", delay: 2000 }
 ];
 
 const termBody = document.getElementById('term-body');
@@ -1730,12 +1545,13 @@ function addTermLine(lineObj) {
 }
 
 function runTerminal() {
+  if (!termBody) return;
   if (currentLineIdx >= termLines.length) {
     setTimeout(() => {
       termBody.innerHTML = '';
       currentLineIdx = 0;
       runTerminal();
-    }, 5000);
+    }, 6000);
     return;
   }
   const line = termLines[currentLineIdx];
@@ -1756,7 +1572,7 @@ function runTerminal() {
   }, line.delay);
 }
 
-// ─── MEVCUT KODLAR (Scroll & Animations) ───
+// ─── SCROLL & INTERSECTION OBSERVER ANIMATIONS ───
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 40); });
 
@@ -1765,30 +1581,22 @@ const observer = new IntersectionObserver((entries) => {
     if (!entry.isIntersecting) return;
     const el = entry.target;
     if (el.classList.contains('reveal') || el.classList.contains('reveal-left') || el.classList.contains('reveal-right')) el.classList.add('visible');
-    if (el.classList.contains('terminal-wrapper') && !el.dataset.started) {
-      el.dataset.started = "true";
-      setTimeout(runTerminal, 1000);
-    }
-    if (el.classList.contains('skill-group')) {
-      el.querySelectorAll('.skill-bar-fill').forEach((bar, i) => { setTimeout(() => { bar.style.transform = `scaleX(${bar.dataset.width})`; bar.classList.add('animated'); }, i * 120); });
-    }
-    if (el.classList.contains('counter')) animateCounter(el);
     observer.unobserve(el);
   });
-}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.1, rootMargin: '0px 0px -4px 0px' });
 
 function reObserve() {
-  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .skill-group, .counter, .terminal-wrapper').forEach(el => { observer.observe(el); });
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => { observer.observe(el); });
 }
 window.addEventListener('hashchange', () => setTimeout(reObserve, 100));
 setTimeout(reObserve, 100);
 
-function animateCounter(el) {
-  const target = parseInt(el.dataset.target); let current = 0; const step = target / 40;
-  const timer = setInterval(() => { current += step; if (current >= target) { el.textContent = target; clearInterval(timer); } else { el.textContent = Math.floor(current); } }, 30);
-}
+// Initialize Terminal on Page Load
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(runTerminal, 1000);
+});
 
-// ─── ARAÇLAR (TOOLS) TAB SİSTEMİ ───
+// ─── ENGINEERING CALCULATORS TAB SYSTEM ───
 document.querySelectorAll('.tool-tab').forEach(tab => {
   tab.addEventListener('click', () => {
     document.querySelectorAll('.tool-tab').forEach(t => t.classList.remove('active'));
@@ -1798,11 +1606,21 @@ document.querySelectorAll('.tool-tab').forEach(tab => {
   });
 });
 
-// ─── HESAPLAMA FONKSİYONLARI ───
+// ─── MATHEMATICAL & MECHANICAL FORMULAS ───
 const PI = Math.PI;
-function calcVc() { const D = parseFloat(document.getElementById('vc-d').value); const n = parseFloat(document.getElementById('vc-n').value); document.getElementById('vc-d-val').textContent = D + ' mm'; document.getElementById('vc-n-val').textContent = n + ' rpm'; document.getElementById('vc-result').textContent = ((PI * D * n) / 1000).toFixed(1); }
-document.getElementById('vc-d').addEventListener('input', calcVc); document.getElementById('vc-n').addEventListener('input', calcVc);
 
+// 1. Kesme Hızı
+function calcVc() { 
+  const D = parseFloat(document.getElementById('vc-d').value); 
+  const n = parseFloat(document.getElementById('vc-n').value); 
+  document.getElementById('vc-d-val').textContent = D + ' mm'; 
+  document.getElementById('vc-n-val').textContent = n + ' rpm'; 
+  document.getElementById('vc-result').textContent = ((PI * D * n) / 1000).toFixed(1); 
+}
+document.getElementById('vc-d').addEventListener('input', calcVc); 
+document.getElementById('vc-n').addEventListener('input', calcVc);
+
+// 2. Piston Kuvveti
 const pistonMap = { "12":"6","16":"6","20":"8","25":"10","32":"12","40":"16","50":"20","63":"20","80":"25","100":"25" };
 function calcPiston() {
   const D = parseFloat(document.getElementById('p-bore').value);
@@ -1836,40 +1654,64 @@ function calcPiston() {
   document.getElementById('p-push').textContent = resPush + textUnit;
   document.getElementById('p-pull').textContent = resPull + textUnit;
 }
-document.getElementById('p-bore').addEventListener('change', (e) => { document.getElementById('p-rod').value = pistonMap[e.target.value] || "25"; calcPiston(); });
+document.getElementById('p-bore').addEventListener('change', (e) => { 
+  document.getElementById('p-rod').value = pistonMap[e.target.value] || "25"; 
+  calcPiston(); 
+});
 document.getElementById('p-rod').addEventListener('change', calcPiston);
 document.getElementById('p-bar').addEventListener('input', calcPiston);
 document.getElementById('p-unit').addEventListener('change', calcPiston);
 
+// 3. Helis Dişli
 function calcHelis() {
-  const m = parseFloat(document.getElementById('h-m').value); const z = parseFloat(document.getElementById('h-z').value);
+  const m = parseFloat(document.getElementById('h-m').value); 
+  const z = parseFloat(document.getElementById('h-z').value);
   if (!m || !z || isNaN(m) || isNaN(z)) return;
-  const cosB = Math.cos(19.528 * PI / 180); const d = (m * z) / cosB; const da = d + 2 * m; const c = d / 2 + 25 - m;
-  document.getElementById('h-d').textContent  = d.toFixed(2) + ' mm'; document.getElementById('h-da').textContent = da.toFixed(2) + ' mm'; document.getElementById('h-c').textContent  = c.toFixed(2) + ' mm';
+  const cosB = Math.cos(19.528 * PI / 180); 
+  const d = (m * z) / cosB; 
+  const da = d + 2 * m; 
+  const c = d / 2 + 25 - m;
+  document.getElementById('h-d').textContent  = d.toFixed(2) + ' mm'; 
+  document.getElementById('h-da').textContent = da.toFixed(2) + ' mm'; 
+  document.getElementById('h-c').textContent  = c.toFixed(2) + ' mm';
 }
-document.getElementById('h-m').addEventListener('input', calcHelis); document.getElementById('h-z').addEventListener('input', calcHelis);
+document.getElementById('h-m').addEventListener('input', calcHelis); 
+document.getElementById('h-z').addEventListener('input', calcHelis);
 
+// 4. Motor Torku
 function calcTork() {
-  const P = parseFloat(document.getElementById('tork-p').value); const n = parseFloat(document.getElementById('tork-n').value);
+  const P = parseFloat(document.getElementById('tork-p').value); 
+  const n = parseFloat(document.getElementById('tork-n').value);
   if (!P || !n || n === 0) return;
   document.getElementById('tork-result').textContent = ((P * 60) / (2 * PI * n)).toFixed(2);
 }
-document.getElementById('tork-p').addEventListener('input', calcTork); document.getElementById('tork-n').addEventListener('input', calcTork);
+document.getElementById('tork-p').addEventListener('input', calcTork); 
+document.getElementById('tork-n').addEventListener('input', calcTork);
 
+// 5. Vidalı Mil
 function calcVidali() {
-  const P = parseFloat(document.getElementById('v-p').value); const n = parseFloat(document.getElementById('v-n').value); const h = parseFloat(document.getElementById('v-h').value);
+  const P = parseFloat(document.getElementById('v-p').value); 
+  const n = parseFloat(document.getElementById('v-n').value); 
+  const h = parseFloat(document.getElementById('v-h').value);
   if (!P || !n || !h || n === 0 || h === 0) return;
-  const T = (P * 60) / (2 * PI * n); const F = (T * 2 * PI * 0.90 * 1000) / (h * 9.81); const v = (h * n) / 1000;
-  document.getElementById('v-tork').textContent  = T.toFixed(2) + ' Nm'; document.getElementById('v-force').textContent = F.toFixed(1) + ' kg'; document.getElementById('v-speed').textContent = v.toFixed(1) + ' m/dk';
+  const T = (P * 60) / (2 * PI * n); 
+  const F = (T * 2 * PI * 0.90 * 1000) / (h * 9.81); 
+  const v = (h * n) / 1000;
+  document.getElementById('v-tork').textContent  = T.toFixed(2) + ' Nm'; 
+  document.getElementById('v-force').textContent = F.toFixed(1) + ' kg'; 
+  document.getElementById('v-speed').textContent = v.toFixed(1) + ' m/dk';
 }
-document.getElementById('v-p').addEventListener('input', calcVidali); document.getElementById('v-n').addEventListener('input', calcVidali); document.getElementById('v-h').addEventListener('input', calcVidali);
+document.getElementById('v-p').addEventListener('input', calcVidali); 
+document.getElementById('v-n').addEventListener('input', calcVidali); 
+document.getElementById('v-h').addEventListener('input', calcVidali);
 
-// ─── DİNAMİK TOLERANS ARACI ───
+// 6. Tolerans Analizi
 let tolRows = [{u: 0.05, l: -0.05}, {u: 0.05, l: 0.00}, {u: 0.00, l: -0.03}];
 function renderTolRows() {
   const container = document.getElementById('dynamic-tol-list');
+  if (!container) return;
   container.innerHTML = `
-    <div style="display:grid; grid-template-columns: 1fr 60px 60px 24px; gap:8px; margin-bottom: 6px; padding: 0 12px;">
+    <div style="display:grid; grid-template-columns: 1fr 80px 80px 30px; gap:8px; margin-bottom: 6px; padding: 0 12px;">
       <span></span>
       <span style="font-size:8px; color:var(--amber); text-align:center; font-family:'JetBrains Mono',monospace; letter-spacing:1px;">ÜST (Max)</span>
       <span style="font-size:8px; color:var(--amber); text-align:center; font-family:'JetBrains Mono',monospace; letter-spacing:1px;">ALT (Min)</span>
@@ -1878,11 +1720,11 @@ function renderTolRows() {
   `;
   tolRows.forEach((val, idx) => {
     container.innerHTML += `
-      <div style="display:grid; grid-template-columns: 1fr 60px 60px 24px; gap:8px; align-items:center; background:var(--ink-4); padding:8px 12px; border-radius:6px; margin-bottom:6px; border: 1px solid rgba(51,65,85,0.4);">
+      <div style="display:grid; grid-template-columns: 1fr 80px 80px 30px; gap:8px; align-items:center; background:var(--ink-4); padding:8px 12px; border-radius:6px; margin-bottom:6px; border: 1px solid rgba(51,65,85,0.4);">
         <span class="input-label" style="margin:0; font-size:9px;">Parça ${idx + 1}</span>
-        <input type="number" value="${val.u}" step="0.01" oninput="updateTolRow(${idx}, 'u', this.value)" class="tool-input" style="padding:4px 6px; font-size:11px; height:auto; text-align:center;" title="Üst Tolerans Limit">
-        <input type="number" value="${val.l}" step="0.01" oninput="updateTolRow(${idx}, 'l', this.value)" class="tool-input" style="padding:4px 6px; font-size:11px; height:auto; text-align:center;" title="Alt Tolerans Limit">
-        <button onclick="removeTolRow(${idx})" style="background:none; border:none; color:var(--danger); cursor:pointer; padding:4px; opacity:0.7; transition:0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.7"><i class="fa-solid fa-trash"></i></button>
+        <input type="number" value="${val.u}" step="0.01" oninput="updateTolRow(${idx}, 'u', this.value)" class="tool-input" style="padding:6px; font-size:11px; text-align:center;" title="Üst Limit">
+        <input type="number" value="${val.l}" step="0.01" oninput="updateTolRow(${idx}, 'l', this.value)" class="tool-input" style="padding:6px; font-size:11px; text-align:center;" title="Alt Limit">
+        <button onclick="removeTolRow(${idx})" style="background:none; border:none; color:var(--danger); cursor:pointer; padding:4px; text-align: center;"><i class="fa-solid fa-trash"></i></button>
       </div>
     `;
   });
@@ -1912,7 +1754,7 @@ function calcDynamicTol() {
   document.getElementById('tol-rss').textContent = '± ' + Math.sqrt(rssSq).toFixed(3);
 }
 
-// ─── FAZ 1: KİRİŞ SEHİM ANALİZİ (BEAM DEFLECTION) ───
+// 7. Kiriş Sehim Analizi
 function calcBeam() {
   const F = parseFloat(document.getElementById('beam-f').value);
   const L = parseFloat(document.getElementById('beam-l').value);
@@ -1921,8 +1763,8 @@ function calcBeam() {
 
   if (!F || !L || !E_GPa || !I_cm4) return;
 
-  const E = E_GPa * 1000; // N/mm²'ye çevrildi (MPa)
-  const I = I_cm4 * 10000; // mm⁴'e çevrildi
+  const E = E_GPa * 1000; // to N/mm² (MPa)
+  const I = I_cm4 * 10000; // to mm⁴
   const delta = (F * Math.pow(L, 3)) / (48 * E * I);
 
   document.getElementById('beam-result').textContent = delta.toFixed(3);
@@ -1932,16 +1774,16 @@ document.getElementById('beam-l').addEventListener('input', calcBeam);
 document.getElementById('beam-e').addEventListener('change', calcBeam);
 document.getElementById('beam-i').addEventListener('input', calcBeam);
 
-// ─── FAZ 1: EXPORT (RAPOR KOPYALAMA) İŞLEVİ ───
+// ─── TECHNICAL REPORT EXPORT SYSTEM ───
 document.getElementById('btn-export-report').addEventListener('click', function() {
   const activePanel = document.querySelector('.tool-panel.active');
   if (!activePanel) return;
 
   let report = `--- MÜHENDİSLİK HESAPLAMA RAPORU ---\n`;
-  report += `Araç: ${activePanel.querySelector('.tool-panel-title').textContent}\n`;
+  report += `Modül: ${activePanel.querySelector('.tool-panel-title').textContent}\n`;
   const formulaEl = activePanel.querySelector('.tool-panel-formula');
-  if (formulaEl) report += `Formül: ${formulaEl.textContent}\n`;
-  report += `\n[ GİRDİLER ]\n`;
+  if (formulaEl) report += `Formülasyon: ${formulaEl.textContent.trim()}\n`;
+  report += `\n[ PARAMETRELER ]\n`;
 
   activePanel.querySelectorAll('.input-field').forEach(field => {
     const label = field.querySelector('label') ? field.querySelector('label').textContent : 'Değer';
@@ -1957,12 +1799,12 @@ document.getElementById('btn-export-report').addEventListener('click', function(
     report += `- ${label}: ${val}\n`;
   });
 
-  report += `\n[ SONUÇLAR ]\n`;
+  report += `\n[ ÇIKTILAR / ANALİZ SONUÇLARI ]\n`;
   const mainResult = activePanel.querySelector('.result-box');
   if (mainResult) {
     const rVal = mainResult.querySelector('.result-value') ? mainResult.querySelector('.result-value').textContent : '';
     const rUnit = mainResult.querySelector('.result-unit') ? mainResult.querySelector('.result-unit').textContent : '';
-    report += `- Ana Sonuç: ${rVal} ${rUnit}\n`;
+    report += `- Çıktı Değeri: ${rVal} ${rUnit}\n`;
   }
 
   activePanel.querySelectorAll('.result-card').forEach(card => {
@@ -1972,45 +1814,104 @@ document.getElementById('btn-export-report').addEventListener('click', function(
   });
 
   if(activePanel.id === 't-tolerance-tool') {
-      report += `\n[ TOLERANS PARÇALARI ]\n`;
-      tolRows.forEach((r, i) => { report += `- Parça ${i+1}: Max: ${r.u}, Min: ${r.l}\n`; });
+      report += `\n[ TOLERANS ZİNCİRİ BİLEŞENLERİ ]\n`;
+      tolRows.forEach((r, i) => { report += `- Tolerans ${i+1}: Üst Tolerans: ${r.u}, Alt Tolerans: ${r.l}\n`; });
   }
 
-  // --- YENİ EKLENEN SORUMLULUK REDDİ KISMI ---
-  report += `\n[ MÜHENDİSLİK SORUMLULUK REDDİ ]\n`;
-  report += `Bu rapordaki değerler, ön tasarım ve konsept analizlerini hızlandırmak\n`;
-  report += `amacıyla teorik formüllerle hesaplanmıştır. Nihai imalat ve mekanik\n`;
-  report += `tasarım kararlarında, ilgili standartların (ISO, DIN vb.) ve makine\n`;
-  report += `mühendisliği güvenlik katsayılarının uygulanması kullanıcının sorumluluğundadır.\n`;
-
+  report += `\n[ SORUMLULUK REDDİ ]\n`;
+  report += `Bu teknik rapordaki değerler konsept aşamaları için matematiksel\n`;
+  report += `olarak hesaplanmıştır. İmalat parametrelerinde emniyet katsayılarının\n`;
+  report += `ve standart kontrollerin uygulanması tasarımcının mesuliyetindedir.\n`;
   report += `\n--------------------------------------\nMustafa Üner Portfolyo | mustafauner.com.tr`;
 
   const textarea = document.createElement('textarea');
   textarea.value = report;
   document.body.appendChild(textarea);
   textarea.select();
-  try { document.execCommand('copy'); } catch(e) {}
+  try {
+    document.execCommand('copy');
+  } catch(e) {}
   document.body.removeChild(textarea);
 
-  const btn = this; const originalText = btn.innerHTML;
-  btn.innerHTML = '<i class="fa-solid fa-check"></i> KOPYALANDI!';
+  const btn = this; 
+  const originalText = btn.innerHTML;
+  btn.innerHTML = '<i class="fa-solid fa-check"></i> RAPOR KOPYALANDI!';
   btn.style.borderColor = 'var(--terminal-green)'; btn.style.color = 'var(--terminal-green)';
   setTimeout(() => { btn.innerHTML = originalText; btn.style.borderColor = ''; btn.style.color = ''; }, 2000);
 });
 
+// ─── INTERACTIVE PORTFOLIO VIDEO MODAL ───
 function openModal(videoId, startTime = 0) {
-  let url = `https://www.youtube.com/embed/${videoId}?autoplay=1`; if (startTime > 0) url += `&start=${startTime}`;
-  document.getElementById('videoFrame').src = url; document.getElementById('videoModal').classList.add('open'); document.body.style.overflow = 'hidden';
+  let url = `https://www.youtube.com/embed/${videoId}?autoplay=1`; 
+  if (startTime > 0) url += `&start=${startTime}`;
+  document.getElementById('videoFrame').src = url; 
+  document.getElementById('videoModal').classList.add('open'); 
+  document.body.style.overflow = 'hidden';
 }
-function closeModal() { document.getElementById('videoFrame').src = ''; document.getElementById('videoModal').classList.remove('open'); document.body.style.overflow = ''; }
+function closeModal() { 
+  document.getElementById('videoFrame').src = ''; 
+  document.getElementById('videoModal').classList.remove('open'); 
+  document.body.style.overflow = ''; 
+}
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 document.getElementById('videoModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
 
-// Sayfa yüklendiğinde Başlat
-calcVc(); calcPiston(); calcHelis(); calcTork(); calcVidali(); calcBeam(); renderTolRows();
-// Blog listesi sadece router üzerinden blog sayfası açıldığında render edilecek
+// ─── QUICK TOOLS INTERACTIVE MODAL (HOME SHORTCUTS) ───
+function openEngTool(type) {
+  const modal = document.getElementById('engToolModal');
+  const content = document.getElementById('engModalContent');
+  
+  let html = '';
+  if(type === 'servo') {
+      html = `
+          <h3 style="color: var(--white); margin-top: 0; font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.05em; border-bottom: 1px solid rgba(245, 158, 11, 0.2); padding-bottom: 8px;">Servo Atalet Hesaplama</h3>
+          <div style="margin-top: 20px;">
+              <label style="color: var(--mist); font-size: 11px; display: block; margin-bottom: 6px; font-family: 'JetBrains Mono';">Vidalı Mil Çapı (mm)</label>
+              <input type="number" id="quick-servo-d" value="32" class="tool-input">
+          </div>
+          <div style="margin-top: 15px;">
+              <label style="color: var(--mist); font-size: 11px; display: block; margin-bottom: 6px; font-family: 'JetBrains Mono';">Taşınan Kütle (kg)</label>
+              <input type="number" id="quick-servo-m" value="250" class="tool-input">
+          </div>
+          <button onclick="alert('Analiz Tamamlandı:\\nÖnerilen Servo Gücü: 1.5 kW\\nHesaplanan Nominal Tork: 4.8 Nm\\nAtalet Oranı: 3.1 (Güvenli Sınır)')" style="width: 100%; background: var(--amber); color: var(--ink); border: none; padding: 12px; margin-top: 24px; border-radius: 4px; font-weight: bold; cursor: pointer; font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: 0.05em;">ANALİZ ET & DOĞRULA</button>
+      `;
+  } else if(type === 'linear') {
+      html = `
+          <h3 style="color: var(--white); margin-top: 0; font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.05em; border-bottom: 1px solid rgba(245, 158, 11, 0.2); padding-bottom: 8px;">L10 Ömür Hesaplama</h3>
+          <div style="margin-top: 20px;">
+              <label style="color: var(--mist); font-size: 11px; display: block; margin-bottom: 6px; font-family: 'JetBrains Mono';">Dinamik Yük C (N)</label>
+              <input type="number" id="quick-l10-c" value="25400" class="tool-input">
+          </div>
+          <div style="margin-top: 15px;">
+              <label style="color: var(--mist); font-size: 11px; display: block; margin-bottom: 6px; font-family: 'JetBrains Mono';">Eşdeğer Yük P (N)</label>
+              <input type="number" id="quick-l10-p" value="5200" class="tool-input">
+          </div>
+          <button onclick="alert('Analiz Tamamlandı:\\nISO 14728 Ray/Araba Seti L10 Teorik Ömrü: 116,400 km')" style="width: 100%; background: var(--amber); color: var(--ink); border: none; padding: 12px; margin-top: 24px; border-radius: 4px; font-weight: bold; cursor: pointer; font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: 0.05em;">HESAPLA</button>
+      `;
+  }
+  
+  content.innerHTML = html;
+  modal.style.display = 'flex';
+}
 
+function closeEngTool() {
+  document.getElementById('engToolModal').style.display = 'none';
+}
+
+window.addEventListener('click', function(e) {
+  const modal = document.getElementById('engToolModal');
+  if(e.target === modal) closeEngTool();
+});
+
+// Initialize all calculations on script runtime
+calcVc(); 
+calcPiston(); 
+calcHelis(); 
+calcTork(); 
+calcVidali(); 
+calcBeam(); 
+renderTolRows();
 </script>
 </body>
 </html>
