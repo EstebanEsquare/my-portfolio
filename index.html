@@ -1510,10 +1510,10 @@ document.querySelectorAll('.m-link').forEach(link => {
 });
 
 // ─── BLOG İŞLEVLERİ (RENDER) ───
-const blogListContainer = document.getElementById('blog-list-container');
-const blogReader = document.getElementById('blog-reader');
-
 function renderBlogList() {
+  const blogListContainer = document.getElementById('blog-list-container');
+  if (!blogListContainer) return;
+  
   blogListContainer.innerHTML = '';
   const currentHash = window.location.hash;
   const currentId = new URLSearchParams(currentHash.split('?')[1]).get('id') || articles[0].id;
@@ -1535,6 +1535,9 @@ function renderBlogList() {
 }
 
 function loadArticle(id, cardElement, isInitialLoad = false) {
+  const blogReader = document.getElementById('blog-reader');
+  if (!blogReader) return;
+  
   document.querySelectorAll('.blog-card').forEach(c => {
     c.classList.remove('active');
     if(c.getAttribute('href') === `#/blog?id=${id}`) c.classList.add('active');
@@ -1877,7 +1880,7 @@ document.getElementById('videoModal').addEventListener('click', function(e) { if
 
 // Sayfa yüklendiğinde Başlat
 calcVc(); calcPiston(); calcHelis(); calcTork(); calcVidali(); calcBeam(); renderTolRows();
-renderBlogList();
+// Blog listesi sadece router üzerinden blog sayfası açıldığında render edilecek
 
 </script>
 </body>
