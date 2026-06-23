@@ -149,43 +149,6 @@ section { padding: 100px 24px; }
 .tl-desc { font-size: 12px; color: var(--mist); font-weight: 300; line-height: 1.6; }
 .tl-tag { display: inline-block; margin-top: 8px; padding: 3px 10px; border-radius: 2px; font-size: 8px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; background: rgba(245,158,11,0.1); color: var(--amber); border: 1px solid rgba(245,158,11,0.2); }
 
-/* ─── SKILLS ─── */
-#skills { background: var(--ink); }
-.skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
-.skill-group { background: var(--ink-3); padding: 32px; transition: background 0.2s; }
-.skill-group:hover { background: var(--ink-4); }
-.skill-group-title { font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); font-family: 'JetBrains Mono', monospace; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
-.skill-bar-wrap { margin-bottom: 14px; }
-.skill-bar-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
-.skill-name { font-size: 12px; font-weight: 500; color: var(--light); }
-.skill-pct { font-size: 10px; font-family: 'JetBrains Mono', monospace; color: var(--mist); }
-.skill-bar-bg { height: 2px; background: var(--steel); border-radius: 1px; overflow: hidden; }
-.skill-bar-fill { height: 100%; background: var(--amber); border-radius: 1px; transform-origin: left; transform: scaleX(0); transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1); }
-.skill-bar-fill.animated { transform: scaleX(1); }
-
-/* ─── PYTHON TERMINAL SIMULATION ─── */
-#python-terminal { background: var(--ink-2); padding: 60px 24px; border-top: 1px solid rgba(245,158,11,0.1); border-bottom: 1px solid rgba(245,158,11,0.1); }
-.terminal-wrapper { max-width: 900px; margin: 0 auto; background: #050505; border: 1px solid rgba(51,65,85,0.6); border-radius: 8px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-.terminal-topbar { background: var(--ink-4); padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(51,65,85,0.6); }
-.term-dots { display: flex; gap: 6px; }
-.term-dots span { width: 12px; height: 12px; border-radius: 50%; }
-.term-dots span:nth-child(1) { background: #ff5f56; } .term-dots span:nth-child(2) { background: #ffbd2e; } .term-dots span:nth-child(3) { background: #27c93f; }
-.term-title { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--mist); display: flex; align-items: center; gap: 8px; }
-.term-title i { color: #38bdf8; }
-.terminal-body { padding: 20px; font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.5; height: 320px; overflow-y: hidden; position: relative; }
-.terminal-body::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40px; background: linear-gradient(to bottom, transparent, #050505); pointer-events: none; }
-.term-line { display: flex; margin-bottom: 4px; opacity: 0; animation: termFadeIn 0.1s forwards; }
-@keyframes termFadeIn { to { opacity: 1; } }
-.term-prompt { color: var(--amber); margin-right: 12px; user-select: none; }
-.term-content { color: var(--light); word-break: break-all; }
-.term-content.info { color: #38bdf8; }
-.term-content.success { color: var(--terminal-green); }
-.term-content.warning { color: var(--gold); }
-.term-content.error { color: #ef4444; }
-.term-content.dim { color: #64748b; }
-.term-cursor { display: inline-block; width: 8px; height: 14px; background: var(--amber); margin-left: 4px; vertical-align: middle; animation: blink 1s step-end infinite; }
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
 /* ─── PORTFOLIO ─── */
 #portfolio { background: var(--ink-2); }
 .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
