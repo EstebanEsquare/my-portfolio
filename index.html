@@ -171,7 +171,7 @@ section { padding: 100px 24px; }
 .term-dots span { width: 12px; height: 12px; border-radius: 50%; }
 .term-dots span:nth-child(1) { background: #ff5f56; } .term-dots span:nth-child(2) { background: #ffbd2e; } .term-dots span:nth-child(3) { background: #27c93f; }
 .term-title { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--mist); display: flex; align-items: center; gap: 8px; }
-.term-title i { color: #38bdf8; } 
+.term-title i { color: #38bdf8; }
 .terminal-body { padding: 20px; font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.5; height: 320px; overflow-y: hidden; position: relative; }
 .terminal-body::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40px; background: linear-gradient(to bottom, transparent, #050505); pointer-events: none; }
 .term-line { display: flex; margin-bottom: 4px; opacity: 0; animation: termFadeIn 0.1s forwards; }
@@ -350,24 +350,24 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
 .mobile-only { display: none; }
 
 /* YEPYENİ KESİN ÇÖZÜM MOBİL MENÜ MİMARİSİ */
-.mobile-menu-overlay { 
-  position: fixed; top: 64px; left: 0; right: 0; bottom: 0; 
-  background: var(--ink); z-index: 99; 
-  display: flex; flex-direction: column; justify-content: center; align-items: center; 
-  opacity: 0; pointer-events: none; transition: opacity 0.3s ease; 
+.mobile-menu-overlay {
+  position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
+  background: var(--ink); z-index: 99;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
 }
 .mobile-menu-overlay.active { opacity: 1; pointer-events: auto; }
-.mobile-menu-content { 
-  display: flex; flex-direction: column; width: 100%; max-width: 400px; padding: 0 24px; gap: 16px; 
-  transform: translateY(20px); transition: transform 0.4s ease; 
+.mobile-menu-content {
+  display: flex; flex-direction: column; width: 100%; max-width: 400px; padding: 0 24px; gap: 16px;
+  transform: translateY(20px); transition: transform 0.4s ease;
 }
 .mobile-menu-overlay.active .mobile-menu-content { transform: translateY(0); }
 
-.m-link { 
-  display: flex; align-items: center; justify-content: flex-start; gap: 16px; 
-  width: 100%; padding: 20px 24px; 
-  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; 
-  color: var(--light); font-size: 13px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; 
+.m-link {
+  display: flex; align-items: center; justify-content: flex-start; gap: 16px;
+  width: 100%; padding: 20px 24px;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px;
+  color: var(--light); font-size: 13px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: all 0.2s;
 }
 .m-link i { font-size: 18px; width: 24px; text-align: center; color: var(--mist); }
 .m-link.active-link { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.3); color: var(--amber); }
@@ -403,13 +403,13 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
   .tools-sidebar { flex-direction: row; overflow-x: auto; }
   .tools-content { padding: 30px 20px; }
   .tool-tab-sub { display: none; }
-  .tool-watermark { display: none; } 
-  
+  .tool-watermark { display: none; }
+
   /* ESKİ CSS KALINTILARINI VE CACHE'İ İPTAL EDEN KISIM */
   .nav-links { display: none !important; } /* Desktop menüyü tamamen yok et */
   .hidden-mobile { display: none !important; }
   .mobile-menu-btn { display: block; }
-  
+
   .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
   #python-terminal { padding: 40px 16px; }
   .terminal-body { height: 240px; font-size: 10px; }
@@ -451,18 +451,18 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
         <div class="nav-logo-title">M.Sc. Engineer</div>
       </div>
     </a>
-    
+
     <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menü">
       <i class="fa-solid fa-bars"></i>
     </button>
-    
+
     <!-- Desktop Menü (Sadece PC'de görünür) -->
     <div class="nav-links">
       <a href="#/" id="nav-home">Portfolyo</a>
       <a href="#/blog" id="nav-blog">Bilgi Bankası</a>
       <a href="#/tools" id="nav-tools">Hesaplama Araçları</a>
     </div>
-    
+
     <a href="mailto:mustafauner@hotmail.com.tr" class="nav-cta hidden-mobile">İletişim</a>
   </div>
 </nav>
@@ -489,19 +489,28 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
 <!-- ============= VIEW: HOME ================= -->
 <!-- ========================================== -->
 <div id="view-home" class="spa-view">
-  
+
   <!-- HERO -->
   <section id="hero">
     <div class="hero-grid-bg"></div>
     <div class="hero-glow"></div>
     <div class="hero-inner">
       <div>
-        <div class="hero-badge reveal d1">Senior R&D Project Leader</div>
-        <h1 class="hero-name reveal d2">MUSTAFA<br><span>ÜNER</span></h1>
-        <div class="hero-title reveal d3">M.Sc. Makine Mühendisi</div>
-        <p class="hero-desc reveal d4">
-          15 yıllık tasarım ve üretim disiplinini, hesaplamalı tasarım ve veri odaklı optimizasyon yöntemleriyle harmanlayarak ileri seviye üretim teknolojileri geliştiriyorum.
-        </p>
+        <div class="hero-badge reveal d1">
+  15+ YEARS IN CNC MACHINE DEVELOPMENT
+</div>
+
+<h1 class="hero-name reveal d2">
+  MUSTAFA<br><span>ÜNER</span>
+</h1>
+
+<div class="hero-title reveal d3">
+  Engineering Leader for Industrial Machine Development
+</div>
+
+<p class="hero-desc reveal d4">
+  Mechanical Design Engineer and R&D professional with 15+ years of experience developing CNC systems, industrial machinery and manufacturing technologies from concept through production.
+</p>
         <div class="hero-actions reveal d5">
           <a href="https://www.linkedin.com/in/mustafa-uner-engineer/" target="_blank" class="btn-primary">
             <i class="fa-brands fa-linkedin"></i> LinkedIn
@@ -677,51 +686,51 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
           <div class="machine-card-inner"><div class="machine-num">01</div><div><div class="machine-title">ZC 3010</div><div class="machine-desc">İlk Alüminyum İşleme Merkezi</div></div></div>
           <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
         </div>
-        
+
         <div class="machine-card reveal d2" onclick="openModal('O4QWRVjYops')">
           <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/O4QWRVjYops/hqdefault.jpg');"></div>
           <div class="machine-card-inner"><div class="machine-num">02</div><div><div class="machine-title">ZC 3020</div><div class="machine-desc">Hassas Seri Üretim CNC</div></div></div>
           <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
         </div>
-        
+
         <div class="machine-card reveal d3" onclick="openModal('2rBsAK_WqiY', 13)">
           <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/2rBsAK_WqiY/maxresdefault.jpg'), url('https://i.ytimg.com/vi/2rBsAK_WqiY/hqdefault.jpg');"></div>
           <div class="machine-card-inner"><div class="machine-num">03</div><div><div class="machine-title">ZC 3050</div><div class="machine-desc">13.5m Stroklu 5-Eksenli Ar-Ge</div></div></div>
           <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
         </div>
-        
+
         <div class="machine-card reveal d1" onclick="openModal('jspCnwaKgOM')">
           <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/jspCnwaKgOM/maxresdefault.jpg'), url('https://i.ytimg.com/vi/jspCnwaKgOM/hqdefault.jpg');"></div>
           <div class="machine-card-inner"><div class="machine-num">04</div><div><div class="machine-title">ZF 3010</div><div class="machine-desc">Yüksek Hızlı Profil Frezeleme</div></div></div>
           <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
         </div>
-        
+
         <div class="machine-card reveal d2" onclick="openModal('B8S7bgEGUkw')">
           <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/B8S7bgEGUkw/maxresdefault.jpg'), url('https://i.ytimg.com/vi/B8S7bgEGUkw/hqdefault.jpg');"></div>
           <div class="machine-card-inner"><div class="machine-num">05</div><div><div class="machine-title">ZE 3010</div><div class="machine-desc">Robotik Kesim Merkezi</div></div></div>
           <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
         </div>
-        
+
         <div class="machine-card reveal d3" onclick="openModal('5RSI86l4cfw', 5)">
           <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/5RSI86l4cfw/maxresdefault.jpg'), url('https://i.ytimg.com/vi/5RSI86l4cfw/hqdefault.jpg');"></div>
           <div class="machine-badge">Amiral Gemi</div>
           <div class="machine-card-inner"><div class="machine-num">06</div><div><div class="machine-title">ZC 3062-64</div><div class="machine-desc">Modüler CNC Üretim Ailesi</div></div></div>
           <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
         </div>
-        
+
         <div class="machine-card reveal d1" onclick="openModal('7VxKh9M_qys')">
           <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/7VxKh9M_qys/hqdefault.jpg');"></div>
           <div class="machine-card-inner"><div class="machine-num">07</div><div><div class="machine-title">ZC 4040</div><div class="machine-desc">4-Eksenli Endüstriyel CNC</div></div></div>
           <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
         </div>
-        
+
         <div class="machine-card reveal d2" onclick="openModal('2rBsAK_WqiY')">
           <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/2rBsAK_WqiY/maxresdefault.jpg'), url('https://i.ytimg.com/vi/2rBsAK_WqiY/hqdefault.jpg');"></div>
           <div class="machine-badge">Amiral Gemi</div>
           <div class="machine-card-inner"><div class="machine-num">08</div><div><div class="machine-title">ZC 3052-54</div><div class="machine-desc">5-Eksenli Performans CNC Serisi</div></div></div>
           <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
         </div>
-        
+
         <div class="machine-card featured reveal d3" onclick="openModal('WUrf8N120SU', 18)">
           <div class="machine-card-bg" style="background-image: url('https://i.ytimg.com/vi/WUrf8N120SU/maxresdefault.jpg'), url('https://i.ytimg.com/vi/WUrf8N120SU/hqdefault.jpg');"></div>
           <div class="machine-badge">Yeni Seri</div>
@@ -955,11 +964,11 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
             </svg>
             <div class="tool-panel-title">Dinamik Tolerans Yığılma Analizi</div>
             <div class="tool-panel-formula">T_eff = |Üst - Alt| / 2 &nbsp;|&nbsp; WC = ΣT_eff &nbsp;|&nbsp; RSS = √(ΣT_eff²)</div>
-            
+
             <div id="dynamic-tol-list" style="max-height: 220px; overflow-y: auto; margin-bottom: 12px; padding-right: 6px;">
               <!-- JS ile doldurulacak dinamik satırlar -->
             </div>
-            
+
             <button onclick="addTolRow()" class="btn-ghost" style="width:100%; padding: 12px; font-size: 10px; margin-bottom: 24px; justify-content:center; border-style: dashed; border-color: rgba(245,158,11,0.4); color: var(--amber);">
                <i class="fa-solid fa-plus"></i> YENİ PARÇA EKLE
             </button>
@@ -1047,7 +1056,7 @@ const articles = [
     content: `
       <h2>Klasik Ölçülendirme (±) Neden Yetmez?</h2>
       <p>Teknik resim kağıdında mükemmel düzlükte çizilmiş bir silindirik mil düşünün. Çapına <strong>10.00 ±0.05 mm</strong> tolerans verdiniz. İmalattan gelen parçayı kumpas veya mikrometre ile on farklı yerinden ölçtünüz ve hepsinde 10.02 mm okudunuz. Parça teknik resme "boyutsal" olarak tam uygundur. Peki, bu mili 10.10 mm'lik hassas bir deliğe sokmaya çalıştığınızda neden sıkışır?</p>
-      
+
       <p>Çünkü kumpas sadece karşılıklı iki nokta arasındaki mesafeyi (boyutu) ölçer; parçanın eğriliğini (formunu) ölçemez. Parçanız bir "muz" gibi eğilmiş olabilir! S.B. Parker'ın 1938'de tespit ettiği temel sorun da tam olarak buydu. İmalat teknolojileri geliştikçe sadece boyut vermek yetersiz kaldı; <strong>şekil, yönelim, konum ve yalpalama</strong> unsurlarını da evrensel bir dille kısıtlamak gerekti. İşte <strong>GD&T (Geometric Dimensioning and Tolerancing)</strong> bu ihtiyacın bir sonucudur.</p>
 
       <div class="tech-diagram-wrap">
@@ -1057,14 +1066,14 @@ const articles = [
           <ellipse cx="40" cy="75" rx="8" ry="15" fill="var(--ink-2)" stroke="var(--mist)" stroke-width="2"/>
           <!-- Gövde -->
           <path d="M 40 60 Q 200 -20 360 60 A 8 15 0 0 1 360 90 Q 200 10 40 90 A 8 15 0 0 0 40 60" fill="var(--ink-4)" stroke="var(--mist)" stroke-width="2"/>
-          
+
           <!-- Ölçü Çizgileri ve Oklar -->
           <line x1="200" y1="20" x2="200" y2="50" stroke="var(--danger)" stroke-width="2"/>
           <polygon points="200,20 196,26 204,26" fill="var(--danger)"/>
           <polygon points="200,50 196,44 204,44" fill="var(--danger)"/>
-          
+
           <text x="212" y="39" fill="var(--danger)" font-family="JetBrains Mono" font-size="12" font-weight="bold">Çap (⌀): 10.02</text>
-          
+
           <!-- Açıklama Metni (İki satıra bölündü) -->
           <text x="10" y="125" fill="var(--white)" font-family="JetBrains Mono" font-size="11">Kumpas her yerde 10.02 mm okur (boyut doğrudur),</text>
           <text x="10" y="145" fill="var(--danger)" font-family="JetBrains Mono" font-size="11">ancak parça eğik (muz formunda) olduğu için montaj YAPILAMAZ!</text>
@@ -1082,7 +1091,7 @@ const articles = [
           <line x1="220" y1="45" x2="220" y2="85" stroke="var(--amber)" stroke-width="2"/>
           <line x1="260" y1="45" x2="260" y2="85" stroke="var(--amber)" stroke-width="2"/>
           <line x1="300" y1="45" x2="300" y2="85" stroke="var(--amber)" stroke-width="2"/>
-          
+
           <!-- Konum Sembolü -->
           <circle cx="75" cy="65" r="10" fill="none" stroke="var(--white)" stroke-width="2"/>
           <line x1="60" y1="65" x2="90" y2="65" stroke="var(--white)" stroke-width="2"/>
@@ -1101,7 +1110,7 @@ const articles = [
           <!-- 1. Açıklama: Karakteristik -->
           <path d="M 75 45 L 75 25 L 10 25" stroke="var(--mist)" stroke-width="1" fill="none"/>
           <text x="10" y="20" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">1. KARAKTERİSTİK (Konum)</text>
-          
+
           <!-- 2. Açıklama: Tolerans Bölgesi -->
           <path d="M 160 85 L 160 105 L 10 105" stroke="var(--mist)" stroke-width="1" fill="none"/>
           <text x="10" y="120" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">2. TOLERANS BÖLGESİ (Çap 0.1, MMC ile)</text>
@@ -1154,7 +1163,7 @@ const articles = [
 
       <h2>Tasarımcının Can Simidi: MMC ve Bonus Tolerans</h2>
       <p>Bir matkapla delik deldiğinizi düşünün. Hedefiniz deliğin merkeze tam olarak <strong>X=50, Y=50</strong> koordinatında konumlanmasıdır. Bu konuma ⌀ 0.1 mm tolerans verdiniz. Ancak deliği açarken matkap biraz büyük bir delik açtı (Boyutsal olarak toleransın üst sınırında). Bu durumda civata zaten o delikten rahatça geçecektir. O halde deliğin merkeze olan <em>konum hassasiyeti</em> üzerinde bu kadar katı durmaya gerek var mıdır?</p>
-      
+
       <p>İşte <strong>Maksimum Malzeme Durumu (MMC - Ⓜ)</strong> bu aşamada devreye girer. Parça (delik) maksimum malzeme durumundan uzaklaştıkça (yani delik büyüdükçe), büyüyen miktar kadar <strong>Bonus Tolerans</strong> kazanırsınız. İmalatta hurda (fire) oranını dramatik şekilde düşüren, maliyetleri kurtaran müthiş bir yaklaşımdır.</p>
 
       <h2>İstatistiksel Tolerans Uygulaması</h2>
@@ -1172,7 +1181,7 @@ const articles = [
     content: `
       <h2>Tasarım Felsefesi ve Bağlantının Dinamiği</h2>
       <p>Birçok tasarımcı için cıvata seçimi; katalogdan bir çap seçip yanına "10.9" yazmaktan ibarettir. Ancak makine çalışmaya başladığında işler değişir. Statik yükte devleşen o cıvatalar, dinamik yükler altında neden kağıt gibi kopuyor veya kendiliğinden gevşiyor? Gelin, cıvatalı bağlantıların "görünmez" fiziğine ve saha tecrübelerimize dayanan kritik detaylara bakalım.</p>
-      
+
       <h2>1. Altın Kural: Cıvata Bir Yaydır</h2>
       <p>Cıvatayı sıktığınızda aslında onu bir yay gibi gerersiniz. Bu <strong>ön gerilme (pre-load)</strong>, bağlantının hayatta kalma garantisidir. Dinamik bir yük geldiğinde, bu yükün tamamı cıvataya binmez. Eğer bağlantınız doğru tasarlanmışsa, dış yükün büyük kısmı parçaların arasındaki basma kuvvetini azaltmaya harcanır.</p>
 
@@ -1255,7 +1264,7 @@ const articles = [
     content: `
       <h2>Tasarım Felsefesi ve Montajın Kinematiği</h2>
       <p>Tekil bir parçanın toleranslandırılması (ISO 286), o parçanın imalat başarısını belirlerken; bu parçaların bir araya gelerek oluşturduğu montaj gruplarında durum çok daha kritik bir boyuta taşınır. Makine tasarımında sıklıkla karşılaşılan <em>"parçalar tek tek doğru ama montajda neden kasılıyor?"</em> veya <em>"neden bu boşluk (clearance) beklediğimden fazla çıktı?"</em> sorularının cevabı, <strong>Tolerans Yığılması (Tolerance Stack-up)</strong> analizinde gizlidir.</p>
-      
+
       <h2>Tolerans Analizinde İki Temel Yaklaşım</h2>
       <p>Tasarım aşamasında hangi yöntemi seçeceğiniz, projenin bütçesini ve üretim sahasındaki "fire" oranlarını doğrudan etkiler.</p>
 
@@ -1306,10 +1315,10 @@ const articles = [
     content: `
       <h2>Tolerans İhtiyacının Felsefesi</h2>
       <p>Modern makine tasarımı ve talaşlı imalat teknolojilerinde, mühendislik çizimlerinde belirtilen teorik boyutların fiziksel üretim ortamında mutlak bir kesinlikle elde edilmesi imkansızdır. Tasarımcı tarafından teknik resim üzerinde belirlenen bu iki sınır arasındaki farka <strong>"tolerans"</strong> adı verilir.</p>
-      
+
       <h2>TS EN ISO 286 Standart Sisteminin Anatomisi</h2>
       <p>Uluslararası Standartlar Örgütü (ISO) tarafından geliştirilen TS EN ISO 286 standardı, makine elemanlarının eşlenebilirliğini garanti altına alan temel tolerans iskeletini oluşturur.</p>
-      
+
       <ul>
         <li><strong>IT5 ve IT6 Sınıfları:</strong> Ekstrem hassasiyet gerektiren, yüksek devirlerde çalışan rotasyonel parçalar içindir.</li>
         <li><strong>IT7 Kalitesi:</strong> Endüstride standartları belirleyen referans noktasıdır. Yüksek performanslı CNC operasyonlarını temsil eder.</li>
@@ -1336,7 +1345,7 @@ const articles = [
 function router() {
   // 1. Mevcut URL hash'ini al (Yoksa ana sayfa '#/')
   const hash = window.location.hash || '#/';
-  
+
   // 2. Tüm görünümleri (view) gizle
   document.querySelectorAll('.spa-view').forEach(view => {
     view.classList.remove('active');
@@ -1352,7 +1361,7 @@ function router() {
     document.getElementById('view-blog').classList.add('active');
     document.getElementById('nav-blog').classList.add('active-link');
     document.getElementById('m-nav-blog').classList.add('active-link');
-    
+
     const urlParams = new URLSearchParams(hash.split('?')[1]);
     const articleId = urlParams.get('id');
     if(articleId) {
@@ -1369,7 +1378,7 @@ function router() {
     document.getElementById('nav-home').classList.add('active-link');
     document.getElementById('m-nav-home').classList.add('active-link');
   }
-  
+
   // 5. Sayfayı en üste kaydır
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -1395,10 +1404,10 @@ const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
 
 mobileMenuBtn.addEventListener('click', () => {
   mobileMenuOverlay.classList.toggle('active');
-  
+
   // Menü açıkken arkadaki sitenin kaymasını engeller
   document.body.style.overflow = mobileMenuOverlay.classList.contains('active') ? 'hidden' : '';
-  
+
   const icon = mobileMenuBtn.querySelector('i');
   if(mobileMenuOverlay.classList.contains('active')) {
     icon.classList.remove('fa-bars');
@@ -1413,7 +1422,7 @@ mobileMenuBtn.addEventListener('click', () => {
 document.querySelectorAll('.m-link').forEach(link => {
   link.addEventListener('click', () => {
     mobileMenuOverlay.classList.remove('active');
-    document.body.style.overflow = ''; 
+    document.body.style.overflow = '';
     mobileMenuBtn.querySelector('i').classList.remove('fa-xmark');
     mobileMenuBtn.querySelector('i').classList.add('fa-bars');
   });
@@ -1432,7 +1441,7 @@ function renderBlogList() {
     const card = document.createElement('a');
     card.href = `#/blog?id=${article.id}`;
     card.className = `blog-card ${currentId === article.id ? 'active' : ''}`;
-    
+
     card.innerHTML = `
       <div class="blog-meta">
         <span>${article.date}</span>
@@ -1454,7 +1463,7 @@ function loadArticle(id, cardElement, isInitialLoad = false) {
   if(!article) return;
 
   blogReader.classList.add('fade-out');
-  
+
   setTimeout(() => {
     blogReader.innerHTML = `
       <div class="article-header">
@@ -1467,7 +1476,7 @@ function loadArticle(id, cardElement, isInitialLoad = false) {
       </div>
       <div class="prose">${article.content}</div>
     `;
-    
+
     blogReader.classList.remove('fade-out');
 
     if(!isInitialLoad && window.innerWidth <= 768) {
@@ -1513,7 +1522,7 @@ function runTerminal() {
       termBody.innerHTML = '';
       currentLineIdx = 0;
       runTerminal();
-    }, 5000); 
+    }, 5000);
     return;
   }
   const line = termLines[currentLineIdx];
@@ -1545,7 +1554,7 @@ const observer = new IntersectionObserver((entries) => {
     if (el.classList.contains('reveal') || el.classList.contains('reveal-left') || el.classList.contains('reveal-right')) el.classList.add('visible');
     if (el.classList.contains('terminal-wrapper') && !el.dataset.started) {
       el.dataset.started = "true";
-      setTimeout(runTerminal, 1000); 
+      setTimeout(runTerminal, 1000);
     }
     if (el.classList.contains('skill-group')) {
       el.querySelectorAll('.skill-bar-fill').forEach((bar, i) => { setTimeout(() => { bar.style.transform = `scaleX(${bar.dataset.width})`; bar.classList.add('animated'); }, i * 120); });
@@ -1583,19 +1592,19 @@ document.getElementById('vc-d').addEventListener('input', calcVc); document.getE
 
 const pistonMap = { "12":"6","16":"6","20":"8","25":"10","32":"12","40":"16","50":"20","63":"20","80":"25","100":"25" };
 function calcPiston() {
-  const D = parseFloat(document.getElementById('p-bore').value); 
-  const d = parseFloat(document.getElementById('p-rod').value); 
+  const D = parseFloat(document.getElementById('p-bore').value);
+  const d = parseFloat(document.getElementById('p-rod').value);
   const bar = parseFloat(document.getElementById('p-bar').value);
   const unit = document.getElementById('p-unit').value;
-  
+
   document.getElementById('p-bar-val').textContent = bar + ' Bar';
-  
-  const A_push = (PI * Math.pow(D/10, 2)) / 4; 
+
+  const A_push = (PI * Math.pow(D/10, 2)) / 4;
   const A_pull = (PI * (Math.pow(D/10, 2) - Math.pow(d/10, 2))) / 4;
-  
+
   let F_push_daN = A_push * bar;
   let F_pull_daN = A_pull * bar;
-  
+
   let resPush, resPull, textUnit;
   if (unit === 'N') {
     resPush = (F_push_daN * 10).toFixed(0);
@@ -1610,19 +1619,19 @@ function calcPiston() {
     resPull = (F_pull_daN * 1.0197).toFixed(1);
     textUnit = ' kgf';
   }
-  
-  document.getElementById('p-push').textContent = resPush + textUnit; 
+
+  document.getElementById('p-push').textContent = resPush + textUnit;
   document.getElementById('p-pull').textContent = resPull + textUnit;
 }
 document.getElementById('p-bore').addEventListener('change', (e) => { document.getElementById('p-rod').value = pistonMap[e.target.value] || "25"; calcPiston(); });
-document.getElementById('p-rod').addEventListener('change', calcPiston); 
+document.getElementById('p-rod').addEventListener('change', calcPiston);
 document.getElementById('p-bar').addEventListener('input', calcPiston);
 document.getElementById('p-unit').addEventListener('change', calcPiston);
 
 function calcHelis() {
   const m = parseFloat(document.getElementById('h-m').value); const z = parseFloat(document.getElementById('h-z').value);
   if (!m || !z || isNaN(m) || isNaN(z)) return;
-  const cosB = Math.cos(19.528 * PI / 180); const d = (m * z) / cosB; const da = d + 2 * m; const c = d / 2 + 25 - m; 
+  const cosB = Math.cos(19.528 * PI / 180); const d = (m * z) / cosB; const da = d + 2 * m; const c = d / 2 + 25 - m;
   document.getElementById('h-d').textContent  = d.toFixed(2) + ' mm'; document.getElementById('h-da').textContent = da.toFixed(2) + ' mm'; document.getElementById('h-c').textContent  = c.toFixed(2) + ' mm';
 }
 document.getElementById('h-m').addEventListener('input', calcHelis); document.getElementById('h-z').addEventListener('input', calcHelis);
@@ -1637,7 +1646,7 @@ document.getElementById('tork-p').addEventListener('input', calcTork); document.
 function calcVidali() {
   const P = parseFloat(document.getElementById('v-p').value); const n = parseFloat(document.getElementById('v-n').value); const h = parseFloat(document.getElementById('v-h').value);
   if (!P || !n || !h || n === 0 || h === 0) return;
-  const T = (P * 60) / (2 * PI * n); const F = (T * 2 * PI * 0.90 * 1000) / (h * 9.81); const v = (h * n) / 1000; 
+  const T = (P * 60) / (2 * PI * n); const F = (T * 2 * PI * 0.90 * 1000) / (h * 9.81); const v = (h * n) / 1000;
   document.getElementById('v-tork').textContent  = T.toFixed(2) + ' Nm'; document.getElementById('v-force').textContent = F.toFixed(1) + ' kg'; document.getElementById('v-speed').textContent = v.toFixed(1) + ' m/dk';
 }
 document.getElementById('v-p').addEventListener('input', calcVidali); document.getElementById('v-n').addEventListener('input', calcVidali); document.getElementById('v-h').addEventListener('input', calcVidali);
@@ -1666,25 +1675,25 @@ function renderTolRows() {
   });
   calcDynamicTol();
 }
-function updateTolRow(idx, type, val) { 
-  tolRows[idx][type] = parseFloat(val) || 0; 
-  calcDynamicTol(); 
+function updateTolRow(idx, type, val) {
+  tolRows[idx][type] = parseFloat(val) || 0;
+  calcDynamicTol();
 }
-function addTolRow() { 
-  tolRows.push({u: 0.01, l: -0.01}); 
-  renderTolRows(); 
+function addTolRow() {
+  tolRows.push({u: 0.01, l: -0.01});
+  renderTolRows();
 }
-function removeTolRow(idx) { 
-  tolRows.splice(idx, 1); 
-  if(tolRows.length === 0) tolRows.push({u: 0, l: 0}); 
-  renderTolRows(); 
+function removeTolRow(idx) {
+  tolRows.splice(idx, 1);
+  if(tolRows.length === 0) tolRows.push({u: 0, l: 0});
+  renderTolRows();
 }
 function calcDynamicTol() {
   let wc = 0; let rssSq = 0;
-  tolRows.forEach(t => { 
+  tolRows.forEach(t => {
     let t_eff = Math.abs(t.u - t.l) / 2;
-    wc += t_eff; 
-    rssSq += (t_eff * t_eff); 
+    wc += t_eff;
+    rssSq += (t_eff * t_eff);
   });
   document.getElementById('tol-wc').textContent = '± ' + wc.toFixed(3);
   document.getElementById('tol-rss').textContent = '± ' + Math.sqrt(rssSq).toFixed(3);
