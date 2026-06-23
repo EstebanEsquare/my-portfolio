@@ -431,6 +431,51 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
 @media (max-width: 768px) { #mouse-glow { display: none; } }
 
 .amber { color: var(--amber); }
+  .hero-proof-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+margin-top:32px;
+max-width:700px;
+}
+
+.hero-proof-card{
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(245,158,11,0.15);
+padding:18px;
+border-radius:4px;
+text-align:center;
+transition:all .25s ease;
+}
+
+.hero-proof-card:hover{
+border-color:rgba(245,158,11,0.45);
+transform:translateY(-2px);
+}
+
+.hero-proof-value{
+font-family:'Bebas Neue',sans-serif;
+font-size:34px;
+color:var(--amber);
+line-height:1;
+letter-spacing:.04em;
+}
+
+.hero-proof-label{
+margin-top:6px;
+font-size:9px;
+font-family:'JetBrains Mono', monospace;
+color:var(--mist);
+text-transform:uppercase;
+letter-spacing:.15em;
+}
+
+@media(max-width:768px){
+.hero-proof-grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
 </style>
 </head>
 <body>
@@ -515,6 +560,29 @@ TO PRODUCTION
 special machinery and manufacturing technologies
 from concept through production.
 </p>
+        <div class="hero-proof-grid reveal d5">
+
+  <div class="hero-proof-card">
+    <div class="hero-proof-value">15+</div>
+    <div class="hero-proof-label">Years Experience</div>
+  </div>
+
+  <div class="hero-proof-card">
+    <div class="hero-proof-value">4 & 5</div>
+    <div class="hero-proof-label">Axis CNC Development</div>
+  </div>
+
+  <div class="hero-proof-card">
+    <div class="hero-proof-value">2</div>
+    <div class="hero-proof-label">Successful TÜBİTAK Projects</div>
+  </div>
+
+  <div class="hero-proof-card">
+    <div class="hero-proof-value">M.Sc.</div>
+    <div class="hero-proof-label">Engineering Management</div>
+  </div>
+
+</div>
         <div class="hero-actions reveal d5">
           <a href="https://www.linkedin.com/in/mustafa-uner-engineer/" target="_blank" class="btn-primary">
             <i class="fa-brands fa-linkedin"></i> LinkedIn
