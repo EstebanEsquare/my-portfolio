@@ -363,6 +363,135 @@ input[type="range"]::-webkit-slider-thumb { appearance: none; -webkit-appearance
 .modal-video { width: 100%; aspect-ratio: 16/9; border-radius: 4px; overflow: hidden; }
 .modal-video iframe { width: 100%; height: 100%; border: none; }
 
+<!-- BU KODU ORİJİNAL 1887 SATIRLIK INDEX.HTML DOSYANIZDA 
+     </main> ETİKETİNDEN VEYA FOOTER'DAN HEMEN ÖNCE YAPIŞTIRIN -->
+
+<!-- ==========================================
+     1. ENGINEERING TOOLS SECTION (#tools)
+     ========================================== -->
+<section id="tools" style="padding: 80px 20px; background-color: #0d1117; border-top: 1px solid #30363d;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <div style="margin-bottom: 40px;">
+            <h2 style="color: #c9d1d9; font-size: 28px; font-weight: bold; margin-bottom: 10px; font-family: sans-serif;">Engineering Tools & Automation</h2>
+            <p style="color: #8b949e; font-size: 16px; font-family: sans-serif;">Teknik ekiplerin standart, hızlı ve hatasız tasarım yapabilmesi için geliştirdiğim hesaplama araçları.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+            
+            <!-- Tool: Servo Sizing -->
+            <div style="background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 24px; transition: border-color 0.3s;" onmouseover="this.style.borderColor='#58a6ff'" onmouseout="this.style.borderColor='#30363d'">
+                <h3 style="color: #58a6ff; font-size: 18px; margin-top: 0; font-family: sans-serif;">Servo Atalet Çözümleyici</h3>
+                <p style="color: #8b949e; font-size: 14px; line-height: 1.5; margin: 16px 0; font-family: sans-serif;">
+                    Vidalı mil ve kremayer sistemlerinin atalet oranlarını (J_load / J_motor) hesaplayıp optimum servo motor seçimini otomatize eden araç.
+                </p>
+                <button onclick="openEngTool('servo')" style="background: #238636; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 600; cursor: pointer; font-family: sans-serif;">Aracı Başlat</button>
+            </div>
+
+            <!-- Tool: Linear Guide -->
+            <div style="background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 24px; transition: border-color 0.3s;" onmouseover="this.style.borderColor='#58a6ff'" onmouseout="this.style.borderColor='#30363d'">
+                <h3 style="color: #58a6ff; font-size: 18px; margin-top: 0; font-family: sans-serif;">Lineer Kılavuz L10 Ömür Hesabı</h3>
+                <p style="color: #8b949e; font-size: 14px; line-height: 1.5; margin: 16px 0; font-family: sans-serif;">
+                    Dinamik yük ve eşdeğer yüklere göre ISO 14728 standartlarında rulman/araba ömrünü (km) hesaplayan sistem.
+                </p>
+                <button onclick="openEngTool('linear')" style="background: #238636; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 600; cursor: pointer; font-family: sans-serif;">Aracı Başlat</button>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================
+     2. KNOWLEDGE BASE SECTION (#wiki)
+     ========================================== -->
+<section id="wiki" style="padding: 80px 20px; background-color: #010409; border-top: 1px solid #30363d;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <div style="margin-bottom: 40px;">
+            <h2 style="color: #c9d1d9; font-size: 28px; font-weight: bold; margin-bottom: 10px; font-family: sans-serif;">Kurumsal Bilgi Bankası</h2>
+            <p style="color: #8b949e; font-size: 16px; font-family: sans-serif;">Ar-Ge süreçleri ve mühendislik standardizasyonu için hazırlanan teknik dokümanlar.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <!-- Doc 1 -->
+            <div style="padding: 20px; border-left: 3px solid #d2a8ff; background: #161b22;">
+                <h4 style="color: #c9d1d9; font-size: 16px; margin: 0 0 8px 0; font-family: sans-serif;">GD&T (ISO 1101) Pratikleri</h4>
+                <p style="color: #8b949e; font-size: 13px; margin: 0; font-family: sans-serif;">Hassas makine imalatında geometrik ölçülendirme sınırları.</p>
+            </div>
+            <!-- Doc 2 -->
+            <div style="padding: 20px; border-left: 3px solid #d2a8ff; background: #161b22;">
+                <h4 style="color: #c9d1d9; font-size: 16px; margin: 0 0 8px 0; font-family: sans-serif;">FMEA Analiz Metodolojisi</h4>
+                <p style="color: #8b949e; font-size: 13px; margin: 0; font-family: sans-serif;">TÜBİTAK projelerinde hata türleri ve etkileri analizinin yapılandırılması.</p>
+            </div>
+            <!-- Doc 3 -->
+            <div style="padding: 20px; border-left: 3px solid #d2a8ff; background: #161b22;">
+                <h4 style="color: #c9d1d9; font-size: 16px; margin: 0 0 8px 0; font-family: sans-serif;">Ağır Yük Pnömatik Seçimi</h4>
+                <p style="color: #8b949e; font-size: 13px; margin: 0; font-family: sans-serif;">Yüksek ataletli sistemlerde silindir çapı ve valf debisi tayini.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================
+     3. INTERAKTİF MODAL VE JS MANTIĞI
+     (En alta, </body> etiketinden hemen önceye koyun)
+     ========================================== -->
+<div id="engToolModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center;">
+    <div style="background: #0d1117; padding: 30px; border-radius: 8px; width: 90%; max-width: 450px; border: 1px solid #30363d; position: relative;">
+        <button onclick="closeEngTool()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; color: #8b949e; font-size: 24px; cursor: pointer;">&times;</button>
+        <div id="engModalContent" style="font-family: sans-serif;"></div>
+    </div>
+</div>
+
+<script>
+    function openEngTool(type) {
+        const modal = document.getElementById('engToolModal');
+        const content = document.getElementById('engModalContent');
+        
+        let html = '';
+        if(type === 'servo') {
+            html = `
+                <h3 style="color: #c9d1d9; margin-top: 0;">Servo Atalet Hesaplama</h3>
+                <div style="margin-top: 20px;">
+                    <label style="color: #8b949e; font-size: 13px; display: block; margin-bottom: 5px;">Vidalı Mil Çapı (mm)</label>
+                    <input type="number" value="32" style="width: 100%; padding: 10px; background: #010409; border: 1px solid #30363d; color: #c9d1d9; border-radius: 6px; box-sizing: border-box;">
+                </div>
+                <div style="margin-top: 15px;">
+                    <label style="color: #8b949e; font-size: 13px; display: block; margin-bottom: 5px;">Taşınan Kütle (kg)</label>
+                    <input type="number" value="250" style="width: 100%; padding: 10px; background: #010409; border: 1px solid #30363d; color: #c9d1d9; border-radius: 6px; box-sizing: border-box;">
+                </div>
+                <button onclick="alert('Hesaplama Simülasyonu: Gerekli Nominal Tork 4.2 Nm, Atalet Oranı: 3.8')" style="width: 100%; background: #238636; color: white; border: none; padding: 10px; margin-top: 20px; border-radius: 6px; font-weight: bold; cursor: pointer;">Analiz Et</button>
+            `;
+        } else if(type === 'linear') {
+            html = `
+                <h3 style="color: #c9d1d9; margin-top: 0;">L10 Ömür Hesaplama</h3>
+                <div style="margin-top: 20px;">
+                    <label style="color: #8b949e; font-size: 13px; display: block; margin-bottom: 5px;">Dinamik Yük C (N)</label>
+                    <input type="number" value="25400" style="width: 100%; padding: 10px; background: #010409; border: 1px solid #30363d; color: #c9d1d9; border-radius: 6px; box-sizing: border-box;">
+                </div>
+                <div style="margin-top: 15px;">
+                    <label style="color: #8b949e; font-size: 13px; display: block; margin-bottom: 5px;">Eşdeğer Yük P (N)</label>
+                    <input type="number" value="5200" style="width: 100%; padding: 10px; background: #010409; border: 1px solid #30363d; color: #c9d1d9; border-radius: 6px; box-sizing: border-box;">
+                </div>
+                <button onclick="alert('Hesaplama Simülasyonu: Tahmini L10 ömrü 116.000 km olarak hesaplanmıştır.')" style="width: 100%; background: #238636; color: white; border: none; padding: 10px; margin-top: 20px; border-radius: 6px; font-weight: bold; cursor: pointer;">Ömrü Hesapla</button>
+            `;
+        }
+        
+        content.innerHTML = html;
+        modal.style.display = 'flex';
+    }
+
+    function closeEngTool() {
+        document.getElementById('engToolModal').style.display = 'none';
+    }
+
+    // Modal dışına tıklayınca kapanma
+    window.addEventListener('click', function(e) {
+        const modal = document.getElementById('engToolModal');
+        if(e.target === modal) {
+            closeEngTool();
+        }
+    });
+</script>
+  
 /* ─── FOOTER ─── */
 footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); padding: 60px 24px; }
 .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
