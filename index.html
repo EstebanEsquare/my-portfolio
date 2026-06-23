@@ -114,7 +114,42 @@ nav.scrolled { border-bottom-color: rgba(245,158,11,0.25); }
 .hero-photo-label span { display: block; font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
 .hero-photo-label span:first-child { color: var(--amber); margin-bottom: 2px; }
 .hero-photo-label span:last-child { color: var(--mist); }
+.hero-proof-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+max-width:520px;
+margin:24px 0 32px;
+}
 
+.hero-proof-card{
+background:rgba(255,255,255,.03);
+border:1px solid rgba(245,158,11,.15);
+padding:16px;
+border-radius:6px;
+transition:.3s;
+}
+
+.hero-proof-card:hover{
+border-color:rgba(245,158,11,.4);
+transform:translateY(-2px);
+}
+
+.hero-proof-number{
+font-family:'Bebas Neue',sans-serif;
+font-size:42px;
+color:var(--amber);
+line-height:1;
+margin-bottom:6px;
+}
+
+.hero-proof-label{
+font-size:11px;
+letter-spacing:.12em;
+text-transform:uppercase;
+color:var(--mist);
+line-height:1.5;
+}
 /* ─── STATS BAR ─── */
 #stats { border-top: 1px solid rgba(245,158,11,0.1); border-bottom: 1px solid rgba(245,158,11,0.1); background: var(--ink-2); padding: 40px 24px; }
 .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
