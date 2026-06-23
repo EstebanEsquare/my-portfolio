@@ -208,7 +208,7 @@ section { padding: 100px 24px; }
 /* ─── TUBITAK AR-GE PROJECTS ─── */
 #tubitak { background: var(--ink); border-top: 1px solid rgba(245,158,11,0.05); }
 .tubitak-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.tubitak-card { background: var(--ink-3); border: 1px solid rgba(245,158,11,0.15); border-radius: 6px; padding: 40px; position: relative; overflow: hidden; transition: all 0.3s ease; }
+.tubitak-card { background: var(--ink-3); border: 1px solid rgba(245,158,11,0.15); border-radius: 6px; padding: 44px; position: relative; overflow: hidden; transition: all 0.3s ease; }
 .tubitak-card:hover { border-color: rgba(245,158,11,0.4); transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 .tubitak-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--amber); }
 .tubitak-card-bg { position: absolute; right: -20px; top: -20px; opacity: 0.03; font-size: 200px; color: var(--white); pointer-events: none; transition: opacity 0.3s; }
@@ -223,10 +223,40 @@ section { padding: 100px 24px; }
 .t-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; font-size: 8px; font-family: 'JetBrains Mono', monospace; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 3px; }
 .t-badge.program { background: rgba(0,75,135,0.15); color: #60a5fa; border: 1px solid rgba(96,165,250,0.3); }
 .t-badge.success { background: rgba(34,197,94,0.1); color: var(--terminal-green); border: 1px solid rgba(34,197,94,0.3); }
-.t-project-name { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.04em; color: var(--white); line-height: 1.2; margin-bottom: 16px; }
+.t-project-name { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.04em; color: var(--white); line-height: 1.2; margin-bottom: 16px; }
 .t-details { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; border-top: 1px solid rgba(245,158,11,0.1); padding-top: 20px; margin-top: 20px; }
 .t-detail-item .label { font-size: 8px; font-family: 'JetBrains Mono', monospace; color: var(--mist); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 4px; display: block; }
 .t-detail-item .val { font-size: 13px; color: var(--amber); font-weight: 500; }
+/* TÜBİTAK CASE STUDY */
+
+.t-case{
+  margin-top:24px;
+}
+
+.t-case p{
+  margin-bottom:22px;
+  color:var(--mist);
+  line-height:1.8;
+  font-size:14px;
+}
+
+.t-case p:last-child{
+  margin-bottom:0;
+}
+
+.t-case strong{
+  display:block;
+  color:var(--amber);
+  font-family:'JetBrains Mono', monospace;
+  font-size:10px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+
+.t-case br{
+  line-height:2;
+}
 
 /* ─── KNOWLEDGE BASE (BLOG) ─── */
 #blog { background: var(--ink-2); }
@@ -431,51 +461,6 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
 @media (max-width: 768px) { #mouse-glow { display: none; } }
 
 .amber { color: var(--amber); }
-  .hero-proof-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:12px;
-margin-top:32px;
-max-width:700px;
-}
-
-.hero-proof-card{
-background:rgba(255,255,255,0.03);
-border:1px solid rgba(245,158,11,0.15);
-padding:18px;
-border-radius:4px;
-text-align:center;
-transition:all .25s ease;
-}
-
-.hero-proof-card:hover{
-border-color:rgba(245,158,11,0.45);
-transform:translateY(-2px);
-}
-
-.hero-proof-value{
-font-family:'Bebas Neue',sans-serif;
-font-size:34px;
-color:var(--amber);
-line-height:1;
-letter-spacing:.04em;
-}
-
-.hero-proof-label{
-margin-top:6px;
-font-size:9px;
-font-family:'JetBrains Mono', monospace;
-color:var(--mist);
-text-transform:uppercase;
-letter-spacing:.15em;
-}
-
-@media(max-width:768px){
-.hero-proof-grid{
-grid-template-columns:repeat(2,1fr);
-}
-}
-
 </style>
 </head>
 <body>
@@ -550,39 +535,12 @@ grid-template-columns:repeat(2,1fr);
 </h1>
 
 <div class="hero-title reveal d3">
-  DEVELOPING CNC SYSTEMS
-FROM CONCEPT
-TO PRODUCTION
+  Engineering Leader for Industrial Machine Development
 </div>
 
 <p class="hero-desc reveal d4">
-  15+ years developing CNC systems,
-special machinery and manufacturing technologies
-from concept through production.
+  Mechanical Design Engineer and R&D professional with 15+ years of experience developing CNC systems, industrial machinery and manufacturing technologies from concept through production.
 </p>
-        <div class="hero-proof-grid reveal d5">
-
-  <div class="hero-proof-card">
-    <div class="hero-proof-value">15+</div>
-    <div class="hero-proof-label">Years Experience</div>
-  </div>
-
-  <div class="hero-proof-card">
-    <div class="hero-proof-value">4 & 5</div>
-    <div class="hero-proof-label">Axis CNC Development</div>
-  </div>
-
-  <div class="hero-proof-card">
-    <div class="hero-proof-value">2</div>
-    <div class="hero-proof-label">Successful TÜBİTAK Projects</div>
-  </div>
-
-  <div class="hero-proof-card">
-    <div class="hero-proof-value">M.Sc.</div>
-    <div class="hero-proof-label">Engineering Management</div>
-  </div>
-
-</div>
         <div class="hero-actions reveal d5">
           <a href="https://www.linkedin.com/in/mustafa-uner-engineer/" target="_blank" class="btn-primary">
             <i class="fa-brands fa-linkedin"></i> LinkedIn
@@ -600,13 +558,34 @@ from concept through production.
           <img src="cv2.jpeg" alt="Mustafa Üner" onerror="this.style.display='none'; this.parentElement.style.background='#1e1e30'">
           <div class="hero-photo-label">
             <span>Istanbul, TR</span>
-            <span>CNC MACHINE DEVELOPMENT</span>
+            <span>Kaban Makina · Ar-Ge</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- STATS -->
+  <div id="stats">
+    <div class="stats-inner">
+      <div class="stat-item reveal d1">
+        <div class="stat-num counter" data-target="15">0</div>
+        <div class="stat-label">Yıl Deneyim</div>
+      </div>
+      <div class="stat-item reveal d2">
+        <div class="stat-num" style="font-size:38px; letter-spacing: 0.06em;">UÇTAN UCA</div>
+        <div class="stat-label">Ar-Ge & Revizyon Yönetimi</div>
+      </div>
+      <div class="stat-item reveal d3">
+        <div class="stat-num" style="font-size:38px; letter-spacing: 0.06em;">BÜTÜNCÜL</div>
+        <div class="stat-label">Makine & Sistem Tasarımı</div>
+      </div>
+      <div class="stat-item reveal d4">
+        <div class="stat-num" style="font-size:42px;">M.Sc.</div>
+        <div class="stat-label">Mühendislik Yönetimi</div>
+      </div>
+    </div>
+  </div>
 
   <!-- JOURNEY -->
   <section id="journey">
@@ -682,8 +661,45 @@ from concept through production.
     </div>
   </section>
 
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-inner">
+      <div class="skills-grid">
+        <div class="skill-group reveal d1">
+          <div class="skill-group-title"><i class="fa-solid fa-drafting-compass"></i> Makine Tasarımı</div>
+          <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">SolidWorks / CAD</span><span class="skill-pct">95%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.95"></div></div></div>
+          <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">5-Eksen CNC Tasarımı</span><span class="skill-pct">92%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.92"></div></div></div>
+        </div>
+        <div class="skill-group reveal d2">
+          <div class="skill-group-title"><i class="fa-brands fa-python"></i> Hesaplamalı Mühendislik</div>
+          <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Python / Otomasyon</span><span class="skill-pct">80%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.80"></div></div></div>
+          <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Veri Odaklı Optimizasyon</span><span class="skill-pct">78%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.78"></div></div></div>
+        </div>
+        <div class="skill-group reveal d3">
+          <div class="skill-group-title"><i class="fa-solid fa-industry"></i> Üretim & Proses</div>
+          <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Alüminyum İşleme</span><span class="skill-pct">95%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.95"></div></div></div>
+          <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Pnömatik Sistemler</span><span class="skill-pct">90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.90"></div></div></div>
+        </div>
+        <div class="skill-group reveal d4">
+          <div class="skill-group-title"><i class="fa-solid fa-chart-line"></i> Ar-Ge Liderliği</div>
+          <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">Proje Yönetimi (PMP Altyapısı)</span><span class="skill-pct">90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.90"></div></div></div>
+          <div class="skill-bar-wrap"><div class="skill-bar-top"><span class="skill-name">TÜBİTAK 1501 Süreç Yönetimi</span><span class="skill-pct">98%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="0.98"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-
+  <!-- PYTHON TERMINAL SIMULATION -->
+  <div id="python-terminal">
+    <div class="terminal-wrapper reveal">
+      <div class="terminal-topbar">
+        <div class="term-dots"><span></span><span></span><span></span></div>
+        <div class="term-title"><i class="fa-brands fa-python"></i> optimize_chassis.py — sys_admin@uner_r&d</div>
+        <div style="width: 40px;"></div>
+      </div>
+      <div class="terminal-body" id="term-body"></div>
+    </div>
+  </div>
 
   <!-- PORTFOLIO -->
   <section id="portfolio">
@@ -758,62 +774,123 @@ from concept through production.
   <!-- TUBITAK AR-GE PROJECTS -->
   <section id="tubitak">
     <div class="section-inner">
+
       <div class="reveal">
-        <div class="section-label">Devlet Destekli Akreditasyon</div>
-        <h2 class="section-title">ULUSAL AR-GE<br><span>PROJELERİ</span></h2>
-        <p class="section-sub">Akademik hakem heyetleri tarafından denetlenmiş ve "Proje Yürütücüsü" sıfatıyla uçtan uca yönetilip tam notla kapatılmış TÜBİTAK 1501 Sanayi Ar-Ge projeleri.</p>
+        <div class="section-label">Flagship Development Programs</div>
+        <h2 class="section-title">TÜBİTAK R&D<br><span>CASE STUDIES</span></h2>
+        <p class="section-sub">
+          TÜBİTAK 1501 Industrial R&D projects successfully executed as Project Executive,
+          transforming engineering concepts into commercial CNC machine platforms.
+        </p>
       </div>
 
       <div class="tubitak-grid">
-        <!-- Proje 1 -->
+
         <div class="tubitak-card reveal d1">
           <i class="fa-solid fa-microchip tubitak-card-bg"></i>
+
           <div class="tubitak-logo-wrap">
             <div class="tubitak-brand">
-              <img src="tubitak-logo.svg" alt="TÜBİTAK" class="tubitak-logo-img" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/05/T%C3%9CB%C4%B0TAK_logo.svg'">
+              <img src="tubitak-logo.svg" alt="TÜBİTAK" class="tubitak-logo-img"
+                   onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/05/T%C3%9CB%C4%B0TAK_logo.svg'">
               <span class="t-logo-text">TÜBİTAK</span>
             </div>
-            <div class="t-badge success"><i class="fa-solid fa-check"></i> Başarıyla Tamamlandı</div>
+
+            <div class="t-badge success">
+              <i class="fa-solid fa-check"></i> Successfully Completed
+            </div>
           </div>
+
           <div class="t-badge-group">
-            <span class="t-badge program">1501 Sanayi Ar-Ge Programı</span>
-            <span class="t-badge program" style="background: rgba(245,158,11,0.1); color: var(--amber); border-color: rgba(245,158,11,0.3);">Proje Yürütücüsü</span>
+            <span class="t-badge program">1501 Industrial R&D Program</span>
+            <span class="t-badge program"
+                  style="background: rgba(245,158,11,0.1); color: var(--amber); border-color: rgba(245,158,11,0.3);">
+              Project Executive
+            </span>
           </div>
-          <h3 class="t-project-name">13,5 Metre Stroklu Alüminyum Profilleri İşlemek İçin Geliştirilen CNC Kontrollü 5 Eksen Makinenin Geliştirilmesi</h3>
-          <div class="t-details">
-            <div class="t-detail-item"><span class="label">Proje Referans Kodu</span><span class="val">No: 3180059</span></div>
-            <div class="t-detail-item"><span class="label">Teknoloji Grubu</span><span class="val">MAKİTEG (Makina İmalat)</span></div>
-            <div class="t-detail-item"><span class="label">Başvuru / Onay Yılı</span><span class="val">2018</span></div>
-            <div class="t-detail-item"><span class="label">Tasarım Eşleşmesi</span><span class="val" style="color:var(--white);"><i class="fa-solid fa-link" style="color:var(--amber); font-size:10px;"></i> ZC 3050 Dev CNC</span></div>
+
+          <h3 class="t-project-name">
+            ZC 3050 – 5 Axis Aluminium Machining Center
+          </h3>
+
+          <div class="t-case">
+
+            <p>
+              <strong>Challenge</strong><br>
+              Extend the company's 4-axis CNC platform into a next-generation 5-axis machining center capable of angular cutting, integrated sawing and complex profile processing operations.
+            </p>
+
+            <p>
+              <strong>Role</strong><br>
+              TÜBİTAK 1501 Project Executive responsible for coordinating mechanical design, automation development, motion analysis and industrial safety activities.
+            </p>
+
+            <p>
+              <strong>Impact</strong><br>
+              • TÜBİTAK 1501 approved R&D project<br>
+              • Introduced full 5-axis machining capability<br>
+              • Enabled angular cutting operations within a single platform<br>
+              • Implemented dual-station production concept for improved operator efficiency<br>
+              • Became one of the company's flagship products in the aluminium processing market
+            </p>
+
           </div>
         </div>
 
-        <!-- Proje 2 -->
         <div class="tubitak-card reveal d2">
           <i class="fa-solid fa-gears tubitak-card-bg"></i>
+
           <div class="tubitak-logo-wrap">
             <div class="tubitak-brand">
-              <img src="tubitak-logo.svg" alt="TÜBİTAK" class="tubitak-logo-img" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/05/T%C3%9CB%C4%B0TAK_logo.svg'">
+              <img src="tubitak-logo.svg" alt="TÜBİTAK" class="tubitak-logo-img"
+                   onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/05/T%C3%9CB%C4%B0TAK_logo.svg'">
               <span class="t-logo-text">TÜBİTAK</span>
             </div>
-            <div class="t-badge success"><i class="fa-solid fa-check"></i> Başarıyla Tamamlandı</div>
+
+            <div class="t-badge success">
+              <i class="fa-solid fa-check"></i> Successfully Completed
+            </div>
           </div>
+
           <div class="t-badge-group">
-            <span class="t-badge program">1501 Sanayi Ar-Ge Programı</span>
-            <span class="t-badge program" style="background: rgba(245,158,11,0.1); color: var(--amber); border-color: rgba(245,158,11,0.3);">Proje Yürütücüsü</span>
+            <span class="t-badge program">1501 Industrial R&D Program</span>
+            <span class="t-badge program"
+                  style="background: rgba(245,158,11,0.1); color: var(--amber); border-color: rgba(245,158,11,0.3);">
+              Project Executive
+            </span>
           </div>
-          <h3 class="t-project-name">Alüminyum Profil İşlemek İçin Geliştirilmiş CNC Kontrollü Makine</h3>
-          <div class="t-details" style="margin-top: 48px;">
-            <div class="t-detail-item"><span class="label">Proje Referans Kodu</span><span class="val">No: 3140118</span></div>
-            <div class="t-detail-item"><span class="label">Teknoloji Grubu</span><span class="val">MAKİTEG (Makina İmalat)</span></div>
-            <div class="t-detail-item"><span class="label">Başvuru / Onay Yılı</span><span class="val">2014</span></div>
-            <div class="t-detail-item"><span class="label">Tasarım Eşleşmesi</span><span class="val" style="color:var(--white);"><i class="fa-solid fa-link" style="color:var(--amber); font-size:10px;"></i> ZC 3010 Merkezi</span></div>
+
+          <h3 class="t-project-name">
+            ZC 3010 – 4 Axis Aluminium Machining Center
+          </h3>
+
+          <div class="t-case">
+
+            <p>
+              <strong>Challenge</strong><br>
+              Develop the company's first CNC aluminium machining center despite having no previous CNC machine development experience and limited internal know-how in this field.
+            </p>
+
+            <p>
+              <strong>Role</strong><br>
+              TÜBİTAK 1501 Project Executive leading mechanical design, manufacturing coordination, process development and CNC technology integration activities.
+            </p>
+
+            <p>
+              <strong>Impact</strong><br>
+              • TÜBİTAK 1501 approved R&D project<br>
+              • Company's first aluminium machining center platform<br>
+              • Established CNC machine development know-how within the organization<br>
+              • Created the foundation for future CNC product generations<br>
+              • Expanded the company's presence in the aluminium processing industry
+            </p>
+
           </div>
         </div>
+
       </div>
     </div>
   </section>
-</div>
 
 <!-- ========================================== -->
 <!-- ============= VIEW: BLOG ================= -->
