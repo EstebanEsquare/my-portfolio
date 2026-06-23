@@ -155,73 +155,6 @@ nav.scrolled { border-bottom-color: rgba(245,158,11,0.25); }
   line-height: 1.4;
 }
 
-/* ─── TERMINAL COMPONENT ─── */
-.terminal-wrapper {
-  width: 100%;
-  max-width: 320px;
-  background: #08080f;
-  border: 1px solid rgba(245,158,11,0.25);
-  border-radius: 8px;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
-  overflow: hidden;
-  font-family: 'JetBrains Mono', monospace;
-}
-.terminal-header {
-  background: #11111e;
-  padding: 10px 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid rgba(245,158,11,0.15);
-}
-.terminal-buttons {
-  display: flex;
-  gap: 6px;
-}
-.term-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-.term-dot.red { background: #ef4444; }
-.term-dot.yellow { background: #eab308; }
-.term-dot.green { background: #22c55e; }
-.terminal-title {
-  color: var(--mist);
-  font-size: 9px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-.terminal-body {
-  padding: 16px;
-  height: 190px;
-  overflow-y: auto;
-  font-size: 10px;
-  line-height: 1.5;
-  color: var(--light);
-}
-.term-line {
-  margin-bottom: 8px;
-  display: flex;
-  gap: 6px;
-}
-.term-prompt {
-  color: var(--amber);
-  user-select: none;
-}
-.term-content.success { color: var(--terminal-green); }
-.term-content.warning { color: #f59e0b; }
-.term-content.error { color: var(--danger); }
-.term-cursor {
-  display: inline-block;
-  width: 6px;
-  height: 12px;
-  background: var(--amber);
-  animation: blink 1s step-end infinite;
-  margin-left: 2px;
-}
-@keyframes blink { 50% { opacity: 0; } }
-
 /* ─── SECTION LAYOUT ─── */
 section { padding: 100px 24px; }
 .section-inner { max-width: 1200px; margin: 0 auto; }
@@ -642,21 +575,6 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
           <div class="hero-photo-label">
             <span>Istanbul, TR</span>
             <span>Kaban Makina · R&D</span>
-          </div>
-        </div>
-
-        <!-- ─── PYTHON REALTIME TERMINAL ─── -->
-        <div class="terminal-wrapper reveal d5">
-          <div class="terminal-header">
-            <div class="terminal-buttons">
-              <span class="term-dot red"></span>
-              <span class="term-dot yellow"></span>
-              <span class="term-dot green"></span>
-            </div>
-            <div class="terminal-title">Python Automation Terminal</div>
-          </div>
-          <div class="terminal-body" id="term-body">
-            <!-- Driven dynamically by script -->
           </div>
         </div>
       </div>
@@ -1286,7 +1204,7 @@ const articles = [
       <p>İşte <strong>Maksimum Malzeme Durumu (MMC - Ⓜ)</strong> bu aşamada devreye girer. Parça (delik) maksimum malzeme durumundan uzaklaştıkça (yani delik büyüdükçe), büyüyen miktar kadar <strong>Bonus Tolerans</strong> kazanırsınız. İmalatta hurda (fire) oranını dramatik şekilde düşüren, maliyetleri kurtaran müthiş bir yaklaşımdır.</p>
 
       <h2>İstatistiksel Tolerans Uygulaması</h2>
-      <p>Özellikle montaj hatlarında, her parçanın aynı anda "en kötü durumda" üretilip bir araya gelme ihtimali matematiksel olarak çok düşüktür. İTÜ kaynaklı çalışmalarda da vurgulandığı üzere, <strong>İstatistiksel Tolerans</strong> kullanılarak montajda beklenen tolerans yığılması <em>karekök formülüyle (Root Sum Square - RSS)</em> hesaplanabilir. Bu sayede parça bazında verilen toleranslar rahatlatılabilir ve doğrudan imalat maliyeti düşürülür.</p>
+      <p>Özellikle montaj hatlarında, her parçanın aynı onda "en kötü durumda" üretilip bir araya gelme ihtimali matematiksel olarak çok düşüktür. İTÜ kaynaklı çalışmalarda da vurgulandığı üzere, <strong>İstatistiksel Tolerans</strong> kullanılarak montajda beklenen tolerans yığılması <em>karekök formülüyle (Root Sum Square - RSS)</em> hesaplanabilir. Bu sayede parça bazında verilen toleranslar rahatlatılabilir ve doğrudan imalat maliyeti düşürülür.</p>
     `
   },
   {
@@ -1513,65 +1431,6 @@ function loadArticle(id, cardElement, isInitialLoad = false) {
   }, 300);
 }
 
-// ─── PYTHON TERMINAL SIMULATION LOGIC ───
-const termLines = [
-  { text: "import numpy as np", type: "normal", delay: 800 },
-  { text: "from fea_solver import run_modal_analysis", type: "normal", delay: 500 },
-  { text: "Hooking active Autodesk document: ZC-3050-Gantry.iam", type: "success", delay: 800 },
-  { text: "Extracting mass properties and welded connections...", type: "normal", delay: 1200 },
-  { text: "[WARN] Interference detected at node 402: Spindle Box", type: "warning", delay: 1000 },
-  { text: "Running dynamic resonance analysis (Iterations: 5000)", type: "normal", delay: 600 },
-  { text: "Critical Peak: Mode 3 at 132.8 Hz (Excessive Amplitude)", type: "error", delay: 400 },
-  { text: "Modifying stiffener matrix... Mode 3 shifted to 165.4 Hz.", type: "success", delay: 800 },
-  { text: "Verification Successful! Kinematics optimized in 14.2s.", type: "success", delay: 2000 }
-];
-
-const termBody = document.getElementById('term-body');
-let currentLineIdx = 0;
-
-function addTermLine(lineObj) {
-  const lineDiv = document.createElement('div');
-  lineDiv.className = 'term-line';
-  const promptSpan = document.createElement('span');
-  promptSpan.className = 'term-prompt';
-  promptSpan.textContent = '>';
-  const contentSpan = document.createElement('span');
-  contentSpan.className = `term-content ${lineObj.type}`;
-  contentSpan.textContent = lineObj.text;
-  lineDiv.appendChild(promptSpan);
-  lineDiv.appendChild(contentSpan);
-  termBody.appendChild(lineDiv);
-  termBody.scrollTop = termBody.scrollHeight;
-}
-
-function runTerminal() {
-  if (!termBody) return;
-  if (currentLineIdx >= termLines.length) {
-    setTimeout(() => {
-      termBody.innerHTML = '';
-      currentLineIdx = 0;
-      runTerminal();
-    }, 6000);
-    return;
-  }
-  const line = termLines[currentLineIdx];
-  setTimeout(() => {
-    const cursor = document.createElement('span');
-    cursor.className = 'term-cursor';
-    addTermLine(line);
-    const lastLine = termBody.lastChild;
-    lastLine.appendChild(cursor);
-    Array.from(termBody.children).forEach((child, idx) => {
-      if (idx !== termBody.children.length - 1) {
-        const oldCursor = child.querySelector('.term-cursor');
-        if (oldCursor) oldCursor.remove();
-      }
-    });
-    currentLineIdx++;
-    runTerminal();
-  }, line.delay);
-}
-
 // ─── SCROLL & INTERSECTION OBSERVER ANIMATIONS ───
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 40); });
@@ -1590,11 +1449,6 @@ function reObserve() {
 }
 window.addEventListener('hashchange', () => setTimeout(reObserve, 100));
 setTimeout(reObserve, 100);
-
-// Initialize Terminal on Page Load
-document.addEventListener("DOMContentLoaded", () => {
-  setTimeout(runTerminal, 1000);
-});
 
 // ─── ENGINEERING CALCULATORS TAB SYSTEM ───
 document.querySelectorAll('.tool-tab').forEach(tab => {
@@ -1814,7 +1668,7 @@ document.getElementById('btn-export-report').addEventListener('click', function(
   });
 
   if(activePanel.id === 't-tolerance-tool') {
-      report += `\n[ TOLERANS ZİNCİRİ BİLEŞENLERİ ]\n`;
+      report += `\n[ TOLERANS ZİNCİRİ BİLEŞENLERİ ]\n`;
       tolRows.forEach((r, i) => { report += `- Tolerans ${i+1}: Üst Tolerans: ${r.u}, Alt Tolerans: ${r.l}\n`; });
   }
 
