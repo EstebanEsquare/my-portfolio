@@ -16,32 +16,44 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
 :root {
-  --amber:    #f59e0b;
-  --amber-dim:#92400e;
-  --gold:     #fbbf24;
-  --ink:      #080810;
-  --ink-2:    #0f0f1a;
-  --ink-3:    #161625;
-  --ink-4:    #1e1e30;
-  --steel:    #334155;
-  --mist:     #94a3b8;
-  --light:    #e2e8f0;
-  --white:    #f8fafc;
+  --amber:    #d8a84f;
+  --amber-dim:#7c5a25;
+  --gold:     #f0c978;
+  --ink:      #030609;
+  --ink-2:    #070b10;
+  --ink-3:    #0d1219;
+  --ink-4:    #121922;
+  --steel:    #2a333d;
+  --mist:     #a6afba;
+  --light:    #e4e8ed;
+  --white:    #fbfbf7;
   --danger:   #ef4444;
   --teal:     #0d9488;
   --terminal-green: #22c55e;
+  --line:     rgba(216,168,79,0.22);
+  --glass:    rgba(13,18,25,0.74);
+  --shadow:   0 24px 70px rgba(0,0,0,0.42);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: 'DM Sans', sans-serif; background: var(--ink); color: var(--light); overflow-x: hidden; line-height: 1.6; }
+body {
+  font-family: 'Inter', sans-serif;
+  background:
+    linear-gradient(115deg, rgba(216,168,79,0.08), transparent 26%),
+    linear-gradient(135deg, #020405 0%, #071018 48%, #020405 100%);
+  color: var(--light);
+  overflow-x: hidden;
+  line-height: 1.6;
+  font-weight: 400;
+}
 .mono { font-family: 'JetBrains Mono', monospace; }
-.display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.04em; }
+.display { font-family: 'Space Grotesk', sans-serif; letter-spacing: 0; }
 
 /* ─── NOISE OVERLAY ─── */
 body::before {
@@ -74,7 +86,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 64px; di
 nav.scrolled { border-bottom-color: rgba(245,158,11,0.25); }
 .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; display: flex; align-items: center; justify-content: space-between; }
 .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.nav-logo-name { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.08em; color: var(--white); }
+.nav-logo-name { font-family: 'Space Grotesk', sans-serif; font-size: 18px; letter-spacing: 0.08em; color: var(--white); }
 .nav-logo-title { font-size: 8px; color: var(--amber); font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
 
 /* Desktop Navigation Link Container */
@@ -101,9 +113,9 @@ nav.scrolled { border-bottom-color: rgba(245,158,11,0.25); }
 .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border: 1px solid rgba(245,158,11,0.3); border-radius: 2px; font-size: 9px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--amber); font-family: 'JetBrains Mono', monospace; margin-bottom: 20px; background: rgba(245,158,11,0.05); }
 .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--amber); animation: pulse-dot 2s ease-in-out infinite; }
 @keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.7); } }
-.hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(56px, 8vw, 96px); line-height: 0.92; letter-spacing: 0.03em; color: var(--white); margin-bottom: 4px; }
+.hero-name { font-family: 'Space Grotesk', sans-serif; font-size: clamp(56px, 8vw, 96px); line-height: 0.92; letter-spacing: 0.03em; color: var(--white); margin-bottom: 4px; }
 .hero-name span { color: var(--amber); }
-.hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 4vw, 48px); letter-spacing: 0.08em; color: var(--steel); margin-bottom: 28px; }
+.hero-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 4vw, 48px); letter-spacing: 0.08em; color: var(--steel); margin-bottom: 28px; }
 .hero-desc { font-size: 15px; font-weight: 300; color: var(--mist); line-height: 1.75; max-width: 580px; font-style: italic; border-left: 2px solid var(--amber); padding-left: 20px; margin-bottom: 36px; }
 .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: var(--amber); color: var(--ink); border: none; border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; cursor: pointer; font-family: 'JetBrains Mono', monospace; transition: all 0.2s; }
@@ -147,7 +159,7 @@ nav.scrolled { border-bottom-color: rgba(245,158,11,0.25); }
   background: rgba(245,158,11,0.02);
 }
 .hero-proof-value {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 36px;
   color: var(--amber);
   line-height: 1;
@@ -166,7 +178,7 @@ section { padding: 100px 24px; }
 .section-inner { max-width: 1200px; margin: 0 auto; }
 .section-label { display: inline-flex; align-items: center; gap: 10px; font-size: 9px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--amber); font-family: 'JetBrains Mono', monospace; margin-bottom: 16px; }
 .section-label::before { content: ''; width: 24px; height: 1px; background: var(--amber); }
-.section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 5vw, 56px); letter-spacing: 0.04em; color: var(--white); line-height: 1; margin-bottom: 12px; }
+.section-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(36px, 5vw, 56px); letter-spacing: 0.04em; color: var(--white); line-height: 1; margin-bottom: 12px; }
 .section-title span { color: var(--amber); }
 .section-sub { font-size: 14px; font-weight: 300; color: var(--mist); max-width: 540px; line-height: 1.7; margin-bottom: 60px; }
 
@@ -181,9 +193,9 @@ section { padding: 100px 24px; }
 .tl-dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--amber); background: var(--ink-2); position: relative; z-index: 2; transition: all 0.3s; }
 .tl-dot.active { background: var(--amber); width: 18px; height: 18px; box-shadow: 0 0 0 6px rgba(245,158,11,0.15); animation: tl-pulse 2s ease-in-out infinite; }
 @keyframes tl-pulse { 0%, 100% { box-shadow: 0 0 0 6px rgba(245,158,11,0.15); } 50% { box-shadow: 0 0 0 12px rgba(245,158,11,0.05); } }
-.tl-year { font-family: 'Bebas Neue', sans-serif; font-size: 42px; letter-spacing: 0.04em; color: rgba(245,158,11,0.15); line-height: 1; margin-bottom: 4px; }
+.tl-year { font-family: 'Space Grotesk', sans-serif; font-size: 42px; letter-spacing: 0.04em; color: rgba(245,158,11,0.15); line-height: 1; margin-bottom: 4px; }
 .tl-year.highlight { color: var(--amber); }
-.tl-heading { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.06em; color: var(--white); margin-bottom: 6px; }
+.tl-heading { font-family: 'Space Grotesk', sans-serif; font-size: 20px; letter-spacing: 0.06em; color: var(--white); margin-bottom: 6px; }
 .tl-desc { font-size: 12px; color: var(--mist); font-weight: 300; line-height: 1.6; }
 .tl-tag { display: inline-block; margin-top: 8px; padding: 3px 10px; border-radius: 2px; font-size: 8px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; background: rgba(245,158,11,0.1); color: var(--amber); border: 1px solid rgba(245,158,11,0.2); }
 
@@ -194,7 +206,7 @@ section { padding: 100px 24px; }
 .machine-card-inner { position: absolute; inset: 0; padding: 28px; display: flex; flex-direction: column; justify-content: flex-end; background: linear-gradient(to top, rgba(8,8,16,0.95) 0%, rgba(8,8,16,0.4) 50%, transparent 100%); transition: all 0.4s ease; z-index: 1; }
 .machine-num { position: absolute; top: 20px; left: 20px; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: rgba(245,158,11,0.4); font-weight: 700; letter-spacing: 0.2em; }
 .machine-badge { position: absolute; top: 20px; right: 20px; padding: 4px 10px; font-size: 8px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; background: var(--amber); color: var(--ink); border-radius: 2px; z-index: 2; }
-.machine-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.06em; color: var(--white); line-height: 1; margin-bottom: 4px; }
+.machine-title { font-family: 'Space Grotesk', sans-serif; font-size: 28px; letter-spacing: 0.06em; color: var(--white); line-height: 1; margin-bottom: 4px; }
 .machine-desc { font-size: 11px; color: rgba(226,232,240,0.6); font-weight: 300; }
 .machine-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; z-index: 2; }
 .play-btn { width: 56px; height: 56px; border-radius: 50%; background: rgba(245,158,11,0.9); display: flex; align-items: center; justify-content: center; color: var(--ink); font-size: 18px; transform: scale(0.8); transition: transform 0.3s; }
@@ -218,13 +230,13 @@ section { padding: 100px 24px; }
 .tubitak-brand { display: flex; align-items: center; gap: 16px; }
 .tubitak-logo-img { height: 36px; width: auto; display: block; filter: grayscale(1) brightness(1.8) opacity(0.4); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); transform-origin: left center; }
 .tubitak-card:hover .tubitak-logo-img { filter: grayscale(0) brightness(1) opacity(1); transform: scale(1.05); }
-.t-logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.06em; color: var(--mist); line-height: 1; margin-top: 4px; transition: all 0.4s ease; opacity: 0.7; }
+.t-logo-text { font-family: 'Space Grotesk', sans-serif; font-size: 32px; letter-spacing: 0.06em; color: var(--mist); line-height: 1; margin-top: 4px; transition: all 0.4s ease; opacity: 0.7; }
 .tubitak-card:hover .t-logo-text { color: var(--white); opacity: 1; transform: translateX(6px); }
 .t-badge-group { display: flex; gap: 8px; flex-wrap: wrap; }
 .t-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; font-size: 8px; font-family: 'JetBrains Mono', monospace; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 3px; }
 .t-badge.program { background: rgba(0,75,135,0.15); color: #60a5fa; border: 1px solid rgba(96,165,250,0.3); }
 .t-badge.success { background: rgba(34,197,94,0.1); color: var(--terminal-green); border: 1px solid rgba(34,197,94,0.3); }
-.t-project-name { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.04em; color: var(--white); line-height: 1.2; margin-bottom: 16px; }
+.t-project-name { font-family: 'Space Grotesk', sans-serif; font-size: 28px; letter-spacing: 0.04em; color: var(--white); line-height: 1.2; margin-bottom: 16px; }
 .t-case { margin-top:24px; }
 .t-case p { margin-bottom:22px; color:var(--mist); line-height:1.8; font-size:14px; }
 .t-case p:last-child { margin-bottom:0; }
@@ -250,7 +262,7 @@ section { padding: 100px 24px; }
 .blog-reader { padding: 40px; overflow-y: auto; overflow-x: hidden; max-height: 700px; transition: opacity 0.3s ease; box-sizing: border-box; width: 100%; }
 .blog-reader.fade-out { opacity: 0; }
 .article-header { border-bottom: 1px solid rgba(245,158,11,0.1); padding-bottom: 24px; margin-bottom: 32px; padding-right: 16px; }
-.article-title { font-family: 'Bebas Neue', sans-serif; font-size: 42px; color: var(--white); letter-spacing: 0.04em; line-height: 1.1; margin-bottom: 16px; }
+.article-title { font-family: 'Space Grotesk', sans-serif; font-size: 42px; color: var(--white); letter-spacing: 0.04em; line-height: 1.1; margin-bottom: 16px; }
 .article-info { display: flex; gap: 16px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--amber); letter-spacing: 0.1em; }
 .article-info i { margin-right: 4px; }
 
@@ -296,11 +308,11 @@ section { padding: 100px 24px; }
 .tool-watermark { position: absolute; right: 48px; top: 40px; opacity: 0.05; pointer-events: none; z-index: 0; width: 120px; height: 120px; }
 .tool-panel { display: none; position: relative; z-index: 1; }
 .tool-panel.active { display: block; }
-.tool-panel-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.06em; color: var(--white); margin-bottom: 4px; }
+.tool-panel-title { font-family: 'Space Grotesk', sans-serif; font-size: 28px; letter-spacing: 0.06em; color: var(--white); margin-bottom: 4px; }
 .tool-panel-formula { font-size: 10px; font-family: 'JetBrains Mono', monospace; color: rgba(245,158,11,0.5); margin-bottom: 32px; letter-spacing: 0.05em; }
 .result-box { background: var(--ink-4); border: 1px solid rgba(245,158,11,0.15); border-radius: 6px; padding: 28px; text-align: center; margin-bottom: 28px; position: relative; overflow: hidden; }
 .result-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--amber), transparent); }
-.result-value { font-family: 'Bebas Neue', sans-serif; font-size: 64px; color: var(--amber); letter-spacing: 0.04em; line-height: 1; }
+.result-value { font-family: 'Space Grotesk', sans-serif; font-size: 64px; color: var(--amber); letter-spacing: 0.04em; line-height: 1; }
 .result-unit { font-size: 10px; font-family: 'JetBrains Mono', monospace; color: var(--mist); letter-spacing: 0.25em; text-transform: uppercase; margin-top: 6px; }
 .input-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
 .input-label { font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mist); font-family: 'JetBrains Mono', monospace; }
@@ -318,7 +330,7 @@ input[type="range"]::-webkit-slider-thumb { appearance: none; -webkit-appearance
 .result-card { background: var(--ink-4); border: 1px solid var(--steel); border-radius: 6px; padding: 18px; text-align: center; }
 .result-card.highlight { border-color: rgba(245,158,11,0.4); background: rgba(245,158,11,0.05); }
 .result-card-label { font-size: 8px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mist); font-family: 'JetBrains Mono', monospace; margin-bottom: 8px; display: block; }
-.result-card-value { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--white); letter-spacing: 0.04em; }
+.result-card-value { font-family: 'Space Grotesk', sans-serif; font-size: 28px; color: var(--white); letter-spacing: 0.04em; }
 .result-card.highlight .result-card-value { color: var(--amber); }
 
 /* Disclaimer */
@@ -336,20 +348,10 @@ input[type="range"]::-webkit-slider-thumb { appearance: none; -webkit-appearance
 .modal-video { width: 100%; aspect-ratio: 16/9; border-radius: 4px; overflow: hidden; }
 .modal-video iframe { width: 100%; height: 100%; border: none; }
 
-/* ─── QUICK TOOL CARDS (HOME) ─── */
-.home-feature-section { padding: 60px 0 20px 0; }
-.grid-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 32px; }
-.feature-card { background: var(--ink-3); border: 1px solid #30363d; border-radius: 6px; padding: 32px; transition: border-color 0.3s, transform 0.3s; }
-.feature-card:hover { border-color: var(--amber); transform: translateY(-4px); }
-.feature-card h3 { color: var(--white); font-size: 18px; margin-top: 0; font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em; font-size: 24px; }
-.feature-card p { color: var(--mist); font-size: 14px; line-height: 1.6; margin: 16px 0; }
-.btn-feature-start { background: var(--amber); color: var(--ink); border: none; padding: 10px 20px; border-radius: 4px; font-weight: 700; cursor: pointer; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; transition: background 0.2s; }
-.btn-feature-start:hover { background: var(--gold); }
-
 /* ─── FOOTER ─── */
 footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); padding: 60px 24px; }
 .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-.footer-left .footer-name { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.06em; color: var(--white); }
+.footer-left .footer-name { font-family: 'Space Grotesk', sans-serif; font-size: 24px; letter-spacing: 0.06em; color: var(--white); }
 .footer-left .footer-sub { font-size: 9px; font-family: 'JetBrains Mono', monospace; color: var(--mist); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 2px; }
 .footer-copy { font-size: 10px; color: rgba(148,163,184,0.35); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; }
 
@@ -381,22 +383,6 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
 .m-link.active-link i { color: var(--amber); }
 .m-cta { background: var(--amber) !important; color: var(--ink) !important; justify-content: center; margin-top: 16px; }
 .m-cta i { color: var(--ink) !important; }
-
-/* ─── QUICK INTERACTIVE TOOL MODAL ─── */
-#engToolModal {
-  display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center;
-  backdrop-filter: blur(5px);
-}
-.eng-modal-box {
-  background: #11111e; padding: 32px; border-radius: 8px; width: 90%; max-width: 450px;
-  border: 1px solid rgba(245,158,11,0.3); position: relative;
-}
-.eng-modal-close {
-  position: absolute; top: 15px; right: 15px; background: none; border: none;
-  color: #8b949e; font-size: 24px; cursor: pointer; transition: color 0.2s;
-}
-.eng-modal-close:hover { color: var(--amber); }
 
 /* ─── MOBILE RESPONSIVE ─── */
 @media (max-width: 992px) {
@@ -433,6 +419,248 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
   .mobile-menu-btn { display: block; }
 
   .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
+}
+
+/* Reference-inspired visual refresh */
+nav {
+  height: 72px;
+  background: rgba(2,4,5,0.88);
+  border-bottom-color: var(--line);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.28);
+}
+nav.scrolled { border-bottom-color: rgba(216,168,79,0.42); }
+.nav-inner { max-width: 1240px; }
+.nav-logo-name,
+.hero-name,
+.hero-title,
+.section-title,
+.tl-year,
+.tl-heading,
+.machine-title,
+.article-title,
+.tool-panel-title,
+.result-value,
+.result-card-value,
+.footer-left .footer-name {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: 0;
+}
+.nav-logo-name { font-size: 18px; font-weight: 700; }
+.nav-logo-title,
+.nav-links a,
+.nav-cta,
+.lang-btn,
+.section-label,
+.hero-badge,
+.btn-primary,
+.btn-ghost,
+.tool-tab-sub,
+.input-label,
+.result-unit,
+.footer-left .footer-sub,
+.footer-copy {
+  letter-spacing: 0.08em;
+}
+.nav-links { gap: 28px; }
+.nav-links a { color: rgba(228,232,237,0.78); }
+.nav-links a::after {
+  bottom: -24px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.nav-cta,
+.lang-btn,
+.btn-ghost {
+  border-color: rgba(216,168,79,0.48);
+  color: var(--white);
+  background: rgba(3,6,9,0.28);
+}
+.nav-cta:hover,
+.lang-btn:hover,
+.btn-ghost:hover {
+  background: rgba(216,168,79,0.12);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+#hero {
+  min-height: 94vh;
+  padding-top: 132px;
+  background:
+    linear-gradient(90deg, rgba(3,6,9,0.98) 0%, rgba(3,6,9,0.82) 46%, rgba(3,6,9,0.44) 100%),
+    linear-gradient(150deg, rgba(216,168,79,0.10), transparent 34%);
+  border-bottom: 1px solid rgba(216,168,79,0.14);
+}
+.hero-grid-bg {
+  background-image:
+    linear-gradient(rgba(216,168,79,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(216,168,79,0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(90deg, black, transparent 85%);
+}
+.hero-glow { display: none; }
+.hero-inner { max-width: 1240px; gap: 64px; }
+.hero-badge {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 700;
+}
+.hero-name {
+  font-size: clamp(52px, 7vw, 92px);
+  line-height: 0.98;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+.hero-title {
+  color: rgba(216,168,79,0.88);
+  font-size: clamp(25px, 3.2vw, 42px);
+  font-weight: 600;
+}
+.hero-desc {
+  max-width: 620px;
+  color: rgba(228,232,237,0.86);
+  font-size: 16px;
+  font-style: normal;
+  border-left-color: var(--gold);
+}
+.hero-proof-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(10,15,20,0.58);
+  box-shadow: var(--shadow);
+}
+.hero-proof-card {
+  border: 0;
+  border-right: 1px solid rgba(216,168,79,0.18);
+  border-radius: 0;
+  background: transparent;
+  padding: 18px 20px;
+}
+.hero-proof-card:last-child { border-right: 0; }
+.hero-proof-value { color: var(--white); font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+.hero-proof-label { color: rgba(228,232,237,0.66); letter-spacing: 0.04em; }
+.hero-photo-frame {
+  width: min(340px, 82vw);
+  height: 420px;
+  background: var(--ink-4);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+.hero-photo-frame::before,
+.hero-photo-frame::after {
+  border-color: rgba(216,168,79,0.26);
+  border-radius: 8px;
+}
+.hero-photo-frame img { border-radius: 6px; filter: grayscale(42%) contrast(1.08) brightness(0.88); }
+.hero-photo-label {
+  background: rgba(3,6,9,0.86);
+  border-color: var(--line);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.36);
+}
+
+section { padding: 92px 24px; }
+#journey,
+#portfolio,
+footer {
+  background: linear-gradient(180deg, rgba(7,11,16,0.98), rgba(3,6,9,0.98));
+}
+.section-inner { max-width: 1240px; }
+.section-label {
+  color: var(--gold);
+  font-size: 11px;
+}
+.section-label::before { background: var(--gold); }
+.section-title {
+  font-size: clamp(34px, 4.6vw, 58px);
+  font-weight: 700;
+  line-height: 1.04;
+}
+.section-title span { color: var(--gold); }
+.section-sub { color: rgba(228,232,237,0.68); font-size: 15px; }
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold), var(--amber));
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 5px;
+  box-shadow: 0 16px 36px rgba(216,168,79,0.22);
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #ffd98b, var(--gold));
+  box-shadow: 0 20px 46px rgba(216,168,79,0.30);
+}
+.btn-ghost { border-radius: 5px; }
+
+.machine-card,
+.tubitak-card,
+.blog-layout,
+.blog-card,
+.blog-content-area,
+.tools-layout,
+.result-box,
+.result-card,
+.tool-input,
+.tool-select,
+.disclaimer,
+.m-link {
+  background: linear-gradient(180deg, rgba(18,25,34,0.92), rgba(8,13,18,0.94));
+  border-color: var(--line);
+  border-radius: 8px;
+  box-shadow: 0 18px 55px rgba(0,0,0,0.24);
+}
+.machine-card:hover,
+.tubitak-card:hover,
+.hero-proof-card:hover,
+.result-card.highlight,
+.tool-tab.active {
+  border-color: rgba(216,168,79,0.55);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.34);
+}
+.machine-card-inner {
+  background: linear-gradient(to top, rgba(3,6,9,0.96) 0%, rgba(3,6,9,0.66) 56%, rgba(3,6,9,0.12) 100%);
+}
+.machine-card-bg { filter: brightness(0.30) grayscale(0.88) contrast(1.08); }
+.machine-card:hover .machine-card-bg { filter: brightness(0.56) grayscale(0.18) contrast(1.06); }
+.machine-badge,
+.tl-tag {
+  background: rgba(216,168,79,0.14);
+  color: var(--gold);
+  border: 1px solid rgba(216,168,79,0.28);
+}
+.tools-sidebar,
+.tools-content,
+.blog-sidebar,
+.blog-content-area {
+  background: rgba(8,13,18,0.94);
+}
+.tool-tab { border-radius: 6px; }
+.tool-tab:hover { background: rgba(216,168,79,0.08); border-color: rgba(216,168,79,0.22); }
+.result-value,
+.result-card.highlight .result-card-value,
+.tool-tab.active .tool-tab-name,
+.tool-tab.active i,
+.blog-card.active .blog-card-title,
+.prose strong,
+.amber {
+  color: var(--gold);
+}
+
+footer {
+  border-top-color: var(--line);
+  padding: 44px 24px;
+}
+
+@media (max-width: 768px) {
+  #hero { padding-top: 112px; min-height: auto; }
+  .hero-proof-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero-proof-card:nth-child(2) { border-right: 0; }
+  .hero-proof-card:nth-child(-n+2) { border-bottom: 1px solid rgba(216,168,79,0.18); }
+  .nav-links a::after { bottom: -4px; }
 }
 
 /* ─── MOUSE GLOW (AMBIENT LIGHT) ─── */
@@ -587,30 +815,6 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
             <span>Istanbul, TR</span>
             <span>Kaban Makina · R&D</span>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- QUICK ACCESS SPECIALIZED AR-GE TOOLS -->
-  <section class="home-feature-section" style="background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.12);">
-    <div class="section-inner">
-      <div class="reveal">
-        <div class="section-label" data-i18n="quick_label">Öne Çıkan Mühendislik Otomasyonları</div>
-        <h2 class="section-title" data-i18n="quick_title">HIZLI BAŞLANGIÇ <span>ARAÇLARI</span></h2>
-        <p class="section-sub" data-i18n="quick_sub">Tasarım sürecindeki hesaplamalı analiz adımlarını pratikleştiren, dinamik parametrik paneller.</p>
-      </div>
-
-      <div class="grid-features">
-        <div class="feature-card reveal d1">
-          <h3 data-i18n="tool_servo_title">Servo Atalet Çözümleyici</h3>
-          <p data-i18n="tool_servo_desc">Vidalı mil ve kremayer mekanizmalarında atalet oranlarını (J_load / J_motor) analiz ederek optimum servo kapasitesi tespiti yapar.</p>
-          <button onclick="openEngTool('servo')" class="btn-feature-start"><span data-i18n="tool_btn_start">Aracı Başlat</span> <i class="fa-solid fa-chevron-right ml-1"></i></button>
-        </div>
-        <div class="feature-card reveal d2">
-          <h3 data-i18n="tool_linear_title">Lineer Kılavuz L10 Ömür Hesabı</h3>
-          <p data-i18n="tool_linear_desc">ISO 14728 standartları çerçevesinde dinamik eşdeğer yüklere göre ray ve araba setlerinin teorik ömrünü kilometre cinsinden hesaplar.</p>
-          <button onclick="openEngTool('linear')" class="btn-feature-start"><span data-i18n="tool_btn_start">Aracı Başlat</span> <i class="fa-solid fa-chevron-right ml-1"></i></button>
         </div>
       </div>
     </div>
@@ -901,14 +1105,6 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
   </div>
 </div>
 
-<!-- ────────── INTERACTIVE QUICK TOOL MODAL ────────── -->
-<div id="engToolModal">
-  <div class="eng-modal-box">
-    <button onclick="closeEngTool()" class="eng-modal-close">&times;</button>
-    <div id="engModalContent" style="font-family: sans-serif;"></div>
-  </div>
-</div>
-
 <script>
 // ─── TRANSLATIONS DICTIONARY (TR/EN Map) ───
 const translations = {
@@ -928,14 +1124,6 @@ const translations = {
     proof_4: "Mühendislik Yönetimi",
     btn_tools: "Hesaplama Araçları",
     btn_blog: "Bilgi Bankası",
-    quick_label: "Öne Çıkan Mühendislik Otomasyonları",
-    quick_title: "HIZLI BAŞLANGIÇ <span>ARAÇLARI</span>",
-    quick_sub: "Tasarım sürecindeki hesaplamalı analiz adımlarını pratikleştiren, dinamik parametrik paneller.",
-    tool_servo_title: "Servo Atalet Çözümleyici",
-    tool_servo_desc: "Vidalı mil ve kremayer mekanizmalarında atalet oranlarını (J_load / J_motor) analiz ederek optimum servo kapasitesi tespiti yapar.",
-    tool_linear_title: "Lineer Kılavuz L10 Ömür Hesabı",
-    tool_linear_desc: "ISO 14728 standartları çerçevesinde dinamik eşdeğer yüklere göre ray ve araba setlerinin teorik ömrünü kilometre cinsinden hesaplar.",
-    tool_btn_start: "Aracı Başlat",
     journey_label: "Kariyer Haritası",
     journey_title: "MÜHENDİSLİK<br><span>YOLCULUĞU</span>",
     journey_sub: "Sahadan akademiye, tasarım masasından Ar-Ge liderliğine uzanan 15 yıllık evrim.",
@@ -1026,14 +1214,6 @@ const translations = {
     proof_4: "Engineering Management",
     btn_tools: "Calculation Tools",
     btn_blog: "Knowledge Base",
-    quick_label: "Featured Engineering Automations",
-    quick_title: "QUICK START <span>TOOLS</span>",
-    quick_sub: "Dynamic parametric panels that simplify computational analysis steps in the design process.",
-    tool_servo_title: "Servo Inertia Analyzer",
-    tool_servo_desc: "Analyzes inertia ratios (J_load / J_motor) in ball screw and rack-and-pinion mechanisms to determine optimum servo capacity.",
-    tool_linear_title: "Linear Guide L10 Lifetime Calculation",
-    tool_linear_desc: "Calculates the theoretical lifetime of rail and carriage sets in kilometers based on dynamic equivalent loads under ISO 14728 standards.",
-    tool_btn_start: "Start Tool",
     journey_label: "Career Roadmap",
     journey_title: "ENGINEERING<br><span>JOURNEY</span>",
     journey_sub: "15 years of evolution from the workshop floor to academia and design leadership.",
@@ -2043,116 +2223,6 @@ function closeModal() {
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 document.getElementById('videoModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
-
-// ─── QUICK TOOLS INTERACTIVE MODAL (HOME SHORTCUTS) ───
-// Beautiful custom modal outputs to fully replace alerts
-function handleServoAnalysisClick() {
-  const shaftDia = parseFloat(document.getElementById('quick-servo-d').value) || 0;
-  const targetMass = parseFloat(document.getElementById('quick-servo-m').value) || 0;
-  const resultBox = document.getElementById('quick-tool-results');
-  
-  resultBox.style.display = 'block';
-  if(currentLanguage === 'tr') {
-    resultBox.innerHTML = `
-      <div style="border-top:1px solid rgba(34, 197, 94, 0.3); margin-top:15px; padding-top:15px; text-align:left;">
-        <span class="amber font-bold" style="font-size:11px; display:block; margin-bottom:6px;"><i class="fa-solid fa-circle-check"></i> HESAPLAMA DOĞRULANDI</span>
-        <p style="font-size:12px; color:var(--light); margin-bottom:4px;">• Önerilen Servo Gücü: <strong>1.5 kW</strong></p>
-        <p style="font-size:12px; color:var(--light); margin-bottom:4px;">• Nominal Eksen Torku: <strong>4.8 Nm</strong></p>
-        <p style="font-size:12px; color:var(--light);">• Atalet Oranı (J_yük / J_motor): <strong style="color:var(--terminal-green);">3.1:1 (Emniyetli Sınır)</strong></p>
-      </div>
-    `;
-  } else {
-    resultBox.innerHTML = `
-      <div style="border-top:1px solid rgba(34, 197, 94, 0.3); margin-top:15px; padding-top:15px; text-align:left;">
-        <span class="amber font-bold" style="font-size:11px; display:block; margin-bottom:6px;"><i class="fa-solid fa-circle-check"></i> CALCULATION VERIFIED</span>
-        <p style="font-size:12px; color:var(--light); margin-bottom:4px;">• Recommended Servo: <strong>1.5 kW</strong></p>
-        <p style="font-size:12px; color:var(--light); margin-bottom:4px;">• Nominal Torque Output: <strong>4.8 Nm</strong></p>
-        <p style="font-size:12px; color:var(--light);">• Inertia Ratio (J_load / J_motor): <strong style="color:var(--terminal-green);">3.1:1 (Safe Boundary)</strong></p>
-      </div>
-    `;
-  }
-}
-
-function handleL10AnalysisClick() {
-  const dynamicLoad = parseFloat(document.getElementById('quick-l10-c').value) || 0;
-  const equivalentLoad = parseFloat(document.getElementById('quick-l10-p').value) || 0;
-  const resultBox = document.getElementById('quick-tool-results');
-  
-  resultBox.style.display = 'block';
-  if(currentLanguage === 'tr') {
-    resultBox.innerHTML = `
-      <div style="border-top:1px solid rgba(34, 197, 94, 0.3); margin-top:15px; padding-top:15px; text-align:left;">
-        <span class="amber font-bold" style="font-size:11px; display:block; margin-bottom:6px;"><i class="fa-solid fa-circle-check"></i> HESAPLAMA DOĞRULANDI</span>
-        <p style="font-size:12px; color:var(--light);">• ISO 14728 Ray/Araba Seti L10 Teorik Ömrü: <strong style="color:var(--terminal-green);">116.400 km</strong></p>
-      </div>
-    `;
-  } else {
-    resultBox.innerHTML = `
-      <div style="border-top:1px solid rgba(34, 197, 94, 0.3); margin-top:15px; padding-top:15px; text-align:left;">
-        <span class="amber font-bold" style="font-size:11px; display:block; margin-bottom:6px;"><i class="fa-solid fa-circle-check"></i> CALCULATION VERIFIED</span>
-        <p style="font-size:12px; color:var(--light);">• ISO 14728 Theoretical L10 Guide Lifetime: <strong style="color:var(--terminal-green);">116,400 km</strong></p>
-      </div>
-    `;
-  }
-}
-
-function openEngTool(type) {
-  const modal = document.getElementById('engToolModal');
-  const content = document.getElementById('engModalContent');
-  
-  let html = '';
-  if(type === 'servo') {
-      const modalTitle = currentLanguage === 'tr' ? 'Servo Atalet Çözümleyici' : 'Servo Inertia Analyzer';
-      const labelD = currentLanguage === 'tr' ? 'Vidalı Mil Çapı (mm)' : 'Screw Diameter (mm)';
-      const labelM = currentLanguage === 'tr' ? 'Taşınan Kütle (kg)' : 'Carried Mass (kg)';
-      const btnLabel = currentLanguage === 'tr' ? 'ANALİZ ET & DOĞRULA' : 'ANALYZE & VERIFY';
-
-      html = `
-          <h3 style="color: var(--white); margin-top: 0; font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.05em; border-bottom: 1px solid rgba(245, 158, 11, 0.2); padding-bottom: 8px;">${modalTitle}</h3>
-          <div style="margin-top: 20px;">
-              <label style="color: var(--mist); font-size: 11px; display: block; margin-bottom: 6px; font-family: 'JetBrains Mono';">${labelD}</label>
-              <input type="number" id="quick-servo-d" value="32" class="tool-input">
-          </div>
-          <div style="margin-top: 15px;">
-              <label style="color: var(--mist); font-size: 11px; display: block; margin-bottom: 6px; font-family: 'JetBrains Mono';">${labelM}</label>
-              <input type="number" id="quick-servo-m" value="250" class="tool-input">
-          </div>
-          <div id="quick-tool-results" style="display:none;"></div>
-          <button onclick="handleServoAnalysisClick()" style="width: 100%; background: var(--amber); color: var(--ink); border: none; padding: 12px; margin-top: 24px; border-radius: 4px; font-weight: bold; cursor: pointer; font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: 0.05em;">${btnLabel}</button>
-      `;
-  } else if(type === 'linear') {
-      const modalTitle = currentLanguage === 'tr' ? 'L10 Ömür Hesaplama' : 'L10 Lifetime Calculation';
-      const labelC = currentLanguage === 'tr' ? 'Dinamik Yük C (N)' : 'Dynamic Load Rating C (N)';
-      const labelP = currentLanguage === 'tr' ? 'Eşdeğer Yük P (N)' : 'Equivalent Load P (N)';
-      const btnLabel = currentLanguage === 'tr' ? 'HESAPLA & DETAYLANDIR' : 'CALCULATE LIFETIME';
-
-      html = `
-          <h3 style="color: var(--white); margin-top: 0; font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.05em; border-bottom: 1px solid rgba(245, 158, 11, 0.2); padding-bottom: 8px;">${modalTitle}</h3>
-          <div style="margin-top: 20px;">
-              <label style="color: var(--mist); font-size: 11px; display: block; margin-bottom: 6px; font-family: 'JetBrains Mono';">${labelC}</label>
-              <input type="number" id="quick-l10-c" value="25400" class="tool-input">
-          </div>
-          <div style="margin-top: 15px;">
-              <label style="color: var(--mist); font-size: 11px; display: block; margin-bottom: 6px; font-family: 'JetBrains Mono';">${labelP}</label>
-              <input type="number" id="quick-l10-p" value="5200" class="tool-input">
-          </div>
-          <div id="quick-tool-results" style="display:none;"></div>
-          <button onclick="handleL10AnalysisClick()" style="width: 100%; background: var(--amber); color: var(--ink); border: none; padding: 12px; margin-top: 24px; border-radius: 4px; font-weight: bold; cursor: pointer; font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: 0.05em;">${btnLabel}</button>
-      `;
-  }
-  
-  content.innerHTML = html;
-  modal.style.display = 'flex';
-}
-
-function closeEngTool() {
-  document.getElementById('engToolModal').style.display = 'none';
-}
-
-window.addEventListener('click', function(e) {
-  const modal = document.getElementById('engToolModal');
-  if(e.target === modal) closeEngTool();
-});
 
 // Initialize all calculations on script runtime & translate to default (tr)
 translateUI();
