@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="15 yıllık makine tasarım tecrübesi, Python tabanlı mühendislik otomasyonları ve ileri seviye Ar-Ge projeleri.">
-<meta property="og:title" content="Mustafa Üner | Senior R&D Project Leader">
-<meta property="og:description" content="15 yıllık tasarım ve üretim disiplinini, hesaplamalı tasarım ve veri odaklı optimizasyon yöntemleriyle harmanlayarak ileri seviye üretim teknolojileri geliştiriyorum.">
+<meta name="description" content="CNC sistemleri geliştiren, TÜBİTAK Ar-Ge projeleri yöneten ve mühendislik ekiplerine teknik liderlik eden Mustafa Üner'in üretim teknolojileri portfolyosu.">
+<meta property="og:title" content="Mustafa Üner | CNC Systems & R&D Technical Leader">
+<meta property="og:description" content="15+ yıllık CNC geliştirme deneyimiyle 4 ve 5 eksenli makine platformları, TÜBİTAK 1501 projeleri ve ticarileşen üretim teknolojileri geliştiren teknik lider.">
 <meta property="og:image" content="https://mustafauner.com.tr/cv2.jpeg">
 <meta property="og:url" content="https://mustafauner.com.tr">
 <meta property="og:type" content="website">
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M20 80V20l30 40 30-40v60' fill='none' stroke='%23f59e0b' stroke-width='12' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M15 85h70' fill='none' stroke='%23f59e0b' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
 
-<title>Mustafa Üner | Senior R&D Project Leader</title>
+<title>Mustafa Üner | CNC Systems & R&D Technical Leader</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -564,6 +564,87 @@ nav.scrolled { border-bottom-color: rgba(216,168,79,0.42); }
   box-shadow: 0 14px 36px rgba(0,0,0,0.36);
 }
 
+#leadership-positioning {
+  padding: 56px 24px 92px;
+  background: linear-gradient(180deg, rgba(3,6,9,0.98), rgba(7,11,16,0.98));
+  border-bottom: 1px solid rgba(216,168,79,0.14);
+}
+.positioning-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.85fr);
+  gap: 28px;
+  align-items: stretch;
+}
+.positioning-statement,
+.positioning-proof {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(18,25,34,0.82), rgba(8,13,18,0.96));
+  box-shadow: var(--shadow);
+}
+.positioning-statement {
+  padding: 34px;
+}
+.positioning-kicker {
+  color: var(--gold);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.positioning-title {
+  color: var(--white);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.08;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+.positioning-copy {
+  color: rgba(228,232,237,0.76);
+  font-size: 15px;
+  line-height: 1.75;
+  max-width: 760px;
+}
+.positioning-proof {
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+}
+.positioning-item {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 16px;
+  padding: 22px 24px;
+  border-bottom: 1px solid rgba(216,168,79,0.14);
+}
+.positioning-item:last-child { border-bottom: 0; }
+.positioning-item i {
+  color: var(--gold);
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(216,168,79,0.28);
+  border-radius: 8px;
+  background: rgba(216,168,79,0.08);
+}
+.positioning-item strong {
+  display: block;
+  color: var(--white);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+.positioning-item span {
+  display: block;
+  color: rgba(228,232,237,0.66);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
 section { padding: 92px 24px; }
 #journey,
 #portfolio,
@@ -661,6 +742,8 @@ footer {
   .hero-proof-card:nth-child(2) { border-right: 0; }
   .hero-proof-card:nth-child(-n+2) { border-bottom: 1px solid rgba(216,168,79,0.18); }
   .nav-links a::after { bottom: -4px; }
+  .positioning-shell { grid-template-columns: 1fr; }
+  .positioning-statement { padding: 26px; }
 }
 
 /* ─── MOUSE GLOW (AMBIENT LIGHT) ─── */
@@ -696,7 +779,7 @@ footer {
       </svg>
       <div>
         <div class="nav-logo-name">Mustafa Üner</div>
-        <div class="nav-logo-title" data-i18n="nav_title">M.Sc. Engineer</div>
+        <div class="nav-logo-title" data-i18n="nav_title">CNC & Ar-Ge Teknik Lideri</div>
       </div>
     </a>
 
@@ -754,7 +837,7 @@ footer {
     <div class="hero-inner">
       <div>
         <div class="hero-badge reveal d1" data-i18n="hero_badge">
-          CNC MAKİNE GELİŞTİRMEDE 15+ YIL
+          CNC SİSTEMLERİ GELİŞTİREN TEKNİK LİDER
         </div>
 
         <h1 class="hero-name reveal d2">
@@ -762,30 +845,30 @@ footer {
         </h1>
 
         <div class="hero-title reveal d3" data-i18n="hero_title">
-          Konseptten Üretime<br>
-          CNC Sistemleri Geliştirme
+          CNC Platformları<br>
+          Ar-Ge ve Ekip Liderliği
         </div>
 
         <p class="hero-desc reveal d4" data-i18n="hero_desc">
-          CNC işleme merkezleri, endüstriyel makineler ve üretim teknolojileri geliştirme konusunda 15 yılı aşkın deneyime sahip Mekanik Tasarım Mühendisi. Mühendislik kavramlarını ticari makine platformlarına dönüştürme ve çok disiplinli Ar-Ge faaliyetlerine liderlik etme konusunda uzmanlaşmıştır.
+          15+ yıllık saha, tasarım ve Ar-Ge deneyimini; 4 ve 5 eksenli CNC sistemleri geliştirme, TÜBİTAK projelerini yönetme ve mühendislik ekiplerini konseptten ticarileşen makine platformlarına taşıma odağında birleştiren teknik lider.
         </p>
 
         <div class="hero-proof-grid reveal d5">
           <div class="hero-proof-card">
             <div class="hero-proof-value">15+</div>
-            <div class="hero-proof-label" data-i18n="proof_1">CNC Geliştirme Yılı</div>
+            <div class="hero-proof-label" data-i18n="proof_1">CNC Sistem Geliştirme</div>
           </div>
           <div class="hero-proof-card">
             <div class="hero-proof-value">2</div>
-            <div class="hero-proof-label" data-i18n="proof_2">Yönetilen TÜBİTAK Projesi</div>
+            <div class="hero-proof-label" data-i18n="proof_2">TÜBİTAK Ar-Ge Liderliği</div>
           </div>
           <div class="hero-proof-card">
             <div class="hero-proof-value">4 & 5</div>
-            <div class="hero-proof-label" data-i18n="proof_3">Eksenli CNC Platformları</div>
+            <div class="hero-proof-label" data-i18n="proof_3">4 & 5 Eksenli Platformlar</div>
           </div>
           <div class="hero-proof-card">
             <div class="hero-proof-value">M.Sc.</div>
-            <div class="hero-proof-label" data-i18n="proof_4">Mühendislik Yönetimi</div>
+            <div class="hero-proof-label" data-i18n="proof_4">Teknik Ekip Yönetimi</div>
           </div>
         </div>
 
@@ -820,13 +903,49 @@ footer {
     </div>
   </section>
 
+  <!-- TECHNICAL LEADERSHIP POSITIONING -->
+  <section id="leadership-positioning">
+    <div class="section-inner positioning-shell">
+      <div class="positioning-statement reveal">
+        <div class="positioning-kicker" data-i18n="positioning_kicker">Konumlandırma</div>
+        <h2 class="positioning-title" data-i18n="positioning_title">CNC platformlarını fikirden sahaya taşıyan teknik liderlik</h2>
+        <p class="positioning-copy" data-i18n="positioning_copy">
+          Mustafa Üner'in uzmanlığı tekil parça tasarımının ötesinde; makine mimarisi, eksen kinematiği, üretim doğrulaması, TÜBİTAK Ar-Ge yönetimi ve mühendislik ekiplerini aynı hedefe hizalayan sistem liderliği üzerine kuruludur.
+        </p>
+      </div>
+      <div class="positioning-proof reveal d2">
+        <div class="positioning-item">
+          <i class="fa-solid fa-industry"></i>
+          <div>
+            <strong data-i18n="positioning_item_1_title">CNC Sistem Geliştirme</strong>
+            <span data-i18n="positioning_item_1_desc">4 ve 5 eksenli profil işleme merkezlerini konsept, tasarım, prototip ve saha devreye alma çizgisinde geliştirme.</span>
+          </div>
+        </div>
+        <div class="positioning-item">
+          <i class="fa-solid fa-diagram-project"></i>
+          <div>
+            <strong data-i18n="positioning_item_2_title">Ar-Ge Program Liderliği</strong>
+            <span data-i18n="positioning_item_2_desc">TÜBİTAK 1501 projelerinde teknik problemi, çözüm mimarisini, ticarileşme katkısını ve ekip koordinasyonunu yönetme.</span>
+          </div>
+        </div>
+        <div class="positioning-item">
+          <i class="fa-solid fa-people-group"></i>
+          <div>
+            <strong data-i18n="positioning_item_3_title">Mühendislik Ekip Liderliği</strong>
+            <span data-i18n="positioning_item_3_desc">Tasarım, üretim, otomasyon ve devreye alma ekiplerini ortak standartlar ve karar mekanizmaları etrafında hizalama.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- JOURNEY (TIMELINE) -->
   <section id="journey">
     <div class="section-inner">
       <div class="reveal">
-        <div class="section-label" data-i18n="journey_label">Kariyer Haritası</div>
-        <h2 class="section-title" data-i18n="journey_title">MÜHENDİSLİK<br><span>YOLCULUĞU</span></h2>
-        <p class="section-sub" data-i18n="journey_sub">Sahadan akademiye, tasarım masasından Ar-Ge liderliğine uzanan 15 yıllık evrim.</p>
+        <div class="section-label" data-i18n="journey_label">Teknik Liderlik Rotası</div>
+        <h2 class="section-title" data-i18n="journey_title">SAHADAN<br><span>SİSTEM LİDERLİĞİNE</span></h2>
+        <p class="section-sub" data-i18n="journey_sub">Atölye deneyiminden CNC platform mimarisine, akademik yönetim bilgisinden Ar-Ge ekip liderliğine uzanan 15+ yıllık dönüşüm.</p>
       </div>
 
       <div class="timeline" id="journey-timeline-container">
@@ -839,9 +958,9 @@ footer {
   <section id="portfolio">
     <div class="section-inner">
       <div class="reveal">
-        <div class="section-label" data-i18n="portfolio_label">Tasarım Portfolyosu</div>
-        <h2 class="section-title" data-i18n="portfolio_title">MAKİNE<br><span>MİRASI</span></h2>
-        <p class="section-sub" data-i18n="portfolio_sub">2013'ten bugüne sıfırdan tasarlanan onlarca endüstriyel makine arasından seçilmiş amiral gemisi projeler.</p>
+        <div class="section-label" data-i18n="portfolio_label">CNC Platform Kanıtları</div>
+        <h2 class="section-title" data-i18n="portfolio_title">GELİŞTİRİLEN<br><span>SİSTEMLER</span></h2>
+        <p class="section-sub" data-i18n="portfolio_sub">2013'ten bugüne tasarım, doğrulama, prototip, üretim ve devreye alma süreçlerinde rol alınan ticarileşmiş CNC ve üretim teknolojisi platformları.</p>
       </div>
 
       <div class="portfolio-grid" id="portfolio-grid-container">
@@ -865,9 +984,9 @@ footer {
   <section id="blog" style="min-height: 100vh; padding-top: 120px;">
     <div class="section-inner">
       <div class="reveal">
-        <div class="section-label" data-i18n="blog_sec_label">Makale & Analiz</div>
-        <h2 class="section-title" data-i18n="blog_sec_title">MÜHENDİSLİK<br><span>GÜNLÜĞÜ</span></h2>
-        <p class="section-sub" data-i18n="blog_sec_sub">Tasarım felsefesi, hesaplamalı mühendislik deneyimleri ve saha tecrübeleri.</p>
+        <div class="section-label" data-i18n="blog_sec_label">Teknik Liderlik Notları</div>
+        <h2 class="section-title" data-i18n="blog_sec_title">MÜHENDİSLİK<br><span>BİLGİ BANKASI</span></h2>
+        <p class="section-sub" data-i18n="blog_sec_sub">Tasarım kararları, hesaplamalı mühendislik, saha tecrübesi ve üretim teknolojileri liderliği üzerine teknik yazılar.</p>
       </div>
 
       <div class="blog-layout reveal">
@@ -896,9 +1015,9 @@ footer {
   <section id="tools" style="min-height: 100vh; padding-top: 120px;">
     <div class="section-inner">
       <div class="reveal">
-        <div class="section-label" data-i18n="tools_sec_label">Mühendislik Hesaplama Araçları</div>
-        <h2 class="section-title" data-i18n="tools_sec_title">HESAPLAMA<br><span>PANELİ</span></h2>
-        <p class="section-sub" data-i18n="tools_sec_sub">ISO ve DIN standartlarına dayalı, tasarım aşamalarında anlık doğrulama yapmanızı sağlayan mühendislik arayüzleri.</p>
+        <div class="section-label" data-i18n="tools_sec_label">Mühendislik Doğrulama Araçları</div>
+        <h2 class="section-title" data-i18n="tools_sec_title">TEKNİK<br><span>DOĞRULAMA PANELİ</span></h2>
+        <p class="section-sub" data-i18n="tools_sec_sub">CNC sistem tasarımında karar hızını artıran, ISO ve DIN standartlarına dayalı hesaplama ve ön doğrulama arayüzleri.</p>
       </div>
 
       <div class="tools-layout reveal">
@@ -1087,7 +1206,7 @@ footer {
   <div class="footer-inner">
     <div class="footer-left">
       <div class="footer-name">Mustafa Üner</div>
-      <div class="footer-sub" data-i18n="footer_title">Senior R&D Project Leader · Istanbul, TR</div>
+      <div class="footer-sub" data-i18n="footer_title">CNC Sistemleri & Ar-Ge Teknik Lideri · İstanbul, TR</div>
     </div>
     <div class="footer-copy">© 2026 mustafauner.com.tr</div>
     <div class="footer-links">
@@ -1109,37 +1228,46 @@ footer {
 // ─── TRANSLATIONS DICTIONARY (TR/EN Map) ───
 const translations = {
   tr: {
-    nav_title: "M.Sc. Engineer",
+    nav_title: "CNC & Ar-Ge Teknik Lideri",
     nav_home: "Portfolyo",
     nav_blog: "Bilgi Bankası",
     nav_tools: "Hesaplama Paneli",
     nav_contact: "İletişim",
     m_lang_label: "Dil / Language",
-    hero_badge: "CNC MAKİNE GELİŞTİRMEDE 15+ YIL",
-    hero_title: "Konseptten Üretime<br>CNC Sistemleri Geliştirme",
-    hero_desc: "CNC işleme merkezleri, endüstriyel makineler ve üretim teknolojileri geliştirme konusunda 15 yılı aşkın deneyime sahip Mekanik Tasarım Mühendisi. Mühendislik kavramlarını ticari makine platformlarına dönüştürme ve çok disiplinli Ar-Ge faaliyetlerine liderlik etme konusunda uzmanlaşmıştır.",
-    proof_1: "CNC Geliştirme Yılı",
-    proof_2: "Yönetilen TÜBİTAK Projesi",
-    proof_3: "Eksenli CNC Platformları",
-    proof_4: "Mühendislik Yönetimi",
+    hero_badge: "CNC SİSTEMLERİ GELİŞTİREN TEKNİK LİDER",
+    hero_title: "CNC Platformları<br>Ar-Ge ve Ekip Liderliği",
+    hero_desc: "15+ yıllık saha, tasarım ve Ar-Ge deneyimini; 4 ve 5 eksenli CNC sistemleri geliştirme, TÜBİTAK projelerini yönetme ve mühendislik ekiplerini konseptten ticarileşen makine platformlarına taşıma odağında birleştiren teknik lider.",
+    proof_1: "CNC Sistem Geliştirme",
+    proof_2: "TÜBİTAK Ar-Ge Liderliği",
+    proof_3: "4 & 5 Eksenli Platformlar",
+    proof_4: "Teknik Ekip Yönetimi",
     btn_tools: "Hesaplama Araçları",
     btn_blog: "Bilgi Bankası",
-    journey_label: "Kariyer Haritası",
-    journey_title: "MÜHENDİSLİK<br><span>YOLCULUĞU</span>",
-    journey_sub: "Sahadan akademiye, tasarım masasından Ar-Ge liderliğine uzanan 15 yıllık evrim.",
-    portfolio_label: "Tasarım Portfolyosu",
-    portfolio_title: "MAKİNE<br><span>MİRASI</span>",
-    portfolio_sub: "2013'ten bugüne sıfırdan tasarlanan onlarca endüstriyel makine arasından seçilmiş amiral gemisi projeler.",
-    tubitak_sec_label: "Amiral Gemisi Geliştirme Programları",
-    tubitak_sec_title: "TÜBİTAK Ar-Ge<br><span>Vaka Analizleri</span>",
-    tubitak_sec_sub: "Proje Yürütücüsü olarak yönettiğim, teknik kavramları ticarileşebilir ileri makine platformlarına dönüştüren TÜBİTAK Ar-Ge programları.",
-    blog_sec_label: "Makale & Analiz",
-    blog_sec_title: "MÜHENDİSLİK<br><span>GÜNLÜĞÜ</span>",
-    blog_sec_sub: "Tasarım felsefesi, hesaplamalı mühendislik deneyimleri ve saha tecrübeleri.",
+    positioning_kicker: "Konumlandırma",
+    positioning_title: "CNC platformlarını fikirden sahaya taşıyan teknik liderlik",
+    positioning_copy: "Mustafa Üner'in uzmanlığı tekil parça tasarımının ötesinde; makine mimarisi, eksen kinematiği, üretim doğrulaması, TÜBİTAK Ar-Ge yönetimi ve mühendislik ekiplerini aynı hedefe hizalayan sistem liderliği üzerine kuruludur.",
+    positioning_item_1_title: "CNC Sistem Geliştirme",
+    positioning_item_1_desc: "4 ve 5 eksenli profil işleme merkezlerini konsept, tasarım, prototip ve saha devreye alma çizgisinde geliştirme.",
+    positioning_item_2_title: "Ar-Ge Program Liderliği",
+    positioning_item_2_desc: "TÜBİTAK 1501 projelerinde teknik problemi, çözüm mimarisini, ticarileşme katkısını ve ekip koordinasyonunu yönetme.",
+    positioning_item_3_title: "Mühendislik Ekip Liderliği",
+    positioning_item_3_desc: "Tasarım, üretim, otomasyon ve devreye alma ekiplerini ortak standartlar ve karar mekanizmaları etrafında hizalama.",
+    journey_label: "Teknik Liderlik Rotası",
+    journey_title: "SAHADAN<br><span>SİSTEM LİDERLİĞİNE</span>",
+    journey_sub: "Atölye deneyiminden CNC platform mimarisine, akademik yönetim bilgisinden Ar-Ge ekip liderliğine uzanan 15+ yıllık dönüşüm.",
+    portfolio_label: "CNC Platform Kanıtları",
+    portfolio_title: "GELİŞTİRİLEN<br><span>SİSTEMLER</span>",
+    portfolio_sub: "2013'ten bugüne tasarım, doğrulama, prototip, üretim ve devreye alma süreçlerinde rol alınan ticarileşmiş CNC ve üretim teknolojisi platformları.",
+    tubitak_sec_label: "Ticarileşen Ar-Ge Liderliği",
+    tubitak_sec_title: "TÜBİTAK Ar-Ge<br><span>SİSTEM VAKALARI</span>",
+    tubitak_sec_sub: "Proje Yürütücüsü olarak yönetilen; teknik belirsizliği CNC ürün ailesine, standart tasarım kılavuzlarına ve pazarda karşılığı olan makine platformlarına dönüştüren Ar-Ge programları.",
+    blog_sec_label: "Teknik Liderlik Notları",
+    blog_sec_title: "MÜHENDİSLİK<br><span>BİLGİ BANKASI</span>",
+    blog_sec_sub: "Tasarım kararları, hesaplamalı mühendislik, saha tecrübesi ve üretim teknolojileri liderliği üzerine teknik yazılar.",
     blog_sidebar_title: "YAZILAR",
-    tools_sec_label: "Mühendislik Hesaplama Araçları",
-    tools_sec_title: "HESAPLAMA<br><span>PANELİ</span>",
-    tools_sec_sub: "ISO ve DIN standartlarına dayalı, tasarım aşamalarında anlık doğrulama yapmanızı sağlayan mühendislik arayüzleri.",
+    tools_sec_label: "Mühendislik Doğrulama Araçları",
+    tools_sec_title: "TEKNİK<br><span>DOĞRULAMA PANELİ</span>",
+    tools_sec_sub: "CNC sistem tasarımında karar hızını artıran, ISO ve DIN standartlarına dayalı hesaplama ve ön doğrulama arayüzleri.",
     t_vc_tab: "Kesme Hızı",
     t_piston_tab: "Piston Kuvveti",
     t_helis_tab: "Helis Dişli",
@@ -1195,41 +1323,50 @@ const translations = {
     btn_copy_report: "TEKNİK RAPORU KOPYALA",
     disclaimer_title: "Mühendislik Sorumluluk Reddi",
     disclaimer_desc: "Bu platformdaki tüm algoritmalar ve hesaplama araçları, ön tasarım (konsept) süreçlerini hızlandırmak amacıyla hazırlanmıştır. Nihai imalat ve üretim kararlarında ilgili uluslararası standartların (ISO, DIN vb.) ve makine mühendisliği emniyet faktörlerinin bizzat uygulanması kullanıcının sorumluluğundadır. Bu verilerin doğrudan tasarıma entegrasyonundan doğacak uyuşmazlıklarda geliştirici sorumlu tutulamaz.",
-    footer_title: "Kıdemli Ar-Ge Proje Lideri · İstanbul, TR",
+    footer_title: "CNC Sistemleri & Ar-Ge Teknik Lideri · İstanbul, TR",
     btn_close: "Kapat"
   },
   en: {
-    nav_title: "M.Sc. Engineer",
+    nav_title: "CNC & R&D Technical Leader",
     nav_home: "Portfolio",
     nav_blog: "Knowledge Base",
     nav_tools: "Calculation Panel",
     nav_contact: "Contact",
     m_lang_label: "Language / Dil",
-    hero_badge: "15+ YEARS IN CNC MACHINE DEVELOPMENT",
-    hero_title: "CNC Systems Development<br>From Concept To Production",
-    hero_desc: "Mechanical Design Engineer with 15+ years of experience developing CNC machining centers, industrial machinery and manufacturing technologies. Specialized in transforming engineering concepts into commercial machine platforms and leading multidisciplinary R&D activities.",
-    proof_1: "Years In CNC Development",
-    proof_2: "TÜBİTAK Projects Led",
-    proof_3: "Axis CNC Platforms",
-    proof_4: "Engineering Management",
+    hero_badge: "TECHNICAL LEADER IN CNC SYSTEMS DEVELOPMENT",
+    hero_title: "CNC Platforms<br>R&D and Team Leadership",
+    hero_desc: "A technical leader combining 15+ years of shop-floor, design, and R&D experience to develop 4- and 5-axis CNC systems, lead TÜBİTAK programs, and guide engineering teams from concept to commercial machine platforms.",
+    proof_1: "CNC Systems Development",
+    proof_2: "TÜBİTAK R&D Leadership",
+    proof_3: "4 & 5-Axis Platforms",
+    proof_4: "Technical Team Leadership",
     btn_tools: "Calculation Tools",
     btn_blog: "Knowledge Base",
-    journey_label: "Career Roadmap",
-    journey_title: "ENGINEERING<br><span>JOURNEY</span>",
-    journey_sub: "15 years of evolution from the workshop floor to academia and design leadership.",
-    portfolio_label: "Design Portfolio",
-    portfolio_title: "MACHINE<br><span>HERITAGE</span>",
-    portfolio_sub: "Selected flagship projects from dozens of industrial machines designed from scratch since 2013.",
-    tubitak_sec_label: "Flagship Development Programs",
-    tubitak_sec_title: "TÜBİTAK R&D<br><span>Case Studies</span>",
-    tubitak_sec_sub: "TÜBİTAK R&D programs managed as Project Leader, transforming technical concepts into high-end commercial machine platforms.",
-    blog_sec_label: "Articles & Analyses",
-    blog_sec_title: "ENGINEERING<br><span>LOGBOOK</span>",
-    blog_sec_sub: "Design philosophy, computational engineering experiences, and field expertise.",
+    positioning_kicker: "Positioning",
+    positioning_title: "Technical leadership that carries CNC platforms from idea to factory floor",
+    positioning_copy: "Mustafa Üner's expertise extends beyond individual mechanical design: it is built on machine architecture, axis kinematics, production validation, TÜBİTAK R&D management, and system leadership that aligns engineering teams around a shared technical target.",
+    positioning_item_1_title: "CNC Systems Development",
+    positioning_item_1_desc: "Developing 4- and 5-axis profile machining centers across concept, design, prototype, and field commissioning stages.",
+    positioning_item_2_title: "R&D Program Leadership",
+    positioning_item_2_desc: "Managing the technical problem, solution architecture, commercialization value, and team coordination in TÜBİTAK 1501 programs.",
+    positioning_item_3_title: "Engineering Team Leadership",
+    positioning_item_3_desc: "Aligning design, production, automation, and commissioning teams around shared standards and decision systems.",
+    journey_label: "Technical Leadership Track",
+    journey_title: "FROM SHOP FLOOR<br><span>TO SYSTEM LEADERSHIP</span>",
+    journey_sub: "A 15+ year transformation from workshop experience to CNC platform architecture, engineering management, and R&D team leadership.",
+    portfolio_label: "CNC Platform Evidence",
+    portfolio_title: "DEVELOPED<br><span>SYSTEMS</span>",
+    portfolio_sub: "Commercialized CNC and manufacturing technology platforms shaped across design, validation, prototyping, production, and commissioning since 2013.",
+    tubitak_sec_label: "Commercialized R&D Leadership",
+    tubitak_sec_title: "TÜBİTAK R&D<br><span>SYSTEM CASES</span>",
+    tubitak_sec_sub: "R&D programs managed as Project Leader, transforming technical uncertainty into CNC product families, standard design guides, and market-proven machine platforms.",
+    blog_sec_label: "Technical Leadership Notes",
+    blog_sec_title: "ENGINEERING<br><span>KNOWLEDGE BASE</span>",
+    blog_sec_sub: "Technical writing on design decisions, computational engineering, field experience, and manufacturing technology leadership.",
     blog_sidebar_title: "ARTICLES",
-    tools_sec_label: "Engineering Calculation Tools",
-    tools_sec_title: "CALCULATION<br><span>PANEL</span>",
-    tools_sec_sub: "Engineering interfaces based on ISO and DIN standards, providing instant verification in design stages.",
+    tools_sec_label: "Engineering Validation Tools",
+    tools_sec_title: "TECHNICAL<br><span>VALIDATION PANEL</span>",
+    tools_sec_sub: "Calculation and preliminary validation interfaces based on ISO and DIN standards, built to accelerate decisions in CNC system design.",
     t_vc_tab: "Cutting Speed",
     t_piston_tab: "Piston Force",
     t_helis_tab: "Helical Gear",
@@ -1285,7 +1422,7 @@ const translations = {
     btn_copy_report: "COPY TECHNICAL REPORT",
     disclaimer_title: "Engineering Disclaimer",
     disclaimer_desc: "All algorithms and calculation tools on this platform have been prepared to accelerate preliminary design (concept) processes. Implementing international standards (ISO, DIN, etc.) and engineering safety factors during final manufacturing design is the sole responsibility of the user. The developer cannot be held responsible for discrepancies arising from direct integration of these figures.",
-    footer_title: "Senior R&D Project Leader · Istanbul, TR",
+    footer_title: "CNC Systems & R&D Technical Leader · Istanbul, TR",
     btn_close: "Close"
   }
 };
@@ -1296,46 +1433,46 @@ let currentLanguage = "tr";
 // Dynamic Multilingual Journey Data
 const journeyData = {
   tr: [
-    { year: "2009", heading: "AKADEMİK TEMEL", desc: "Makine Mühendisliği mezuniyeti. Analitik düşünce ve mühendislik teorisinin temeli.", tag: "Lisans Müh." },
-    { year: "2011", heading: "SAHA DENEYİMİ", desc: "Kaban Makina imalat sahasında mekanik montaj, hassas ölçümlendirme ve CNC operasyon süreçlerinde operasyonel uzmanlık elde edilmesi.", tag: "Atölye Uzmanlığı" },
-    { year: "2012", heading: "KALIP & AR-GE", desc: "PVC profil kaynak ve kesme makinaları için patentli kalıp ve özel kaynak çenesi Ar-Ge faaliyetleri.", tag: "Proses Mimarisi" },
-    { year: "2013", heading: "MAKİNE TASARIMI", desc: "İlk yerli alüminyum profil işleme merkezi olan ZC 3010 projesinin mekanik tasarım liderliğiyle başlayan uzmanlaşma.", tag: "Makine Mimarı" },
-    { year: "2019", heading: "YÜKSEK LİSANS", desc: "Marmara Üniversitesi'nde Mühendislik Yönetimi M.Sc. derecesi. Teknik tasarım uzmanlığının stratejik yönetim modeliyle entegrasyonu.", tag: "M.Sc. Mühendislik Yönetimi", highlight: true },
-    { year: "GÜNÜMÜZ", heading: "AR-GE LİDERLİĞİ", desc: "Kaban Makina bünyesinde çok eksenli CNC profil işleme merkezleri ve robotik otomasyon hatlarının tasarımdan sahaya teslimine kadar tüm süreçlerin yönetimi.", tag: "Ar-Ge Liderliği", highlight: true, active: true }
+    { year: "2009", heading: "MÜHENDİSLİK TEMELİ", desc: "Makine Mühendisliği eğitimiyle analitik düşünce, mekanik sistem davranışı ve üretilebilir tasarım disiplininin kurulması.", tag: "Mekanik Temel" },
+    { year: "2011", heading: "SAHA VE ÜRETİM OKULU", desc: "Kaban Makina imalat sahasında mekanik montaj, hassas ölçüm, CNC operasyonları ve gerçek üretim kısıtlarının doğrudan öğrenilmesi.", tag: "Saha Yetkinliği" },
+    { year: "2012", heading: "PROSES AR-GE'Sİ", desc: "PVC profil kaynak ve kesme makineleri için patentli kalıp ve özel kaynak çenesi geliştirme çalışmalarıyla ürünleşen proses çözümlerine geçiş.", tag: "Proses Mimarisi" },
+    { year: "2013", heading: "CNC PLATFORM MİMARİSİ", desc: "İlk yerli alüminyum profil işleme merkezi ZC 3010 ile mekanik tasarımın ötesine geçerek CNC sistem mimarisi, eksen yapısı ve ürün standardı oluşturma.", tag: "CNC Sistem Mimarı" },
+    { year: "2019", heading: "MÜHENDİSLİK YÖNETİMİ", desc: "Marmara Üniversitesi Mühendislik Yönetimi M.Sc. derecesiyle teknik uzmanlığı proje, ekip, risk ve ticarileşme perspektifiyle birleştirme.", tag: "M.Sc. Yönetim", highlight: true },
+    { year: "GÜNÜMÜZ", heading: "AR-GE VE EKİP LİDERLİĞİ", desc: "Kaban Makina bünyesinde çok eksenli CNC profil işleme merkezleri ve robotik otomasyon hatlarını tasarımdan saha kabulüne taşıyan teknik ekip liderliği.", tag: "Teknik Liderlik", highlight: true, active: true }
   ],
   en: [
-    { year: "2009", heading: "ACADEMIC FOUNDATION", desc: "Graduation in Mechanical Engineering. The foundation of analytical thinking and engineering theory.", tag: "B.Sc. Mech Eng." },
-    { year: "2011", heading: "SHOP FLOOR INSIGHTS", desc: "Developing hands-on expertise in precision measurement, assembly, and CNC operation directly inside Kaban Makina's factory floor.", tag: "Shop Floor Mastery" },
-    { year: "2012", heading: "MOLD & R&D", desc: "Patented mold systems and specialized welding jaw R&D activities for PVC profile cutting and welding machinery.", tag: "Process Architecture" },
-    { year: "2013", heading: "MACHINE DESIGN", desc: "Deep specialization starting with the lead mechanical design role of ZC 3010 - the company's first local aluminum machining center.", tag: "Machine Architect" },
-    { year: "2019", heading: "POSTGRADUATE", desc: "M.Sc. degree in Engineering Management from Marmara University. Integrating technical design expertise with strategic management models.", tag: "M.Sc. Eng Management", highlight: true },
-    { year: "CURRENT", heading: "R&D LEADERSHIP", desc: "Leading the entire product lifecycle of multi-axis CNC machining centers and robotic manufacturing lines at Kaban Makina, from drafting to client delivery.", tag: "R&D Leadership", highlight: true, active: true }
+    { year: "2009", heading: "ENGINEERING FOUNDATION", desc: "Mechanical Engineering education establishing analytical thinking, mechanical system behavior, and design-for-manufacturing discipline.", tag: "Mechanical Core" },
+    { year: "2011", heading: "SHOP-FLOOR SCHOOL", desc: "Direct experience in mechanical assembly, precision measurement, CNC operations, and real production constraints inside Kaban Makina's factory floor.", tag: "Field Competence" },
+    { year: "2012", heading: "PROCESS R&D", desc: "Transition into productized process solutions through patented mold systems and specialized welding jaws for PVC profile cutting and welding machinery.", tag: "Process Architecture" },
+    { year: "2013", heading: "CNC PLATFORM ARCHITECTURE", desc: "Moving beyond mechanical design with ZC 3010, the first local aluminum profile machining center, to define CNC system architecture, axis layout, and product standards.", tag: "CNC System Architect" },
+    { year: "2019", heading: "ENGINEERING MANAGEMENT", desc: "M.Sc. in Engineering Management from Marmara University, combining technical expertise with project, team, risk, and commercialization perspective.", tag: "M.Sc. Management", highlight: true },
+    { year: "CURRENT", heading: "R&D AND TEAM LEADERSHIP", desc: "Technical team leadership carrying multi-axis CNC profile machining centers and robotic automation lines from design to field acceptance at Kaban Makina.", tag: "Technical Leadership", highlight: true, active: true }
   ]
 };
 
 // Dynamic Multilingual Portfolio Projects
 const portfolioData = {
   tr: [
-    { id: "P_uIFpvk1SM", num: "01", title: "ZC 3010", desc: "İlk Alüminyum İşleme Merkezi" },
-    { id: "O4QWRVjYops", num: "02", title: "ZC 3020", desc: "Hassas Seri Üretim CNC" },
-    { id: "2rBsAK_WqiY", num: "03", title: "ZC 3050", desc: "13.5m Stroklu 5-Eksenli Ar-Ge", start: 13 },
-    { id: "jspCnwaKgOM", num: "04", title: "ZF 3010", desc: "Yüksek Hızlı Profil Frezeleme" },
-    { id: "B8S7bgEGUkw", num: "05", title: "ZE 3010", desc: "Robotik Kesim Merkezi" },
-    { id: "5RSI86l4cfw", num: "06", title: "ZC 3062-64", desc: "Modüler CNC Üretim Ailesi", badge: "Amiral Gemi", start: 5 },
-    { id: "7VxKh9M_qys", num: "07", title: "ZC 4040", desc: "4-Eksenli Endüstriyel CNC" },
-    { id: "2rBsAK_WqiY", num: "08", title: "ZC 3052-54", desc: "5-Eksenli Performans CNC Serisi", badge: "Amiral Gemi" },
-    { id: "WUrf8N120SU", num: "09", title: "AC 20XX SERİSİ", desc: "Alüminyum kesiminde pazar lideri yüksek performanslı çözümler", badge: "Yeni Seri", featured: true, start: 18 }
+    { id: "P_uIFpvk1SM", num: "01", title: "ZC 3010", desc: "İlk yerli alüminyum CNC platformunun sistem mimarisi" },
+    { id: "O4QWRVjYops", num: "02", title: "ZC 3020", desc: "Hassas seri üretim için ölçeklenen CNC ürün platformu" },
+    { id: "2rBsAK_WqiY", num: "03", title: "ZC 3050", desc: "13.5m stroklu 5 eksenli TÜBİTAK Ar-Ge platformu", start: 13 },
+    { id: "jspCnwaKgOM", num: "04", title: "ZF 3010", desc: "Yüksek hızlı profil frezeleme için üretim odaklı sistem" },
+    { id: "B8S7bgEGUkw", num: "05", title: "ZE 3010", desc: "Robotik kesim merkezi ve otomasyon hattı çözümü" },
+    { id: "5RSI86l4cfw", num: "06", title: "ZC 3062-64", desc: "Modüler çok eksenli CNC üretim ailesi", badge: "Amiral Gemi", start: 5 },
+    { id: "7VxKh9M_qys", num: "07", title: "ZC 4040", desc: "Endüstriyel profil işleme için 4 eksenli CNC sistem" },
+    { id: "2rBsAK_WqiY", num: "08", title: "ZC 3052-54", desc: "5 eksenli performans CNC ürün serisi", badge: "Amiral Gemi" },
+    { id: "WUrf8N120SU", num: "09", title: "AC 20XX SERİSİ", desc: "Alüminyum kesiminde pazar lideri yüksek performanslı ürün ailesi", badge: "Yeni Seri", featured: true, start: 18 }
   ],
   en: [
-    { id: "P_uIFpvk1SM", num: "01", title: "ZC 3010", desc: "First Aluminum Machining Center" },
-    { id: "O4QWRVjYops", num: "02", title: "ZC 3020", desc: "Precision High-Speed Production CNC" },
-    { id: "2rBsAK_WqiY", num: "03", title: "ZC 3050", desc: "5-Axis R&D Center with 13.5m Stroke", start: 13 },
-    { id: "jspCnwaKgOM", num: "04", title: "ZF 3010", desc: "High-Speed Profile Milling Platform" },
-    { id: "B8S7bgEGUkw", num: "05", title: "ZE 3010", desc: "Robotic Industrial Cutting Cell" },
-    { id: "5RSI86l4cfw", num: "06", title: "ZC 3062-64", desc: "Modular Multi-Axis Production Series", badge: "Flagship", start: 5 },
-    { id: "7VxKh9M_qys", num: "07", title: "ZC 4040", desc: "4-Axis Structural Profile CNC" },
-    { id: "2rBsAK_WqiY", num: "08", title: "ZC 3052-54", desc: "High-Performance 5-Axis CNC Series", badge: "Flagship" },
-    { id: "WUrf8N120SU", num: "09", title: "AC 20XX SERIES", desc: "Market-leading heavy-duty aluminum cutting systems", badge: "New Release", featured: true, start: 18 }
+    { id: "P_uIFpvk1SM", num: "01", title: "ZC 3010", desc: "System architecture for the first local aluminum CNC platform" },
+    { id: "O4QWRVjYops", num: "02", title: "ZC 3020", desc: "CNC product platform scaled for precision serial production" },
+    { id: "2rBsAK_WqiY", num: "03", title: "ZC 3050", desc: "5-axis TÜBİTAK R&D platform with 13.5m stroke", start: 13 },
+    { id: "jspCnwaKgOM", num: "04", title: "ZF 3010", desc: "Production-focused system for high-speed profile milling" },
+    { id: "B8S7bgEGUkw", num: "05", title: "ZE 3010", desc: "Robotic cutting center and automation-line solution" },
+    { id: "5RSI86l4cfw", num: "06", title: "ZC 3062-64", desc: "Modular multi-axis CNC production family", badge: "Flagship", start: 5 },
+    { id: "7VxKh9M_qys", num: "07", title: "ZC 4040", desc: "4-axis CNC system for industrial profile machining" },
+    { id: "2rBsAK_WqiY", num: "08", title: "ZC 3052-54", desc: "High-performance 5-axis CNC product series", badge: "Flagship" },
+    { id: "WUrf8N120SU", num: "09", title: "AC 20XX SERIES", desc: "Market-leading high-performance product family for aluminum cutting", badge: "New Release", featured: true, start: 18 }
   ]
 };
 
@@ -1343,41 +1480,41 @@ const portfolioData = {
 const tubitakData = {
   tr: {
     badge_program: "Program: 1501",
-    badge_leader: "Proje Yürütücüsü",
+    badge_leader: "Ar-Ge Teknik Lideri",
     badge_status: "Başarıyla Tamamlandı",
     case1_title: "ZC 3050 – 5 Eksenli Alüminyum Profil İşleme Merkezi",
-    case1_prob_title: "Mühendislik Problemi",
+    case1_prob_title: "Sistem Problemi",
     case1_prob: "Geleneksel 4 eksenli sistemlerin profil uçlarında ve açılı yüzeylerde ihtiyaç duyulan karmaşık operasyonları tek bağlamada yapamaması, üretim hattında duraksamalara ve firelere yol açmaktaydı.",
-    case1_sol_title: "Geliştirilen Çözüm",
-    case1_sol: "Patentli entegre dairesel testere ünitesine sahip, çift istasyonlu dinamik çalışma alanına sahip 5 eksenli CNC platform mimarisi oluşturuldu. Spindle ve servo mekanik salınımları sanal kinematik analizlerle doğrulandı.",
-    case1_res_title: "Sonuç & Katkı",
-    case1_res: "TÜBİTAK 1501 tescilli başarıyla tamamlanan proje sayesinde firmanın ilk 5 eksenli CNC makinesi yerlileştirilerek küresel pazarda yüksek ticarileşme başarısı yakaladı.",
+    case1_sol_title: "Liderlik Edilen Çözüm",
+    case1_sol: "Patentli entegre dairesel testere ünitesine ve çift istasyonlu dinamik çalışma alanına sahip 5 eksenli CNC platform mimarisi oluşturuldu. Eksen kinematiği, spindle davranışı ve servo mekanik salınımları sanal analizlerle doğrulanarak ekipler arası tasarım kararları netleştirildi.",
+    case1_res_title: "Ticarileşen Katkı",
+    case1_res: "TÜBİTAK 1501 kapsamında başarıyla tamamlanan proje, firmanın ilk 5 eksenli CNC makinesini yerlileştirmenin ötesinde yeni nesil CNC ürün ailesi için teknik liderlik modeli ve pazara açılan bir platform oluşturdu.",
     case2_title: "ZC 3010 – 4 Eksenli Alüminyum İşleme Merkezi",
-    case2_prob_title: "Mühendislik Problemi",
+    case2_prob_title: "Kurumsal Sistem Problemi",
     case2_prob: "Şirketin daha önce CNC geliştirme tecrübesinin olmaması; kaynaklı gövdelerin gerilim giderme süreçleri, doğrusal kızak hassasiyetleri ve eksen tork optimizasyonu gibi konularda kurumsal bilgi birikiminin eksikliği.",
-    case2_sol_title: "Geliştirilen Çözüm",
+    case2_sol_title: "Liderlik Edilen Çözüm",
     case2_sol: "Tüm gövde sonlu elemanlar yöntemiyle (FEA) statik ve dinamik burulma testlerine tabi tutuldu. Titreşim sönümleyici döküm harçları ve optimize edilmiş profil tasarımları kullanılarak stabil bir kinematik altyapı oluşturuldu.",
-    case2_res_title: "Sonuç & Katkı",
-    case2_res: "Proje sadece ilk CNC makinesinin ticarileşmesini sağlamakla kalmadı; organizasyonun sonraki tüm CNC platformları için standart tasarım kılavuzlarının ve üretim protokollerinin temelini attı."
+    case2_res_title: "Standartlaşan Katkı",
+    case2_res: "Proje sadece ilk CNC makinesinin ticarileşmesini sağlamadı; organizasyonun sonraki tüm CNC platformları için tasarım standardı, kalite protokolü ve ekipler arası ortak teknik dilin temelini attı."
   },
   en: {
     badge_program: "Program: 1501",
-    badge_leader: "Project Leader",
+    badge_leader: "R&D Technical Leader",
     badge_status: "Successfully Completed",
     case1_title: "ZC 3050 – 5-Axis Aluminum Profile Machining Center",
-    case1_prob_title: "Engineering Problem",
+    case1_prob_title: "System Problem",
     case1_prob: "Traditional 4-axis systems could not process complex multi-angle operations and profile-end cuts in a single setup, which caused bottlenecks and scrap parts in dynamic production lines.",
-    case1_sol_title: "Developed Solution",
-    case1_sol: "Created a bespoke 5-axis CNC platform architecture equipped with a patented integrated circular saw unit and dynamic double-station layout. Verified spindle and servo vibration profiles using mathematical kinematic simulations.",
-    case1_res_title: "Result & Contribution",
-    case1_res: "This successfully completed TÜBİTAK 1501 program localized the company's first ever 5-axis CNC, capturing strong commercialization success and solid market share worldwide.",
+    case1_sol_title: "Led Solution",
+    case1_sol: "Created a bespoke 5-axis CNC platform architecture equipped with a patented integrated circular saw unit and dynamic double-station layout. Axis kinematics, spindle behavior, and servo mechanical vibration profiles were verified through virtual analyses to align cross-functional design decisions.",
+    case1_res_title: "Commercialized Contribution",
+    case1_res: "This successfully completed TÜBİTAK 1501 program did more than localize the company's first 5-axis CNC machine; it established a technical leadership model and a market-facing platform for the next CNC product family.",
     case2_title: "ZC 3010 – 4-Axis Aluminum Machining Center",
-    case2_prob_title: "Engineering Problem",
+    case2_prob_title: "Institutional System Problem",
     case2_prob: "No prior institutional CNC development history; lack of corporate know-how regarding welded frame stress relieving, linear rail parallelism alignments, and axis torque calculations.",
-    case2_sol_title: "Developed Solution",
+    case2_sol_title: "Led Solution",
     case2_sol: "Subjected the entire machine bed to static and dynamic torsional finite element analysis (FEA). Developed standard welded frame parameters and engineered heavy casting compound integration to eliminate vibrations.",
-    case2_res_title: "Result & Contribution",
-    case2_res: "Beyond delivering the first commercialized CNC, this project laid down the standardized corporate design guidelines and manufacturing quality protocols used for all subsequent CNC models."
+    case2_res_title: "Standardized Contribution",
+    case2_res: "Beyond commercializing the first CNC machine, this project laid the foundation for standardized design guides, quality protocols, and a shared technical language used across subsequent CNC platforms."
   }
 };
 </script>
@@ -1497,8 +1634,8 @@ function renderTubitak() {
   container.innerHTML = `
     <div class="reveal">
       <div class="section-label">${tubitakData[currentLanguage === "tr" ? "tr" : "en"].badge_leader.toUpperCase()}</div>
-      <h2 class="section-title">${currentLanguage === "tr" ? "TÜBİTAK Ar-Ge<br><span>VAKA ANALİZLERİ</span>" : "TÜBİTAK R&D<br><span>CASE STUDIES</span>"}</h2>
-      <p class="section-sub">${currentLanguage === "tr" ? "Proje Yürütücüsü olarak yönettiğim, teknik kavramları ticarileşebilir ileri makine platformlarına dönüştüren TÜBİTAK Ar-Ge programları." : "TÜBİTAK R&D programs managed as Project Leader, transforming technical concepts into high-end commercial machine platforms."}</p>
+      <h2 class="section-title">${currentLanguage === "tr" ? "TÜBİTAK Ar-Ge<br><span>SİSTEM VAKALARI</span>" : "TÜBİTAK R&D<br><span>SYSTEM CASES</span>"}</h2>
+      <p class="section-sub">${currentLanguage === "tr" ? "Proje Yürütücüsü olarak yönetilen; teknik belirsizliği CNC ürün ailesine, standart tasarım kılavuzlarına ve pazarda karşılığı olan makine platformlarına dönüştüren Ar-Ge programları." : "R&D programs managed as Project Leader, transforming technical uncertainty into CNC product families, standard design guides, and market-proven machine platforms."}</p>
     </div>
 
     <div class="tubitak-grid">
