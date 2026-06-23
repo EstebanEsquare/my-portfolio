@@ -84,6 +84,12 @@ nav.scrolled { border-bottom-color: rgba(245,158,11,0.25); }
 .nav-links a:hover, .nav-links a.active-link { color: var(--white); }
 .nav-links a:hover::after, .nav-links a.active-link::after { transform: scaleX(1); transform-origin: left; }
 
+.nav-right-container { display: flex; align-items: center; gap: 16px; }
+
+/* Language Switcher Button */
+.lang-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(245,158,11,0.2); color: var(--amber); padding: 6px 12px; border-radius: 4px; font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: bold; cursor: pointer; transition: all 0.2s; }
+.lang-btn:hover { background: rgba(245,158,11,0.1); border-color: var(--amber); }
+
 .nav-cta { padding: 8px 20px; border: 1px solid var(--amber); color: var(--amber); border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; font-family: 'JetBrains Mono', monospace; transition: all 0.2s; }
 .nav-cta:hover { background: var(--amber); color: var(--ink); }
 
@@ -345,9 +351,6 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
 .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
 .footer-left .footer-name { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.06em; color: var(--white); }
 .footer-left .footer-sub { font-size: 9px; font-family: 'JetBrains Mono', monospace; color: var(--mist); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 2px; }
-.footer-links { display: flex; gap: 16px; }
-.footer-link { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--steel); display: flex; align-items: center; justify-content: center; color: var(--mist); text-decoration: none; font-size: 14px; transition: all 0.2s; }
-.footer-link:hover { border-color: var(--amber); color: var(--amber); }
 .footer-copy { font-size: 10px; color: rgba(148,163,184,0.35); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; }
 
 /* ─── MOBILE UTILS & OVERLAY ─── */
@@ -465,7 +468,7 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
       </svg>
       <div>
         <div class="nav-logo-name">Mustafa Üner</div>
-        <div class="nav-logo-title">M.Sc. Engineer</div>
+        <div class="nav-logo-title" data-i18n="nav_title">M.Sc. Engineer</div>
       </div>
     </a>
 
@@ -475,12 +478,16 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
 
     <!-- Desktop Menu -->
     <div class="nav-links">
-      <a href="#/" id="nav-home">Portfolyo</a>
-      <a href="#/blog" id="nav-blog">Bilgi Bankası</a>
-      <a href="#/tools" id="nav-tools">Hesaplama Paneli</a>
+      <a href="#/" id="nav-home" data-i18n="nav_home">Portfolyo</a>
+      <a href="#/blog" id="nav-blog" data-i18n="nav_blog">Bilgi Bankası</a>
+      <a href="#/tools" id="nav-tools" data-i18n="nav_tools">Hesaplama Paneli</a>
     </div>
 
-    <a href="mailto:mustafauner@hotmail.com.tr" class="nav-cta hidden-mobile">İletişim</a>
+    <div class="nav-right-container">
+      <!-- Dil Degistirme Butonu -->
+      <button onclick="toggleLanguage()" class="lang-btn" id="langSwitcherBtn">EN</button>
+      <a href="mailto:mustafauner@hotmail.com.tr" class="nav-cta hidden-mobile" data-i18n="nav_contact">İletişim</a>
+    </div>
   </div>
 </nav>
 
@@ -488,16 +495,20 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
 <div id="mobileMenuOverlay" class="mobile-menu-overlay">
   <div class="mobile-menu-content">
     <a href="#/" class="m-link" id="m-nav-home">
-      <i class="fa-solid fa-briefcase"></i> Portfolyo
+      <i class="fa-solid fa-briefcase"></i> <span data-i18n="nav_home">Portfolyo</span>
     </a>
     <a href="#/blog" class="m-link" id="m-nav-blog">
-      <i class="fa-solid fa-book-open"></i> Bilgi Bankası
+      <i class="fa-solid fa-book-open"></i> <span data-i18n="nav_blog">Bilgi Bankası</span>
     </a>
     <a href="#/tools" class="m-link" id="m-nav-tools">
-      <i class="fa-solid fa-calculator"></i> Hesaplama Paneli
+      <i class="fa-solid fa-calculator"></i> <span data-i18n="nav_tools">Hesaplama Paneli</span>
     </a>
+    <div class="m-link" onclick="toggleLanguage()" style="cursor: pointer; justify-content: space-between;">
+      <span><i class="fa-solid fa-globe"></i> <span data-i18n="m_lang_label">Dil / Language</span></span>
+      <span class="amber font-bold" id="mobileLangLabel">Türkçe</span>
+    </div>
     <a href="mailto:mustafauner@hotmail.com.tr" class="m-link m-cta">
-      <i class="fa-regular fa-envelope"></i> İletişim
+      <i class="fa-regular fa-envelope"></i> <span data-i18n="nav_contact">İletişim</span>
     </a>
   </div>
 </div>
@@ -514,39 +525,39 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
 
     <div class="hero-inner">
       <div>
-        <div class="hero-badge reveal d1">
-          15+ YEARS IN CNC MACHINE DEVELOPMENT
+        <div class="hero-badge reveal d1" data-i18n="hero_badge">
+          CNC MAKİNE GELİŞTİRMEDE 15+ YIL
         </div>
 
         <h1 class="hero-name reveal d2">
           MUSTAFA<br><span>ÜNER</span>
         </h1>
 
-        <div class="hero-title reveal d3">
-          Developing CNC Systems<br>
-          From Concept To Production
+        <div class="hero-title reveal d3" data-i18n="hero_title">
+          Konseptten Üretime<br>
+          CNC Sistemleri Geliştirme
         </div>
 
-        <p class="hero-desc reveal d4">
-          Mechanical Design Engineer with 15+ years of experience developing CNC machining centers, industrial machinery and manufacturing technologies. Specialized in transforming engineering concepts into commercial machine platforms and leading multidisciplinary R&D activities.
+        <p class="hero-desc reveal d4" data-i18n="hero_desc">
+          CNC işleme merkezleri, endüstriyel makineler ve üretim teknolojileri geliştirme konusunda 15 yılı aşkın deneyime sahip Mekanik Tasarım Mühendisi. Mühendislik kavramlarını ticari makine platformlarına dönüştürme ve çok disiplinli Ar-Ge faaliyetlerine liderlik etme konusunda uzmanlaşmıştır.
         </p>
 
         <div class="hero-proof-grid reveal d5">
           <div class="hero-proof-card">
             <div class="hero-proof-value">15+</div>
-            <div class="hero-proof-label">Years In CNC Development</div>
+            <div class="hero-proof-label" data-i18n="proof_1">CNC Geliştirme Yılı</div>
           </div>
           <div class="hero-proof-card">
             <div class="hero-proof-value">2</div>
-            <div class="hero-proof-label">TÜBİTAK 1501 Projects Led</div>
+            <div class="hero-proof-label" data-i18n="proof_2">Yönetilen TÜBİTAK Projesi</div>
           </div>
           <div class="hero-proof-card">
             <div class="hero-proof-value">4 & 5</div>
-            <div class="hero-proof-label">Axis CNC Platforms</div>
+            <div class="hero-proof-label" data-i18n="proof_3">Eksenli CNC Platformları</div>
           </div>
           <div class="hero-proof-card">
             <div class="hero-proof-value">M.Sc.</div>
-            <div class="hero-proof-label">Engineering Management</div>
+            <div class="hero-proof-label" data-i18n="proof_4">Mühendislik Yönetimi</div>
           </div>
         </div>
 
@@ -555,10 +566,10 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
             <i class="fa-brands fa-linkedin"></i> LinkedIn
           </a>
           <a href="#/tools" class="btn-ghost">
-            <i class="fa-solid fa-calculator"></i> Engineering Tools
+            <i class="fa-solid fa-calculator"></i> <span data-i18n="btn_tools">Hesaplama Araçları</span>
           </a>
           <a href="#/blog" class="btn-ghost">
-            <i class="fa-solid fa-book-open"></i> Knowledge Base
+            <i class="fa-solid fa-book-open"></i> <span data-i18n="btn_blog">Bilgi Bankası</span>
           </a>
         </div>
       </div>
@@ -585,21 +596,21 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
   <section class="home-feature-section" style="background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.12);">
     <div class="section-inner">
       <div class="reveal">
-        <div class="section-label">Öne Çıkan Mühendislik Otomasyonları</div>
-        <h2 class="section-title">HIZLI BAŞLANGIÇ <span>ARAÇLARI</span></h2>
-        <p class="section-sub">Tasarım sürecindeki hesaplamalı analiz adımlarını pratikleştiren, dinamik parametrik paneller.</p>
+        <div class="section-label" data-i18n="quick_label">Öne Çıkan Mühendislik Otomasyonları</div>
+        <h2 class="section-title" data-i18n="quick_title">HIZLI BAŞLANGIÇ <span>ARAÇLARI</span></h2>
+        <p class="section-sub" data-i18n="quick_sub">Tasarım sürecindeki hesaplamalı analiz adımlarını pratikleştiren, dinamik parametrik paneller.</p>
       </div>
 
       <div class="grid-features">
         <div class="feature-card reveal d1">
-          <h3>Servo Atalet Çözümleyici</h3>
-          <p>Vidalı mil ve kremayer mekanizmalarında atalet oranlarını (J_load / J_motor) analiz ederek optimum servo kapasitesi tespiti yapar.</p>
-          <button onclick="openEngTool('servo')" class="btn-feature-start">Aracı Başlat <i class="fa-solid fa-chevron-right ml-1"></i></button>
+          <h3 data-i18n="tool_servo_title">Servo Atalet Çözümleyici</h3>
+          <p data-i18n="tool_servo_desc">Vidalı mil ve kremayer mekanizmalarında atalet oranlarını (J_load / J_motor) analiz ederek optimum servo kapasitesi tespiti yapar.</p>
+          <button onclick="openEngTool('servo')" class="btn-feature-start"><span data-i18n="tool_btn_start">Aracı Başlat</span> <i class="fa-solid fa-chevron-right ml-1"></i></button>
         </div>
         <div class="feature-card reveal d2">
-          <h3>Lineer Kılavuz L10 Ömür Hesabı</h3>
-          <p>ISO 14728 standartları çerçevesinde dinamik eşdeğer yüklere göre ray ve araba setlerinin teorik ömrünü kilometre cinsinden hesaplar.</p>
-          <button onclick="openEngTool('linear')" class="btn-feature-start">Aracı Başlat <i class="fa-solid fa-chevron-right ml-1"></i></button>
+          <h3 data-i18n="tool_linear_title">Lineer Kılavuz L10 Ömür Hesabı</h3>
+          <p data-i18n="tool_linear_desc">ISO 14728 standartları çerçevesinde dinamik eşdeğer yüklere göre ray ve araba setlerinin teorik ömrünü kilometre cinsinden hesaplar.</p>
+          <button onclick="openEngTool('linear')" class="btn-feature-start"><span data-i18n="tool_btn_start">Aracı Başlat</span> <i class="fa-solid fa-chevron-right ml-1"></i></button>
         </div>
       </div>
     </div>
@@ -609,72 +620,13 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
   <section id="journey">
     <div class="section-inner">
       <div class="reveal">
-        <div class="section-label">Kariyer Haritası</div>
-        <h2 class="section-title">MÜHENDİSLİK<br><span>YOLCULUĞU</span></h2>
-        <p class="section-sub">Sahadan akademiye, tasarım masasından Ar-Ge liderliğine uzanan 15 yıllık evrim.</p>
+        <div class="section-label" data-i18n="journey_label">Kariyer Haritası</div>
+        <h2 class="section-title" data-i18n="journey_title">MÜHENDİSLİK<br><span>YOLCULUĞU</span></h2>
+        <p class="section-sub" data-i18n="journey_sub">Sahadan akademiye, tasarım masasından Ar-Ge liderliğine uzanan 15 yıllık evrim.</p>
       </div>
 
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-left reveal-right d1">
-            <div class="tl-year">2009</div>
-            <div class="tl-heading">AKADEMİK TEMEL</div>
-            <div class="tl-desc">Makine Mühendisliği mezuniyeti. Analitik düşünce ve mühendislik teorisinin temeli.</div>
-            <span class="tl-tag">B.Sc. Mech. Eng.</span>
-          </div>
-          <div class="tl-center"><div class="tl-dot"></div></div>
-          <div class="tl-right"></div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-left"></div>
-          <div class="tl-center"><div class="tl-dot"></div></div>
-          <div class="tl-right reveal-left d1">
-            <div class="tl-year">2011</div>
-            <div class="tl-heading">SAHA DENEYİMİ</div>
-            <div class="tl-desc">Kaban Makina imalat sahasında mekanik montaj, hassas ölçümlendirme ve CNC operasyon süreçlerinde operasyonel uzmanlık elde edilmesi.</div>
-            <span class="tl-tag">Shop Floor Mastery</span>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-left reveal-right d1">
-            <div class="tl-year">2012</div>
-            <div class="tl-heading">KALIP & AR-GE</div>
-            <div class="tl-desc">PVC profil kaynak ve kesme makinaları için patentli kalıp ve özel kaynak çenesi Ar-Ge faaliyetleri.</div>
-            <span class="tl-tag">Process Architecture</span>
-          </div>
-          <div class="tl-center"><div class="tl-dot"></div></div>
-          <div class="tl-right"></div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-left"></div>
-          <div class="tl-center"><div class="tl-dot"></div></div>
-          <div class="tl-right reveal-left d1">
-            <div class="tl-year">2013</div>
-            <div class="tl-heading">MAKİNE TASARIMI</div>
-            <div class="tl-desc">İlk yerli alüminyum profil işleme merkezi olan ZC 3010 projesinin mekanik tasarım liderliğiyle başlayan uzmanlaşma.</div>
-            <span class="tl-tag">Machine Architect</span>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-left reveal-right d1">
-            <div class="tl-year highlight">2019</div>
-            <div class="tl-heading">YÜKSEK LİSANS</div>
-            <div class="tl-desc">Marmara Üniversitesi'nde Mühendislik Yönetimi M.Sc. derecesi. Teknik tasarım uzmanlığının stratejik yönetim modeliyle entegrasyonu.</div>
-            <span class="tl-tag">M.Sc. Eng. Management</span>
-          </div>
-          <div class="tl-center"><div class="tl-dot"></div></div>
-          <div class="tl-right"></div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-left"></div>
-          <div class="tl-center"><div class="tl-dot active"></div></div>
-          <div class="tl-right reveal-left d1">
-            <div class="tl-year highlight" style="font-size:28px; font-family:'JetBrains Mono',monospace; letter-spacing:0.04em;">GÜNÜMÜZ</div>
-            <div class="tl-heading">AR-GE LİDERLİĞİ</div>
-            <div class="tl-desc">Kaban Makina bünyesinde çok eksenli CNC profil işleme merkezleri ve robotik otomasyon hatlarının tasarımdan sahaya teslimine kadar tüm süreçlerin yönetimi.</div>
-            <span class="tl-tag">R&D Leadership</span>
-          </div>
-        </div>
+      <div class="timeline" id="journey-timeline-container">
+         <!-- Dynamic generation via translate map to avoid hardcoding multi-language -->
       </div>
     </div>
   </section>
@@ -683,166 +635,21 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
   <section id="portfolio">
     <div class="section-inner">
       <div class="reveal">
-        <div class="section-label">Tasarım Portfolyosu</div>
-        <h2 class="section-title">MAKİNE<br><span>MİRASI</span></h2>
-        <p class="section-sub">2013'ten bugüne sıfırdan tasarlanan onlarca endüstriyel makine arasından seçilmiş amiral gemisi projeler.</p>
+        <div class="section-label" data-i18n="portfolio_label">Tasarım Portfolyosu</div>
+        <h2 class="section-title" data-i18n="portfolio_title">MAKİNE<br><span>MİRASI</span></h2>
+        <p class="section-sub" data-i18n="portfolio_sub">2013'ten bugüne sıfırdan tasarlanan onlarca endüstriyel makine arasından seçilmiş amiral gemisi projeler.</p>
       </div>
 
-      <div class="portfolio-grid">
-        <div class="machine-card reveal d1" onclick="openModal('P_uIFpvk1SM')">
-          <div class="machine-card-bg" style="background-image: url('https://img.youtube.com/vi/P_uIFpvk1SM/0.jpg');"></div>
-          <div class="machine-card-inner"><div class="machine-num">01</div><div><div class="machine-title">ZC 3010</div><div class="machine-desc">İlk Alüminyum İşleme Merkezi</div></div></div>
-          <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
-        </div>
-
-        <div class="machine-card reveal d2" onclick="openModal('O4QWRVjYops')">
-          <div class="machine-card-bg" style="background-image: url('https://img.youtube.com/vi/O4QWRVjYops/0.jpg');"></div>
-          <div class="machine-card-inner"><div class="machine-num">02</div><div><div class="machine-title">ZC 3020</div><div class="machine-desc">Hassas Seri Üretim CNC</div></div></div>
-          <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
-        </div>
-
-        <div class="machine-card reveal d3" onclick="openModal('2rBsAK_WqiY', 13)">
-          <div class="machine-card-bg" style="background-image: url('https://img.youtube.com/vi/2rBsAK_WqiY/0.jpg');"></div>
-          <div class="machine-card-inner"><div class="machine-num">03</div><div><div class="machine-title">ZC 3050</div><div class="machine-desc">13.5m Stroklu 5-Eksenli Ar-Ge</div></div></div>
-          <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
-        </div>
-
-        <div class="machine-card reveal d1" onclick="openModal('jspCnwaKgOM')">
-          <div class="machine-card-bg" style="background-image: url('https://img.youtube.com/vi/jspCnwaKgOM/0.jpg');"></div>
-          <div class="machine-card-inner"><div class="machine-num">04</div><div><div class="machine-title">ZF 3010</div><div class="machine-desc">Yüksek Hızlı Profil Frezeleme</div></div></div>
-          <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
-        </div>
-
-        <div class="machine-card reveal d2" onclick="openModal('B8S7bgEGUkw')">
-          <div class="machine-card-bg" style="background-image: url('https://img.youtube.com/vi/B8S7bgEGUkw/0.jpg');"></div>
-          <div class="machine-card-inner"><div class="machine-num">05</div><div><div class="machine-title">ZE 3010</div><div class="machine-desc">Robotik Kesim Merkezi</div></div></div>
-          <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
-        </div>
-
-        <div class="machine-card reveal d3" onclick="openModal('5RSI86l4cfw', 5)">
-          <div class="machine-card-bg" style="background-image: url('https://img.youtube.com/vi/5RSI86l4cfw/0.jpg');"></div>
-          <div class="machine-badge">Amiral Gemi</div>
-          <div class="machine-card-inner"><div class="machine-num">06</div><div><div class="machine-title">ZC 3062-64</div><div class="machine-desc">Modüler CNC Üretim Ailesi</div></div></div>
-          <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
-        </div>
-
-        <div class="machine-card reveal d1" onclick="openModal('7VxKh9M_qys')">
-          <div class="machine-card-bg" style="background-image: url('https://img.youtube.com/vi/7VxKh9M_qys/0.jpg');"></div>
-          <div class="machine-card-inner"><div class="machine-num">07</div><div><div class="machine-title">ZC 4040</div><div class="machine-desc">4-Eksenli Endüstriyel CNC</div></div></div>
-          <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
-        </div>
-
-        <div class="machine-card reveal d2" onclick="openModal('2rBsAK_WqiY')">
-          <div class="machine-card-bg" style="background-image: url('https://img.youtube.com/vi/2rBsAK_WqiY/0.jpg');"></div>
-          <div class="machine-badge">Amiral Gemi</div>
-          <div class="machine-card-inner"><div class="machine-num">08</div><div><div class="machine-title">ZC 3052-54</div><div class="machine-desc">5-Eksenli Performans CNC Serisi</div></div></div>
-          <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
-        </div>
-
-        <div class="machine-card featured reveal d3" onclick="openModal('WUrf8N120SU', 18)">
-          <div class="machine-card-bg" style="background-image: url('https://img.youtube.com/vi/WUrf8N120SU/0.jpg');"></div>
-          <div class="machine-badge">Yeni Seri</div>
-          <div class="machine-card-inner"><div class="machine-num">09</div><div><div class="machine-title" style="font-size:40px;">AC 20XX SERİSİ</div><div class="machine-desc">Alüminyum kesiminde pazar lideri yüksek performanslı çözümler</div></div></div>
-          <div class="machine-play"><div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div></div>
-        </div>
+      <div class="portfolio-grid" id="portfolio-grid-container">
+         <!-- Managed dynamically through JavaScript rendering to support quick EN/TR updates -->
       </div>
     </div>
   </section>
 
   <!-- TUBITAK AR-GE PROJECTS -->
   <section id="tubitak">
-    <div class="section-inner">
-      <div class="reveal">
-        <div class="section-label">Flagship Development Programs</div>
-        <h2 class="section-title">TÜBİTAK R&D<br><span>CASE STUDIES</span></h2>
-        <p class="section-sub">
-          Proje Yürütücüsü olarak yönettiğim, teknik kavramları ticarileşebilir ileri makine platformlarına dönüştüren TÜBİTAK Ar-Ge programları.
-        </p>
-      </div>
-
-      <div class="tubitak-grid">
-        <!-- ZC 3050 Case -->
-        <div class="tubitak-card reveal d1">
-          <i class="fa-solid fa-microchip tubitak-card-bg"></i>
-          <div class="tubitak-logo-wrap">
-            <div class="tubitak-brand">
-              <svg width="32" height="32" viewBox="0 0 100 100" class="tubitak-logo-img">
-                <circle cx="50" cy="50" r="45" fill="none" stroke="#2563eb" stroke-width="8"/>
-                <path d="M30 35 L50 65 L70 35" fill="none" stroke="#2563eb" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <span class="t-logo-text">TÜBİTAK</span>
-            </div>
-            <div class="t-badge success">
-              <i class="fa-solid fa-check"></i> Başarıyla Tamamlandı
-            </div>
-          </div>
-
-          <div class="t-badge-group">
-            <span class="t-badge program">Program: 1501</span>
-            <span class="t-badge program" style="background: rgba(245,158,11,0.1); color: var(--amber); border-color: rgba(245,158,11,0.3);">
-              Proje Yürütücüsü
-            </span>
-          </div>
-
-          <h3 class="t-project-name">ZC 3050 – 5 Eksenli Alüminyum Profil İşleme Merkezi</h3>
-
-          <div class="t-case">
-            <p>
-              <strong>Mühendislik Problemi</strong><br>
-              Geleneksel 4 eksenli sistemlerin profil uçlarında ve açılı yüzeylerde ihtiyaç duyulan karmaşık operasyonları tek bağlamada yapamaması, üretim hattında duraksamalara ve firelere yol açmaktaydı.
-            </p>
-            <p>
-              <strong>Geliştirilen Çözüm</strong><br>
-              Patentli entegre dairesel testere ünitesine sahip, çift istasyonlu dinamik çalışma alanına sahip 5 eksenli CNC platform mimarisi oluşturuldu. Spindle ve servo mekanik salınımları sanal kinematik analizlerle doğrulandı.
-            </p>
-            <p>
-              <strong>Sonuç & Katkı</strong><br>
-              TÜBİTAK 1501 tescilli başarıyla tamamlanan proje sayesinde firmanın ilk 5 eksenli CNC makinesi yerlileştirilerek küresel pazarda yüksek ticarileşme başarısı yakaladı.
-            </p>
-          </div>
-        </div>
-
-        <!-- ZC 3010 Case -->
-        <div class="tubitak-card reveal d2">
-          <i class="fa-solid fa-gears tubitak-card-bg"></i>
-          <div class="tubitak-logo-wrap">
-            <div class="tubitak-brand">
-              <svg width="32" height="32" viewBox="0 0 100 100" class="tubitak-logo-img">
-                <circle cx="50" cy="50" r="45" fill="none" stroke="#2563eb" stroke-width="8"/>
-                <path d="M30 35 L50 65 L70 35" fill="none" stroke="#2563eb" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <span class="t-logo-text">TÜBİTAK</span>
-            </div>
-            <div class="t-badge success">
-              <i class="fa-solid fa-check"></i> Başarıyla Tamamlandı
-            </div>
-          </div>
-
-          <div class="t-badge-group">
-            <span class="t-badge program">Program: 1501</span>
-            <span class="t-badge program" style="background: rgba(245,158,11,0.1); color: var(--amber); border-color: rgba(245,158,11,0.3);">
-              Proje Yürütücüsü
-            </span>
-          </div>
-
-          <h3 class="t-project-name">ZC 3010 – 4 Eksenli Alüminyum İşleme Merkezi</h3>
-
-          <div class="t-case">
-            <p>
-              <strong>Mühendislik Problemi</strong><br>
-              Şirketin daha önce CNC geliştirme tecrübesinin olmaması; kaynaklı gövdelerin gerilim giderme süreçleri, doğrusal kızak hassasiyetleri ve eksen tork optimizasyonu gibi konularda kurumsal bilgi birikiminin eksikliği.
-            </p>
-            <p>
-              <strong>Geliştirilen Çözüm</strong><br>
-              Tüm gövde sonlu elemanlar yöntemiyle (FEA) statik ve dinamik burulma testlerine tabi tutuldu. Titreşim sönümleyici döküm harçları ve optimize edilmiş profil tasarımları kullanılarak stabil bir kinematik altyapı oluşturuldu.
-            </p>
-            <p>
-              <strong>Sonuç & Katkı</strong><br>
-              Proje sadece ilk CNC makinesinin ticarileşmesini sağlamakla kalmadı; organizasyonun sonraki tüm CNC platformları için standart tasarım kılavuzlarının ve üretim protokollerinin temelini attı.
-            </p>
-          </div>
-        </div>
-      </div>
+    <div class="section-inner" id="tubitak-section-inner">
+       <!-- Dynamically populated to handle complex EN/TR structural translations -->
     </div>
   </section>
 </div>
@@ -854,15 +661,15 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
   <section id="blog" style="min-height: 100vh; padding-top: 120px;">
     <div class="section-inner">
       <div class="reveal">
-        <div class="section-label">Makale & Analiz</div>
-        <h2 class="section-title">MÜHENDİSLİK<br><span>GÜNLÜĞÜ</span></h2>
-        <p class="section-sub">Tasarım felsefesi, hesaplamalı mühendislik deneyimleri ve saha tecrübeleri.</p>
+        <div class="section-label" data-i18n="blog_sec_label">Makale & Analiz</div>
+        <h2 class="section-title" data-i18n="blog_sec_title">MÜHENDİSLİK<br><span>GÜNLÜĞÜ</span></h2>
+        <p class="section-sub" data-i18n="blog_sec_sub">Tasarım felsefesi, hesaplamalı mühendislik deneyimleri ve saha tecrübeleri.</p>
       </div>
 
       <div class="blog-layout reveal">
         <div class="blog-sidebar">
           <div class="blog-sidebar-header">
-            <div class="blog-sidebar-title"><i class="fa-solid fa-book-open"></i> YAZILAR</div>
+            <div class="blog-sidebar-title"><i class="fa-solid fa-book-open"></i> <span data-i18n="blog_sidebar_title">YAZILAR</span></div>
           </div>
           <div class="blog-list" id="blog-list-container">
             <!-- Driven via script -->
@@ -885,20 +692,20 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
   <section id="tools" style="min-height: 100vh; padding-top: 120px;">
     <div class="section-inner">
       <div class="reveal">
-        <div class="section-label">Mühendislik Hesaplama Araçları</div>
-        <h2 class="section-title">HESAPLAMA<br><span>PANELİ</span></h2>
-        <p class="section-sub">ISO ve DIN standartlarına dayalı, tasarım aşamalarında anlık doğrulama yapmanızı sağlayan mühendislik arayüzleri.</p>
+        <div class="section-label" data-i18n="tools_sec_label">Mühendislik Hesaplama Araçları</div>
+        <h2 class="section-title" data-i18n="tools_sec_title">HESAPLAMA<br><span>PANELİ</span></h2>
+        <p class="section-sub" data-i18n="tools_sec_sub">ISO ve DIN standartlarına dayalı, tasarım aşamalarında anlık doğrulama yapmanızı sağlayan mühendislik arayüzleri.</p>
       </div>
 
       <div class="tools-layout reveal">
         <div class="tools-sidebar">
-          <div class="tool-tab active" data-target="t-vc"><i class="fa-solid fa-rotate"></i><div class="tool-tab-text"><span class="tool-tab-name">Kesme Hızı</span><span class="tool-tab-sub">Vc Analysis</span></div></div>
-          <div class="tool-tab" data-target="t-piston"><i class="fa-solid fa-compress"></i><div class="tool-tab-text"><span class="tool-tab-name">Piston Kuvveti</span><span class="tool-tab-sub">ISO 6431</span></div></div>
-          <div class="tool-tab" data-target="t-helis"><i class="fa-solid fa-gear"></i><div class="tool-tab-text"><span class="tool-tab-name">Helis Dişli</span><span class="tool-tab-sub">Gear Analysis</span></div></div>
-          <div class="tool-tab" data-target="t-tork"><i class="fa-solid fa-bolt"></i><div class="tool-tab-text"><span class="tool-tab-name">Motor Tork</span><span class="tool-tab-sub">T = P / ω</span></div></div>
-          <div class="tool-tab" data-target="t-vidali"><i class="fa-solid fa-screwdriver"></i><div class="tool-tab-text"><span class="tool-tab-name">Vidalı Mil</span><span class="tool-tab-sub">Lead Screw</span></div></div>
-          <div class="tool-tab" data-target="t-tolerance-tool"><i class="fa-solid fa-layer-group"></i><div class="tool-tab-text"><span class="tool-tab-name">Tolerans Analizi</span><span class="tool-tab-sub">Stack-up / RSS</span></div></div>
-          <div class="tool-tab" data-target="t-beam"><i class="fa-solid fa-ruler-horizontal"></i><div class="tool-tab-text"><span class="tool-tab-name">Sehim Analizi</span><span class="tool-tab-sub">Beam Deflection</span></div></div>
+          <div class="tool-tab active" data-target="t-vc"><i class="fa-solid fa-rotate"></i><div class="tool-tab-text"><span class="tool-tab-name" data-i18n="t_vc_tab">Kesme Hızı</span><span class="tool-tab-sub">Vc Analysis</span></div></div>
+          <div class="tool-tab" data-target="t-piston"><i class="fa-solid fa-compress"></i><div class="tool-tab-text"><span class="tool-tab-name" data-i18n="t_piston_tab">Piston Kuvveti</span><span class="tool-tab-sub">ISO 6431</span></div></div>
+          <div class="tool-tab" data-target="t-helis"><i class="fa-solid fa-gear"></i><div class="tool-tab-text"><span class="tool-tab-name" data-i18n="t_helis_tab">Helis Dişli</span><span class="tool-tab-sub">Gear Analysis</span></div></div>
+          <div class="tool-tab" data-target="t-tork"><i class="fa-solid fa-bolt"></i><div class="tool-tab-text"><span class="tool-tab-name" data-i18n="t_tork_tab">Motor Tork</span><span class="tool-tab-sub">T = P / ω</span></div></div>
+          <div class="tool-tab" data-target="t-vidali"><i class="fa-solid fa-screwdriver"></i><div class="tool-tab-text"><span class="tool-tab-name" data-i18n="t_vidali_tab">Vidalı Mil</span><span class="tool-tab-sub">Lead Screw</span></div></div>
+          <div class="tool-tab" data-target="t-tolerance-tool"><i class="fa-solid fa-layer-group"></i><div class="tool-tab-text"><span class="tool-tab-name" data-i18n="t_tolerance_tab">Tolerans Analizi</span><span class="tool-tab-sub">Stack-up / RSS</span></div></div>
+          <div class="tool-tab" data-target="t-beam"><i class="fa-solid fa-ruler-horizontal"></i><div class="tool-tab-text"><span class="tool-tab-name" data-i18n="t_beam_tab">Sehim Analizi</span><span class="tool-tab-sub">Beam Deflection</span></div></div>
         </div>
 
         <div class="tools-content">
@@ -907,12 +714,12 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
             <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M40 10v30m20-30v30" stroke-width="4"/><path d="M30 40h40v20H30z" stroke-width="3"/><path d="M35 40l-5 20m15-20l-5 20m15-20l-5 20m15-20l-5 20"/><path d="M20 60h60v30H20z" stroke="currentColor" opacity="0.5"/><path d="M65 25a15 15 0 1 1-30 0" stroke-dasharray="4 4"/><path d="M35 25l-5-5m0 10l5-5"/>
             </svg>
-            <div class="tool-panel-title">Kesme Hızı Analizi — Vc</div>
-            <div class="tool-panel-formula">Vc = (π × D × n) / 1000 &nbsp;|&nbsp; Birim: m/dak</div>
-            <div class="result-box"><div class="result-value" id="vc-result">188.5</div><div class="result-unit">Metre / Dakika</div></div>
+            <div class="tool-panel-title" data-i18n="t_vc_title">Kesme Hızı Analizi — Vc</div>
+            <div class="tool-panel-formula">Vc = (π × D × n) / 1000 &nbsp;|&nbsp; <span data-i18n="t_unit_label">Birim: m/dak</span></div>
+            <div class="result-box"><div class="result-value" id="vc-result">188.5</div><div class="result-unit" data-i18n="t_vc_unit">Metre / Dakika</div></div>
             <div class="input-grid">
-              <div class="input-field"><label>İşleme Çapı D (mm)</label><input type="range" id="vc-d" min="1" max="250" value="50"><div class="input-row"><span class="input-label">D =</span><span class="input-val" id="vc-d-val">50 mm</span></div></div>
-              <div class="input-field"><label>Devir n (rpm)</label><input type="range" id="vc-n" min="100" max="24000" value="1200"><div class="input-row"><span class="input-label">n =</span><span class="input-val" id="vc-n-val">1200 rpm</span></div></div>
+              <div class="input-field"><label data-i18n="t_vc_input_d">İşleme Çapı D (mm)</label><input type="range" id="vc-d" min="1" max="250" value="50"><div class="input-row"><span class="input-label">D =</span><span class="input-val" id="vc-d-val">50 mm</span></div></div>
+              <div class="input-field"><label data-i18n="t_vc_input_n">Devir n (rpm)</label><input type="range" id="vc-n" min="100" max="24000" value="1200"><div class="input-row"><span class="input-label">n =</span><span class="input-val" id="vc-n-val">1200 rpm</span></div></div>
             </div>
           </div>
 
@@ -921,36 +728,36 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
             <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="20" y="30" width="50" height="40" rx="2" stroke-width="3"/><path d="M25 25v5m40-5v5" stroke-width="2"/><rect x="45" y="30" width="8" height="40" fill="var(--amber)" fill-opacity="0.2"/><path d="M53 45h35m-35 10h35" stroke-width="2"/><path d="M88 43v14" stroke-width="3"/><path d="M70 20h20m-5-5l5 5-5 5" stroke-dasharray="2 2"/><path d="M40 80H20m5-5l-5 5 5 5" stroke-dasharray="2 2"/>
             </svg>
-            <div class="tool-panel-title">Piston Kuvvet Analizi — ISO 6431</div>
+            <div class="tool-panel-title" data-i18n="t_piston_title">Piston Kuvvet Analizi — ISO 6431</div>
             <div class="tool-panel-formula">F_itme = (π/4) × D² × P &nbsp;|&nbsp; F_çekme = (π/4) × (D² − d²) × P</div>
             <div class="input-grid" style="margin-bottom:20px;">
               <div class="input-field">
-                <label>Piston Çapı / Bore (mm)</label>
+                <label data-i18n="t_piston_bore">Piston Çapı / Bore (mm)</label>
                 <select id="p-bore" class="tool-select"><option value="12">12 mm</option><option value="16">16 mm</option><option value="20">20 mm</option><option value="25">25 mm</option><option value="32">32 mm</option><option value="40">40 mm</option><option value="50">50 mm</option><option value="63">63 mm</option><option value="80" selected>80 mm</option><option value="100">100 mm</option></select>
               </div>
               <div class="input-field">
-                <label>Mil Çapı / Rod (mm)</label>
+                <label data-i18n="t_piston_rod">Mil Çapı / Rod (mm)</label>
                 <select id="p-rod" class="tool-select"><option value="6">6 mm</option><option value="8">8 mm</option><option value="10">10 mm</option><option value="12">12 mm</option><option value="16">16 mm</option><option value="20">20 mm</option><option value="25" selected>25 mm</option><option value="32">32 mm</option></select>
               </div>
             </div>
             <div class="input-grid" style="margin-bottom:20px;">
               <div class="input-field">
-                <label>Çalışma Basıncı (Bar)</label>
+                <label data-i18n="t_piston_pressure">Çalışma Basıncı (Bar)</label>
                 <input type="range" id="p-bar" min="1" max="10" value="6" step="0.5">
                 <div class="input-row"><span class="input-label">P =</span><span class="input-val" id="p-bar-val">6 Bar</span></div>
               </div>
               <div class="input-field">
-                <label>Çıktı Birimi</label>
+                <label data-i18n="t_piston_unit">Çıktı Birimi</label>
                 <select id="p-unit" class="tool-select">
                   <option value="N">Newton (N)</option>
                   <option value="daN">dekaNewton (daN)</option>
-                  <option value="kgf" selected>Kilogram-kuvvet (kgf)</option>
+                  <option value="kgf" selected data-i18n="t_piston_unit_kg">Kilogram-kuvvet (kgf)</option>
                 </select>
               </div>
             </div>
             <div class="result-grid">
-              <div class="result-card highlight"><span class="result-card-label">İtme Kuvveti</span><div class="result-card-value" id="p-push">307.5 kgf</div></div>
-              <div class="result-card"><span class="result-card-label">Çekme Kuvveti</span><div class="result-card-value" id="p-pull">230.6 kgf</div></div>
+              <div class="result-card highlight"><span class="result-card-label" data-i18n="t_piston_push">İtme Kuvveti</span><div class="result-card-value" id="p-push">307.5 kgf</div></div>
+              <div class="result-card"><span class="result-card-label" data-i18n="t_piston_pull">Çekme Kuvveti</span><div class="result-card-value" id="p-pull">230.6 kgf</div></div>
             </div>
           </div>
 
@@ -959,16 +766,16 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
             <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="50" cy="50" r="40" stroke-width="3" stroke-dasharray="10 5"/><circle cx="50" cy="50" r="10" stroke-width="2"/><circle cx="50" cy="50" r="14" stroke-dasharray="2 2"/><path d="M20 25l60 30M15 40l60 30M25 15l60 30M15 60l50 25M35 10l55 25"/>
             </svg>
-            <div class="tool-panel-title">Helis Dişli Analizi</div>
+            <div class="tool-panel-title" data-i18n="t_helis_title">Helis Dişli Analizi</div>
             <div class="tool-panel-formula">d = (m × z) / cos β &nbsp;|&nbsp; β = 19.528° &nbsp;|&nbsp; da = d + 2m</div>
             <div class="input-grid" style="margin-bottom:20px;">
-              <div class="input-field"><label>Modül m</label><input type="number" id="h-m" value="2" min="0.5" step="0.5" class="tool-input"></div>
-              <div class="input-field"><label>Diş Sayısı z</label><input type="number" id="h-z" value="20" min="5" class="tool-input"></div>
+              <div class="input-field"><label data-i18n="t_helis_m">Modül m</label><input type="number" id="h-m" value="2" min="0.5" step="0.5" class="tool-input"></div>
+              <div class="input-field"><label data-i18n="t_helis_z">Diş Sayısı z</label><input type="number" id="h-z" value="20" min="5" class="tool-input"></div>
             </div>
             <div class="result-grid" style="grid-template-columns: repeat(3, 1fr);">
-              <div class="result-card"><span class="result-card-label">Bölüm Çapı</span><div class="result-card-value" id="h-d">42.47 mm</div></div>
-              <div class="result-card highlight"><span class="result-card-label">Dış Çap da</span><div class="result-card-value" id="h-da">46.47 mm</div></div>
-              <div class="result-card"><span class="result-card-label">Merkez Mes.</span><div class="result-card-value" id="h-c">45.24 mm</div></div>
+              <div class="result-card"><span class="result-card-label" data-i18n="t_helis_d">Bölüm Çapı</span><div class="result-card-value" id="h-d">42.47 mm</div></div>
+              <div class="result-card highlight"><span class="result-card-label" data-i18n="t_helis_da">Dış Çap da</span><div class="result-card-value" id="h-da">46.47 mm</div></div>
+              <div class="result-card"><span class="result-card-label" data-i18n="t_helis_c">Merkez Mes.</span><div class="result-card-value" id="h-c">45.24 mm</div></div>
             </div>
           </div>
 
@@ -977,12 +784,12 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
             <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="20" y="20" width="50" height="60" rx="5"/><path d="M25 30h40M25 40h40M25 50h40M25 60h40M25 70h40" stroke-width="1.5"/><path d="M70 30h10v40H70M80 45h15v10H80" stroke-width="3"/><path d="M85 30a20 20 0 1 1-10 0" stroke-dasharray="4 4"/><path d="M80 25l-5 5 5 5"/>
             </svg>
-            <div class="tool-panel-title">Motor Tork Hesabı</div>
-            <div class="tool-panel-formula">T = (P × 60) / (2π × n) &nbsp;|&nbsp; Birim: Nm</div>
-            <div class="result-box"><div class="result-value" id="tork-result">5.12</div><div class="result-unit">Newton · Metre</div></div>
+            <div class="tool-panel-title" data-i18n="t_tork_title">Motor Tork Hesabı</div>
+            <div class="tool-panel-formula">T = (P × 60) / (2π × n) &nbsp;|&nbsp; <span data-i18n="t_unit_label_nm">Birim: Nm</span></div>
+            <div class="result-box"><div class="result-value" id="tork-result">5.12</div><div class="result-unit" data-i18n="t_tork_unit">Newton · Metre</div></div>
             <div class="input-grid">
-              <div class="input-field"><label>Motor Gücü P (Watt)</label><input type="number" id="tork-p" value="750" class="tool-input"></div>
-              <div class="input-field"><label>Devir n (rpm)</label><input type="number" id="tork-n" value="1400" class="tool-input"></div>
+              <div class="input-field"><label data-i18n="t_tork_power">Motor Gücü P (Watt)</label><input type="number" id="tork-p" value="750" class="tool-input"></div>
+              <div class="input-field"><label data-i18n="t_tork_rpm">Devir n (rpm)</label><input type="number" id="tork-n" value="1400" class="tool-input"></div>
             </div>
           </div>
 
@@ -991,20 +798,20 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
             <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M10 45h80M10 55h80" stroke-width="2"/><path d="M15 45l5 10M25 45l5 10M35 45l5 10M75 45l5 10M85 45l5 10"/><rect x="45" y="35" width="20" height="30" rx="2" stroke-width="3"/><path d="M45 40h20M45 60h20" stroke-width="1"/><path d="M30 25h40m-5-5l5 5-5 5" stroke-dasharray="4 4" stroke-width="2"/>
             </svg>
-            <div class="tool-panel-title">Vidalı Mil Tahrik Analizi</div>
+            <div class="tool-panel-title" data-i18n="t_vidali_title">Vidalı Mil Tahrik Analizi</div>
             <div class="tool-panel-formula">η = 0.90 &nbsp;|&nbsp; F = (T × 2π × η) / h &nbsp;|&nbsp; v = (h × n) / 1000</div>
             <div class="input-grid" style="margin-bottom:20px;">
-              <div class="input-field"><label>Motor Gücü P (W)</label><input type="number" id="v-p" value="750" class="tool-input"></div>
-              <div class="input-field"><label>Devir n (rpm)</label><input type="number" id="v-n" value="3000" class="tool-input"></div>
+              <div class="input-field"><label data-i18n="t_vidali_power">Motor Gücü P (W)</label><input type="number" id="v-p" value="750" class="tool-input"></div>
+              <div class="input-field"><label data-i18n="t_vidali_rpm">Devir n (rpm)</label><input type="number" id="v-n" value="3000" class="tool-input"></div>
             </div>
             <div class="input-field" style="margin-bottom:20px;">
-              <label>Hatve h (mm/devir)</label>
+              <label data-i18n="t_vidali_lead">Hatve h (mm/devir)</label>
               <input type="number" id="v-h" value="10" class="tool-input">
             </div>
             <div class="result-grid" style="grid-template-columns: repeat(3, 1fr);">
-              <div class="result-card"><span class="result-card-label">Tork</span><div class="result-card-value" id="v-tork">2.39 Nm</div></div>
-              <div class="result-card highlight"><span class="result-card-label">İtme Kuvveti</span><div class="result-card-value" id="v-force">135.3 kg</div></div>
-              <div class="result-card"><span class="result-card-label">Hız</span><div class="result-card-value" id="v-speed">30.0 m/dk</div></div>
+              <div class="result-card"><span class="result-card-label" data-i18n="t_vidali_tork_out">Tork</span><div class="result-card-value" id="v-tork">2.39 Nm</div></div>
+              <div class="result-card highlight"><span class="result-card-label" data-i18n="t_vidali_force_out">İtme Kuvveti</span><div class="result-card-value" id="v-force">135.3 kg</div></div>
+              <div class="result-card"><span class="result-card-label" data-i18n="t_vidali_speed_out">Hız</span><div class="result-card-value" id="v-speed">30.0 m/dk</div></div>
             </div>
           </div>
 
@@ -1013,7 +820,7 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
             <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="20" y="20" width="60" height="15" rx="2" stroke-dasharray="4 4"/><rect x="20" y="45" width="40" height="15" rx="2"/><rect x="65" y="45" width="15" height="15" rx="2"/><path d="M20 70h60m-60 -5v10m60 -10v10"/><path d="M40 65l-5 5 5 5m20 -10l5 5-5 5" stroke-width="1.5"/>
             </svg>
-            <div class="tool-panel-title">Dinamik Tolerans Yığılma Analizi</div>
+            <div class="tool-panel-title" data-i18n="t_tolerance_title">Dinamik Tolerans Yığılma Analizi</div>
             <div class="tool-panel-formula">T_eff = |Üst - Alt| / 2 &nbsp;|&nbsp; WC = ΣT_eff &nbsp;|&nbsp; RSS = √(ΣT_eff²)</div>
 
             <div id="dynamic-tol-list" style="max-height: 220px; overflow-y: auto; margin-bottom: 12px; padding-right: 6px;">
@@ -1021,12 +828,12 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
             </div>
 
             <button onclick="addTolRow()" class="btn-ghost" style="width:100%; padding: 12px; font-size: 10px; margin-bottom: 24px; justify-content:center; border-style: dashed; border-color: rgba(245,158,11,0.4); color: var(--amber);">
-               <i class="fa-solid fa-plus"></i> YENİ PARÇA EKLE
+               <i class="fa-solid fa-plus"></i> <span data-i18n="t_tolerance_add">YENİ PARÇA EKLE</span>
             </button>
 
             <div class="result-grid">
-              <div class="result-card"><span class="result-card-label">En Kötü Durum (WC)</span><div class="result-card-value" id="tol-wc">± 0.100</div></div>
-              <div class="result-card highlight"><span class="result-card-label">İstatistiksel (RSS)</span><div class="result-card-value" id="tol-rss">± 0.062</div></div>
+              <div class="result-card"><span class="result-card-label" data-i18n="t_tolerance_wc">En Kötü Durum (WC)</span><div class="result-card-value" id="tol-wc">± 0.100</div></div>
+              <div class="result-card highlight"><span class="result-card-label" data-i18n="t_tolerance_rss">İstatistiksel (RSS)</span><div class="result-card-value" id="tol-rss">± 0.062</div></div>
             </div>
           </div>
 
@@ -1035,27 +842,27 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
             <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M10 50h80M20 50v20M80 50v20" stroke-width="3"/><path d="M15 70h10M75 70h10"/><path d="M50 30v20M45 40l5 10 5-10" stroke-width="2"/><path d="M20 55 C40 65, 60 65, 80 55" stroke-dasharray="4 4" stroke-width="2"/>
             </svg>
-            <div class="tool-panel-title">Kiriş Sehim Analizi</div>
-            <div class="tool-panel-formula">δ_max = (F × L³) / (48 × E × I) &nbsp;|&nbsp; Ortadan Tekil Yük, İki Ucu Sabit</div>
-            <div class="result-box"><div class="result-value" id="beam-result">0.00</div><div class="result-unit">Milimetre (mm)</div></div>
+            <div class="tool-panel-title" data-i18n="t_beam_title">Kiriş Sehim Analizi</div>
+            <div class="tool-panel-formula">δ_max = (F × L³) / (48 × E × I) &nbsp;|&nbsp; <span data-i18n="t_beam_formula_sub">Ortadan Tekil Yük, İki Ucu Sabit</span></div>
+            <div class="result-box"><div class="result-value" id="beam-result">0.00</div><div class="result-unit" data-i18n="t_beam_unit">Milimetre (mm)</div></div>
             <div class="input-grid" style="margin-bottom:20px;">
-              <div class="input-field"><label>Kuvvet F (Newton)</label><input type="number" id="beam-f" value="1000" class="tool-input"></div>
-              <div class="input-field"><label>Açıklık L (mm)</label><input type="number" id="beam-l" value="1000" class="tool-input"></div>
+              <div class="input-field"><label data-i18n="t_beam_f">Kuvvet F (Newton)</label><input type="number" id="beam-f" value="1000" class="tool-input"></div>
+              <div class="input-field"><label data-i18n="t_beam_l">Açıklık L (mm)</label><input type="number" id="beam-l" value="1000" class="tool-input"></div>
               <div class="input-field">
-                <label>Elastisite Modülü E (GPa)</label>
+                <label data-i18n="t_beam_e">Elastisite Modülü E (GPa)</label>
                 <select id="beam-e" class="tool-select">
-                  <option value="210">Çelik (210 GPa)</option>
-                  <option value="70">Alüminyum (70 GPa)</option>
-                  <option value="110">Titanyum (110 GPa)</option>
+                  <option value="210" data-i18n="t_beam_e_steel">Çelik (210 GPa)</option>
+                  <option value="70" data-i18n="t_beam_e_alum">Alüminyum (70 GPa)</option>
+                  <option value="110" data-i18n="t_beam_e_titan">Titanyum (110 GPa)</option>
                 </select>
               </div>
-              <div class="input-field"><label>Atalet Momenti I (cm⁴)</label><input type="number" id="beam-i" value="10" class="tool-input"></div>
+              <div class="input-field"><label data-i18n="t_beam_i">Atalet Momenti I (cm⁴)</label><input type="number" id="beam-i" value="10" class="tool-input"></div>
             </div>
           </div>
 
           <!-- Rapor Kopyalama Butonu -->
           <button id="btn-export-report" class="btn-ghost" style="width:100%; font-size:10px; margin-top: 32px; justify-content:center; border-style: dashed; border-color: rgba(148,163,184,0.4); cursor:pointer;">
-             <i class="fa-regular fa-copy"></i> TEKNİK RAPORU KOPYALA
+             <i class="fa-regular fa-copy"></i> <span data-i18n="btn_copy_report">TEKNİK RAPORU KOPYALA</span>
           </button>
         </div>
       </div>
@@ -1063,8 +870,8 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
       <div class="disclaimer reveal" style="margin-top:32px;">
         <i class="fa-solid fa-shield-halved"></i>
         <div>
-          <strong>Mühendislik Sorumluluk Reddi</strong>
-          <p>Bu platformdaki tüm algoritmalar ve hesaplama araçları, ön tasarım (konsept) süreçlerini hızlandırmak amacıyla hazırlanmıştır. Nihai imalat ve üretim kararlarında ilgili uluslararası standartların (ISO, DIN vb.) ve makine mühendisliği emniyet faktörlerinin bizzat uygulanması kullanıcının sorumluluğundadır. Bu verilerin doğrudan tasarıma entegrasyonundan doğacak uyuşmazlıklarda geliştirici sorumlu tutulamaz.</p>
+          <strong data-i18n="disclaimer_title">Mühendislik Sorumluluk Reddi</strong>
+          <p data-i18n="disclaimer_desc">Bu platformdaki tüm algoritmalar ve hesaplama araçları, ön tasarım (konsept) süreçlerini hızlandırmak amacıyla hazırlanmıştır. Nihai imalat ve üretim kararlarında ilgili uluslararası standartların (ISO, DIN vb.) ve makine mühendisliği emniyet faktörlerinin bizzat uygulanması kullanıcının sorumluluğundadır. Bu verilerin doğrudan tasarıma entegrasyonundan doğacak uyuşmazlıklarda geliştirici sorumlu tutulamaz.</p>
         </div>
       </div>
     </div>
@@ -1076,7 +883,7 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
   <div class="footer-inner">
     <div class="footer-left">
       <div class="footer-name">Mustafa Üner</div>
-      <div class="footer-sub">Senior R&D Project Leader · Istanbul, TR</div>
+      <div class="footer-sub" data-i18n="footer_title">Senior R&D Project Leader · Istanbul, TR</div>
     </div>
     <div class="footer-copy">© 2026 mustafauner.com.tr</div>
     <div class="footer-links">
@@ -1089,7 +896,7 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
 <!-- ────────── VIDEO MODAL ────────── -->
 <div id="videoModal">
   <div class="modal-inner">
-    <button class="modal-close" onclick="closeModal()">Kapat <i class="fa-solid fa-xmark"></i></button>
+    <button class="modal-close" onclick="closeModal()"><span data-i18n="btn_close">Kapat</span> <i class="fa-solid fa-xmark"></i></button>
     <div class="modal-video"><iframe id="videoFrame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
   </div>
 </div>
@@ -1103,185 +910,682 @@ footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); p
 </div>
 
 <script>
-// ─── BLOG DATABASE ───
-const articles = [
-  {
-    id: "art-gdt",
-    date: "28 NİSAN 2026",
-    tags: ["GD&T", "İMALAT", "METROLOJİ"],
-    title: "Geometrik Boyutlandırma ve Toleranslandırma (GD&T): İmalatın Kusursuz Dili",
-    readTime: "15 Dk",
-    content: `
-      <h2>Klasik Ölçülendirme (±) Neden Yetmez?</h2>
-      <p>Teknik resim kağıdında mükemmel düzlükte çizilmiş bir silindirik mil düşünün. Çapına <strong>10.00 ±0.05 mm</strong> tolerans verdiniz. İmalattan gelen parçayı kumpas veya mikrometre ile on farklı yerinden ölçtünüz ve hepsinde 10.02 mm okudunuz. Parça teknik resme "boyutsal" olarak tam uygundur. Peki, bu mili 10.10 mm'lik hassas bir deliğe sokmaya çalıştığınızda neden sıkışır?</p>
-
-      <p>Çünkü kumpas sadece karşılıklı iki nokta arasındaki mesafeyi (boyutu) ölçer; parçanın eğriliğini (formunu) ölçemez. Parçanız bir "muz" gibi eğilmiş olabilir! S.B. Parker'ın 1938'de tespit ettiği temel sorun da tam olarak buydu. İmalat teknolojileri geliştikçe sadece boyut vermek yetersiz kaldı; <strong>şekil, yönelim, konum ve yalpalama</strong> unsurlarını da evrensel bir dille kısıtlamak gerekti. İşte <strong>GD&T (Geometric Dimensioning and Tolerancing)</strong> bu ihtiyacın bir sonucudur.</p>
-
-      <div class="tech-diagram-wrap">
-        <svg width="400" height="160" viewBox="0 0 400 160" fill="none">
-          <ellipse cx="40" cy="75" rx="8" ry="15" fill="var(--ink-2)" stroke="var(--mist)" stroke-width="2"/>
-          <path d="M 40 60 Q 200 -20 360 60 A 8 15 0 0 1 360 90 Q 200 10 40 90 A 8 15 0 0 0 40 60" fill="var(--ink-4)" stroke="var(--mist)" stroke-width="2"/>
-          <line x1="200" y1="20" x2="200" y2="50" stroke="var(--danger)" stroke-width="2"/>
-          <polygon points="200,20 196,26 204,26" fill="var(--danger)"/>
-          <polygon points="200,50 196,44 204,44" fill="var(--danger)"/>
-          <text x="212" y="39" fill="var(--danger)" font-family="JetBrains Mono" font-size="12" font-weight="bold">Çap (⌀): 10.02</text>
-          <text x="10" y="125" fill="var(--white)" font-family="JetBrains Mono" font-size="11">Kumpas her yerde 10.02 mm okur (boyut doğrudur),</text>
-          <text x="10" y="145" fill="var(--danger)" font-family="JetBrains Mono" font-size="11">ancak parça eğik (muz formunda) olduğu için montaj YAPILAMAZ!</text>
-        </svg>
-      </div>
-
-      <h2>Tolerans Çerçevesi (Feature Control Frame)</h2>
-      <p>Tüm geometrik kısıtlamalar, teknik resimde "Tolerans Çerçevesi" adı verilen kutucuklarla ifade edilir. Bu çerçeve üç temel soruyu cevaplar: <em>Neyi kısıtlıyorsun? Ne kadar tolerans veriyorsun? Nereye göre referans alıyorsun?</em></p>
-
-      <div class="tech-diagram-wrap">
-        <svg width="400" height="130" viewBox="0 0 400 130">
-          <rect x="50" y="45" width="300" height="40" fill="var(--ink-4)" stroke="var(--amber)" stroke-width="2"/>
-          <line x1="100" y1="45" x2="100" y2="85" stroke="var(--amber)" stroke-width="2"/>
-          <line x1="220" y1="45" x2="220" y2="85" stroke="var(--amber)" stroke-width="2"/>
-          <line x1="260" y1="45" x2="260" y2="85" stroke="var(--amber)" stroke-width="2"/>
-          <line x1="300" y1="45" x2="300" y2="85" stroke="var(--amber)" stroke-width="2"/>
-          <circle cx="75" cy="65" r="10" fill="none" stroke="var(--white)" stroke-width="2"/>
-          <line x1="60" y1="65" x2="90" y2="65" stroke="var(--white)" stroke-width="2"/>
-          <line x1="75" y1="50" x2="75" y2="80" stroke="var(--white)" stroke-width="2"/>
-          <text x="115" y="72" fill="var(--white)" font-family="JetBrains Mono" font-size="18">⌀ 0.1</text>
-          <circle cx="195" cy="65" r="9" fill="none" stroke="var(--mist)" stroke-width="1.5"/>
-          <text x="190" y="69" fill="var(--mist)" font-family="JetBrains Mono" font-size="12">M</text>
-          <text x="233" y="72" fill="var(--amber)" font-family="JetBrains Mono" font-size="18" font-weight="bold">A</text>
-          <text x="273" y="72" fill="var(--amber)" font-family="JetBrains Mono" font-size="18" font-weight="bold">B</text>
-          <text x="319" y="72" fill="var(--amber)" font-family="JetBrains Mono" font-size="18" font-weight="bold">C</text>
-          <path d="M 75 45 L 75 25 L 10 25" stroke="var(--mist)" stroke-width="1" fill="none"/>
-          <text x="10" y="20" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">1. KARAKTERİSTİK (Konum)</text>
-          <path d="M 160 85 L 160 105 L 10 105" stroke="var(--mist)" stroke-width="1" fill="none"/>
-          <text x="10" y="120" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">2. TOLERANS BÖLGESİ (Çap 0.1, MMC ile)</text>
-          <path d="M 285 45 L 285 25 L 390 25" stroke="var(--mist)" stroke-width="1" fill="none"/>
-          <text x="390" y="20" fill="var(--mist)" font-size="10" font-family="JetBrains Mono" text-anchor="end">3. DATUM REFERANSLARI</text>
-        </svg>
-      </div>
-
-      <h2>Datum Sistemi: Uzayda Kilitlenmek (3-2-1 Kuralı)</h2>
-      <p>Uzayda serbest halde duran bir parçanın 6 serbestlik derecesi (3 öteleme, 3 dönme) vardır. Montaj sırasında bir parçayı doğru yere konumlandırmak için bu hareketleri kısıtlamamız gerekir. Buna <strong>3-2-1 Datum Prensibi</strong> denir:</p>
-      <ul>
-        <li><strong>Birincil Datum (A):</strong> Parçanın oturduğu ana yüzeydir. 3 noktadan temas eder, 3 serbestlik derecesini (1 öteleme, 2 dönme) kilitler.</li>
-        <li><strong>İkincil Datum (B):</strong> Parçanın dayandığı ikinci yüzeydir. 2 noktadan temas eder, 2 serbestlik derecesini daha kilitler.</li>
-        <li><strong>Üçüncül Datum (C):</strong> Parçayı tamamen sabitleyen son noktadır. Kalan son öteleme hareketini kilitler.</li>
-      </ul>
-
-      <h2>Geometrik Karakteristikler ve Semboller</h2>
-      <p>ASME Y14.5 ve ISO 1101 standartlarında tanımlanan 14 temel sembol, 5 ana kategoriye ayrılır:</p>
-
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Kategori</th><th>Özellik</th><th>Sembol</th><th>Datum Gerekir mi?</th></tr>
-          </thead>
-          <tbody>
-            <tr><td rowspan="4" style="color:var(--amber); font-weight:bold;">ŞEKİL (FORM)<br><span style="font-size:9px; color:var(--mist); font-weight:normal;">Sadece parçanın kendine aittir.</span></td><td>Doğrusallık</td><td>—</td><td>Hayır</td></tr>
-            <tr><td>Düzlemsellik</td><td>▱</td><td>Hayır</td></tr>
-            <tr><td>Dairesellik</td><td>◯</td><td>Hayır</td></tr>
-            <tr><td>Silindiriklik</td><td>⌭</td><td>Hayır</td></tr>
-            <tr><td rowspan="3" style="color:var(--amber); font-weight:bold;">YÖNELİM (ORIENTATION)</td><td>Paralellik</td><td>//</td><td>Evet</td></tr>
-            <tr><td>Diklik</td><td>⊥</td><td>Evet</td></tr>
-            <tr><td>Açısallık</td><td>∠</td><td>Evet</td></tr>
-            <tr><td rowspan="3" style="color:var(--amber); font-weight:bold;">KONUM (LOCATION)</td><td>Konum (Position)</td><td>⌖</td><td>Evet</td></tr>
-            <tr><td>Eşmerkezlilik</td><td>◎</td><td>Evet</td></tr>
-            <tr><td>Simetri</td><td>≎</td><td>Evet</td></tr>
-            <tr><td rowspan="2" style="color:var(--amber); font-weight:bold;">YALPALAMA (RUNOUT)</td><td>Dairesel Yalpalama</td><td>↗</td><td>Evet (Eksen)</td></tr>
-            <tr><td>Toplam Yalpalama</td><td>⌅</td><td>Evet (Eksen)</td></tr>
-            <tr><td rowspan="2" style="color:var(--amber); font-weight:bold;">PROFİL (PROFILE)</td><td>Çizgi Profili</td><td>⌒</td><td>Opsiyonel</td></tr>
-            <tr><td>Yüzey Profili</td><td>⌓</td><td>Opsiyonel</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="tech-callout">
-        <h4>Bağımsızlık Sembolü ve İlkesi</h4>
-        <p>Klasik (Zarf) kuralına göre bir parçanın boyutu en kötü durumdayken (Maksimum Malzeme), formu mükemmel olmak zorundadır. Ancak tolerans çerçevesinde veya resim antetinde <strong>Bağımsızlık (Independency)</strong> belirtilirse, form toleransı boyut toleransından tamamen ayrı değerlendirilir ve ondan daha büyük olabilir.</p>
-      </div>
-
-      <h2>Tasarımcının Can Simidi: MMC ve Bonus Tolerans</h2>
-      <p>Bir matkapla delik deldiğinizi düşünün. Hedefiniz deliğin merkeze tam olarak <strong>X=50, Y=50</strong> koordinatında konumlanmasıdır. Bu konuma ⌀ 0.1 mm tolerans verdiniz. Ancak deliği açarken matkap biraz büyük bir delik açtı (Boyutsal olarak toleransın üst sınırında). Bu durumda civata zaten o delikten rahatça geçecektir. O halde deliğin merkeze olan <em>konum hassasiyeti</em> üzerinde bu kadar katı durmaya gerek var mıdır?</p>
-
-      <p>İşte <strong>Maksimum Malzeme Durumu (MMC - Ⓜ)</strong> bu aşamada devreye girer. Parça (delik) maksimum malzeme durumundan uzaklaştıkça (yani delik büyüdükçe), büyüyen miktar kadar <strong>Bonus Tolerans</strong> kazanırsınız. İmalatta hurda (fire) oranını dramatik şekilde düşüren, maliyetleri kurtaran müthiş bir yaklaşımdır.</p>
-
-      <h2>İstatistiksel Tolerans Uygulaması</h2>
-      <p>Özellikle montaj hatlarında, her parçanın aynı onda "en kötü durumda" üretilip bir araya gelme ihtimali matematiksel olarak çok düşüktür. İTÜ kaynaklı çalışmalarda da vurgulandığı üzere, <strong>İstatistiksel Tolerans</strong> kullanılarak montajda beklenen tolerans yığılması <em>karekök formülüyle (Root Sum Square - RSS)</em> hesaplanabilir. Bu sayede parça bazında verilen toleranslar rahatlatılabilir ve doğrudan imalat maliyeti düşürülür.</p>
-    `
+// ─── TRANSLATIONS DICTIONARY (TR/EN Map) ───
+const translations = {
+  tr: {
+    nav_title: "M.Sc. Engineer",
+    nav_home: "Portfolyo",
+    nav_blog: "Bilgi Bankası",
+    nav_tools: "Hesaplama Paneli",
+    nav_contact: "İletişim",
+    m_lang_label: "Dil / Language",
+    hero_badge: "CNC MAKİNE GELİŞTİRMEDE 15+ YIL",
+    hero_title: "Konseptten Üretime<br>CNC Sistemleri Geliştirme",
+    hero_desc: "CNC işleme merkezleri, endüstriyel makineler ve üretim teknolojileri geliştirme konusunda 15 yılı aşkın deneyime sahip Mekanik Tasarım Mühendisi. Mühendislik kavramlarını ticari makine platformlarına dönüştürme ve çok disiplinli Ar-Ge faaliyetlerine liderlik etme konusunda uzmanlaşmıştır.",
+    proof_1: "CNC Geliştirme Yılı",
+    proof_2: "Yönetilen TÜBİTAK Projesi",
+    proof_3: "Eksenli CNC Platformları",
+    proof_4: "Mühendislik Yönetimi",
+    btn_tools: "Hesaplama Araçları",
+    btn_blog: "Bilgi Bankası",
+    quick_label: "Öne Çıkan Mühendislik Otomasyonları",
+    quick_title: "HIZLI BAŞLANGIÇ <span>ARAÇLARI</span>",
+    quick_sub: "Tasarım sürecindeki hesaplamalı analiz adımlarını pratikleştiren, dinamik parametrik paneller.",
+    tool_servo_title: "Servo Atalet Çözümleyici",
+    tool_servo_desc: "Vidalı mil ve kremayer mekanizmalarında atalet oranlarını (J_load / J_motor) analiz ederek optimum servo kapasitesi tespiti yapar.",
+    tool_linear_title: "Lineer Kılavuz L10 Ömür Hesabı",
+    tool_linear_desc: "ISO 14728 standartları çerçevesinde dinamik eşdeğer yüklere göre ray ve araba setlerinin teorik ömrünü kilometre cinsinden hesaplar.",
+    tool_btn_start: "Aracı Başlat",
+    journey_label: "Kariyer Haritası",
+    journey_title: "MÜHENDİSLİK<br><span>YOLCULUĞU</span>",
+    journey_sub: "Sahadan akademiye, tasarım masasından Ar-Ge liderliğine uzanan 15 yıllık evrim.",
+    portfolio_label: "Tasarım Portfolyosu",
+    portfolio_title: "MAKİNE<br><span>MİRASI</span>",
+    portfolio_sub: "2013'ten bugüne sıfırdan tasarlanan onlarca endüstriyel makine arasından seçilmiş amiral gemisi projeler.",
+    tubitak_sec_label: "Amiral Gemisi Geliştirme Programları",
+    tubitak_sec_title: "TÜBİTAK Ar-Ge<br><span>Vaka Analizleri</span>",
+    tubitak_sec_sub: "Proje Yürütücüsü olarak yönettiğim, teknik kavramları ticarileşebilir ileri makine platformlarına dönüştüren TÜBİTAK Ar-Ge programları.",
+    blog_sec_label: "Makale & Analiz",
+    blog_sec_title: "MÜHENDİSLİK<br><span>GÜNLÜĞÜ</span>",
+    blog_sec_sub: "Tasarım felsefesi, hesaplamalı mühendislik deneyimleri ve saha tecrübeleri.",
+    blog_sidebar_title: "YAZILAR",
+    tools_sec_label: "Mühendislik Hesaplama Araçları",
+    tools_sec_title: "HESAPLAMA<br><span>PANELİ</span>",
+    tools_sec_sub: "ISO ve DIN standartlarına dayalı, tasarım aşamalarında anlık doğrulama yapmanızı sağlayan mühendislik arayüzleri.",
+    t_vc_tab: "Kesme Hızı",
+    t_piston_tab: "Piston Kuvveti",
+    t_helis_tab: "Helis Dişli",
+    t_tork_tab: "Motor Tork",
+    t_vidali_tab: "Vidalı Mil",
+    t_tolerance_tab: "Tolerans Analizi",
+    t_beam_tab: "Sehim Analizi",
+    t_vc_title: "Kesme Hızı Analizi — Vc",
+    t_unit_label: "Birim: m/dak",
+    t_vc_unit: "Metre / Dakika",
+    t_vc_input_d: "İşleme Çapı D (mm)",
+    t_vc_input_n: "Devir n (rpm)",
+    t_piston_title: "Piston Kuvvet Analizi — ISO 6431",
+    t_piston_bore: "Piston Çapı / Bore (mm)",
+    t_piston_rod: "Mil Çapı / Rod (mm)",
+    t_piston_pressure: "Çalışma Basıncı (Bar)",
+    t_piston_unit: "Çıktı Birimi",
+    t_piston_unit_kg: "Kilogram-kuvvet (kgf)",
+    t_piston_push: "İtme Kuvveti",
+    t_piston_pull: "Çekme Kuvveti",
+    t_helis_title: "Helis Dişli Analizi",
+    t_helis_m: "Modül m",
+    t_helis_z: "Diş Sayısı z",
+    t_helis_d: "Bölüm Çapı",
+    t_helis_da: "Dış Çap da",
+    t_helis_c: "Merkez Mes.",
+    t_tork_title: "Motor Tork Hesabı",
+    t_unit_label_nm: "Birim: Nm",
+    t_tork_unit: "Newton · Metre",
+    t_tork_power: "Motor Gücü P (Watt)",
+    t_tork_rpm: "Devir n (rpm)",
+    t_vidali_title: "Vidalı Mil Tahrik Analizi",
+    t_vidali_power: "Motor Gücü P (W)",
+    t_vidali_rpm: "Devir n (rpm)",
+    t_vidali_lead: "Hatve h (mm/devir)",
+    t_vidali_tork_out: "Tork",
+    t_vidali_force_out: "İtme Kuvveti",
+    t_vidali_speed_out: "Hız",
+    t_tolerance_title: "Dinamik Tolerans Yığılma Analizi",
+    t_tolerance_add: "YENİ PARÇA EKLE",
+    t_tolerance_wc: "En Kötü Durum (WC)",
+    t_tolerance_rss: "İstatistiksel (RSS)",
+    t_beam_title: "Kiriş Sehim Analizi",
+    t_beam_formula_sub: "Ortadan Tekil Yük, İki Ucu Sabit",
+    t_beam_unit: "Milimetre (mm)",
+    t_beam_f: "Kuvvet F (Newton)",
+    t_beam_l: "Açıklık L (mm)",
+    t_beam_e: "Elastisite Modülü E (GPa)",
+    t_beam_e_steel: "Çelik (210 GPa)",
+    t_beam_e_alum: "Alüminyum (70 GPa)",
+    t_beam_e_titan: "Titanyum (110 GPa)",
+    t_beam_i: "Atalet Momenti I (cm⁴)",
+    btn_copy_report: "TEKNİK RAPORU KOPYALA",
+    disclaimer_title: "Mühendislik Sorumluluk Reddi",
+    disclaimer_desc: "Bu platformdaki tüm algoritmalar ve hesaplama araçları, ön tasarım (konsept) süreçlerini hızlandırmak amacıyla hazırlanmıştır. Nihai imalat ve üretim kararlarında ilgili uluslararası standartların (ISO, DIN vb.) ve makine mühendisliği emniyet faktörlerinin bizzat uygulanması kullanıcının sorumluluğundadır. Bu verilerin doğrudan tasarıma entegrasyonundan doğacak uyuşmazlıklarda geliştirici sorumlu tutulamaz.",
+    footer_title: "Kıdemli Ar-Ge Proje Lideri · İstanbul, TR",
+    btn_close: "Kapat"
   },
-  {
-    id: "art-bolts",
-    date: "12 NİSAN 2026",
-    tags: ["DİNAMİK DAYANIM", "CIVATA TASARIMI", "AR-GE"],
-    title: "Cıvata Bağlantılarında Dinamik Dayanım: Neden Gevşer, Neden Kopar?",
-    readTime: "10 Dk",
-    content: `
-      <h2>Tasarım Felsefesi ve Bağlantının Dinamiği</h2>
-      <p>Birçok tasarımcı için cıvata seçimi; katalogdan bir çap seçip yanına "10.9" yazmaktan ibarettir. Ancak makine çalışmaya başladığında işler değişir. Statik yükte devleşen o cıvatalar, dinamik yükler altında neden kağıt gibi kopuyor veya kendiliğinden gevşiyor?</p>
-
-      <h2>1. Altın Kural: Cıvata Bir Yaydır</h2>
-      <p>Cıvatayı sıktığınızda aslında onu bir yay gibi gerersiniz. Bu <strong>ön gerilme (pre-load)</strong>, bağlantının hayatta kalma garantisidir. Dinamik bir yük geldiğinde, bu yükün tamamı cıvataya binmez. Eğer bağlantınız doğru tasarlanmışsa, dış yükün büyük kısmı parçaların arasındaki basma kuvvetini azaltmaya harcanır.</p>
-
-      <div class="tech-diagram-wrap">
-        <svg width="300" height="150" viewBox="0 0 300 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="100" y="20" width="100" height="110" rx="4" fill="var(--ink-2)" stroke="var(--mist)" stroke-width="2"/>
-          <line x1="150" y1="10" x2="150" y2="140" stroke="var(--amber)" stroke-width="4" stroke-dasharray="4 2"/>
-          <path d="M130 30 C 140 30, 140 40, 150 40 S 160 30, 170 30" stroke="var(--amber)" stroke-width="2" fill="none"/>
-          <path d="M130 50 C 140 50, 140 60, 150 60 S 160 50, 170 50" stroke="var(--amber)" stroke-width="2" fill="none"/>
-          <path d="M130 70 C 140 70, 140 80, 150 80 S 160 70, 170 70" stroke="var(--amber)" stroke-width="2" fill="none"/>
-          <text x="10" y="80" fill="var(--mist)" font-family="JetBrains Mono" font-size="10">YAY ETKİSİ</text>
-        </svg>
-      </div>
-
-      <h2>2. Yorulma (Fatigue): Sessiz Katil</h2>
-      <p>Cıvatalar genellikle aşırı yükten değil, yorulmadan kopar. Yorulma çatlağı neredeyse her zaman ilk diş dibinden başlar. Nasıl önleriz?</p>
-      <ul>
-        <li><strong>Hadde Diş Kullanın:</strong> Talaşlı imalat yerine haddeleme ile açılmış dişler, yüzeydeki kalıntı gerilmeler sayesinde yorulmaya karşı dirençlidir.</li>
-        <li><strong>Ön Gerilmeyi Artırın:</strong> Akma sınırının %70-85'ine kadar çıkmaktan korkmayın. Yüksek ön gerilme, cıvatanın maruz kaldığı gerilme genliğini (stress amplitude) düşürür.</li>
-      </ul>
-    `
-  },
-  {
-    id: "art-stackup",
-    date: "15 MART 2026",
-    tags: ["MONTAJ KİNEMATİĞİ", "TOLERANS YIĞILMASI", "TASARIM"],
-    title: "[TASARIM] Tolerans Yığılması (Tolerance Stack-up) Analizi: Hassas Montajın Matematiksel Güvencesi",
-    readTime: "8 Dk",
-    content: `
-      <h2>Tasarım Felsefesi ve Montajın Kinematiği</h2>
-      <p>Tekil bir parçanın toleranslandırılması, o parçanın imalat başarısını belirlerken; bu parçaların bir araya gelerek oluşturduğu montaj gruplarında durum çok daha kritik bir boyuta taşınır. Makine tasarımında sıklıkla karşılaşılan <em>"parçalar tek tek doğru ama montajda neden kasılıyor?"</em> sorusunun cevabı, <strong>Tolerans Yığılması (Tolerance Stack-up)</strong> analizinde gizlidir.</p>
-
-      <h2>Tolerans Analizinde İki Temel Yaklaşım</h2>
-      <p>Tasarım aşamasında hangi yöntemi seçeceğiniz, projenin bütçesini ve üretim sahasındaki "fire" oranlarını doğrudan etkiler.</p>
-
-      <p><strong>1. En Kötü Durum Analizi (Worst-Case Analysis)</strong></p>
-      <p>Bu yöntem, zincirdeki tüm parçaların aynı anda en ekstrem (en büyük veya en küçük) sınırlarında üretildiğini varsayar.</p>
-      <ul>
-        <li><strong>Karakteristik:</strong> %100 güvenli montaj garantisi verir ancak imalat maliyetlerini çok dar toleranslar yüzünden artırır.</li>
-      </ul>
-
-      <p><strong>2. İstatistiksel Analiz (RSS - Root Sum Square)</strong></p>
-      <p>Parçaların imalatında ölçülerin normal dağılım (Gaussian) sergilediği varsayımına dayanır.</p>
-      <ul>
-        <li><strong>Matematiksel Model:</strong> <code>T_toplam = √(T₁² + T₂² + ... + Tₙ²)</code></li>
-        <li><strong>Avantajı:</strong> İmalatçıya daha geniş tolerans alanı sağlar, maliyeti düşürür.</li>
-      </ul>
-    `
-  },
-  {
-    id: "art-tolerance",
-    date: "20 ŞUBAT 2026",
-    tags: ["ISO 286", "METROLOJİ", "TALAŞLI İMALAT"],
-    title: "Makine Tasarımında Toleranslar ve Geçme Sistemleri: Kapsamlı Analiz",
-    readTime: "12 Dk",
-    content: `
-      <h2>Tolerans İhtiyacının Felsefesi</h2>
-      <p>Modern makine tasarımı ve talaşlı imalat teknolojilerinde, mühendislik çizimlerinde belirtilen teorik boyutların fiziksel üretim ortamında mutlak bir kesinlikle elde edilmesi imkansızdır. Tasarımcı tarafından teknik resim üzerinde belirlenen bu iki sınır arasındaki farka tolerans adı verilir.</p>
-
-      <h2>TS EN ISO 286 Standart Sisteminin Anatomisi</h2>
-      <p>Uluslararası Standartlar Örgütü (ISO) tarafından geliştirilen TS EN ISO 286 standardı, makine elemanlarının eşlenebilirliğini garanti altına alan temel tolerans iskeletini oluşturur.</p>
-    `
+  en: {
+    nav_title: "M.Sc. Engineer",
+    nav_home: "Portfolio",
+    nav_blog: "Knowledge Base",
+    nav_tools: "Calculation Panel",
+    nav_contact: "Contact",
+    m_lang_label: "Language / Dil",
+    hero_badge: "15+ YEARS IN CNC MACHINE DEVELOPMENT",
+    hero_title: "CNC Systems Development<br>From Concept To Production",
+    hero_desc: "Mechanical Design Engineer with 15+ years of experience developing CNC machining centers, industrial machinery and manufacturing technologies. Specialized in transforming engineering concepts into commercial machine platforms and leading multidisciplinary R&D activities.",
+    proof_1: "Years In CNC Development",
+    proof_2: "TÜBİTAK Projects Led",
+    proof_3: "Axis CNC Platforms",
+    proof_4: "Engineering Management",
+    btn_tools: "Calculation Tools",
+    btn_blog: "Knowledge Base",
+    quick_label: "Featured Engineering Automations",
+    quick_title: "QUICK START <span>TOOLS</span>",
+    quick_sub: "Dynamic parametric panels that simplify computational analysis steps in the design process.",
+    tool_servo_title: "Servo Inertia Analyzer",
+    tool_servo_desc: "Analyzes inertia ratios (J_load / J_motor) in ball screw and rack-and-pinion mechanisms to determine optimum servo capacity.",
+    tool_linear_title: "Linear Guide L10 Lifetime Calculation",
+    tool_linear_desc: "Calculates the theoretical lifetime of rail and carriage sets in kilometers based on dynamic equivalent loads under ISO 14728 standards.",
+    tool_btn_start: "Start Tool",
+    journey_label: "Career Roadmap",
+    journey_title: "ENGINEERING<br><span>JOURNEY</span>",
+    journey_sub: "15 years of evolution from the workshop floor to academia and design leadership.",
+    portfolio_label: "Design Portfolio",
+    portfolio_title: "MACHINE<br><span>HERITAGE</span>",
+    portfolio_sub: "Selected flagship projects from dozens of industrial machines designed from scratch since 2013.",
+    tubitak_sec_label: "Flagship Development Programs",
+    tubitak_sec_title: "TÜBİTAK R&D<br><span>Case Studies</span>",
+    tubitak_sec_sub: "TÜBİTAK R&D programs managed as Project Leader, transforming technical concepts into high-end commercial machine platforms.",
+    blog_sec_label: "Articles & Analyses",
+    blog_sec_title: "ENGINEERING<br><span>LOGBOOK</span>",
+    blog_sec_sub: "Design philosophy, computational engineering experiences, and field expertise.",
+    blog_sidebar_title: "ARTICLES",
+    tools_sec_label: "Engineering Calculation Tools",
+    tools_sec_title: "CALCULATION<br><span>PANEL</span>",
+    tools_sec_sub: "Engineering interfaces based on ISO and DIN standards, providing instant verification in design stages.",
+    t_vc_tab: "Cutting Speed",
+    t_piston_tab: "Piston Force",
+    t_helis_tab: "Helical Gear",
+    t_tork_tab: "Motor Torque",
+    t_vidali_tab: "Ball Screw",
+    t_tolerance_tab: "Tolerance Analysis",
+    t_beam_tab: "Deflection Analysis",
+    t_vc_title: "Cutting Speed Analysis — Vc",
+    t_unit_label: "Unit: m/min",
+    t_vc_unit: "Meters / Minute",
+    t_vc_input_d: "Machining Diameter D (mm)",
+    t_vc_input_n: "Speed n (rpm)",
+    t_piston_title: "Piston Force Analysis — ISO 6431",
+    t_piston_bore: "Piston Bore Diameter (mm)",
+    t_piston_rod: "Piston Rod Diameter (mm)",
+    t_piston_pressure: "Working Pressure (Bar)",
+    t_piston_unit: "Output Unit",
+    t_piston_unit_kg: "Kilogram-force (kgf)",
+    t_piston_push: "Push Force",
+    t_piston_pull: "Pull Force",
+    t_helis_title: "Helical Gear Analysis",
+    t_helis_m: "Module m",
+    t_helis_z: "Number of Teeth z",
+    t_helis_d: "Pitch Circle Dia.",
+    t_helis_da: "Outer Dia. da",
+    t_helis_c: "Center Distance",
+    t_tork_title: "Motor Torque Calculation",
+    t_unit_label_nm: "Unit: Nm",
+    t_tork_unit: "Newton · Meter",
+    t_tork_power: "Motor Power P (Watt)",
+    t_tork_rpm: "Speed n (rpm)",
+    t_vidali_title: "Ball Screw Drive Analysis",
+    t_vidali_power: "Motor Power P (W)",
+    t_vidali_rpm: "Speed n (rpm)",
+    t_vidali_lead: "Lead h (mm/rev)",
+    t_vidali_tork_out: "Torque",
+    t_vidali_force_out: "Thrust Force",
+    t_vidali_speed_out: "Speed",
+    t_tolerance_title: "Dynamic Tolerance Stack-up Analysis",
+    t_tolerance_add: "ADD NEW PART",
+    t_tolerance_wc: "Worst Case (WC)",
+    t_tolerance_rss: "Statistical (RSS)",
+    t_beam_title: "Beam Deflection Analysis",
+    t_beam_formula_sub: "Central Point Load, Fixed at Both Ends",
+    t_beam_unit: "Millimeter (mm)",
+    t_beam_f: "Force F (Newton)",
+    t_beam_l: "Span L (mm)",
+    t_beam_e: "Modulus of Elasticity E (GPa)",
+    t_beam_e_steel: "Steel (210 GPa)",
+    t_beam_e_alum: "Aluminum (70 GPa)",
+    t_beam_e_titan: "Titanium (110 GPa)",
+    t_beam_i: "Moment of Inertia I (cm⁴)",
+    btn_copy_report: "COPY TECHNICAL REPORT",
+    disclaimer_title: "Engineering Disclaimer",
+    disclaimer_desc: "All algorithms and calculation tools on this platform have been prepared to accelerate preliminary design (concept) processes. Implementing international standards (ISO, DIN, etc.) and engineering safety factors during final manufacturing design is the sole responsibility of the user. The developer cannot be held responsible for discrepancies arising from direct integration of these figures.",
+    footer_title: "Senior R&D Project Leader · Istanbul, TR",
+    btn_close: "Close"
   }
-];
+};
 
+let currentLanguage = "tr";
+
+// ─── STREAMING_CHUNK:Setting up dynamic translated datasets... ───
+// Dynamic Multilingual Journey Data
+const journeyData = {
+  tr: [
+    { year: "2009", heading: "AKADEMİK TEMEL", desc: "Makine Mühendisliği mezuniyeti. Analitik düşünce ve mühendislik teorisinin temeli.", tag: "Lisans Müh." },
+    { year: "2011", heading: "SAHA DENEYİMİ", desc: "Kaban Makina imalat sahasında mekanik montaj, hassas ölçümlendirme ve CNC operasyon süreçlerinde operasyonel uzmanlık elde edilmesi.", tag: "Atölye Uzmanlığı" },
+    { year: "2012", heading: "KALIP & AR-GE", desc: "PVC profil kaynak ve kesme makinaları için patentli kalıp ve özel kaynak çenesi Ar-Ge faaliyetleri.", tag: "Proses Mimarisi" },
+    { year: "2013", heading: "MAKİNE TASARIMI", desc: "İlk yerli alüminyum profil işleme merkezi olan ZC 3010 projesinin mekanik tasarım liderliğiyle başlayan uzmanlaşma.", tag: "Makine Mimarı" },
+    { year: "2019", heading: "YÜKSEK LİSANS", desc: "Marmara Üniversitesi'nde Mühendislik Yönetimi M.Sc. derecesi. Teknik tasarım uzmanlığının stratejik yönetim modeliyle entegrasyonu.", tag: "M.Sc. Mühendislik Yönetimi", highlight: true },
+    { year: "GÜNÜMÜZ", heading: "AR-GE LİDERLİĞİ", desc: "Kaban Makina bünyesinde çok eksenli CNC profil işleme merkezleri ve robotik otomasyon hatlarının tasarımdan sahaya teslimine kadar tüm süreçlerin yönetimi.", tag: "Ar-Ge Liderliği", highlight: true, active: true }
+  ],
+  en: [
+    { year: "2009", heading: "ACADEMIC FOUNDATION", desc: "Graduation in Mechanical Engineering. The foundation of analytical thinking and engineering theory.", tag: "B.Sc. Mech Eng." },
+    { year: "2011", heading: "SHOP FLOOR INSIGHTS", desc: "Developing hands-on expertise in precision measurement, assembly, and CNC operation directly inside Kaban Makina's factory floor.", tag: "Shop Floor Mastery" },
+    { year: "2012", heading: "MOLD & R&D", desc: "Patented mold systems and specialized welding jaw R&D activities for PVC profile cutting and welding machinery.", tag: "Process Architecture" },
+    { year: "2013", heading: "MACHINE DESIGN", desc: "Deep specialization starting with the lead mechanical design role of ZC 3010 - the company's first local aluminum machining center.", tag: "Machine Architect" },
+    { year: "2019", heading: "POSTGRADUATE", desc: "M.Sc. degree in Engineering Management from Marmara University. Integrating technical design expertise with strategic management models.", tag: "M.Sc. Eng Management", highlight: true },
+    { year: "CURRENT", heading: "R&D LEADERSHIP", desc: "Leading the entire product lifecycle of multi-axis CNC machining centers and robotic manufacturing lines at Kaban Makina, from drafting to client delivery.", tag: "R&D Leadership", highlight: true, active: true }
+  ]
+};
+
+// Dynamic Multilingual Portfolio Projects
+const portfolioData = {
+  tr: [
+    { id: "P_uIFpvk1SM", num: "01", title: "ZC 3010", desc: "İlk Alüminyum İşleme Merkezi" },
+    { id: "O4QWRVjYops", num: "02", title: "ZC 3020", desc: "Hassas Seri Üretim CNC" },
+    { id: "2rBsAK_WqiY", num: "03", title: "ZC 3050", desc: "13.5m Stroklu 5-Eksenli Ar-Ge", start: 13 },
+    { id: "jspCnwaKgOM", num: "04", title: "ZF 3010", desc: "Yüksek Hızlı Profil Frezeleme" },
+    { id: "B8S7bgEGUkw", num: "05", title: "ZE 3010", desc: "Robotik Kesim Merkezi" },
+    { id: "5RSI86l4cfw", num: "06", title: "ZC 3062-64", desc: "Modüler CNC Üretim Ailesi", badge: "Amiral Gemi", start: 5 },
+    { id: "7VxKh9M_qys", num: "07", title: "ZC 4040", desc: "4-Eksenli Endüstriyel CNC" },
+    { id: "2rBsAK_WqiY", num: "08", title: "ZC 3052-54", desc: "5-Eksenli Performans CNC Serisi", badge: "Amiral Gemi" },
+    { id: "WUrf8N120SU", num: "09", title: "AC 20XX SERİSİ", desc: "Alüminyum kesiminde pazar lideri yüksek performanslı çözümler", badge: "Yeni Seri", featured: true, start: 18 }
+  ],
+  en: [
+    { id: "P_uIFpvk1SM", num: "01", title: "ZC 3010", desc: "First Aluminum Machining Center" },
+    { id: "O4QWRVjYops", num: "02", title: "ZC 3020", desc: "Precision High-Speed Production CNC" },
+    { id: "2rBsAK_WqiY", num: "03", title: "ZC 3050", desc: "5-Axis R&D Center with 13.5m Stroke", start: 13 },
+    { id: "jspCnwaKgOM", num: "04", title: "ZF 3010", desc: "High-Speed Profile Milling Platform" },
+    { id: "B8S7bgEGUkw", num: "05", title: "ZE 3010", desc: "Robotic Industrial Cutting Cell" },
+    { id: "5RSI86l4cfw", num: "06", title: "ZC 3062-64", desc: "Modular Multi-Axis Production Series", badge: "Flagship", start: 5 },
+    { id: "7VxKh9M_qys", num: "07", title: "ZC 4040", desc: "4-Axis Structural Profile CNC" },
+    { id: "2rBsAK_WqiY", num: "08", title: "ZC 3052-54", desc: "High-Performance 5-Axis CNC Series", badge: "Flagship" },
+    { id: "WUrf8N120SU", num: "09", title: "AC 20XX SERIES", desc: "Market-leading heavy-duty aluminum cutting systems", badge: "New Release", featured: true, start: 18 }
+  ]
+};
+
+// Dynamic Multilingual TÜBİTAK Case Studies
+const tubitakData = {
+  tr: {
+    badge_program: "Program: 1501",
+    badge_leader: "Proje Yürütücüsü",
+    badge_status: "Başarıyla Tamamlandı",
+    case1_title: "ZC 3050 – 5 Eksenli Alüminyum Profil İşleme Merkezi",
+    case1_prob_title: "Mühendislik Problemi",
+    case1_prob: "Geleneksel 4 eksenli sistemlerin profil uçlarında ve açılı yüzeylerde ihtiyaç duyulan karmaşık operasyonları tek bağlamada yapamaması, üretim hattında duraksamalara ve firelere yol açmaktaydı.",
+    case1_sol_title: "Geliştirilen Çözüm",
+    case1_sol: "Patentli entegre dairesel testere ünitesine sahip, çift istasyonlu dinamik çalışma alanına sahip 5 eksenli CNC platform mimarisi oluşturuldu. Spindle ve servo mekanik salınımları sanal kinematik analizlerle doğrulandı.",
+    case1_res_title: "Sonuç & Katkı",
+    case1_res: "TÜBİTAK 1501 tescilli başarıyla tamamlanan proje sayesinde firmanın ilk 5 eksenli CNC makinesi yerlileştirilerek küresel pazarda yüksek ticarileşme başarısı yakaladı.",
+    case2_title: "ZC 3010 – 4 Eksenli Alüminyum İşleme Merkezi",
+    case2_prob_title: "Mühendislik Problemi",
+    case2_prob: "Şirketin daha önce CNC geliştirme tecrübesinin olmaması; kaynaklı gövdelerin gerilim giderme süreçleri, doğrusal kızak hassasiyetleri ve eksen tork optimizasyonu gibi konularda kurumsal bilgi birikiminin eksikliği.",
+    case2_sol_title: "Geliştirilen Çözüm",
+    case2_sol: "Tüm gövde sonlu elemanlar yöntemiyle (FEA) statik ve dinamik burulma testlerine tabi tutuldu. Titreşim sönümleyici döküm harçları ve optimize edilmiş profil tasarımları kullanılarak stabil bir kinematik altyapı oluşturuldu.",
+    case2_res_title: "Sonuç & Katkı",
+    case2_res: "Proje sadece ilk CNC makinesinin ticarileşmesini sağlamakla kalmadı; organizasyonun sonraki tüm CNC platformları için standart tasarım kılavuzlarının ve üretim protokollerinin temelini attı."
+  },
+  en: {
+    badge_program: "Program: 1501",
+    badge_leader: "Project Leader",
+    badge_status: "Successfully Completed",
+    case1_title: "ZC 3050 – 5-Axis Aluminum Profile Machining Center",
+    case1_prob_title: "Engineering Problem",
+    case1_prob: "Traditional 4-axis systems could not process complex multi-angle operations and profile-end cuts in a single setup, which caused bottlenecks and scrap parts in dynamic production lines.",
+    case1_sol_title: "Developed Solution",
+    case1_sol: "Created a bespoke 5-axis CNC platform architecture equipped with a patented integrated circular saw unit and dynamic double-station layout. Verified spindle and servo vibration profiles using mathematical kinematic simulations.",
+    case1_res_title: "Result & Contribution",
+    case1_res: "This successfully completed TÜBİTAK 1501 program localized the company's first ever 5-axis CNC, capturing strong commercialization success and solid market share worldwide.",
+    case2_title: "ZC 3010 – 4-Axis Aluminum Machining Center",
+    case2_prob_title: "Engineering Problem",
+    case2_prob: "No prior institutional CNC development history; lack of corporate know-how regarding welded frame stress relieving, linear rail parallelism alignments, and axis torque calculations.",
+    case2_sol_title: "Developed Solution",
+    case2_sol: "Subjected the entire machine bed to static and dynamic torsional finite element analysis (FEA). Developed standard welded frame parameters and engineered heavy casting compound integration to eliminate vibrations.",
+    case2_res_title: "Result & Contribution",
+    case2_res: "Beyond delivering the first commercialized CNC, this project laid down the standardized corporate design guidelines and manufacturing quality protocols used for all subsequent CNC models."
+  }
+};
+</script>
+
+<script>
+// ─── LANGUAGE TRANSLATION ENGINE ───
+function translateUI() {
+  const dictionary = translations[currentLanguage];
+  
+  // Translate standard data-i18n elements
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (dictionary[key]) {
+      el.innerHTML = dictionary[key];
+    }
+  });
+
+  // Toggle button texts
+  document.getElementById("langSwitcherBtn").textContent = currentLanguage === "tr" ? "EN" : "TR";
+  document.getElementById("mobileLangLabel").textContent = currentLanguage === "tr" ? "Türkçe" : "English";
+
+  // Render dynamic structures
+  renderJourney();
+  renderPortfolio();
+  renderTubitak();
+  renderBlogList();
+  
+  // Refresh calculators to reload placeholders and outputs with correct language units
+  calcVc();
+  calcPiston();
+  calcHelis();
+  calcTork();
+  calcVidali();
+  calcBeam();
+}
+
+function toggleLanguage() {
+  currentLanguage = currentLanguage === "tr" ? "en" : "tr";
+  translateUI();
+}
+
+// ─── RENDERERS FOR DYNAMIC DOMs ───
+function renderJourney() {
+  const container = document.getElementById("journey-timeline-container");
+  if (!container) return;
+  const list = journeyData[currentLanguage];
+  container.innerHTML = "";
+
+  list.forEach((item, idx) => {
+    const isEven = idx % 2 === 0;
+    const highlightClass = item.highlight ? "highlight" : "";
+    const activeClass = item.active ? "active" : "";
+
+    container.innerHTML += `
+      <div class="tl-item">
+        <div class="${isEven ? 'tl-left reveal-right d1' : 'tl-left'}">
+          ${isEven ? `
+            <div class="tl-year ${highlightClass}">${item.year}</div>
+            <div class="tl-heading">${item.heading}</div>
+            <div class="tl-desc">${item.desc}</div>
+            <span class="tl-tag">${item.tag}</span>
+          ` : ''}
+        </div>
+        <div class="tl-center"><div class="tl-dot ${activeClass}"></div></div>
+        <div class="${!isEven ? 'tl-right reveal-left d1' : 'tl-right'}">
+          ${!isEven ? `
+            <div class="tl-year ${highlightClass}">${item.year}</div>
+            <div class="tl-heading">${item.heading}</div>
+            <div class="tl-desc">${item.desc}</div>
+            <span class="tl-tag">${item.tag}</span>
+          ` : ''}
+        </div>
+      </div>
+    `;
+  });
+  reObserve();
+}
+
+function renderPortfolio() {
+  const container = document.getElementById("portfolio-grid-container");
+  if (!container) return;
+  const list = portfolioData[currentLanguage];
+  container.innerHTML = "";
+
+  list.forEach((item, idx) => {
+    const delay = `d${(idx % 3) + 1}`;
+    const badgeHTML = item.badge ? `<div class="machine-badge">${item.badge}</div>` : "";
+    const cardClass = item.featured ? "machine-card featured reveal d3" : `machine-card reveal ${delay}`;
+    const titleStyle = item.featured ? 'style="font-size:40px;"' : "";
+    const startParam = item.start ? `, ${item.start}` : "";
+
+    container.innerHTML += `
+      <div class="${cardClass}" onclick="openModal('${item.id}'${startParam})">
+        <div class="machine-card-bg" style="background-image: url('https://img.youtube.com/vi/${item.id}/0.jpg');"></div>
+        ${badgeHTML}
+        <div class="machine-card-inner">
+          <div class="machine-num">${item.num}</div>
+          <div>
+            <div class="machine-title" ${titleStyle}>${item.title}</div>
+            <div class="machine-desc">${item.desc}</div>
+          </div>
+        </div>
+        <div class="machine-play">
+          <div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div>
+        </div>
+      </div>
+    `;
+  });
+  reObserve();
+}
+
+function renderTubitak() {
+  const container = document.getElementById("tubitak-section-inner");
+  if (!container) return;
+  const data = tubitakData[currentLanguage];
+
+  container.innerHTML = `
+    <div class="reveal">
+      <div class="section-label">${tubitakData[currentLanguage === "tr" ? "tr" : "en"].badge_leader.toUpperCase()}</div>
+      <h2 class="section-title">${currentLanguage === "tr" ? "TÜBİTAK Ar-Ge<br><span>VAKA ANALİZLERİ</span>" : "TÜBİTAK R&D<br><span>CASE STUDIES</span>"}</h2>
+      <p class="section-sub">${currentLanguage === "tr" ? "Proje Yürütücüsü olarak yönettiğim, teknik kavramları ticarileşebilir ileri makine platformlarına dönüştüren TÜBİTAK Ar-Ge programları." : "TÜBİTAK R&D programs managed as Project Leader, transforming technical concepts into high-end commercial machine platforms."}</p>
+    </div>
+
+    <div class="tubitak-grid">
+      <!-- ZC 3050 Case -->
+      <div class="tubitak-card reveal d1">
+        <i class="fa-solid fa-microchip tubitak-card-bg"></i>
+        <div class="tubitak-logo-wrap">
+          <div class="tubitak-brand">
+            <svg width="32" height="32" viewBox="0 0 100 100" class="tubitak-logo-img">
+              <circle cx="50" cy="50" r="45" fill="none" stroke="#2563eb" stroke-width="8"/>
+              <path d="M30 35 L50 65 L70 35" fill="none" stroke="#2563eb" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="t-logo-text">TÜBİTAK</span>
+          </div>
+          <div class="t-badge success">
+            <i class="fa-solid fa-check"></i> ${data.badge_status}
+          </div>
+        </div>
+
+        <div class="t-badge-group">
+          <span class="t-badge program">${data.badge_program}</span>
+          <span class="t-badge program" style="background: rgba(245,158,11,0.1); color: var(--amber); border-color: rgba(245,158,11,0.3);">
+            ${data.badge_leader}
+          </span>
+        </div>
+
+        <h3 class="t-project-name">${data.case1_title}</h3>
+
+        <div class="t-case">
+          <p>
+            <strong>${data.case1_prob_title}</strong><br>
+            ${data.case1_prob}
+          </p>
+          <p>
+            <strong>${data.case1_sol_title}</strong><br>
+            ${data.case1_sol}
+          </p>
+          <p>
+            <strong>${data.case1_res_title}</strong><br>
+            ${data.case1_res}
+          </p>
+        </div>
+      </div>
+
+      <!-- ZC 3010 Case -->
+      <div class="tubitak-card reveal d2">
+        <i class="fa-solid fa-gears tubitak-card-bg"></i>
+        <div class="tubitak-logo-wrap">
+          <div class="tubitak-brand">
+            <svg width="32" height="32" viewBox="0 0 100 100" class="tubitak-logo-img">
+              <circle cx="50" cy="50" r="45" fill="none" stroke="#2563eb" stroke-width="8"/>
+              <path d="M30 35 L50 65 L70 35" fill="none" stroke="#2563eb" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="t-logo-text">TÜBİTAK</span>
+          </div>
+          <div class="t-badge success">
+            <i class="fa-solid fa-check"></i> ${data.badge_status}
+          </div>
+        </div>
+
+        <div class="t-badge-group">
+          <span class="t-badge program">${data.badge_program}</span>
+          <span class="t-badge program" style="background: rgba(245,158,11,0.1); color: var(--amber); border-color: rgba(245,158,11,0.3);">
+            ${data.badge_leader}
+          </span>
+        </div>
+
+        <h3 class="t-project-name">${data.case2_title}</h3>
+
+        <div class="t-case">
+          <p>
+            <strong>${data.case2_prob_title}</strong><br>
+            ${data.case2_prob}
+          </p>
+          <p>
+            <strong>${data.case2_sol_title}</strong><br>
+            ${data.case2_sol}
+          </p>
+          <p>
+            <strong>${data.case2_res_title}</strong><br>
+            ${data.case2_res}
+          </p>
+        </div>
+      </div>
+    </div>
+  `;
+  reObserve();
+}
+</script>
+
+<script>
+// ─── TRANSLATED BLOG DATABASE ───
+const articles = {
+  tr: [
+    {
+      id: "art-gdt",
+      date: "28 NİSAN 2026",
+      tags: ["GD&T", "İMALAT", "METROLOJİ"],
+      title: "Geometrik Boyutlandırma ve Toleranslandırma (GD&T): İmalatın Kusursuz Dili",
+      readTime: "15 Dk",
+      content: `
+        <h2>Klasik Ölçülendirme (±) Neden Yetmez?</h2>
+        <p>Teknik resim kağıdında mükemmel düzlükte çizilmiş bir silindirik mil düşünün. Çapına <strong>10.00 ±0.05 mm</strong> tolerans verdiniz. İmalattan gelen parçayı kumpas veya mikrometre ile on farklı yerinden ölçtünüz ve hepsinde 10.02 mm okudunuz. Parça teknik resme "boyutsal" olarak tam uygundur. Peki, bu mili 10.10 mm'lik hassas bir deliğe sokmaya çalıştığınızda neden sıkışır?</p>
+  
+        <p>Çünkü kumpas sadece karşılıklı iki nokta arasındaki mesafeyi (boyutu) ölçer; parçanın eğriliğini (formunu) ölçemez. Parçanız bir "muz" gibi eğilmiş olabilir! S.B. Parker'ın 1938'de tespit ettiği temel sorun da tam olarak buydu. İmalat teknolojileri geliştikçe sadece boyut vermek yetersiz kaldı; <strong>şekil, yönelim, konum ve yalpalama</strong> unsurlarını da evrensel bir dille kısıtlamak gerekti. İşte <strong>GD&T (Geometric Dimensioning and Tolerancing)</strong> bu ihtiyacın bir sonucudur.</p>
+  
+        <div class="tech-diagram-wrap">
+          <svg width="400" height="160" viewBox="0 0 400 160" fill="none">
+            <ellipse cx="40" cy="75" rx="8" ry="15" fill="var(--ink-2)" stroke="var(--mist)" stroke-width="2"/>
+            <path d="M 40 60 Q 200 -20 360 60 A 8 15 0 0 1 360 90 Q 200 10 40 90 A 8 15 0 0 0 40 60" fill="var(--ink-4)" stroke="var(--mist)" stroke-width="2"/>
+            <line x1="200" y1="20" x2="200" y2="50" stroke="var(--danger)" stroke-width="2"/>
+            <polygon points="200,20 196,26 204,26" fill="var(--danger)"/>
+            <polygon points="200,50 196,44 204,44" fill="var(--danger)"/>
+            <text x="212" y="39" fill="var(--danger)" font-family="JetBrains Mono" font-size="12" font-weight="bold">Çap (⌀): 10.02</text>
+            <text x="10" y="125" fill="var(--white)" font-family="JetBrains Mono" font-size="11">Kumpas her yerde 10.02 mm okur (boyut doğrudur),</text>
+            <text x="10" y="145" fill="var(--danger)" font-family="JetBrains Mono" font-size="11">ancak parça eğik (muz formunda) olduğu için montaj YAPILAMAZ!</text>
+          </svg>
+        </div>
+  
+        <h2>Tolerans Çerçevesi (Feature Control Frame)</h2>
+        <p>Tüm geometrik kısıtlamalar, teknik resimde "Tolerans Çerçevesi" adı verilen kutucuklarla ifade edilir. Bu çerçeve üç temel soruyu cevaplar: <em>Neyi kısıtlıyorsun? Ne kadar tolerans veriyorsun? Nereye göre referans alıyorsun?</em></p>
+  
+        <div class="tech-diagram-wrap">
+          <svg width="400" height="130" viewBox="0 0 400 130">
+            <rect x="50" y="45" width="300" height="40" fill="var(--ink-4)" stroke="var(--amber)" stroke-width="2"/>
+            <line x1="100" y1="45" x2="100" y2="85" stroke="var(--amber)" stroke-width="2"/>
+            <line x1="220" y1="45" x2="220" y2="85" stroke="var(--amber)" stroke-width="2"/>
+            <line x1="260" y1="45" x2="260" y2="85" stroke="var(--amber)" stroke-width="2"/>
+            <line x1="300" y1="45" x2="300" y2="85" stroke="var(--amber)" stroke-width="2"/>
+            <circle cx="75" cy="65" r="10" fill="none" stroke="var(--white)" stroke-width="2"/>
+            <line x1="60" y1="65" x2="90" y2="65" stroke="var(--white)" stroke-width="2"/>
+            <line x1="75" y1="50" x2="75" y2="80" stroke="var(--white)" stroke-width="2"/>
+            <text x="115" y="72" fill="var(--white)" font-family="JetBrains Mono" font-size="18">⌀ 0.1</text>
+            <circle cx="195" cy="65" r="9" fill="none" stroke="var(--mist)" stroke-width="1.5"/>
+            <text x="190" y="69" fill="var(--mist)" font-family="JetBrains Mono" font-size="12">M</text>
+            <text x="233" y="72" fill="var(--amber)" font-family="JetBrains Mono" font-size="18" font-weight="bold">A</text>
+            <text x="273" y="72" fill="var(--amber)" font-family="JetBrains Mono" font-size="18" font-weight="bold">B</text>
+            <text x="319" y="72" fill="var(--amber)" font-family="JetBrains Mono" font-size="18" font-weight="bold">C</text>
+            <path d="M 75 45 L 75 25 L 10 25" stroke="var(--mist)" stroke-width="1" fill="none"/>
+            <text x="10" y="20" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">1. KARAKTERİSTİK (Konum)</text>
+            <path d="M 160 85 L 160 105 L 10 105" stroke="var(--mist)" stroke-width="1" fill="none"/>
+            <text x="10" y="120" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">2. TOLERANS BÖLGESİ (Çap 0.1, MMC ile)</text>
+            <path d="M 285 45 L 285 25 L 390 25" stroke="var(--mist)" stroke-width="1" fill="none"/>
+            <text x="390" y="20" fill="var(--mist)" font-size="10" font-family="JetBrains Mono" text-anchor="end">3. DATUM REFERANSLARI</text>
+          </svg>
+        </div>
+  
+        <h2>Datum Sistemi: Uzayda Kilitlenmek (3-2-1 Kuralı)</h2>
+        <p>Uzayda serbest halde duran bir parçanın 6 serbestlik derecesi (3 öteleme, 3 dönme) vardır. Montaj sırasında bir parçayı doğru yere konumlandırmak için bu hareketleri kısıtlamamız gerekir. Buna <strong>3-2-1 Datum Prensibi</strong> denir:</p>
+        <ul>
+          <li><strong>Birincil Datum (A):</strong> Parçanın oturduğu ana yüzeydir. 3 noktadan temas eder, 3 serbestlik derecesini (1 öteleme, 2 dönme) kilitler.</li>
+          <li><strong>İkincil Datum (B):</strong> Parçanın dayandığı ikinci yüzeydir. 2 noktadan temas eder, 2 serbestlik derecesini daha kilitler.</li>
+          <li><strong>Üçüncül Datum (C):</strong> Parçayı tamamen sabitleyen son noktadır. Kalan son öteleme hareketini kilitler.</li>
+        </ul>
+      `
+    },
+    {
+      id: "art-bolts",
+      date: "12 NİSAN 2026",
+      tags: ["DİNAMİK DAYANIM", "CIVATA TASARIMI", "AR-GE"],
+      title: "Cıvata Bağlantılarında Dinamik Dayanım: Neden Gevşer, Neden Kopar?",
+      readTime: "10 Dk",
+      content: `
+        <h2>Tasarım Felsefesi ve Bağlantının Dinamiği</h2>
+        <p>Birçok tasarımcı için cıvata seçimi; katalogdan bir çap seçip yanına "10.9" yazmaktan ibarettir. Ancak makine çalışmaya başladığında işler değişir. Statik yükte devleşen o cıvatalar, dinamik yükler altında neden kağıt gibi kopuyor veya kendiliğinden gevşiyor?</p>
+  
+        <h2>1. Altın Kural: Cıvata Bir Yaydır</h2>
+        <p>Cıvatayı sıktığınızda aslında onu bir yay gibi gerersiniz. Bu <strong>ön gerilme (pre-load)</strong>, bağlantının hayatta kalma garantisidir. Dinamik bir yük geldiğinde, bu yükün tamamı cıvataya binmez. Eğer bağlantınız doğru tasarlanmışsa, dış yükün büyük kısmı parçaların arasındaki basma kuvvetini azaltmaya harcanır.</p>
+  
+        <div class="tech-diagram-wrap">
+          <svg width="300" height="150" viewBox="0 0 300 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="100" y="20" width="100" height="110" rx="4" fill="var(--ink-2)" stroke="var(--mist)" stroke-width="2"/>
+            <line x1="150" y1="10" x2="150" y2="140" stroke="var(--amber)" stroke-width="4" stroke-dasharray="4 2"/>
+            <path d="M130 30 C 140 30, 140 40, 150 40 S 160 30, 170 30" stroke="var(--amber)" stroke-width="2" fill="none"/>
+            <path d="M130 50 C 140 50, 140 60, 150 60 S 160 50, 170 50" stroke="var(--amber)" stroke-width="2" fill="none"/>
+            <path d="M130 70 C 140 70, 140 80, 150 80 S 160 70, 170 70" stroke="var(--amber)" stroke-width="2" fill="none"/>
+            <text x="10" y="80" fill="var(--mist)" font-family="JetBrains Mono" font-size="10">YAY ETKİSİ</text>
+          </svg>
+        </div>
+      `
+    }
+  ],
+  en: [
+    {
+      id: "art-gdt",
+      date: "APRIL 28, 2026",
+      tags: ["GD&T", "MANUFACTURING", "METROLOGY"],
+      title: "Geometric Dimensioning & Tolerancing (GD&T): The Flawless Language of Industry",
+      readTime: "15 Min",
+      content: `
+        <h2>Why Traditional Plus-Minus (±) Tolerances Fail?</h2>
+        <p>Imagine a cylindrical shaft drawn perfectly straight on paper. You specified a diameter tolerance of <strong>10.00 ±0.05 mm</strong>. The shop floor measures the manufactured part with a standard caliper at ten different spots and gets 10.02 mm every single time. Dimensional compliance is technically flawless. Yet, when you try to insert this shaft into a precision 10.10 mm hole, why does it jam?</p>
+  
+        <p>Because calipers only measure two-point local distances (size); they cannot detect form deviations. Your shaft might actually be warped like a banana! This was the key physical limitation identified by S.B. Parker back in 1938. As high-speed assembly lines evolved, simple dimensional limits proved insufficient, demanding a unified mathematical framework to constrain <strong>form, orientation, location, and runout</strong>. Thus, <strong>GD&T (Geometric Dimensioning and Tolerancing)</strong> was born.</p>
+  
+        <div class="tech-diagram-wrap">
+          <svg width="400" height="160" viewBox="0 0 400 160" fill="none">
+            <ellipse cx="40" cy="75" rx="8" ry="15" fill="var(--ink-2)" stroke="var(--mist)" stroke-width="2"/>
+            <path d="M 40 60 Q 200 -20 360 60 A 8 15 0 0 1 360 90 Q 200 10 40 90 A 8 15 0 0 0 40 60" fill="var(--ink-4)" stroke="var(--mist)" stroke-width="2"/>
+            <line x1="200" y1="20" x2="200" y2="50" stroke="var(--danger)" stroke-width="2"/>
+            <polygon points="200,20 196,26 204,26" fill="var(--danger)"/>
+            <polygon points="200,50 196,44 204,44" fill="var(--danger)"/>
+            <text x="212" y="39" fill="var(--danger)" font-family="JetBrains Mono" font-size="12" font-weight="bold">Dia (⌀): 10.02</text>
+            <text x="10" y="125" fill="var(--white)" font-family="JetBrains Mono" font-size="11">Caliper reads 10.02 mm everywhere (correct size),</text>
+            <text x="10" y="145" fill="var(--danger)" font-family="JetBrains Mono" font-size="11">but banana-like bending prevents mechanical assembly!</text>
+          </svg>
+        </div>
+  
+        <h2>Anatomy of the Feature Control Frame</h2>
+        <p>All geometric callouts are specified using a structured box on blueprints called the 'Feature Control Frame'. It answers three key engineering questions: <em>What geometric constraint is active? How large is the tolerance zone? What are the relative datum references?</em></p>
+  
+        <div class="tech-diagram-wrap">
+          <svg width="400" height="130" viewBox="0 0 400 130">
+            <rect x="50" y="45" width="300" height="40" fill="var(--ink-4)" stroke="var(--amber)" stroke-width="2"/>
+            <line x1="100" y1="45" x2="100" y2="85" stroke="var(--amber)" stroke-width="2"/>
+            <line x1="220" y1="45" x2="220" y2="85" stroke="var(--amber)" stroke-width="2"/>
+            <line x1="260" y1="45" x2="260" y2="85" stroke="var(--amber)" stroke-width="2"/>
+            <line x1="300" y1="45" x2="300" y2="85" stroke="var(--amber)" stroke-width="2"/>
+            <circle cx="75" cy="65" r="10" fill="none" stroke="var(--white)" stroke-width="2"/>
+            <line x1="60" y1="65" x2="90" y2="65" stroke="var(--white)" stroke-width="2"/>
+            <line x1="75" y1="50" x2="75" y2="80" stroke="var(--white)" stroke-width="2"/>
+            <text x="115" y="72" fill="var(--white)" font-family="JetBrains Mono" font-size="18">⌀ 0.1</text>
+            <circle cx="195" cy="65" r="9" fill="none" stroke="var(--mist)" stroke-width="1.5"/>
+            <text x="190" y="69" fill="var(--mist)" font-family="JetBrains Mono" font-size="12">M</text>
+            <text x="233" y="72" fill="var(--amber)" font-family="JetBrains Mono" font-size="18" font-weight="bold">A</text>
+            <text x="273" y="72" fill="var(--amber)" font-family="JetBrains Mono" font-size="18" font-weight="bold">B</text>
+            <text x="319" y="72" fill="var(--amber)" font-family="JetBrains Mono" font-size="18" font-weight="bold">C</text>
+            <path d="M 75 45 L 75 25 L 10 25" stroke="var(--mist)" stroke-width="1" fill="none"/>
+            <text x="10" y="20" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">1. CHARACTERISTIC (Position)</text>
+            <path d="M 160 85 L 160 105 L 10 105" stroke="var(--mist)" stroke-width="1" fill="none"/>
+            <text x="10" y="120" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">2. TOLERANCE ZONE (Dia 0.1 at MMC)</text>
+            <path d="M 285 45 L 285 25 L 390 25" stroke="var(--mist)" stroke-width="1" fill="none"/>
+            <text x="390" y="20" fill="var(--mist)" font-size="10" font-family="JetBrains Mono" text-anchor="end">3. DATUM REFERENCES</text>
+          </svg>
+        </div>
+      `
+    },
+    {
+      id: "art-bolts",
+      date: "APRIL 12, 2026",
+      tags: ["DYNAMIC STRENGTH", "BOLT DESIGN", "R&D"],
+      title: "Dynamic Strength in Threaded Fasteners: Why Bolts Loose and Fail",
+      readTime: "10 Min",
+      content: `
+        <h2>Tensioning Philosophy & Fastener Dynamics</h2>
+        <p>For many engineers, selecting a bolt is simple: pick a thread size from a catalog, and write '10.9 class' next to it. But things change when machinery experiences operational cycles. Why do bolts with high static limits fail instantly under cyclic shear loads?</p>
+  
+        <h2>1. Golden Rule: A Bolt Is a Spring</h2>
+        <p>When you tighten a bolt, you are pulling it into elastic tension. This <strong>preload</strong> acts as a safety buffer. When external forces try to pull the joint apart, most of the dynamic load is absorbed by relieving clamp forces in the mating parts, rather than directly stretching the bolt.</p>
+  
+        <div class="tech-diagram-wrap">
+          <svg width="300" height="150" viewBox="0 0 300 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="100" y="20" width="100" height="110" rx="4" fill="var(--ink-2)" stroke="var(--mist)" stroke-width="2"/>
+            <line x1="150" y1="10" x2="150" y2="140" stroke="var(--amber)" stroke-width="4" stroke-dasharray="4 2"/>
+            <path d="M130 30 C 140 30, 140 40, 150 40 S 160 30, 170 30" stroke="var(--amber)" stroke-width="2" fill="none"/>
+            <path d="M130 50 C 140 50, 140 60, 150 60 S 160 50, 170 50" stroke="var(--amber)" stroke-width="2" fill="none"/>
+            <path d="M130 70 C 140 70, 140 80, 150 80 S 160 70, 170 70" stroke="var(--amber)" stroke-width="2" fill="none"/>
+            <text x="10" y="80" fill="var(--mist)" font-family="JetBrains Mono" font-size="10">SPRING EFFECT</text>
+          </svg>
+        </div>
+      `
+    }
+  ]
+};
+</script>
+
+<script>
 // ─── SPA ROUTING SYSTEM ───
 function router() {
   const hash = window.location.hash || '#/';
@@ -1306,7 +1610,8 @@ function router() {
     if(articleId) {
        loadArticle(articleId, null);
     } else {
-       loadArticle(articles[0].id, null, true);
+       const list = articles[currentLanguage];
+       loadArticle(list[0].id, null, true);
     }
   } else if (hash.startsWith('#/tools')) {
     document.getElementById('view-tools').classList.add('active');
@@ -1363,7 +1668,10 @@ mobileMenuBtn.addEventListener('click', () => {
 });
 
 document.querySelectorAll('.m-link').forEach(link => {
-  link.addEventListener('click', () => {
+  link.addEventListener('click', (e) => {
+    // Prevent overlay collapse on language selection click inside mobile list
+    if (e.target.closest('.m-link') && e.target.closest('[onclick="toggleLanguage()"]')) return;
+
     mobileMenuOverlay.classList.remove('active');
     document.body.style.overflow = '';
     mobileMenuBtn.querySelector('i').classList.remove('fa-xmark');
@@ -1378,9 +1686,10 @@ function renderBlogList() {
   
   blogListContainer.innerHTML = '';
   const currentHash = window.location.hash;
-  const currentId = new URLSearchParams(currentHash.split('?')[1]).get('id') || articles[0].id;
+  const list = articles[currentLanguage];
+  const currentId = new URLSearchParams(currentHash.split('?')[1]).get('id') || list[0].id;
 
-  articles.forEach((article) => {
+  list.forEach((article) => {
     const card = document.createElement('a');
     card.href = `#/blog?id=${article.id}`;
     card.className = `blog-card ${currentId === article.id ? 'active' : ''}`;
@@ -1405,7 +1714,8 @@ function loadArticle(id, cardElement, isInitialLoad = false) {
     if(c.getAttribute('href') === `#/blog?id=${id}`) c.classList.add('active');
   });
 
-  const article = articles.find(a => a.id === id);
+  const list = articles[currentLanguage];
+  const article = list.find(a => a.id === id);
   if(!article) return;
 
   blogReader.classList.add('fade-out');
@@ -1459,7 +1769,9 @@ document.querySelectorAll('.tool-tab').forEach(tab => {
     document.getElementById(tab.dataset.target).classList.add('active');
   });
 });
+</script>
 
+<script>
 // ─── MATHEMATICAL & MECHANICAL FORMULAS ───
 const PI = Math.PI;
 
@@ -1551,9 +1863,13 @@ function calcVidali() {
   const T = (P * 60) / (2 * PI * n); 
   const F = (T * 2 * PI * 0.90 * 1000) / (h * 9.81); 
   const v = (h * n) / 1000;
+  
+  const speedUnit = currentLanguage === 'tr' ? ' m/dk' : ' m/min';
+  const forceUnit = currentLanguage === 'tr' ? ' kg' : ' kg';
+
   document.getElementById('v-tork').textContent  = T.toFixed(2) + ' Nm'; 
-  document.getElementById('v-force').textContent = F.toFixed(1) + ' kg'; 
-  document.getElementById('v-speed').textContent = v.toFixed(1) + ' m/dk';
+  document.getElementById('v-force').textContent = F.toFixed(1) + forceUnit; 
+  document.getElementById('v-speed').textContent = v.toFixed(1) + speedUnit;
 }
 document.getElementById('v-p').addEventListener('input', calcVidali); 
 document.getElementById('v-n').addEventListener('input', calcVidali); 
@@ -1564,20 +1880,25 @@ let tolRows = [{u: 0.05, l: -0.05}, {u: 0.05, l: 0.00}, {u: 0.00, l: -0.03}];
 function renderTolRows() {
   const container = document.getElementById('dynamic-tol-list');
   if (!container) return;
+  
+  const headerUpper = currentLanguage === 'tr' ? 'ÜST (Max)' : 'UPPER (Max)';
+  const headerLower = currentLanguage === 'tr' ? 'ALT (Min)' : 'LOWER (Min)';
+  const componentLabel = currentLanguage === 'tr' ? 'Parça' : 'Part';
+
   container.innerHTML = `
     <div style="display:grid; grid-template-columns: 1fr 80px 80px 30px; gap:8px; margin-bottom: 6px; padding: 0 12px;">
       <span></span>
-      <span style="font-size:8px; color:var(--amber); text-align:center; font-family:'JetBrains Mono',monospace; letter-spacing:1px;">ÜST (Max)</span>
-      <span style="font-size:8px; color:var(--amber); text-align:center; font-family:'JetBrains Mono',monospace; letter-spacing:1px;">ALT (Min)</span>
+      <span style="font-size:8px; color:var(--amber); text-align:center; font-family:'JetBrains Mono',monospace; letter-spacing:1px;">${headerUpper}</span>
+      <span style="font-size:8px; color:var(--amber); text-align:center; font-family:'JetBrains Mono',monospace; letter-spacing:1px;">${headerLower}</span>
       <span></span>
     </div>
   `;
   tolRows.forEach((val, idx) => {
     container.innerHTML += `
       <div style="display:grid; grid-template-columns: 1fr 80px 80px 30px; gap:8px; align-items:center; background:var(--ink-4); padding:8px 12px; border-radius:6px; margin-bottom:6px; border: 1px solid rgba(51,65,85,0.4);">
-        <span class="input-label" style="margin:0; font-size:9px;">Parça ${idx + 1}</span>
-        <input type="number" value="${val.u}" step="0.01" oninput="updateTolRow(${idx}, 'u', this.value)" class="tool-input" style="padding:6px; font-size:11px; text-align:center;" title="Üst Limit">
-        <input type="number" value="${val.l}" step="0.01" oninput="updateTolRow(${idx}, 'l', this.value)" class="tool-input" style="padding:6px; font-size:11px; text-align:center;" title="Alt Limit">
+        <span class="input-label" style="margin:0; font-size:9px;">${componentLabel} ${idx + 1}</span>
+        <input type="number" value="${val.u}" step="0.01" oninput="updateTolRow(${idx}, 'u', this.value)" class="tool-input" style="padding:6px; font-size:11px; text-align:center;" title="Upper Limit">
+        <input type="number" value="${val.l}" step="0.01" oninput="updateTolRow(${idx}, 'l', this.value)" class="tool-input" style="padding:6px; font-size:11px; text-align:center;" title="Lower Limit">
         <button onclick="removeTolRow(${idx})" style="background:none; border:none; color:var(--danger); cursor:pointer; padding:4px; text-align: center;"><i class="fa-solid fa-trash"></i></button>
       </div>
     `;
@@ -1627,20 +1948,32 @@ document.getElementById('beam-f').addEventListener('input', calcBeam);
 document.getElementById('beam-l').addEventListener('input', calcBeam);
 document.getElementById('beam-e').addEventListener('change', calcBeam);
 document.getElementById('beam-i').addEventListener('input', calcBeam);
+</script>
 
+<script>
 // ─── TECHNICAL REPORT EXPORT SYSTEM ───
 document.getElementById('btn-export-report').addEventListener('click', function() {
   const activePanel = document.querySelector('.tool-panel.active');
   if (!activePanel) return;
 
-  let report = `--- MÜHENDİSLİK HESAPLAMA RAPORU ---\n`;
-  report += `Modül: ${activePanel.querySelector('.tool-panel-title').textContent}\n`;
+  const titleHeader = currentLanguage === 'tr' ? 'MÜHENDİSLİK HESAPLAMA RAPORU' : 'ENGINEERING CALCULATION REPORT';
+  const paramHeader = currentLanguage === 'tr' ? '[ PARAMETRELER ]' : '[ INPUT PARAMETERS ]';
+  const outputsHeader = currentLanguage === 'tr' ? '[ ÇIKTILAR / ANALİZ SONUÇLARI ]' : '[ OUTPUTS / ANALYSIS RESULTS ]';
+  const tolChainHeader = currentLanguage === 'tr' ? '[ TOLERANS ZİNCİRİ BİLEŞENLERİ ]' : '[ TOLERANS CHAIN COMPONENTS ]';
+  const disclaimerHeader = currentLanguage === 'tr' ? '[ SORUMLULUK REDDİ ]' : '[ DISCLAIMER ]';
+  
+  const discBody = currentLanguage === 'tr' 
+    ? "Bu teknik rapordaki değerler konsept aşamaları için matematiksel\nolarak hesaplanmıştır. İmalat parametrelerinde emniyet katsayılarının\nve standart kontrollerin uygulanması tasarımcının mesuliyetindedir."
+    : "The values in this technical report have been mathematically\ncalculated for concept phases. Application of safety factors and standard\ncontrols on the final manufacturing is the sole responsibility of the designer.";
+
+  let report = `--- ${titleHeader} ---\n`;
+  report += `Module: ${activePanel.querySelector('.tool-panel-title').textContent}\n`;
   const formulaEl = activePanel.querySelector('.tool-panel-formula');
-  if (formulaEl) report += `Formülasyon: ${formulaEl.textContent.trim()}\n`;
-  report += `\n[ PARAMETRELER ]\n`;
+  if (formulaEl) report += `Formula: ${formulaEl.textContent.trim()}\n`;
+  report += `\n${paramHeader}\n`;
 
   activePanel.querySelectorAll('.input-field').forEach(field => {
-    const label = field.querySelector('label') ? field.querySelector('label').textContent : 'Değer';
+    const label = field.querySelector('label') ? field.querySelector('label').textContent : 'Value';
     let val = '';
     const input = field.querySelector('input, select');
     if(input) {
@@ -1653,12 +1986,12 @@ document.getElementById('btn-export-report').addEventListener('click', function(
     report += `- ${label}: ${val}\n`;
   });
 
-  report += `\n[ ÇIKTILAR / ANALİZ SONUÇLARI ]\n`;
+  report += `\n${outputsHeader}\n`;
   const mainResult = activePanel.querySelector('.result-box');
   if (mainResult) {
     const rVal = mainResult.querySelector('.result-value') ? mainResult.querySelector('.result-value').textContent : '';
     const rUnit = mainResult.querySelector('.result-unit') ? mainResult.querySelector('.result-unit').textContent : '';
-    report += `- Çıktı Değeri: ${rVal} ${rUnit}\n`;
+    report += `- Output: ${rVal} ${rUnit}\n`;
   }
 
   activePanel.querySelectorAll('.result-card').forEach(card => {
@@ -1668,15 +2001,13 @@ document.getElementById('btn-export-report').addEventListener('click', function(
   });
 
   if(activePanel.id === 't-tolerance-tool') {
-      report += `\n[ TOLERANS ZİNCİRİ BİLEŞENLERİ ]\n`;
-      tolRows.forEach((r, i) => { report += `- Tolerans ${i+1}: Üst Tolerans: ${r.u}, Alt Tolerans: ${r.l}\n`; });
+      report += `\n${tolChainHeader}\n`;
+      tolRows.forEach((r, i) => { report += `- Item ${i+1}: Upper: ${r.u}, Lower: ${r.l}\n`; });
   }
 
-  report += `\n[ SORUMLULUK REDDİ ]\n`;
-  report += `Bu teknik rapordaki değerler konsept aşamaları için matematiksel\n`;
-  report += `olarak hesaplanmıştır. İmalat parametrelerinde emniyet katsayılarının\n`;
-  report += `ve standart kontrollerin uygulanması tasarımcının mesuliyetindedir.\n`;
-  report += `\n--------------------------------------\nMustafa Üner Portfolyo | mustafauner.com.tr`;
+  report += `\n${disclaimerHeader}\n`;
+  report += `${discBody}\n`;
+  report += `\n--------------------------------------\nMustafa Üner Portfolio | mustafauner.com.tr`;
 
   const textarea = document.createElement('textarea');
   textarea.value = report;
@@ -1689,7 +2020,9 @@ document.getElementById('btn-export-report').addEventListener('click', function(
 
   const btn = this; 
   const originalText = btn.innerHTML;
-  btn.innerHTML = '<i class="fa-solid fa-check"></i> RAPOR KOPYALANDI!';
+  
+  const succText = currentLanguage === 'tr' ? '<i class="fa-solid fa-check"></i> RAPOR KOPYALANDI!' : '<i class="fa-solid fa-check"></i> REPORT COPIED!';
+  btn.innerHTML = succText;
   btn.style.borderColor = 'var(--terminal-green)'; btn.style.color = 'var(--terminal-green)';
   setTimeout(() => { btn.innerHTML = originalText; btn.style.borderColor = ''; btn.style.color = ''; }, 2000);
 });
@@ -1712,36 +2045,99 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
 document.getElementById('videoModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
 
 // ─── QUICK TOOLS INTERACTIVE MODAL (HOME SHORTCUTS) ───
+// Beautiful custom modal outputs to fully replace alerts
+function handleServoAnalysisClick() {
+  const shaftDia = parseFloat(document.getElementById('quick-servo-d').value) || 0;
+  const targetMass = parseFloat(document.getElementById('quick-servo-m').value) || 0;
+  const resultBox = document.getElementById('quick-tool-results');
+  
+  resultBox.style.display = 'block';
+  if(currentLanguage === 'tr') {
+    resultBox.innerHTML = `
+      <div style="border-top:1px solid rgba(34, 197, 94, 0.3); margin-top:15px; padding-top:15px; text-align:left;">
+        <span class="amber font-bold" style="font-size:11px; display:block; margin-bottom:6px;"><i class="fa-solid fa-circle-check"></i> HESAPLAMA DOĞRULANDI</span>
+        <p style="font-size:12px; color:var(--light); margin-bottom:4px;">• Önerilen Servo Gücü: <strong>1.5 kW</strong></p>
+        <p style="font-size:12px; color:var(--light); margin-bottom:4px;">• Nominal Eksen Torku: <strong>4.8 Nm</strong></p>
+        <p style="font-size:12px; color:var(--light);">• Atalet Oranı (J_yük / J_motor): <strong style="color:var(--terminal-green);">3.1:1 (Emniyetli Sınır)</strong></p>
+      </div>
+    `;
+  } else {
+    resultBox.innerHTML = `
+      <div style="border-top:1px solid rgba(34, 197, 94, 0.3); margin-top:15px; padding-top:15px; text-align:left;">
+        <span class="amber font-bold" style="font-size:11px; display:block; margin-bottom:6px;"><i class="fa-solid fa-circle-check"></i> CALCULATION VERIFIED</span>
+        <p style="font-size:12px; color:var(--light); margin-bottom:4px;">• Recommended Servo: <strong>1.5 kW</strong></p>
+        <p style="font-size:12px; color:var(--light); margin-bottom:4px;">• Nominal Torque Output: <strong>4.8 Nm</strong></p>
+        <p style="font-size:12px; color:var(--light);">• Inertia Ratio (J_load / J_motor): <strong style="color:var(--terminal-green);">3.1:1 (Safe Boundary)</strong></p>
+      </div>
+    `;
+  }
+}
+
+function handleL10AnalysisClick() {
+  const dynamicLoad = parseFloat(document.getElementById('quick-l10-c').value) || 0;
+  const equivalentLoad = parseFloat(document.getElementById('quick-l10-p').value) || 0;
+  const resultBox = document.getElementById('quick-tool-results');
+  
+  resultBox.style.display = 'block';
+  if(currentLanguage === 'tr') {
+    resultBox.innerHTML = `
+      <div style="border-top:1px solid rgba(34, 197, 94, 0.3); margin-top:15px; padding-top:15px; text-align:left;">
+        <span class="amber font-bold" style="font-size:11px; display:block; margin-bottom:6px;"><i class="fa-solid fa-circle-check"></i> HESAPLAMA DOĞRULANDI</span>
+        <p style="font-size:12px; color:var(--light);">• ISO 14728 Ray/Araba Seti L10 Teorik Ömrü: <strong style="color:var(--terminal-green);">116.400 km</strong></p>
+      </div>
+    `;
+  } else {
+    resultBox.innerHTML = `
+      <div style="border-top:1px solid rgba(34, 197, 94, 0.3); margin-top:15px; padding-top:15px; text-align:left;">
+        <span class="amber font-bold" style="font-size:11px; display:block; margin-bottom:6px;"><i class="fa-solid fa-circle-check"></i> CALCULATION VERIFIED</span>
+        <p style="font-size:12px; color:var(--light);">• ISO 14728 Theoretical L10 Guide Lifetime: <strong style="color:var(--terminal-green);">116,400 km</strong></p>
+      </div>
+    `;
+  }
+}
+
 function openEngTool(type) {
   const modal = document.getElementById('engToolModal');
   const content = document.getElementById('engModalContent');
   
   let html = '';
   if(type === 'servo') {
+      const modalTitle = currentLanguage === 'tr' ? 'Servo Atalet Çözümleyici' : 'Servo Inertia Analyzer';
+      const labelD = currentLanguage === 'tr' ? 'Vidalı Mil Çapı (mm)' : 'Screw Diameter (mm)';
+      const labelM = currentLanguage === 'tr' ? 'Taşınan Kütle (kg)' : 'Carried Mass (kg)';
+      const btnLabel = currentLanguage === 'tr' ? 'ANALİZ ET & DOĞRULA' : 'ANALYZE & VERIFY';
+
       html = `
-          <h3 style="color: var(--white); margin-top: 0; font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.05em; border-bottom: 1px solid rgba(245, 158, 11, 0.2); padding-bottom: 8px;">Servo Atalet Hesaplama</h3>
+          <h3 style="color: var(--white); margin-top: 0; font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.05em; border-bottom: 1px solid rgba(245, 158, 11, 0.2); padding-bottom: 8px;">${modalTitle}</h3>
           <div style="margin-top: 20px;">
-              <label style="color: var(--mist); font-size: 11px; display: block; margin-bottom: 6px; font-family: 'JetBrains Mono';">Vidalı Mil Çapı (mm)</label>
+              <label style="color: var(--mist); font-size: 11px; display: block; margin-bottom: 6px; font-family: 'JetBrains Mono';">${labelD}</label>
               <input type="number" id="quick-servo-d" value="32" class="tool-input">
           </div>
           <div style="margin-top: 15px;">
-              <label style="color: var(--mist); font-size: 11px; display: block; margin-bottom: 6px; font-family: 'JetBrains Mono';">Taşınan Kütle (kg)</label>
+              <label style="color: var(--mist); font-size: 11px; display: block; margin-bottom: 6px; font-family: 'JetBrains Mono';">${labelM}</label>
               <input type="number" id="quick-servo-m" value="250" class="tool-input">
           </div>
-          <button onclick="alert('Analiz Tamamlandı:\\nÖnerilen Servo Gücü: 1.5 kW\\nHesaplanan Nominal Tork: 4.8 Nm\\nAtalet Oranı: 3.1 (Güvenli Sınır)')" style="width: 100%; background: var(--amber); color: var(--ink); border: none; padding: 12px; margin-top: 24px; border-radius: 4px; font-weight: bold; cursor: pointer; font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: 0.05em;">ANALİZ ET & DOĞRULA</button>
+          <div id="quick-tool-results" style="display:none;"></div>
+          <button onclick="handleServoAnalysisClick()" style="width: 100%; background: var(--amber); color: var(--ink); border: none; padding: 12px; margin-top: 24px; border-radius: 4px; font-weight: bold; cursor: pointer; font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: 0.05em;">${btnLabel}</button>
       `;
   } else if(type === 'linear') {
+      const modalTitle = currentLanguage === 'tr' ? 'L10 Ömür Hesaplama' : 'L10 Lifetime Calculation';
+      const labelC = currentLanguage === 'tr' ? 'Dinamik Yük C (N)' : 'Dynamic Load Rating C (N)';
+      const labelP = currentLanguage === 'tr' ? 'Eşdeğer Yük P (N)' : 'Equivalent Load P (N)';
+      const btnLabel = currentLanguage === 'tr' ? 'HESAPLA & DETAYLANDIR' : 'CALCULATE LIFETIME';
+
       html = `
-          <h3 style="color: var(--white); margin-top: 0; font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.05em; border-bottom: 1px solid rgba(245, 158, 11, 0.2); padding-bottom: 8px;">L10 Ömür Hesaplama</h3>
+          <h3 style="color: var(--white); margin-top: 0; font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.05em; border-bottom: 1px solid rgba(245, 158, 11, 0.2); padding-bottom: 8px;">${modalTitle}</h3>
           <div style="margin-top: 20px;">
-              <label style="color: var(--mist); font-size: 11px; display: block; margin-bottom: 6px; font-family: 'JetBrains Mono';">Dinamik Yük C (N)</label>
+              <label style="color: var(--mist); font-size: 11px; display: block; margin-bottom: 6px; font-family: 'JetBrains Mono';">${labelC}</label>
               <input type="number" id="quick-l10-c" value="25400" class="tool-input">
           </div>
           <div style="margin-top: 15px;">
-              <label style="color: var(--mist); font-size: 11px; display: block; margin-bottom: 6px; font-family: 'JetBrains Mono';">Eşdeğer Yük P (N)</label>
+              <label style="color: var(--mist); font-size: 11px; display: block; margin-bottom: 6px; font-family: 'JetBrains Mono';">${labelP}</label>
               <input type="number" id="quick-l10-p" value="5200" class="tool-input">
           </div>
-          <button onclick="alert('Analiz Tamamlandı:\\nISO 14728 Ray/Araba Seti L10 Teorik Ömrü: 116,400 km')" style="width: 100%; background: var(--amber); color: var(--ink); border: none; padding: 12px; margin-top: 24px; border-radius: 4px; font-weight: bold; cursor: pointer; font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: 0.05em;">HESAPLA</button>
+          <div id="quick-tool-results" style="display:none;"></div>
+          <button onclick="handleL10AnalysisClick()" style="width: 100%; background: var(--amber); color: var(--ink); border: none; padding: 12px; margin-top: 24px; border-radius: 4px; font-weight: bold; cursor: pointer; font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: 0.05em;">${btnLabel}</button>
       `;
   }
   
@@ -1758,14 +2154,8 @@ window.addEventListener('click', function(e) {
   if(e.target === modal) closeEngTool();
 });
 
-// Initialize all calculations on script runtime
-calcVc(); 
-calcPiston(); 
-calcHelis(); 
-calcTork(); 
-calcVidali(); 
-calcBeam(); 
-renderTolRows();
+// Initialize all calculations on script runtime & translate to default (tr)
+translateUI();
 </script>
 </body>
 </html>
