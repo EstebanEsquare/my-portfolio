@@ -1428,6 +1428,9 @@ function router() {
     document.getElementById('view-blog').classList.add('active');
     document.getElementById('nav-blog').classList.add('active-link');
     document.getElementById('m-nav-blog').classList.add('active-link');
+    
+    // Blog listesini render et
+    renderBlogList();
 
     const urlParams = new URLSearchParams(hash.split('?')[1]);
     const articleId = urlParams.get('id');
@@ -1440,6 +1443,17 @@ function router() {
     document.getElementById('view-tools').classList.add('active');
     document.getElementById('nav-tools').classList.add('active-link');
     document.getElementById('m-nav-tools').classList.add('active-link');
+    
+    // Tools sekmesi için ilk paneli aktif et (eğer hiçbiri aktif değilse)
+    setTimeout(() => {
+      const activePanel = document.querySelector('.tool-panel.active');
+      if (!activePanel) {
+        const firstTab = document.querySelector('.tool-tab');
+        if (firstTab) {
+          firstTab.click();
+        }
+      }
+    }, 100);
   } else {
     document.getElementById('view-home').classList.add('active');
     document.getElementById('nav-home').classList.add('active-link');
