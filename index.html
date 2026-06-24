@@ -1790,6 +1790,95 @@ const articles = {
           <li><strong>İkincil Datum (B):</strong> Parçanın dayandığı ikinci yüzeydir. 2 noktadan temas eder, 2 serbestlik derecesini daha kilitler.</li>
           <li><strong>Üçüncül Datum (C):</strong> Parçayı tamamen sabitleyen son noktadır. Kalan son öteleme hareketini kilitler.</li>
         </ul>
+
+        <div class="tech-diagram-wrap">
+          <svg width="400" height="200" viewBox="0 0 400 200" fill="none">
+            <rect x="120" y="60" width="160" height="100" rx="3" fill="var(--ink-4)" stroke="var(--mist)" stroke-width="2"/>
+            <rect x="50" y="160" width="300" height="20" rx="2" fill="var(--ink-3)" stroke="var(--amber)" stroke-width="1.5"/>
+            <circle cx="200" cy="80" r="12" fill="none" stroke="var(--white)" stroke-width="2"/>
+            <text x="193" y="84" fill="var(--white)" font-size="10" font-family="JetBrains Mono">A</text>
+            <rect x="115" y="60" width="5" height="100" fill="var(--amber)" opacity="0.6"/>
+            <text x="90" y="84" fill="var(--amber)" font-size="9" font-family="JetBrains Mono">DATUM A</text>
+            <rect x="120" y="55" width="160" height="5" fill="var(--amber)" opacity="0.4"/>
+            <text x="280" y="63" fill="var(--amber)" font-size="9" font-family="JetBrains Mono">DATUM B</text>
+            <rect x="320" y="60" width="5" height="100" fill="var(--amber)" opacity="0.4"/>
+            <text x="330" y="115" fill="var(--amber)" font-size="9" font-family="JetBrains Mono">DATUM C</text>
+            <text x="130" y="195" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">3-2-1: 6 serbestlik derecesinin tamamı kilitlenir</text>
+          </svg>
+        </div>
+
+        <h2>Form Toleransları: Parçanın Kişiliği</h2>
+        <p>Form toleransları, bir parçanın kendi başına (datum referansı olmadan) sahip olması gereken geometrik doğruluğu tanımlar. Dört temel form toleransı vardır:</p>
+        <ul>
+          <li><strong>Düzlük (Flatness):</strong> Bir yüzeyin ideal düzlemden ne kadar sapabileceğini belirtir. CMM ölçümünde yüzey noktalarının en yüksek ve en düşük değerleri arasındaki fark olarak hesaplanır. Örneğin bir flanş yüzeyinde ⌀0.05 düzlük toleransı, yüzeyin ideal düzlemden en fazla 0.05 mm sapabileceği anlamına gelir.</li>
+          <li><strong>Düzdoğrusallık (Straightness):</strong> Bir çizgi unsurunun ideal doğru boyunca ne kadar sapabileceğini belirtir. Mil yüzeylerinde vekılavuz raylarda kritik öneme sahiptir.</li>
+          <li><strong>Dairesellik (Circularity/Roundness):</strong> Bir dairesel kesitin ideal çemberden ne kadar sapabileceğini belirtir. Rulman yatakları ve segman oluklarında hassas kontrol gerektirir.</li>
+          <li><strong> Silindiriklik (Cylindricity):</strong> Bir silindirik yüzeyin ideal silindirden ne kadar sapabileceğini belirtir. Hem dairesellik hem de düz doğrusallığı aynı anda kontrol eden bir 3-boyutlu toleranstır.</li>
+        </ul>
+
+        <h2>Yönelim Toleransları: Açısal Doğruluk</h2>
+        <p>Yönelim toleransları, bir unsurun datum referansına göre açısal konumunu kontrol eder. Üç temel türü vardır:</p>
+        <ul>
+          <li><strong>Paralellik (Parallelism):</strong> Bir yüzeyin veya eksenin, referans datumına paralel olma derecesini belirtir. CNC tezgah kızaklarında ve tabla yüzeylerinde kritik parametredir.</li>
+          <li><strong>Diklik (Perpendicularity/Squareness):</strong> Bir unsurun referans datumına 90° açıyla ne kadar doğru konumlandığını belirtir. Özellikle köşe birleştirme yüzeylerinde montaj kalitesini doğrudan etkiler.</li>
+          <li><strong>Eğrilik (Angularity):</strong> Bir unsurun referans datumına belirli bir açıyla ne kadar doğru konumlandığını belirtir. Konik yüzeyler ve eğimli montaj flanşlarında kullanılır.</li>
+        </ul>
+
+        <h2>Konum Toleransları: Yerleşim Hassasiyeti</h2>
+        <p>Konum toleransları, bir unsurun (delik, slot, pim vb.) nominal konumundan ne kadar sapabileceğini tanımlar. GD&T\'nin en güçlü ve en çok kullanılan aracıdır.</p>
+        <ul>
+          <li><strong>Konum (Position):</strong> Bir eksen veya merkez noktasının ideal konumundan ne kadar sapabileceğini belirtir. Tolerans bölgesi tipik olarak silindirik (delikler için) veya dikdörtgensel (slotlar için) olarak tanımlanır.</li>
+          <li><strong>Konsantriklik (Concentricity):</strong> İki eksen arasındaki uzaklığı kontrol eder. Torna aynasında işlenen parçalarda kritik öneme sahiptir.</li>
+          <li><strong>Simetri (Symmetry):</strong> Bir unsurun merkez düzleminin, datum merkez düzlemine göre konumunu kontrol eder.</li>
+        </ul>
+
+        <h2>MMC ve LMC: Malzeme Durumu Bonus\'u</h2>
+        <p>GD&T\'nin en güçlü kavramlarından biri <strong>Malzeme Durumu Modifikatörleri</strong>\'dir. Bir deliğe konum toleransı verirken:</p>
+        <ul>
+          <li><strong>MMC (Maximum Material Condition — Ⓜ):</strong> Delik en küçük çapındayken (malzeme maksimum) tolerans bölgesi en küçük olmalıdır. Ancak delik büyütüldükçe (imalat hatası, honlama vb.) "bonus" tolerans kazanılır. Bu, üretilebilirliği artıran kritik bir optimizasyondur.</li>
+          <li><strong>LMC (Least Material Condition — Ⓛ):</strong> Delik en büyük çapındayken (malzeme minimum) tolerans bölgesi tanımlanır. Duvar kalınlığı kontrolü ve sızdırmazlık gerektiren uygulamalarda tercih edilir.</li>
+        </ul>
+
+        <div class="tech-diagram-wrap">
+          <svg width="400" height="160" viewBox="0 0 400 160" fill="none">
+            <rect x="30" y="40" width="340" height="80" rx="4" fill="var(--ink-4)" stroke="var(--mist)" stroke-width="1"/>
+            <circle cx="120" cy="80" r="25" fill="none" stroke="var(--amber)" stroke-width="2"/>
+            <circle cx="120" cy="80" r="28" fill="none" stroke="var(--amber)" stroke-width="1" stroke-dasharray="4 2"/>
+            <text x="108" y="84" fill="var(--amber)" font-size="11" font-family="JetBrains Mono">MMC</text>
+            <circle cx="280" cy="80" r="30" fill="none" stroke="var(--amber)" stroke-width="2"/>
+            <circle cx="280" cy="80" r="33" fill="none" stroke="var(--amber)" stroke-width="1" stroke-dasharray="4 2"/>
+            <text x="268" y="84" fill="var(--amber)" font-size="11" font-family="JetBrains Mono">LMC</text>
+            <path d="M150 80 L248 80" stroke="var(--mist)" stroke-width="1" marker-end="url(#arrowhead)"/>
+            <text x="175" y="72" fill="var(--mist)" font-size="9" font-family="JetBrains Mono">Bonus tolerans artar →</text>
+            <text x="80" y="135" fill="var(--white)" font-size="10" font-family="JetBrains Mono">Delik büyüdükçe konum toleransı "bonus" kazanır</text>
+          </svg>
+        </div>
+
+        <h2>Yalpalama ve Yüzey Profili</h2>
+        <p>Yalpalama toleransları, bir parçanın dönerken yüzeyindeki varyasyonu kontrol eder. İki temel türü vardır:</p>
+        <ul>
+          <li><strong>Çapsal Yalpalama (Circular Runout):</strong> Bir silindirik yüzeyin bir datum eksenine göre dönerken gösterdiği toplam salgı miktarını kontrol eder. Torna ve taşlama operasyonlarında kritik bir kalite göstergesidir.</li>
+          <li><strong>Toplam Yalpalama (Total Runout):</strong> Tüm silindirik yüzey boyunca, bir datum eksenine göre dönerken gösterilen toplam varyasyonu kontrol eder. Yüksek hassasiyet gerektiren mil yataklarında ve dişli montaj yüzeylerinde kullanılır.</li>
+        </ul>
+
+        <h2>Pratik Uygulama: CNC İşleme Merkezinde GD&T</h2>
+        <p>CNC tezgah operatörleri ve kalite mühendisleri için GD&T\'nin günlük pratikteki yansıması:</p>
+        <ul>
+          <li><strong>İşleme stratejisi:</strong> Düz toleransı sıkı bir parçada, önce kaba talaş kaldırma, sonra ince geçiş (finish pass) yapılmalıdır. Datum yüzeyleri her zaman ilk operasyonda işlenir.</li>
+          <li><strong>ölçüm planı:</strong> GD&T callout\'larına göre CMM programı yazılır. Datum sırası (A → B → C) ölçümün yapısal iskelesidir.</li>
+          <li><strong>Kabul/red kriterleri:</strong> MMC bonus\'u hesaba katılmadan basit ± tolerans ile red kararı vermek, aslında kabul edilebilir parçaları hurdaya ayırmanıza neden olabilir.</li>
+        </ul>
+
+        <div class="tech-diagram-wrap">
+          <svg width="400" height="120" viewBox="0 0 400 120" fill="none">
+            <rect x="20" y="20" width="360" height="80" rx="4" fill="var(--ink-3)" stroke="var(--amber)" stroke-width="1"/>
+            <text x="40" y="50" fill="var(--amber)" font-size="11" font-family="JetBrains Mono" font-weight="bold">ISO 1101</text>
+            <text x="40" y="70" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">Geometrik toleranslama için temel standart</text>
+            <text x="220" y="50" fill="var(--amber)" font-size="11" font-family="JetBrains Mono" font-weight="bold">ASME Y14.5</text>
+            <text x="220" y="70" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">ABD endüstri standardı, 2018 revizyonu</text>
+            <text x="40" y="95" fill="var(--mist)" font-size="9" font-family="JetBrains Mono">Her iki standart da aynı geometrik prensipleri farklı terminolojiyle ifade eder.</text>
+          </svg>
+        </div>
       `
     },
     {
@@ -1815,6 +1904,173 @@ const articles = {
             <text x="10" y="80" fill="var(--mist)" font-family="JetBrains Mono" font-size="10">YAY ETKİSİ</text>
           </svg>
         </div>
+
+        <h2>2. Bağlantı Diyagramı: Kuvvet Nasıl Dağılır?</h2>
+        <p>Cıvata bağlantısının davranışını anlamanın en güçlü aracı <strong>bağlantı diyagramı (joint diagram)</strong>\'dır. Bu diyagram, cıvata ve parçaların elastik deformasyonlarını aynı grafik üzerinde gösterir:</p>
+        <ul>
+          <li><strong>Cıvata eğrisi (k_b):</strong> Cıvatının yük-deformasyon eğridir. Eğimi cıvata rijitliğini (stiffness) temsil eder. Daha kısa ve kalın cıvatalar daha rijittir (dik eğri).</li>
+          <li><strong>Parça eğrisi (k_c):</strong> Bağlantı parçalarının toplam rijitliğini temsil eder. Tipik olarak cıvatadan 3-5 kat daha rijitdir, bu nedenle eğimi daha diktir.</li>
+          <li><strong>Ayrılma noktası:</strong> Dış yük, parçalar arasındaki sıkma kuvvetini sıfıra düşürdüğü noktadır. Bu noktadan sonra tüm yük cıvataya biner ve bağlantı "açılmış" olur.</li>
+        </ul>
+
+        <div class="tech-diagram-wrap">
+          <svg width="400" height="220" viewBox="0 0 400 220" fill="none">
+            <line x1="60" y1="190" x2="380" y2="190" stroke="var(--mist)" stroke-width="1"/>
+            <line x1="60" y1="190" x2="60" y2="20" stroke="var(--mist)" stroke-width="1"/>
+            <text x="190" y="210" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">Deformasyon (δ)</text>
+            <text x="20" y="110" fill="var(--mist)" font-size="10" font-family="JetBrains Mono" transform="rotate(-90, 20, 110)">Kuvvet (F)</text>
+            <path d="M80 180 L250 40" stroke="var(--amber)" stroke-width="2.5"/>
+            <path d="M80 180 L320 40" stroke="var(--teal)" stroke-width="2.5"/>
+            <text x="260" y="35" fill="var(--amber)" font-size="10" font-family="JetBrains Mono">Cıvata (k_b)</text>
+            <text x="330" y="35" fill="var(--teal)" font-size="10" font-family="JetBrains Mono">Parça (k_c)</text>
+            <circle cx="160" cy="120" r="4" fill="var(--danger)"/>
+            <text x="170" y="118" fill="var(--danger)" font-size="9" font-family="JetBrains Mono">Ön gerilme (F_i)</text>
+            <circle cx="210" cy="70" r="4" fill="var(--white)"/>
+            <text x="220" y="68" fill="var(--white)" font-size="9" font-family="JetBrains Mono">Ayrılma noktası</text>
+            <path d="M80 180 Q200 160 250 40" stroke="var(--amber)" stroke-width="1" stroke-dasharray="3 3" fill="none"/>
+          </svg>
+        </div>
+
+        <h2>3. Yorulma (Fatigue): Görünmez Katil</h2>
+        <p>Cıvata bağlantılarındaki en yaygın arıza modu <strong>yorulma kırılması</strong>\'dır. Statik dayanımı mükemmel olan bir cıvata, neden tekrarlayan yükler altında kırılır?</p>
+        <ul>
+          <li><strong>Gerilme genliği (σ_a):</strong> Her yük döngüsünde cıvataya binen gerilme değişimidir. Ön gerilme ne kadar yüksekse, dış yük değişiminden cıvataya aktarılan gerilme genliği o kadar düşüktür. Bu, ön gerilmenin neden hayat kurtarıcı olduğunu açıklar.</li>
+          <li><strong>Ortalama gerilme (σ_m):
+</strong> Yük döngüsü boyunca cıvatadaki ortalama gerilme seviyesidir. Ön gerilme bu değeri belirler.</li>
+          <li><strong> Goodman diyagramı:</strong> σ_a ve σ_m değerlerini birlikte değerlendirerek cıvatanın yorulma ömrünü tahmin etmemizi sağlar. Emniyetli bölgede kalmak, tasarımın temel hedefidir.</li>
+        </ul>
+
+        <h2>4. Neden Gevşer? — Titreşim ve Dönme Mekanizmaları</h2>
+        <p>Cıvata gevşemesi iki temel mekanizma ile gerçekleşir:</p>
+        <ul>
+          <li><strong>Dönerek gevşeme (rotational loosening):</strong> Junker\'ın 1969 tarihli çalışmasına göre, titreşim kaynaklı yatay (transversal) yer değiştirme, cıvata somununda döndürücü bir tork oluşturur. Bu mekanizma özellikle M10\'dan küçük cıvatalarda ve titreşimi yüksek ortamlarda (CNC tezgah spindleları, kompresörler) kritik bir sorundur.</li>
+          <li><strong>Dönme olmadan gevşeme (non-rotational):
+</strong> Plastik deformasyon (relaxation), creep ve termal genleşme-sonuşma döngüleri sonucunda ön gerilme kaybı yaşanır. Özellikle alüminyum parçalarda ve yüksek sıcaklık ortamlarında belirgindir.</li>
+        </ul>
+
+        <h2>5. Pratik Çözümler ve Tasarım Kuralları</h2>
+        <p>Mühendislik pratiğinde cıvata bağlantılarını güçlendiren temel stratejiler:</p>
+        <ul>
+          <li><strong>Kilitleme yöntemleri:</strong> Yay rondelası (DIN 127), naylon insertli somun (DIN 985), diş dolgulu yapıştırıcı (Loctite 243/263), ve Nord-Lock kama rondelası sistemleri. Her birinin titreşim spektrumuna göre farklı etkinlik seviyeleri vardır.</li>
+          <li><strong>Doğru torklama:</strong> Tork anahtarı ile kontrollü sıkma, hidrolik gerdirme (hydraulic tensioning) veya dönüş açısı yöntemi (turn-of-nut) kullanılarak optimum ön gerilme sağlanmalıdır. Aşırı sıkma, cıvata akmasına neden olur.</li>
+          <li><strong>Parça rijitliği artırma:
+</strong> Bağlantı rijitlik oranı (Φ = k_b / (k_b + k_c)) düşük tutulmalıdır. Daha rijit parçalar, dış yükün cıvataya aktarım oranını azaltır. Geniş flanş temas alanı ve kısa cıvata boyu bu oranı iyileştirir.</li>
+          <li><strong>Düzenli kontrol:
+</strong> Kritik bağlantılarda (CNC spindle montajı, pres gövdesi) periyodik tork kontrolü ve yeniden sıkma protokolleri uygulanmalıdır.</li>
+        </ul>
+
+        <div class="tech-diagram-wrap">
+          <svg width="400" height="130" viewBox="0 0 400 130" fill="none">
+            <rect x="20" y="20" width="360" height="90" rx="4" fill="var(--ink-3)" stroke="var(--amber)" stroke-width="1"/>
+            <text x="40" y="50" fill="var(--amber)" font-size="11" font-family="JetBrains Mono" font-weight="bold">VDI 2230</text>
+            <text x="40" y="70" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">Sistematik cıvata hesaplama standardı</text>
+            <text x="220" y="50" fill="var(--amber)" font-size="11" font-family="JetBrains Mono" font-weight="bold">ISO 898-1</text>
+            <text x="220" y="70" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">Mekanik performans sınıfları (8.8, 10.9, 12.9)</text>
+            <text x="40" y="95" fill="var(--mist)" font-size="9" font-family="JetBrains Mono">Her iki standart birlikte kullanıldığında güvenilir cıvata tasarımı mümkün olur.</text>
+          </svg>
+        </div>
+      `
+    },
+    {
+      id: "art-3dprint",
+      date: "24 HAZİRAN 2026",
+      tags: ["3D BASKI", "ADDITIVE", "TASARIM"],
+      title: "3D Yazıcılar ve Mühendislik: Tasarımcılar İçin Uygulamalı Rehber",
+      readTime: "12 Dk",
+      content: `
+        <h2>3D Baskı Nedir ve Neden Önemlidir?</h2>
+        <p>Geleneksel imalat yöntemlerinde (torna, freze, döküm) malzeme, bloktan kaldırılarak istenen forma ulaşır — bu “subtractive” yaklaşımdır. <strong>Eklemeli imalat (Additive Manufacturing — AM)</strong> ise tam tersi prensiple çalışır: Malzeme, katman katman eklenerek sıfırdan inşa edilir. Bu temel fark, tasarımcıya daha önce imkansız olan geometrik serbestlikler sunar.</p>
+
+        <p>3D baskının endüstrideki önemi hızla artıyor. Wohlers Associates 2024 raporuna göre küresel AM pazarı 20 milyar doları aşmış durumda. Havacılık, medikal, otomotiv ve kalıp sektörleri bu teknolojiyi aktif olarak üretim süreçlerine entegre ediyor. Bir makine mühendisi veya tasarımcı olarak bu teknolojiyi anlamak, artık “opsiyonel” değil “zorunlu” bir yetkinliktir.</p>
+
+        <h2>Temel Baskı Teknolojileri</h2>
+        <p>Piyasada çok sayıda 3D baskı teknolojisi olmakla birlikte, makine mühendisliği ve tasarım alanında en çok kullanılan yöntemler şunlardır:</p>
+
+        <h3>FDM/FFF (Fused Deposition Modeling)</h3>
+        <p>En yaygın ve ekonomik yöntemdir. Termoplastik filament (PLA, ABS, PETG, Nylon, PC) bir nozülde eritilerek katman katman yatırılır. Prototipleme, kavram doğrulama ve bazı fonksiyonel parçalar için uygundur. Katman kalınlığı tipik olarak 0.1–0.3 mm aralığındadır.</p>
+        <ul>
+          <li><strong>Avantajlar:</strong> Düşük maliyet, geniş malzeme yelpazesi, kolay erişim.</li>
+          <li><strong>Sınırlamalar:</strong> Anizotropik mekanik özellikler (katmanlar arası bağ zayıf), yüzey pürüzlülüğü, destek yapıları gerektiren geometriler.</li>
+          <li><strong>Tipik uygulamalar:</strong> Konsept modeller, montaj kontrolü aparatları, kavram tasarımları.</li>
+        </ul>
+
+        <h3>SLA/DLP (Stereolithography / Digital Light Processing)</h3>
+        <p>Sıvı reçine, UV lazer veya projektör ile katman katman kürlenerek sertleştirilir. FDM\'e kıyasla çok daha yüksek yüzey kalitesi ve detay hassasiyeti sağlar. Tipik katman kalınlığı 0.025–0.1 mm aralığındadır.</p>
+        <ul>
+          <li><strong>Avantajlar:</n</strong> Üstün yüzey kalitesi, ince detay, yüksek doğruluk.</li>
+          <li><strong>Sınırlamalar:</strong> Mekanik dayanım genellikle düşüktür (akrilik reçineler), UV hassasiyeti, destek yapıları, son kürlenme gerektirir.</li>
+          <li><strong>Tipik uygulamalar:</strong> Mücevher kalıpları, diş protezleri, minyatür modeller, kayıp mum döküm master\'ları.</li>
+        </ul>
+
+        <h3>SLS/SLM (Selective Laser Sintering / Melting)</h3>
+        <p>Toz yatağında metal veya polimer toz partikülleri, lazer ile seçici olarak eritilerek/sinterlenerek birleştirilir. Gerçek fonksiyonel metal parçalar üretmek için en yaygın AM yöntemidir. Titanyum (Ti6Al4V), paslanmaz çelik (316L, 17-4 PH), Inconel 718, alüminyum (AlSi10Mg) gibi mühendislik malzemeleri kullanılabilir.</p>
+        <ul>
+          <li><strong>Avantajlar:</strong> Gerçek mühendislik malzemeleri, karmaşık iç geometriler (soğutma kanalları), son kullanım parçaları.</li>
+          <li><strong>Sınırlamalar:</strong> Yüksek maliyet, destek yapıları, toz yönetimi, ısıl işlem gerektirir.</li>
+          <li><strong>Tipik uygulamalar:</strong> Havacılık bileşenleri, implantlar, enjeksiyon kalıp soğutma kanalları, turbo parçaları.</li>
+        </ul>
+
+        <h2>Malzeme Seçimi: Hangi Filament/Reçine Ne İşe Yarar?</h2>
+        <p>Doğru malzeme seçimi, baskılı parçanın fonksiyonelliğini doğrudan belirler. Makine mühendisliği uygulamaları için kritik malzeme karşılaştırması:</p>
+
+        <table class="article-table">
+          <thead>
+            <tr><th>Malzeme</th><th>Yükseklik Mukavemeti</th><th>Sıcaklık Dayanımı</th><th>Tipik Kullanım</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>PLA</td><td>Düşük (60°C deforme olur)</td><td>Düşük</td><td>Prototipleme, görsel modeller</td></tr>
+            <tr><td>ABS</td><td>Orta (100°C)</td><td>Orta</td><td>Fonksiyonel prototipler, aparatlar</td></tr>
+            <tr><td>PETG</td><td>Orta (80°C)</td><td>Orta</td><td>Mekanik parçalar, muhafazalar</td></tr>
+            <tr><td>Nylon (PA)</td><td>Yüksek (120°C)</td><td>Yüksek</td><td>Dişliler, kayış kasnakları, aşınma parçaları</td></tr>
+            <tr><td>PC (Polikarbonat)</td><td>Yüksek (140°C)</td><td>Yüksek</td><td>Yüksek darbe dayanımı gerektiren parçalar</td></tr>
+            <tr><td>ASA</td><td>Orta-Yüksek (100°C)</td><td>Yüksek UV</td><td>Dış mekan, otomotiv</td></tr>
+            <tr><td>CF-Nylon</td><td>Çok Yüksek</td><td>Yüksek</td><td>Yüksek rijitlik gerektiren yapısal parçalar</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Tasarımcılar İçin DFM Kuralları (Design for AM)</h2>
+        <p>3D baskıya uygun tasarım yapmak, geleneksel DFM\'den farklı kurallar gerektirir. Aşağıdaki kurallar, baskılı parçalarınızın başarısını doğrudan etkiler:</p>
+        <ul>
+          <li><strong>Aşırı konsolları önleyin:</strong> FDM\'de 45°\'den büyük konsol açıları destek yapısı gerektirir. Mümkün olduğunca 45° kuralına uyun veya kendi kendini destekleyen geometriler tasarlayın.</li>
+          <li><strong>Duvar kalınlığı:</strong> Minimum duvar kalınlığı nozzle çapının 2-3 katı olmalıdır (FDM için tipik olarak ≥0.8 mm). Çok ince duvarlar baskı sırasında kırılır veya görünmez.</li>
+          <li><strong>Yuvarlak köşeler ve radius:</strong> Keskin iç köşeler stres konsantratörü oluşturur. Minimum 1 mm radius ekleyerek hem mekanik dayanımı artırın hem de baskı kalitesini iyileştirin.</li>
+          <li><strong>Baskı yönü optimizasyonu:</strong> FDM parçaları Z ekseninde (katmanlar arası) en zayıftır. Kritik yük altındaki bölgeleri yatay yönde baskılacak şekilde orient edin.</li>
+          <li><strong>Tolerans planlaması:</strong> FDM tipik olarak ±0.2–0.5 mm tolerans sağlar. Hassas montaj yüzeyleri için talaşlı imalat payı (0.5–1.0 mm) bırakın.</li>
+          <li><strong>Destek yapılarını minimize edin:</strong> Destek malzemesi hem maliyeti artırır hem de yüzey kalitesini düşürür. Tasarımda destek ihtiyacını azaltacak geometrik optimasyonlar yapın.</li>
+        </ul>
+
+        <div class="tech-diagram-wrap">
+          <svg width="400" height="180" viewBox="0 0 400 180" fill="none">
+            <rect x="30" y="20" width="340" height="140" rx="6" fill="var(--ink-4)" stroke="var(--mist)" stroke-width="1"/>
+            <path d="M80 140 L80 60 L160 60 L160 140" fill="var(--ink-2)" stroke="var(--amber)" stroke-width="2"/>
+            <path d="M80 60 L120 40 L200 40 L160 60" fill="var(--ink-3)" stroke="var(--amber)" stroke-width="1.5"/>
+            <path d="M160 60 L200 40 L200 120 L160 140" fill="var(--ink-3)" stroke="var(--amber)" stroke-width="1.5"/>
+            <text x="90" y="105" fill="var(--amber)" font-size="10" font-family="JetBrains Mono" font-weight="bold">45°</text>
+            <path d="M80 140 L80 140 L120 100" stroke="var(--amber)" stroke-width="1.5" stroke-dasharray="4 2"/>
+            <line x1="120" y1="100" x2="80" y2="100" stroke="var(--amber)" stroke-width="1"/>
+            <text x="220" y="50" fill="var(--white)" font-size="11" font-family="JetBrains Mono" font-weight="bold">DFM Kuralları</text>
+            <text x="220" y="70" fill="var(--mist)" font-size="9" font-family="JetBrains Mono">• 45° konsol kuralı</text>
+            <text x="220" y="85" fill="var(--mist)" font-size="9" font-family="JetBrains Mono">• Min duvar: 0.8 mm</text>
+            <text x="220" y="100" fill="var(--mist)" font-size="9" font-family="JetBrains Mono">• Radius ≥ 1 mm</text>
+            <text x="220" y="115" fill="var(--mist)" font-size="9" font-family="JetBrains Mono">• Baskı yönü kritik</text>
+            <text x="220" y="130" fill="var(--mist)" font-size="9" font-family="JetBrains Mono">• Talaş payı bırakın</text>
+            <text x="220" y="145" fill="var(--mist)" font-size="9" font-family="JetBrains Mono">• Destek minimize</text>
+          </svg>
+        </div>
+
+        <h2>CNC ile 3D Baskı Entegrasyonu: Hibrit İmalat</h2>
+        <p>Modern üretimde 3D baskı ve CNC talaşlı imalat birbirinin rakibi değil, tamamlayıcısıdır. <strong>Hibrit imalat</strong> yaklaşımında:</p>
+        <ul>
+          <li><strong>Konsept aşaması:</strong> 3D baskı ile hızlı prototipleme → tasarım doğrulama → 24 saat içinde fiziksel test.</li>
+          <li><strong>Kalıp imalatı:</strong> Enjeksiyon kalıplarında conformal cooling (uydu soğutma) kanalları 3D baskı ile üretilir, kalıp yüzeyleri CNC ile son işlenir. Soğutma süresi %30-50 kısalır.</li>
+          <li><strong>Yedek parça:</strong> Stokta bulunmayan parçalar, tersine mühendislik + 3D baskı ile günler içinde üretilir. Havacılık ve savunma sektöründe bu yaklaşım lojistik maliyetleri dramatik şekilde düşürür.</li>
+          <li><strong>Jig ve fikstürler:</strong> Üretim hattı için özel aparatlar 3D baskı ile üretilir, CNC ile hassas temas yüzeyleri son işlenir.</li>
+        </ul>
+
+        <h2>Sonuç: Tasarımcının Yeni Gücü</h2>
+        <p>3D baskı, makine mühendisliğinin "imkansız" dediği geometrileri artık mümkün kılıyor. İç içe geçen parçalar, tek parçada montaj, conformal soğutma kanalları, kafes yapılar (lattice structures) — bunların hepsi eklemeli imalatın doğal avantajlarıdır. Ancak unutmayın: 3D baskı bir "sihirli değnek" değildir. Malzeme özelliklerini, baskı yönü etkilerini ve tolerans sınırlamalarını bilmeden tasarlanan bir parça, geleneksel imalattan daha kötü sonuç verebilir.</p>
+
+        <p>Bir tasarımcı olarak yapmanız gereken, 3D baskıyı "alternatif bir imalat yöntemi" olarak değil, "tasarım düşünme şeklinizi değiştiren bir araç" olarak görmektir. Tasarım serbestliğini bilinçli kullanın, malzeme bilgisine yatırım yapın ve prototipleme sürecini üretim sürecinizin doğal bir parçası haline getirin.</p>
       `
     }
   ],
@@ -1871,13 +2127,110 @@ const articles = {
             <text x="390" y="20" fill="var(--mist)" font-size="10" font-family="JetBrains Mono" text-anchor="end">3. DATUM REFERENCES</text>
           </svg>
         </div>
+
+        <h2>The Datum System: Locking Down in Space (3-2-1 Rule)</h2>
+        <p>A free body in 3D space has 6 degrees of freedom (3 translational, 3 rotational). To properly locate a part during assembly, we must constrain these movements. This is known as the <strong>3-2-1 Datum Principle</strong>:</p>
+        <ul>
+          <li><strong>Primary Datum (A):</strong> The main reference surface the part rests on. Contacting at 3 points, it locks 3 degrees of freedom (1 translational, 2 rotational).</li>
+          <li><strong>Secondary Datum (B):</strong> The second reference surface. Contacting at 2 points, it locks 2 additional degrees of freedom.</li>
+          <li><strong>Tertiary Datum (C):</strong> The final constraint point. It locks the remaining translational movement.</li>
+        </ul>
+
+        <div class="tech-diagram-wrap">
+          <svg width="400" height="200" viewBox="0 0 400 200" fill="none">
+            <rect x="120" y="60" width="160" height="100" rx="3" fill="var(--ink-4)" stroke="var(--mist)" stroke-width="2"/>
+            <rect x="50" y="160" width="300" height="20" rx="2" fill="var(--ink-3)" stroke="var(--amber)" stroke-width="1.5"/>
+            <circle cx="200" cy="80" r="12" fill="none" stroke="var(--white)" stroke-width="2"/>
+            <text x="193" y="84" fill="var(--white)" font-size="10" font-family="JetBrains Mono">A</text>
+            <rect x="115" y="60" width="5" height="100" fill="var(--amber)" opacity="0.6"/>
+            <text x="90" y="84" fill="var(--amber)" font-size="9" font-family="JetBrains Mono">DATUM A</text>
+            <rect x="120" y="55" width="160" height="5" fill="var(--amber)" opacity="0.4"/>
+            <text x="280" y="63" fill="var(--amber)" font-size="9" font-family="JetBrains Mono">DATUM B</text>
+            <rect x="320" y="60" width="5" height="100" fill="var(--amber)" opacity="0.4"/>
+            <text x="330" y="115" fill="var(--amber)" font-size="9" font-family="JetBrains Mono">DATUM C</text>
+            <text x="130" y="195" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">3-2-1: All 6 degrees of freedom constrained</text>
+          </svg>
+        </div>
+
+        <h2>Form Tolerances: The Part's Personality</h2>
+        <p>Form tolerances define the geometric accuracy a feature must possess on its own, without any datum reference. There are four fundamental form tolerances:</p>
+        <ul>
+          <li><strong>Flatness:</strong> Specifies how much a surface can deviate from an ideal plane. On a CMM, it is calculated as the range between the highest and lowest surface points. For example, a flatness tolerance of ⌀0.05 on a flange surface means the surface can deviate at most 0.05 mm from the ideal plane.</li>
+          <li><strong>Straightness:</strong> Specifies how much a line feature can deviate from an ideal straight line. Critical for shaft surfaces and linear guide rails.</li>
+          <li><strong>Circularity (Roundness):</strong> Specifies how much a circular cross-section can deviate from an ideal circle. Requires precise control at bearing seats and piston ring grooves.</li>
+          <li><strong>Cylindricity:</strong> Specifies how much a cylindrical surface can deviate from an ideal cylinder. It simultaneously controls both circularity and straightness as a 3D tolerance.</li>
+        </ul>
+
+        <h2>Orientation Tolerances: Angular Accuracy</h2>
+        <p>Orientation tolerances control the angular position of a feature relative to a datum reference. There are three main types:</p>
+        <ul>
+          <li><strong>Parallelism:</strong> Specifies the degree to which a surface or axis must be parallel to a reference datum. A critical parameter for CNC machine slideways and table surfaces.</li>
+          <li><strong>Perpendicularity (Squareness):</strong> Specifies how accurately a feature must be positioned at 90° to a reference datum. Directly affects assembly quality at corner joints.</li>
+          <li><strong>Angularity:</strong> Specifies how accurately a feature must be positioned at a specific angle to a reference datum. Used for conical surfaces and angled mounting flanges.</li>
+        </ul>
+
+        <h2>Position Tolerances: Locational Precision</h2>
+        <p>Position tolerances define how much a feature (hole, slot, pin, etc.) can deviate from its nominal location. It is the most powerful and most widely used GD&T tool.</p>
+        <ul>
+          <li><strong>Position:</strong> Specifies how much an axis or center point can deviate from its ideal location. The tolerance zone is typically cylindrical (for holes) or rectangular (for slots).</li>
+          <li><strong>Concentricity:</strong> Controls the distance between two axes. Critical for parts machined in a lathe chuck.</li>
+          <li><strong>Symmetry:</strong> Controls the position of a feature's center plane relative to a datum center plane.</li>
+        </ul>
+
+        <h2>MMC and LMC: Material Condition Bonus</h2>
+        <p>One of GD&T's most powerful concepts is <strong>Material Condition Modifiers</strong>. When specifying a position tolerance for a hole:</p>
+        <ul>
+          <li><strong>MMC (Maximum Material Condition — Ⓜ):</strong> The tolerance zone is smallest when the hole is at its smallest diameter (maximum material). As the hole is enlarged (through manufacturing variation, honing, etc.), "bonus" tolerance is gained. This is a critical optimization that improves manufacturability.</li>
+          <li><strong>LMC (Least Material Condition — Ⓛ):</strong> The tolerance zone is defined when the hole is at its largest diameter (minimum material). Preferred for wall thickness control and sealing applications.</li>
+        </ul>
+
+        <div class="tech-diagram-wrap">
+          <svg width="400" height="160" viewBox="0 0 400 160" fill="none">
+            <rect x="30" y="40" width="340" height="80" rx="4" fill="var(--ink-4)" stroke="var(--mist)" stroke-width="1"/>
+            <circle cx="120" cy="80" r="25" fill="none" stroke="var(--amber)" stroke-width="2"/>
+            <circle cx="120" cy="80" r="28" fill="none" stroke="var(--amber)" stroke-width="1" stroke-dasharray="4 2"/>
+            <text x="108" y="84" fill="var(--amber)" font-size="11" font-family="JetBrains Mono">MMC</text>
+            <circle cx="280" cy="80" r="30" fill="none" stroke="var(--amber)" stroke-width="2"/>
+            <circle cx="280" cy="80" r="33" fill="none" stroke="var(--amber)" stroke-width="1" stroke-dasharray="4 2"/>
+            <text x="268" y="84" fill="var(--amber)" font-size="11" font-family="JetBrains Mono">LMC</text>
+            <path d="M150 80 L248 80" stroke="var(--mist)" stroke-width="1"/>
+            <text x="175" y="72" fill="var(--mist)" font-size="9" font-family="JetBrains Mono">Bonus tolerance increases →</text>
+            <text x="80" y="135" fill="var(--white)" font-size="10" font-family="JetBrains Mono">As the hole grows, position tolerance gains "bonus"</text>
+          </svg>
+        </div>
+
+        <h2>Runout and Surface Profile</h2>
+        <p>Runout tolerances control surface variation as a part rotates. There are two fundamental types:</p>
+        <ul>
+          <li><strong>Circular Runout:</strong> Controls the total runout of a cylindrical surface relative to a datum axis as the part rotates one full revolution. A critical quality indicator in turning and grinding operations.</li>
+          <li><strong>Total Runout:</strong> Controls the total variation along the entire cylindrical surface relative to a datum axis during rotation. Used for high-precision shaft journals and gear mounting surfaces.</li>
+        </ul>
+
+        <h2>Practical Application: GD&T in CNC Machining</h2>
+        <p>Daily implications of GD&T for CNC operators and quality engineers:</p>
+        <ul>
+          <li><strong>Machining strategy:</strong> For parts with tight flatness tolerances, roughing passes should precede finishing passes. Datum surfaces are always machined in the first operation.</li>
+          <li><strong>Measurement planning:</strong> CMM programs are written according to GD&T callouts. The datum sequence (A → B → C) is the structural backbone of the measurement.</li>
+          <li><strong>Accept/reject criteria:</strong> Making rejection decisions based solely on simple ± tolerances without accounting for MMC bonus can unnecessarily scrap perfectly acceptable parts.</li>
+        </ul>
+
+        <div class="tech-diagram-wrap">
+          <svg width="400" height="120" viewBox="0 0 400 120" fill="none">
+            <rect x="20" y="20" width="360" height="80" rx="4" fill="var(--ink-3)" stroke="var(--amber)" stroke-width="1"/>
+            <text x="40" y="50" fill="var(--amber)" font-size="11" font-family="JetBrains Mono" font-weight="bold">ISO 1101</text>
+            <text x="40" y="70" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">Fundamental standard for geometric tolerancing</text>
+            <text x="220" y="50" fill="var(--amber)" font-size="11" font-family="JetBrains Mono" font-weight="bold">ASME Y14.5</text>
+            <text x="220" y="70" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">US industry standard, 2018 revision</text>
+            <text x="40" y="95" fill="var(--mist)" font-size="9" font-family="JetBrains Mono">Both standards express the same geometric principles with different terminology.</text>
+          </svg>
+        </div>
       `
     },
     {
       id: "art-bolts",
       date: "APRIL 12, 2026",
       tags: ["DYNAMIC STRENGTH", "BOLT DESIGN", "R&D"],
-      title: "Dynamic Strength in Threaded Fasteners: Why Bolts Loose and Fail",
+      title: "Dynamic Strength in Threaded Fasteners: Why Bolts Lose Clamp and Fail",
       readTime: "10 Min",
       content: `
         <h2>Tensioning Philosophy & Fastener Dynamics</h2>
@@ -1896,6 +2249,169 @@ const articles = {
             <text x="10" y="80" fill="var(--mist)" font-family="JetBrains Mono" font-size="10">SPRING EFFECT</text>
           </svg>
         </div>
+
+        <h2>2. The Joint Diagram: How Forces Distribute</h2>
+        <p>The most powerful tool for understanding bolted joint behavior is the <strong>joint diagram</strong>. This diagram plots the elastic deformations of both the bolt and the clamped parts on the same graph:</p>
+        <ul>
+          <li><strong>Bolt curve (k_b):</strong> The load-deformation curve of the bolt. Its slope represents bolt stiffness. Shorter, thicker bolts are steeper (stiffer).</li>
+          <li><strong>Clamped parts curve (k_c):</strong> Represents the combined stiffness of all clamped components. Typically 3-5 times stiffer than the bolt, resulting in a steeper slope.</li>
+          <li><strong>Separation point:</strong> The point at which external load reduces the clamp force between parts to zero. Beyond this point, all load transfers to the bolt and the joint is "open".</li>
+        </ul>
+
+        <div class="tech-diagram-wrap">
+          <svg width="400" height="220" viewBox="0 0 400 220" fill="none">
+            <line x1="60" y1="190" x2="380" y2="190" stroke="var(--mist)" stroke-width="1"/>
+            <line x1="60" y1="190" x2="60" y2="20" stroke="var(--mist)" stroke-width="1"/>
+            <text x="190" y="210" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">Deformation (δ)</text>
+            <text x="20" y="110" fill="var(--mist)" font-size="10" font-family="JetBrains Mono" transform="rotate(-90, 20, 110)">Force (F)</text>
+            <path d="M80 180 L250 40" stroke="var(--amber)" stroke-width="2.5"/>
+            <path d="M80 180 L320 40" stroke="var(--teal)" stroke-width="2.5"/>
+            <text x="260" y="35" fill="var(--amber)" font-size="10" font-family="JetBrains Mono">Bolt (k_b)</text>
+            <text x="330" y="35" fill="var(--teal)" font-size="10" font-family="JetBrains Mono">Parts (k_c)</text>
+            <circle cx="160" cy="120" r="4" fill="var(--danger)"/>
+            <text x="170" y="118" fill="var(--danger)" font-size="9" font-family="JetBrains Mono">Preload (F_i)</text>
+            <circle cx="210" cy="70" r="4" fill="var(--white)"/>
+            <text x="220" y="68" fill="var(--white)" font-size="9" font-family="JetBrains Mono">Separation point</text>
+            <path d="M80 180 Q200 160 250 40" stroke="var(--amber)" stroke-width="1" stroke-dasharray="3 3" fill="none"/>
+          </svg>
+        </div>
+
+        <h2>3. Fatigue: The Invisible Killer</h2>
+        <p>The most common failure mode in bolted joints is <strong>fatigue fracture</strong>. Why does a bolt with excellent static strength fail under repeated loading?</p>
+        <ul>
+          <li><strong>Stress amplitude (σ_a):</strong> The stress variation experienced by the bolt during each load cycle. The higher the preload, the lower the stress amplitude transferred to the bolt from external load changes. This explains why preload is life-saving.</li>
+          <li><strong>Mean stress (σ_m):</strong> The average stress level in the bolt over the load cycle. Preload determines this value.</li>
+          <li><strong>Goodman diagram:</strong> Evaluates σ_a and σ_m together to predict bolt fatigue life. Staying within the safe zone is the fundamental design objective.</li>
+        </ul>
+
+        <h2>4. Why Do Bolts Loosen? — Vibration and Rotation Mechanisms</h2>
+        <p>Bolt loosening occurs through two fundamental mechanisms:</p>
+        <ul>
+          <li><strong>Rotational loosening:</strong> According to Junker's seminal 1969 study, transverse vibration-induced displacement creates a rotational torque on the nut. This mechanism is particularly critical for bolts smaller than M10 and in high-vibration environments (CNC spindle assemblies, compressors).</li>
+          <li><strong>Non-rotational loosening:</strong> Preload loss occurs through plastic deformation (relaxation), creep, and thermal expansion-contraction cycles. Particularly pronounced in aluminum components and high-temperature environments.</li>
+        </ul>
+
+        <h2>5. Practical Solutions and Design Rules</h2>
+        <p>Key strategies for strengthening bolted joints in engineering practice:</p>
+        <ul>
+          <li><strong>Locking methods:</strong> Spring washers (DIN 127), nylon-insert lock nuts (DIN 985), thread-locking adhesive (Loctite 243/263), and Nord-Lock wedge washer systems. Each has different effectiveness levels depending on the vibration spectrum.</li>
+          <li><strong>Proper torquing:</strong> Optimal preload must be achieved through controlled tightening with a torque wrench, hydraulic tensioning, or the turn-of-nut method. Over-torquing causes bolt yielding.</li>
+          <li><strong>Increase joint stiffness:</strong> The joint stiffness ratio (Φ = k_b / (k_b + k_c)) should be kept low. Stiffer clamped parts reduce the fraction of external load transferred to the bolt. Wide flange contact area and short bolt length improve this ratio.</li>
+          <li><strong>Periodic inspection:\</strong> Critical joints (CNC spindle mounts, press frames) should have periodic torque checks and re-tightening protocols.</li>
+        </ul>
+
+        <div class="tech-diagram-wrap">
+          <svg width="400" height="130" viewBox="0 0 400 130" fill="none">
+            <rect x="20" y="20" width="360" height="90" rx="4" fill="var(--ink-3)" stroke="var(--amber)" stroke-width="1"/>
+            <text x="40" y="50" fill="var(--amber)" font-size="11" font-family="JetBrains Mono" font-weight="bold">VDI 2230</text>
+            <text x="40" y="70" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">Systematic bolt calculation standard</text>
+            <text x="220" y="50" fill="var(--amber)" font-size="11" font-family="JetBrains Mono" font-weight="bold">ISO 898-1</text>
+            <text x="220" y="70" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">Mechanical property classes (8.8, 10.9, 12.9)</text>
+            <text x="40" y="95" fill="var(--mist)" font-size="9" font-family="JetBrains Mono">Using both standards together enables reliable bolt design.</text>
+          </svg>
+        </div>
+      `
+    },
+    {
+      id: "art-3dprint",
+      date: "JUNE 24, 2026",
+      tags: ["3D PRINTING", "ADDITIVE", "DESIGN"],
+      title: "3D Printers and Engineering: A Practical Guide for Designers",
+      readTime: "12 Min",
+      content: `
+        <h2>What Is 3D Printing and Why Does It Matter?</h2>
+        <p>In traditional manufacturing (turning, milling, casting), material is removed from a solid block to achieve the desired shape — this is the “subtractive” approach. <strong>Additive Manufacturing (AM)</strong> works on the opposite principle: material is added layer by layer, building the part from scratch. This fundamental difference gives designers geometric freedoms that were previously impossible.</p>
+
+        <p>The importance of 3D printing in industry is growing rapidly. According to the Wohlers Associates 2024 report, the global AM market has exceeded $20 billion. Aerospace, medical, automotive, and tooling sectors are actively integrating this technology into their production workflows. As a mechanical engineer or designer, understanding this technology is no longer “optional” — it is a mandatory competency.</p>
+
+        <h2>Core Printing Technologies</h2>
+        <p>While numerous 3D printing technologies exist, the most widely used methods in mechanical engineering and design are:</p>
+
+        <h3>FDM/FFF (Fused Deposition Modeling)</h3>
+        <p>The most common and economical method. A thermoplastic filament (PLA, ABS, PETG, Nylon, PC) is melted in a nozzle and deposited layer by layer. Suitable for prototyping, concept validation, and some functional parts. Layer thickness typically ranges from 0.1–0.3 mm.</p>
+        <ul>
+          <li><strong>Advantages:</strong> Low cost, wide material range, easy accessibility.</li>
+          <li><strong>Limitations:</strong> Anisotropic mechanical properties (inter-layer bonding is weak), surface roughness, geometries requiring support structures.</li>
+          <li><strong>Typical applications:</strong> Concept models, assembly verification fixtures, visual prototypes.</li>
+        </ul>
+
+        <h3>SLA/DLP (Stereolithography / Digital Light Processing)</h3>
+        <p>Liquid resin is selectively cured layer by layer using a UV laser or projector. Offers significantly higher surface quality and detail precision than FDM. Typical layer thickness ranges from 0.025–0.1 mm.</p>
+        <ul>
+          <li><strong>Advantages:</strong> Superior surface finish, fine detail, high accuracy.</li>
+          <li><strong>Limitations:</strong> Generally lower mechanical strength (acrylic resins), UV sensitivity, support structures required, post-curing needed.</li>
+          <li><strong>Typical applications:</strong> Jewelry molds, dental prosthetics, miniature models, investment casting masters.</li>
+        </ul>
+
+        <h3>SLS/SLM (Selective Laser Sintering / Melting)</h3>
+        <p>In a powder bed, metal or polymer powder particles are selectively melted or sintered by a laser. This is the most common AM method for producing real functional metal parts. Engineering materials such as titanium (Ti6Al4V), stainless steel (316L, 17-4 PH), Inconel 718, and aluminum (AlSi10Mg) can be used.</p>
+        <ul>
+          <li><strong>Advantages:</strong> Real engineering materials, complex internal geometries (cooling channels), end-use parts.</li>
+          <li><strong>Limitations:</strong> High cost, support structures, powder management, heat treatment required.</li>
+          <li><strong>Typical applications:</strong> Aerospace components, implants, injection mold conformal cooling channels, turbine parts.</li>
+        </ul>
+
+        <h2>Material Selection: Which Filament/Resin for What?</h2>
+        <p>Proper material selection directly determines the functionality of the printed part. Critical material comparison for mechanical engineering applications:</p>
+
+        <table class="article-table">
+          <thead>
+            <tr><th>Material</th><th>Heat Deflection Temp</th><th>Strength Level</th><th>Typical Use</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>PLA</td><td>Low (deforms at 60°C)</td><td>Low</td><td>Prototyping, visual models</td></tr>
+            <tr><td>ABS</td><td>Medium (100°C)</td><td>Medium</td><td>Functional prototypes, fixtures</td></tr>
+            <tr><td>PETG</td><td>Medium (80°C)</td><td>Medium</td><td>Mechanical parts, enclosures</td></tr>
+            <tr><td>Nylon (PA)</td><td>High (120°C)</td><td>High</td><td>Gears, pulleys, wear parts</td></tr>
+            <tr><td>PC (Polycarbonate)</td><td>High (140°C)</td><td>High</td><td>High impact resistance parts</td></tr>
+            <tr><td>ASA</td><td>Med-High (100°C)</td><td>High UV</td><td>Outdoor, automotive</td></tr>
+            <tr><td>CF-Nylon</td><td>Very High</td><td>Very High</td><td>High rigidity structural parts</td></tr>
+          </tbody>
+        </table>
+
+        <h2>DFM Rules for Designers (Design for AM)</h2>
+        <p>Designing for 3D printing requires different rules than traditional DFM. The following rules directly impact the success of your printed parts:</p>
+        <ul>
+          <li><strong>Avoid excessive overhangs:</strong> In FDM, overhang angles greater than 45° require support structures. Follow the 45° rule wherever possible or design self-supporting geometries.</li>
+          <li><strong>Wall thickness:</strong> Minimum wall thickness should be 2-3× the nozzle diameter (typically ≥0.8 mm for FDM). Walls that are too thin will break during printing or become invisible.</li>
+          <li><strong>Fillets and radii:</strong> Sharp internal corners create stress concentrators. Adding a minimum 1 mm radius improves both mechanical strength and print quality.</li>
+          <li><strong>Build orientation optimization:</strong> FDM parts are weakest in the Z-axis (between layers). Orient critical load-bearing regions to be printed in the horizontal direction.</li>
+          <li><strong>Tolerance planning:</strong> FDM typically provides ±0.2–0.5 mm tolerance. Leave machining stock (0.5–1.0 mm) for precision assembly surfaces.</li>
+          <li><strong>Minimize support structures:</strong> Support material increases cost and degrades surface quality. Make geometric optimizations in design to reduce support requirements.</li>
+        </ul>
+
+        <div class="tech-diagram-wrap">
+          <svg width="400" height="180" viewBox="0 0 400 180" fill="none">
+            <rect x="30" y="20" width="340" height="140" rx="6" fill="var(--ink-4)" stroke="var(--mist)" stroke-width="1"/>
+            <path d="M80 140 L80 60 L160 60 L160 140" fill="var(--ink-2)" stroke="var(--amber)" stroke-width="2"/>
+            <path d="M80 60 L120 40 L200 40 L160 60" fill="var(--ink-3)" stroke="var(--amber)" stroke-width="1.5"/>
+            <path d="M160 60 L200 40 L200 120 L160 140" fill="var(--ink-3)" stroke="var(--amber)" stroke-width="1.5"/>
+            <text x="90" y="105" fill="var(--amber)" font-size="10" font-family="JetBrains Mono" font-weight="bold">45°</text>
+            <path d="M80 140 L80 140 L120 100" stroke="var(--amber)" stroke-width="1.5" stroke-dasharray="4 2"/>
+            <line x1="120" y1="100" x2="80" y2="100" stroke="var(--amber)" stroke-width="1"/>
+            <text x="220" y="50" fill="var(--white)" font-size="11" font-family="JetBrains Mono" font-weight="bold">DFM Rules</text>
+            <text x="220" y="70" fill="var(--mist)" font-size="9" font-family="JetBrains Mono">• 45° overhang rule</text>
+            <text x="220" y="85" fill="var(--mist)" font-size="9" font-family="JetBrains Mono">• Min wall: 0.8 mm</text>
+            <text x="220" y="100" fill="var(--mist)" font-size="9" font-family="JetBrains Mono">• Radius ≥ 1 mm</text>
+            <text x="220" y="115" fill="var(--mist)" font-size="9" font-family="JetBrains Mono">• Build orientation critical</text>
+            <text x="220" y="130" fill="var(--mist)" font-size="9" font-family="JetBrains Mono">• Leave machining stock</text>
+            <text x="220" y="145" fill="var(--mist)" font-size="9" font-family="JetBrains Mono">• Minimize supports</text>
+          </svg>
+        </div>
+
+        <h2>Integrating 3D Printing with CNC: Hybrid Manufacturing</h2>
+        <p>In modern production, 3D printing and CNC machining are not competitors — they are complements. In the <strong>hybrid manufacturing</strong> approach:</p>
+        <ul>
+          <li><strong>Concept phase:</strong> Rapid prototyping via 3D printing → design validation → physical testing within 24 hours.</li>
+          <li><strong>Mold making:</strong> Conformal cooling channels in injection molds are produced by 3D printing, while mold surfaces are finish-machined by CNC. Cooling cycle time decreases by 30-50%.</li>
+          <li><strong>Spare parts:</strong> Out-of-stock parts can be produced within days through reverse engineering + 3D printing. In aerospace and defense, this approach dramatically reduces logistics costs.</li>
+          <li><strong>Jigs and fixtures:</strong> Custom production line fixtures are 3D printed, with precision contact surfaces finish-machined by CNC.</li>
+        </ul>
+
+        <h2>Conclusion: The Designer's New Power</h2>
+        <p>3D printing is making geometries that mechanical engineering once called "impossible" now achievable. Interlocking parts, single-piece assemblies, conformal cooling channels, lattice structures — these are all natural advantages of additive manufacturing. However, remember: 3D printing is not a "magic wand." A part designed without understanding material properties, build orientation effects, and tolerance limitations can produce worse results than traditional manufacturing.</p>
+
+        <p>As a designer, what you need to do is view 3D printing not as "an alternative manufacturing method" but as "a tool that changes how you think about design." Use design freedom consciously, invest in material knowledge, and make the prototyping process a natural part of your production workflow.</p>
       `
     }
   ]
