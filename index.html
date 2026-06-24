@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="CNC sistemleri geliştiren, TÜBİTAK Ar-Ge projeleri yöneten ve mühendislik ekiplerine teknik liderlik eden Mustafa Üner'in üretim teknolojileri portfolyosu.">
 <meta property="og:title" content="Mustafa Üner | CNC Systems & R&D Technical Leader">
-<meta property="og:description" content="15+ yıllık CNC geliştirme deneyimiyle 4 ve 5 eksenli makine platformları, TÜBİTAK 1501 projeleri ve ticarileşen üretim teknolojileri geliştiren teknik lider.">
+<meta property="og:description" content="15+ yıllık CNC geliştirme deneyimiyle 4 ve 5 eksenli makine platformları, TÜBİTAK 1501 projeleri ve ticarileşen üretim teknolojileri geliştiren teknoloji lideri">
 <meta property="og:image" content="https://mustafauner.com.tr/cv2.jpeg">
 <meta property="og:url" content="https://mustafauner.com.tr">
 <meta property="og:type" content="website">
@@ -55,10 +55,9 @@ body {
 .mono { font-family: 'JetBrains Mono', monospace; }
 .display { font-family: 'Space Grotesk', sans-serif; letter-spacing: 0; }
 
-/* ─── NOISE OVERLAY ─── */
 body::before {
   content: ''; position: fixed; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' result='noise'/%3E%3C/filter%3E%3Crect width='256' height='256' fill='%23000' filter='url(%23noise)' opacity='0.1'/%3E%3C/svg%3E");
   opacity: 0.025; pointer-events: none; z-index: 9999;
 }
 
@@ -66,12 +65,10 @@ body::before {
 ::-webkit-scrollbar-track { background: var(--ink-2); }
 ::-webkit-scrollbar-thumb { background: var(--amber); border-radius: 2px; }
 
-/* ─── SPA VIEW ANIMATIONS ─── */
 .spa-view { display: none; opacity: 0; }
 .spa-view.active { display: block; animation: fadeUp 0.5s ease forwards; }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-/* ─── REVEAL ANIMATIONS ─── */
 .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -81,168 +78,51 @@ body::before {
 .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
 .d4 { transition-delay: 0.4s; } .d5 { transition-delay: 0.5s; }
 
-/* ─── NAV ─── */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 64px; display: flex; align-items: center; border-bottom: 1px solid rgba(245,158,11,0.12); background: rgba(8,8,16,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); transition: border-color 0.3s; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 64px; display: flex; align-items: center; border-bottom: 1px solid rgba(245,158,11,0.12); background: rgba(8,8,16,0.85); backdrop-filter: blur(10px); }
 nav.scrolled { border-bottom-color: rgba(245,158,11,0.25); }
 .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; display: flex; align-items: center; justify-content: space-between; }
 .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .nav-logo-name { font-family: 'Space Grotesk', sans-serif; font-size: 18px; letter-spacing: 0.08em; color: var(--white); }
 .nav-logo-title { font-size: 8px; color: var(--amber); font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
 
-/* Desktop Navigation Link Container */
 .nav-links { display: flex; gap: 32px; align-items: center; }
 .nav-links a { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--mist); text-decoration: none; transition: color 0.2s; position: relative; }
-.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--amber); transform: scaleX(0); transform-origin: right; transition: transform 0.25s ease; }
+.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--amber); transform: scaleX(0); transform-origin: right; transition: transform 0.3s; }
 .nav-links a:hover, .nav-links a.active-link { color: var(--white); }
 .nav-links a:hover::after, .nav-links a.active-link::after { transform: scaleX(1); transform-origin: left; }
 
 .nav-right-container { display: flex; align-items: center; gap: 16px; }
-
-/* Language Switcher Button */
-.lang-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(245,158,11,0.2); color: var(--amber); padding: 6px 12px; border-radius: 4px; font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: bold; cursor: pointer; transition: all 0.2s; }
+.lang-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(245,158,11,0.2); color: var(--amber); padding: 6px 12px; border-radius: 4px; font-size: 10px; font-family: 'JetBrains Mono', monospace; cursor: pointer; transition: all 0.2s; }
 .lang-btn:hover { background: rgba(245,158,11,0.1); border-color: var(--amber); }
 
-.nav-cta { padding: 8px 20px; border: 1px solid var(--amber); color: var(--amber); border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; font-family: 'JetBrains Mono', monospace; transition: all 0.2s; }
+.nav-cta { padding: 8px 20px; border: 1px solid var(--amber); color: var(--amber); border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: all 0.2s; }
 .nav-cta:hover { background: var(--amber); color: var(--ink); }
 
-/* ─── HERO ─── */
 #hero { min-height: 100vh; display: flex; align-items: center; padding: 100px 24px 40px; position: relative; overflow: hidden; }
-.hero-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(245,158,11,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(245,158,11,0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse at 50% 50%, black 40%, transparent 80%); }
-.hero-glow { position: absolute; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(245,158,11,0.07) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; }
-.hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; align-items: center; }
-.hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border: 1px solid rgba(245,158,11,0.3); border-radius: 2px; font-size: 9px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--amber); font-family: 'JetBrains Mono', monospace; margin-bottom: 20px; background: rgba(245,158,11,0.05); }
+.hero-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(245,158,11,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(245,158,11,0.04) 1px, transparent 1px); background-size: 50px 50px; opacity: 0.5; }
+.hero-glow { position: absolute; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(245,158,11,0.07) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.5; }
+.hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; align-items: center; position: relative; z-index: 2; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border: 1px solid rgba(245,158,11,0.3); border-radius: 2px; font-size: 9px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--amber); }
 .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--amber); animation: pulse-dot 2s ease-in-out infinite; }
 @keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.7); } }
 .hero-name { font-family: 'Space Grotesk', sans-serif; font-size: clamp(56px, 8vw, 96px); line-height: 0.92; letter-spacing: 0.03em; color: var(--white); margin-bottom: 4px; }
 .hero-name span { color: var(--amber); }
 .hero-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 4vw, 48px); letter-spacing: 0.08em; color: var(--steel); margin-bottom: 28px; }
-.hero-desc { font-size: 15px; font-weight: 300; color: var(--mist); line-height: 1.75; max-width: 580px; font-style: italic; border-left: 2px solid var(--amber); padding-left: 20px; margin-bottom: 36px; }
+.hero-desc { font-size: 15px; font-weight: 300; color: var(--mist); line-height: 1.75; max-width: 580px; font-style: italic; border-left: 2px solid var(--amber); padding-left: 20px; margin-bottom: 28px; }
 .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-.btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: var(--amber); color: var(--ink); border: none; border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; cursor: pointer; font-family: 'JetBrains Mono', monospace; transition: all 0.2s; }
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: var(--amber); color: var(--ink); border: none; border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; text-decoration: none; }
 .btn-primary:hover { background: var(--gold); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,158,11,0.3); }
-.btn-ghost { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: transparent; color: var(--mist); border: 1px solid var(--steel); border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; cursor: pointer; font-family: 'JetBrains Mono', monospace; transition: all 0.2s; }
+.btn-ghost { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: transparent; color: var(--mist); border: 1px solid var(--steel); border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; text-decoration: none; }
 .btn-ghost:hover { border-color: var(--light); color: var(--white); }
-.hero-photo-wrap { position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 24px; }
-.hero-photo-frame { position: relative; width: 300px; height: 380px; background: #1e1e30; border-radius: 6px; overflow: visible; }
-.hero-photo-frame::before { content: ''; position: absolute; top: -12px; left: -12px; right: 12px; bottom: 12px; border: 1px solid rgba(245,158,11,0.25); border-radius: 6px; z-index: 0; }
-.hero-photo-frame::after { content: ''; position: absolute; top: 12px; left: 12px; right: -12px; bottom: -12px; border: 1px solid rgba(245,158,11,0.1); border-radius: 6px; z-index: 0; }
-.hero-photo-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; filter: grayscale(30%) contrast(1.05); transition: filter 0.5s; position: relative; z-index: 1; }
-.hero-photo-frame:hover img { filter: grayscale(0%) contrast(1); }
-.hero-photo-label { position: absolute; bottom: -20px; left: -20px; background: var(--ink-3); border: 1px solid rgba(245,158,11,0.3); padding: 10px 16px; border-radius: 4px; z-index: 2; }
-.hero-photo-label span { display: block; font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
-.hero-photo-label span:first-child { color: var(--amber); margin-bottom: 2px; }
-.hero-photo-label span:last-child { color: var(--mist); }
 
-/* Dynamic Vector Fallback for Image */
-.img-fallback {
-  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-  color: var(--amber); background: var(--ink-4); border-radius: 4px; z-index: 0;
-}
-
-.hero-proof-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  max-width: 580px;
-  margin: 24px 0 32px;
-}
-.hero-proof-card {
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(245,158,11,0.12);
-  padding: 16px;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-}
-.hero-proof-card:hover {
-  border-color: rgba(245,158,11,0.4);
-  transform: translateY(-2px);
-  background: rgba(245,158,11,0.02);
-}
-.hero-proof-value {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 36px;
-  color: var(--amber);
-  line-height: 1;
-  margin-bottom: 4px;
-}
-.hero-proof-label {
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--mist);
-  line-height: 1.4;
-}
-
-/* ─── SECTION LAYOUT ─── */
 section { padding: 100px 24px; }
 .section-inner { max-width: 1200px; margin: 0 auto; }
-.section-label { display: inline-flex; align-items: center; gap: 10px; font-size: 9px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--amber); font-family: 'JetBrains Mono', monospace; margin-bottom: 16px; }
+.section-label { display: inline-flex; align-items: center; gap: 10px; font-size: 9px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--amber); font-family: 'JetBrains Mono', monospace; }
 .section-label::before { content: ''; width: 24px; height: 1px; background: var(--amber); }
 .section-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(36px, 5vw, 56px); letter-spacing: 0.04em; color: var(--white); line-height: 1; margin-bottom: 12px; }
 .section-title span { color: var(--amber); }
 .section-sub { font-size: 14px; font-weight: 300; color: var(--mist); max-width: 540px; line-height: 1.7; margin-bottom: 60px; }
 
-/* ─── TIMELINE ─── */
-#journey { background: var(--ink-2); }
-.timeline { position: relative; }
-.timeline::before { content: ''; position: absolute; left: 50%; transform: translateX(-50%); top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent, rgba(245,158,11,0.3) 10%, rgba(245,158,11,0.3) 90%, transparent); }
-.tl-item { display: grid; grid-template-columns: 1fr 48px 1fr; gap: 0; margin-bottom: 0; position: relative; min-height: 120px; }
-.tl-left, .tl-right { padding: 32px 48px; display: flex; flex-direction: column; justify-content: center; }
-.tl-left { text-align: right; } .tl-right { text-align: left; }
-.tl-center { display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; }
-.tl-dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--amber); background: var(--ink-2); position: relative; z-index: 2; transition: all 0.3s; }
-.tl-dot.active { background: var(--amber); width: 18px; height: 18px; box-shadow: 0 0 0 6px rgba(245,158,11,0.15); animation: tl-pulse 2s ease-in-out infinite; }
-@keyframes tl-pulse { 0%, 100% { box-shadow: 0 0 0 6px rgba(245,158,11,0.15); } 50% { box-shadow: 0 0 0 12px rgba(245,158,11,0.05); } }
-.tl-year { font-family: 'Space Grotesk', sans-serif; font-size: 42px; letter-spacing: 0.04em; color: rgba(245,158,11,0.15); line-height: 1; margin-bottom: 4px; }
-.tl-year.highlight { color: var(--amber); }
-.tl-heading { font-family: 'Space Grotesk', sans-serif; font-size: 20px; letter-spacing: 0.06em; color: var(--white); margin-bottom: 6px; }
-.tl-desc { font-size: 12px; color: var(--mist); font-weight: 300; line-height: 1.6; }
-.tl-tag { display: inline-block; margin-top: 8px; padding: 3px 10px; border-radius: 2px; font-size: 8px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; background: rgba(245,158,11,0.1); color: var(--amber); border: 1px solid rgba(245,158,11,0.2); }
-
-/* ─── PORTFOLIO ─── */
-#portfolio { background: var(--ink-2); }
-.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-.machine-card { background: var(--ink-3); position: relative; overflow: hidden; cursor: pointer; aspect-ratio: 4/3; transition: all 0.4s ease; }
-.machine-card-inner { position: absolute; inset: 0; padding: 28px; display: flex; flex-direction: column; justify-content: flex-end; background: linear-gradient(to top, rgba(8,8,16,0.95) 0%, rgba(8,8,16,0.4) 50%, transparent 100%); transition: all 0.4s ease; z-index: 1; }
-.machine-num { position: absolute; top: 20px; left: 20px; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: rgba(245,158,11,0.4); font-weight: 700; letter-spacing: 0.2em; }
-.machine-badge { position: absolute; top: 20px; right: 20px; padding: 4px 10px; font-size: 8px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; background: var(--amber); color: var(--ink); border-radius: 2px; z-index: 2; }
-.machine-title { font-family: 'Space Grotesk', sans-serif; font-size: 28px; letter-spacing: 0.06em; color: var(--white); line-height: 1; margin-bottom: 4px; }
-.machine-desc { font-size: 11px; color: rgba(226,232,240,0.6); font-weight: 300; }
-.machine-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; z-index: 2; }
-.play-btn { width: 56px; height: 56px; border-radius: 50%; background: rgba(245,158,11,0.9); display: flex; align-items: center; justify-content: center; color: var(--ink); font-size: 18px; transform: scale(0.8); transition: transform 0.3s; }
-.machine-card:hover { z-index: 2; }
-.machine-card:hover .machine-play { opacity: 1; }
-.machine-card:hover .play-btn { transform: scale(1); }
-.machine-card:hover .machine-card-inner { background: linear-gradient(to top, rgba(8,8,16,0.98) 0%, rgba(8,8,16,0.6) 60%, rgba(8,8,16,0.2) 100%); }
-.machine-card.featured { grid-column: span 2; aspect-ratio: auto; min-height: 280px; }
-.machine-card-bg { position: absolute; inset: -2px; background-size: cover; background-position: center; filter: brightness(0.25) grayscale(0.8); transition: all 0.5s ease; z-index: 0; }
-.machine-card:hover .machine-card-bg { filter: brightness(0.5) grayscale(0.2); transform: scale(1.03); }
-
-/* ─── TUBITAK AR-GE PROJECTS ─── */
-#tubitak { background: var(--ink); border-top: 1px solid rgba(245,158,11,0.05); }
-.tubitak-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.tubitak-card { background: var(--ink-3); border: 1px solid rgba(245,158,11,0.15); border-radius: 6px; padding: 44px; position: relative; overflow: hidden; transition: all 0.3s ease; }
-.tubitak-card:hover { border-color: rgba(245,158,11,0.4); transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-.tubitak-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--amber); }
-.tubitak-card-bg { position: absolute; right: -20px; top: -20px; opacity: 0.03; font-size: 200px; color: var(--white); pointer-events: none; transition: opacity 0.3s; }
-.tubitak-card:hover .tubitak-card-bg { opacity: 0.06; }
-.tubitak-logo-wrap { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
-.tubitak-brand { display: flex; align-items: center; gap: 16px; }
-.tubitak-logo-img { height: 36px; width: auto; display: block; filter: grayscale(1) brightness(1.8) opacity(0.4); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); transform-origin: left center; }
-.tubitak-card:hover .tubitak-logo-img { filter: grayscale(0) brightness(1) opacity(1); transform: scale(1.05); }
-.t-logo-text { font-family: 'Space Grotesk', sans-serif; font-size: 32px; letter-spacing: 0.06em; color: var(--mist); line-height: 1; margin-top: 4px; transition: all 0.4s ease; opacity: 0.7; }
-.tubitak-card:hover .t-logo-text { color: var(--white); opacity: 1; transform: translateX(6px); }
-.t-badge-group { display: flex; gap: 8px; flex-wrap: wrap; }
-.t-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; font-size: 8px; font-family: 'JetBrains Mono', monospace; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 3px; }
-.t-badge.program { background: rgba(0,75,135,0.15); color: #60a5fa; border: 1px solid rgba(96,165,250,0.3); }
-.t-badge.success { background: rgba(34,197,94,0.1); color: var(--terminal-green); border: 1px solid rgba(34,197,94,0.3); }
-.t-project-name { font-family: 'Space Grotesk', sans-serif; font-size: 28px; letter-spacing: 0.04em; color: var(--white); line-height: 1.2; margin-bottom: 16px; }
-.t-case { margin-top:24px; }
-.t-case p { margin-bottom:22px; color:var(--mist); line-height:1.8; font-size:14px; }
-.t-case p:last-child { margin-bottom:0; }
-.t-case strong { display:block; color:var(--amber); font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; margin-bottom:8px; }
-
-/* ─── KNOWLEDGE BASE (BLOG) ─── */
 #blog { background: var(--ink-2); }
 .blog-layout { display: grid; grid-template-columns: 350px 1fr; gap: 2px; background: var(--ink-3); border: 1px solid rgba(245,158,11,0.1); border-radius: 8px; overflow: hidden; min-height: 700px; }
 .blog-sidebar { background: var(--ink-4); display: flex; flex-direction: column; max-height: 700px; }
@@ -266,7 +146,6 @@ section { padding: 100px 24px; }
 .article-info { display: flex; gap: 16px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--amber); letter-spacing: 0.1em; }
 .article-info i { margin-right: 4px; }
 
-/* Article Prose */
 .prose { color: var(--light); font-size: 14px; line-height: 1.8; font-weight: 300; overflow-wrap: break-word; word-wrap: break-word; hyphens: auto; max-width: 95%; padding-right: 16px; }
 .prose h2 { font-size: 20px; color: var(--white); font-weight: 600; margin: 32px 0 16px 0; border-left: 3px solid var(--amber); padding-left: 12px; }
 .prose p { margin-bottom: 24px; color: #cbd5e1; text-align: justify; }
@@ -278,498 +157,50 @@ section { padding: 100px 24px; }
 .prose code { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #38bdf8; }
 .prose p code { background: rgba(56, 189, 248, 0.1); padding: 2px 6px; border-radius: 2px; }
 
-/* Diagrams and Callouts */
 .tech-callout { background: rgba(245,158,11,0.05); border: 1px solid rgba(245,158,11,0.2); border-radius: 8px; padding: 20px; margin: 32px 0; }
 .tech-callout h4 { color: var(--amber); font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 12px; text-transform: uppercase; }
 .tech-diagram-wrap { background: var(--ink-4); border-radius: 8px; padding: 30px; display: flex; justify-content: center; align-items: center; margin: 24px 0; }
 
-/* Article Tables */
 .prose .table-wrap { overflow-x: auto; margin-bottom: 32px; border: 1px solid rgba(245,158,11,0.2); border-radius: 6px; background: var(--ink-4); }
 .prose table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
-.prose th { background: rgba(245,158,11,0.05); color: var(--amber); padding: 14px 16px; border-bottom: 1px solid rgba(245,158,11,0.2); font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; white-space: nowrap; }
+.prose th { background: rgba(245,158,11,0.05); color: var(--amber); padding: 14px 16px; border-bottom: 1px solid rgba(245,158,11,0.2); font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase; }
 .prose td { padding: 14px 16px; border-bottom: 1px solid rgba(51,65,85,0.4); color: var(--light); vertical-align: top; line-height: 1.6; }
 
-/* ─── ENGINEERING TOOLS PANEL ─── */
-#tools { background: var(--ink); }
-.tools-layout { display: grid; grid-template-columns: 280px 1fr; gap: 2px; background: var(--ink-3); border: 1px solid rgba(245,158,11,0.1); border-radius: 8px; overflow: hidden; min-height: 560px; }
-.tools-sidebar { background: var(--ink-4); padding: 8px; display: flex; flex-direction: column; gap: 4px; }
-.tool-tab { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 6px; cursor: pointer; transition: all 0.2s; border: 1px solid transparent; }
-.tool-tab i { font-size: 14px; width: 18px; text-align: center; color: var(--mist); transition: color 0.2s; }
-.tool-tab-text { flex: 1; }
-.tool-tab-name { font-size: 11px; font-weight: 600; color: var(--mist); display: block; transition: color 0.2s; }
-.tool-tab-sub { font-size: 9px; font-family: 'JetBrains Mono', monospace; color: rgba(148,163,184,0.5); display: block; margin-top: 1px; letter-spacing: 0.1em; }
-.tool-tab:hover { background: rgba(245,158,11,0.05); border-color: rgba(245,158,11,0.1); }
-.tool-tab:hover .tool-tab-name, .tool-tab:hover i { color: var(--light); }
-.tool-tab.active { background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.25); }
-.tool-tab.active .tool-tab-name { color: var(--amber); }
-.tool-tab.active i { color: var(--amber); }
-
-.tools-content { padding: 40px 48px; display: flex; flex-direction: column; justify-content: center; background: var(--ink-3); position: relative; }
-.tool-watermark { position: absolute; right: 48px; top: 40px; opacity: 0.05; pointer-events: none; z-index: 0; width: 120px; height: 120px; }
-.tool-panel { display: none; position: relative; z-index: 1; }
-.tool-panel.active { display: block; }
-.tool-panel-title { font-family: 'Space Grotesk', sans-serif; font-size: 28px; letter-spacing: 0.06em; color: var(--white); margin-bottom: 4px; }
-.tool-panel-formula { font-size: 10px; font-family: 'JetBrains Mono', monospace; color: rgba(245,158,11,0.5); margin-bottom: 32px; letter-spacing: 0.05em; }
-.result-box { background: var(--ink-4); border: 1px solid rgba(245,158,11,0.15); border-radius: 6px; padding: 28px; text-align: center; margin-bottom: 28px; position: relative; overflow: hidden; }
-.result-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--amber), transparent); }
-.result-value { font-family: 'Space Grotesk', sans-serif; font-size: 64px; color: var(--amber); letter-spacing: 0.04em; line-height: 1; }
-.result-unit { font-size: 10px; font-family: 'JetBrains Mono', monospace; color: var(--mist); letter-spacing: 0.25em; text-transform: uppercase; margin-top: 6px; }
-.input-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
-.input-label { font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mist); font-family: 'JetBrains Mono', monospace; }
-.input-val { font-size: 10px; font-family: 'JetBrains Mono', monospace; color: var(--amber); }
-
-input[type="range"] { width: 100%; height: 2px; background: var(--steel); border-radius: 1px; outline: none; cursor: pointer; appearance: none; -webkit-appearance: none; margin-bottom: 28px; }
-input[type="range"]::-webkit-slider-thumb { appearance: none; -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: var(--amber); cursor: pointer; box-shadow: 0 0 8px rgba(245,158,11,0.5); }
-.tool-input, .tool-select { width: 100%; background: var(--ink-4); border: 1px solid var(--steel); border-radius: 4px; padding: 10px 14px; color: var(--white); font-family: 'JetBrains Mono', monospace; font-size: 14px; outline: none; transition: border-color 0.2s; }
-.tool-input:focus, .tool-select:focus { border-color: var(--amber); }
-.tool-select option { background: var(--ink-4); color: var(--white); }
-
-.input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
-.input-field label { font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mist); font-family: 'JetBrains Mono', monospace; display: block; margin-bottom: 6px; }
-.result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.result-card { background: var(--ink-4); border: 1px solid var(--steel); border-radius: 6px; padding: 18px; text-align: center; }
-.result-card.highlight { border-color: rgba(245,158,11,0.4); background: rgba(245,158,11,0.05); }
-.result-card-label { font-size: 8px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mist); font-family: 'JetBrains Mono', monospace; margin-bottom: 8px; display: block; }
-.result-card-value { font-family: 'Space Grotesk', sans-serif; font-size: 28px; color: var(--white); letter-spacing: 0.04em; }
-.result-card.highlight .result-card-value { color: var(--amber); }
-
-/* Disclaimer */
-.disclaimer { margin-top: 48px; padding: 20px 28px; background: rgba(245,158,11,0.03); border: 1px solid rgba(245,158,11,0.08); border-radius: 6px; display: flex; gap: 16px; align-items: flex-start; }
-.disclaimer i { color: rgba(245,158,11,0.6); font-size: 20px; flex-shrink: 0; margin-top: 2px; }
-.disclaimer p { font-size: 11px; color: rgba(148,163,184,0.7); line-height: 1.7; }
-.disclaimer strong { color: rgba(245,158,11,0.9); letter-spacing: 0.05em; text-transform: uppercase; font-size: 10px; display: block; margin-bottom: 4px; }
-
-/* ─── MODAL ─── */
-#videoModal { position: fixed; inset: 0; z-index: 9000; background: rgba(0,0,0,0.95); display: none; align-items: center; justify-content: center; padding: 24px; backdrop-filter: blur(10px); }
-#videoModal.open { display: flex; }
-.modal-inner { position: relative; width: 100%; max-width: 900px; }
-.modal-close { position: absolute; top: -44px; right: 0; background: none; border: none; cursor: pointer; color: var(--mist); font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; display: flex; align-items: center; gap: 8px; padding: 8px; transition: color 0.2s; }
-.modal-close:hover { color: var(--amber); }
-.modal-video { width: 100%; aspect-ratio: 16/9; border-radius: 4px; overflow: hidden; }
-.modal-video iframe { width: 100%; height: 100%; border: none; }
-
-/* ─── FOOTER ─── */
-footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); padding: 60px 24px; }
-.footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-.footer-left .footer-name { font-family: 'Space Grotesk', sans-serif; font-size: 24px; letter-spacing: 0.06em; color: var(--white); }
-.footer-left .footer-sub { font-size: 9px; font-family: 'JetBrains Mono', monospace; color: var(--mist); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 2px; }
-.footer-copy { font-size: 10px; color: rgba(148,163,184,0.35); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; }
-
-/* ─── MOBILE UTILS & OVERLAY ─── */
 .mobile-menu-btn { display: none; background: none; border: none; color: var(--amber); font-size: 24px; cursor: pointer; padding: 4px; z-index: 10001; position: relative; }
-.mobile-only { display: none; }
-
-.mobile-menu-overlay {
-  position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
-  background: var(--ink); z-index: 99;
-  display: flex; flex-direction: column; justify-content: center; align-items: center;
-  opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
-}
+.mobile-menu-overlay { position: fixed; top: 64px; left: 0; right: 0; bottom: 0; background: var(--ink); z-index: 99; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
 .mobile-menu-overlay.active { opacity: 1; pointer-events: auto; }
-.mobile-menu-content {
-  display: flex; flex-direction: column; width: 100%; max-width: 400px; padding: 0 24px; gap: 16px;
-  transform: translateY(20px); transition: transform 0.4s ease;
-}
+.mobile-menu-content { display: flex; flex-direction: column; width: 100%; max-width: 400px; padding: 0 24px; gap: 16px; transform: translateY(20px); transition: transform 0.4s ease; }
 .mobile-menu-overlay.active .mobile-menu-content { transform: translateY(0); }
 
-.m-link {
-  display: flex; align-items: center; justify-content: flex-start; gap: 16px;
-  width: 100%; padding: 20px 24px;
-  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px;
-  color: var(--light); font-size: 13px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: all 0.2s;
-}
+.m-link { display: flex; align-items: center; justify-content: flex-start; gap: 16px; width: 100%; padding: 20px 24px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; color: var(--light); font-size: 13px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; }
 .m-link i { font-size: 18px; width: 24px; text-align: center; color: var(--mist); }
 .m-link.active-link { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.3); color: var(--amber); }
 .m-link.active-link i { color: var(--amber); }
 .m-cta { background: var(--amber) !important; color: var(--ink) !important; justify-content: center; margin-top: 16px; }
 .m-cta i { color: var(--ink) !important; }
 
-/* ─── MOBILE RESPONSIVE ─── */
-@media (max-width: 992px) {
-  .hero-inner { grid-template-columns: 1fr; gap: 48px; text-align: center; }
-  .hero-desc { margin-left: auto; margin-right: auto; }
-  .hero-actions { justify-content: center; }
-  .hero-photo-wrap { order: -1; }
-  .hero-photo-frame { width: 260px; height: 330px; }
-}
-
 @media (max-width: 768px) {
-  .timeline::before { left: 20px; transform: none; }
-  .tl-item { grid-template-columns: 1fr; margin-bottom: 40px; padding-left: 45px; min-height: auto; }
-  .tl-left, .tl-right { display: block !important; text-align: left !important; padding: 0 !important; width: 100% !important; }
-  .tl-center { position: absolute; left: 20px; top: 10px; transform: translateX(-50%); padding: 0; width: auto; display: block; }
-  .tl-year { font-size: 28px; }
-  .tl-heading { font-size: 16px; margin-top: 4px; }
-  .tl-desc { font-size: 11px; }
-  .portfolio-grid { grid-template-columns: 1fr; }
-  .machine-card.featured { grid-column: span 1; }
-  .tubitak-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none !important; }
+  .mobile-menu-btn { display: block; }
+  .hidden-mobile { display: none !important; }
   .blog-layout { grid-template-columns: 1fr; min-height: auto; }
   .blog-sidebar { max-height: 350px; border-bottom: 1px solid rgba(245,158,11,0.2); }
   .blog-reader { padding: 30px 24px; max-height: none; overflow-y: visible; }
   .article-title { font-size: 32px; }
-  .tools-layout { grid-template-columns: 1fr; }
-  .tools-sidebar { flex-direction: row; overflow-x: auto; }
-  .tools-content { padding: 30px 20px; }
-  .tool-tab-sub { display: none; }
-  .tool-watermark { display: none; }
-
-  .nav-links { display: none !important; }
-  .hidden-mobile { display: none !important; }
-  .mobile-menu-btn { display: block; }
-
-  .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
 }
 
-/* Reference-inspired visual refresh */
-nav {
-  height: 72px;
-  background: rgba(2,4,5,0.88);
-  border-bottom-color: var(--line);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.28);
-}
-nav.scrolled { border-bottom-color: rgba(216,168,79,0.42); }
-.nav-inner { max-width: 1240px; }
-.nav-logo-name,
-.hero-name,
-.hero-title,
-.section-title,
-.tl-year,
-.tl-heading,
-.machine-title,
-.article-title,
-.tool-panel-title,
-.result-value,
-.result-card-value,
-.footer-left .footer-name {
-  font-family: 'Space Grotesk', sans-serif;
-  letter-spacing: 0;
-}
-.nav-logo-name { font-size: 18px; font-weight: 700; }
-.nav-logo-title,
-.nav-links a,
-.nav-cta,
-.lang-btn,
-.section-label,
-.hero-badge,
-.btn-primary,
-.btn-ghost,
-.tool-tab-sub,
-.input-label,
-.result-unit,
-.footer-left .footer-sub,
-.footer-copy {
-  letter-spacing: 0.08em;
-}
-.nav-links { gap: 28px; }
-.nav-links a { color: rgba(228,232,237,0.78); }
-.nav-links a::after {
-  bottom: -24px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-.nav-cta,
-.lang-btn,
-.btn-ghost {
-  border-color: rgba(216,168,79,0.48);
-  color: var(--white);
-  background: rgba(3,6,9,0.28);
-}
-.nav-cta:hover,
-.lang-btn:hover,
-.btn-ghost:hover {
-  background: rgba(216,168,79,0.12);
-  border-color: var(--gold);
-  color: var(--gold);
-}
-
-#hero {
-  min-height: 94vh;
-  padding-top: 132px;
-  background:
-    linear-gradient(90deg, rgba(3,6,9,0.98) 0%, rgba(3,6,9,0.82) 46%, rgba(3,6,9,0.44) 100%),
-    linear-gradient(150deg, rgba(216,168,79,0.10), transparent 34%);
-  border-bottom: 1px solid rgba(216,168,79,0.14);
-}
-.hero-grid-bg {
-  background-image:
-    linear-gradient(rgba(216,168,79,0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(216,168,79,0.035) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: linear-gradient(90deg, black, transparent 85%);
-}
-.hero-glow { display: none; }
-.hero-inner { max-width: 1240px; gap: 64px; }
-.hero-badge {
-  border: 0;
-  background: transparent;
-  padding: 0;
-  color: var(--gold);
-  font-size: 12px;
-  font-weight: 700;
-}
-.hero-name {
-  font-size: clamp(52px, 7vw, 92px);
-  line-height: 0.98;
-  font-weight: 800;
-  margin-bottom: 14px;
-}
-.hero-title {
-  color: rgba(216,168,79,0.88);
-  font-size: clamp(25px, 3.2vw, 42px);
-  font-weight: 600;
-}
-.hero-desc {
-  max-width: 620px;
-  color: rgba(228,232,237,0.86);
-  font-size: 16px;
-  font-style: normal;
-  border-left-color: var(--gold);
-}
-.hero-proof-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  overflow: hidden;
-  background: rgba(10,15,20,0.58);
-  box-shadow: var(--shadow);
-}
-.hero-proof-card {
-  border: 0;
-  border-right: 1px solid rgba(216,168,79,0.18);
-  border-radius: 0;
-  background: transparent;
-  padding: 18px 20px;
-}
-.hero-proof-card:last-child { border-right: 0; }
-.hero-proof-value { color: var(--white); font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
-.hero-proof-label { color: rgba(228,232,237,0.66); letter-spacing: 0.04em; }
-.hero-photo-frame {
-  width: min(340px, 82vw);
-  height: 420px;
-  background: var(--ink-4);
-  border-radius: 8px;
-  box-shadow: var(--shadow);
-}
-.hero-photo-frame::before,
-.hero-photo-frame::after {
-  border-color: rgba(216,168,79,0.26);
-  border-radius: 8px;
-}
-.hero-photo-frame img { border-radius: 6px; filter: grayscale(42%) contrast(1.08) brightness(0.88); }
-.hero-photo-label {
-  background: rgba(3,6,9,0.86);
-  border-color: var(--line);
-  box-shadow: 0 14px 36px rgba(0,0,0,0.36);
-}
-
-#leadership-positioning {
-  padding: 56px 24px 92px;
-  background: linear-gradient(180deg, rgba(3,6,9,0.98), rgba(7,11,16,0.98));
-  border-bottom: 1px solid rgba(216,168,79,0.14);
-}
-.positioning-shell {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.85fr);
-  gap: 28px;
-  align-items: stretch;
-}
-.positioning-statement,
-.positioning-proof {
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: linear-gradient(180deg, rgba(18,25,34,0.82), rgba(8,13,18,0.96));
-  box-shadow: var(--shadow);
-}
-.positioning-statement {
-  padding: 34px;
-}
-.positioning-kicker {
-  color: var(--gold);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 14px;
-}
-.positioning-title {
-  color: var(--white);
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(28px, 4vw, 48px);
-  line-height: 1.08;
-  font-weight: 700;
-  margin-bottom: 18px;
-}
-.positioning-copy {
-  color: rgba(228,232,237,0.76);
-  font-size: 15px;
-  line-height: 1.75;
-  max-width: 760px;
-}
-.positioning-proof {
-  display: grid;
-  grid-template-columns: 1fr;
-  overflow: hidden;
-}
-.positioning-item {
-  display: grid;
-  grid-template-columns: 44px 1fr;
-  gap: 16px;
-  padding: 22px 24px;
-  border-bottom: 1px solid rgba(216,168,79,0.14);
-}
-.positioning-item:last-child { border-bottom: 0; }
-.positioning-item i {
-  color: var(--gold);
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
-  border: 1px solid rgba(216,168,79,0.28);
-  border-radius: 8px;
-  background: rgba(216,168,79,0.08);
-}
-.positioning-item strong {
-  display: block;
-  color: var(--white);
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 16px;
-  margin-bottom: 4px;
-}
-.positioning-item span {
-  display: block;
-  color: rgba(228,232,237,0.66);
-  font-size: 13px;
-  line-height: 1.55;
-}
-
-section { padding: 92px 24px; }
-#journey,
-#portfolio,
-footer {
-  background: linear-gradient(180deg, rgba(7,11,16,0.98), rgba(3,6,9,0.98));
-}
-.section-inner { max-width: 1240px; }
-.section-label {
-  color: var(--gold);
-  font-size: 11px;
-}
-.section-label::before { background: var(--gold); }
-.section-title {
-  font-size: clamp(34px, 4.6vw, 58px);
-  font-weight: 700;
-  line-height: 1.04;
-}
-.section-title span { color: var(--gold); }
-.section-sub { color: rgba(228,232,237,0.68); font-size: 15px; }
-
-.btn-primary {
-  background: linear-gradient(135deg, var(--gold), var(--amber));
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 5px;
-  box-shadow: 0 16px 36px rgba(216,168,79,0.22);
-}
-.btn-primary:hover {
-  background: linear-gradient(135deg, #ffd98b, var(--gold));
-  box-shadow: 0 20px 46px rgba(216,168,79,0.30);
-}
-.btn-ghost { border-radius: 5px; }
-
-.machine-card,
-.tubitak-card,
-.blog-layout,
-.blog-card,
-.blog-content-area,
-.tools-layout,
-.result-box,
-.result-card,
-.tool-input,
-.tool-select,
-.disclaimer,
-.m-link {
-  background: linear-gradient(180deg, rgba(18,25,34,0.92), rgba(8,13,18,0.94));
-  border-color: var(--line);
-  border-radius: 8px;
-  box-shadow: 0 18px 55px rgba(0,0,0,0.24);
-}
-.machine-card:hover,
-.tubitak-card:hover,
-.hero-proof-card:hover,
-.result-card.highlight,
-.tool-tab.active {
-  border-color: rgba(216,168,79,0.55);
-  box-shadow: 0 24px 70px rgba(0,0,0,0.34);
-}
-.machine-card-inner {
-  background: linear-gradient(to top, rgba(3,6,9,0.96) 0%, rgba(3,6,9,0.66) 56%, rgba(3,6,9,0.12) 100%);
-}
-.machine-card-bg { filter: brightness(0.30) grayscale(0.88) contrast(1.08); }
-.machine-card:hover .machine-card-bg { filter: brightness(0.56) grayscale(0.18) contrast(1.06); }
-.machine-badge,
-.tl-tag {
-  background: rgba(216,168,79,0.14);
-  color: var(--gold);
-  border: 1px solid rgba(216,168,79,0.28);
-}
-.tools-sidebar,
-.tools-content,
-.blog-sidebar,
-.blog-content-area {
-  background: rgba(8,13,18,0.94);
-}
-.tool-tab { border-radius: 6px; }
-.tool-tab:hover { background: rgba(216,168,79,0.08); border-color: rgba(216,168,79,0.22); }
-.result-value,
-.result-card.highlight .result-card-value,
-.tool-tab.active .tool-tab-name,
-.tool-tab.active i,
-.blog-card.active .blog-card-title,
-.prose strong,
-.amber {
-  color: var(--gold);
-}
-
-footer {
-  border-top-color: var(--line);
-  padding: 44px 24px;
-}
-
-@media (max-width: 768px) {
-  #hero { padding-top: 112px; min-height: auto; }
-  .hero-proof-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .hero-proof-card:nth-child(2) { border-right: 0; }
-  .hero-proof-card:nth-child(-n+2) { border-bottom: 1px solid rgba(216,168,79,0.18); }
-  .nav-links a::after { bottom: -4px; }
-  .positioning-shell { grid-template-columns: 1fr; }
-  .positioning-statement { padding: 26px; }
-}
-
-/* ─── MOUSE GLOW (AMBIENT LIGHT) ─── */
-#mouse-glow {
-  position: fixed;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(245,158,11,0.06) 0%, transparent 60%);
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 9998;
-  transition: opacity 0.3s ease;
-  opacity: 0;
-}
-@media (max-width: 768px) { #mouse-glow { display: none; } }
-
+footer { background: var(--ink-2); border-top: 1px solid rgba(245,158,11,0.1); padding: 60px 24px; }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.footer-left .footer-name { font-family: 'Space Grotesk', sans-serif; font-size: 24px; letter-spacing: 0.06em; color: var(--white); }
+.footer-left .footer-sub { font-size: 9px; font-family: 'JetBrains Mono', monospace; color: var(--mist); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 2px; }
+.footer-copy { font-size: 10px; color: rgba(148,163,184,0.35); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; }
 .amber { color: var(--amber); }
 </style>
 </head>
 <body>
 
-<!-- ────────── MOUSE GLOW ────────── -->
 <div id="mouse-glow"></div>
 
-<!-- ────────── NAV ────────── -->
 <nav id="navbar">
   <div class="nav-inner">
     <a href="#/" class="nav-logo">
@@ -787,22 +218,18 @@ footer {
       <i class="fa-solid fa-bars"></i>
     </button>
 
-    <!-- Desktop Menu -->
     <div class="nav-links">
       <a href="#/" id="nav-home" data-i18n="nav_home">Portfolyo</a>
       <a href="#/blog" id="nav-blog" data-i18n="nav_blog">Bilgi Bankası</a>
-      <a href="#/tools" id="nav-tools" data-i18n="nav_tools">Hesaplama Paneli</a>
     </div>
 
     <div class="nav-right-container">
-      <!-- Dil Degistirme Butonu -->
       <button onclick="toggleLanguage()" class="lang-btn" id="langSwitcherBtn">EN</button>
       <a href="mailto:mustafauner@hotmail.com.tr" class="nav-cta hidden-mobile" data-i18n="nav_contact">İletişim</a>
     </div>
   </div>
 </nav>
 
-<!-- ────────── MOBILE NAVIGATION MENU ────────── -->
 <div id="mobileMenuOverlay" class="mobile-menu-overlay">
   <div class="mobile-menu-content">
     <a href="#/" class="m-link" id="m-nav-home">
@@ -810,9 +237,6 @@ footer {
     </a>
     <a href="#/blog" class="m-link" id="m-nav-blog">
       <i class="fa-solid fa-book-open"></i> <span data-i18n="nav_blog">Bilgi Bankası</span>
-    </a>
-    <a href="#/tools" class="m-link" id="m-nav-tools">
-      <i class="fa-solid fa-calculator"></i> <span data-i18n="nav_tools">Hesaplama Paneli</span>
     </a>
     <div class="m-link" onclick="toggleLanguage()" style="cursor: pointer; justify-content: space-between;">
       <span><i class="fa-solid fa-globe"></i> <span data-i18n="m_lang_label">Dil / Language</span></span>
@@ -824,183 +248,99 @@ footer {
   </div>
 </div>
 
-<!-- ========================================== -->
-<!-- ============= VIEW: HOME ================= -->
-<!-- ========================================== -->
 <div id="view-home" class="spa-view active">
-
-  <!-- HERO -->
   <section id="hero">
     <div class="hero-grid-bg"></div>
     <div class="hero-glow"></div>
-
     <div class="hero-inner">
       <div>
-        <div class="hero-badge reveal d1" data-i18n="hero_badge">
-          CNC SİSTEMLERİ GELİŞTİREN TEKNİK LİDER
-        </div>
-
-        <h1 class="hero-name reveal d2">
-          MUSTAFA<br><span>ÜNER</span>
-        </h1>
-
-        <div class="hero-title reveal d3" data-i18n="hero_title">
-          CNC Platformları<br>
-          Ar-Ge ve Ekip Liderliği
-        </div>
-
-        <p class="hero-desc reveal d4" data-i18n="hero_desc">
-          15+ yıllık saha, tasarım ve Ar-Ge deneyimini; 4 ve 5 eksenli CNC sistemleri geliştirme, TÜBİTAK projelerini yönetme ve mühendislik ekiplerini konseptten ticarileşen makine platformlarına taşıma odağında birleştiren teknik lider.
-        </p>
-
-        <div class="hero-proof-grid reveal d5">
-          <div class="hero-proof-card">
-            <div class="hero-proof-value">15+</div>
-            <div class="hero-proof-label" data-i18n="proof_1">CNC Sistem Geliştirme</div>
-          </div>
-          <div class="hero-proof-card">
-            <div class="hero-proof-value">2</div>
-            <div class="hero-proof-label" data-i18n="proof_2">TÜBİTAK Ar-Ge Liderliği</div>
-          </div>
-          <div class="hero-proof-card">
-            <div class="hero-proof-value">4 & 5</div>
-            <div class="hero-proof-label" data-i18n="proof_3">4 & 5 Eksenli Platformlar</div>
-          </div>
-          <div class="hero-proof-card">
-            <div class="hero-proof-value">M.Sc.</div>
-            <div class="hero-proof-label" data-i18n="proof_4">Teknik Ekip Yönetimi</div>
-          </div>
-        </div>
-
+        <div class="hero-badge reveal d1">CNC SİSTEMLERİ GELİŞTİREN TEKNİK LİDER</div>
+        <h1 class="hero-name reveal d2">MUSTAFA<br><span>ÜNER</span></h1>
+        <div class="hero-title reveal d3">CNC Platformları<br>Ar-Ge ve Ekip Liderliği</div>
+        <p class="hero-desc reveal d4">15+ yıllık saha, tasarım ve Ar-Ge deneyimi ile 4 ve 5 eksenli CNC sistemleri geliştirme, TÜBİTAK projelerini yönetme ve mühendislik ekiplerini yönetme konusunda uzman.</p>
         <div class="hero-actions reveal d5">
           <a href="https://www.linkedin.com/in/mustafa-uner-engineer/" target="_blank" class="btn-primary">
             <i class="fa-brands fa-linkedin"></i> LinkedIn
           </a>
-          <a href="#/tools" class="btn-ghost">
-            <i class="fa-solid fa-calculator"></i> <span data-i18n="btn_tools">Hesaplama Araçları</span>
-          </a>
           <a href="#/blog" class="btn-ghost">
-            <i class="fa-solid fa-book-open"></i> <span data-i18n="btn_blog">Bilgi Bankası</span>
+            <i class="fa-solid fa-book-open"></i> Bilgi Bankası
           </a>
         </div>
       </div>
-
-      <div class="hero-photo-wrap reveal-right d3">
-        <div class="hero-photo-frame">
-          <!-- Fallback profile icon displays behind image or if image fails to load -->
-          <div class="img-fallback">
-            <i class="fa-solid fa-user-gear fa-4x"></i>
-          </div>
-          <img src="cv2.jpeg" alt="Mustafa Üner"
-               onerror="this.style.display='none';">
-
-          <div class="hero-photo-label">
-            <span>Istanbul, TR</span>
-            <span>Kaban Makina · R&D</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TECHNICAL LEADERSHIP POSITIONING -->
-  <section id="leadership-positioning">
-    <div class="section-inner positioning-shell">
-      <div class="positioning-statement reveal">
-        <div class="positioning-kicker" data-i18n="positioning_kicker">Konumlandırma</div>
-        <h2 class="positioning-title" data-i18n="positioning_title">CNC platformlarını fikirden sahaya taşıyan teknik liderlik</h2>
-        <p class="positioning-copy" data-i18n="positioning_copy">
-          Mustafa Üner'in uzmanlığı tekil parça tasarımının ötesinde; makine mimarisi, eksen kinematiği, üretim doğrulaması, TÜBİTAK Ar-Ge yönetimi ve mühendislik ekiplerini aynı hedefe hizalayan sistem liderliği üzerine kuruludur.
-        </p>
-      </div>
-      <div class="positioning-proof reveal d2">
-        <div class="positioning-item">
-          <i class="fa-solid fa-industry"></i>
-          <div>
-            <strong data-i18n="positioning_item_1_title">CNC Sistem Geliştirme</strong>
-            <span data-i18n="positioning_item_1_desc">4 ve 5 eksenli profil işleme merkezlerini konsept, tasarım, prototip ve saha devreye alma çizgisinde geliştirme.</span>
-          </div>
-        </div>
-        <div class="positioning-item">
-          <i class="fa-solid fa-diagram-project"></i>
-          <div>
-            <strong data-i18n="positioning_item_2_title">Ar-Ge Program Liderliği</strong>
-            <span data-i18n="positioning_item_2_desc">TÜBİTAK 1501 projelerinde teknik problemi, çözüm mimarisini, ticarileşme katkısını ve ekip koordinasyonunu yönetme.</span>
-          </div>
-        </div>
-        <div class="positioning-item">
-          <i class="fa-solid fa-people-group"></i>
-          <div>
-            <strong data-i18n="positioning_item_3_title">Mühendislik Ekip Liderliği</strong>
-            <span data-i18n="positioning_item_3_desc">Tasarım, üretim, otomasyon ve devreye alma ekiplerini ortak standartlar ve karar mekanizmaları etrafında hizalama.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- JOURNEY (TIMELINE) -->
-  <section id="journey">
-    <div class="section-inner">
-      <div class="reveal">
-        <div class="section-label" data-i18n="journey_label">Teknik Liderlik Rotası</div>
-        <h2 class="section-title" data-i18n="journey_title">SAHADAN<br><span>SİSTEM LİDERLİĞİNE</span></h2>
-        <p class="section-sub" data-i18n="journey_sub">Atölye deneyiminden CNC platform mimarisine, akademik yönetim bilgisinden Ar-Ge ekip liderliğine uzanan 15+ yıllık dönüşüm.</p>
-      </div>
-
-      <div class="timeline" id="journey-timeline-container">
-         <!-- Dynamic generation via translate map to avoid hardcoding multi-language -->
-      </div>
-    </div>
-  </section>
-
-  <!-- DESIGN PORTFOLIO -->
-  <section id="portfolio">
-    <div class="section-inner">
-      <div class="reveal">
-        <div class="section-label" data-i18n="portfolio_label">CNC Platform Kanıtları</div>
-        <h2 class="section-title" data-i18n="portfolio_title">GELİŞTİRİLEN<br><span>SİSTEMLER</span></h2>
-        <p class="section-sub" data-i18n="portfolio_sub">2013'ten bugüne tasarım, doğrulama, prototip, üretim ve devreye alma süreçlerinde rol alınan ticarileşmiş CNC ve üretim teknolojisi platformları.</p>
-      </div>
-
-      <div class="portfolio-grid" id="portfolio-grid-container">
-         <!-- Managed dynamically through JavaScript rendering to support quick EN/TR updates -->
-      </div>
-    </div>
-  </section>
-
-  <!-- TUBITAK AR-GE PROJECTS -->
-  <section id="tubitak">
-    <div class="section-inner" id="tubitak-section-inner">
-       <!-- Dynamically populated to handle complex EN/TR structural translations -->
     </div>
   </section>
 </div>
 
-<!-- ========================================== -->
-<!-- ============= VIEW: BLOG ================= -->
-<!-- ========================================== -->
 <div id="view-blog" class="spa-view">
   <section id="blog" style="min-height: 100vh; padding-top: 120px;">
     <div class="section-inner">
       <div class="reveal">
-        <div class="section-label" data-i18n="blog_sec_label">Teknik Liderlik Notları</div>
-        <h2 class="section-title" data-i18n="blog_sec_title">MÜHENDİSLİK<br><span>BİLGİ BANKASI</span></h2>
-        <p class="section-sub" data-i18n="blog_sec_sub">Tasarım kararları, hesaplamalı mühendislik, saha tecrübesi ve üretim teknolojileri liderliği üzerine teknik yazılar.</p>
+        <div class="section-label">Teknik Liderlik Notları</div>
+        <h2 class="section-title">MÜHENDİSLİK<br><span>BİLGİ BANKASI</span></h2>
+        <p class="section-sub">Tasarım kararları, hesaplamalı mühendislik, saha tecrübesi ve üretim teknolojileri liderliği üzerine teknik yazılar.</p>
       </div>
 
       <div class="blog-layout reveal">
         <div class="blog-sidebar">
           <div class="blog-sidebar-header">
-            <div class="blog-sidebar-title"><i class="fa-solid fa-book-open"></i> <span data-i18n="blog_sidebar_title">YAZILAR</span></div>
+            <div class="blog-sidebar-title"><i class="fa-solid fa-book-open"></i> <span>YAZILAR</span></div>
           </div>
           <div class="blog-list" id="blog-list-container">
-            <!-- Driven via script -->
+            <a class="blog-card active" onclick="showArticle(0)">
+              <div class="blog-meta"><span>GD&T</span> <span>Tasarım</span></div>
+              <div class="blog-card-title">Geometrik Boyutlandırma ve Toleranslandırma</div>
+            </a>
+            <a class="blog-card" onclick="showArticle(1)">
+              <div class="blog-meta"><span>Mekanik</span> <span>Hesaplama</span></div>
+              <div class="blog-card-title">Civata Bağlantılarında Dayanım Hesaplaması</div>
+            </a>
+            <a class="blog-card" onclick="showArticle(2)">
+              <div class="blog-meta"><span>İmalat</span> <span>3D Baskı</span></div>
+              <div class="blog-card-title">Eklemeli İmalat - Mekanik Mühendisler İçin</div>
+            </a>
           </div>
         </div>
+
         <div class="blog-content-area">
           <div class="blog-reader" id="blog-reader">
-            <!-- Driven via script -->
+            <div class="article-header">
+              <h2 class="article-title" id="article-title">Geometrik Boyutlandırma ve Toleranslandırma</h2>
+              <div class="article-info">
+                <span><i class="fa-solid fa-calendar"></i> 2024</span>
+                <span><i class="fa-solid fa-tag"></i> GD&T, Tasarım</span>
+              </div>
+            </div>
+            <div class="prose" id="article-content">
+              <h2>Geometrik Boyutlandırma Nedir?</h2>
+              <p>Geometrik boyutlandırma (GD&T - Geometric Dimensioning and Tolerancing), mühendislik tasarımında parçaların boyutlarının ve geometrik şekillerinin doğru bir şekilde tanımlanması için kullanılan standart bir sistemdir. Bir parçanın <strong>şekil</strong>, <strong>boyut</strong>, <strong>konum</strong> ve <strong>yönelim</strong> özelliklerini teknik resim üzerinde sembollerle ifade eder.</p>
+
+              <h2>Temel Amaçları</h2>
+              <ul>
+                <li><strong>Fonksiyonelliği Sağlamak:</strong> Parçaların montajda ve çalışırken birbirleriyle uyumlu olmasını garantiye almak</li>
+                <li><strong>Üretim ve Kontrol Kolaylığı:</strong> Hangi toleransın nerede önemli olduğu açıkça belirtildiği için hem üretim hem de ölçüm işlemleri açısından kolaylık sağlamak</li>
+                <li><strong>Hataları Azaltmak:</strong> Belirsizlikleri azaltarak üründe istenmeyen farklılıkların önüne geçmek</li>
+              </ul>
+
+              <h2>GD&T Ana Unsurları</h2>
+              <p><strong>Boyut Toleransları:</strong> Parçanın fiziksel boyutlarının izin verilen sınırlarını tanımlar (örn: 20±0,1 mm)</p>
+              <p><strong>Geometrik Toleranslar:</strong> Parçanın şekil, konum, yönelim ve salınım gibi geometrik karakteristiklerini belirler.</p>
+              <p><strong>Semboller:</strong> Teknik resimlerde kullanılan standart semboller (düzlemsellik, dairesellik, paralellik, konum vb.)</p>
+
+              <h2>Kullanıldığı Yerler</h2>
+              <ul>
+                <li>Makine ve otomotiv endüstrisinde mekanik parça tasarımı</li>
+                <li>Havacılık parçalarının imalatı</li>
+                <li>Mekatronik ve cihaz tasarımı gibi hassas üretim gerektiren tüm alanlar</li>
+              </ul>
+
+              <div class="tech-callout">
+                <h4>Teknik İpucu</h4>
+                <p>Geometrik boyutlandırma, ürünün teknik resimleri ve üretim süreçlerinde doğru, anlaşılır ve standardize edilmiş bir iletişim dili oluşturur. Hem mühendislik tasarımının doğruluğunu hem de üretim kalitesini önemli oranda artırır.</p>
+              </div>
+
+              <h2>Sonuç</h2>
+              <p>GD&T, "bir parçanın gereksinim duyduğu ölçü, şekil ve konumsal toleransların teknik olarak ifade edilmesi" anlamına gelir. Modern mühendislik uygulamalarında, özellikle hassas imalat gerektiren projekte GD&T kullanımı zorunlu hale gelmiştir.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1008,1361 +348,243 @@ footer {
   </section>
 </div>
 
-<!-- ========================================== -->
-<!-- ============= VIEW: TOOLS ================ -->
-<!-- ========================================== -->
-<div id="view-tools" class="spa-view">
-  <section id="tools" style="min-height: 100vh; padding-top: 120px;">
-    <div class="section-inner">
-      <div class="reveal">
-        <div class="section-label" data-i18n="tools_sec_label">Mühendislik Doğrulama Araçları</div>
-        <h2 class="section-title" data-i18n="tools_sec_title">TEKNİK<br><span>DOĞRULAMA PANELİ</span></h2>
-        <p class="section-sub" data-i18n="tools_sec_sub">CNC sistem tasarımında karar hızını artıran, ISO ve DIN standartlarına dayalı hesaplama ve ön doğrulama arayüzleri.</p>
-      </div>
-
-      <div class="tools-layout reveal">
-        <div class="tools-sidebar">
-          <div class="tool-tab active" data-target="t-vc"><i class="fa-solid fa-rotate"></i><div class="tool-tab-text"><span class="tool-tab-name" data-i18n="t_vc_tab">Kesme Hızı</span><span class="tool-tab-sub">Vc Analysis</span></div></div>
-          <div class="tool-tab" data-target="t-piston"><i class="fa-solid fa-compress"></i><div class="tool-tab-text"><span class="tool-tab-name" data-i18n="t_piston_tab">Piston Kuvveti</span><span class="tool-tab-sub">ISO 6431</span></div></div>
-          <div class="tool-tab" data-target="t-helis"><i class="fa-solid fa-gear"></i><div class="tool-tab-text"><span class="tool-tab-name" data-i18n="t_helis_tab">Helis Dişli</span><span class="tool-tab-sub">Gear Analysis</span></div></div>
-          <div class="tool-tab" data-target="t-tork"><i class="fa-solid fa-bolt"></i><div class="tool-tab-text"><span class="tool-tab-name" data-i18n="t_tork_tab">Motor Tork</span><span class="tool-tab-sub">T = P / ω</span></div></div>
-          <div class="tool-tab" data-target="t-vidali"><i class="fa-solid fa-screwdriver"></i><div class="tool-tab-text"><span class="tool-tab-name" data-i18n="t_vidali_tab">Vidalı Mil</span><span class="tool-tab-sub">Lead Screw</span></div></div>
-          <div class="tool-tab" data-target="t-tolerance-tool"><i class="fa-solid fa-layer-group"></i><div class="tool-tab-text"><span class="tool-tab-name" data-i18n="t_tolerance_tab">Tolerans Analizi</span><span class="tool-tab-sub">Stack-up / RSS</span></div></div>
-          <div class="tool-tab" data-target="t-beam"><i class="fa-solid fa-ruler-horizontal"></i><div class="tool-tab-text"><span class="tool-tab-name" data-i18n="t_beam_tab">Sehim Analizi</span><span class="tool-tab-sub">Beam Deflection</span></div></div>
-        </div>
-
-        <div class="tools-content">
-          <!-- Vc Panel -->
-          <div id="t-vc" class="tool-panel active">
-            <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M40 10v30m20-30v30" stroke-width="4"/><path d="M30 40h40v20H30z" stroke-width="3"/><path d="M35 40l-5 20m15-20l-5 20m15-20l-5 20m15-20l-5 20"/><path d="M20 60h60v30H20z" stroke="currentColor" opacity="0.5"/><path d="M65 25a15 15 0 1 1-30 0" stroke-dasharray="4 4"/><path d="M35 25l-5-5m0 10l5-5"/>
-            </svg>
-            <div class="tool-panel-title" data-i18n="t_vc_title">Kesme Hızı Analizi — Vc</div>
-            <div class="tool-panel-formula">Vc = (π × D × n) / 1000 &nbsp;|&nbsp; <span data-i18n="t_unit_label">Birim: m/dak</span></div>
-            <div class="result-box"><div class="result-value" id="vc-result">188.5</div><div class="result-unit" data-i18n="t_vc_unit">Metre / Dakika</div></div>
-            <div class="input-grid">
-              <div class="input-field"><label data-i18n="t_vc_input_d">İşleme Çapı D (mm)</label><input type="range" id="vc-d" min="1" max="250" value="50"><div class="input-row"><span class="input-label">D =</span><span class="input-val" id="vc-d-val">50 mm</span></div></div>
-              <div class="input-field"><label data-i18n="t_vc_input_n">Devir n (rpm)</label><input type="range" id="vc-n" min="100" max="24000" value="1200"><div class="input-row"><span class="input-label">n =</span><span class="input-val" id="vc-n-val">1200 rpm</span></div></div>
-            </div>
-          </div>
-
-          <!-- Piston Panel -->
-          <div id="t-piston" class="tool-panel">
-            <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="20" y="30" width="50" height="40" rx="2" stroke-width="3"/><path d="M25 25v5m40-5v5" stroke-width="2"/><rect x="45" y="30" width="8" height="40" fill="var(--amber)" fill-opacity="0.2"/><path d="M53 45h35m-35 10h35" stroke-width="2"/><path d="M88 43v14" stroke-width="3"/><path d="M70 20h20m-5-5l5 5-5 5" stroke-dasharray="2 2"/><path d="M40 80H20m5-5l-5 5 5 5" stroke-dasharray="2 2"/>
-            </svg>
-            <div class="tool-panel-title" data-i18n="t_piston_title">Piston Kuvvet Analizi — ISO 6431</div>
-            <div class="tool-panel-formula">F_itme = (π/4) × D² × P &nbsp;|&nbsp; F_çekme = (π/4) × (D² − d²) × P</div>
-            <div class="input-grid" style="margin-bottom:20px;">
-              <div class="input-field">
-                <label data-i18n="t_piston_bore">Piston Çapı / Bore (mm)</label>
-                <select id="p-bore" class="tool-select"><option value="12">12 mm</option><option value="16">16 mm</option><option value="20">20 mm</option><option value="25">25 mm</option><option value="32">32 mm</option><option value="40">40 mm</option><option value="50">50 mm</option><option value="63">63 mm</option><option value="80" selected>80 mm</option><option value="100">100 mm</option></select>
-              </div>
-              <div class="input-field">
-                <label data-i18n="t_piston_rod">Mil Çapı / Rod (mm)</label>
-                <select id="p-rod" class="tool-select"><option value="6">6 mm</option><option value="8">8 mm</option><option value="10">10 mm</option><option value="12">12 mm</option><option value="16">16 mm</option><option value="20">20 mm</option><option value="25" selected>25 mm</option><option value="32">32 mm</option></select>
-              </div>
-            </div>
-            <div class="input-grid" style="margin-bottom:20px;">
-              <div class="input-field">
-                <label data-i18n="t_piston_pressure">Çalışma Basıncı (Bar)</label>
-                <input type="range" id="p-bar" min="1" max="10" value="6" step="0.5">
-                <div class="input-row"><span class="input-label">P =</span><span class="input-val" id="p-bar-val">6 Bar</span></div>
-              </div>
-              <div class="input-field">
-                <label data-i18n="t_piston_unit">Çıktı Birimi</label>
-                <select id="p-unit" class="tool-select">
-                  <option value="N">Newton (N)</option>
-                  <option value="daN">dekaNewton (daN)</option>
-                  <option value="kgf" selected data-i18n="t_piston_unit_kg">Kilogram-kuvvet (kgf)</option>
-                </select>
-              </div>
-            </div>
-            <div class="result-grid">
-              <div class="result-card highlight"><span class="result-card-label" data-i18n="t_piston_push">İtme Kuvveti</span><div class="result-card-value" id="p-push">307.5 kgf</div></div>
-              <div class="result-card"><span class="result-card-label" data-i18n="t_piston_pull">Çekme Kuvveti</span><div class="result-card-value" id="p-pull">230.6 kgf</div></div>
-            </div>
-          </div>
-
-          <!-- Helis Dişli Panel -->
-          <div id="t-helis" class="tool-panel">
-            <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="50" cy="50" r="40" stroke-width="3" stroke-dasharray="10 5"/><circle cx="50" cy="50" r="10" stroke-width="2"/><circle cx="50" cy="50" r="14" stroke-dasharray="2 2"/><path d="M20 25l60 30M15 40l60 30M25 15l60 30M15 60l50 25M35 10l55 25"/>
-            </svg>
-            <div class="tool-panel-title" data-i18n="t_helis_title">Helis Dişli Analizi</div>
-            <div class="tool-panel-formula">d = (m × z) / cos β &nbsp;|&nbsp; β = 19.528° &nbsp;|&nbsp; da = d + 2m</div>
-            <div class="input-grid" style="margin-bottom:20px;">
-              <div class="input-field"><label data-i18n="t_helis_m">Modül m</label><input type="number" id="h-m" value="2" min="0.5" step="0.5" class="tool-input"></div>
-              <div class="input-field"><label data-i18n="t_helis_z">Diş Sayısı z</label><input type="number" id="h-z" value="20" min="5" class="tool-input"></div>
-            </div>
-            <div class="result-grid" style="grid-template-columns: repeat(3, 1fr);">
-              <div class="result-card"><span class="result-card-label" data-i18n="t_helis_d">Bölüm Çapı</span><div class="result-card-value" id="h-d">42.47 mm</div></div>
-              <div class="result-card highlight"><span class="result-card-label" data-i18n="t_helis_da">Dış Çap da</span><div class="result-card-value" id="h-da">46.47 mm</div></div>
-              <div class="result-card"><span class="result-card-label" data-i18n="t_helis_c">Merkez Mes.</span><div class="result-card-value" id="h-c">45.24 mm</div></div>
-            </div>
-          </div>
-
-          <!-- Motor Tork Panel -->
-          <div id="t-tork" class="tool-panel">
-            <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="20" y="20" width="50" height="60" rx="5"/><path d="M25 30h40M25 40h40M25 50h40M25 60h40M25 70h40" stroke-width="1.5"/><path d="M70 30h10v40H70M80 45h15v10H80" stroke-width="3"/><path d="M85 30a20 20 0 1 1-10 0" stroke-dasharray="4 4"/><path d="M80 25l-5 5 5 5"/>
-            </svg>
-            <div class="tool-panel-title" data-i18n="t_tork_title">Motor Tork Hesabı</div>
-            <div class="tool-panel-formula">T = (P × 60) / (2π × n) &nbsp;|&nbsp; <span data-i18n="t_unit_label_nm">Birim: Nm</span></div>
-            <div class="result-box"><div class="result-value" id="tork-result">5.12</div><div class="result-unit" data-i18n="t_tork_unit">Newton · Metre</div></div>
-            <div class="input-grid">
-              <div class="input-field"><label data-i18n="t_tork_power">Motor Gücü P (Watt)</label><input type="number" id="tork-p" value="750" class="tool-input"></div>
-              <div class="input-field"><label data-i18n="t_tork_rpm">Devir n (rpm)</label><input type="number" id="tork-n" value="1400" class="tool-input"></div>
-            </div>
-          </div>
-
-          <!-- Vidalı Mil Tahrik Panel -->
-          <div id="t-vidali" class="tool-panel">
-            <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M10 45h80M10 55h80" stroke-width="2"/><path d="M15 45l5 10M25 45l5 10M35 45l5 10M75 45l5 10M85 45l5 10"/><rect x="45" y="35" width="20" height="30" rx="2" stroke-width="3"/><path d="M45 40h20M45 60h20" stroke-width="1"/><path d="M30 25h40m-5-5l5 5-5 5" stroke-dasharray="4 4" stroke-width="2"/>
-            </svg>
-            <div class="tool-panel-title" data-i18n="t_vidali_title">Vidalı Mil Tahrik Analizi</div>
-            <div class="tool-panel-formula">η = 0.90 &nbsp;|&nbsp; F = (T × 2π × η) / h &nbsp;|&nbsp; v = (h × n) / 1000</div>
-            <div class="input-grid" style="margin-bottom:20px;">
-              <div class="input-field"><label data-i18n="t_vidali_power">Motor Gücü P (W)</label><input type="number" id="v-p" value="750" class="tool-input"></div>
-              <div class="input-field"><label data-i18n="t_vidali_rpm">Devir n (rpm)</label><input type="number" id="v-n" value="3000" class="tool-input"></div>
-            </div>
-            <div class="input-field" style="margin-bottom:20px;">
-              <label data-i18n="t_vidali_lead">Hatve h (mm/devir)</label>
-              <input type="number" id="v-h" value="10" class="tool-input">
-            </div>
-            <div class="result-grid" style="grid-template-columns: repeat(3, 1fr);">
-              <div class="result-card"><span class="result-card-label" data-i18n="t_vidali_tork_out">Tork</span><div class="result-card-value" id="v-tork">2.39 Nm</div></div>
-              <div class="result-card highlight"><span class="result-card-label" data-i18n="t_vidali_force_out">İtme Kuvveti</span><div class="result-card-value" id="v-force">135.3 kg</div></div>
-              <div class="result-card"><span class="result-card-label" data-i18n="t_vidali_speed_out">Hız</span><div class="result-card-value" id="v-speed">30.0 m/dk</div></div>
-            </div>
-          </div>
-
-          <!-- Tolerans Yığılma Analizi Panel -->
-          <div id="t-tolerance-tool" class="tool-panel">
-            <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="20" y="20" width="60" height="15" rx="2" stroke-dasharray="4 4"/><rect x="20" y="45" width="40" height="15" rx="2"/><rect x="65" y="45" width="15" height="15" rx="2"/><path d="M20 70h60m-60 -5v10m60 -10v10"/><path d="M40 65l-5 5 5 5m20 -10l5 5-5 5" stroke-width="1.5"/>
-            </svg>
-            <div class="tool-panel-title" data-i18n="t_tolerance_title">Dinamik Tolerans Yığılma Analizi</div>
-            <div class="tool-panel-formula">T_eff = |Üst - Alt| / 2 &nbsp;|&nbsp; WC = ΣT_eff &nbsp;|&nbsp; RSS = √(ΣT_eff²)</div>
-
-            <div id="dynamic-tol-list" style="max-height: 220px; overflow-y: auto; margin-bottom: 12px; padding-right: 6px;">
-              <!-- Filled via dynamic JS code -->
-            </div>
-
-            <button onclick="addTolRow()" class="btn-ghost" style="width:100%; padding: 12px; font-size: 10px; margin-bottom: 24px; justify-content:center; border-style: dashed; border-color: rgba(245,158,11,0.4); color: var(--amber);">
-               <i class="fa-solid fa-plus"></i> <span data-i18n="t_tolerance_add">YENİ PARÇA EKLE</span>
-            </button>
-
-            <div class="result-grid">
-              <div class="result-card"><span class="result-card-label" data-i18n="t_tolerance_wc">En Kötü Durum (WC)</span><div class="result-card-value" id="tol-wc">± 0.100</div></div>
-              <div class="result-card highlight"><span class="result-card-label" data-i18n="t_tolerance_rss">İstatistiksel (RSS)</span><div class="result-card-value" id="tol-rss">± 0.062</div></div>
-            </div>
-          </div>
-
-          <!-- Kiriş Sehim Analizi Panel -->
-          <div id="t-beam" class="tool-panel">
-            <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M10 50h80M20 50v20M80 50v20" stroke-width="3"/><path d="M15 70h10M75 70h10"/><path d="M50 30v20M45 40l5 10 5-10" stroke-width="2"/><path d="M20 55 C40 65, 60 65, 80 55" stroke-dasharray="4 4" stroke-width="2"/>
-            </svg>
-            <div class="tool-panel-title" data-i18n="t_beam_title">Kiriş Sehim Analizi</div>
-            <div class="tool-panel-formula">δ_max = (F × L³) / (48 × E × I) &nbsp;|&nbsp; <span data-i18n="t_beam_formula_sub">Ortadan Tekil Yük, İki Ucu Sabit</span></div>
-            <div class="result-box"><div class="result-value" id="beam-result">0.00</div><div class="result-unit" data-i18n="t_beam_unit">Milimetre (mm)</div></div>
-            <div class="input-grid" style="margin-bottom:20px;">
-              <div class="input-field"><label data-i18n="t_beam_f">Kuvvet F (Newton)</label><input type="number" id="beam-f" value="1000" class="tool-input"></div>
-              <div class="input-field"><label data-i18n="t_beam_l">Açıklık L (mm)</label><input type="number" id="beam-l" value="1000" class="tool-input"></div>
-              <div class="input-field">
-                <label data-i18n="t_beam_e">Elastisite Modülü E (GPa)</label>
-                <select id="beam-e" class="tool-select">
-                  <option value="210" data-i18n="t_beam_e_steel">Çelik (210 GPa)</option>
-                  <option value="70" data-i18n="t_beam_e_alum">Alüminyum (70 GPa)</option>
-                  <option value="110" data-i18n="t_beam_e_titan">Titanyum (110 GPa)</option>
-                </select>
-              </div>
-              <div class="input-field"><label data-i18n="t_beam_i">Atalet Momenti I (cm⁴)</label><input type="number" id="beam-i" value="10" class="tool-input"></div>
-            </div>
-          </div>
-
-          <!-- Rapor Kopyalama Butonu -->
-          <button id="btn-export-report" class="btn-ghost" style="width:100%; font-size:10px; margin-top: 32px; justify-content:center; border-style: dashed; border-color: rgba(148,163,184,0.4); cursor:pointer;">
-             <i class="fa-regular fa-copy"></i> <span data-i18n="btn_copy_report">TEKNİK RAPORU KOPYALA</span>
-          </button>
-        </div>
-      </div>
-
-      <div class="disclaimer reveal" style="margin-top:32px;">
-        <i class="fa-solid fa-shield-halved"></i>
-        <div>
-          <strong data-i18n="disclaimer_title">Mühendislik Sorumluluk Reddi</strong>
-          <p data-i18n="disclaimer_desc">Bu platformdaki tüm algoritmalar ve hesaplama araçları, ön tasarım (konsept) süreçlerini hızlandırmak amacıyla hazırlanmıştır. Nihai imalat ve üretim kararlarında ilgili uluslararası standartların (ISO, DIN vb.) ve makine mühendisliği emniyet faktörlerinin bizzat uygulanması kullanıcının sorumluluğundadır. Bu verilerin doğrudan tasarıma entegrasyonundan doğacak uyuşmazlıklarda geliştirici sorumlu tutulamaz.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- ────────── FOOTER ────────── -->
 <footer>
   <div class="footer-inner">
     <div class="footer-left">
       <div class="footer-name">Mustafa Üner</div>
-      <div class="footer-sub" data-i18n="footer_title">CNC Sistemleri & Ar-Ge Teknik Lideri · İstanbul, TR</div>
+      <div class="footer-sub">CNC Systems & R&D Technical Leader</div>
     </div>
-    <div class="footer-copy">© 2026 mustafauner.com.tr</div>
-    <div class="footer-links">
-      <a href="mailto:mustafauner@hotmail.com.tr" class="footer-link"><i class="fa-regular fa-envelope"></i></a>
-      <a href="https://www.linkedin.com/in/mustafa-uner-engineer/" target="_blank" class="footer-link"><i class="fa-brands fa-linkedin"></i></a>
-    </div>
+    <div class="footer-copy">&copy; 2024 Tüm hakları saklıdır.</div>
   </div>
 </footer>
 
-<!-- ────────── VIDEO MODAL ────────── -->
-<div id="videoModal">
-  <div class="modal-inner">
-    <button class="modal-close" onclick="closeModal()"><span data-i18n="btn_close">Kapat</span> <i class="fa-solid fa-xmark"></i></button>
-    <div class="modal-video"><iframe id="videoFrame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
-  </div>
-</div>
-
 <script>
-// ─── TRANSLATIONS DICTIONARY (TR/EN Map) ───
-const translations = {
-  tr: {
-    nav_title: "CNC & Ar-Ge Teknik Lideri",
-    nav_home: "Portfolyo",
-    nav_blog: "Bilgi Bankası",
-    nav_tools: "Hesaplama Paneli",
-    nav_contact: "İletişim",
-    m_lang_label: "Dil / Language",
-    hero_badge: "CNC SİSTEMLERİ GELİŞTİREN TEKNİK LİDER",
-    hero_title: "CNC Platformları<br>Ar-Ge ve Ekip Liderliği",
-    hero_desc: "15+ yıllık saha, tasarım ve Ar-Ge deneyimini; 4 ve 5 eksenli CNC sistemleri geliştirme, TÜBİTAK projelerini yönetme ve mühendislik ekiplerini konseptten ticarileşen makine platformlarına taşıma odağında birleştiren teknik lider.",
-    proof_1: "CNC Sistem Geliştirme",
-    proof_2: "TÜBİTAK Ar-Ge Liderliği",
-    proof_3: "4 & 5 Eksenli Platformlar",
-    proof_4: "Teknik Ekip Yönetimi",
-    btn_tools: "Hesaplama Araçları",
-    btn_blog: "Bilgi Bankası",
-    positioning_kicker: "Konumlandırma",
-    positioning_title: "CNC platformlarını fikirden sahaya taşıyan teknik liderlik",
-    positioning_copy: "Mustafa Üner'in uzmanlığı tekil parça tasarımının ötesinde; makine mimarisi, eksen kinematiği, üretim doğrulaması, TÜBİTAK Ar-Ge yönetimi ve mühendislik ekiplerini aynı hedefe hizalayan sistem liderliği üzerine kuruludur.",
-    positioning_item_1_title: "CNC Sistem Geliştirme",
-    positioning_item_1_desc: "4 ve 5 eksenli profil işleme merkezlerini konsept, tasarım, prototip ve saha devreye alma çizgisinde geliştirme.",
-    positioning_item_2_title: "Ar-Ge Program Liderliği",
-    positioning_item_2_desc: "TÜBİTAK 1501 projelerinde teknik problemi, çözüm mimarisini, ticarileşme katkısını ve ekip koordinasyonunu yönetme.",
-    positioning_item_3_title: "Mühendislik Ekip Liderliği",
-    positioning_item_3_desc: "Tasarım, üretim, otomasyon ve devreye alma ekiplerini ortak standartlar ve karar mekanizmaları etrafında hizalama.",
-    journey_label: "Teknik Liderlik Rotası",
-    journey_title: "SAHADAN<br><span>SİSTEM LİDERLİĞİNE</span>",
-    journey_sub: "Atölye deneyiminden CNC platform mimarisine, akademik yönetim bilgisinden Ar-Ge ekip liderliğine uzanan 15+ yıllık dönüşüm.",
-    portfolio_label: "CNC Platform Kanıtları",
-    portfolio_title: "GELİŞTİRİLEN<br><span>SİSTEMLER</span>",
-    portfolio_sub: "2013'ten bugüne tasarım, doğrulama, prototip, üretim ve devreye alma süreçlerinde rol alınan ticarileşmiş CNC ve üretim teknolojisi platformları.",
-    tubitak_sec_label: "Ticarileşen Ar-Ge Liderliği",
-    tubitak_sec_title: "TÜBİTAK Ar-Ge<br><span>SİSTEM VAKALARI</span>",
-    tubitak_sec_sub: "Proje Yürütücüsü olarak yönetilen; teknik belirsizliği CNC ürün ailesine, standart tasarım kılavuzlarına ve pazarda karşılığı olan makine platformlarına dönüştüren Ar-Ge programları.",
-    blog_sec_label: "Teknik Liderlik Notları",
-    blog_sec_title: "MÜHENDİSLİK<br><span>BİLGİ BANKASI</span>",
-    blog_sec_sub: "Tasarım kararları, hesaplamalı mühendislik, saha tecrübesi ve üretim teknolojileri liderliği üzerine teknik yazılar.",
-    blog_sidebar_title: "YAZILAR",
-    tools_sec_label: "Mühendislik Doğrulama Araçları",
-    tools_sec_title: "TEKNİK<br><span>DOĞRULAMA PANELİ</span>",
-    tools_sec_sub: "CNC sistem tasarımında karar hızını artıran, ISO ve DIN standartlarına dayalı hesaplama ve ön doğrulama arayüzleri.",
-    t_vc_tab: "Kesme Hızı",
-    t_piston_tab: "Piston Kuvveti",
-    t_helis_tab: "Helis Dişli",
-    t_tork_tab: "Motor Tork",
-    t_vidali_tab: "Vidalı Mil",
-    t_tolerance_tab: "Tolerans Analizi",
-    t_beam_tab: "Sehim Analizi",
-    t_vc_title: "Kesme Hızı Analizi — Vc",
-    t_unit_label: "Birim: m/dak",
-    t_vc_unit: "Metre / Dakika",
-    t_vc_input_d: "İşleme Çapı D (mm)",
-    t_vc_input_n: "Devir n (rpm)",
-    t_piston_title: "Piston Kuvvet Analizi — ISO 6431",
-    t_piston_bore: "Piston Çapı / Bore (mm)",
-    t_piston_rod: "Mil Çapı / Rod (mm)",
-    t_piston_pressure: "Çalışma Basıncı (Bar)",
-    t_piston_unit: "Çıktı Birimi",
-    t_piston_unit_kg: "Kilogram-kuvvet (kgf)",
-    t_piston_push: "İtme Kuvveti",
-    t_piston_pull: "Çekme Kuvveti",
-    t_helis_title: "Helis Dişli Analizi",
-    t_helis_m: "Modül m",
-    t_helis_z: "Diş Sayısı z",
-    t_helis_d: "Bölüm Çapı",
-    t_helis_da: "Dış Çap da",
-    t_helis_c: "Merkez Mes.",
-    t_tork_title: "Motor Tork Hesabı",
-    t_unit_label_nm: "Birim: Nm",
-    t_tork_unit: "Newton · Metre",
-    t_tork_power: "Motor Gücü P (Watt)",
-    t_tork_rpm: "Devir n (rpm)",
-    t_vidali_title: "Vidalı Mil Tahrik Analizi",
-    t_vidali_power: "Motor Gücü P (W)",
-    t_vidali_rpm: "Devir n (rpm)",
-    t_vidali_lead: "Hatve h (mm/devir)",
-    t_vidali_tork_out: "Tork",
-    t_vidali_force_out: "İtme Kuvveti",
-    t_vidali_speed_out: "Hız",
-    t_tolerance_title: "Dinamik Tolerans Yığılma Analizi",
-    t_tolerance_add: "YENİ PARÇA EKLE",
-    t_tolerance_wc: "En Kötü Durum (WC)",
-    t_tolerance_rss: "İstatistiksel (RSS)",
-    t_beam_title: "Kiriş Sehim Analizi",
-    t_beam_formula_sub: "Ortadan Tekil Yük, İki Ucu Sabit",
-    t_beam_unit: "Milimetre (mm)",
-    t_beam_f: "Kuvvet F (Newton)",
-    t_beam_l: "Açıklık L (mm)",
-    t_beam_e: "Elastisite Modülü E (GPa)",
-    t_beam_e_steel: "Çelik (210 GPa)",
-    t_beam_e_alum: "Alüminyum (70 GPa)",
-    t_beam_e_titan: "Titanyum (110 GPa)",
-    t_beam_i: "Atalet Momenti I (cm⁴)",
-    btn_copy_report: "TEKNİK RAPORU KOPYALA",
-    disclaimer_title: "Mühendislik Sorumluluk Reddi",
-    disclaimer_desc: "Bu platformdaki tüm algoritmalar ve hesaplama araçları, ön tasarım (konsept) süreçlerini hızlandırmak amacıyla hazırlanmıştır. Nihai imalat ve üretim kararlarında ilgili uluslararası standartların (ISO, DIN vb.) ve makine mühendisliği emniyet faktörlerinin bizzat uygulanması kullanıcının sorumluluğundadır. Bu verilerin doğrudan tasarıma entegrasyonundan doğacak uyuşmazlıklarda geliştirici sorumlu tutulamaz.",
-    footer_title: "CNC Sistemleri & Ar-Ge Teknik Lideri · İstanbul, TR",
-    btn_close: "Kapat"
+const articles = [
+  {
+    title: "Geometrik Boyutlandırma ve Toleranslandırma",
+    meta: { date: "2024", tags: ["GD&T", "Tasarım"] },
+    content: `
+      <h2>Geometrik Boyutlandırma Nedir?</h2>
+      <p>Geometrik boyutlandırma (GD&T - Geometric Dimensioning and Tolerancing), mühendislik tasarımında parçaların boyutlarının ve geometrik şekillerinin doğru bir şekilde tanımlanması için kullanılan standart bir sistemdir. Bir parçanın <strong>şekil</strong>, <strong>boyut</strong>, <strong>konum</strong> ve <strong>yönelim</strong> özelliklerini teknik resim üzerinde sembollerle ifade eder.</p>
+
+      <h2>Temel Amaçları</h2>
+      <ul>
+        <li><strong>Fonksiyonelliği Sağlamak:</strong> Parçaların montajda ve çalışırken birbirleriyle uyumlu olmasını garantiye almak</li>
+        <li><strong>Üretim ve Kontrol Kolaylığı:</strong> Hangi toleransın nerede önemli olduğu açıkça belirtildiği için hem üretim hem de ölçüm işlemleri açısından kolaylık sağlamak</li>
+        <li><strong>Hataları Azaltmak:</strong> Belirsizlikleri azaltarak üründe istenmeyen farklılıkların önüne geçmek</li>
+      </ul>
+
+      <h2>GD&T Ana Unsurları</h2>
+      <p><strong>Boyut Toleransları:</strong> Parçanın fiziksel boyutlarının izin verilen sınırlarını tanımlar (örn: 20±0,1 mm)</p>
+      <p><strong>Geometrik Toleranslar:</strong> Parçanın şekil, konum, yönelim ve salınım gibi geometrik karakteristiklerini belirler.</p>
+      <p><strong>Semboller:</strong> Teknik resimlerde kullanılan standart semboller (düzlemsellik, dairesellik, paralellik, konum vb.)</p>
+
+      <h2>Kullanıldığı Yerler</h2>
+      <ul>
+        <li>Makine ve otomotiv endüstrisinde mekanik parça tasarımı</li>
+        <li>Havacılık parçalarının imalatı</li>
+        <li>Mekatronik ve cihaz tasarımı gibi hassas üretim gerektiren tüm alanlar</li>
+      </ul>
+
+      <div class="tech-callout">
+        <h4>Teknik İpucu</h4>
+        <p>Geometrik boyutlandırma, ürünün teknik resimleri ve üretim süreçlerinde doğru, anlaşılır ve standardize edilmiş bir iletişim dili oluşturur. Hem mühendislik tasarımının doğruluğunu hem de üretim kalitesini önemli oranda artırır.</p>
+      </div>
+
+      <h2>Sonuç</h2>
+      <p>GD&T, "bir parçanın gereksinim duyduğu ölçü, şekil ve konumsal toleransların teknik olarak ifade edilmesi" anlamına gelir. Modern mühendislik uygulamalarında, özellikle hassas imalat gerektiren projelerde GD&T kullanımı zorunlu hale gelmiştir.</p>
+    `
   },
-  en: {
-    nav_title: "CNC & R&D Technical Leader",
-    nav_home: "Portfolio",
-    nav_blog: "Knowledge Base",
-    nav_tools: "Calculation Panel",
-    nav_contact: "Contact",
-    m_lang_label: "Language / Dil",
-    hero_badge: "TECHNICAL LEADER IN CNC SYSTEMS DEVELOPMENT",
-    hero_title: "CNC Platforms<br>R&D and Team Leadership",
-    hero_desc: "A technical leader combining 15+ years of shop-floor, design, and R&D experience to develop 4- and 5-axis CNC systems, lead TÜBİTAK programs, and guide engineering teams from concept to commercial machine platforms.",
-    proof_1: "CNC Systems Development",
-    proof_2: "TÜBİTAK R&D Leadership",
-    proof_3: "4 & 5-Axis Platforms",
-    proof_4: "Technical Team Leadership",
-    btn_tools: "Calculation Tools",
-    btn_blog: "Knowledge Base",
-    positioning_kicker: "Positioning",
-    positioning_title: "Technical leadership that carries CNC platforms from idea to factory floor",
-    positioning_copy: "Mustafa Üner's expertise extends beyond individual mechanical design: it is built on machine architecture, axis kinematics, production validation, TÜBİTAK R&D management, and system leadership that aligns engineering teams around a shared technical target.",
-    positioning_item_1_title: "CNC Systems Development",
-    positioning_item_1_desc: "Developing 4- and 5-axis profile machining centers across concept, design, prototype, and field commissioning stages.",
-    positioning_item_2_title: "R&D Program Leadership",
-    positioning_item_2_desc: "Managing the technical problem, solution architecture, commercialization value, and team coordination in TÜBİTAK 1501 programs.",
-    positioning_item_3_title: "Engineering Team Leadership",
-    positioning_item_3_desc: "Aligning design, production, automation, and commissioning teams around shared standards and decision systems.",
-    journey_label: "Technical Leadership Track",
-    journey_title: "FROM SHOP FLOOR<br><span>TO SYSTEM LEADERSHIP</span>",
-    journey_sub: "A 15+ year transformation from workshop experience to CNC platform architecture, engineering management, and R&D team leadership.",
-    portfolio_label: "CNC Platform Evidence",
-    portfolio_title: "DEVELOPED<br><span>SYSTEMS</span>",
-    portfolio_sub: "Commercialized CNC and manufacturing technology platforms shaped across design, validation, prototyping, production, and commissioning since 2013.",
-    tubitak_sec_label: "Commercialized R&D Leadership",
-    tubitak_sec_title: "TÜBİTAK R&D<br><span>SYSTEM CASES</span>",
-    tubitak_sec_sub: "R&D programs managed as Project Leader, transforming technical uncertainty into CNC product families, standard design guides, and market-proven machine platforms.",
-    blog_sec_label: "Technical Leadership Notes",
-    blog_sec_title: "ENGINEERING<br><span>KNOWLEDGE BASE</span>",
-    blog_sec_sub: "Technical writing on design decisions, computational engineering, field experience, and manufacturing technology leadership.",
-    blog_sidebar_title: "ARTICLES",
-    tools_sec_label: "Engineering Validation Tools",
-    tools_sec_title: "TECHNICAL<br><span>VALIDATION PANEL</span>",
-    tools_sec_sub: "Calculation and preliminary validation interfaces based on ISO and DIN standards, built to accelerate decisions in CNC system design.",
-    t_vc_tab: "Cutting Speed",
-    t_piston_tab: "Piston Force",
-    t_helis_tab: "Helical Gear",
-    t_tork_tab: "Motor Torque",
-    t_vidali_tab: "Ball Screw",
-    t_tolerance_tab: "Tolerance Analysis",
-    t_beam_tab: "Deflection Analysis",
-    t_vc_title: "Cutting Speed Analysis — Vc",
-    t_unit_label: "Unit: m/min",
-    t_vc_unit: "Meters / Minute",
-    t_vc_input_d: "Machining Diameter D (mm)",
-    t_vc_input_n: "Speed n (rpm)",
-    t_piston_title: "Piston Force Analysis — ISO 6431",
-    t_piston_bore: "Piston Bore Diameter (mm)",
-    t_piston_rod: "Piston Rod Diameter (mm)",
-    t_piston_pressure: "Working Pressure (Bar)",
-    t_piston_unit: "Output Unit",
-    t_piston_unit_kg: "Kilogram-force (kgf)",
-    t_piston_push: "Push Force",
-    t_piston_pull: "Pull Force",
-    t_helis_title: "Helical Gear Analysis",
-    t_helis_m: "Module m",
-    t_helis_z: "Number of Teeth z",
-    t_helis_d: "Pitch Circle Dia.",
-    t_helis_da: "Outer Dia. da",
-    t_helis_c: "Center Distance",
-    t_tork_title: "Motor Torque Calculation",
-    t_unit_label_nm: "Unit: Nm",
-    t_tork_unit: "Newton · Meter",
-    t_tork_power: "Motor Power P (Watt)",
-    t_tork_rpm: "Speed n (rpm)",
-    t_vidali_title: "Ball Screw Drive Analysis",
-    t_vidali_power: "Motor Power P (W)",
-    t_vidali_rpm: "Speed n (rpm)",
-    t_vidali_lead: "Lead h (mm/rev)",
-    t_vidali_tork_out: "Torque",
-    t_vidali_force_out: "Thrust Force",
-    t_vidali_speed_out: "Speed",
-    t_tolerance_title: "Dynamic Tolerance Stack-up Analysis",
-    t_tolerance_add: "ADD NEW PART",
-    t_tolerance_wc: "Worst Case (WC)",
-    t_tolerance_rss: "Statistical (RSS)",
-    t_beam_title: "Beam Deflection Analysis",
-    t_beam_formula_sub: "Central Point Load, Fixed at Both Ends",
-    t_beam_unit: "Millimeter (mm)",
-    t_beam_f: "Force F (Newton)",
-    t_beam_l: "Span L (mm)",
-    t_beam_e: "Modulus of Elasticity E (GPa)",
-    t_beam_e_steel: "Steel (210 GPa)",
-    t_beam_e_alum: "Aluminum (70 GPa)",
-    t_beam_e_titan: "Titanium (110 GPa)",
-    t_beam_i: "Moment of Inertia I (cm⁴)",
-    btn_copy_report: "COPY TECHNICAL REPORT",
-    disclaimer_title: "Engineering Disclaimer",
-    disclaimer_desc: "All algorithms and calculation tools on this platform have been prepared to accelerate preliminary design (concept) processes. Implementing international standards (ISO, DIN, etc.) and engineering safety factors during final manufacturing design is the sole responsibility of the user. The developer cannot be held responsible for discrepancies arising from direct integration of these figures.",
-    footer_title: "CNC Systems & R&D Technical Leader · Istanbul, TR",
-    btn_close: "Close"
-  }
-};
+  {
+    title: "Civata Bağlantılarında Dayanım Hesaplaması",
+    meta: { date: "2024", tags: ["Mekanik", "Hesaplama"] },
+    content: `
+      <h2>Civata Bağlantılarında Dayanım Hesaplaması</h2>
+      <p>Civata bağlantılarında dayanım hesaplaması, makine mühendisliğinde sıkça karşılaşılan bir konudur. Bu hesaplamalar, civataya uygulanan kuvvetlerin ve momentlerin, civatanın malzeme özelliklerine ve boyutlarına göre güvenli olup olmadığını belirlemek içindir.</p>
 
-let currentLanguage = "tr";
+      <h2>1. Civata Çekme Dayanımı</h2>
+      <p>Civatanın çekme (eksenel) yüklemesi altında kopmamasını sağlamak için maksimum çekme kuvveti hesaplanır:</p>
+      <div class="tech-callout">
+        <h4>Formül</h4>
+        <p><strong>F_max = σ_emniyet × A_net</strong></p>
+        <p>σ_emniyet: Emniyet gerilmesi (malzemenin akma veya kopma mukavemetinin belirli bir kısmı)</p>
+        <p>A_net: Civatanın dişli kısmının net kesit alanı</p>
+      </div>
 
-// ─── STREAMING_CHUNK:Setting up dynamic translated datasets... ───
-// Dynamic Multilingual Journey Data
-const journeyData = {
-  tr: [
-    { year: "2009", heading: "MÜHENDİSLİK TEMELİ", desc: "Makine Mühendisliği eğitimiyle analitik düşünce, mekanik sistem davranışı ve üretilebilir tasarım disiplininin kurulması.", tag: "Mekanik Temel" },
-    { year: "2011", heading: "SAHA VE ÜRETİM OKULU", desc: "Kaban Makina imalat sahasında mekanik montaj, hassas ölçüm, CNC operasyonları ve gerçek üretim kısıtlarının doğrudan öğrenilmesi.", tag: "Saha Yetkinliği" },
-    { year: "2012", heading: "PROSES AR-GE'Sİ", desc: "PVC profil kaynak ve kesme makineleri için patentli kalıp ve özel kaynak çenesi geliştirme çalışmalarıyla ürünleşen proses çözümlerine geçiş.", tag: "Proses Mimarisi" },
-    { year: "2013", heading: "CNC PLATFORM MİMARİSİ", desc: "İlk yerli alüminyum profil işleme merkezi ZC 3010 ile mekanik tasarımın ötesine geçerek CNC sistem mimarisi, eksen yapısı ve ürün standardı oluşturma.", tag: "CNC Sistem Mimarı" },
-    { year: "2019", heading: "MÜHENDİSLİK YÖNETİMİ", desc: "Marmara Üniversitesi Mühendislik Yönetimi M.Sc. derecesiyle teknik uzmanlığı proje, ekip, risk ve ticarileşme perspektifiyle birleştirme.", tag: "M.Sc. Yönetim", highlight: true },
-    { year: "GÜNÜMÜZ", heading: "AR-GE VE EKİP LİDERLİĞİ", desc: "Kaban Makina bünyesinde çok eksenli CNC profil işleme merkezleri ve robotik otomasyon hatlarını tasarımdan saha kabulüne taşıyan teknik ekip liderliği.", tag: "Teknik Liderlik", highlight: true, active: true }
-  ],
-  en: [
-    { year: "2009", heading: "ENGINEERING FOUNDATION", desc: "Mechanical Engineering education establishing analytical thinking, mechanical system behavior, and design-for-manufacturing discipline.", tag: "Mechanical Core" },
-    { year: "2011", heading: "SHOP-FLOOR SCHOOL", desc: "Direct experience in mechanical assembly, precision measurement, CNC operations, and real production constraints inside Kaban Makina's factory floor.", tag: "Field Competence" },
-    { year: "2012", heading: "PROCESS R&D", desc: "Transition into productized process solutions through patented mold systems and specialized welding jaws for PVC profile cutting and welding machinery.", tag: "Process Architecture" },
-    { year: "2013", heading: "CNC PLATFORM ARCHITECTURE", desc: "Moving beyond mechanical design with ZC 3010, the first local aluminum profile machining center, to define CNC system architecture, axis layout, and product standards.", tag: "CNC System Architect" },
-    { year: "2019", heading: "ENGINEERING MANAGEMENT", desc: "M.Sc. in Engineering Management from Marmara University, combining technical expertise with project, team, risk, and commercialization perspective.", tag: "M.Sc. Management", highlight: true },
-    { year: "CURRENT", heading: "R&D AND TEAM LEADERSHIP", desc: "Technical team leadership carrying multi-axis CNC profile machining centers and robotic automation lines from design to field acceptance at Kaban Makina.", tag: "Technical Leadership", highlight: true, active: true }
-  ]
-};
+      <h2>2. Civata Kesme Dayanımı</h2>
+      <p>Civatanın makaslama/kesme kuvvetine dayanması için:</p>
+      <div class="tech-callout">
+        <h4>Formül</h4>
+        <p><strong>V_max = τ_emniyet × A_kesit</strong></p>
+        <p>τ_emniyet: Emniyetli kayma gerilmesi</p>
+        <p>A_kesit: Kesme düzlemindeki civata alanı</p>
+      </div>
 
-// Dynamic Multilingual Portfolio Projects
-const portfolioData = {
-  tr: [
-    { id: "P_uIFpvk1SM", num: "01", title: "ZC 3010", desc: "İlk yerli alüminyum CNC platformunun sistem mimarisi" },
-    { id: "O4QWRVjYops", num: "02", title: "ZC 3020", desc: "Hassas seri üretim için ölçeklenen CNC ürün platformu" },
-    { id: "2rBsAK_WqiY", num: "03", title: "ZC 3050", desc: "13.5m stroklu 5 eksenli TÜBİTAK Ar-Ge platformu", start: 13 },
-    { id: "jspCnwaKgOM", num: "04", title: "ZF 3010", desc: "Yüksek hızlı profil frezeleme için üretim odaklı sistem" },
-    { id: "B8S7bgEGUkw", num: "05", title: "ZE 3010", desc: "Robotik kesim merkezi ve otomasyon hattı çözümü" },
-    { id: "5RSI86l4cfw", num: "06", title: "ZC 3062-64", desc: "Modüler çok eksenli CNC üretim ailesi", badge: "Amiral Gemi", start: 5 },
-    { id: "7VxKh9M_qys", num: "07", title: "ZC 4040", desc: "Endüstriyel profil işleme için 4 eksenli CNC sistem" },
-    { id: "2rBsAK_WqiY", num: "08", title: "ZC 3052-54", desc: "5 eksenli performans CNC ürün serisi", badge: "Amiral Gemi" },
-    { id: "WUrf8N120SU", num: "09", title: "AC 20XX SERİSİ", desc: "Alüminyum kesiminde pazar lideri yüksek performanslı ürün ailesi", badge: "Yeni Seri", featured: true, start: 18 }
-  ],
-  en: [
-    { id: "P_uIFpvk1SM", num: "01", title: "ZC 3010", desc: "System architecture for the first local aluminum CNC platform" },
-    { id: "O4QWRVjYops", num: "02", title: "ZC 3020", desc: "CNC product platform scaled for precision serial production" },
-    { id: "2rBsAK_WqiY", num: "03", title: "ZC 3050", desc: "5-axis TÜBİTAK R&D platform with 13.5m stroke", start: 13 },
-    { id: "jspCnwaKgOM", num: "04", title: "ZF 3010", desc: "Production-focused system for high-speed profile milling" },
-    { id: "B8S7bgEGUkw", num: "05", title: "ZE 3010", desc: "Robotic cutting center and automation-line solution" },
-    { id: "5RSI86l4cfw", num: "06", title: "ZC 3062-64", desc: "Modular multi-axis CNC production family", badge: "Flagship", start: 5 },
-    { id: "7VxKh9M_qys", num: "07", title: "ZC 4040", desc: "4-axis CNC system for industrial profile machining" },
-    { id: "2rBsAK_WqiY", num: "08", title: "ZC 3052-54", desc: "High-performance 5-axis CNC product series", badge: "Flagship" },
-    { id: "WUrf8N120SU", num: "09", title: "AC 20XX SERIES", desc: "Market-leading high-performance product family for aluminum cutting", badge: "New Release", featured: true, start: 18 }
-  ]
-};
+      <h2>3. Civata Sıkma (Ön Yükleme)</h2>
+      <p>Civata bağlantısı, belirli bir torkla sıkılır ve çalışma sırasında gevşeme olmaması sağlanır.</p>
+      <div class="tech-callout">
+        <h4>Formül</h4>
+        <p><strong>F_pre = 0.7 × S_akma × A_net</strong></p>
+      </div>
 
-// Dynamic Multilingual TÜBİTAK Case Studies
-const tubitakData = {
-  tr: {
-    badge_program: "Program: 1501",
-    badge_leader: "Ar-Ge Teknik Lideri",
-    badge_status: "Başarıyla Tamamlandı",
-    case1_title: "ZC 3050 – 5 Eksenli Alüminyum Profil İşleme Merkezi",
-    case1_prob_title: "Sistem Problemi",
-    case1_prob: "Geleneksel 4 eksenli sistemlerin profil uçlarında ve açılı yüzeylerde ihtiyaç duyulan karmaşık operasyonları tek bağlamada yapamaması, üretim hattında duraksamalara ve firelere yol açmaktaydı.",
-    case1_sol_title: "Liderlik Edilen Çözüm",
-    case1_sol: "Patentli entegre dairesel testere ünitesine ve çift istasyonlu dinamik çalışma alanına sahip 5 eksenli CNC platform mimarisi oluşturuldu. Eksen kinematiği, spindle davranışı ve servo mekanik salınımları sanal analizlerle doğrulanarak ekipler arası tasarım kararları netleştirildi.",
-    case1_res_title: "Ticarileşen Katkı",
-    case1_res: "TÜBİTAK 1501 kapsamında başarıyla tamamlanan proje, firmanın ilk 5 eksenli CNC makinesini yerlileştirmenin ötesinde yeni nesil CNC ürün ailesi için teknik liderlik modeli ve pazara açılan bir platform oluşturdu.",
-    case2_title: "ZC 3010 – 4 Eksenli Alüminyum İşleme Merkezi",
-    case2_prob_title: "Kurumsal Sistem Problemi",
-    case2_prob: "Şirketin daha önce CNC geliştirme tecrübesinin olmaması; kaynaklı gövdelerin gerilim giderme süreçleri, doğrusal kızak hassasiyetleri ve eksen tork optimizasyonu gibi konularda kurumsal bilgi birikiminin eksikliği.",
-    case2_sol_title: "Liderlik Edilen Çözüm",
-    case2_sol: "Tüm gövde sonlu elemanlar yöntemiyle (FEA) statik ve dinamik burulma testlerine tabi tutuldu. Titreşim sönümleyici döküm harçları ve optimize edilmiş profil tasarımları kullanılarak stabil bir kinematik altyapı oluşturuldu.",
-    case2_res_title: "Standartlaşan Katkı",
-    case2_res: "Proje sadece ilk CNC makinesinin ticarileşmesini sağlamadı; organizasyonun sonraki tüm CNC platformları için tasarım standardı, kalite protokolü ve ekipler arası ortak teknik dilin temelini attı."
+      <h2>Hesaplarda Kullanılan Malzeme Özellikleri</h2>
+      <div class="prose .table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Civata Sınıfı</th>
+              <th>Akma Dayanımı (MPa)</th>
+              <th>Kopma Dayanımı (MPa)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>5.6</td>
+              <td>300</td>
+              <td>500</td>
+            </tr>
+            <tr>
+              <td>8.8</td>
+              <td>640</td>
+              <td>800</td>
+            </tr>
+            <tr>
+              <td>10.9</td>
+              <td>900</td>
+              <td>1000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Emniyet Katsayısı</h2>
+      <p>Tasarımda emniyet katsayısı kullanılarak teorik dayanımların ötesinde güvenli çalışma sağlanır. Genellikle 1.2 ila 3 arasında seçilir.</p>
+
+      <div class="tech-callout">
+        <h4>Pratik Örnek</h4>
+        <p>M12 (dişli çapı 12 mm) standart civata, net alan A_s ≈ 84.3 mm², S_akma = 640 MPa ve emniyet katsayısı 1.5 ile:</p>
+        <p><strong>F_max = (640/1.5) × 84.3 = 561 × 84.3 = 47.4 kN</strong></p>
+      </div>
+
+      <h2>Sonuç</h2>
+      <p>Doğru civata seçimi ve hesaplaması, makine tasarımının güvenilirliğini ve uzun ömürlülüğünü sağlayan kritik bir faktördür.</p>
+    `
   },
-  en: {
-    badge_program: "Program: 1501",
-    badge_leader: "R&D Technical Leader",
-    badge_status: "Successfully Completed",
-    case1_title: "ZC 3050 – 5-Axis Aluminum Profile Machining Center",
-    case1_prob_title: "System Problem",
-    case1_prob: "Traditional 4-axis systems could not process complex multi-angle operations and profile-end cuts in a single setup, which caused bottlenecks and scrap parts in dynamic production lines.",
-    case1_sol_title: "Led Solution",
-    case1_sol: "Created a bespoke 5-axis CNC platform architecture equipped with a patented integrated circular saw unit and dynamic double-station layout. Axis kinematics, spindle behavior, and servo mechanical vibration profiles were verified through virtual analyses to align cross-functional design decisions.",
-    case1_res_title: "Commercialized Contribution",
-    case1_res: "This successfully completed TÜBİTAK 1501 program did more than localize the company's first 5-axis CNC machine; it established a technical leadership model and a market-facing platform for the next CNC product family.",
-    case2_title: "ZC 3010 – 4-Axis Aluminum Machining Center",
-    case2_prob_title: "Institutional System Problem",
-    case2_prob: "No prior institutional CNC development history; lack of corporate know-how regarding welded frame stress relieving, linear rail parallelism alignments, and axis torque calculations.",
-    case2_sol_title: "Led Solution",
-    case2_sol: "Subjected the entire machine bed to static and dynamic torsional finite element analysis (FEA). Developed standard welded frame parameters and engineered heavy casting compound integration to eliminate vibrations.",
-    case2_res_title: "Standardized Contribution",
-    case2_res: "Beyond commercializing the first CNC machine, this project laid the foundation for standardized design guides, quality protocols, and a shared technical language used across subsequent CNC platforms."
+  {
+    title: "Eklemeli İmalat - Mekanik Mühendisler İçin",
+    meta: { date: "2024", tags: ["İmalat", "3D Baskı"] },
+    content: `
+      <h2>Eklemeli İmalat Nedir?</h2>
+      <p>Eklemeli İmalat (Additive Manufacturing, AM), parçaların katman katman malzeme eklenerek oluşturulduğu bir üretim yöntemidir. En yaygın formu 3D baskıdır. Geleneksel imalat yöntemleri malzemeyi çıkarırken, eklemeli imalat ekler.</p>
+
+      <h2>Mekanik Tasarım Mühendisleri İçin Avantajları</h2>
+      <ul>
+        <li><strong>Tasarım Serbestliği:</strong> İç kanallar, karmaşık kafes yapılar ve organik şekiller gibi geleneksel yöntemle yapılamayan detaylar üretilebilir</li>
+        <li><strong>Hafiflik:</strong> Malzeme yalnızca gerekli yere yerleştirildiği için optimize hafif tasarımlar mümkündür</li>
+        <li><strong>Kısa Sürede Prototipleme:</strong> Hızlı prototipleme ile tasarımdan ürüne geçiş süreci çok kısalır</li>
+        <li><strong>Fonksiyonel Parçalar:</strong> Parçalar fonksiyonel olarak tek adımda üretilebilir</li>
+        <li><strong>Kişiye Özel/Adetli Üretim:</strong> Küçük seriler, kişiselleştirilmiş ürünler için uygundur</li>
+      </ul>
+
+      <h2>Dikkat Edilmesi Gereken Hususlar</h2>
+      <ul>
+        <li><strong>Malzeme ve Mekanik Özellikler:</strong> Her malzeme için farklı teknoloji ve parametreler gerekir. Mekanik mukavemetler, geleneksel yöntemlerden farklı olabilir</li>
+        <li><strong>Tasarım Kuralları:</strong> Destek yapıları, minimum duvar kalınlığı, katman yönelimi gibi AM'e özgü kurallar dikkate alınmalıdır</li>
+        <li><strong>Yüzey Kalitesi:</strong> Katmanlı yapıdan dolayı yüzey pürüzlülüğü yüksek olabilir, ek işlemler gerekebilir</li>
+        <li><strong>Maliyet Analizi:</strong> Parça karmaşıksa avantajlıdır ancak çok sayıda basit parçada geleneksel yöntem genellikle daha ucuzdur</li>
+      </ul>
+
+      <h2>Uygulama Alanları</h2>
+      <ul>
+        <li>Havacılık ve uzay (hafif ve fonksiyonel parçalar)</li>
+        <li>Otomotiv (prototip ve düşük hacimli üretimler)</li>
+        <li>Medikal (kişiye özel implantlar, ortopedik parçalar)</li>
+        <li>Enerji ve savunma</li>
+      </ul>
+
+      <h2>Yaygın Eklemeli İmalat Yöntemleri</h2>
+      <div class="tech-callout">
+        <h4>Metal Baskı Yöntemleri</h4>
+        <p><strong>SLM/DMLS:</strong> Selective Laser Melting - Hassas metal parçalar için ideal</p>
+        <p><strong>EBM:</strong> Electron Beam Melting - Yüksek mukavemetli alaşımlar için</p>
+      </div>
+
+      <div class="tech-callout">
+        <h4>Polimer Baskı Yöntemleri</h4>
+        <p><strong>FDM:</strong> Fused Deposition Modeling - En yaygın yöntem, düşük maliyet</p>
+        <p><strong>SLA:</strong> Stereolitografi - Yüksek hassasiyet ve detay</p>
+      </div>
+
+      <h2>Sonuç</h2>
+      <p>Eklemeli imalat, üretim süreçlerini, ürün tasarımını ve inovasyonu kökten değiştiren bir teknolojidir. Mekanik tasarım mühendisleri, AM teknolojisinin teknik özelliklerini, avantajlarını ve sınırlamalarını anlamalı; tasarımlarını buna göre optimize etmelidir.</p>
+    `
   }
-};
-</script>
+];
 
-<script>
-// ─── LANGUAGE TRANSLATION ENGINE ───
-function translateUI() {
-  const dictionary = translations[currentLanguage];
+function showArticle(index) {
+  document.querySelectorAll('.blog-card').forEach((card, i) => {
+    card.classList.toggle('active', i === index);
+  });
   
-  // Translate standard data-i18n elements
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.getAttribute("data-i18n");
-    if (dictionary[key]) {
-      el.innerHTML = dictionary[key];
+  const reader = document.getElementById('blog-reader');
+  reader.classList.add('fade-out');
+  
+  setTimeout(() => {
+    document.getElementById('article-title').textContent = articles[index].title;
+    document.getElementById('article-content').innerHTML = articles[index].content;
+    const metaTags = articles[index].meta.tags.map(tag => `<span>${tag}</span>`).join(' ');
+    document.querySelector('.article-info').innerHTML = 
+      `<span><i class="fa-solid fa-calendar"></i> ${articles[index].meta.date}</span>
+       <span><i class="fa-solid fa-tag"></i> ${metaTags}</span>`;
+    reader.classList.remove('fade-out');
+  }, 300);
+}
+
+function navigateTo(view) {
+  document.querySelectorAll('.spa-view').forEach(v => v.classList.remove('active'));
+  document.getElementById(view).classList.add('active');
+  window.location.hash = view === 'view-home' ? '#/' : '#/blog';
+}
+
+document.querySelectorAll('.nav-links a, .m-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href === '#/') {
+      e.preventDefault();
+      navigateTo('view-home');
+    } else if (href === '#/blog') {
+      e.preventDefault();
+      navigateTo('view-blog');
     }
   });
+});
 
-  // Toggle button texts
-  document.getElementById("langSwitcherBtn").textContent = currentLanguage === "tr" ? "EN" : "TR";
-  document.getElementById("mobileLangLabel").textContent = currentLanguage === "tr" ? "Türkçe" : "English";
-
-  // Render dynamic structures
-  renderJourney();
-  renderPortfolio();
-  renderTubitak();
-  renderBlogList();
-  
-  // Refresh calculators to reload placeholders and outputs with correct language units
-  calcVc();
-  calcPiston();
-  calcHelis();
-  calcTork();
-  calcVidali();
-  calcBeam();
-}
-
-function toggleLanguage() {
-  currentLanguage = currentLanguage === "tr" ? "en" : "tr";
-  translateUI();
-}
-
-// ─── RENDERERS FOR DYNAMIC DOMs ───
-function renderJourney() {
-  const container = document.getElementById("journey-timeline-container");
-  if (!container) return;
-  const list = journeyData[currentLanguage];
-  container.innerHTML = "";
-
-  list.forEach((item, idx) => {
-    const isEven = idx % 2 === 0;
-    const highlightClass = item.highlight ? "highlight" : "";
-    const activeClass = item.active ? "active" : "";
-
-    container.innerHTML += `
-      <div class="tl-item">
-        <div class="${isEven ? 'tl-left reveal-right d1' : 'tl-left'}">
-          ${isEven ? `
-            <div class="tl-year ${highlightClass}">${item.year}</div>
-            <div class="tl-heading">${item.heading}</div>
-            <div class="tl-desc">${item.desc}</div>
-            <span class="tl-tag">${item.tag}</span>
-          ` : ''}
-        </div>
-        <div class="tl-center"><div class="tl-dot ${activeClass}"></div></div>
-        <div class="${!isEven ? 'tl-right reveal-left d1' : 'tl-right'}">
-          ${!isEven ? `
-            <div class="tl-year ${highlightClass}">${item.year}</div>
-            <div class="tl-heading">${item.heading}</div>
-            <div class="tl-desc">${item.desc}</div>
-            <span class="tl-tag">${item.tag}</span>
-          ` : ''}
-        </div>
-      </div>
-    `;
-  });
-  reObserve();
-}
-
-function renderPortfolio() {
-  const container = document.getElementById("portfolio-grid-container");
-  if (!container) return;
-  const list = portfolioData[currentLanguage];
-  container.innerHTML = "";
-
-  list.forEach((item, idx) => {
-    const delay = `d${(idx % 3) + 1}`;
-    const badgeHTML = item.badge ? `<div class="machine-badge">${item.badge}</div>` : "";
-    const cardClass = item.featured ? "machine-card featured reveal d3" : `machine-card reveal ${delay}`;
-    const titleStyle = item.featured ? 'style="font-size:40px;"' : "";
-    const startParam = item.start ? `, ${item.start}` : "";
-
-    container.innerHTML += `
-      <div class="${cardClass}" onclick="openModal('${item.id}'${startParam})">
-        <div class="machine-card-bg" style="background-image: url('https://img.youtube.com/vi/${item.id}/0.jpg');"></div>
-        ${badgeHTML}
-        <div class="machine-card-inner">
-          <div class="machine-num">${item.num}</div>
-          <div>
-            <div class="machine-title" ${titleStyle}>${item.title}</div>
-            <div class="machine-desc">${item.desc}</div>
-          </div>
-        </div>
-        <div class="machine-play">
-          <div class="play-btn"><i class="fa-solid fa-play" style="margin-left:3px"></i></div>
-        </div>
-      </div>
-    `;
-  });
-  reObserve();
-}
-
-function renderTubitak() {
-  const container = document.getElementById("tubitak-section-inner");
-  if (!container) return;
-  const data = tubitakData[currentLanguage];
-
-  container.innerHTML = `
-    <div class="reveal">
-      <div class="section-label">${tubitakData[currentLanguage === "tr" ? "tr" : "en"].badge_leader.toUpperCase()}</div>
-      <h2 class="section-title">${currentLanguage === "tr" ? "TÜBİTAK Ar-Ge<br><span>SİSTEM VAKALARI</span>" : "TÜBİTAK R&D<br><span>SYSTEM CASES</span>"}</h2>
-      <p class="section-sub">${currentLanguage === "tr" ? "Proje Yürütücüsü olarak yönetilen; teknik belirsizliği CNC ürün ailesine, standart tasarım kılavuzlarına ve pazarda karşılığı olan makine platformlarına dönüştüren Ar-Ge programları." : "R&D programs managed as Project Leader, transforming technical uncertainty into CNC product families, standard design guides, and market-proven machine platforms."}</p>
-    </div>
-
-    <div class="tubitak-grid">
-      <!-- ZC 3050 Case -->
-      <div class="tubitak-card reveal d1">
-        <i class="fa-solid fa-microchip tubitak-card-bg"></i>
-        <div class="tubitak-logo-wrap">
-          <div class="tubitak-brand">
-            <svg width="32" height="32" viewBox="0 0 100 100" class="tubitak-logo-img">
-              <circle cx="50" cy="50" r="45" fill="none" stroke="#2563eb" stroke-width="8"/>
-              <path d="M30 35 L50 65 L70 35" fill="none" stroke="#2563eb" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span class="t-logo-text">TÜBİTAK</span>
-          </div>
-          <div class="t-badge success">
-            <i class="fa-solid fa-check"></i> ${data.badge_status}
-          </div>
-        </div>
-
-        <div class="t-badge-group">
-          <span class="t-badge program">${data.badge_program}</span>
-          <span class="t-badge program" style="background: rgba(245,158,11,0.1); color: var(--amber); border-color: rgba(245,158,11,0.3);">
-            ${data.badge_leader}
-          </span>
-        </div>
-
-        <h3 class="t-project-name">${data.case1_title}</h3>
-
-        <div class="t-case">
-          <p>
-            <strong>${data.case1_prob_title}</strong><br>
-            ${data.case1_prob}
-          </p>
-          <p>
-            <strong>${data.case1_sol_title}</strong><br>
-            ${data.case1_sol}
-          </p>
-          <p>
-            <strong>${data.case1_res_title}</strong><br>
-            ${data.case1_res}
-          </p>
-        </div>
-      </div>
-
-      <!-- ZC 3010 Case -->
-      <div class="tubitak-card reveal d2">
-        <i class="fa-solid fa-gears tubitak-card-bg"></i>
-        <div class="tubitak-logo-wrap">
-          <div class="tubitak-brand">
-            <svg width="32" height="32" viewBox="0 0 100 100" class="tubitak-logo-img">
-              <circle cx="50" cy="50" r="45" fill="none" stroke="#2563eb" stroke-width="8"/>
-              <path d="M30 35 L50 65 L70 35" fill="none" stroke="#2563eb" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span class="t-logo-text">TÜBİTAK</span>
-          </div>
-          <div class="t-badge success">
-            <i class="fa-solid fa-check"></i> ${data.badge_status}
-          </div>
-        </div>
-
-        <div class="t-badge-group">
-          <span class="t-badge program">${data.badge_program}</span>
-          <span class="t-badge program" style="background: rgba(245,158,11,0.1); color: var(--amber); border-color: rgba(245,158,11,0.3);">
-            ${data.badge_leader}
-          </span>
-        </div>
-
-        <h3 class="t-project-name">${data.case2_title}</h3>
-
-        <div class="t-case">
-          <p>
-            <strong>${data.case2_prob_title}</strong><br>
-            ${data.case2_prob}
-          </p>
-          <p>
-            <strong>${data.case2_sol_title}</strong><br>
-            ${data.case2_sol}
-          </p>
-          <p>
-            <strong>${data.case2_res_title}</strong><br>
-            ${data.case2_res}
-          </p>
-        </div>
-      </div>
-    </div>
-  `;
-  reObserve();
-}
-</script>
-
-<script>
-// ─── TRANSLATED BLOG DATABASE ───
-const articles = {
-  tr: [
-    {
-      id: "art-gdt",
-      date: "28 NİSAN 2026",
-      tags: ["GD&T", "İMALAT", "METROLOJİ"],
-      title: "Geometrik Boyutlandırma ve Toleranslandırma (GD&T): İmalatın Kusursuz Dili",
-      readTime: "15 Dk",
-      content: `
-        <h2>Klasik Ölçülendirme (±) Neden Yetmez?</h2>
-        <p>Teknik resim kağıdında mükemmel düzlükte çizilmiş bir silindirik mil düşünün. Çapına <strong>10.00 ±0.05 mm</strong> tolerans verdiniz. İmalattan gelen parçayı kumpas veya mikrometre ile on farklı yerinden ölçtünüz ve hepsinde 10.02 mm okudunuz. Parça teknik resme "boyutsal" olarak tam uygundur. Peki, bu mili 10.10 mm'lik hassas bir deliğe sokmaya çalıştığınızda neden sıkışır?</p>
-  
-        <p>Çünkü kumpas sadece karşılıklı iki nokta arasındaki mesafeyi (boyutu) ölçer; parçanın eğriliğini (formunu) ölçemez. Parçanız bir "muz" gibi eğilmiş olabilir! S.B. Parker'ın 1938'de tespit ettiği temel sorun da tam olarak buydu. İmalat teknolojileri geliştikçe sadece boyut vermek yetersiz kaldı; <strong>şekil, yönelim, konum ve yalpalama</strong> unsurlarını da evrensel bir dille kısıtlamak gerekti. İşte <strong>GD&T (Geometric Dimensioning and Tolerancing)</strong> bu ihtiyacın bir sonucudur.</p>
-  
-        <div class="tech-diagram-wrap">
-          <svg width="400" height="160" viewBox="0 0 400 160" fill="none">
-            <ellipse cx="40" cy="75" rx="8" ry="15" fill="var(--ink-2)" stroke="var(--mist)" stroke-width="2"/>
-            <path d="M 40 60 Q 200 -20 360 60 A 8 15 0 0 1 360 90 Q 200 10 40 90 A 8 15 0 0 0 40 60" fill="var(--ink-4)" stroke="var(--mist)" stroke-width="2"/>
-            <line x1="200" y1="20" x2="200" y2="50" stroke="var(--danger)" stroke-width="2"/>
-            <polygon points="200,20 196,26 204,26" fill="var(--danger)"/>
-            <polygon points="200,50 196,44 204,44" fill="var(--danger)"/>
-            <text x="212" y="39" fill="var(--danger)" font-family="JetBrains Mono" font-size="12" font-weight="bold">Çap (⌀): 10.02</text>
-            <text x="10" y="125" fill="var(--white)" font-family="JetBrains Mono" font-size="11">Kumpas her yerde 10.02 mm okur (boyut doğrudur),</text>
-            <text x="10" y="145" fill="var(--danger)" font-family="JetBrains Mono" font-size="11">ancak parça eğik (muz formunda) olduğu için montaj YAPILAMAZ!</text>
-          </svg>
-        </div>
-  
-        <h2>Tolerans Çerçevesi (Feature Control Frame)</h2>
-        <p>Tüm geometrik kısıtlamalar, teknik resimde "Tolerans Çerçevesi" adı verilen kutucuklarla ifade edilir. Bu çerçeve üç temel soruyu cevaplar: <em>Neyi kısıtlıyorsun? Ne kadar tolerans veriyorsun? Nereye göre referans alıyorsun?</em></p>
-  
-        <div class="tech-diagram-wrap">
-          <svg width="400" height="130" viewBox="0 0 400 130">
-            <rect x="50" y="45" width="300" height="40" fill="var(--ink-4)" stroke="var(--amber)" stroke-width="2"/>
-            <line x1="100" y1="45" x2="100" y2="85" stroke="var(--amber)" stroke-width="2"/>
-            <line x1="220" y1="45" x2="220" y2="85" stroke="var(--amber)" stroke-width="2"/>
-            <line x1="260" y1="45" x2="260" y2="85" stroke="var(--amber)" stroke-width="2"/>
-            <line x1="300" y1="45" x2="300" y2="85" stroke="var(--amber)" stroke-width="2"/>
-            <circle cx="75" cy="65" r="10" fill="none" stroke="var(--white)" stroke-width="2"/>
-            <line x1="60" y1="65" x2="90" y2="65" stroke="var(--white)" stroke-width="2"/>
-            <line x1="75" y1="50" x2="75" y2="80" stroke="var(--white)" stroke-width="2"/>
-            <text x="115" y="72" fill="var(--white)" font-family="JetBrains Mono" font-size="18">⌀ 0.1</text>
-            <circle cx="195" cy="65" r="9" fill="none" stroke="var(--mist)" stroke-width="1.5"/>
-            <text x="190" y="69" fill="var(--mist)" font-family="JetBrains Mono" font-size="12">M</text>
-            <text x="233" y="72" fill="var(--amber)" font-family="JetBrains Mono" font-size="18" font-weight="bold">A</text>
-            <text x="273" y="72" fill="var(--amber)" font-family="JetBrains Mono" font-size="18" font-weight="bold">B</text>
-            <text x="319" y="72" fill="var(--amber)" font-family="JetBrains Mono" font-size="18" font-weight="bold">C</text>
-            <path d="M 75 45 L 75 25 L 10 25" stroke="var(--mist)" stroke-width="1" fill="none"/>
-            <text x="10" y="20" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">1. KARAKTERİSTİK (Konum)</text>
-            <path d="M 160 85 L 160 105 L 10 105" stroke="var(--mist)" stroke-width="1" fill="none"/>
-            <text x="10" y="120" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">2. TOLERANS BÖLGESİ (Çap 0.1, MMC ile)</text>
-            <path d="M 285 45 L 285 25 L 390 25" stroke="var(--mist)" stroke-width="1" fill="none"/>
-            <text x="390" y="20" fill="var(--mist)" font-size="10" font-family="JetBrains Mono" text-anchor="end">3. DATUM REFERANSLARI</text>
-          </svg>
-        </div>
-  
-        <h2>Datum Sistemi: Uzayda Kilitlenmek (3-2-1 Kuralı)</h2>
-        <p>Uzayda serbest halde duran bir parçanın 6 serbestlik derecesi (3 öteleme, 3 dönme) vardır. Montaj sırasında bir parçayı doğru yere konumlandırmak için bu hareketleri kısıtlamamız gerekir. Buna <strong>3-2-1 Datum Prensibi</strong> denir:</p>
-        <ul>
-          <li><strong>Birincil Datum (A):</strong> Parçanın oturduğu ana yüzeydir. 3 noktadan temas eder, 3 serbestlik derecesini (1 öteleme, 2 dönme) kilitler.</li>
-          <li><strong>İkincil Datum (B):</strong> Parçanın dayandığı ikinci yüzeydir. 2 noktadan temas eder, 2 serbestlik derecesini daha kilitler.</li>
-          <li><strong>Üçüncül Datum (C):</strong> Parçayı tamamen sabitleyen son noktadır. Kalan son öteleme hareketini kilitler.</li>
-        </ul>
-      `
-    },
-    {
-      id: "art-bolts",
-      date: "12 NİSAN 2026",
-      tags: ["DİNAMİK DAYANIM", "CIVATA TASARIMI", "AR-GE"],
-      title: "Cıvata Bağlantılarında Dinamik Dayanım: Neden Gevşer, Neden Kopar?",
-      readTime: "10 Dk",
-      content: `
-        <h2>Tasarım Felsefesi ve Bağlantının Dinamiği</h2>
-        <p>Birçok tasarımcı için cıvata seçimi; katalogdan bir çap seçip yanına "10.9" yazmaktan ibarettir. Ancak makine çalışmaya başladığında işler değişir. Statik yükte devleşen o cıvatalar, dinamik yükler altında neden kağıt gibi kopuyor veya kendiliğinden gevşiyor?</p>
-  
-        <h2>1. Altın Kural: Cıvata Bir Yaydır</h2>
-        <p>Cıvatayı sıktığınızda aslında onu bir yay gibi gerersiniz. Bu <strong>ön gerilme (pre-load)</strong>, bağlantının hayatta kalma garantisidir. Dinamik bir yük geldiğinde, bu yükün tamamı cıvataya binmez. Eğer bağlantınız doğru tasarlanmışsa, dış yükün büyük kısmı parçaların arasındaki basma kuvvetini azaltmaya harcanır.</p>
-  
-        <div class="tech-diagram-wrap">
-          <svg width="300" height="150" viewBox="0 0 300 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="100" y="20" width="100" height="110" rx="4" fill="var(--ink-2)" stroke="var(--mist)" stroke-width="2"/>
-            <line x1="150" y1="10" x2="150" y2="140" stroke="var(--amber)" stroke-width="4" stroke-dasharray="4 2"/>
-            <path d="M130 30 C 140 30, 140 40, 150 40 S 160 30, 170 30" stroke="var(--amber)" stroke-width="2" fill="none"/>
-            <path d="M130 50 C 140 50, 140 60, 150 60 S 160 50, 170 50" stroke="var(--amber)" stroke-width="2" fill="none"/>
-            <path d="M130 70 C 140 70, 140 80, 150 80 S 160 70, 170 70" stroke="var(--amber)" stroke-width="2" fill="none"/>
-            <text x="10" y="80" fill="var(--mist)" font-family="JetBrains Mono" font-size="10">YAY ETKİSİ</text>
-          </svg>
-        </div>
-      `
-    }
-  ],
-  en: [
-    {
-      id: "art-gdt",
-      date: "APRIL 28, 2026",
-      tags: ["GD&T", "MANUFACTURING", "METROLOGY"],
-      title: "Geometric Dimensioning & Tolerancing (GD&T): The Flawless Language of Industry",
-      readTime: "15 Min",
-      content: `
-        <h2>Why Traditional Plus-Minus (±) Tolerances Fail?</h2>
-        <p>Imagine a cylindrical shaft drawn perfectly straight on paper. You specified a diameter tolerance of <strong>10.00 ±0.05 mm</strong>. The shop floor measures the manufactured part with a standard caliper at ten different spots and gets 10.02 mm every single time. Dimensional compliance is technically flawless. Yet, when you try to insert this shaft into a precision 10.10 mm hole, why does it jam?</p>
-  
-        <p>Because calipers only measure two-point local distances (size); they cannot detect form deviations. Your shaft might actually be warped like a banana! This was the key physical limitation identified by S.B. Parker back in 1938. As high-speed assembly lines evolved, simple dimensional limits proved insufficient, demanding a unified mathematical framework to constrain <strong>form, orientation, location, and runout</strong>. Thus, <strong>GD&T (Geometric Dimensioning and Tolerancing)</strong> was born.</p>
-  
-        <div class="tech-diagram-wrap">
-          <svg width="400" height="160" viewBox="0 0 400 160" fill="none">
-            <ellipse cx="40" cy="75" rx="8" ry="15" fill="var(--ink-2)" stroke="var(--mist)" stroke-width="2"/>
-            <path d="M 40 60 Q 200 -20 360 60 A 8 15 0 0 1 360 90 Q 200 10 40 90 A 8 15 0 0 0 40 60" fill="var(--ink-4)" stroke="var(--mist)" stroke-width="2"/>
-            <line x1="200" y1="20" x2="200" y2="50" stroke="var(--danger)" stroke-width="2"/>
-            <polygon points="200,20 196,26 204,26" fill="var(--danger)"/>
-            <polygon points="200,50 196,44 204,44" fill="var(--danger)"/>
-            <text x="212" y="39" fill="var(--danger)" font-family="JetBrains Mono" font-size="12" font-weight="bold">Dia (⌀): 10.02</text>
-            <text x="10" y="125" fill="var(--white)" font-family="JetBrains Mono" font-size="11">Caliper reads 10.02 mm everywhere (correct size),</text>
-            <text x="10" y="145" fill="var(--danger)" font-family="JetBrains Mono" font-size="11">but banana-like bending prevents mechanical assembly!</text>
-          </svg>
-        </div>
-  
-        <h2>Anatomy of the Feature Control Frame</h2>
-        <p>All geometric callouts are specified using a structured box on blueprints called the 'Feature Control Frame'. It answers three key engineering questions: <em>What geometric constraint is active? How large is the tolerance zone? What are the relative datum references?</em></p>
-  
-        <div class="tech-diagram-wrap">
-          <svg width="400" height="130" viewBox="0 0 400 130">
-            <rect x="50" y="45" width="300" height="40" fill="var(--ink-4)" stroke="var(--amber)" stroke-width="2"/>
-            <line x1="100" y1="45" x2="100" y2="85" stroke="var(--amber)" stroke-width="2"/>
-            <line x1="220" y1="45" x2="220" y2="85" stroke="var(--amber)" stroke-width="2"/>
-            <line x1="260" y1="45" x2="260" y2="85" stroke="var(--amber)" stroke-width="2"/>
-            <line x1="300" y1="45" x2="300" y2="85" stroke="var(--amber)" stroke-width="2"/>
-            <circle cx="75" cy="65" r="10" fill="none" stroke="var(--white)" stroke-width="2"/>
-            <line x1="60" y1="65" x2="90" y2="65" stroke="var(--white)" stroke-width="2"/>
-            <line x1="75" y1="50" x2="75" y2="80" stroke="var(--white)" stroke-width="2"/>
-            <text x="115" y="72" fill="var(--white)" font-family="JetBrains Mono" font-size="18">⌀ 0.1</text>
-            <circle cx="195" cy="65" r="9" fill="none" stroke="var(--mist)" stroke-width="1.5"/>
-            <text x="190" y="69" fill="var(--mist)" font-family="JetBrains Mono" font-size="12">M</text>
-            <text x="233" y="72" fill="var(--amber)" font-family="JetBrains Mono" font-size="18" font-weight="bold">A</text>
-            <text x="273" y="72" fill="var(--amber)" font-family="JetBrains Mono" font-size="18" font-weight="bold">B</text>
-            <text x="319" y="72" fill="var(--amber)" font-family="JetBrains Mono" font-size="18" font-weight="bold">C</text>
-            <path d="M 75 45 L 75 25 L 10 25" stroke="var(--mist)" stroke-width="1" fill="none"/>
-            <text x="10" y="20" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">1. CHARACTERISTIC (Position)</text>
-            <path d="M 160 85 L 160 105 L 10 105" stroke="var(--mist)" stroke-width="1" fill="none"/>
-            <text x="10" y="120" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">2. TOLERANCE ZONE (Dia 0.1 at MMC)</text>
-            <path d="M 285 45 L 285 25 L 390 25" stroke="var(--mist)" stroke-width="1" fill="none"/>
-            <text x="390" y="20" fill="var(--mist)" font-size="10" font-family="JetBrains Mono" text-anchor="end">3. DATUM REFERENCES</text>
-          </svg>
-        </div>
-      `
-    },
-    {
-      id: "art-bolts",
-      date: "APRIL 12, 2026",
-      tags: ["DYNAMIC STRENGTH", "BOLT DESIGN", "R&D"],
-      title: "Dynamic Strength in Threaded Fasteners: Why Bolts Loose and Fail",
-      readTime: "10 Min",
-      content: `
-        <h2>Tensioning Philosophy & Fastener Dynamics</h2>
-        <p>For many engineers, selecting a bolt is simple: pick a thread size from a catalog, and write '10.9 class' next to it. But things change when machinery experiences operational cycles. Why do bolts with high static limits fail instantly under cyclic shear loads?</p>
-  
-        <h2>1. Golden Rule: A Bolt Is a Spring</h2>
-        <p>When you tighten a bolt, you are pulling it into elastic tension. This <strong>preload</strong> acts as a safety buffer. When external forces try to pull the joint apart, most of the dynamic load is absorbed by relieving clamp forces in the mating parts, rather than directly stretching the bolt.</p>
-  
-        <div class="tech-diagram-wrap">
-          <svg width="300" height="150" viewBox="0 0 300 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="100" y="20" width="100" height="110" rx="4" fill="var(--ink-2)" stroke="var(--mist)" stroke-width="2"/>
-            <line x1="150" y1="10" x2="150" y2="140" stroke="var(--amber)" stroke-width="4" stroke-dasharray="4 2"/>
-            <path d="M130 30 C 140 30, 140 40, 150 40 S 160 30, 170 30" stroke="var(--amber)" stroke-width="2" fill="none"/>
-            <path d="M130 50 C 140 50, 140 60, 150 60 S 160 50, 170 50" stroke="var(--amber)" stroke-width="2" fill="none"/>
-            <path d="M130 70 C 140 70, 140 80, 150 80 S 160 70, 170 70" stroke="var(--amber)" stroke-width="2" fill="none"/>
-            <text x="10" y="80" fill="var(--mist)" font-family="JetBrains Mono" font-size="10">SPRING EFFECT</text>
-          </svg>
-        </div>
-      `
-    }
-  ]
-};
-</script>
-
-<script>
-// ─── SPA ROUTING SYSTEM ───
-function router() {
-  const hash = window.location.hash || '#/';
-
-  document.querySelectorAll('.spa-view').forEach(view => {
-    view.classList.remove('active');
-  });
-
-  document.querySelectorAll('.nav-links a, .m-link').forEach(link => {
-    link.classList.remove('active-link');
-  });
-
-  if (hash.startsWith('#/blog')) {
-    document.getElementById('view-blog').classList.add('active');
-    document.getElementById('nav-blog').classList.add('active-link');
-    document.getElementById('m-nav-blog').classList.add('active-link');
-    
-    renderBlogList();
-
-    const urlParams = new URLSearchParams(hash.split('?')[1]);
-    const articleId = urlParams.get('id');
-    if(articleId) {
-       loadArticle(articleId, null);
-    } else {
-       const list = articles[currentLanguage];
-       loadArticle(list[0].id, null, true);
-    }
-  } else if (hash.startsWith('#/tools')) {
-    document.getElementById('view-tools').classList.add('active');
-    document.getElementById('nav-tools').classList.add('active-link');
-    document.getElementById('m-nav-tools').classList.add('active-link');
-    
-    // Auto-select first tab inside tools panel if none is active
-    setTimeout(() => {
-      const activePanel = document.querySelector('.tool-panel.active');
-      if (!activePanel) {
-        const firstTab = document.querySelector('.tool-tab');
-        if (firstTab) firstTab.click();
-      }
-    }, 50);
+window.addEventListener('hashchange', () => {
+  const hash = window.location.hash;
+  if (hash === '#/blog') {
+    navigateTo('view-blog');
   } else {
-    document.getElementById('view-home').classList.add('active');
-    document.getElementById('nav-home').classList.add('active-link');
-    document.getElementById('m-nav-home').classList.add('active-link');
-  }
-
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-window.addEventListener('hashchange', router);
-window.addEventListener('load', router);
-
-// ─── MOUSE GLOW EFFECT ───
-const mouseGlow = document.getElementById('mouse-glow');
-document.addEventListener('mousemove', (e) => {
-  if (window.innerWidth > 768) {
-    mouseGlow.style.opacity = '1';
-    mouseGlow.style.left = e.clientX + 'px';
-    mouseGlow.style.top = e.clientY + 'px';
+    navigateTo('view-home');
   }
 });
-document.addEventListener('mouseleave', () => mouseGlow.style.opacity = '0');
 
-// ─── MOBILE MENU OVERLAY TRIGGER ───
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
 
 mobileMenuBtn.addEventListener('click', () => {
   mobileMenuOverlay.classList.toggle('active');
-  document.body.style.overflow = mobileMenuOverlay.classList.contains('active') ? 'hidden' : '';
-
-  const icon = mobileMenuBtn.querySelector('i');
-  if(mobileMenuOverlay.classList.contains('active')) {
-    icon.classList.remove('fa-bars');
-    icon.classList.add('fa-xmark');
-  } else {
-    icon.classList.remove('fa-xmark');
-    icon.classList.add('fa-bars');
-  }
 });
 
 document.querySelectorAll('.m-link').forEach(link => {
-  link.addEventListener('click', (e) => {
-    // Prevent overlay collapse on language selection click inside mobile list
-    if (e.target.closest('.m-link') && e.target.closest('[onclick="toggleLanguage()"]')) return;
-
+  link.addEventListener('click', () => {
     mobileMenuOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-    mobileMenuBtn.querySelector('i').classList.remove('fa-xmark');
-    mobileMenuBtn.querySelector('i').classList.add('fa-bars');
   });
 });
 
-// ─── KNOWLEDGE BASE (BLOG) SIDEBAR RENDER ───
-function renderBlogList() {
-  const blogListContainer = document.getElementById('blog-list-container');
-  if (!blogListContainer) return;
-  
-  blogListContainer.innerHTML = '';
-  const currentHash = window.location.hash;
-  const list = articles[currentLanguage];
-  const currentId = new URLSearchParams(currentHash.split('?')[1]).get('id') || list[0].id;
-
-  list.forEach((article) => {
-    const card = document.createElement('a');
-    card.href = `#/blog?id=${article.id}`;
-    card.className = `blog-card ${currentId === article.id ? 'active' : ''}`;
-
-    card.innerHTML = `
-      <div class="blog-meta">
-        <span>${article.date}</span>
-        <div class="blog-meta-tags"><span>[</span>${article.tags[0]}<span>]</span></div>
-      </div>
-      <div class="blog-card-title">${article.title}</div>
-    `;
-    blogListContainer.appendChild(card);
-  });
+function toggleLanguage() {
+  alert('Dil değişim özelliği yakında aktif olacak. Şimdi sadece Türkçe mevcuttur.');
 }
-
-function loadArticle(id, cardElement, isInitialLoad = false) {
-  const blogReader = document.getElementById('blog-reader');
-  if (!blogReader) return;
-  
-  document.querySelectorAll('.blog-card').forEach(c => {
-    c.classList.remove('active');
-    if(c.getAttribute('href') === `#/blog?id=${id}`) c.classList.add('active');
-  });
-
-  const list = articles[currentLanguage];
-  const article = list.find(a => a.id === id);
-  if(!article) return;
-
-  blogReader.classList.add('fade-out');
-
-  setTimeout(() => {
-    blogReader.innerHTML = `
-      <div class="article-header">
-        <h1 class="article-title">${article.title}</h1>
-        <div class="article-info">
-          <span><i class="fa-regular fa-calendar"></i> ${article.date}</span>
-          <span><i class="fa-regular fa-clock"></i> ${article.readTime}</span>
-          <span><i class="fa-solid fa-tag"></i> ${article.tags.join(', ')}</span>
-        </div>
-      </div>
-      <div class="prose">${article.content}</div>
-    `;
-
-    blogReader.classList.remove('fade-out');
-
-    if(!isInitialLoad && window.innerWidth <= 768) {
-      document.querySelector('.blog-content-area').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }, 300);
-}
-
-// ─── SCROLL & INTERSECTION OBSERVER ANIMATIONS ───
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 40); });
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    const el = entry.target;
-    if (el.classList.contains('reveal') || el.classList.contains('reveal-left') || el.classList.contains('reveal-right')) el.classList.add('visible');
-    observer.unobserve(el);
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -4px 0px' });
-
-function reObserve() {
-  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => { observer.observe(el); });
-}
-window.addEventListener('hashchange', () => setTimeout(reObserve, 100));
-setTimeout(reObserve, 100);
-
-// ─── ENGINEERING CALCULATORS TAB SYSTEM ───
-document.querySelectorAll('.tool-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.tool-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.tool-panel').forEach(p => p.classList.remove('active'));
-    tab.classList.add('active');
-    document.getElementById(tab.dataset.target).classList.add('active');
-  });
-});
 </script>
 
-<script>
-// ─── MATHEMATICAL & MECHANICAL FORMULAS ───
-const PI = Math.PI;
-
-// 1. Kesme Hızı
-function calcVc() { 
-  const D = parseFloat(document.getElementById('vc-d').value); 
-  const n = parseFloat(document.getElementById('vc-n').value); 
-  document.getElementById('vc-d-val').textContent = D + ' mm'; 
-  document.getElementById('vc-n-val').textContent = n + ' rpm'; 
-  document.getElementById('vc-result').textContent = ((PI * D * n) / 1000).toFixed(1); 
-}
-document.getElementById('vc-d').addEventListener('input', calcVc); 
-document.getElementById('vc-n').addEventListener('input', calcVc);
-
-// 2. Piston Kuvveti
-const pistonMap = { "12":"6","16":"6","20":"8","25":"10","32":"12","40":"16","50":"20","63":"20","80":"25","100":"25" };
-function calcPiston() {
-  const D = parseFloat(document.getElementById('p-bore').value);
-  const d = parseFloat(document.getElementById('p-rod').value);
-  const bar = parseFloat(document.getElementById('p-bar').value);
-  const unit = document.getElementById('p-unit').value;
-
-  document.getElementById('p-bar-val').textContent = bar + ' Bar';
-
-  const A_push = (PI * Math.pow(D/10, 2)) / 4;
-  const A_pull = (PI * (Math.pow(D/10, 2) - Math.pow(d/10, 2))) / 4;
-
-  let F_push_daN = A_push * bar;
-  let F_pull_daN = A_pull * bar;
-
-  let resPush, resPull, textUnit;
-  if (unit === 'N') {
-    resPush = (F_push_daN * 10).toFixed(0);
-    resPull = (F_pull_daN * 10).toFixed(0);
-    textUnit = ' N';
-  } else if (unit === 'daN') {
-    resPush = F_push_daN.toFixed(1);
-    resPull = F_pull_daN.toFixed(1);
-    textUnit = ' daN';
-  } else {
-    resPush = (F_push_daN * 1.0197).toFixed(1);
-    resPull = (F_pull_daN * 1.0197).toFixed(1);
-    textUnit = ' kgf';
-  }
-
-  document.getElementById('p-push').textContent = resPush + textUnit;
-  document.getElementById('p-pull').textContent = resPull + textUnit;
-}
-document.getElementById('p-bore').addEventListener('change', (e) => { 
-  document.getElementById('p-rod').value = pistonMap[e.target.value] || "25"; 
-  calcPiston(); 
-});
-document.getElementById('p-rod').addEventListener('change', calcPiston);
-document.getElementById('p-bar').addEventListener('input', calcPiston);
-document.getElementById('p-unit').addEventListener('change', calcPiston);
-
-// 3. Helis Dişli
-function calcHelis() {
-  const m = parseFloat(document.getElementById('h-m').value); 
-  const z = parseFloat(document.getElementById('h-z').value);
-  if (!m || !z || isNaN(m) || isNaN(z)) return;
-  const cosB = Math.cos(19.528 * PI / 180); 
-  const d = (m * z) / cosB; 
-  const da = d + 2 * m; 
-  const c = d / 2 + 25 - m;
-  document.getElementById('h-d').textContent  = d.toFixed(2) + ' mm'; 
-  document.getElementById('h-da').textContent = da.toFixed(2) + ' mm'; 
-  document.getElementById('h-c').textContent  = c.toFixed(2) + ' mm';
-}
-document.getElementById('h-m').addEventListener('input', calcHelis); 
-document.getElementById('h-z').addEventListener('input', calcHelis);
-
-// 4. Motor Torku
-function calcTork() {
-  const P = parseFloat(document.getElementById('tork-p').value); 
-  const n = parseFloat(document.getElementById('tork-n').value);
-  if (!P || !n || n === 0) return;
-  document.getElementById('tork-result').textContent = ((P * 60) / (2 * PI * n)).toFixed(2);
-}
-document.getElementById('tork-p').addEventListener('input', calcTork); 
-document.getElementById('tork-n').addEventListener('input', calcTork);
-
-// 5. Vidalı Mil
-function calcVidali() {
-  const P = parseFloat(document.getElementById('v-p').value); 
-  const n = parseFloat(document.getElementById('v-n').value); 
-  const h = parseFloat(document.getElementById('v-h').value);
-  if (!P || !n || !h || n === 0 || h === 0) return;
-  const T = (P * 60) / (2 * PI * n); 
-  const F = (T * 2 * PI * 0.90 * 1000) / (h * 9.81); 
-  const v = (h * n) / 1000;
-  
-  const speedUnit = currentLanguage === 'tr' ? ' m/dk' : ' m/min';
-  const forceUnit = currentLanguage === 'tr' ? ' kg' : ' kg';
-
-  document.getElementById('v-tork').textContent  = T.toFixed(2) + ' Nm'; 
-  document.getElementById('v-force').textContent = F.toFixed(1) + forceUnit; 
-  document.getElementById('v-speed').textContent = v.toFixed(1) + speedUnit;
-}
-document.getElementById('v-p').addEventListener('input', calcVidali); 
-document.getElementById('v-n').addEventListener('input', calcVidali); 
-document.getElementById('v-h').addEventListener('input', calcVidali);
-
-// 6. Tolerans Analizi
-let tolRows = [{u: 0.05, l: -0.05}, {u: 0.05, l: 0.00}, {u: 0.00, l: -0.03}];
-function renderTolRows() {
-  const container = document.getElementById('dynamic-tol-list');
-  if (!container) return;
-  
-  const headerUpper = currentLanguage === 'tr' ? 'ÜST (Max)' : 'UPPER (Max)';
-  const headerLower = currentLanguage === 'tr' ? 'ALT (Min)' : 'LOWER (Min)';
-  const componentLabel = currentLanguage === 'tr' ? 'Parça' : 'Part';
-
-  container.innerHTML = `
-    <div style="display:grid; grid-template-columns: 1fr 80px 80px 30px; gap:8px; margin-bottom: 6px; padding: 0 12px;">
-      <span></span>
-      <span style="font-size:8px; color:var(--amber); text-align:center; font-family:'JetBrains Mono',monospace; letter-spacing:1px;">${headerUpper}</span>
-      <span style="font-size:8px; color:var(--amber); text-align:center; font-family:'JetBrains Mono',monospace; letter-spacing:1px;">${headerLower}</span>
-      <span></span>
-    </div>
-  `;
-  tolRows.forEach((val, idx) => {
-    container.innerHTML += `
-      <div style="display:grid; grid-template-columns: 1fr 80px 80px 30px; gap:8px; align-items:center; background:var(--ink-4); padding:8px 12px; border-radius:6px; margin-bottom:6px; border: 1px solid rgba(51,65,85,0.4);">
-        <span class="input-label" style="margin:0; font-size:9px;">${componentLabel} ${idx + 1}</span>
-        <input type="number" value="${val.u}" step="0.01" oninput="updateTolRow(${idx}, 'u', this.value)" class="tool-input" style="padding:6px; font-size:11px; text-align:center;" title="Upper Limit">
-        <input type="number" value="${val.l}" step="0.01" oninput="updateTolRow(${idx}, 'l', this.value)" class="tool-input" style="padding:6px; font-size:11px; text-align:center;" title="Lower Limit">
-        <button onclick="removeTolRow(${idx})" style="background:none; border:none; color:var(--danger); cursor:pointer; padding:4px; text-align: center;"><i class="fa-solid fa-trash"></i></button>
-      </div>
-    `;
-  });
-  calcDynamicTol();
-}
-function updateTolRow(idx, type, val) {
-  tolRows[idx][type] = parseFloat(val) || 0;
-  calcDynamicTol();
-}
-function addTolRow() {
-  tolRows.push({u: 0.01, l: -0.01});
-  renderTolRows();
-}
-function removeTolRow(idx) {
-  tolRows.splice(idx, 1);
-  if(tolRows.length === 0) tolRows.push({u: 0, l: 0});
-  renderTolRows();
-}
-function calcDynamicTol() {
-  let wc = 0; let rssSq = 0;
-  tolRows.forEach(t => {
-    let t_eff = Math.abs(t.u - t.l) / 2;
-    wc += t_eff;
-    rssSq += (t_eff * t_eff);
-  });
-  document.getElementById('tol-wc').textContent = '± ' + wc.toFixed(3);
-  document.getElementById('tol-rss').textContent = '± ' + Math.sqrt(rssSq).toFixed(3);
-}
-
-// 7. Kiriş Sehim Analizi
-function calcBeam() {
-  const F = parseFloat(document.getElementById('beam-f').value);
-  const L = parseFloat(document.getElementById('beam-l').value);
-  const E_GPa = parseFloat(document.getElementById('beam-e').value);
-  const I_cm4 = parseFloat(document.getElementById('beam-i').value);
-
-  if (!F || !L || !E_GPa || !I_cm4) return;
-
-  const E = E_GPa * 1000; // to N/mm² (MPa)
-  const I = I_cm4 * 10000; // to mm⁴
-  const delta = (F * Math.pow(L, 3)) / (48 * E * I);
-
-  document.getElementById('beam-result').textContent = delta.toFixed(3);
-}
-document.getElementById('beam-f').addEventListener('input', calcBeam);
-document.getElementById('beam-l').addEventListener('input', calcBeam);
-document.getElementById('beam-e').addEventListener('change', calcBeam);
-document.getElementById('beam-i').addEventListener('input', calcBeam);
-</script>
-
-<script>
-// ─── TECHNICAL REPORT EXPORT SYSTEM ───
-document.getElementById('btn-export-report').addEventListener('click', function() {
-  const activePanel = document.querySelector('.tool-panel.active');
-  if (!activePanel) return;
-
-  const titleHeader = currentLanguage === 'tr' ? 'MÜHENDİSLİK HESAPLAMA RAPORU' : 'ENGINEERING CALCULATION REPORT';
-  const paramHeader = currentLanguage === 'tr' ? '[ PARAMETRELER ]' : '[ INPUT PARAMETERS ]';
-  const outputsHeader = currentLanguage === 'tr' ? '[ ÇIKTILAR / ANALİZ SONUÇLARI ]' : '[ OUTPUTS / ANALYSIS RESULTS ]';
-  const tolChainHeader = currentLanguage === 'tr' ? '[ TOLERANS ZİNCİRİ BİLEŞENLERİ ]' : '[ TOLERANS CHAIN COMPONENTS ]';
-  const disclaimerHeader = currentLanguage === 'tr' ? '[ SORUMLULUK REDDİ ]' : '[ DISCLAIMER ]';
-  
-  const discBody = currentLanguage === 'tr' 
-    ? "Bu teknik rapordaki değerler konsept aşamaları için matematiksel\nolarak hesaplanmıştır. İmalat parametrelerinde emniyet katsayılarının\nve standart kontrollerin uygulanması tasarımcının mesuliyetindedir."
-    : "The values in this technical report have been mathematically\ncalculated for concept phases. Application of safety factors and standard\ncontrols on the final manufacturing is the sole responsibility of the designer.";
-
-  let report = `--- ${titleHeader} ---\n`;
-  report += `Module: ${activePanel.querySelector('.tool-panel-title').textContent}\n`;
-  const formulaEl = activePanel.querySelector('.tool-panel-formula');
-  if (formulaEl) report += `Formula: ${formulaEl.textContent.trim()}\n`;
-  report += `\n${paramHeader}\n`;
-
-  activePanel.querySelectorAll('.input-field').forEach(field => {
-    const label = field.querySelector('label') ? field.querySelector('label').textContent : 'Value';
-    let val = '';
-    const input = field.querySelector('input, select');
-    if(input) {
-        if (input.tagName === 'SELECT') val = input.options[input.selectedIndex].text;
-        else if (input.type === 'range') val = field.querySelector('.input-val') ? field.querySelector('.input-val').textContent : input.value;
-        else val = input.value;
-    } else if(field.querySelector('.input-val')) {
-        val = field.querySelector('.input-val').textContent;
-    }
-    report += `- ${label}: ${val}\n`;
-  });
-
-  report += `\n${outputsHeader}\n`;
-  const mainResult = activePanel.querySelector('.result-box');
-  if (mainResult) {
-    const rVal = mainResult.querySelector('.result-value') ? mainResult.querySelector('.result-value').textContent : '';
-    const rUnit = mainResult.querySelector('.result-unit') ? mainResult.querySelector('.result-unit').textContent : '';
-    report += `- Output: ${rVal} ${rUnit}\n`;
-  }
-
-  activePanel.querySelectorAll('.result-card').forEach(card => {
-    const label = card.querySelector('.result-card-label').textContent;
-    const val = card.querySelector('.result-card-value').textContent;
-    report += `- ${label}: ${val}\n`;
-  });
-
-  if(activePanel.id === 't-tolerance-tool') {
-      report += `\n${tolChainHeader}\n`;
-      tolRows.forEach((r, i) => { report += `- Item ${i+1}: Upper: ${r.u}, Lower: ${r.l}\n`; });
-  }
-
-  report += `\n${disclaimerHeader}\n`;
-  report += `${discBody}\n`;
-  report += `\n--------------------------------------\nMustafa Üner Portfolio | mustafauner.com.tr`;
-
-  const textarea = document.createElement('textarea');
-  textarea.value = report;
-  document.body.appendChild(textarea);
-  textarea.select();
-  try {
-    document.execCommand('copy');
-  } catch(e) {}
-  document.body.removeChild(textarea);
-
-  const btn = this; 
-  const originalText = btn.innerHTML;
-  
-  const succText = currentLanguage === 'tr' ? '<i class="fa-solid fa-check"></i> RAPOR KOPYALANDI!' : '<i class="fa-solid fa-check"></i> REPORT COPIED!';
-  btn.innerHTML = succText;
-  btn.style.borderColor = 'var(--terminal-green)'; btn.style.color = 'var(--terminal-green)';
-  setTimeout(() => { btn.innerHTML = originalText; btn.style.borderColor = ''; btn.style.color = ''; }, 2000);
-});
-
-// ─── INTERACTIVE PORTFOLIO VIDEO MODAL ───
-function openModal(videoId, startTime = 0) {
-  let url = `https://www.youtube.com/embed/${videoId}?autoplay=1`; 
-  if (startTime > 0) url += `&start=${startTime}`;
-  document.getElementById('videoFrame').src = url; 
-  document.getElementById('videoModal').classList.add('open'); 
-  document.body.style.overflow = 'hidden';
-}
-function closeModal() { 
-  document.getElementById('videoFrame').src = ''; 
-  document.getElementById('videoModal').classList.remove('open'); 
-  document.body.style.overflow = ''; 
-}
-
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-document.getElementById('videoModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
-
-// Initialize all calculations on script runtime & translate to default (tr)
-translateUI();
-</script>
 </body>
 </html>
