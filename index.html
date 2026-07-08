@@ -2072,6 +2072,141 @@ const articles = {
 
         <p>Bir tasarımcı olarak yapmanız gereken, 3D baskıyı "alternatif bir imalat yöntemi" olarak değil, "tasarım düşünme şeklinizi değiştiren bir araç" olarak görmektir. Tasarım serbestliğini bilinçli kullanın, malzeme bilgisine yatırım yapın ve prototipleme sürecini üretim sürecinizin doğal bir parçası haline getirin.</p>
       `
+    },
+    {
+      id: "art-dfm",
+      date: "15 TEMMUZ 2026",
+      tags: ["DFM", "IMALAT", "MALIYET"],
+      title: "Üretilebilirlik İçin Tasarım (DFM): Maliyetleri Düşürmenin ve Başarıyı Garantilemenin Yolu",
+      readTime: "14 Dk",
+      content: `
+        <p>Bir ürün fikrini hayata geçirirken harika bir tasarım yapmak madalyonun sadece bir yüzüdür. Diğer yüzü ise bu tasarımın gerçek dünyada, minimum maliyetle ve en yüksek kalitede nasıl üretileceğidir.</p>
+        
+        <p>İşte tam bu noktada devreye <strong>DFM (Design for Manufacturing - Üretilebilirlik İçin Tasarım)</strong> giriyor. Bu yazımızda, endüstriyel tasarımdan seri üretime geçişte köprü görevi gören DFM felsefesini, avantajlarını ve temel ilkelerini ele alıyoruz.</p>
+
+        <h2>1. DFM (Design for Manufacturing) Nedir?</h2>
+        <p>DFM, bir ürünün henüz tasarım aşamasındayken, üretim süreçlerini (talaşlı imalat, enjeksiyon kalıplama, sac metal şekillendirme vb.) kolaylaştıracak, hızlandıracak ve maliyetini düşürecek şekilde planlanması felsefesidir.</p>
+        
+        <p>Kısacası DFM: <em>"Biz bunu tasarladık ama atölyede/fabrikada nasıl üreteceğiz?"</em> sorusuna ürün henüz bilgisayar ekranındayken (CAD ortamında) yanıt arama sürecidir.</p>
+
+        <div class="tech-diagram-wrap">
+          <svg width="400" height="140" viewBox="0 0 400 140" fill="none">
+            <rect x="20" y="20" width="360" height="100" rx="6" fill="var(--ink-4)" stroke="var(--amber)" stroke-width="1.5"/>
+            <circle cx="80" cy="70" r="25" fill="var(--ink-3)" stroke="var(--amber)" stroke-width="2"/>
+            <text x="80" y="65" fill="var(--white)" font-size="10" font-family="JetBrains Mono" text-anchor="middle">CAD</text>
+            <text x="80" y="80" fill="var(--amber)" font-size="9" font-family="JetBrains Mono" text-anchor="middle">TASARIM</text>
+            <path d="M110 70 L140 70" stroke="var(--amber)" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <rect x="150" y="45" width="100" height="50" rx="4" fill="var(--ink-3)" stroke="var(--amber)" stroke-width="2"/>
+            <text x="200" y="65" fill="var(--amber)" font-size="11" font-family="JetBrains Mono" text-anchor="middle" font-weight="bold">DFM</text>
+            <text x="200" y="82" fill="var(--mist)" font-size="8" font-family="JetBrains Mono" text-anchor="middle">OPTİMİZASYON</text>
+            <path d="M255 70 L285 70" stroke="var(--amber)" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <polygon points="340,70 320,55 320,85" fill="var(--ink-3)" stroke="var(--amber)" stroke-width="2"/>
+            <text x="330" y="65" fill="var(--white)" font-size="8" font-family="JetBrains Mono" text-anchor="middle">ÜRÜN</text>
+            <text x="330" y="80" fill="var(--amber)" font-size="8" font-family="JetBrains Mono" text-anchor="middle">ÜRETİM</text>
+            <text x="200" y="115" fill="var(--mist)" font-size="9" font-family="JetBrains Mono" text-anchor="middle">DFM: Tasarım → Üretilebilirlik → Başarı</text>
+          </svg>
+        </div>
+
+        <h2>2. Tasarımcılar ve Üreticiler Neden DFM'e Odaklanmalı?</h2>
+        <p>Bir ürünün toplam maliyetinin yaklaşık <strong>%70 ila %80'i</strong> tasarım aşamasında kilitlenir. Üretim bandına geçildikten sonra yapılan değişiklikler, tasarım aşamasında yapılanlara göre <strong>10 kat daha maliyetlidir</strong>.</p>
+
+        <h3>DFM'in Sağladığı Temel Avantajlar:</h3>
+        <ul>
+          <li><strong>Maliyetleri Aşağı Çeker:</strong> Gereksiz hassasiyetlerden, karmaşık geometrilerden ve pahalı malzeme seçimlerinden kaçınarak parça başı maliyeti düşürür.</li>
+          <li><strong>Pazara Çıkış Süresini (Time-to-Market) Kısaltır:</strong> Üretim esnasında yaşanacak sürpriz hata ve revizyonları sıfıra indirerek zaman kazandırır.</li>
+          <li><strong>Kaliteyi ve Standartı Artırır:</strong> Üretimi kolay olan bir parçanın hata payı da düşük olur. Bu da sürdürülebilir bir kalite demektir.</li>
+          <li><strong>Montajı Kolaylaştırır (DFA):</strong> Parça sayısını optimize ederek montaj hattındaki işçilik süresini ve insan kaynaklı hataları azaltır.</li>
+        </ul>
+
+        <table class="article-table">
+          <thead>
+            <tr><th>Aşama</th><th>Değişiklik Maliyeti</th><th>Etki</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Kavram Tasarımı</td><td>1x (Referans)</td><td>Minimal etki, maksimum esneklik</td></tr>
+            <tr><td>Detay Tasarımı</td><td>3-5x</td><td>CAD revizyonu gerekli</td></tr>
+            <tr><td>Prototip</td><td>10x</td><td>Kalıp/aparat değişikliği</td></tr>
+            <tr><td>Seri Üretim</td><td>50-100x</td><td>Üretim durdurma, hurda, recall riski</td></tr>
+          </tbody>
+        </table>
+
+        <h2>3. Altın Değerinde DFM İlkeleri</h2>
+        <p>Başarılı bir DFM süreci için tasarım masasında şu kurallara dikkat etmek gerekir:</p>
+
+        <h3>1. Parça Sayısını Azaltın (Sadelik En Büyük Akıllılıktır)</h3>
+        <p>Bir üründe ne kadar az parça varsa; o kadar az envanter, o kadar az montaj süresi ve o kadar az hata riski vardır. Mümkünse birden fazla işlevi olan entegre parçalar tasarlayın.</p>
+        
+        <p><strong>Örnek:</strong> 10 vidalı bir montaj yerine, snap-fit (geçmeli) veya tek parça esnek tasarım kullanarak montaj süresini %80 azaltabilirsiniz.</p>
+
+        <h3>2. Standart Parçalar Kullanın</h3>
+        <p>Özel üretim cıvatalar, somunlar veya rulmanlar tasarlamak yerine piyasada kolayca bulunan standart (off-the-shelf) bileşenleri tercih edin. Bu, tedarik zinciri risklerini ve maliyeti doğrudan düşürür.</p>
+        
+        <p><strong>Pratik Kural:</strong> Her özel parça için "Bunu standart bir parçayla değiştirebilir miyim?" sorusunu sorun.</p>
+
+        <h3>3. Toleransları Optimize Edin (Gereksiz Hassasiyetten Kaçının)</h3>
+        <p>"Her yer mikron mertebesinde hassas olsun" düşüncesi, üretim maliyetlerini geometrik olarak artırır. Sadece kritik fonksiyonel yüzeylerde dar tolerans kullanın; diğer alanlarda tezgahların standart işleme toleranslarına sadık kalın.</p>
+        
+        <div class="tech-diagram-wrap">
+          <svg width="400" height="120" viewBox="0 0 400 120" fill="none">
+            <rect x="20" y="20" width="360" height="80" rx="4" fill="var(--ink-3)" stroke="var(--mist)" stroke-width="1"/>
+            <text x="40" y="45" fill="var(--danger)" font-size="11" font-family="JetBrains Mono" font-weight="bold">YANLIŞ:</text>
+            <text x="120" y="45" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">Tüm yüzeyler ±0.01 mm</text>
+            <text x="280" y="45" fill="var(--danger)" font-size="10" font-family="JetBrains Mono">→ Maliyet: 100%</text>
+            <text x="40" y="70" fill="var(--terminal-green)" font-size="11" font-family="JetBrains Mono" font-weight="bold">DOĞRU:</text>
+            <text x="120" y="70" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">Kritik yüzey ±0.01 mm, diğerleri ±0.1 mm</text>
+            <text x="280" y="70" fill="var(--terminal-green)" font-size="10" font-family="JetBrains Mono">→ Maliyet: %35</text>
+            <text x="40" y="95" fill="var(--amber)" font-size="9" font-family="JetBrains Mono">Kural: Toleransı sadece fonksiyon gerektirdiği yerde sıkılaştırın!</text>
+          </svg>
+        </div>
+
+        <h3>4. Malzeme ve Üretim Yöntemi Uyumu</h3>
+        <p>Seçtiğiniz malzeme ile üretim yönteminin (CNC, 3D Baskı, Enjeksiyon Kalıplama) birbiriyle uyumlu olduğundan emin olun. Örneğin, CNC'de işlenecek bir parça için derin ve keskin iç köşeler bırakmaktan kaçının; çünkü döner kesici takımlar (freze) doğası gereği yarıçap (radüs) bırakır.</p>
+        
+        <p><strong>CNC için DFM ipuçları:</strong></p>
+        <ul>
+          <li>İç köşelerde minimum radüs: Kesici takım çapının en az %25'i</li>
+          <li>Derinlik/genişlik oranı: 4:1'i geçmemeye çalışın</li>
+          <li>İnce duvarlar: Alüminyum için min. 0.8 mm, çelik için min. 1.5 mm</li>
+        </ul>
+
+        <h2>4. DFM Sürecinde Başarı İçin "Eşzamanlı Mühendislik"</h2>
+        <p>DFM'i sadece bir kontrol listesi olarak görmemek gerekir. En verimli sonuçlar, tasarım mühendisleri, imalat sorumluları ve satın alma ekiplerinin projenin en başından itibaren birlikte çalışmasıyla (<strong>Concurrent Engineering</strong>) elde edilir.</p>
+        
+        <p><strong>Eşzamanlı Mühendislik Faydaları:</strong></p>
+        <ul>
+          <li>Erken problem tespiti: Üretim sorunları CAD aşamasında çözülür</li>
+          <li>Tedarik zinciri optimizasyonu: Malzeme seçimi satın alma ekibiyle koordine edilir</li>
+          <li>Hızlı karar alma: Disiplinler arası iletişim gecikmeleri ortadan kalkar</li>
+        </ul>
+
+        <div class="tech-diagram-wrap">
+          <svg width="400" height="160" viewBox="0 0 400 160" fill="none">
+            <circle cx="200" cy="80" r="60" fill="var(--ink-4)" stroke="var(--amber)" stroke-width="2"/>
+            <text x="200" y="75" fill="var(--amber)" font-size="12" font-family="JetBrains Mono" text-anchor="middle" font-weight="bold">DFM</text>
+            <text x="200" y="92" fill="var(--mist)" font-size="9" font-family="JetBrains Mono" text-anchor="middle">MERKEZ</text>
+            <circle cx="200" cy="30" r="20" fill="var(--ink-3)" stroke="var(--terminal-green)" stroke-width="1.5"/>
+            <text x="200" y="34" fill="var(--white)" font-size="7" font-family="JetBrains Mono" text-anchor="middle">TASARIM</text>
+            <circle cx="260" cy="80" r="20" fill="var(--ink-3)" stroke="var(--terminal-green)" stroke-width="1.5"/>
+            <text x="260" y="84" fill="var(--white)" font-size="7" font-family="JetBrains Mono" text-anchor="middle">İMALAT</text>
+            <circle cx="200" cy="130" r="20" fill="var(--ink-3)" stroke="var(--terminal-green)" stroke-width="1.5"/>
+            <text x="200" y="134" fill="var(--white)" font-size="7" font-family="JetBrains Mono" text-anchor="middle">SATIN ALMA</text>
+            <circle cx="140" cy="80" r="20" fill="var(--ink-3)" stroke="var(--terminal-green)" stroke-width="1.5"/>
+            <text x="140" y="84" fill="var(--white)" font-size="7" font-family="JetBrains Mono" text-anchor="middle">KALITE</text>
+            <line x1="200" y1="50" x2="200" y2="60" stroke="var(--amber)" stroke-width="1"/>
+            <line x1="240" y1="80" x2="220" y2="80" stroke="var(--amber)" stroke-width="1"/>
+            <line x1="200" y1="110" x2="200" y2="120" stroke="var(--amber)" stroke-width="1"/>
+            <line x1="160" y1="80" x2="180" y2="80" stroke="var(--amber)" stroke-width="1"/>
+            <text x="200" y="155" fill="var(--amber)" font-size="8" font-family="JetBrains Mono" text-anchor="middle">Eşzamanlı Mühendislik: Tüm ekipler erken dahil olur</text>
+          </svg>
+        </div>
+
+        <h2>Sonuç: Rekabette Öne Geçin</h2>
+        <p>Günümüz pazarında hız ve maliyet avantajı her şeydir. Tasarımlarınıza DFM perspektifiyle yaklaşmak, şirketinize hem finansal güç kazandırır hem de mühendislik kalitenizi küresel standartlara taşır.</p>
+        
+        <p><strong>Unutmayın:</strong> En iyi tasarım, sadece bilgisayarda kusursuz görünen değil; üretim hattından en az fire ve en yüksek verimle çıkan tasarımdır.</p>
+        
+        <p>Bir sonraki projenizde <em>"Nasıl üreteceğiz?"</em> sorusunu ilk çizgiyi atarken sormaya başlayın!</p>
+      `
     }
   ],
   en: [
@@ -2412,6 +2547,141 @@ const articles = {
         <p>3D printing is making geometries that mechanical engineering once called "impossible" now achievable. Interlocking parts, single-piece assemblies, conformal cooling channels, lattice structures — these are all natural advantages of additive manufacturing. However, remember: 3D printing is not a "magic wand." A part designed without understanding material properties, build orientation effects, and tolerance limitations can produce worse results than traditional manufacturing.</p>
 
         <p>As a designer, what you need to do is view 3D printing not as "an alternative manufacturing method" but as "a tool that changes how you think about design." Use design freedom consciously, invest in material knowledge, and make the prototyping process a natural part of your production workflow.</p>
+      `
+    },
+    {
+      id: "art-dfm",
+      date: "JULY 15, 2026",
+      tags: ["DFM", "MANUFACTURING", "COST"],
+      title: "Design for Manufacturing (DFM): The Path to Lower Costs and Guaranteed Success",
+      readTime: "14 Min",
+      content: `
+        <p>Creating a great design when bringing a product idea to life is only one side of the coin. The other side is how this design can be manufactured in the real world with minimum cost and highest quality.</p>
+        
+        <p>This is exactly where <strong>DFM (Design for Manufacturing)</strong> comes into play. In this article, we discuss the DFM philosophy that serves as a bridge from industrial design to mass production, its advantages, and fundamental principles.</p>
+
+        <h2>1. What is DFM (Design for Manufacturing)?</h2>
+        <p>DFM is the philosophy of planning a product while still in the design phase to facilitate, speed up, and reduce the cost of manufacturing processes (machining, injection molding, sheet metal forming, etc.).</p>
+        
+        <p>In short, DFM is the process of seeking an answer to the question <em>"We designed this, but how will we manufacture it in the workshop/factory?"</em> while the product is still on the computer screen (in CAD environment).</p>
+
+        <div class="tech-diagram-wrap">
+          <svg width="400" height="140" viewBox="0 0 400 140" fill="none">
+            <rect x="20" y="20" width="360" height="100" rx="6" fill="var(--ink-4)" stroke="var(--amber)" stroke-width="1.5"/>
+            <circle cx="80" cy="70" r="25" fill="var(--ink-3)" stroke="var(--amber)" stroke-width="2"/>
+            <text x="80" y="65" fill="var(--white)" font-size="10" font-family="JetBrains Mono" text-anchor="middle">CAD</text>
+            <text x="80" y="80" fill="var(--amber)" font-size="9" font-family="JetBrains Mono" text-anchor="middle">DESIGN</text>
+            <path d="M110 70 L140 70" stroke="var(--amber)" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <rect x="150" y="45" width="100" height="50" rx="4" fill="var(--ink-3)" stroke="var(--amber)" stroke-width="2"/>
+            <text x="200" y="65" fill="var(--amber)" font-size="11" font-family="JetBrains Mono" text-anchor="middle" font-weight="bold">DFM</text>
+            <text x="200" y="82" fill="var(--mist)" font-size="8" font-family="JetBrains Mono" text-anchor="middle">OPTIMIZATION</text>
+            <path d="M255 70 L285 70" stroke="var(--amber)" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <polygon points="340,70 320,55 320,85" fill="var(--ink-3)" stroke="var(--amber)" stroke-width="2"/>
+            <text x="330" y="65" fill="var(--white)" font-size="8" font-family="JetBrains Mono" text-anchor="middle">PRODUCT</text>
+            <text x="330" y="80" fill="var(--amber)" font-size="8" font-family="JetBrains Mono" text-anchor="middle">MANUFACTURING</text>
+            <text x="200" y="115" fill="var(--mist)" font-size="9" font-family="JetBrains Mono" text-anchor="middle">DFM: Design → Manufacturability → Success</text>
+          </svg>
+        </div>
+
+        <h2>2. Why Should Designers and Manufacturers Focus on DFM?</h2>
+        <p>Approximately <strong>70% to 80%</strong> of a product's total cost is locked in during the design phase. Changes made after moving to the production line are <strong>10 times more costly</strong> than those made during the design phase.</p>
+
+        <h3>Key Advantages of DFM:</h3>
+        <ul>
+          <li><strong>Reduces Costs:</strong> Lowers per-part cost by avoiding unnecessary precision, complex geometries, and expensive material selections.</li>
+          <li><strong>Shortens Time-to-Market:</strong> Saves time by eliminating surprise errors and revisions during production.</li>
+          <li><strong>Improves Quality and Standards:</strong> A part that is easy to manufacture has lower error rates, meaning sustainable quality.</li>
+          <li><strong>Facilitates Assembly (DFA):</strong> Optimizes part count to reduce labor time and human errors on the assembly line.</li>
+        </ul>
+
+        <table class="article-table">
+          <thead>
+            <tr><th>Phase</th><th>Change Cost</th><th>Impact</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Concept Design</td><td>1x (Reference)</td><td>Minimal impact, maximum flexibility</td></tr>
+            <tr><td>Detailed Design</td><td>3-5x</td><td>CAD revision required</td></tr>
+            <tr><td>Prototype</td><td>10x</td><td>Mold/fixture modification</td></tr>
+            <tr><td>Mass Production</td><td>50-100x</td><td>Production stoppage, scrap, recall risk</td></tr>
+          </tbody>
+        </table>
+
+        <h2>3. Golden DFM Principles</h2>
+        <p>The following rules should be considered at the design table for a successful DFM process:</p>
+
+        <h3>1. Reduce Part Count (Simplicity is the Ultimate Sophistication)</h3>
+        <p>The fewer parts in a product, the less inventory, less assembly time, and less risk of errors. Design integrated parts with multiple functions whenever possible.</p>
+        
+        <p><strong>Example:</strong> Instead of a 10-screw assembly, you can reduce assembly time by 80% using snap-fit or single-piece flexible design.</p>
+
+        <h3>2. Use Standard Parts</h3>
+        <p>Instead of designing custom bolts, nuts, or bearings, prefer standard (off-the-shelf) components readily available in the market. This directly reduces supply chain risks and costs.</p>
+        
+        <p><strong>Practical Rule:</strong> For every custom part, ask yourself "Can I replace this with a standard part?"</p>
+
+        <h3>3. Optimize Tolerances (Avoid Unnecessary Precision)</h3>
+        <p>The mindset of "everything should be micron-level precise" geometrically increases manufacturing costs. Use tight tolerances only on critical functional surfaces; stick to standard machining tolerances for other areas.</p>
+        
+        <div class="tech-diagram-wrap">
+          <svg width="400" height="120" viewBox="0 0 400 120" fill="none">
+            <rect x="20" y="20" width="360" height="80" rx="4" fill="var(--ink-3)" stroke="var(--mist)" stroke-width="1"/>
+            <text x="40" y="45" fill="var(--danger)" font-size="11" font-family="JetBrains Mono" font-weight="bold">WRONG:</text>
+            <text x="120" y="45" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">All surfaces ±0.01 mm</text>
+            <text x="280" y="45" fill="var(--danger)" font-size="10" font-family="JetBrains Mono">→ Cost: 100%</text>
+            <text x="40" y="70" fill="var(--terminal-green)" font-size="11" font-family="JetBrains Mono" font-weight="bold">CORRECT:</text>
+            <text x="120" y="70" fill="var(--mist)" font-size="10" font-family="JetBrains Mono">Critical surface ±0.01 mm, others ±0.1 mm</text>
+            <text x="280" y="70" fill="var(--terminal-green)" font-size="10" font-family="JetBrains Mono">→ Cost: 35%</text>
+            <text x="40" y="95" fill="var(--amber)" font-size="9" font-family="JetBrains Mono">Rule: Tighten tolerances only where function requires!</text>
+          </svg>
+        </div>
+
+        <h3>4. Material and Manufacturing Method Compatibility</h3>
+        <p>Ensure that the selected material is compatible with the manufacturing method (CNC, 3D Printing, Injection Molding). For example, avoid leaving deep and sharp internal corners for a part to be machined on CNC, because rotary cutting tools (end mills) naturally leave radii.</p>
+        
+        <p><strong>DFM tips for CNC:</strong></p>
+        <ul>
+          <li>Minimum radius in internal corners: At least 25% of cutter diameter</li>
+          <li>Depth/width ratio: Try not to exceed 4:1</li>
+          <li>Thin walls: Min. 0.8 mm for aluminum, min. 1.5 mm for steel</li>
+        </ul>
+
+        <h2>4. "Concurrent Engineering" for DFM Success</h2>
+        <p>DFM should not be viewed merely as a checklist. The most efficient results are obtained through <strong>Concurrent Engineering</strong>, where design engineers, manufacturing managers, and procurement teams work together from the very beginning of the project.</p>
+        
+        <p><strong>Benefits of Concurrent Engineering:</strong></p>
+        <ul>
+          <li>Early problem detection: Manufacturing issues are resolved at the CAD stage</li>
+          <li>Supply chain optimization: Material selection is coordinated with the procurement team</li>
+          <li>Fast decision-making: Interdisciplinary communication delays are eliminated</li>
+        </ul>
+
+        <div class="tech-diagram-wrap">
+          <svg width="400" height="160" viewBox="0 0 400 160" fill="none">
+            <circle cx="200" cy="80" r="60" fill="var(--ink-4)" stroke="var(--amber)" stroke-width="2"/>
+            <text x="200" y="75" fill="var(--amber)" font-size="12" font-family="JetBrains Mono" text-anchor="middle" font-weight="bold">DFM</text>
+            <text x="200" y="92" fill="var(--mist)" font-size="9" font-family="JetBrains Mono" text-anchor="middle">CENTER</text>
+            <circle cx="200" cy="30" r="20" fill="var(--ink-3)" stroke="var(--terminal-green)" stroke-width="1.5"/>
+            <text x="200" y="34" fill="var(--white)" font-size="7" font-family="JetBrains Mono" text-anchor="middle">DESIGN</text>
+            <circle cx="260" cy="80" r="20" fill="var(--ink-3)" stroke="var(--terminal-green)" stroke-width="1.5"/>
+            <text x="260" y="84" fill="var(--white)" font-size="7" font-family="JetBrains Mono" text-anchor="middle">MANUF.</text>
+            <circle cx="200" cy="130" r="20" fill="var(--ink-3)" stroke="var(--terminal-green)" stroke-width="1.5"/>
+            <text x="200" y="134" fill="var(--white)" font-size="7" font-family="JetBrains Mono" text-anchor="middle">PROCUREMENT</text>
+            <circle cx="140" cy="80" r="20" fill="var(--ink-3)" stroke="var(--terminal-green)" stroke-width="1.5"/>
+            <text x="140" y="84" fill="var(--white)" font-size="7" font-family="JetBrains Mono" text-anchor="middle">QUALITY</text>
+            <line x1="200" y1="50" x2="200" y2="60" stroke="var(--amber)" stroke-width="1"/>
+            <line x1="240" y1="80" x2="220" y2="80" stroke="var(--amber)" stroke-width="1"/>
+            <line x1="200" y1="110" x2="200" y2="120" stroke="var(--amber)" stroke-width="1"/>
+            <line x1="160" y1="80" x2="180" y2="80" stroke="var(--amber)" stroke-width="1"/>
+            <text x="200" y="155" fill="var(--amber)" font-size="8" font-family="JetBrains Mono" text-anchor="middle">Concurrent Engineering: All teams involved early</text>
+          </svg>
+        </div>
+
+        <h2>Conclusion: Get Ahead in Competition</h2>
+        <p>In today's market, speed and cost advantage are everything. Approaching your designs with a DFM perspective gives your company both financial strength and elevates your engineering quality to global standards.</p>
+        
+        <p><strong>Remember:</strong> The best design is not just the one that looks perfect on the computer; it's the one that comes off the production line with minimum waste and maximum efficiency.</p>
+        
+        <p>Start asking the question <em>"How will we manufacture this?"</em> from the moment you draw the first line in your next project!</p>
       `
     }
   ]
