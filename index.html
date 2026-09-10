@@ -827,6 +827,50 @@ footer {
 @media(max-width:700px){.arch-hero{padding-top:115px}.arch-hero:before{font-size:38px}.arch-canvas{padding:10px;min-height:auto}.arch-specs{grid-template-columns:1fr 1fr}.arch-detail{padding:18px}.arch-detail h3{font-size:22px}}
 
 </style>
+
+<style>
+.case-hero{padding:120px 0 90px;background:radial-gradient(circle at 82% 12%,rgba(245,158,11,.10),transparent 34%),linear-gradient(180deg,rgba(255,255,255,.012),transparent);}
+.case-kicker{display:inline-flex;align-items:center;gap:9px;font:700 10px 'JetBrains Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);}
+.case-filter-bar{display:flex;flex-wrap:wrap;gap:10px;margin:34px 0 26px;align-items:center;}
+.case-filter{border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.025);color:var(--mist);padding:9px 13px;border-radius:999px;font:700 10px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:.2s;}
+.case-filter:hover,.case-filter.active{border-color:rgba(245,158,11,.45);color:var(--amber);background:rgba(245,158,11,.06);}
+.case-feature-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-top:28px;}
+.case-card{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));padding:28px;border-radius:16px;transition:transform .25s,border-color .25s,box-shadow .25s;}
+.case-card:hover{transform:translateY(-4px);border-color:rgba(245,158,11,.28);box-shadow:0 20px 55px rgba(0,0,0,.22);}
+.case-card.featured{min-height:360px;background:linear-gradient(145deg,rgba(245,158,11,.075),rgba(255,255,255,.018));}
+.case-no{font:700 10px 'JetBrains Mono',monospace;color:rgba(228,232,237,.42);letter-spacing:.14em;}
+.case-title{font:700 clamp(22px,3vw,38px) 'Space Grotesk',sans-serif;color:var(--white);line-height:1.02;margin:12px 0 10px;}
+.case-desc{color:var(--mist);line-height:1.7;max-width:760px;font-size:14px;}
+.case-chip-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;}
+.case-chip{padding:7px 10px;border:1px solid rgba(255,255,255,.08);border-radius:999px;font:700 9px 'JetBrains Mono',monospace;letter-spacing:.08em;color:rgba(228,232,237,.66);}
+.case-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:26px;}
+.case-step{padding:16px;border:1px solid rgba(255,255,255,.07);background:rgba(0,0,0,.12);border-radius:12px;cursor:pointer;transition:.2s;}
+.case-step:hover,.case-step.active{border-color:rgba(245,158,11,.30);background:rgba(245,158,11,.055);}
+.case-step-no{font:700 9px 'JetBrains Mono',monospace;color:var(--amber);}
+.case-step-title{font:700 13px 'Space Grotesk',sans-serif;color:var(--white);margin-top:7px;}
+.case-detail{margin-top:18px;padding:24px;border:1px solid rgba(255,255,255,.08);background:rgba(8,10,13,.54);border-radius:14px;}
+.case-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.case-detail h4{margin:0 0 8px;font:700 10px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);}
+.case-detail p{margin:0;color:var(--mist);line-height:1.75;font-size:14px;}
+.case-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;}
+.case-btn{display:inline-flex;align-items:center;gap:9px;padding:11px 15px;border:1px solid rgba(255,255,255,.10);border-radius:10px;text-decoration:none;color:var(--white);font:700 10px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.025);cursor:pointer;}
+.case-btn.primary{border-color:rgba(245,158,11,.38);color:var(--amber);background:rgba(245,158,11,.06);}
+.case-btn:hover{transform:translateY(-1px);}
+.case-mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px;}
+.case-metric{padding:18px;border:1px solid rgba(255,255,255,.08);border-radius:12px;background:rgba(255,255,255,.02);}
+.case-metric b{display:block;font:700 25px 'Space Grotesk',sans-serif;color:var(--white);}
+.case-metric span{display:block;margin-top:5px;font:700 9px 'JetBrains Mono',monospace;letter-spacing:.08em;color:rgba(228,232,237,.50);text-transform:uppercase;}
+.case-library{margin-top:42px;}
+.case-library-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px;}
+.case-library-card{padding:20px;border:1px solid rgba(255,255,255,.08);border-radius:14px;background:rgba(255,255,255,.018);cursor:pointer;}
+.case-library-card:hover{border-color:rgba(245,158,11,.26);}
+.case-library-card .small{font:700 9px 'JetBrains Mono',monospace;color:var(--amber);letter-spacing:.1em;text-transform:uppercase;}
+.case-library-card h3{font:700 19px 'Space Grotesk',sans-serif;color:var(--white);margin:8px 0;}
+.case-library-card p{font-size:12px;color:rgba(228,232,237,.60);line-height:1.6;margin:0;}
+@media(max-width:900px){.case-feature-grid{grid-template-columns:1fr}.case-steps{grid-template-columns:repeat(2,1fr)}.case-detail-grid,.case-mini-grid,.case-library-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.case-hero{padding-top:94px}.case-steps,.case-detail-grid,.case-mini-grid,.case-library-grid{grid-template-columns:1fr}.case-card{padding:21px}}
+</style>
+
 </head>
 <body>
 
@@ -873,6 +917,7 @@ footer {
       <a href="#/blog" id="nav-blog" data-i18n="nav_blog">Bilgi Bankası</a>
       <a href="#/lab" id="nav-lab" data-i18n="nav_lab">Engineering Lab</a>
       <a href="#/architecture" id="nav-architecture" data-i18n="nav_architecture">CNC Architecture</a>
+      <a href="#/cases" id="nav-cases" data-i18n="nav_cases">Case Studies</a>
       <a href="#/tools" id="nav-tools" data-i18n="nav_tools">Hesaplama Paneli</a>
     </div>
 
@@ -896,6 +941,7 @@ footer {
     <a href="#/lab" class="m-link" id="m-nav-lab">
       <i class="fa-solid fa-flask"></i> <span data-i18n="nav_lab">Engineering Lab</span>
     </a>
+    <a href="#/cases" class="m-link" id="m-nav-cases" data-i18n="nav_cases">Case Studies</a>
     <a href="#/architecture" class="m-link" id="m-nav-architecture">
       <i class="fa-solid fa-diagram-project"></i> <span data-i18n="nav_architecture">CNC Architecture</span>
     </a>
@@ -1092,6 +1138,32 @@ footer {
           </div>
         </div>
       </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ========================================== -->
+<!-- ========== VIEW: CASE STUDIES =========== -->
+<!-- ========================================== -->
+<div id="view-cases" class="spa-view">
+  <section class="case-hero">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="case-kicker"><i class="fa-solid fa-crosshairs"></i> CASE STUDY ENGINE / ENGINEERING DECISIONS</span>
+        <h1 class="section-title" style="margin-top:24px;">ENGINEERING<br><span>CASE STUDIES</span></h1>
+        <p class="section-sub" data-i18n="cases_sub">Gerçek sistem geliştirme vakalarını problem → mühendislik kararı → çözüm → doğrulama → sonuç akışıyla inceleyen teknik vaka motoru.</p>
+      </div>
+
+      <div class="case-filter-bar reveal" id="case-filters">
+        <button class="case-filter active" data-case-filter="all" type="button" data-i18n="cases_filter_all">ALL CASES</button>
+        <button class="case-filter" data-case-filter="r_and_d" type="button" data-i18n="cases_filter_rd">R&D</button>
+        <button class="case-filter" data-case-filter="architecture" type="button" data-i18n="cases_filter_arch">ARCHITECTURE</button>
+        <button class="case-filter" data-case-filter="validation" type="button" data-i18n="cases_filter_val">VALIDATION</button>
+      </div>
+
+      <div id="case-feature"></div>
+      <div class="case-library" id="case-library"></div>
     </div>
   </section>
 </div>
@@ -1552,6 +1624,12 @@ const translations = {
     nav_title: "CNC & Ar-Ge Teknik Lideri",
      nav_lab: "Engineering Lab",
     nav_architecture: "CNC Architecture",
+    nav_cases: "Case Studies",
+    cases_sub: "A technical case engine that maps real system-development work through problem → engineering decision → solution → verification → outcome.",
+    cases_filter_all: "ALL CASES", cases_filter_rd: "R&D", cases_filter_arch: "ARCHITECTURE", cases_filter_val: "VALIDATION",
+    nav_cases: "Case Studies",
+    cases_sub: "Gerçek sistem geliştirme vakalarını problem → mühendislik kararı → çözüm → doğrulama → sonuç akışıyla inceleyen teknik vaka motoru.",
+    cases_filter_all: "ALL CASES", cases_filter_rd: "R&D", cases_filter_arch: "ARCHITECTURE", cases_filter_val: "VALIDATION",
     nav_home: "Portfolyo",
     nav_blog: "Bilgi Bankası",
     nav_tools: "Hesaplama Paneli",
@@ -1970,6 +2048,149 @@ function renderJourney() {
   });
   reObserve();
 }
+
+
+// ─── CASE STUDY ENGINE ───
+const caseStudyData = {
+  tr: [
+    {
+      id:'zc3050', category:['r_and_d','architecture','validation'], num:'01', year:'TÜBİTAK 1501',
+      title:'ZC 3050 – 5 Eksenli Alüminyum Profil İşleme Merkezi',
+      summary:'Tek bağlamada daha karmaşık profil uçları ve açılı yüzey operasyonlarını mümkün kılmak için 5 eksenli platform mimarisi geliştirildi.',
+      chips:['5 AXIS','KINEMATICS','SPINDLE','SERVO','R&D'],
+      metrics:[['5 AXIS','Eksen mimarisi'],['1501','Program'],['13.5 m','Strok / portföy tanımı']],
+      steps:[
+        ['01','PROBLEM','Geleneksel 4 eksenli sistemlerin profil uçlarında ve açılı yüzeylerde ihtiyaç duyulan karmaşık operasyonları tek bağlamada yapamaması, üretim hattında duraksamalara ve firelere yol açmaktaydı.'],
+        ['02','ENGINEERING DECISION','5 eksenli CNC platform mimarisi, entegre dairesel testere ünitesi ve çift istasyonlu dinamik çalışma alanı etrafında kurgulandı.'],
+        ['03','SOLUTION','Eksen kinematiği, spindle davranışı ve servo mekanik salınımlar dikkate alınarak sistem mimarisi oluşturuldu; sanal analizlerle tasarım kararları netleştirildi.'],
+        ['04','OUTCOME','TÜBİTAK 1501 kapsamında başarıyla tamamlanan proje, ilk 5 eksenli CNC makinesinin yerlileştirilmesine ve yeni nesil CNC ürün ailesi için bir platform oluşturulmasına katkı verdi.']
+      ],
+      source:'tubitak'
+    },
+    {
+      id:'zc3010', category:['r_and_d','architecture','validation'], num:'02', year:'TÜBİTAK 1501',
+      title:'ZC 3010 – 4 Eksenli Alüminyum İşleme Merkezi',
+      summary:'Kurumsal CNC geliştirme deneyiminin başlangıç aşamasında gövde, kızak hassasiyeti ve eksen torku gibi temel mühendislik disiplinleri sistemleştirildi.',
+      chips:['4 AXIS','FEA','STRUCTURE','LINEAR GUIDES','TORQUE'],
+      metrics:[['4 AXIS','Eksen mimarisi'],['FEA','Doğrulama yöntemi'],['STANDARD','Kurumsal çıktı']],
+      steps:[
+        ['01','PROBLEM','Daha önce CNC geliştirme tecrübesinin olmaması; kaynaklı gövdelerin gerilim giderme süreçleri, doğrusal kızak hassasiyetleri ve eksen tork optimizasyonu gibi konularda kurumsal bilgi birikiminin eksikliği.'],
+        ['02','ENGINEERING DECISION','Makine gövdesi ve kinematik altyapı, ölçülebilir yapısal davranış ve standart tasarım parametreleri üzerinden ele alındı.'],
+        ['03','SOLUTION','Tüm gövde FEA ile statik ve dinamik burulma testlerine tabi tutuldu; titreşim sönümleyici döküm harçları ve optimize profil tasarımları kullanıldı.'],
+        ['04','OUTCOME','İlk CNC makinesinin ticarileşmesinin yanında sonraki CNC platformları için tasarım standardı, kalite protokolü ve ortak teknik dilin temelini attı.']
+      ],
+      source:'tubitak'
+    },
+    {
+      id:'platform-standard', category:['architecture'], num:'03', year:'2013 →',
+      title:'CNC Platform Mimarisi – Ürün Ailesine Geçiş',
+      summary:'ZC 3010 ile başlayan sistem mimarisi yaklaşımı; eksen yapısı, ürün standardı ve sonraki CNC platformlarına taşınan ortak mühendislik dili ekseninde konumlandı.',
+      chips:['SYSTEM ARCHITECTURE','AXIS LAYOUT','PRODUCT STANDARD','PLATFORM'],
+      metrics:[['2013','Başlangıç noktası'],['MULTI-AXIS','Portföy odağı'],['PLATFORM','Mimari yaklaşım']],
+      steps:[
+        ['01','PROBLEM','Tek bir makineyi tasarlamakla kalmayıp, sonraki CNC ürünlerinde tekrar kullanılabilecek bir sistem yaklaşımına ihtiyaç vardı.'],
+        ['02','ENGINEERING DECISION','Mekanik tasarım; eksen yapısı, sistem mimarisi ve ürün standardı ile birlikte ele alındı.'],
+        ['03','SOLUTION','Sistem mimarisi bakışı, sonraki çok eksenli CNC platformları ve robotik otomasyon çalışmalarına taşındı.'],
+        ['04','OUTCOME','Portföy, tekil makine çözümlerinden ürün ailesi ve sistem standardizasyonu perspektifine doğru genişledi.']
+      ],
+      source:'portfolio'
+    }
+  ],
+  en: [
+    {
+      id:'zc3050', category:['r_and_d','architecture','validation'], num:'01', year:'TÜBİTAK 1501',
+      title:'ZC 3050 – 5-Axis Aluminum Profile Machining Center',
+      summary:'A 5-axis platform architecture was developed to enable complex profile-end and angled-surface operations in a single setup.',
+      chips:['5 AXIS','KINEMATICS','SPINDLE','SERVO','R&D'],
+      metrics:[['5 AXIS','Axis architecture'],['1501','Program'],['13.5 m','Portfolio stroke'],],
+      steps:[
+        ['01','PROBLEM','Traditional 4-axis systems could not process complex multi-angle operations and profile-end cuts in a single setup, creating bottlenecks and scrap.'],
+        ['02','ENGINEERING DECISION','A 5-axis CNC platform was structured around an integrated circular saw unit and dynamic double-station layout.'],
+        ['03','SOLUTION','System architecture considered axis kinematics, spindle behavior and servo mechanical vibration profiles, with virtual analysis used to align design decisions.'],
+        ['04','OUTCOME','The TÜBİTAK 1501 project was successfully completed and contributed to localizing the first 5-axis CNC machine and establishing a platform for the next product family.']
+      ],
+      source:'tubitak'
+    },
+    {
+      id:'zc3010', category:['r_and_d','architecture','validation'], num:'02', year:'TÜBİTAK 1501',
+      title:'ZC 3010 – 4-Axis Aluminum Machining Center',
+      summary:'Core engineering disciplines around frame behavior, rail precision and axis torque were systematized at the start of institutional CNC development.',
+      chips:['4 AXIS','FEA','STRUCTURE','LINEAR GUIDES','TORQUE'],
+      metrics:[['4 AXIS','Axis architecture'],['FEA','Verification method'],['STANDARD','Organizational output']],
+      steps:[
+        ['01','PROBLEM','There was no prior institutional CNC development history and limited know-how around welded-frame stress relieving, linear-rail precision and axis torque optimization.'],
+        ['02','ENGINEERING DECISION','Machine structure and kinematic foundations were addressed through measurable structural behavior and standardized design parameters.'],
+        ['03','SOLUTION','The machine bed was subjected to static and dynamic torsional FEA; damping casting compounds and optimized profile designs were used.'],
+        ['04','OUTCOME','Beyond commercializing the first CNC machine, the project established a foundation for design standards, quality protocols and a shared technical language.']
+      ],
+      source:'tubitak'
+    },
+    {
+      id:'platform-standard', category:['architecture'], num:'03', year:'2013 →',
+      title:'CNC Platform Architecture – From Machine to Product Family',
+      summary:'The system-architecture approach that started with ZC 3010 expanded toward reusable axis structures, product standards and a shared engineering language.',
+      chips:['SYSTEM ARCHITECTURE','AXIS LAYOUT','PRODUCT STANDARD','PLATFORM'],
+      metrics:[['2013','Starting point'],['MULTI-AXIS','Portfolio focus'],['PLATFORM','Architecture view']],
+      steps:[
+        ['01','PROBLEM','The objective needed to move beyond one-off machine design toward a reusable system approach for subsequent CNC products.'],
+        ['02','ENGINEERING DECISION','Mechanical design was handled together with axis layout, system architecture and product standards.'],
+        ['03','SOLUTION','The system-architecture perspective was carried into subsequent multi-axis CNC platforms and robotic automation work.'],
+        ['04','OUTCOME','The portfolio expanded from individual machine solutions toward product-family and system-standardization thinking.']
+      ],
+      source:'portfolio'
+    }
+  ]
+};
+
+let activeCaseId='zc3050';
+let activeCaseStep=0;
+let activeCaseFilter='all';
+function renderCaseStudies(){
+  const feature=document.getElementById('case-feature');
+  const library=document.getElementById('case-library');
+  if(!feature||!library) return;
+  const list=caseStudyData[currentLanguage].filter(c=>activeCaseFilter==='all'||c.category.includes(activeCaseFilter));
+  if(!list.length) return;
+  let selected=list.find(c=>c.id===activeCaseId)||list[0];
+  activeCaseId=selected.id;
+  activeCaseStep=Math.min(activeCaseStep, selected.steps.length-1);
+  const st=selected.steps[activeCaseStep];
+  feature.innerHTML=`
+    <div class="case-feature-grid">
+      <article class="case-card featured reveal">
+        <div class="case-no">${selected.num} / ${selected.year}</div>
+        <div class="case-title">${selected.title}</div>
+        <p class="case-desc">${selected.summary}</p>
+        <div class="case-chip-row">${selected.chips.map(x=>`<span class="case-chip">${x}</span>`).join('')}</div>
+        <div class="case-mini-grid">${selected.metrics.map(m=>`<div class="case-metric"><b>${m[0]}</b><span>${m[1]}</span></div>`).join('')}</div>
+        <div class="case-actions">
+          <a class="case-btn primary" href="#/architecture"><i class="fa-solid fa-diagram-project"></i> SYSTEM ARCHITECTURE</a>
+          <a class="case-btn" href="#/tools?tool=tolerance-tool"><i class="fa-solid fa-layer-group"></i> VALIDATION TOOLS</a>
+        </div>
+      </article>
+      <div class="case-card reveal">
+        <div class="case-no">${st[0]}</div>
+        <div class="case-title" style="font-size:28px;">${st[1]}</div>
+        <div class="case-detail">
+          <h4>${st[1]}</h4>
+          <p>${st[2]}</p>
+        </div>
+        <div class="case-steps">${selected.steps.map((x,i)=>`<div class="case-step ${i===activeCaseStep?'active':''}" data-case-step="${i}"><div class="case-step-no">${x[0]}</div><div class="case-step-title">${x[1]}</div></div>`).join('')}</div>
+      </div>
+    </div>`;
+  library.innerHTML=`<div class="section-label">${currentLanguage==='tr'?'CASE LIBRARY':'CASE LIBRARY'}</div>
+    <div class="case-library-grid">${list.map(c=>`<article class="case-library-card ${c.id===activeCaseId?'active':''}" data-case-id="${c.id}"><div class="small">${c.num} / ${c.year}</div><h3>${c.title}</h3><p>${c.summary}</p></article>`).join('')}</div>`;
+  feature.querySelectorAll('[data-case-step]').forEach(el=>el.addEventListener('click',()=>{activeCaseStep=Number(el.dataset.caseStep);renderCaseStudies();}));
+  library.querySelectorAll('[data-case-id]').forEach(el=>el.addEventListener('click',()=>{activeCaseId=el.dataset.caseId;activeCaseStep=0;renderCaseStudies();}));
+  reObserve();
+}
+function initCaseStudies(){
+  document.querySelectorAll('[data-case-filter]').forEach(btn=>{
+    btn.onclick=()=>{activeCaseFilter=btn.dataset.caseFilter;activeCaseStep=0;document.querySelectorAll('[data-case-filter]').forEach(b=>b.classList.toggle('active',b===btn));renderCaseStudies();};
+  });
+  renderCaseStudies();
+}
+
 
 function renderPortfolio() {
   const container = document.getElementById("portfolio-grid-container");
@@ -3130,6 +3351,12 @@ function router() {
     document.getElementById('nav-architecture').classList.add('active-link');
     document.getElementById('m-nav-architecture').classList.add('active-link');
     initArchitecture();
+    reObserve();
+  } else if (hash.startsWith('#/cases')) {
+    document.getElementById('view-cases').classList.add('active');
+    document.getElementById('nav-cases').classList.add('active-link');
+    document.getElementById('m-nav-cases').classList.add('active-link');
+    initCaseStudies();
     reObserve();
   } else if (hash.startsWith('#/blog')) {
     document.getElementById('view-blog').classList.add('active');
