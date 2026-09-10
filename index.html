@@ -805,6 +805,27 @@ footer {
 @media(max-width:900px){.report2-meta,.report2-grid{grid-template-columns:1fr}.report2-result-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.report2-modal{padding:10px}.report2-shell{max-height:95vh}.report2-head{align-items:flex-start;flex-direction:column}.report2-body{padding:14px}}
 
+
+/* CNC ARCHITECTURE / SYSTEM VISUALIZER V1 */
+.arch-hero{padding:140px 0 70px;position:relative;overflow:hidden}
+.arch-hero:before{content:"KINEMATICS / MOTION / CONTROL";position:absolute;right:-25px;top:72px;font:700 76px/1 "JetBrains Mono",monospace;color:rgba(255,255,255,.025);white-space:nowrap}
+.arch-kicker{display:inline-flex;gap:10px;align-items:center;font:700 11px/1 "JetBrains Mono",monospace;letter-spacing:2px;color:var(--amber);border:1px solid rgba(245,158,11,.25);padding:9px 12px;background:rgba(245,158,11,.04)}
+.arch-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:30px;padding:12px;border:1px solid var(--line);background:var(--ink-2);flex-wrap:wrap}
+.arch-modes{display:flex;gap:6px;flex-wrap:wrap}.arch-mode{border:1px solid var(--steel);background:rgba(255,255,255,.025);color:var(--mist);padding:9px 14px;font:700 9px "JetBrains Mono",monospace;letter-spacing:1px;cursor:pointer;transition:.2s}.arch-mode:hover,.arch-mode.active{color:var(--amber);border-color:rgba(245,158,11,.45);background:rgba(245,158,11,.06)}
+.arch-status{display:flex;align-items:center;gap:8px;font:700 9px "JetBrains Mono",monospace;color:var(--terminal-green);letter-spacing:1px}.arch-status i{font-size:7px}
+.arch-layout{display:grid;grid-template-columns:1.35fr .65fr;gap:18px;margin-top:18px}
+.arch-canvas{padding:18px;border:1px solid var(--line);background:radial-gradient(circle at 50% 35%,rgba(245,158,11,.045),transparent 42%),linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.012));min-height:640px;position:relative;overflow:hidden}
+.arch-canvas:after{content:"";position:absolute;inset:12px;border:1px dashed rgba(148,163,184,.07);pointer-events:none}
+.arch-svg{width:100%;height:auto;display:block;position:relative;z-index:1}
+.arch-node{cursor:pointer}.arch-node rect,.arch-node circle,.arch-node polygon{transition:.22s}.arch-node:hover rect,.arch-node.selected rect{stroke:var(--amber)!important;filter:drop-shadow(0 0 8px rgba(245,158,11,.18))}.arch-node.selected circle{stroke:var(--amber)!important}.arch-node .node-title{font:700 11px "JetBrains Mono",monospace;fill:var(--white);pointer-events:none}.arch-node .node-sub{font:500 8px "JetBrains Mono",monospace;fill:var(--mist);pointer-events:none}
+.arch-wire{stroke:rgba(245,158,11,.55);stroke-width:2;stroke-dasharray:6 5;fill:none;marker-end:url(#arch-arrow)}.arch-wire.feedback{stroke:rgba(52,211,153,.6);stroke-dasharray:3 6}
+.arch-detail{border:1px solid var(--line);background:var(--ink-2);padding:22px;min-height:640px;display:flex;flex-direction:column}.arch-detail-kicker{font:700 9px "JetBrains Mono",monospace;letter-spacing:1.8px;color:var(--amber);margin-bottom:10px}.arch-detail h3{font-size:26px;margin:0 0 12px}.arch-detail p{color:var(--mist);font-size:12px;line-height:1.75;margin:0 0 20px}.arch-specs{display:grid;grid-template-columns:1fr 1fr;gap:8px}.arch-spec{padding:12px;border:1px solid rgba(148,163,184,.12);background:var(--ink-4)}.arch-spec small{display:block;color:var(--mist);font:700 8px "JetBrains Mono",monospace;letter-spacing:1px;margin-bottom:5px}.arch-spec strong{font:700 12px "JetBrains Mono",monospace;color:var(--white)}
+.arch-stack{margin-top:auto;border-top:1px solid var(--line);padding-top:18px}.arch-stack-title{font:700 9px "JetBrains Mono",monospace;letter-spacing:1.5px;color:var(--mist);margin-bottom:10px}.arch-flow{display:flex;flex-wrap:wrap;gap:7px}.arch-flow span{padding:7px 8px;border:1px solid rgba(148,163,184,.12);font:700 8px "JetBrains Mono",monospace;color:var(--mist);background:rgba(255,255,255,.018)}
+.arch-note{margin-top:18px;padding:14px 16px;border-left:2px solid var(--amber);background:rgba(245,158,11,.035);font:500 10px/1.7 "JetBrains Mono",monospace;color:var(--mist)}
+.arch-five{display:none}.arch-four{display:none}.arch-mode-5 .arch-five{display:block}.arch-mode-4 .arch-four,.arch-mode-5 .arch-four{display:block}
+@media(max-width:1050px){.arch-layout{grid-template-columns:1fr}.arch-detail{min-height:auto}.arch-canvas{min-height:520px}}
+@media(max-width:700px){.arch-hero{padding-top:115px}.arch-hero:before{font-size:38px}.arch-canvas{padding:10px;min-height:auto}.arch-specs{grid-template-columns:1fr 1fr}.arch-detail{padding:18px}.arch-detail h3{font-size:22px}}
+
 </style>
 </head>
 <body>
@@ -814,7 +835,7 @@ footer {
 <div id="report2-modal" class="report2-modal" aria-hidden="true">
   <div class="report2-shell" role="dialog" aria-modal="true" aria-labelledby="report2-title">
     <div class="report2-head">
-      <div><div class="report2-kicker">ENGINEERING DOCUMENT / V2</div><div id="report2-title" class="report2-title">Technical Report 2.0</div></div>
+      <div><div class="report2-kicker">ENGINEERING DOCUMENT / V3</div><div id="report2-title" class="report2-title">Technical Report 2.0</div></div>
       <div class="report2-actions">
         <button class="report2-btn" id="report2-copy"><i class="fa-regular fa-copy"></i><span data-i18n="report2_copy">RAPORU KOPYALA</span></button>
         <button class="report2-btn" id="report2-download"><i class="fa-solid fa-download"></i><span data-i18n="report2_download">TXT İNDİR</span></button>
@@ -851,6 +872,7 @@ footer {
       <a href="#/" id="nav-home" data-i18n="nav_home">Portfolyo</a>
       <a href="#/blog" id="nav-blog" data-i18n="nav_blog">Bilgi Bankası</a>
       <a href="#/lab" id="nav-lab" data-i18n="nav_lab">Engineering Lab</a>
+      <a href="#/architecture" id="nav-architecture" data-i18n="nav_architecture">CNC Architecture</a>
       <a href="#/tools" id="nav-tools" data-i18n="nav_tools">Hesaplama Paneli</a>
     </div>
 
@@ -873,6 +895,9 @@ footer {
     </a>
     <a href="#/lab" class="m-link" id="m-nav-lab">
       <i class="fa-solid fa-flask"></i> <span data-i18n="nav_lab">Engineering Lab</span>
+    </a>
+    <a href="#/architecture" class="m-link" id="m-nav-architecture">
+      <i class="fa-solid fa-diagram-project"></i> <span data-i18n="nav_architecture">CNC Architecture</span>
     </a>
     <a href="#/tools" class="m-link" id="m-nav-tools">
       <i class="fa-solid fa-calculator"></i> <span data-i18n="nav_tools">Hesaplama Paneli</span>
@@ -1104,6 +1129,13 @@ footer {
         </div>
       </div>
 
+      <a href="#/architecture" class="lab-console reveal" style="display:block;text-decoration:none;transition:.25s;border-color:rgba(245,158,11,.25);">
+        <div class="lab-console-head" style="margin:0;border:0;padding:0;">
+          <div><div class="section-label" data-i18n="arch_cta_label">SYSTEM ARCHITECTURE</div><div class="lab-console-title" data-i18n="arch_cta_title">CNC ARCHITECTURE / INTERACTIVE SYSTEM MAP</div></div>
+          <span class="lab-status" style="color:var(--amber);border-color:rgba(245,158,11,.3);"><i class="fa-solid fa-arrow-right"></i> OPEN</span>
+        </div>
+      </a>
+
       <div class="lab-console reveal">
         <div class="lab-console-head"><div><div class="section-label" data-i18n="lab_console_label">LIVE TOOLBOX</div><div class="lab-console-title" data-i18n="lab_console_title">ENGINEERING VALIDATION CONSOLE</div></div><span class="lab-status"><i class="fa-solid fa-circle"></i> READY</span></div>
         <div class="lab-tool-list">
@@ -1116,6 +1148,148 @@ footer {
           <a class="lab-tool-link" href="#/tools?tool=beam"><span><i class="fa-solid fa-ruler-horizontal"></i><b data-i18n="t_beam_tab">Sehim Analizi</b></span><small>DEFLECTION</small></a>
           <a class="lab-tool-link" href="#/tools?tool=montecarlo"><span><i class="fa-solid fa-chart-area"></i><b data-i18n="t_mc_tab">Monte Carlo</b></span><small>STACK YIELD</small></a>
         </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ========================================== -->
+<!-- ===== VIEW: CNC ARCHITECTURE ============ -->
+<!-- ========================================== -->
+<div id="view-architecture" class="spa-view">
+  <section class="arch-hero">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="arch-kicker"><i class="fa-solid fa-diagram-project"></i> CNC ARCHITECTURE / SYSTEM VISUALIZER</span>
+        <h1 class="section-title" style="margin-top:24px;">CNC SYSTEM<br><span>ARCHITECTURE</span></h1>
+        <p class="section-sub" data-i18n="arch_sub">Bir CNC platformunu yalnızca parçalar olarak değil; kinematik, tahrik, kontrol ve geri besleme katmanlarının birlikte çalıştığı bir sistem olarak inceleyen etkileşimli mimari harita.</p>
+      </div>
+
+      <div class="arch-toolbar reveal">
+        <div class="arch-modes" role="tablist" aria-label="Axis architecture">
+          <button class="arch-mode active" data-mode="3" type="button">3 AXIS</button>
+          <button class="arch-mode" data-mode="4" type="button">4 AXIS</button>
+          <button class="arch-mode" data-mode="5" type="button">5 AXIS</button>
+        </div>
+        <div class="arch-status"><i class="fa-solid fa-circle"></i><span data-i18n="arch_live">SYSTEM MAP / INTERACTIVE</span></div>
+      </div>
+
+      <div class="arch-layout reveal" id="architecture-module">
+        <div class="arch-canvas arch-mode-3" id="arch-canvas">
+          <svg class="arch-svg" viewBox="0 0 920 620" role="img" aria-labelledby="arch-svg-title arch-svg-desc">
+            <title id="arch-svg-title">CNC System Architecture</title>
+            <desc id="arch-svg-desc">Interactive CNC architecture with machine structure, axes, spindle, drive, controller and feedback loop.</desc>
+            <defs>
+              <marker id="arch-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(245,158,11,.75)"/></marker>
+              <linearGradient id="arch-machine" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="rgba(255,255,255,.065)"/><stop offset="1" stop-color="rgba(255,255,255,.018)"/></linearGradient>
+            </defs>
+
+            <!-- machine envelope -->
+            <g class="arch-node" data-node="machine" tabindex="0">
+              <rect x="60" y="72" width="520" height="360" rx="12" fill="url(#arch-machine)" stroke="rgba(148,163,184,.28)" stroke-width="2"/>
+              <text x="82" y="101" class="node-title">MACHINE STRUCTURE</text>
+              <text x="82" y="118" class="node-sub">FRAME / BASE / ENCLOSURE</text>
+              <line x1="90" y1="387" x2="548" y2="387" stroke="rgba(148,163,184,.2)" stroke-width="2"/>
+            </g>
+
+            <!-- gantry / Y -->
+            <g class="arch-node" data-node="y" tabindex="0">
+              <rect x="150" y="145" width="340" height="28" rx="5" fill="rgba(255,255,255,.045)" stroke="rgba(148,163,184,.35)"/>
+              <text x="320" y="164" text-anchor="middle" class="node-title">Y AXIS / GUIDEWAY</text>
+            </g>
+            <!-- X carriage -->
+            <g class="arch-node" data-node="x" tabindex="0">
+              <rect x="300" y="170" width="40" height="144" rx="7" fill="rgba(245,158,11,.07)" stroke="rgba(245,158,11,.38)"/>
+              <text x="320" y="201" text-anchor="middle" class="node-title">X</text>
+              <text x="320" y="216" text-anchor="middle" class="node-sub">SLIDE</text>
+            </g>
+            <!-- Z spindle -->
+            <g class="arch-node" data-node="z" tabindex="0">
+              <rect x="308" y="214" width="24" height="130" rx="6" fill="rgba(255,255,255,.035)" stroke="rgba(148,163,184,.38)"/>
+              <circle cx="320" cy="355" r="18" fill="rgba(245,158,11,.05)" stroke="rgba(245,158,11,.4)"/>
+              <text x="320" y="278" text-anchor="middle" class="node-title">Z</text>
+              <text x="320" y="293" text-anchor="middle" class="node-sub">SPINDLE</text>
+            </g>
+            <!-- table -->
+            <g class="arch-node" data-node="table" tabindex="0">
+              <rect x="130" y="340" width="380" height="30" rx="4" fill="rgba(255,255,255,.045)" stroke="rgba(148,163,184,.35)"/>
+              <text x="320" y="360" text-anchor="middle" class="node-title">WORK TABLE / FIXTURE</text>
+            </g>
+            <!-- rotary A -->
+            <g class="arch-node arch-four" data-node="a" tabindex="0">
+              <circle cx="320" cy="355" r="50" fill="none" stroke="rgba(245,158,11,.35)" stroke-width="2" stroke-dasharray="5 5"/>
+              <text x="392" y="346" class="node-title">A AXIS</text>
+              <text x="392" y="362" class="node-sub">ROTARY</text>
+            </g>
+            <!-- rotary B -->
+            <g class="arch-node arch-five" data-node="b" tabindex="0">
+              <path d="M270 355 A50 50 0 0 1 370 355" fill="none" stroke="rgba(245,158,11,.4)" stroke-width="4"/>
+              <text x="245" y="328" text-anchor="end" class="node-title">B AXIS</text>
+              <text x="245" y="344" text-anchor="end" class="node-sub">TILT</text>
+            </g>
+
+            <!-- controller -->
+            <g class="arch-node" data-node="cnc" tabindex="0">
+              <rect x="640" y="92" width="220" height="86" rx="8" fill="rgba(52,211,153,.045)" stroke="rgba(52,211,153,.32)" stroke-width="2"/>
+              <text x="750" y="123" text-anchor="middle" class="node-title">CNC CONTROLLER</text>
+              <text x="750" y="143" text-anchor="middle" class="node-sub">NC / PLC / MOTION</text>
+              <text x="750" y="159" text-anchor="middle" class="node-sub">INTERPOLATION</text>
+            </g>
+            <!-- drives -->
+            <g class="arch-node" data-node="drive" tabindex="0">
+              <rect x="640" y="224" width="220" height="86" rx="8" fill="rgba(245,158,11,.04)" stroke="rgba(245,158,11,.3)" stroke-width="2"/>
+              <text x="750" y="255" text-anchor="middle" class="node-title">SERVO DRIVES</text>
+              <text x="750" y="275" text-anchor="middle" class="node-sub">AMP / CURRENT LOOP</text>
+              <text x="750" y="291" text-anchor="middle" class="node-sub">TORQUE → SPEED → POSITION</text>
+            </g>
+            <!-- feedback -->
+            <g class="arch-node" data-node="feedback" tabindex="0">
+              <rect x="640" y="356" width="220" height="86" rx="8" fill="rgba(52,211,153,.04)" stroke="rgba(52,211,153,.28)" stroke-width="2"/>
+              <text x="750" y="387" text-anchor="middle" class="node-title">FEEDBACK</text>
+              <text x="750" y="407" text-anchor="middle" class="node-sub">ENCODER / SCALE</text>
+              <text x="750" y="423" text-anchor="middle" class="node-sub">POSITION VERIFICATION</text>
+            </g>
+            <!-- motor block -->
+            <g class="arch-node" data-node="motor" tabindex="0">
+              <rect x="110" y="500" width="200" height="64" rx="8" fill="rgba(245,158,11,.035)" stroke="rgba(245,158,11,.28)"/>
+              <text x="210" y="527" text-anchor="middle" class="node-title">SERVO MOTOR</text>
+              <text x="210" y="546" text-anchor="middle" class="node-sub">MOTOR / COUPLING / BALLSCREW</text>
+            </g>
+            <!-- process block -->
+            <g class="arch-node" data-node="process" tabindex="0">
+              <rect x="390" y="500" width="200" height="64" rx="8" fill="rgba(255,255,255,.035)" stroke="rgba(148,163,184,.25)"/>
+              <text x="490" y="527" text-anchor="middle" class="node-title">MACHINING PROCESS</text>
+              <text x="490" y="546" text-anchor="middle" class="node-sub">CUTTING / LOAD / DISTURBANCE</text>
+            </g>
+
+            <!-- control wires -->
+            <path class="arch-wire" d="M640 160 C590 160 585 260 640 260"/>
+            <path class="arch-wire" d="M750 310 L750 356"/>
+            <path class="arch-wire feedback" d="M640 399 C600 399 600 470 500 470 C400 470 360 430 360 370"/>
+            <path class="arch-wire" d="M640 266 C560 266 520 266 410 266"/>
+            <path class="arch-wire" d="M320 314 L320 340"/>
+            <path class="arch-wire" d="M210 500 L210 455 C210 430 250 430 320 430"/>
+            <path class="arch-wire" d="M310 532 L390 532"/>
+
+            <text x="611" y="196" class="node-sub" text-anchor="end">COMMAND</text>
+            <text x="780" y="338" class="node-sub">FEEDBACK</text>
+            <text x="557" y="458" class="node-sub">POSITION LOOP</text>
+          </svg>
+          <div class="arch-note" data-i18n="arch_note">Bu harita bir ürün resmi değil; bir CNC platformunu tasarım kararı verirken nasıl katmanlara ayırdığımı gösteren sistem seviyesinde bir düşünme modelidir.</div>
+        </div>
+
+        <aside class="arch-detail" id="arch-detail" aria-live="polite">
+          <div class="arch-detail-kicker
+> ARCHITECTURE NODE
+          <h3 id="arch-detail-title">CNC Controller</h3>
+          <p id="arch-detail-desc">Interpolation, trajectory planning and machine-level coordination are handled here before commands reach the servo layer.</p>
+          <div class="arch-specs" id="arch-detail-specs"></div>
+          <div class="arch-stack">
+            <div class="arch-stack-title" data-i18n="arch_stack_title">SYSTEM CHAIN</div>
+            <div class="arch-flow"><span>CAD/CAM</span><span>NC</span><span>MOTION</span><span>DRIVE</span><span>MOTOR</span><span>MECHANICS</span><span>ENCODER</span></div>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
@@ -1377,6 +1551,7 @@ const translations = {
   tr: {
     nav_title: "CNC & Ar-Ge Teknik Lideri",
      nav_lab: "Engineering Lab",
+    nav_architecture: "CNC Architecture",
     nav_home: "Portfolyo",
     nav_blog: "Bilgi Bankası",
     nav_tools: "Hesaplama Paneli",
@@ -1415,6 +1590,13 @@ const translations = {
     blog_sidebar_title: "YAZILAR",
     tools_sec_label: "Mühendislik Doğrulama Araçları",
      lab_sub: "CNC sistem geliştirme, mekanik tasarım ve tolerans doğrulaması için tek merkezde mühendislik araçları.",
+     nav_architecture: "CNC Mimarisi",
+     arch_sub: "Bir CNC platformunu; kinematik, tahrik, kontrol, mekanik ve geri besleme katmanlarının birlikte çalıştığı bir sistem olarak inceleyen etkileşimli mimari harita.",
+     arch_live: "SİSTEM HARİTASI / ETKİLEŞİMLİ",
+     arch_note: "Bu bir ürün resmi değildir; bir CNC platformunu mühendislik kararı verirken nasıl sistem seviyesinde parçalara ayırdığımı gösteren düşünme modelidir.",
+     arch_stack_title: "SİSTEM ZİNCİRİ",
+     arch_cta_label: "SİSTEM MİMARİSİ",
+     arch_cta_title: "CNC MİMARİSİ / ETKİLEŞİMLİ SİSTEM HARİTASI",
      lab_cnc_title: "CNC & Hareket Sistemleri",
      lab_cnc_desc: "Kesme parametreleri, motor torku ve vidalı mil tahrik davranışını hızlıca ön doğrulama.",
      lab_mech_title: "Mekanik Sistemler",
@@ -1545,6 +1727,12 @@ const translations = {
     blog_sidebar_title: "ARTICLES",
     tools_sec_label: "Engineering Validation Tools",
      lab_sub: "A focused engineering toolbox for CNC system development, mechanical design, and tolerance validation.",
+     arch_sub: "An interactive system map that examines a CNC platform as a coordinated stack of kinematics, drives, control, mechanics, and feedback.",
+     arch_live: "SYSTEM MAP / INTERACTIVE",
+     arch_note: "This is not a product drawing; it is a system-level thinking model showing how a CNC platform can be decomposed when making engineering decisions.",
+     arch_stack_title: "SYSTEM CHAIN",
+     arch_cta_label: "SYSTEM ARCHITECTURE",
+     arch_cta_title: "CNC ARCHITECTURE / INTERACTIVE SYSTEM MAP",
      lab_cnc_title: "CNC & Motion Systems",
      lab_cnc_desc: "Rapid preliminary checks for cutting parameters, motor torque, and ball-screw drive behavior.",
      lab_mech_title: "Mechanical Systems",
@@ -2879,6 +3067,47 @@ const articles = {
 </script>
 
 <script>
+
+// ─── CNC ARCHITECTURE / SYSTEM VISUALIZER ───
+const architectureNodes = {
+  machine: {tr:{title:'Makine Gövdesi',desc:'Taban, kolon, gantri ve muhafaza; eksen rijitliği, termal davranış ve titreşim performansının temelini oluşturur.',specs:[['ROL','LOAD PATH'],['FOCUS','RIGIDITY']]},en:{title:'Machine Structure',desc:'Base, frame and enclosure form the load path that governs axis rigidity, thermal behavior and vibration performance.',specs:[['ROLE','LOAD PATH'],['FOCUS','RIGIDITY']]}},
+  x: {tr:{title:'X Ekseni',desc:'Lineer eksen konumlamayı sağlar. Ray, araba, vidalı mil ve tahrik mekanizması birlikte değerlendirilir.',specs:[['MOTION','LINEAR'],['CHECK','STIFFNESS']]},en:{title:'X Axis',desc:'Provides linear positioning. Guideways, carriage, ballscrew and drive mechanics should be evaluated as one chain.',specs:[['MOTION','LINEAR'],['CHECK','STIFFNESS']]}},
+  y: {tr:{title:'Y Ekseni / Kılavuz',desc:'Gantry veya tabla hareketinin temel taşıyıcısıdır; geometrik doğruluk ve yapısal rijitlik doğrudan sonuçları etkiler.',specs:[['MOTION','LINEAR'],['RISK','GEOMETRY']]},en:{title:'Y Axis / Guideway',desc:'The primary support for gantry or table travel; geometry and structural stiffness directly affect machine accuracy.',specs:[['MOTION','LINEAR'],['RISK','GEOMETRY']]}},
+  z: {tr:{title:'Z Ekseni / Spindle',desc:'Kesici takımın çalışma yönünü ve işleme kuvvetlerini taşır. Rulmanlama, spindle gövdesi ve eksen rijitliği birlikte ele alınır.',specs:[['MOTION','LINEAR'],['LOAD','CUTTING FORCE']]},en:{title:'Z Axis / Spindle',desc:'Carries the cutting direction and machining loads. Bearing arrangement, spindle body and axis stiffness are coupled design variables.',specs:[['MOTION','LINEAR'],['LOAD','CUTTING FORCE']]}},
+  table: {tr:{title:'Tabla / Fikstür',desc:'İş parçasını taşır ve proses kuvvetlerini makine gövdesine aktarır. Fikstürleme de sistem rijitliğinin parçasıdır.',specs:[['INTERFACE','WORKPIECE'],['LOAD','PROCESS']]},en:{title:'Work Table / Fixture',desc:'Supports the workpiece and transfers process loads into the machine structure. Fixturing is part of system stiffness.',specs:[['INTERFACE','WORKPIECE'],['LOAD','PROCESS']]}},
+  a: {tr:{title:'A Ekseni',desc:'Döner eksen, lineer eksenlerle birlikte gerçek kinematik zincirin bir parçasıdır. Limit, backlash ve taşıma kapasitesi kritiktir.',specs:[['TYPE','ROTARY'],['CHECK','BACKLASH']]},en:{title:'A Axis',desc:'A rotary axis becomes part of the full kinematic chain. Limits, backlash and load capacity are key design variables.',specs:[['TYPE','ROTARY'],['CHECK','BACKLASH']]}},
+  b: {tr:{title:'B Ekseni',desc:'Tabla veya kafa eğim hareketiyle takım yönelimini genişletir. Eksen merkezi, kablo yönetimi ve kinematik doğruluk önemlidir.',specs:[['TYPE','TILT'],['CHECK','KINEMATICS']]},en:{title:'B Axis',desc:'Tilt motion expands tool orientation. Pivot geometry, cable management and kinematic accuracy become critical.',specs:[['TYPE','TILT'],['CHECK','KINEMATICS']]}},
+  cnc: {tr:{title:'CNC Kontrolörü',desc:'Takım yolunu zaman tabanlı hareket komutlarına dönüştürür; interpolasyon ve makine koordinasyonu burada gerçekleşir.',specs:[['LAYER','NC / PLC'],['OUTPUT','MOTION COMMAND']]},en:{title:'CNC Controller',desc:'Converts programmed paths into time-based motion commands. Interpolation and machine coordination happen here.',specs:[['LAYER','NC / PLC'],['OUTPUT','MOTION COMMAND']]}},
+  drive: {tr:{title:'Servo Sürücüler',desc:'Kontrolör komutlarını motor akımına ve torkuna çevirir. Akım, hız ve pozisyon çevrimleri dinamik davranışı belirler.',specs:[['LOOP','CURRENT / SPEED'],['OUTPUT','TORQUE']]},en:{title:'Servo Drives',desc:'Translate controller commands into motor current and torque. Current, speed and position loops define dynamic response.',specs:[['LOOP','CURRENT / SPEED'],['OUTPUT','TORQUE']]}},
+  feedback: {tr:{title:'Geri Besleme',desc:'Encoder veya lineer cetvel ile gerçek pozisyon ölçülür. Komut ile gerçek hareket arasındaki fark kapalı çevrimde düzeltilir.',specs:[['SENSOR','ENCODER / SCALE'],['LOOP','CLOSED']]},en:{title:'Feedback',desc:'Encoders or scales measure actual position. Closed-loop control uses that error to correct commanded motion.',specs:[['SENSOR','ENCODER / SCALE'],['LOOP','CLOSED']]}},
+  motor: {tr:{title:'Servo Motor / Aktarma',desc:'Motor, kaplin ve vidalı mil; elektriksel komutu mekanik harekete dönüştüren aktarma zinciridir.',specs:[['CHAIN','MOTOR → SCREW'],['CHECK','TORQUE']]},en:{title:'Servo Motor / Drive Train',desc:'Motor, coupling and ballscrew form the mechanical transmission chain that converts electrical command into motion.',specs:[['CHAIN','MOTOR → SCREW'],['CHECK','TORQUE']]}},
+  process: {tr:{title:'İşleme Prosesi',desc:'Kesme kuvvetleri, malzeme davranışı, takım ve proses parametreleri makine mimarisine dış yük ve bozucu etki getirir.',specs:[['LOAD','CUTTING'],['DISTURBANCE','PROCESS']]},en:{title:'Machining Process',desc:'Cutting forces, material behavior, tooling and process parameters introduce external loads and disturbances to the machine.',specs:[['LOAD','CUTTING'],['DISTURBANCE','PROCESS']]}}
+};
+let archSelectedNode = 'cnc';
+function initArchitecture(){
+  const canvas=document.getElementById('arch-canvas'); if(!canvas) return;
+  if(canvas.dataset.ready==='1'){ updateArchitectureDetail(archSelectedNode); return; }
+  canvas.dataset.ready='1';
+  const modes=document.querySelectorAll('.arch-mode');
+  modes.forEach(btn=>btn.addEventListener('click',()=>{
+    modes.forEach(b=>b.classList.remove('active')); btn.classList.add('active');
+    canvas.classList.remove('arch-mode-3','arch-mode-4','arch-mode-5'); canvas.classList.add('arch-mode-'+btn.dataset.mode);
+  }));
+  document.querySelectorAll('.arch-node').forEach(node=>{
+    const pick=()=>{ archSelectedNode=node.dataset.node; document.querySelectorAll('.arch-node').forEach(n=>n.classList.remove('selected')); node.classList.add('selected'); updateArchitectureDetail(archSelectedNode); };
+    node.addEventListener('click',pick); node.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick();}});
+  });
+  const first=document.querySelector('.arch-node[data-node="cnc"]'); if(first) first.classList.add('selected');
+  updateArchitectureDetail('cnc');
+}
+function updateArchitectureDetail(key){
+  const data=architectureNodes[key]; if(!data) return;
+  const lang=currentLanguage==='en'?'en':'tr'; const item=data[lang];
+  const title=document.getElementById('arch-detail-title'), desc=document.getElementById('arch-detail-desc'), specs=document.getElementById('arch-detail-specs');
+  if(title) title.textContent=item.title; if(desc) desc.textContent=item.desc;
+  if(specs) specs.innerHTML=item.specs.map(s=>`<div class="arch-spec"><small>${s[0]}</small><strong>${s[1]}</strong></div>`).join('');
+}
+
 // ─── SPA ROUTING SYSTEM ───
 function router() {
   const hash = window.location.hash || '#/';
@@ -2895,6 +3124,12 @@ function router() {
     document.getElementById('view-lab').classList.add('active');
     document.getElementById('nav-lab').classList.add('active-link');
     document.getElementById('m-nav-lab').classList.add('active-link');
+    reObserve();
+  } else if (hash.startsWith('#/architecture')) {
+    document.getElementById('view-architecture').classList.add('active');
+    document.getElementById('nav-architecture').classList.add('active-link');
+    document.getElementById('m-nav-architecture').classList.add('active-link');
+    initArchitecture();
     reObserve();
   } else if (hash.startsWith('#/blog')) {
     document.getElementById('view-blog').classList.add('active');
