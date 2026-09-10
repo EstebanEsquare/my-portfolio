@@ -826,6 +826,21 @@ footer {
 @media(max-width:1050px){.arch-layout{grid-template-columns:1fr}.arch-detail{min-height:auto}.arch-canvas{min-height:520px}}
 @media(max-width:700px){.arch-hero{padding-top:115px}.arch-hero:before{font-size:38px}.arch-canvas{padding:10px;min-height:auto}.arch-specs{grid-template-columns:1fr 1fr}.arch-detail{padding:18px}.arch-detail h3{font-size:22px}}
 
+
+/* ================= V7: ENGINEERING PHILOSOPHY + PROFILE ================= */
+.profile-hero{min-height:100vh;padding:140px 0 90px;background:radial-gradient(circle at 75% 8%,rgba(245,158,11,.09),transparent 32%),radial-gradient(circle at 18% 38%,rgba(34,197,94,.055),transparent 28%),linear-gradient(180deg,rgba(255,255,255,.012),transparent 28%)}
+.profile-top{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:22px;align-items:stretch}
+.profile-intro,.profile-command{border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.018);overflow:hidden}
+.profile-intro{padding:34px}.profile-kicker{display:inline-flex;align-items:center;gap:9px;font:800 10px var(--mono);letter-spacing:.14em;color:var(--amber);border:1px solid rgba(245,158,11,.22);background:rgba(245,158,11,.05);padding:9px 12px;border-radius:999px}.profile-title{font-size:clamp(42px,6vw,82px);line-height:.93;letter-spacing:-.055em;color:var(--white);margin:24px 0 18px}.profile-title span{color:var(--amber)}.profile-lead{max-width:780px;font:500 15px/1.85 var(--sans);color:var(--mist);margin:0}.profile-proof-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:28px}.profile-proof{padding:15px;border:1px solid var(--line);border-radius:11px;background:rgba(0,0,0,.08)}.profile-proof b{display:block;font:800 21px var(--mono);color:var(--white)}.profile-proof span{display:block;margin-top:5px;font:700 8px/1.35 var(--mono);color:var(--mist);letter-spacing:.07em}
+.profile-command{padding:24px;display:flex;flex-direction:column;justify-content:space-between}.profile-command-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.profile-command-label{font:800 9px var(--mono);letter-spacing:.12em;color:var(--mist)}.profile-live{font:800 9px var(--mono);letter-spacing:.1em;color:var(--terminal-green)}.profile-live i{font-size:7px}.profile-command h3{font-size:27px;color:var(--white);margin:20px 0 10px}.profile-command p{font:500 12px/1.7 var(--sans);color:var(--mist);margin:0}.profile-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.profile-btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:transparent;color:var(--white);padding:11px 13px;border-radius:10px;font:800 9px var(--mono);letter-spacing:.08em;cursor:pointer;text-decoration:none;transition:.2s}.profile-btn:hover{border-color:rgba(245,158,11,.45);color:var(--amber);background:rgba(245,158,11,.06)}
+.profile-section{padding:86px 0;border-top:1px solid var(--line)}.profile-section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:28px}.profile-section-copy{max-width:760px}.profile-section-copy .section-sub{margin-bottom:0}
+.philosophy-grid{display:grid;grid-template-columns:300px minmax(0,1fr);gap:16px}.philosophy-tabs{display:grid;gap:8px}.philosophy-tab{padding:15px;border:1px solid var(--line);border-radius:12px;background:transparent;color:var(--mist);cursor:pointer;text-align:left;transition:.2s}.philosophy-tab strong{display:block;color:var(--white);font:800 11px var(--mono);letter-spacing:.06em}.philosophy-tab span{display:block;margin-top:5px;color:var(--mist);font:500 10px/1.5 var(--sans)}.philosophy-tab.active,.philosophy-tab:hover{border-color:rgba(245,158,11,.38);background:rgba(245,158,11,.055)}.philosophy-tab.active strong{color:var(--amber)}
+.philosophy-detail{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.015)}.philosophy-detail-top{padding:27px;border-bottom:1px solid var(--line);background:linear-gradient(135deg,rgba(245,158,11,.045),transparent 55%)}.philosophy-detail-kicker{font:800 9px var(--mono);letter-spacing:.13em;color:var(--amber)}.philosophy-detail h3{font-size:34px;line-height:1.02;color:var(--white);margin:9px 0 10px}.philosophy-detail p{max-width:850px;font:500 13px/1.8 var(--sans);color:var(--mist);margin:0}.philosophy-stack{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line)}.philosophy-card{padding:19px;background:rgba(15,18,22,.96)}.philosophy-card .n{font:800 9px var(--mono);color:var(--amber);letter-spacing:.09em}.philosophy-card h4{margin:7px 0 7px;font-size:18px;color:var(--white)}.philosophy-card p{font:500 11px/1.65 var(--sans);color:var(--mist);margin:0}
+.profile-arc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.profile-arc-card{border:1px solid var(--line);border-radius:14px;padding:21px;background:rgba(255,255,255,.018)}.profile-arc-no{font:800 9px var(--mono);color:var(--amber);letter-spacing:.1em}.profile-arc-card h3{font-size:22px;line-height:1.1;color:var(--white);margin:12px 0 9px}.profile-arc-card p{font:500 11px/1.65 var(--sans);color:var(--mist);margin:0}.profile-arc-card .tagline{margin-top:14px;font:800 9px var(--mono);color:var(--terminal-green);letter-spacing:.08em}
+.profile-cv{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#f5f5f3;color:#111}.profile-cv-head{padding:30px 34px;border-bottom:1px solid #d7d7d2;display:flex;justify-content:space-between;gap:30px}.profile-cv-name{font:900 33px var(--sans);letter-spacing:-.04em}.profile-cv-role{margin-top:6px;font:700 10px var(--mono);letter-spacing:.08em;color:#555}.profile-cv-contact{font:600 10px var(--mono);line-height:1.8;text-align:right;color:#444}.profile-cv-body{display:grid;grid-template-columns:1.05fr .95fr}.profile-cv-main,.profile-cv-side{padding:28px 34px}.profile-cv-side{border-left:1px solid #d7d7d2;background:#ecece8}.profile-cv-h{font:900 10px var(--mono);letter-spacing:.12em;color:#666;margin:0 0 13px}.profile-cv-p{font:500 11px/1.7 var(--sans);color:#222}.profile-cv-list{display:grid;gap:14px}.profile-cv-item strong{display:block;font:800 11px var(--mono);color:#111}.profile-cv-item span{display:block;margin-top:4px;font:500 10px/1.55 var(--sans);color:#555}.profile-cv-tags{display:flex;flex-wrap:wrap;gap:6px}.profile-cv-tag{border:1px solid #c9c9c4;padding:6px 8px;border-radius:999px;font:800 8px var(--mono);color:#333;background:#f8f8f5}
+@media(max-width:980px){.profile-top{grid-template-columns:1fr}.profile-proof-row{grid-template-columns:repeat(2,1fr)}.philosophy-grid{grid-template-columns:1fr}.profile-arc{grid-template-columns:1fr 1fr}.profile-cv-body{grid-template-columns:1fr}.profile-cv-side{border-left:0;border-top:1px solid #d7d7d2}}
+@media(max-width:600px){.profile-hero{padding-top:112px}.profile-intro{padding:22px}.profile-title{font-size:48px}.profile-proof-row{grid-template-columns:1fr 1fr}.profile-arc{grid-template-columns:1fr}.profile-section{padding:65px 0}.profile-cv-head{display:block;padding:24px}.profile-cv-contact{text-align:left;margin-top:14px}.profile-cv-main,.profile-cv-side{padding:22px}}
+@media print{body{background:white!important}.profile-hero{padding:0;min-height:0}.profile-top>*,.profile-section-head,.philosophy-grid,.profile-arc{display:none!important}.profile-section.profile-cv-section{display:block!important;padding:0;border:0}.profile-cv{border:0;border-radius:0}.profile-cv-side{background:#f1f1ed!important}}
 </style>
 
 <style>
@@ -919,6 +934,7 @@ footer {
       <a href="#/architecture" id="nav-architecture" data-i18n="nav_architecture">CNC Architecture</a>
       <a href="#/cases" id="nav-cases" data-i18n="nav_cases">Case Studies</a>
       <a href="#/decisions" id="nav-decisions" data-i18n="nav_decisions">Engineering Decisions</a>
+      <a href="#/profile" id="nav-profile" data-i18n="nav_profile">Engineering Profile</a>
       <a href="#/tools" id="nav-tools" data-i18n="nav_tools">Hesaplama Paneli</a>
     </div>
 
@@ -944,6 +960,7 @@ footer {
     </a>
     <a href="#/cases" class="m-link" id="m-nav-cases" data-i18n="nav_cases">Case Studies</a>
     <a href="#/decisions" class="m-link" id="m-nav-decisions"><i class="fa-solid fa-scale-balanced"></i> <span data-i18n="nav_decisions">Engineering Decisions</span></a>
+    <a href="#/profile" class="m-link" id="m-nav-profile"><i class="fa-solid fa-id-card"></i> <span data-i18n="nav_profile">Engineering Profile</span></a>
     <a href="#/architecture" class="m-link" id="m-nav-architecture">
       <i class="fa-solid fa-diagram-project"></i> <span data-i18n="nav_architecture">CNC Architecture</span>
     </a>
@@ -1400,6 +1417,111 @@ footer {
 <!-- ========================================== -->
 <!-- ============= VIEW: TOOLS ================ -->
 <!-- ========================================== -->
+
+<!-- ========================================== -->
+<!-- ===== VIEW: ENGINEERING PROFILE / V7 ===== -->
+<!-- ========================================== -->
+<div id="view-profile" class="spa-view">
+  <section class="profile-hero">
+    <div class="section-inner">
+      <div class="profile-top">
+        <div class="profile-intro reveal d1">
+          <span class="profile-kicker"><i class="fa-solid fa-compass-drafting"></i> ENGINEERING PHILOSOPHY / V7</span>
+          <h1 class="profile-title">HOW I<br><span>ENGINEER</span></h1>
+          <p class="profile-lead" data-i18n="profile_lead">Mühendisliği yalnızca doğru parçayı üretmek olarak değil; problemi sistem seviyesinde tanımlamak, seçenekleri ölçülebilir kriterlerle elemek, varsayımları doğrulamak ve sonucu sahada kanıtlamak olarak ele alıyorum.</p>
+          <div class="profile-proof-row">
+            <div class="profile-proof"><b>15+</b><span data-i18n="profile_stat_years">YILLIK DENEYİM</span></div>
+            <div class="profile-proof"><b>2</b><span data-i18n="profile_stat_rd">TÜBİTAK AR-GE PROJESİ</span></div>
+            <div class="profile-proof"><b>4/5</b><span data-i18n="profile_stat_axis">EKSENLİ CNC PLATFORM</span></div>
+            <div class="profile-proof"><b>M.Sc.</b><span data-i18n="profile_stat_msc">MÜHENDİSLİK YÖNETİMİ</span></div>
+          </div>
+        </div>
+        <div class="profile-command reveal d2">
+          <div>
+            <div class="profile-command-head"><span class="profile-command-label" data-i18n="profile_command_label">ENGINEERING IDENTITY</span><span class="profile-live"><i class="fa-solid fa-circle"></i> ACTIVE</span></div>
+            <h3 data-i18n="profile_command_title">Sistem Mimarı + Teknik Lider</h3>
+            <p data-i18n="profile_command_copy">Mekanik tasarım, CNC sistem mimarisi, Ar-Ge programları ve teknik ekip liderliğini tek karar çerçevesinde birleştiren profesyonel profil.</p>
+          </div>
+          <div class="profile-actions">
+            <a href="mailto:mustafauner@hotmail.com.tr" class="profile-btn"><i class="fa-regular fa-envelope"></i><span data-i18n="profile_contact_btn">CONTACT</span></a>
+            <button type="button" class="profile-btn" onclick="window.print()"><i class="fa-solid fa-print"></i><span data-i18n="profile_print_btn">PRINT / PDF</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="profile-section">
+    <div class="section-inner">
+      <div class="profile-section-head">
+        <div class="profile-section-copy reveal">
+          <div class="section-label" data-i18n="profile_philosophy_label">ENGINEERING PHILOSOPHY</div>
+          <h2 class="section-title" data-i18n="profile_philosophy_title">DÜŞÜNME<br><span>ÇERÇEVEM</span></h2>
+          <p class="section-sub" data-i18n="profile_philosophy_sub">Kararları sezgiye bırakmak yerine; sistem davranışı, doğrulanabilir hesap, üretilebilirlik ve saha geri bildirimi üzerinden ilerleyen bir mühendislik döngüsü.</p>
+        </div>
+      </div>
+      <div id="philosophy-module" class="philosophy-grid reveal"></div>
+    </div>
+  </section>
+
+  <section class="profile-section">
+    <div class="section-inner">
+      <div class="profile-section-head">
+        <div class="profile-section-copy reveal">
+          <div class="section-label" data-i18n="profile_arch_label">PROFESSIONAL ARC</div>
+          <h2 class="section-title" data-i18n="profile_arch_title">SAHA →<br><span>SİSTEM → LİDERLİK</span></h2>
+          <p class="section-sub" data-i18n="profile_arch_sub">Kariyerin farklı aşamalarını tek bir mesleki dönüşüm içinde okuyabileceğiniz üç katmanlı profil.</p>
+        </div>
+      </div>
+      <div class="profile-arc reveal">
+        <div class="profile-arc-card"><div class="profile-arc-no">01 / FIELD</div><h3 data-i18n="profile_arc1_title">Sahada Öğren</h3><p data-i18n="profile_arc1_copy">Montaj, ölçüm, CNC operasyonları ve üretim kısıtlarını doğrudan yaşayarak tasarım kararlarının gerçek maliyetini öğren.</p><div class="tagline" data-i18n="profile_arc1_tag">REALITY FIRST</div></div>
+        <div class="profile-arc-card"><div class="profile-arc-no">02 / SYSTEM</div><h3 data-i18n="profile_arc2_title">Sistemi Kur</h3><p data-i18n="profile_arc2_copy">Tekil parçalardan makine mimarisine geç; eksen, tahrik, yapı, kontrol ve üretim ilişkisini birlikte düşün.</p><div class="tagline" data-i18n="profile_arc2_tag">SYSTEM BEFORE DETAIL</div></div>
+        <div class="profile-arc-card"><div class="profile-arc-no">03 / LEAD</div><h3 data-i18n="profile_arc3_title">Ekibi Hizala</h3><p data-i18n="profile_arc3_copy">Teknik kararları standartlar, doğrulama ve ortak hedefler üzerinden ekipler arasında görünür ve tekrar edilebilir hale getir.</p><div class="tagline" data-i18n="profile_arc3_tag">CLARITY CREATES SPEED</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="profile-section profile-cv-section">
+    <div class="section-inner">
+      <div class="profile-section-head">
+        <div class="profile-section-copy reveal">
+          <div class="section-label" data-i18n="profile_cv_label">PROFESSIONAL PROFILE</div>
+          <h2 class="section-title">MUSTAFA<br><span>ÜNER</span></h2>
+          <p class="section-sub" data-i18n="profile_cv_sub">Web profilinden yazdırılabilir sade CV görünümü. Tarayıcıdaki “Print / PDF” düğmesiyle PDF olarak kaydedilebilir.</p>
+        </div>
+      </div>
+      <div class="profile-cv reveal">
+        <div class="profile-cv-head">
+          <div><div class="profile-cv-name">Mustafa Üner</div><div class="profile-cv-role" data-i18n="profile_cv_role">CNC SYSTEMS & R&D TECHNICAL LEADER</div></div>
+          <div class="profile-cv-contact">mustafauner@hotmail.com.tr<br>mustafauner.com.tr</div>
+        </div>
+        <div class="profile-cv-body">
+          <div class="profile-cv-main">
+            <h3 class="profile-cv-h" data-i18n="profile_cv_summary_h">SUMMARY</h3>
+            <p class="profile-cv-p" data-i18n="profile_cv_summary">15+ yıllık saha, tasarım ve Ar-Ge deneyimini; 4 ve 5 eksenli CNC sistemleri, TÜBİTAK Ar-Ge projeleri, teknik doğrulama ve mühendislik ekip liderliği ekseninde birleştiren teknik lider.</p>
+            <h3 class="profile-cv-h" style="margin-top:28px" data-i18n="profile_cv_experience_h">EXPERIENCE ARC</h3>
+            <div class="profile-cv-list">
+              <div class="profile-cv-item"><strong>2009 — 2012</strong><span data-i18n="profile_cv_exp1">Mühendislik temeli, saha ve üretim deneyimi, proses Ar-Ge'si.</span></div>
+              <div class="profile-cv-item"><strong>2013 — 2018</strong><span data-i18n="profile_cv_exp2">CNC platform mimarisi, ürünleşen mekanik ve sistem geliştirme çalışmaları.</span></div>
+              <div class="profile-cv-item"><strong>2019 — CURRENT</strong><span data-i18n="profile_cv_exp3">Mühendislik yönetimi perspektifi, TÜBİTAK Ar-Ge liderliği ve teknik ekip yönetimi.</span></div>
+            </div>
+          </div>
+          <aside class="profile-cv-side">
+            <h3 class="profile-cv-h" data-i18n="profile_cv_core_h">CORE DOMAINS</h3>
+            <div class="profile-cv-tags">
+              <span class="profile-cv-tag">CNC ARCHITECTURE</span><span class="profile-cv-tag">4/5 AXIS</span><span class="profile-cv-tag">MECHANICAL DESIGN</span><span class="profile-cv-tag">R&D</span><span class="profile-cv-tag">TOLERANCE</span><span class="profile-cv-tag">VALIDATION</span><span class="profile-cv-tag">TEAM LEADERSHIP</span><span class="profile-cv-tag">TECHNICAL DECISIONS</span>
+            </div>
+            <h3 class="profile-cv-h" style="margin-top:28px" data-i18n="profile_cv_education_h">EDUCATION</h3>
+            <div class="profile-cv-list"><div class="profile-cv-item"><strong>M.Sc.</strong><span data-i18n="profile_cv_edu1">Mühendislik Yönetimi — Marmara Üniversitesi</span></div><div class="profile-cv-item"><strong>B.Sc.</strong><span data-i18n="profile_cv_edu2">Makine Mühendisliği</span></div></div>
+            <h3 class="profile-cv-h" style="margin-top:28px" data-i18n="profile_cv_focus_h">FOCUS</h3>
+            <p class="profile-cv-p" data-i18n="profile_cv_focus">CNC platformlarını fikirden prototipe, doğrulamadan saha kabulüne taşıyan sistem liderliği.</p>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
 <div id="view-tools" class="spa-view">
   <section id="tools" style="min-height: 100vh; padding-top: 120px;">
     <div class="section-inner">
@@ -1668,6 +1790,17 @@ const translations = {
     nav_home: "Portfolyo",
     nav_blog: "Bilgi Bankası",
     nav_tools: "Hesaplama Paneli",
+    nav_profile: "Engineering Profile",
+    profile_lead: "Mühendisliği yalnızca doğru parçayı üretmek olarak değil; problemi sistem seviyesinde tanımlamak, seçenekleri ölçülebilir kriterlerle elemek, varsayımları doğrulamak ve sonucu sahada kanıtlamak olarak ele alıyorum.",
+    profile_stat_years: "YILLIK DENEYİM", profile_stat_rd: "TÜBİTAK AR-GE PROJESİ", profile_stat_axis: "EKSENLİ CNC PLATFORM", profile_stat_msc: "MÜHENDİSLİK YÖNETİMİ",
+    profile_command_label: "ENGINEERING IDENTITY", profile_command_title: "Sistem Mimarı + Teknik Lider", profile_command_copy: "Mekanik tasarım, CNC sistem mimarisi, Ar-Ge programları ve teknik ekip liderliğini tek karar çerçevesinde birleştiren profesyonel profil.", profile_contact_btn: "CONTACT", profile_print_btn: "PRINT / PDF",
+    profile_philosophy_label: "ENGINEERING PHILOSOPHY", profile_philosophy_title: "DÜŞÜNME<br><span>ÇERÇEVEM</span>", profile_philosophy_sub: "Kararları sezgiye bırakmak yerine; sistem davranışı, doğrulanabilir hesap, üretilebilirlik ve saha geri bildirimi üzerinden ilerleyen bir mühendislik döngüsü.",
+    profile_arch_label: "PROFESSIONAL ARC", profile_arch_title: "SAHA →<br><span>SİSTEM → LİDERLİK</span>", profile_arch_sub: "Kariyerin farklı aşamalarını tek bir mesleki dönüşüm içinde okuyabileceğiniz üç katmanlı profil.",
+    profile_arc1_title: "Sahada Öğren", profile_arc1_copy: "Montaj, ölçüm, CNC operasyonları ve üretim kısıtlarını doğrudan yaşayarak tasarım kararlarının gerçek maliyetini öğren.", profile_arc1_tag: "REALITY FIRST",
+    profile_arc2_title: "Sistemi Kur", profile_arc2_copy: "Tekil parçalardan makine mimarisine geç; eksen, tahrik, yapı, kontrol ve üretim ilişkisini birlikte düşün.", profile_arc2_tag: "SYSTEM BEFORE DETAIL",
+    profile_arc3_title: "Ekibi Hizala", profile_arc3_copy: "Teknik kararları standartlar, doğrulama ve ortak hedefler üzerinden ekipler arasında görünür ve tekrar edilebilir hale getir.", profile_arc3_tag: "CLARITY CREATES SPEED",
+    profile_cv_label: "PROFESSIONAL PROFILE", profile_cv_sub: "Web profilinden yazdırılabilir sade CV görünümü. Tarayıcıdaki “Print / PDF” düğmesiyle PDF olarak kaydedilebilir.", profile_cv_role: "CNC SYSTEMS & R&D TECHNICAL LEADER", profile_cv_summary_h: "SUMMARY", profile_cv_summary: "15+ yıllık saha, tasarım ve Ar-Ge deneyimini; 4 ve 5 eksenli CNC sistemleri, TÜBİTAK Ar-Ge projeleri, teknik doğrulama ve mühendislik ekip liderliği ekseninde birleştiren teknik lider.", profile_cv_experience_h: "EXPERIENCE ARC", profile_cv_exp1: "Mühendislik temeli, saha ve üretim deneyimi, proses Ar-Ge'si.", profile_cv_exp2: "CNC platform mimarisi, ürünleşen mekanik ve sistem geliştirme çalışmaları.", profile_cv_exp3: "Mühendislik yönetimi perspektifi, TÜBİTAK Ar-Ge liderliği ve teknik ekip yönetimi.", profile_cv_core_h: "CORE DOMAINS", profile_cv_education_h: "EDUCATION", profile_cv_edu1: "Mühendislik Yönetimi — Marmara Üniversitesi", profile_cv_edu2: "Makine Mühendisliği", profile_cv_focus_h: "FOCUS", profile_cv_focus: "CNC platformlarını fikirden prototipe, doğrulamadan saha kabulüne taşıyan sistem liderliği.",
+
     nav_contact: "İletişim",
     m_lang_label: "Dil / Language",
     hero_badge: "CNC SİSTEMLERİ GELİŞTİREN TEKNİK LİDER",
@@ -1810,6 +1943,17 @@ const translations = {
     nav_home: "Portfolio",
     nav_blog: "Knowledge Base",
     nav_tools: "Calculation Panel",
+    nav_profile: "Engineering Profile",
+    profile_lead: "I treat engineering not simply as producing the right part, but as defining the problem at system level, eliminating options against measurable criteria, validating assumptions, and proving the result in the field.",
+    profile_stat_years: "YEARS EXPERIENCE", profile_stat_rd: "TÜBİTAK R&D PROJECTS", profile_stat_axis: "AXIS CNC PLATFORMS", profile_stat_msc: "ENGINEERING MANAGEMENT",
+    profile_command_label: "ENGINEERING IDENTITY", profile_command_title: "System Architect + Technical Leader", profile_command_copy: "A professional profile combining mechanical design, CNC system architecture, R&D programs, and engineering team leadership within one decision framework.", profile_contact_btn: "CONTACT", profile_print_btn: "PRINT / PDF",
+    profile_philosophy_label: "ENGINEERING PHILOSOPHY", profile_philosophy_title: "MY THINKING<br><span>FRAMEWORK</span>", profile_philosophy_sub: "An engineering loop built around system behavior, verifiable calculations, manufacturability, and field feedback instead of intuition alone.",
+    profile_arch_label: "PROFESSIONAL ARC", profile_arch_title: "FIELD →<br><span>SYSTEM → LEADERSHIP</span>", profile_arch_sub: "A three-layer view of the professional transformation across field experience, system architecture, and leadership.",
+    profile_arc1_title: "Learn in the Field", profile_arc1_copy: "Experience assembly, measurement, CNC operations, and production constraints directly to understand the real cost of design decisions.", profile_arc1_tag: "REALITY FIRST",
+    profile_arc2_title: "Build the System", profile_arc2_copy: "Move from individual parts to machine architecture; think about axes, drives, structure, control, and manufacturing as one system.", profile_arc2_tag: "SYSTEM BEFORE DETAIL",
+    profile_arc3_title: "Align the Team", profile_arc3_copy: "Make technical decisions visible and repeatable across teams through standards, validation, and shared objectives.", profile_arc3_tag: "CLARITY CREATES SPEED",
+    profile_cv_label: "PROFESSIONAL PROFILE", profile_cv_sub: "A clean, printable CV view derived from the web profile. Use “Print / PDF” in the browser to save as PDF.", profile_cv_role: "CNC SYSTEMS & R&D TECHNICAL LEADER", profile_cv_summary_h: "SUMMARY", profile_cv_summary: "Technical leader combining 15+ years of field, design, and R&D experience across 4- and 5-axis CNC systems, TÜBİTAK R&D programs, technical validation, and engineering team leadership.", profile_cv_experience_h: "EXPERIENCE ARC", profile_cv_exp1: "Engineering foundation, field and manufacturing experience, process R&D.", profile_cv_exp2: "CNC platform architecture, productized mechanical and system development.", profile_cv_exp3: "Engineering management perspective, TÜBİTAK R&D leadership, and technical team management.", profile_cv_core_h: "CORE DOMAINS", profile_cv_education_h: "EDUCATION", profile_cv_edu1: "Engineering Management — Marmara University", profile_cv_edu2: "Mechanical Engineering", profile_cv_focus_h: "FOCUS", profile_cv_focus: "System leadership carrying CNC platforms from concept to prototype, validation, and field acceptance.",
+
     nav_contact: "Contact",
     m_lang_label: "Language / Dil",
     hero_badge: "TECHNICAL LEADER IN CNC SYSTEMS DEVELOPMENT",
@@ -2047,6 +2191,7 @@ function translateUI() {
   calcVidali();
   calcBeam();
 }
+  if(document.getElementById('view-profile')?.classList.contains('active')) renderPhilosophy();
 
 function toggleLanguage() {
   currentLanguage = currentLanguage === "tr" ? "en" : "tr";
@@ -3416,6 +3561,34 @@ function renderDecisions(){
 }
 function initDecisions(){ document.querySelectorAll('[data-decision-filter]').forEach(btn=>btn.onclick=()=>{activeDecisionFilter=btn.dataset.decisionFilter;activeDecisionStep=0;document.querySelectorAll('[data-decision-filter]').forEach(b=>b.classList.toggle('active',b===btn));renderDecisions()}); renderDecisions(); }
 
+
+/* ================= V7 PROFILE / PHILOSOPHY ENGINE ================= */
+const philosophyData = {
+  tr: [
+    {no:'01', kicker:'PROBLEM DEFINITION', title:'Önce doğru problemi tanımlarım', text:'Tasarım çözümüne başlamadan önce gerçek üretim, performans ve kullanıcı ihtiyacını sistem seviyesinde sınırlarım.', cards:[['SİSTEM SINIRI','Girdi, çıktı ve kritik kısıtları netleştir.'],['FONKSİYON','Parçanın değil, sistemin neyi başarması gerektiğini tanımla.'],['RİSK','En pahalı varsayımı en erken aşamada görünür yap.'],['HEDEF','Başarı kriterini ölçülebilir hale getir.']]},
+    {no:'02', kicker:'ENGINEERING DECISION', title:'Alternatifleri kriterlerle elerim', text:'“Bence böyle” yerine; rijitlik, erişim, maliyet, üretilebilirlik, bakım ve doğrulanabilirlik gibi kriterlerle seçenekleri karşılaştırırım.', cards:[['ALTERNATİF','En az iki uygulanabilir seçenek çıkar.'],['KRİTER','Kararı etkileyen teknik kriterleri ağırlıklandır.'],['TRADE-OFF','Bir kazanımın hangi bedelle geldiğini görünür kıl.'],['KARAR','Neden seçildiğini kayıt altına al.']]},
+    {no:'03', kicker:'VALIDATION', title:'Varsayımı doğrularım', text:'Hesap, tolerans analizi, simülasyon veya prototip testi ile kritik varsayımları mümkün olan en erken noktada doğrularım.', cards:[['HESAP','İlk mertebe fiziksel kontrol.'],['SİMÜLASYON','Kritik davranışları daha üretmeden incele.'],['ÖLÇÜM','Gerçek sistemden veri topla.'],['KAPAT','Model ile saha arasındaki farkı tekrar tasarıma taşı.']]},
+    {no:'04', kicker:'MANUFACTURABILITY', title:'Üretilebilir olmayan doğruluk istemem', text:'Fonksiyon gerektirmeyen aşırı hassasiyetin maliyetini sorgular; kritik yüzeylerde gerekli doğruluğu korurken üretim yöntemini tasarımın başına dahil ederim.', cards:[['FONKSİYON','Toleransı gerçekten ihtiyaç varsa sıkılaştır.'],['PROSES','İmalat kabiliyetini erken dikkate al.'],['STANDARD','Özel parça yerine standart çözümü sorgula.'],['MALİYET','Teknik kazancı toplam ürün maliyetiyle birlikte değerlendir.']]},
+    {no:'05', kicker:'LEADERSHIP', title:'Teknik kararı ekip diline dönüştürürüm', text:'İyi mühendislik yalnızca kişisel uzmanlıkla değil, kararların ekip içinde anlaşılır, tekrarlanabilir ve denetlenebilir hale gelmesiyle ölçeklenir.', cards:[['ORTAK DİL','Aynı problemi aynı terminolojiyle konuş.'],['SORUMLULUK','Kararın sahibini ve doğrulama yöntemini netleştir.'],['STANDARD','Tekrarlanan çözümleri kurumsal standarda çevir.'],['ÖĞRENME','Saha geri bildirimini sonraki platforma taşı.']]}
+  ],
+  en: [
+    {no:'01', kicker:'PROBLEM DEFINITION', title:'I define the right problem first', text:'Before designing a solution, I bound the real production, performance, and user need at system level.', cards:[['SYSTEM BOUNDARY','Define inputs, outputs, and critical constraints.'],['FUNCTION','Define what the system must achieve, not only what the part is.'],['RISK','Make the most expensive assumption visible early.'],['TARGET','Turn success criteria into measurable targets.']]},
+    {no:'02', kicker:'ENGINEERING DECISION', title:'I eliminate options with criteria', text:'Instead of “I think this is better,” I compare options through rigidity, access, cost, manufacturability, serviceability, and verifiability.', cards:[['ALTERNATIVE','Generate at least two viable options.'],['CRITERIA','Weight the technical criteria driving the decision.'],['TRADE-OFF','Make every benefit and its cost visible.'],['DECISION','Record why the option was selected.']]},
+    {no:'03', kicker:'VALIDATION', title:'I validate assumptions', text:'I use calculations, tolerance analysis, simulation, or prototype testing to validate critical assumptions as early as practical.', cards:[['CALCULATION','Start with first-order physical checks.'],['SIMULATION','Study critical behavior before manufacturing.'],['MEASUREMENT','Collect data from the real system.'],['CLOSE THE LOOP','Feed the difference between model and field back into design.']]},
+    {no:'04', kicker:'MANUFACTURABILITY', title:'I do not ask for precision without function', text:'I question the cost of unnecessary precision; I protect critical accuracy while bringing manufacturing method into the design from the beginning.', cards:[['FUNCTION','Tighten tolerances only when function requires it.'],['PROCESS','Account for manufacturing capability early.'],['STANDARD','Question whether a standard solution can replace a custom one.'],['COST','Evaluate technical gain together with total product cost.']]},
+    {no:'05', kicker:'LEADERSHIP', title:'I turn technical decisions into team language', text:'Engineering scales when decisions become understandable, repeatable, and auditable across the team—not only inside one person’s expertise.', cards:[['COMMON LANGUAGE','Discuss the same problem with the same terminology.'],['OWNERSHIP','Make decision owner and validation method explicit.'],['STANDARD','Turn recurring solutions into organizational standards.'],['LEARNING','Carry field feedback into the next platform.']]}
+  ]
+};
+let activePhilosophy=0;
+function renderPhilosophy(){
+  const root=document.getElementById('philosophy-module'); if(!root)return;
+  const data=philosophyData[currentLanguage][activePhilosophy];
+  root.innerHTML=`<div class="philosophy-tabs">${philosophyData[currentLanguage].map((d,i)=>`<button class="philosophy-tab ${i===activePhilosophy?'active':''}" data-philosophy="${i}"><strong>${d.no} / ${d.kicker}</strong><span>${d.title}</span></button>`).join('')}</div><article class="philosophy-detail"><div class="philosophy-detail-top"><div class="philosophy-detail-kicker">${data.kicker}</div><h3>${data.title}</h3><p>${data.text}</p></div><div class="philosophy-stack">${data.cards.map((c,i)=>`<div class="philosophy-card"><div class="n">0${i+1}</div><h4>${c[0]}</h4><p>${c[1]}</p></div>`).join('')}</div></article>`;
+  root.querySelectorAll('[data-philosophy]').forEach(btn=>btn.onclick=()=>{activePhilosophy=Number(btn.dataset.philosophy);renderPhilosophy()});
+  reObserve();
+}
+function initProfile(){ renderPhilosophy(); }
+
 // ─── SPA ROUTING SYSTEM ───
 function router() {
   const hash = window.location.hash || '#/';
@@ -3450,6 +3623,12 @@ function router() {
     document.getElementById('nav-decisions').classList.add('active-link');
     document.getElementById('m-nav-decisions').classList.add('active-link');
     initDecisions();
+    reObserve();
+  } else if (hash.startsWith('#/profile')) {
+    document.getElementById('view-profile').classList.add('active');
+    document.getElementById('nav-profile').classList.add('active-link');
+    document.getElementById('m-nav-profile').classList.add('active-link');
+    initProfile();
     reObserve();
   } else if (hash.startsWith('#/blog')) {
     document.getElementById('view-blog').classList.add('active');
