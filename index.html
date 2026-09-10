@@ -762,6 +762,21 @@ footer {
 @media (max-width: 768px) { #mouse-glow { display: none; } }
 
 .amber { color: var(--amber); }
+
+/* ENGINEERING LAB V1 */
+.lab-hero{padding:140px 0 70px;position:relative;overflow:hidden}
+.lab-hero:before{content:"LAB / SYSTEMS / VALIDATION";position:absolute;right:-20px;top:70px;font:700 90px/1 "JetBrains Mono",monospace;color:rgba(255,255,255,.025);white-space:nowrap}
+.lab-kicker{display:inline-flex;gap:10px;align-items:center;font:700 11px/1 "JetBrains Mono",monospace;letter-spacing:2px;color:var(--amber);border:1px solid rgba(245,158,11,.25);padding:9px 12px;background:rgba(245,158,11,.04)}
+.lab-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:42px}
+.lab-card{position:relative;min-height:230px;padding:28px;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));border:1px solid var(--border);transition:.3s;overflow:hidden}
+.lab-card:hover{transform:translateY(-5px);border-color:rgba(245,158,11,.45);box-shadow:0 18px 45px rgba(0,0,0,.22)}
+.lab-card .lab-index{font:700 11px "JetBrains Mono";color:var(--amber);letter-spacing:2px}
+.lab-card i.lab-icon{font-size:30px;color:var(--amber);margin:28px 0 20px;display:block}
+.lab-card h3{font-size:22px;margin:0 0 10px}.lab-card p{color:var(--mist);line-height:1.7;font-size:13px;margin:0 0 22px}
+.lab-tools{display:flex;flex-wrap:wrap;gap:7px}.lab-chip{font:600 9px "JetBrains Mono";letter-spacing:.7px;color:var(--mist);border:1px solid var(--border);padding:7px 9px;background:rgba(0,0,0,.12)}
+.lab-console{margin-top:55px;border:1px solid var(--border);background:var(--ink-2);padding:28px}.lab-console-head{display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid var(--border);padding-bottom:20px;margin-bottom:22px}.lab-console-title{font:700 14px "JetBrains Mono";letter-spacing:1px}.lab-status{font:700 9px "JetBrains Mono";color:var(--terminal-green);border:1px solid rgba(52,211,153,.3);padding:7px 9px}.lab-tool-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.lab-tool-link{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border:1px solid var(--border);color:var(--white);background:rgba(255,255,255,.02);transition:.25s}.lab-tool-link:hover{border-color:rgba(245,158,11,.45);color:var(--amber);transform:translateX(3px)}.lab-tool-link span:first-child{display:flex;align-items:center;gap:12px;font-size:12px}.lab-tool-link small{font:9px "JetBrains Mono";color:var(--mist)}
+@media(max-width:900px){.lab-grid{grid-template-columns:1fr 1fr}.lab-tool-list{grid-template-columns:1fr}}
+@media(max-width:600px){.lab-hero{padding-top:115px}.lab-hero:before{font-size:45px}.lab-grid{grid-template-columns:1fr}.lab-console{padding:18px}.lab-console-head{align-items:flex-start;flex-direction:column}}
 </style>
 </head>
 <body>
@@ -791,6 +806,7 @@ footer {
     <div class="nav-links">
       <a href="#/" id="nav-home" data-i18n="nav_home">Portfolyo</a>
       <a href="#/blog" id="nav-blog" data-i18n="nav_blog">Bilgi Bankası</a>
+      <a href="#/lab" id="nav-lab" data-i18n="nav_lab">Engineering Lab</a>
       <a href="#/tools" id="nav-tools" data-i18n="nav_tools">Hesaplama Paneli</a>
     </div>
 
@@ -810,6 +826,9 @@ footer {
     </a>
     <a href="#/blog" class="m-link" id="m-nav-blog">
       <i class="fa-solid fa-book-open"></i> <span data-i18n="nav_blog">Bilgi Bankası</span>
+    </a>
+    <a href="#/lab" class="m-link" id="m-nav-lab">
+      <i class="fa-solid fa-flask"></i> <span data-i18n="nav_lab">Engineering Lab</span>
     </a>
     <a href="#/tools" class="m-link" id="m-nav-tools">
       <i class="fa-solid fa-calculator"></i> <span data-i18n="nav_tools">Hesaplama Paneli</span>
@@ -1002,6 +1021,55 @@ footer {
           <div class="blog-reader" id="blog-reader">
             <!-- Driven via script -->
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========================================== -->
+<!-- =========== VIEW: ENGINEERING LAB ======== -->
+<!-- ========================================== -->
+<div id="view-lab" class="spa-view">
+  <section class="lab-hero">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="lab-kicker"><i class="fa-solid fa-flask"></i> ENGINEERING LAB / V1</span>
+        <h1 class="section-title" style="margin-top:24px;">ENGINEERING<br><span>LAB</span></h1>
+        <p class="section-sub" data-i18n="lab_sub">CNC sistem geliştirme, mekanik tasarım ve tolerans doğrulaması için tek merkezde mühendislik araçları.</p>
+      </div>
+
+      <div class="lab-grid reveal">
+        <div class="lab-card">
+          <div class="lab-index">01 / CNC & MOTION</div><i class="fa-solid fa-gears lab-icon"></i>
+          <h3 data-i18n="lab_cnc_title">CNC & Hareket Sistemleri</h3>
+          <p data-i18n="lab_cnc_desc">Kesme parametreleri, motor torku ve vidalı mil tahrik davranışını hızlıca ön doğrulama.</p>
+          <div class="lab-tools"><span class="lab-chip">Vc</span><span class="lab-chip">MOTOR TORQUE</span><span class="lab-chip">BALL SCREW</span></div>
+        </div>
+        <div class="lab-card">
+          <div class="lab-index">02 / MECHANICAL</div><i class="fa-solid fa-cubes lab-icon"></i>
+          <h3 data-i18n="lab_mech_title">Mechanical Systems</h3>
+          <p data-i18n="lab_mech_desc">Aktüatör kuvveti, dişli geometrisi ve yapısal sehim gibi temel mekanik kontroller.</p>
+          <div class="lab-tools"><span class="lab-chip">PISTON</span><span class="lab-chip">HELICAL GEAR</span><span class="lab-chip">BEAM</span></div>
+        </div>
+        <div class="lab-card">
+          <div class="lab-index">03 / VALIDATION</div><i class="fa-solid fa-layer-group lab-icon"></i>
+          <h3 data-i18n="lab_val_title">Tolerance & Validation</h3>
+          <p data-i18n="lab_val_desc">Montaj toleranslarını Worst Case ve RSS yöntemleriyle inceleyerek tasarım riskini görünür hale getirme.</p>
+          <div class="lab-tools"><span class="lab-chip">STACK-UP</span><span class="lab-chip">WORST CASE</span><span class="lab-chip">RSS</span></div>
+        </div>
+      </div>
+
+      <div class="lab-console reveal">
+        <div class="lab-console-head"><div><div class="section-label" data-i18n="lab_console_label">LIVE TOOLBOX</div><div class="lab-console-title" data-i18n="lab_console_title">ENGINEERING VALIDATION CONSOLE</div></div><span class="lab-status"><i class="fa-solid fa-circle"></i> READY</span></div>
+        <div class="lab-tool-list">
+          <a class="lab-tool-link" href="#/tools?tool=vc"><span><i class="fa-solid fa-rotate"></i><b data-i18n="t_vc_tab">Kesme Hızı</b></span><small>Vc</small></a>
+          <a class="lab-tool-link" href="#/tools?tool=piston"><span><i class="fa-solid fa-compress"></i><b data-i18n="t_piston_tab">Piston Kuvveti</b></span><small>ISO 6431</small></a>
+          <a class="lab-tool-link" href="#/tools?tool=helis"><span><i class="fa-solid fa-gear"></i><b data-i18n="t_helis_tab">Helis Dişli</b></span><small>GEAR</small></a>
+          <a class="lab-tool-link" href="#/tools?tool=tork"><span><i class="fa-solid fa-bolt"></i><b data-i18n="t_tork_tab">Motor Tork</b></span><small>T=P/ω</small></a>
+          <a class="lab-tool-link" href="#/tools?tool=vidali"><span><i class="fa-solid fa-screwdriver"></i><b data-i18n="t_vidali_tab">Vidalı Mil</b></span><small>DRIVE</small></a>
+          <a class="lab-tool-link" href="#/tools?tool=tolerance-tool"><span><i class="fa-solid fa-layer-group"></i><b data-i18n="t_tolerance_tab">Tolerans Analizi</b></span><small>WC / RSS</small></a>
+          <a class="lab-tool-link" href="#/tools?tool=beam"><span><i class="fa-solid fa-ruler-horizontal"></i><b data-i18n="t_beam_tab">Sehim Analizi</b></span><small>DEFLECTION</small></a>
         </div>
       </div>
     </div>
@@ -1229,6 +1297,7 @@ footer {
 const translations = {
   tr: {
     nav_title: "CNC & Ar-Ge Teknik Lideri",
+     nav_lab: "Engineering Lab",
     nav_home: "Portfolyo",
     nav_blog: "Bilgi Bankası",
     nav_tools: "Hesaplama Paneli",
@@ -1266,6 +1335,15 @@ const translations = {
     blog_sec_sub: "Tasarım kararları, hesaplamalı mühendislik, saha tecrübesi ve üretim teknolojileri liderliği üzerine teknik yazılar.",
     blog_sidebar_title: "YAZILAR",
     tools_sec_label: "Mühendislik Doğrulama Araçları",
+     lab_sub: "CNC sistem geliştirme, mekanik tasarım ve tolerans doğrulaması için tek merkezde mühendislik araçları.",
+     lab_cnc_title: "CNC & Hareket Sistemleri",
+     lab_cnc_desc: "Kesme parametreleri, motor torku ve vidalı mil tahrik davranışını hızlıca ön doğrulama.",
+     lab_mech_title: "Mekanik Sistemler",
+     lab_mech_desc: "Aktüatör kuvveti, dişli geometrisi ve yapısal sehim gibi temel mekanik kontroller.",
+     lab_val_title: "Tolerans & Doğrulama",
+     lab_val_desc: "Montaj toleranslarını Worst Case ve RSS yöntemleriyle inceleyerek tasarım riskini görünür hale getirme.",
+     lab_console_label: "CANLI ARAÇ KUTUSU",
+     lab_console_title: "MÜHENDİSLİK DOĞRULAMA KONSOLU",
     tools_sec_title: "TEKNİK<br><span>DOĞRULAMA PANELİ</span>",
     tools_sec_sub: "CNC sistem tasarımında karar hızını artıran, ISO ve DIN standartlarına dayalı hesaplama ve ön doğrulama arayüzleri.",
     t_vc_tab: "Kesme Hızı",
@@ -1328,6 +1406,7 @@ const translations = {
   },
   en: {
     nav_title: "CNC & R&D Technical Leader",
+     nav_lab: "Engineering Lab",
     nav_home: "Portfolio",
     nav_blog: "Knowledge Base",
     nav_tools: "Calculation Panel",
@@ -1365,6 +1444,15 @@ const translations = {
     blog_sec_sub: "Technical writing on design decisions, computational engineering, field experience, and manufacturing technology leadership.",
     blog_sidebar_title: "ARTICLES",
     tools_sec_label: "Engineering Validation Tools",
+     lab_sub: "A focused engineering toolbox for CNC system development, mechanical design, and tolerance validation.",
+     lab_cnc_title: "CNC & Motion Systems",
+     lab_cnc_desc: "Rapid preliminary checks for cutting parameters, motor torque, and ball-screw drive behavior.",
+     lab_mech_title: "Mechanical Systems",
+     lab_mech_desc: "Core mechanical checks covering actuator force, gear geometry, and structural deflection.",
+     lab_val_title: "Tolerance & Validation",
+     lab_val_desc: "Make assembly tolerance risk visible using Worst Case and RSS stack-up methods.",
+     lab_console_label: "LIVE TOOLBOX",
+     lab_console_title: "ENGINEERING VALIDATION CONSOLE",
     tools_sec_title: "TECHNICAL<br><span>VALIDATION PANEL</span>",
     tools_sec_sub: "Calculation and preliminary validation interfaces based on ISO and DIN standards, built to accelerate decisions in CNC system design.",
     t_vc_tab: "Cutting Speed",
@@ -2701,7 +2789,12 @@ function router() {
     link.classList.remove('active-link');
   });
 
-  if (hash.startsWith('#/blog')) {
+  if (hash.startsWith('#/lab')) {
+    document.getElementById('view-lab').classList.add('active');
+    document.getElementById('nav-lab').classList.add('active-link');
+    document.getElementById('m-nav-lab').classList.add('active-link');
+    reObserve();
+  } else if (hash.startsWith('#/blog')) {
     document.getElementById('view-blog').classList.add('active');
     document.getElementById('nav-blog').classList.add('active-link');
     document.getElementById('m-nav-blog').classList.add('active-link');
@@ -2721,6 +2814,12 @@ function router() {
     document.getElementById('nav-tools').classList.add('active-link');
     document.getElementById('m-nav-tools').classList.add('active-link');
     
+    const toolParam = new URLSearchParams(hash.split('?')[1] || '').get('tool');
+    if (toolParam) {
+      const tab = document.querySelector(`.tool-tab[data-target=\"t-${toolParam}\"]`);
+      if (tab) tab.click();
+    }
+
     // Auto-select first tab inside tools panel if none is active
     setTimeout(() => {
       const activePanel = document.querySelector('.tool-panel.active');
