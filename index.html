@@ -869,7 +869,7 @@ footer {
 .case-library-card p{font-size:12px;color:rgba(228,232,237,.60);line-height:1.6;margin:0;}
 @media(max-width:900px){.case-feature-grid{grid-template-columns:1fr}.case-steps{grid-template-columns:repeat(2,1fr)}.case-detail-grid,.case-mini-grid,.case-library-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.case-hero{padding-top:94px}.case-steps,.case-detail-grid,.case-mini-grid,.case-library-grid{grid-template-columns:1fr}.case-card{padding:21px}}
-</style>
+\n/* ================= V6: ENGINEERING DECISIONS ================= */\n.decision-hero{min-height:100vh;padding:140px 0 90px;background:radial-gradient(circle at 78% 8%,rgba(245,158,11,.08),transparent 34%),linear-gradient(180deg,rgba(255,255,255,.015),transparent 25%)}\n.decision-kicker{display:inline-flex;align-items:center;gap:9px;font:700 11px/1.2 var(--mono);letter-spacing:.13em;color:var(--amber);border:1px solid rgba(245,158,11,.22);background:rgba(245,158,11,.05);padding:9px 12px;border-radius:999px}\n.decision-toolbar{display:flex;justify-content:space-between;align-items:center;gap:18px;margin:42px 0 24px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}\n.decision-filters{display:flex;flex-wrap:wrap;gap:8px}\n.decision-filter{border:1px solid var(--line);background:transparent;color:var(--mist);padding:9px 12px;border-radius:999px;font:700 10px var(--mono);letter-spacing:.08em;cursor:pointer;transition:.2s}\n.decision-filter:hover,.decision-filter.active{border-color:rgba(245,158,11,.45);color:var(--amber);background:rgba(245,158,11,.07)}\n.decision-status{font:700 10px var(--mono);letter-spacing:.1em;color:var(--terminal-green);white-space:nowrap}.decision-status i{font-size:7px}\n.decision-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:18px}\n.decision-panel{border:1px solid var(--line);background:rgba(255,255,255,.022);border-radius:16px;overflow:hidden;min-width:0}\n.decision-main{padding:28px}.decision-side{padding:0}\n.decision-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:22px}.decision-no{font:700 11px var(--mono);color:var(--amber);letter-spacing:.1em}.decision-year{font:700 10px var(--mono);color:var(--mist);border:1px solid var(--line);padding:7px 9px;border-radius:999px}\n.decision-title{font-size:clamp(28px,3vw,44px);line-height:1.02;letter-spacing:-.035em;margin:8px 0 12px;color:var(--white)}\n.decision-context{font:500 13px/1.7 var(--sans);color:var(--mist);max-width:760px}.decision-tags{display:flex;flex-wrap:wrap;gap:7px;margin:18px 0 24px}.decision-tag{font:700 9px var(--mono);color:var(--mist);padding:6px 8px;border:1px solid var(--line);border-radius:999px}\n.decision-score-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:18px 0 26px}.decision-score{padding:12px;border:1px solid var(--line);background:rgba(0,0,0,.08);border-radius:10px}.decision-score b{display:block;font:800 18px var(--mono);color:var(--white)}.decision-score span{display:block;font:700 8px var(--mono);color:var(--mist);margin-top:5px;letter-spacing:.06em}\n.decision-step-list{display:grid;gap:8px;margin-top:12px}.decision-step{display:grid;grid-template-columns:42px 1fr auto;gap:12px;align-items:center;padding:13px 14px;border:1px solid var(--line);border-radius:11px;background:transparent;cursor:pointer;transition:.2s}.decision-step:hover,.decision-step.active{border-color:rgba(245,158,11,.35);background:rgba(245,158,11,.055)}.decision-step-num{font:800 11px var(--mono);color:var(--amber)}.decision-step-title{font:800 11px var(--mono);letter-spacing:.05em;color:var(--white)}.decision-step-score{font:800 10px var(--mono);color:var(--mist)}\n.decision-detail{border-top:1px solid var(--line);margin-top:24px;padding-top:24px}.decision-detail-kicker{font:800 9px var(--mono);letter-spacing:.12em;color:var(--amber);margin-bottom:8px}.decision-detail h3{margin:0 0 10px;font-size:24px;color:var(--white)}.decision-detail p{margin:0;font:500 13px/1.75 var(--sans);color:var(--mist)}\n.decision-table{width:100%;border-collapse:collapse}.decision-table th,.decision-table td{padding:13px 15px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.decision-table th{font:800 9px var(--mono);letter-spacing:.09em;color:var(--mist);background:rgba(255,255,255,.02)}.decision-table td{font:500 11px/1.45 var(--sans);color:var(--white)}.decision-table td small{display:block;color:var(--mist);font:700 8px var(--mono);margin-top:3px}.decision-check{color:var(--terminal-green);font-weight:800}.decision-warn{color:var(--amber);font-weight:800}.decision-risk{color:var(--danger);font-weight:800}\n.decision-verdict{margin-top:18px;border:1px solid rgba(34,197,94,.22);background:rgba(34,197,94,.045);border-radius:12px;padding:16px}.decision-verdict-label{font:800 9px var(--mono);color:var(--terminal-green);letter-spacing:.12em;margin-bottom:7px}.decision-verdict p{margin:0;font:600 12px/1.65 var(--sans);color:var(--white)}\n.decision-library{border-left:1px solid var(--line);background:rgba(0,0,0,.08);display:flex;flex-direction:column}.decision-library-head{padding:18px 18px 12px;border-bottom:1px solid var(--line)}.decision-library-head .section-label{margin-bottom:4px}.decision-library-grid{display:grid;gap:1px;background:var(--line)}.decision-card{border:0;background:rgba(15,18,22,.96);padding:18px;cursor:pointer;text-align:left;transition:.2s}.decision-card:hover,.decision-card.active{background:rgba(245,158,11,.055)}.decision-card-num{font:800 9px var(--mono);color:var(--amber);letter-spacing:.08em}.decision-card h4{font-size:17px;line-height:1.2;color:var(--white);margin:7px 0}.decision-card p{font:500 11px/1.55 var(--sans);color:var(--mist);margin:0}.decision-card-meta{display:flex;justify-content:space-between;gap:10px;margin-top:12px;font:700 8px var(--mono);color:var(--mist)}\n@media(max-width:980px){.decision-grid{grid-template-columns:1fr}.decision-library{border-left:0;border-top:1px solid var(--line)}.decision-score-grid{grid-template-columns:repeat(2,1fr)}.decision-toolbar{align-items:flex-start;flex-direction:column}.decision-status{padding-top:2px}}\n@media(max-width:600px){.decision-hero{padding-top:112px}.decision-main{padding:20px}.decision-title{font-size:32px}.decision-score-grid{grid-template-columns:1fr 1fr}.decision-step{grid-template-columns:34px 1fr}.decision-step-score{display:none}.decision-table{display:block;overflow-x:auto;white-space:nowrap}}\n</style>
 
 </head>
 <body>
@@ -918,6 +918,7 @@ footer {
       <a href="#/lab" id="nav-lab" data-i18n="nav_lab">Engineering Lab</a>
       <a href="#/architecture" id="nav-architecture" data-i18n="nav_architecture">CNC Architecture</a>
       <a href="#/cases" id="nav-cases" data-i18n="nav_cases">Case Studies</a>
+      <a href="#/decisions" id="nav-decisions" data-i18n="nav_decisions">Engineering Decisions</a>
       <a href="#/tools" id="nav-tools" data-i18n="nav_tools">Hesaplama Paneli</a>
     </div>
 
@@ -942,6 +943,7 @@ footer {
       <i class="fa-solid fa-flask"></i> <span data-i18n="nav_lab">Engineering Lab</span>
     </a>
     <a href="#/cases" class="m-link" id="m-nav-cases" data-i18n="nav_cases">Case Studies</a>
+    <a href="#/decisions" class="m-link" id="m-nav-decisions"><i class="fa-solid fa-scale-balanced"></i> <span data-i18n="nav_decisions">Engineering Decisions</span></a>
     <a href="#/architecture" class="m-link" id="m-nav-architecture">
       <i class="fa-solid fa-diagram-project"></i> <span data-i18n="nav_architecture">CNC Architecture</span>
     </a>
@@ -1225,6 +1227,34 @@ footer {
   </section>
 </div>
 
+
+
+<!-- ========================================== -->
+<!-- ===== VIEW: ENGINEERING DECISIONS ======= -->
+<!-- ========================================== -->
+<div id="view-decisions" class="spa-view">
+  <section class="decision-hero">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="decision-kicker"><i class="fa-solid fa-scale-balanced"></i> ENGINEERING DECISIONS / DECISION LOG</span>
+        <h1 class="section-title" style="margin-top:24px;" data-i18n="decisions_title">MÜHENDİSLİK<br><span>KARARLARI</span></h1>
+        <p class="section-sub" data-i18n="decisions_sub">Bir mühendislik kararını yalnızca sonuç üzerinden değil; alternatifler, kriterler, riskler ve doğrulama planı üzerinden inceleyen karar günlüğü.</p>
+      </div>
+
+      <div class="decision-toolbar reveal">
+        <div class="decision-filters" id="decision-filters">
+          <button class="decision-filter active" data-decision-filter="all" type="button" data-i18n="decisions_all">ALL DECISIONS</button>
+          <button class="decision-filter" data-decision-filter="architecture" type="button" data-i18n="decisions_arch">ARCHITECTURE</button>
+          <button class="decision-filter" data-decision-filter="motion" type="button" data-i18n="decisions_motion">MOTION</button>
+          <button class="decision-filter" data-decision-filter="manufacturing" type="button" data-i18n="decisions_mfg">MANUFACTURING</button>
+        </div>
+        <div class="decision-status"><i class="fa-solid fa-circle"></i> <span data-i18n="decisions_live">DECISION FRAMEWORK / ACTIVE</span></div>
+      </div>
+
+      <div id="decision-module" class="decision-module reveal"></div>
+    </div>
+  </section>
+</div>
 
 <!-- ========================================== -->
 <!-- ===== VIEW: CNC ARCHITECTURE ============ -->
@@ -1625,6 +1655,11 @@ const translations = {
      nav_lab: "Engineering Lab",
     nav_architecture: "CNC Architecture",
     nav_cases: "Case Studies",
+    nav_decisions: "Engineering Decisions",
+    decisions_title: "MÜHENDİSLİK<br><span>KARARLARI</span>",
+    decisions_sub: "Bir mühendislik kararını yalnızca sonuç üzerinden değil; alternatifler, kriterler, riskler ve doğrulama planı üzerinden inceleyen karar günlüğü.",
+    decisions_all: "TÜM KARARLAR", decisions_arch: "MİMARİ", decisions_motion: "HAREKET", decisions_mfg: "ÜRETİM",
+    decisions_live: "KARAR ÇERÇEVESİ / AKTİF",
     cases_sub: "A technical case engine that maps real system-development work through problem → engineering decision → solution → verification → outcome.",
     cases_filter_all: "ALL CASES", cases_filter_rd: "R&D", cases_filter_arch: "ARCHITECTURE", cases_filter_val: "VALIDATION",
     nav_cases: "Case Studies",
@@ -1767,6 +1802,11 @@ const translations = {
   en: {
     nav_title: "CNC & R&D Technical Leader",
      nav_lab: "Engineering Lab",
+    nav_decisions: "Engineering Decisions",
+    decisions_title: "ENGINEERING<br><span>DECISIONS</span>",
+    decisions_sub: "A decision log that examines engineering choices through alternatives, criteria, risks, and verification plans—not outcomes alone.",
+    decisions_all: "ALL DECISIONS", decisions_arch: "ARCHITECTURE", decisions_motion: "MOTION", decisions_mfg: "MANUFACTURING",
+    decisions_live: "DECISION FRAMEWORK / ACTIVE",
     nav_home: "Portfolio",
     nav_blog: "Knowledge Base",
     nav_tools: "Calculation Panel",
@@ -1997,6 +2037,7 @@ function translateUI() {
   renderPortfolio();
   renderTubitak();
   renderBlogList();
+  renderDecisions();
   
   // Refresh calculators to reload placeholders and outputs with correct language units
   calcVc();
@@ -3329,6 +3370,52 @@ function updateArchitectureDetail(key){
   if(specs) specs.innerHTML=item.specs.map(s=>`<div class="arch-spec"><small>${s[0]}</small><strong>${s[1]}</strong></div>`).join('');
 }
 
+// ─── ENGINEERING DECISIONS / V6 ───
+const decisionData = {
+  tr: [
+    {id:'axis-layout',cat:'architecture',num:'01',year:'SYSTEM DESIGN',title:'5 Eksen Kinematiği: Döner Kafa mı, Döner Tabla mı?',summary:'Aynı işleme kabiliyetini farklı kinematik mimarilerle elde etmenin; rijitlik, erişim, kablo yönetimi ve bakım etkileri üzerinden değerlendirilmesi.',tags:['5 AXIS','KINEMATICS','RIGIDITY','ACCESS'],scores:[['RİJİTLİK','8.8 / 10'],['ERİŞİM','9.2 / 10'],['MALİYET','7.1 / 10'],['BAKIM','8.0 / 10']],criteria:[['Rijitlik','Hareketli kütlenin kesiciye etkisi','8.8','positive'],['Erişim','Açılı yüzeylerde takım erişimi','9.2','positive'],['Kablo yönetimi','Enerji zinciri / döner eklem karmaşıklığı','7.4','warn'],['Bakım','Servis erişimi ve parça değişimi','8.0','positive']],steps:[['01','PROBLEM','5 eksenli işleme kabiliyeti gerekiyor; fakat kinematik seçim yalnızca eksen sayısıyla yapılamaz.','8.7'],['02','KRİTERLER','Rijitlik, erişim, toplam hareketli kütle, kablo yönetimi ve bakım maliyeti ağırlıklandırılır.','9.0'],['03','ALTERNATİFLER','Döner kafa, döner tabla ve hibrit mimari aynı fonksiyon üzerinden karşılaştırılır.','8.4'],['04','KARAR','Makine kullanım senaryosu ve proses önceliklerine göre en düşük toplam sistem riski sunan mimari seçilir.','9.1']],verdict:'Karar yalnızca geometrik erişime göre değil; dinamik davranış, bakım ve üretilebilirlik birlikte değerlendirilerek verilir.'},
+    {id:'servo-drive',cat:'motion',num:'02',year:'MOTION SYSTEM',title:'Servo Tork Rezervi: Nominal Değerle Yetinmeli miyim?',summary:'Motor seçimini yalnızca nominal tork üzerinden değil; ivmelenme, verim, vida mekanizması ve emniyet rezervi üzerinden ele alan karar çerçevesi.',tags:['SERVO','TORQUE','ACCELERATION','SAFETY'],scores:[['İVME','8.9 / 10'],['REZERV','9.3 / 10'],['VERİM','8.1 / 10'],['TERMAL','7.8 / 10']],criteria:[['İvme torku','Dinamik çevrimde pik ihtiyaç','8.9','positive'],['Tork rezervi','Nominalin üzerindeki kapasite','9.3','positive'],['Verim','Vida/aktarma kayıpları','8.1','positive'],['Termal davranış','Sürekli çalışma sıcaklığı','7.8','warn']],steps:[['01','PROBLEM','Aynı yükü taşıyan iki eksen, farklı çevrim sürelerinde çok farklı motor tork ihtiyaçlarına sahip olabilir.','8.5'],['02','HESAP','Statik yük, ivme torku, sürtünme ve verim kayıpları birlikte modellenir.','9.2'],['03','REZERV','Seçilen motor/drive kombinasyonunun pik ve sürekli çalışma rezervi ayrı kontrol edilir.','9.4'],['04','KARAR','Nominal torku karşılayan en küçük motor yerine, dinamik çevrimi termal ve kontrol rezerviyle karşılayan çözüm seçilir.','9.0']],verdict:'Doğru soru “motor kaç Nm?” değil; “çevrim boyunca gerekli tork-zaman profilini güvenli rezervle karşılıyor mu?” sorusudur.'},
+    {id:'frame-process',cat:'manufacturing',num:'03',year:'MANUFACTURING',title:'Kaynaklı Gövde mi, Döküm Gövde mi?',summary:'CNC gövdesinde malzeme ve imalat yöntemini ilk yatırım maliyetinden çok rijitlik, sönümleme, üretilebilirlik ve ölçeklenebilirlik ile değerlendirme.',tags:['STRUCTURE','WELDED','CASTING','DFM'],scores:[['RİJİTLİK','8.4 / 10'],['SÖNÜMLEME','8.9 / 10'],['ÜRETİLEBİLİRLİK','9.1 / 10'],['ÖLÇEK','8.0 / 10']],criteria:[['Rijitlik','Kesme yükleri altında deformasyon','8.4','positive'],['Sönümleme','Titreşim davranışı','8.9','positive'],['Üretilebilirlik','Tedarik ve atölye yeteneği','9.1','positive'],['Ölçeklenebilirlik','Yeni gövde boyutlarına uyarlama','8.0','positive']],steps:[['01','İHTİYAÇ','Gövde seçimi makinenin dinamik davranışını, üretim süresini ve maliyetini birlikte etkiler.','8.6'],['02','ALTERNATİF','Kaynaklı yapı; döküm yapı; hibrit yaklaşım teknik kriterlerle karşılaştırılır.','8.7'],['03','DOĞRULAMA','FEA, kaynak sonrası gerilim giderme, işleme referansları ve montaj ölçüm planı birlikte ele alınır.','9.0'],['04','KARAR','Ürün ailesi için üretim kabiliyeti mevcutsa hibrit/kaynaklı yapı; yüksek sönümleme kritikse döküm ağırlığı artırılır.','8.8']],verdict:'İmalat yöntemi, yalnızca “hangisi daha ucuz?” değil; makinenin dinamik karakteri ve şirketin üretim yetkinliği birlikte düşünülerek seçilir.'}
+  ],
+  en: []
+};
+decisionData.en = JSON.parse(JSON.stringify(decisionData.tr));
+const decisionEnOverrides={
+  'axis-layout':['5-Axis Kinematics: Rotary Head or Rotary Table?','Choosing a kinematic architecture by rigidity, access, cable management, maintenance and system risk.','Rigidity','Access','Cost','Maintenance'],
+  'servo-drive':['Servo Torque Reserve: Is the Nominal Value Enough?','A decision framework that evaluates motor sizing through acceleration, efficiency, screw mechanics and safety reserve.','Acceleration','Reserve','Efficiency','Thermal'],
+  'frame-process':['Welded Frame or Cast Frame?','Evaluating CNC structure options through rigidity, damping, manufacturability and scalability rather than first cost alone.','Rigidity','Damping','Manufacturability','Scale']
+};
+for(const d of decisionData.en){
+  const o=decisionEnOverrides[d.id];
+  d.title=o[0]; d.summary=o[1]; d.scores=d.scores.map((x,i)=>[o[i+2],x[1]]); d.criteria=d.criteria.map((x,i)=>[o[i+2],x[1],x[2],x[3]]);
+}
+let activeDecisionId='axis-layout'; let activeDecisionStep=0; let activeDecisionFilter='all';
+function renderDecisions(){
+  const root=document.getElementById('decision-module'); if(!root)return;
+  const list=decisionData[currentLanguage].filter(d=>activeDecisionFilter==='all'||d.cat===activeDecisionFilter);
+  if(!list.length)return; const selected=list.find(d=>d.id===activeDecisionId)||list[0]; activeDecisionId=selected.id; activeDecisionStep=Math.min(activeDecisionStep,selected.steps.length-1); const step=selected.steps[activeDecisionStep];
+  const catLabel={architecture:'ARCHITECTURE',motion:'MOTION',manufacturing:'MANUFACTURING'}[selected.cat]||selected.cat.toUpperCase();
+  root.innerHTML=`<div class="decision-grid">
+    <article class="decision-panel decision-main">
+      <div class="decision-head"><div><div class="decision-no">${selected.num} / ${catLabel}</div><h2 class="decision-title">${selected.title}</h2><p class="decision-context">${selected.summary}</p></div><div class="decision-year">${selected.year}</div></div>
+      <div class="decision-tags">${selected.tags.map(t=>`<span class="decision-tag">${t}</span>`).join('')}</div>
+      <div class="decision-score-grid">${selected.scores.map(s=>`<div class="decision-score"><b>${s[1]}</b><span>${s[0]}</span></div>`).join('')}</div>
+      <div class="section-label">${currentLanguage==='tr'?'KARAR AKIŞI':'DECISION FLOW'}</div>
+      <div class="decision-step-list">${selected.steps.map((x,i)=>`<div class="decision-step ${i===activeDecisionStep?'active':''}" data-decision-step="${i}"><div class="decision-step-num">${x[0]}</div><div class="decision-step-title">${x[1]}</div><div class="decision-step-score">${x[3]}/10</div></div>`).join('')}</div>
+      <div class="decision-detail"><div class="decision-detail-kicker">${step[1]}</div><h3>${step[1]}</h3><p>${step[2]}</p></div>
+      <div class="decision-verdict"><div class="decision-verdict-label">${currentLanguage==='tr'?'ENGINEERING VERDICT':'ENGINEERING VERDICT'}</div><p>${selected.verdict}</p></div>
+    </article>
+    <aside class="decision-panel decision-library"><div class="decision-library-head"><div class="section-label">DECISION LIBRARY</div></div>
+      <div class="decision-library-grid">${list.map(d=>`<div class="decision-card ${d.id===activeDecisionId?'active':''}" data-decision-id="${d.id}"><div class="decision-card-num">${d.num} / ${d.year}</div><h4>${d.title}</h4><p>${d.summary}</p><div class="decision-card-meta"><span>${d.tags[0]}</span><span>${d.scores[1][1]}</span></div></div>`).join('')}</div>
+    </aside>
+  </div>
+  <div class="decision-panel" style="margin-top:18px;overflow:hidden"><table class="decision-table"><thead><tr><th>${currentLanguage==='tr'?'KRİTER':'CRITERION'}</th><th>${currentLanguage==='tr'?'MÜHENDİSLİK YORUMU':'ENGINEERING INTERPRETATION'}</th><th>${currentLanguage==='tr'?'SKOR':'SCORE'}</th><th>${currentLanguage==='tr'?'DURUM':'STATUS'}</th></tr></thead><tbody>${selected.criteria.map(c=>`<tr><td><strong>${c[0]}</strong></td><td>${c[1]}</td><td><strong>${c[2]}</strong></td><td class="${c[3]==='positive'?'decision-check':'decision-warn'}">${c[3]==='positive'?(currentLanguage==='tr'?'AVANTAJ':'ADVANTAGE'):(currentLanguage==='tr'?'DİKKAT':'ATTENTION')}</td></tr>`).join('')}</tbody></table></div>`;
+  root.querySelectorAll('[data-decision-step]').forEach(el=>el.onclick=()=>{activeDecisionStep=Number(el.dataset.decisionStep);renderDecisions()});
+  root.querySelectorAll('[data-decision-id]').forEach(el=>el.onclick=()=>{activeDecisionId=el.dataset.decisionId;activeDecisionStep=0;renderDecisions()});
+  reObserve();
+}
+function initDecisions(){ document.querySelectorAll('[data-decision-filter]').forEach(btn=>btn.onclick=()=>{activeDecisionFilter=btn.dataset.decisionFilter;activeDecisionStep=0;document.querySelectorAll('[data-decision-filter]').forEach(b=>b.classList.toggle('active',b===btn));renderDecisions()}); renderDecisions(); }
+
 // ─── SPA ROUTING SYSTEM ───
 function router() {
   const hash = window.location.hash || '#/';
@@ -3357,6 +3444,12 @@ function router() {
     document.getElementById('nav-cases').classList.add('active-link');
     document.getElementById('m-nav-cases').classList.add('active-link');
     initCaseStudies();
+    reObserve();
+  } else if (hash.startsWith('#/decisions')) {
+    document.getElementById('view-decisions').classList.add('active');
+    document.getElementById('nav-decisions').classList.add('active-link');
+    document.getElementById('m-nav-decisions').classList.add('active-link');
+    initDecisions();
     reObserve();
   } else if (hash.startsWith('#/blog')) {
     document.getElementById('view-blog').classList.add('active');
