@@ -763,6 +763,22 @@ footer {
 
 .amber { color: var(--amber); }
 
+
+/* ENGINEERING LAB V2 — MONTE CARLO */
+.mc-layout{display:grid;grid-template-columns:1fr 1.15fr;gap:18px;margin-top:18px}
+.mc-controls,.mc-chart{padding:22px;background:linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.015));border:1px solid rgba(148,163,184,.16)}
+.mc-controls h4,.mc-chart h4{margin:0 0 16px;font-size:12px;letter-spacing:1.5px;font-family:"JetBrains Mono",monospace;color:var(--amber)}
+.mc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mc-help{font-size:11px;line-height:1.65;color:var(--mist);margin:12px 0 18px}
+.mc-run{width:100%;justify-content:center;margin-top:18px}
+.mc-chart canvas{width:100%;height:260px;display:block;background:rgba(2,6,23,.25);border:1px solid rgba(148,163,184,.10)}
+.mc-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+.mc-stat{padding:12px;background:var(--ink-4);border:1px solid rgba(148,163,184,.12)}
+.mc-stat small{display:block;font:700 8px "JetBrains Mono",monospace;letter-spacing:1px;color:var(--mist);margin-bottom:6px}
+.mc-stat strong{font:700 17px "JetBrains Mono",monospace;color:var(--text)}
+.mc-badge{display:inline-flex;align-items:center;gap:7px;font:700 9px "JetBrains Mono",monospace;letter-spacing:1px;color:var(--amber);padding:7px 9px;border:1px solid rgba(245,158,11,.25);background:rgba(245,158,11,.04)}
+@media(max-width:900px){.mc-layout{grid-template-columns:1fr}.mc-stats{grid-template-columns:repeat(2,1fr)}}
+
 /* ENGINEERING LAB V1 */
 .lab-hero{padding:140px 0 70px;position:relative;overflow:hidden}
 .lab-hero:before{content:"LAB / SYSTEMS / VALIDATION";position:absolute;right:-20px;top:70px;font:700 90px/1 "JetBrains Mono",monospace;color:rgba(255,255,255,.025);white-space:nowrap}
@@ -1070,6 +1086,7 @@ footer {
           <a class="lab-tool-link" href="#/tools?tool=vidali"><span><i class="fa-solid fa-screwdriver"></i><b data-i18n="t_vidali_tab">Vidalı Mil</b></span><small>DRIVE</small></a>
           <a class="lab-tool-link" href="#/tools?tool=tolerance-tool"><span><i class="fa-solid fa-layer-group"></i><b data-i18n="t_tolerance_tab">Tolerans Analizi</b></span><small>WC / RSS</small></a>
           <a class="lab-tool-link" href="#/tools?tool=beam"><span><i class="fa-solid fa-ruler-horizontal"></i><b data-i18n="t_beam_tab">Sehim Analizi</b></span><small>DEFLECTION</small></a>
+          <a class="lab-tool-link" href="#/tools?tool=montecarlo"><span><i class="fa-solid fa-chart-area"></i><b data-i18n="t_mc_tab">Monte Carlo</b></span><small>STACK YIELD</small></a>
         </div>
       </div>
     </div>
@@ -1097,6 +1114,7 @@ footer {
           <div class="tool-tab" data-target="t-vidali"><i class="fa-solid fa-screwdriver"></i><div class="tool-tab-text"><span class="tool-tab-name" data-i18n="t_vidali_tab">Vidalı Mil</span><span class="tool-tab-sub">Lead Screw</span></div></div>
           <div class="tool-tab" data-target="t-tolerance-tool"><i class="fa-solid fa-layer-group"></i><div class="tool-tab-text"><span class="tool-tab-name" data-i18n="t_tolerance_tab">Tolerans Analizi</span><span class="tool-tab-sub">Stack-up / RSS</span></div></div>
           <div class="tool-tab" data-target="t-beam"><i class="fa-solid fa-ruler-horizontal"></i><div class="tool-tab-text"><span class="tool-tab-name" data-i18n="t_beam_tab">Sehim Analizi</span><span class="tool-tab-sub">Beam Deflection</span></div></div>
+          <div class="tool-tab" data-target="t-montecarlo"><i class="fa-solid fa-chart-area"></i><div class="tool-tab-text"><span class="tool-tab-name" data-i18n="t_mc_tab">Monte Carlo</span><span class="tool-tab-sub">Statistical Stack</span></div></div>
         </div>
 
         <div class="tools-content">
@@ -1225,6 +1243,39 @@ footer {
             <div class="result-grid">
               <div class="result-card"><span class="result-card-label" data-i18n="t_tolerance_wc">En Kötü Durum (WC)</span><div class="result-card-value" id="tol-wc">± 0.100</div></div>
               <div class="result-card highlight"><span class="result-card-label" data-i18n="t_tolerance_rss">İstatistiksel (RSS)</span><div class="result-card-value" id="tol-rss">± 0.062</div></div>
+            </div>
+          </div>
+
+          <!-- Monte Carlo Tolerans Analizi Panel -->
+          <div id="t-montecarlo" class="tool-panel">
+            <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 80V20M15 80h70" stroke-width="3"/><path d="M22 68l10-18 9 8 11-24 10 16 9-8 12 14" stroke-width="3"/><path d="M24 72c14-18 35-30 62-20" stroke-dasharray="4 4"/>
+            </svg>
+            <div class="tool-panel-title" data-i18n="t_mc_title">Monte Carlo Tolerans Yığılma Analizi</div>
+            <div class="tool-panel-formula">Monte Carlo = Σ random deviation &nbsp;|&nbsp; Yield = P(|Stack| ≤ Target)</div>
+            <div class="mc-layout">
+              <div class="mc-controls">
+                <h4 data-i18n="t_mc_setup">SIMÜLASYON AYARLARI</h4>
+                <div class="mc-grid">
+                  <div class="input-field"><label data-i18n="t_mc_samples">Numune Sayısı</label><select id="mc-samples" class="tool-select"><option value="10000">10.000</option><option value="50000" selected>50.000</option><option value="100000">100.000</option><option value="250000">250.000</option></select></div>
+                  <div class="input-field"><label data-i18n="t_mc_dist">Dağılım</label><select id="mc-dist" class="tool-select"><option value="uniform" selected data-i18n="t_mc_uniform">Uniform</option><option value="normal3" data-i18n="t_mc_normal3">Normal — ±3σ</option></select></div>
+                  <div class="input-field"><label data-i18n="t_mc_target">Montaj Hedefi ± (mm)</label><input type="number" id="mc-target" value="0.100" min="0.001" step="0.001" class="tool-input"></div>
+                  <div class="input-field"><label data-i18n="t_mc_seed">Tekrarlanabilirlik</label><select id="mc-seed" class="tool-select"><option value="1" selected data-i18n="t_mc_seed_fixed">Sabit sonuç</option><option value="0" data-i18n="t_mc_seed_random">Rastgele</option></select></div>
+                </div>
+                <p class="mc-help" data-i18n="t_mc_help">Monte Carlo, mevcut tolerans zincirindeki her parçadan rastgele sapmalar üretir. Uniform dağılımda parçanın tüm tolerans aralığı eşit olasılıklı; Normal ±3σ seçiminde tolerans sınırları yaklaşık ±3σ kabul edilir. Dağılım varsayımı gerçek proses verisiyle doğrulanmalıdır.</p>
+                <div class="mc-badge"><i class="fa-solid fa-database"></i><span id="mc-component-count">3</span> <span data-i18n="t_mc_components">BİLEŞEN</span></div>
+                <button id="btn-run-montecarlo" class="btn-primary mc-run"><i class="fa-solid fa-play"></i><span data-i18n="t_mc_run">SİMÜLASYONU ÇALIŞTIR</span></button>
+              </div>
+              <div class="mc-chart">
+                <h4 data-i18n="t_mc_distribution">SONUÇ DAĞILIMI</h4>
+                <canvas id="mc-canvas" width="900" height="320"></canvas>
+                <div class="mc-stats">
+                  <div class="mc-stat"><small data-i18n="t_mc_mean">ORTALAMA</small><strong id="mc-mean">0.000</strong></div>
+                  <div class="mc-stat"><small data-i18n="t_mc_sigma">σ</small><strong id="mc-sigma">0.000</strong></div>
+                  <div class="mc-stat"><small data-i18n="t_mc_p95">P95 ARALIĞI</small><strong id="mc-p95">±0.000</strong></div>
+                  <div class="mc-stat"><small data-i18n="t_mc_yield">HEDEF İÇİN VERİM</small><strong id="mc-yield">0.0%</strong></div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -1398,6 +1449,25 @@ const translations = {
     t_beam_e_alum: "Alüminyum (70 GPa)",
     t_beam_e_titan: "Titanyum (110 GPa)",
     t_beam_i: "Atalet Momenti I (cm⁴)",
+    t_mc_tab: "Monte Carlo",
+    t_mc_title: "Monte Carlo Tolerans Yığılma Analizi",
+    t_mc_setup: "SİMÜLASYON AYARLARI",
+    t_mc_samples: "Numune Sayısı",
+    t_mc_dist: "Dağılım",
+    t_mc_uniform: "Uniform",
+    t_mc_normal3: "Normal — ±3σ",
+    t_mc_target: "Montaj Hedefi ± (mm)",
+    t_mc_seed: "Tekrarlanabilirlik",
+    t_mc_seed_fixed: "Sabit sonuç",
+    t_mc_seed_random: "Rastgele",
+    t_mc_help: "Monte Carlo, mevcut tolerans zincirindeki her parçadan rastgele sapmalar üretir. Uniform dağılımda parçanın tüm tolerans aralığı eşit olasılıklı; Normal ±3σ seçiminde tolerans sınırları yaklaşık ±3σ kabul edilir. Dağılım varsayımı gerçek proses verisiyle doğrulanmalıdır.",
+    t_mc_components: "BİLEŞEN",
+    t_mc_run: "SİMÜLASYONU ÇALIŞTIR",
+    t_mc_distribution: "SONUÇ DAĞILIMI",
+    t_mc_mean: "ORTALAMA",
+    t_mc_sigma: "σ",
+    t_mc_p95: "P95 ARALIĞI",
+    t_mc_yield: "HEDEF İÇİN VERİM",
     btn_copy_report: "TEKNİK RAPORU KOPYALA",
     disclaimer_title: "Mühendislik Sorumluluk Reddi",
     disclaimer_desc: "Bu platformdaki tüm algoritmalar ve hesaplama araçları, ön tasarım (konsept) süreçlerini hızlandırmak amacıyla hazırlanmıştır. Nihai imalat ve üretim kararlarında ilgili uluslararası standartların (ISO, DIN vb.) ve makine mühendisliği emniyet faktörlerinin bizzat uygulanması kullanıcının sorumluluğundadır. Bu verilerin doğrudan tasarıma entegrasyonundan doğacak uyuşmazlıklarda geliştirici sorumlu tutulamaz.",
@@ -3131,7 +3201,68 @@ function calcDynamicTol() {
   document.getElementById('tol-rss').textContent = '± ' + Math.sqrt(rssSq).toFixed(3);
 }
 
-// 7. Kiriş Sehim Analizi
+
+// 7. Monte Carlo Tolerans Simülasyonu
+function mcRandom(seedObj){
+  if(seedObj===null) return Math.random();
+  seedObj.x = (1664525 * seedObj.x + 1013904223) >>> 0;
+  return seedObj.x / 4294967296;
+}
+function mcNormal(rng){
+  let u=0,v=0; while(u===0) u=rng(); while(v===0) v=rng();
+  return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);
+}
+function runMonteCarlo(){
+  if(!Array.isArray(tolRows) || !tolRows.length) return;
+  const N=parseInt(document.getElementById('mc-samples').value,10)||50000;
+  const target=Math.abs(parseFloat(document.getElementById('mc-target').value))||0.1;
+  const dist=document.getElementById('mc-dist').value;
+  const fixed=document.getElementById('mc-seed').value==='1';
+  const seedObj=fixed?{x:0x4D555354}:null;
+  const rng=()=>mcRandom(seedObj);
+  const values=new Array(N); let sum=0, sum2=0, within=0;
+  for(let i=0;i<N;i++){
+    let stack=0;
+    for(const t of tolRows){
+      const center=(t.u+t.l)/2, half=Math.abs(t.u-t.l)/2;
+      let d;
+      if(dist==='normal3'){
+        d=center + mcNormal(rng)*(half/3);
+        d=Math.max(center-half,Math.min(center+half,d));
+      } else { d=center + (rng()*2-1)*half; }
+      stack+=d;
+    }
+    values[i]=stack; sum+=stack; sum2+=stack*stack; if(Math.abs(stack)<=target) within++;
+  }
+  const mean=sum/N; const variance=Math.max(0,sum2/N-mean*mean); const sigma=Math.sqrt(variance);
+  const sorted=values.slice().sort((a,b)=>a-b); const q025=sorted[Math.floor((N-1)*0.025)]; const q975=sorted[Math.floor((N-1)*0.975)];
+  document.getElementById('mc-mean').textContent=mean.toFixed(3);
+  document.getElementById('mc-sigma').textContent=sigma.toFixed(3);
+  document.getElementById('mc-p95').textContent='['+q025.toFixed(3)+' … '+q975.toFixed(3)+']';
+  document.getElementById('mc-yield').textContent=(within/N*100).toFixed(2)+'%';
+  document.getElementById('mc-component-count').textContent=tolRows.length;
+  drawMonteCarlo(values,target);
+}
+function drawMonteCarlo(values,target){
+  const c=document.getElementById('mc-canvas'); if(!c) return; const ctx=c.getContext('2d');
+  const W=c.width,H=c.height; ctx.clearRect(0,0,W,H);
+  const bins=42, min=Math.min(...values), max=Math.max(...values), span=(max-min)||1; const counts=new Array(bins).fill(0);
+  values.forEach(v=>{let b=Math.floor((v-min)/span*bins); if(b>=bins)b=bins-1; counts[b]++;});
+  const pad={l:42,r:16,t:18,b:34}, pw=W-pad.l-pad.r, ph=H-pad.t-pad.b, maxC=Math.max(...counts);
+  ctx.strokeStyle='rgba(148,163,184,.18)'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(pad.l,pad.t); ctx.lineTo(pad.l,H-pad.b); ctx.lineTo(W-pad.r,H-pad.b); ctx.stroke();
+  const barW=pw/bins; counts.forEach((n,i)=>{const bh=(n/maxC)*ph; ctx.fillStyle='rgba(245,158,11,.55)'; ctx.fillRect(pad.l+i*barW,H-pad.b-bh,Math.max(1,barW-1),bh);});
+  const xTargetL=pad.l+(((-target)-min)/span)*pw, xTargetR=pad.l+(((target)-min)/span)*pw; ctx.fillStyle='rgba(34,197,94,.10)'; ctx.fillRect(Math.max(pad.l,xTargetL),pad.t,Math.min(W-pad.r,xTargetR)-Math.max(pad.l,xTargetL),ph);
+  ctx.strokeStyle='rgba(34,197,94,.8)'; ctx.setLineDash([5,4]); [xTargetL,xTargetR].forEach(x=>{if(x>=pad.l&&x<=W-pad.r){ctx.beginPath();ctx.moveTo(x,pad.t);ctx.lineTo(x,H-pad.b);ctx.stroke();}}); ctx.setLineDash([]);
+  ctx.fillStyle='rgba(148,163,184,.8)'; ctx.font='11px JetBrains Mono, monospace'; ctx.fillText(min.toFixed(3),pad.l,H-10); ctx.fillText(max.toFixed(3),W-pad.r-55,H-10); ctx.fillText('0',Math.max(pad.l,Math.min(W-pad.r-8,pad.l+((-min)/span)*pw)),H-10);
+}
+document.getElementById('btn-run-montecarlo').addEventListener('click',runMonteCarlo);
+document.getElementById('mc-samples').addEventListener('change',runMonteCarlo);
+document.getElementById('mc-dist').addEventListener('change',runMonteCarlo);
+document.getElementById('mc-target').addEventListener('input',()=>{clearTimeout(window.mcTimer);window.mcTimer=setTimeout(runMonteCarlo,250);});
+document.getElementById('mc-seed').addEventListener('change',runMonteCarlo);
+runMonteCarlo();
+
+// 8. Kiriş Sehim Analizi
 function calcBeam() {
   const F = parseFloat(document.getElementById('beam-f').value);
   const L = parseFloat(document.getElementById('beam-l').value);
