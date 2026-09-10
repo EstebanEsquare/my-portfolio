@@ -793,9 +793,37 @@ footer {
 .lab-console{margin-top:55px;border:1px solid var(--border);background:var(--ink-2);padding:28px}.lab-console-head{display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid var(--border);padding-bottom:20px;margin-bottom:22px}.lab-console-title{font:700 14px "JetBrains Mono";letter-spacing:1px}.lab-status{font:700 9px "JetBrains Mono";color:var(--terminal-green);border:1px solid rgba(52,211,153,.3);padding:7px 9px}.lab-tool-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.lab-tool-link{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border:1px solid var(--border);color:var(--white);background:rgba(255,255,255,.02);transition:.25s}.lab-tool-link:hover{border-color:rgba(245,158,11,.45);color:var(--amber);transform:translateX(3px)}.lab-tool-link span:first-child{display:flex;align-items:center;gap:12px;font-size:12px}.lab-tool-link small{font:9px "JetBrains Mono";color:var(--mist)}
 @media(max-width:900px){.lab-grid{grid-template-columns:1fr 1fr}.lab-tool-list{grid-template-columns:1fr}}
 @media(max-width:600px){.lab-hero{padding-top:115px}.lab-hero:before{font-size:45px}.lab-grid{grid-template-columns:1fr}.lab-console{padding:18px}.lab-console-head{align-items:flex-start;flex-direction:column}}
+
+/* TECHNICAL REPORT 2.0 */
+.report2-modal{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(2,6,23,.78);backdrop-filter:blur(12px)}
+.report2-modal.open{display:flex}
+.report2-shell{width:min(1120px,100%);max-height:min(88vh,900px);display:flex;flex-direction:column;background:var(--ink-2);border:1px solid rgba(148,163,184,.22);box-shadow:0 30px 90px rgba(0,0,0,.45)}
+.report2-head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 22px;border-bottom:1px solid rgba(148,163,184,.14)}
+.report2-kicker{font:700 9px 'JetBrains Mono',monospace;letter-spacing:2px;color:var(--amber);text-transform:uppercase}.report2-title{font:700 20px 'Space Grotesk',sans-serif;margin-top:5px}.report2-actions{display:flex;gap:8px;flex-wrap:wrap}.report2-btn{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(148,163,184,.2);background:rgba(255,255,255,.03);color:var(--white);padding:9px 12px;font:700 9px 'JetBrains Mono',monospace;cursor:pointer}.report2-btn:hover{border-color:rgba(245,158,11,.45);color:var(--amber)}.report2-close{font-size:18px;padding:8px 10px}
+.report2-body{overflow:auto;padding:22px}.report2-meta{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:10px;margin-bottom:16px}.report2-meta-card{padding:13px;border:1px solid rgba(148,163,184,.12);background:rgba(255,255,255,.02)}.report2-meta-card small{display:block;color:var(--mist);font:700 8px 'JetBrains Mono',monospace;letter-spacing:1px;margin-bottom:5px}.report2-meta-card strong{font:600 12px 'Space Grotesk',sans-serif;color:var(--white)}
+.report2-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.report2-section{border:1px solid rgba(148,163,184,.12);background:rgba(255,255,255,.018);padding:16px}.report2-section.full{grid-column:1/-1}.report2-section h4{margin:0 0 12px;font:700 9px 'JetBrains Mono',monospace;letter-spacing:1.8px;color:var(--amber);text-transform:uppercase}.report2-table{width:100%;border-collapse:collapse;font-size:11px}.report2-table th,.report2-table td{padding:8px 7px;border-bottom:1px solid rgba(148,163,184,.1);text-align:left}.report2-table th{color:var(--mist);font:700 8px 'JetBrains Mono',monospace;letter-spacing:1px}.report2-table td{color:var(--text)}.report2-result-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.report2-result{padding:12px;border:1px solid rgba(148,163,184,.12);background:var(--ink-4)}.report2-result small{display:block;color:var(--mist);font:700 8px 'JetBrains Mono',monospace;letter-spacing:1px;margin-bottom:6px}.report2-result strong{font:700 16px 'JetBrains Mono',monospace;color:var(--white)}.report2-assessment{font-size:12px;line-height:1.75;color:var(--text);margin:0}.report2-assessment .ok{color:var(--terminal-green)}.report2-assessment .warn{color:var(--amber)}.report2-footer-note{font:500 9px/1.7 'JetBrains Mono',monospace;color:var(--mist)}
+@media(max-width:900px){.report2-meta,.report2-grid{grid-template-columns:1fr}.report2-result-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.report2-modal{padding:10px}.report2-shell{max-height:95vh}.report2-head{align-items:flex-start;flex-direction:column}.report2-body{padding:14px}}
+
 </style>
 </head>
 <body>
+
+
+<!-- TECHNICAL REPORT 2.0 MODAL -->
+<div id="report2-modal" class="report2-modal" aria-hidden="true">
+  <div class="report2-shell" role="dialog" aria-modal="true" aria-labelledby="report2-title">
+    <div class="report2-head">
+      <div><div class="report2-kicker">ENGINEERING DOCUMENT / V2</div><div id="report2-title" class="report2-title">Technical Report 2.0</div></div>
+      <div class="report2-actions">
+        <button class="report2-btn" id="report2-copy"><i class="fa-regular fa-copy"></i><span data-i18n="report2_copy">RAPORU KOPYALA</span></button>
+        <button class="report2-btn" id="report2-download"><i class="fa-solid fa-download"></i><span data-i18n="report2_download">TXT İNDİR</span></button>
+        <button class="report2-btn report2-close" id="report2-close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    </div>
+    <div id="report2-content" class="report2-body"></div>
+  </div>
+</div>
 
 <!-- ────────── MOUSE GLOW ────────── -->
 <div id="mouse-glow"></div>
@@ -1469,6 +1497,8 @@ const translations = {
     t_mc_p95: "P95 ARALIĞI",
     t_mc_yield: "HEDEF İÇİN VERİM",
     btn_copy_report: "TEKNİK RAPORU KOPYALA",
+    report2_copy: "RAPORU KOPYALA",
+    report2_download: "TXT İNDİR",
     disclaimer_title: "Mühendislik Sorumluluk Reddi",
     disclaimer_desc: "Bu platformdaki tüm algoritmalar ve hesaplama araçları, ön tasarım (konsept) süreçlerini hızlandırmak amacıyla hazırlanmıştır. Nihai imalat ve üretim kararlarında ilgili uluslararası standartların (ISO, DIN vb.) ve makine mühendisliği emniyet faktörlerinin bizzat uygulanması kullanıcının sorumluluğundadır. Bu verilerin doğrudan tasarıma entegrasyonundan doğacak uyuşmazlıklarda geliştirici sorumlu tutulamaz.",
     footer_title: "CNC Sistemleri & Ar-Ge Teknik Lideri · İstanbul, TR",
@@ -1578,6 +1608,8 @@ const translations = {
     t_beam_e_titan: "Titanium (110 GPa)",
     t_beam_i: "Moment of Inertia I (cm⁴)",
     btn_copy_report: "COPY TECHNICAL REPORT",
+    report2_copy: "COPY REPORT",
+    report2_download: "DOWNLOAD TXT",
     disclaimer_title: "Engineering Disclaimer",
     disclaimer_desc: "All algorithms and calculation tools on this platform have been prepared to accelerate preliminary design (concept) processes. Implementing international standards (ISO, DIN, etc.) and engineering safety factors during final manufacturing design is the sole responsibility of the user. The developer cannot be held responsible for discrepancies arising from direct integration of these figures.",
     footer_title: "CNC Systems & R&D Technical Leader · Istanbul, TR",
@@ -3284,81 +3316,96 @@ document.getElementById('beam-i').addEventListener('input', calcBeam);
 </script>
 
 <script>
-// ─── TECHNICAL REPORT EXPORT SYSTEM ───
-document.getElementById('btn-export-report').addEventListener('click', function() {
-  const activePanel = document.querySelector('.tool-panel.active');
-  if (!activePanel) return;
-
-  const titleHeader = currentLanguage === 'tr' ? 'MÜHENDİSLİK HESAPLAMA RAPORU' : 'ENGINEERING CALCULATION REPORT';
-  const paramHeader = currentLanguage === 'tr' ? '[ PARAMETRELER ]' : '[ INPUT PARAMETERS ]';
-  const outputsHeader = currentLanguage === 'tr' ? '[ ÇIKTILAR / ANALİZ SONUÇLARI ]' : '[ OUTPUTS / ANALYSIS RESULTS ]';
-  const tolChainHeader = currentLanguage === 'tr' ? '[ TOLERANS ZİNCİRİ BİLEŞENLERİ ]' : '[ TOLERANS CHAIN COMPONENTS ]';
-  const disclaimerHeader = currentLanguage === 'tr' ? '[ SORUMLULUK REDDİ ]' : '[ DISCLAIMER ]';
-  
-  const discBody = currentLanguage === 'tr' 
-    ? "Bu teknik rapordaki değerler konsept aşamaları için matematiksel\nolarak hesaplanmıştır. İmalat parametrelerinde emniyet katsayılarının\nve standart kontrollerin uygulanması tasarımcının mesuliyetindedir."
-    : "The values in this technical report have been mathematically\ncalculated for concept phases. Application of safety factors and standard\ncontrols on the final manufacturing is the sole responsibility of the designer.";
-
-  let report = `--- ${titleHeader} ---\n`;
-  report += `Module: ${activePanel.querySelector('.tool-panel-title').textContent}\n`;
-  const formulaEl = activePanel.querySelector('.tool-panel-formula');
-  if (formulaEl) report += `Formula: ${formulaEl.textContent.trim()}\n`;
-  report += `\n${paramHeader}\n`;
-
-  activePanel.querySelectorAll('.input-field').forEach(field => {
-    const label = field.querySelector('label') ? field.querySelector('label').textContent : 'Value';
-    let val = '';
-    const input = field.querySelector('input, select');
-    if(input) {
-        if (input.tagName === 'SELECT') val = input.options[input.selectedIndex].text;
-        else if (input.type === 'range') val = field.querySelector('.input-val') ? field.querySelector('.input-val').textContent : input.value;
-        else val = input.value;
-    } else if(field.querySelector('.input-val')) {
-        val = field.querySelector('.input-val').textContent;
-    }
-    report += `- ${label}: ${val}\n`;
+// ─── TECHNICAL REPORT 2.0 ───
+function escReport(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+function activeReportPanel(){return document.querySelector('.tool-panel.active');}
+function reportInputRows(panel){
+  const rows=[];
+  panel.querySelectorAll('.input-field').forEach(field=>{
+    const label=(field.querySelector('label')?.textContent||'Value').replace(/\s+/g,' ').trim();
+    const input=field.querySelector('input,select');
+    let val='';
+    if(input){
+      if(input.tagName==='SELECT') val=input.options[input.selectedIndex]?.text||input.value;
+      else if(input.type==='range') val=field.querySelector('.input-val')?.textContent||input.value;
+      else val=input.value;
+    } else val=field.querySelector('.input-val')?.textContent||'';
+    if(label || val) rows.push({label,val});
   });
-
-  report += `\n${outputsHeader}\n`;
-  const mainResult = activePanel.querySelector('.result-box');
-  if (mainResult) {
-    const rVal = mainResult.querySelector('.result-value') ? mainResult.querySelector('.result-value').textContent : '';
-    const rUnit = mainResult.querySelector('.result-unit') ? mainResult.querySelector('.result-unit').textContent : '';
-    report += `- Output: ${rVal} ${rUnit}\n`;
+  return rows;
+}
+function reportResultRows(panel){
+  const rows=[];
+  const main=panel.querySelector('.result-box');
+  if(main){
+    const v=main.querySelector('.result-value')?.textContent||''; const u=main.querySelector('.result-unit')?.textContent||'';
+    rows.push({label:currentLanguage==='tr'?'Ana Çıktı':'Primary Output',val:(v+' '+u).trim()});
   }
-
-  activePanel.querySelectorAll('.result-card').forEach(card => {
-    const label = card.querySelector('.result-card-label').textContent;
-    const val = card.querySelector('.result-card-value').textContent;
-    report += `- ${label}: ${val}\n`;
-  });
-
-  if(activePanel.id === 't-tolerance-tool') {
-      report += `\n${tolChainHeader}\n`;
-      tolRows.forEach((r, i) => { report += `- Item ${i+1}: Upper: ${r.u}, Lower: ${r.l}\n`; });
+  panel.querySelectorAll('.result-card').forEach(card=>rows.push({label:card.querySelector('.result-card-label')?.textContent?.trim()||'Output',val:card.querySelector('.result-card-value')?.textContent?.trim()||''}));
+  return rows;
+}
+function reportAssessment(panel,resultRows){
+  const id=panel?.id||'';
+  if(id==='t-tolerance-tool'){
+    const wc=document.getElementById('tol-wc')?.textContent||''; const rss=document.getElementById('tol-rss')?.textContent||'';
+    return currentLanguage==='tr'
+      ? `<span class="ok">ÖN DEĞERLENDİRME:</span> Worst Case ve RSS sonuçları aynı tolerans zinciri üzerinden raporlanmıştır. WC tasarımın deterministik üst sınırını, RSS ise bağımsız sapmalar varsayımındaki istatistiksel davranışı gösterir.`
+      : `<span class="ok">PRELIMINARY ASSESSMENT:</span> Worst Case and RSS are reported for the same tolerance chain. WC represents the deterministic upper bound; RSS represents statistical behavior under an independent-variation assumption.`;
   }
-
-  report += `\n${disclaimerHeader}\n`;
-  report += `${discBody}\n`;
-  report += `\n--------------------------------------\nMustafa Üner Portfolio | mustafauner.com.tr`;
-
-  const textarea = document.createElement('textarea');
-  textarea.value = report;
-  document.body.appendChild(textarea);
-  textarea.select();
-  try {
-    document.execCommand('copy');
-  } catch(e) {}
-  document.body.removeChild(textarea);
-
-  const btn = this; 
-  const originalText = btn.innerHTML;
-  
-  const succText = currentLanguage === 'tr' ? '<i class="fa-solid fa-check"></i> RAPOR KOPYALANDI!' : '<i class="fa-solid fa-check"></i> REPORT COPIED!';
-  btn.innerHTML = succText;
-  btn.style.borderColor = 'var(--terminal-green)'; btn.style.color = 'var(--terminal-green)';
-  setTimeout(() => { btn.innerHTML = originalText; btn.style.borderColor = ''; btn.style.color = ''; }, 2000);
-});
+  if(id==='t-montecarlo-tool'){
+    const yieldText=document.getElementById('mc-yield')?.textContent||'';
+    const y=parseFloat(yieldText);
+    const cls=Number.isFinite(y)&&y>=99?'ok':'warn';
+    return currentLanguage==='tr'
+      ? `<span class="${cls}">MONTE CARLO DEĞERLENDİRMESİ:</span> Simülasyon sonucu hedef tolerans içindeki oran <strong>${escReport(yieldText)}</strong> olarak hesaplanmıştır. Bu sonuç simülasyon varsayımlarına bağlıdır; üretim kabiliyeti yerine geçmez.`
+      : `<span class="${cls}">MONTE CARLO ASSESSMENT:</span> The simulated in-target rate is <strong>${escReport(yieldText)}</strong>. The result depends on the selected distribution and simulation assumptions; it is not a substitute for production capability data.`;
+  }
+  return currentLanguage==='tr'
+    ? `<span class="ok">MÜHENDİSLİK NOTU:</span> Hesap sonucu konsept / ön tasarım doğrulaması amacıyla raporlanmıştır. Nihai tasarım kararı için uygun emniyet katsayıları, malzeme verileri, standartlar ve üretim doğrulaması ayrıca değerlendirilmelidir.`
+    : `<span class="ok">ENGINEERING NOTE:</span> The result is reported for concept / preliminary design validation. Final design decisions require appropriate safety factors, material data, applicable standards and manufacturing validation.`;
+}
+function buildTechnicalReport(){
+  const panel=activeReportPanel(); if(!panel) return null;
+  const moduleName=panel.querySelector('.tool-panel-title')?.textContent?.trim()||'Engineering Calculation';
+  const formula=panel.querySelector('.tool-panel-formula')?.textContent?.replace(/\s+/g,' ').trim()||'—';
+  const inputs=reportInputRows(panel), results=reportResultRows(panel);
+  const tol=(panel.id==='t-tolerance-tool' && Array.isArray(tolRows)) ? tolRows.slice() : [];
+  const mc=(panel.id==='t-montecarlo-tool') ? {
+    samples:document.getElementById('mc-samples')?.value||'—',dist:document.getElementById('mc-dist')?.options[document.getElementById('mc-dist')?.selectedIndex]?.text||'—',target:document.getElementById('mc-target')?.value||'—',seed:document.getElementById('mc-seed')?.value==='1'?'Deterministic / fixed':'Random'
+  } : null;
+  const date=new Date(); const stamp=date.toLocaleString(currentLanguage==='tr'?'tr-TR':'en-US',{year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'});
+  const title=currentLanguage==='tr'?'MÜHENDİSLİK TEKNİK RAPORU':'ENGINEERING TECHNICAL REPORT';
+  let html=`<div class="report2-meta">
+    <div class="report2-meta-card"><small>${currentLanguage==='tr'?'MODÜL':'MODULE'}</small><strong>${escReport(moduleName)}</strong></div>
+    <div class="report2-meta-card"><small>${currentLanguage==='tr'?'RAPOR TİPİ':'REPORT TYPE'}</small><strong>${title} / V2</strong></div>
+    <div class="report2-meta-card"><small>${currentLanguage==='tr'?'OLUŞTURMA ZAMANI':'GENERATED'}</small><strong>${escReport(stamp)}</strong></div>
+  </div><div class="report2-grid">`;
+  html+=`<section class="report2-section"><h4>${currentLanguage==='tr'?'1 / GİRDİLER':'1 / INPUTS'}</h4><table class="report2-table"><thead><tr><th>${currentLanguage==='tr'?'PARAMETRE':'PARAMETER'}</th><th>${currentLanguage==='tr'?'DEĞER':'VALUE'}</th></tr></thead><tbody>`;
+  inputs.forEach(r=>html+=`<tr><td>${escReport(r.label)}</td><td>${escReport(r.val)}</td></tr>`);
+  if(!inputs.length) html+=`<tr><td colspan="2">—</td></tr>`; html+='</tbody></table></section>';
+  html+=`<section class="report2-section"><h4>${currentLanguage==='tr'?'2 / METODOLOJİ':'2 / METHODOLOGY'}</h4><p class="report2-assessment"><strong>${currentLanguage==='tr'?'Modül:':'Module:'}</strong> ${escReport(moduleName)}<br><strong>${currentLanguage==='tr'?'Formül:':'Formula:'}</strong> ${escReport(formula)}<br><br>${reportAssessment(panel,results)}</p></section>`;
+  html+=`<section class="report2-section full"><h4>${currentLanguage==='tr'?'3 / SONUÇLAR':'3 / RESULTS'}</h4><div class="report2-result-grid">`;
+  results.forEach(r=>html+=`<div class="report2-result"><small>${escReport(r.label)}</small><strong>${escReport(r.val)}</strong></div>`);
+  html+='</div></section>';
+  if(tol.length){ html+=`<section class="report2-section full"><h4>${currentLanguage==='tr'?'4 / TOLERANS ZİNCİRİ':'4 / TOLERANCE CHAIN'}</h4><table class="report2-table"><thead><tr><th>#</th><th>Upper</th><th>Lower</th><th>${currentLanguage==='tr'?'Nominal':'Nominal'}</th><th>Half Range</th></tr></thead><tbody>`; tol.forEach((r,i)=>{const nom=(Number(r.u)+Number(r.l))/2,half=Math.abs(Number(r.u)-Number(r.l))/2;html+=`<tr><td>${i+1}</td><td>${escReport(r.u)}</td><td>${escReport(r.l)}</td><td>${nom.toFixed(3)}</td><td>${half.toFixed(3)}</td></tr>`}); html+='</tbody></table></section>'; }
+  if(mc){ html+=`<section class="report2-section full"><h4>${currentLanguage==='tr'?'4 / MONTE CARLO KONFİGÜRASYONU':'4 / MONTE CARLO CONFIGURATION'}</h4><table class="report2-table"><tbody><tr><td>${currentLanguage==='tr'?'Simülasyon':'Samples'}</td><td>${escReport(mc.samples)}</td></tr><tr><td>${currentLanguage==='tr'?'Dağılım':'Distribution'}</td><td>${escReport(mc.dist)}</td></tr><tr><td>${currentLanguage==='tr'?'Hedef tolerans':'Target tolerance'}</td><td>${escReport(mc.target)}</td></tr><tr><td>${currentLanguage==='tr'?'Rastgelelik':'Randomness'}</td><td>${escReport(mc.seed)}</td></tr></tbody></table></section>`; }
+  html+=`<section class="report2-section full"><h4>${currentLanguage==='tr'?'5 / MÜHENDİSLİK DEĞERLENDİRMESİ':'5 / ENGINEERING ASSESSMENT'}</h4><p class="report2-assessment">${reportAssessment(panel,results)}</p><p class="report2-footer-note" style="margin-top:12px">${currentLanguage==='tr'?'Not: Bu rapor konsept / ön tasarım doğrulaması içindir. Nihai imalat kararı; ilgili standartlar, emniyet katsayıları, malzeme toleransları ve gerçek üretim ölçümleri ile doğrulanmalıdır.':'Note: This report is intended for concept / preliminary design validation. Final manufacturing decisions should be verified against applicable standards, safety factors, material tolerances and actual production measurements.'}</p></section></div>`;
+  let text=`${title}\n==============================\nModule: ${moduleName}\nGenerated: ${stamp}\n\n[INPUT PARAMETERS]\n`;
+  inputs.forEach(r=>text+=`- ${r.label}: ${r.val}\n`);
+  text+=`\n[METHODOLOGY]\n- Formula: ${formula}\n\n[RESULTS]\n`; results.forEach(r=>text+=`- ${r.label}: ${r.val}\n`);
+  if(tol.length){text+='\n[TOLERANCE CHAIN]\n';tol.forEach((r,i)=>{const nom=(Number(r.u)+Number(r.l))/2,half=Math.abs(Number(r.u)-Number(r.l))/2;text+=`- Item ${i+1}: Upper=${r.u}, Lower=${r.l}, Nominal=${nom.toFixed(3)}, Half Range=${half.toFixed(3)}\n`;})}
+  if(mc){text+=`\n[MONTE CARLO CONFIGURATION]\n- Samples: ${mc.samples}\n- Distribution: ${mc.dist}\n- Target: ${mc.target}\n- Randomness: ${mc.seed}\n`;}
+  text+=`\n[ENGINEERING ASSESSMENT]\n${panel.id==='t-montecarlo-tool'?`Simulated in-target rate: ${document.getElementById('mc-yield')?.textContent||'—'}. Result depends on distribution and simulation assumptions.`:'Preliminary design-validation result; final manufacturing decisions require standards, safety factors and production validation.'}\n\n[DISCLAIMER]\nMustafa Üner Portfolio | mustafauner.com.tr\n`;
+  return {html,text,moduleName};
+}
+function openTechnicalReport(){const r=buildTechnicalReport();if(!r)return;document.getElementById('report2-content').innerHTML=r.html;const m=document.getElementById('report2-modal');m.classList.add('open');m.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';m._reportText=r.text;m._reportName=r.moduleName;}
+function closeTechnicalReport(){const m=document.getElementById('report2-modal');m.classList.remove('open');m.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+document.getElementById('btn-export-report').addEventListener('click',openTechnicalReport);
+document.getElementById('report2-close').addEventListener('click',closeTechnicalReport);
+document.getElementById('report2-modal').addEventListener('click',e=>{if(e.target.id==='report2-modal')closeTechnicalReport();});
+document.getElementById('report2-copy').addEventListener('click',async()=>{const m=document.getElementById('report2-modal');try{await navigator.clipboard.writeText(m._reportText||'');}catch(e){const ta=document.createElement('textarea');ta.value=m._reportText||'';document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();} const b=document.getElementById('report2-copy');const old=b.innerHTML;b.innerHTML=currentLanguage==='tr'?'<i class="fa-solid fa-check"></i><span>KOPYALANDI</span>':'<i class="fa-solid fa-check"></i><span>COPIED</span>';setTimeout(()=>b.innerHTML=old,1600);});
+document.getElementById('report2-download').addEventListener('click',()=>{const m=document.getElementById('report2-modal');const blob=new Blob([m._reportText||''],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Mustafa_Uner_Technical_Report_'+(m._reportName||'Engineering').replace(/[^a-z0-9ğüşöçıİĞÜŞÖÇ -]/gi,'').trim().replace(/\s+/g,'_')+'.txt';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),500);});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('report2-modal').classList.contains('open'))closeTechnicalReport();});
 
 // ─── INTERACTIVE PORTFOLIO VIDEO MODAL ───
 function openModal(videoId, startTime = 0) {
