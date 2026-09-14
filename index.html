@@ -367,6 +367,63 @@ input[type="range"]::-webkit-slider-thumb { appearance: none; -webkit-appearance
 .result-card-value { font-family: 'Space Grotesk', sans-serif; font-size: 28px; color: var(--white); letter-spacing: 0.04em; }
 .result-card.highlight .result-card-value { color: var(--amber); }
 
+/* ─── TIMING BELT CALCULATOR ─── */
+.timingbelt-block {
+  background: linear-gradient(180deg, rgba(18,25,34,0.78), rgba(8,13,18,0.94));
+  border: 1px solid rgba(216,168,79,0.18);
+  border-radius: 8px;
+  padding: 22px;
+  margin-bottom: 18px;
+}
+.timingbelt-block:last-child { margin-bottom: 0; }
+.timingbelt-block-head {
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:20px;
+}
+.timingbelt-block-head h4 {
+  font-family:'Space Grotesk',sans-serif;
+  color:var(--white);
+  font-size:18px;
+  margin-top:4px;
+}
+.timingbelt-section-kicker {
+  color:var(--gold);
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.12em;
+}
+.timingbelt-chip {
+  border:1px solid rgba(216,168,79,.35);
+  color:var(--gold);
+  background:rgba(216,168,79,.06);
+  border-radius:999px;
+  padding:5px 10px;
+  font:700 9px 'JetBrains Mono',monospace;
+  white-space:nowrap;
+}
+.timingbelt-note {
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  margin-top:16px;
+  padding:12px 14px;
+  border:1px dashed rgba(216,168,79,.22);
+  border-radius:6px;
+  background:rgba(216,168,79,.035);
+  color:rgba(228,232,237,.62);
+  font-size:11px;
+  line-height:1.6;
+}
+.timingbelt-note i { color:var(--gold); margin-top:3px; }
+@media (max-width:768px) {
+  .timingbelt-block { padding:16px; }
+  .timingbelt-block .result-grid { grid-template-columns:1fr !important; }
+}
+
 /* Disclaimer */
 .disclaimer { margin-top: 48px; padding: 20px 28px; background: rgba(245,158,11,0.03); border: 1px solid rgba(245,158,11,0.08); border-radius: 6px; display: flex; gap: 16px; align-items: flex-start; }
 .disclaimer i { color: rgba(245,158,11,0.6); font-size: 20px; flex-shrink: 0; margin-top: 2px; }
@@ -1314,6 +1371,7 @@ tyle>
           <a class="lab-tool-link" href="#/tools?tool=tolerance-tool"><span><i class="fa-solid fa-layer-group"></i><b data-i18n="t_tolerance_tab">Tolerans Analizi</b></span><small>WC / RSS</small></a>
           <a class="lab-tool-link" href="#/tools?tool=beam"><span><i class="fa-solid fa-ruler-horizontal"></i><b data-i18n="t_beam_tab">Sehim Analizi</b></span><small>DEFLECTION</small></a>
           <a class="lab-tool-link" href="#/tools?tool=montecarlo"><span><i class="fa-solid fa-chart-area"></i><b data-i18n="t_mc_tab">Monte Carlo</b></span><small>STACK YIELD</small></a>
+          <a class="lab-tool-link" href="#/tools?tool=timingbelt"><span><i class="fa-solid fa-link"></i><b data-i18n="t_timingbelt_tab">Triger Kayış</b></span><small>BELT / RATIO</small></a>
         </div>
       </div>
     </div>
@@ -1617,6 +1675,7 @@ tyle>
           <div class="tool-tab" data-target="t-tolerance-tool"><i class="fa-solid fa-layer-group"></i><div class="tool-tab-text"><span class="tool-tab-name" data-i18n="t_tolerance_tab">Tolerans Analizi</span><span class="tool-tab-sub">Stack-up / RSS</span></div></div>
           <div class="tool-tab" data-target="t-beam"><i class="fa-solid fa-ruler-horizontal"></i><div class="tool-tab-text"><span class="tool-tab-name" data-i18n="t_beam_tab">Sehim Analizi</span><span class="tool-tab-sub">Beam Deflection</span></div></div>
           <div class="tool-tab" data-target="t-montecarlo"><i class="fa-solid fa-chart-area"></i><div class="tool-tab-text"><span class="tool-tab-name" data-i18n="t_mc_tab">Monte Carlo</span><span class="tool-tab-sub">Statistical Stack</span></div></div>
+          <div class="tool-tab" data-target="t-timingbelt"><i class="fa-solid fa-link"></i><div class="tool-tab-text"><span class="tool-tab-name" data-i18n="t_timingbelt_tab">Triger Kayış</span><span class="tool-tab-sub">Belt / Ratio</span></div></div>
         </div>
 
         <div class="tools-content">
@@ -1745,6 +1804,117 @@ tyle>
             <div class="result-grid">
               <div class="result-card"><span class="result-card-label" data-i18n="t_tolerance_wc">En Kötü Durum (WC)</span><div class="result-card-value" id="tol-wc">± 0.100</div></div>
               <div class="result-card highlight"><span class="result-card-label" data-i18n="t_tolerance_rss">İstatistiksel (RSS)</span><div class="result-card-value" id="tol-rss">± 0.062</div></div>
+            </div>
+          </div>
+
+          <!-- Triger Kayış / Senkron Kayış Paneli -->
+          <div id="t-timingbelt" class="tool-panel">
+            <svg class="tool-watermark" viewBox="0 0 100 100" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="50" cy="50" rx="40" ry="24" stroke-width="3"/>
+              <circle cx="30" cy="50" r="12" stroke-width="2"/>
+              <circle cx="70" cy="50" r="20" stroke-width="2"/>
+              <path d="M18 50h64" stroke-dasharray="3 4"/>
+              <path d="M30 36v28M70 30v40" stroke-dasharray="2 3"/>
+            </svg>
+
+            <div class="tool-panel-title" data-i18n="t_timingbelt_title">Triger Kayış &amp; Kasnak Analizi</div>
+            <div class="tool-panel-formula">
+              i = Z₂ / Z₁ &nbsp;|&nbsp; n₂ = n₁ × Z₁ / Z₂ &nbsp;|&nbsp;
+              dₚ = Z × t / π &nbsp;|&nbsp; Lₚ = 2C + π(d₁+d₂)/2 + (d₂-d₁)²/(4C)
+            </div>
+
+            <div class="timingbelt-block">
+              <div class="timingbelt-block-head">
+                <div>
+                  <div class="timingbelt-section-kicker" data-i18n="t_timingbelt_ratio_kicker">İKİLİ SİSTEM / İLETİM ORANI</div>
+                  <h4 data-i18n="t_timingbelt_ratio_title">Döndüren → Döndürülen</h4>
+                </div>
+                <span class="timingbelt-chip">Z1 / Z2</span>
+              </div>
+
+              <div class="input-grid" style="margin-bottom:16px;">
+                <div class="input-field">
+                  <label data-i18n="t_timingbelt_rpm">Döndüren Devir n₁ (dev/dk)</label>
+                  <input type="number" id="tb-n1" value="1500" min="0.1" step="1" class="tool-input">
+                </div>
+                <div class="input-field">
+                  <label data-i18n="t_timingbelt_pitch">Kayış Adımı t (mm)</label>
+                  <select id="tb-pitch" class="tool-select">
+                    <option value="5">AT5 / 5 mm</option>
+                    <option value="10" selected>AT10 / 10 mm</option>
+                    <option value="20">AT20 / 20 mm</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="input-grid" style="margin-bottom:20px;">
+                <div class="input-field">
+                  <label data-i18n="t_timingbelt_z1">Döndüren Dişli Z₁</label>
+                  <input type="number" id="tb-z1" value="27" min="1" step="1" class="tool-input">
+                </div>
+                <div class="input-field">
+                  <label data-i18n="t_timingbelt_z2">Döndürülen Dişli Z₂</label>
+                  <input type="number" id="tb-z2" value="54" min="1" step="1" class="tool-input">
+                </div>
+              </div>
+
+              <div class="result-grid" style="grid-template-columns:repeat(3,1fr);">
+                <div class="result-card highlight">
+                  <span class="result-card-label" data-i18n="t_timingbelt_ratio">İletim Oranı</span>
+                  <div class="result-card-value" id="tb-ratio">2.000</div>
+                </div>
+                <div class="result-card">
+                  <span class="result-card-label" data-i18n="t_timingbelt_n2">Z₂ Deviri</span>
+                  <div class="result-card-value" id="tb-n2">750.0 rpm</div>
+                </div>
+                <div class="result-card">
+                  <span class="result-card-label" data-i18n="t_timingbelt_travel">Z₁ 1 dk'da Yol</span>
+                  <div class="result-card-value" id="tb-travel">405000 mm</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="timingbelt-block">
+              <div class="timingbelt-block-head">
+                <div>
+                  <div class="timingbelt-section-kicker" data-i18n="t_timingbelt_length_kicker">AÇIK KAYIŞ / EKSENLER ARASI</div>
+                  <h4 data-i18n="t_timingbelt_length_title">Yaklaşık Kayış Boyu</h4>
+                </div>
+                <span class="timingbelt-chip">Lₚ</span>
+              </div>
+
+              <div class="input-grid" style="margin-bottom:16px;">
+                <div class="input-field">
+                  <label data-i18n="t_timingbelt_c">Eksenler Arası C (mm)</label>
+                  <input type="number" id="tb-c" value="300" min="1" step="1" class="tool-input">
+                </div>
+                <div class="input-field">
+                  <label data-i18n="t_timingbelt_note">Hesap Çapı</label>
+                  <select id="tb-dbasis" class="tool-select">
+                    <option value="pitch" selected data-i18n="t_timingbelt_pitch_dia">Bölüm dairesi çapı Ødₚ</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="result-grid" style="grid-template-columns:repeat(3,1fr);">
+                <div class="result-card">
+                  <span class="result-card-label">Z₁ / Ødₚ₁</span>
+                  <div class="result-card-value" id="tb-d1">85.94 mm</div>
+                </div>
+                <div class="result-card">
+                  <span class="result-card-label">Z₂ / Ødₚ₂</span>
+                  <div class="result-card-value" id="tb-d2">171.89 mm</div>
+                </div>
+                <div class="result-card highlight">
+                  <span class="result-card-label" data-i18n="t_timingbelt_length">~ Kayış Boyu Lₚ</span>
+                  <div class="result-card-value" id="tb-length">968.80 mm</div>
+                </div>
+              </div>
+
+              <div class="timingbelt-note">
+                <i class="fa-solid fa-circle-info"></i>
+                <span data-i18n="t_timingbelt_note_text">Kayış boyu hesabında bölüm dairesi çapları esas alınır. Kasnak profilinin diş üstü çapı, AT/HTD gibi profile bağlı olarak ayrıca kontrol edilmelidir.</span>
+              </div>
             </div>
           </div>
 
@@ -1937,6 +2107,24 @@ const translations = {
     t_tork_tab: "Motor Tork",
     t_vidali_tab: "Vidalı Mil",
     t_tolerance_tab: "Tolerans Analizi",
+    t_timingbelt_tab: "Triger Kayış",
+    t_timingbelt_title: "Triger Kayış & Kasnak Analizi",
+    t_timingbelt_ratio_kicker: "İKİLİ SİSTEM / İLETİM ORANI",
+    t_timingbelt_ratio_title: "Döndüren → Döndürülen",
+    t_timingbelt_rpm: "Döndüren Devir n₁ (dev/dk)",
+    t_timingbelt_pitch: "Kayış Adımı t (mm)",
+    t_timingbelt_z1: "Döndüren Dişli Z₁",
+    t_timingbelt_z2: "Döndürülen Dişli Z₂",
+    t_timingbelt_ratio: "İletim Oranı",
+    t_timingbelt_n2: "Z₂ Deviri",
+    t_timingbelt_travel: "Z₁ 1 dk'da Yol",
+    t_timingbelt_length_kicker: "AÇIK KAYIŞ / EKSENLER ARASI",
+    t_timingbelt_length_title: "Yaklaşık Kayış Boyu",
+    t_timingbelt_c: "Eksenler Arası C (mm)",
+    t_timingbelt_note: "Hesap Çapı",
+    t_timingbelt_pitch_dia: "Bölüm dairesi çapı Ødₚ",
+    t_timingbelt_length: "~ Kayış Boyu Lₚ",
+    t_timingbelt_note_text: "Kayış boyu hesabında bölüm dairesi çapları esas alınır. Kasnak profilinin diş üstü çapı, AT/HTD gibi profile bağlı olarak ayrıca kontrol edilmelidir.",
     t_beam_tab: "Sehim Analizi",
     t_vc_title: "Kesme Hızı Analizi — Vc",
     t_unit_label: "Birim: m/dak",
@@ -2089,6 +2277,24 @@ const translations = {
     t_tork_tab: "Motor Torque",
     t_vidali_tab: "Ball Screw",
     t_tolerance_tab: "Tolerance Analysis",
+    t_timingbelt_tab: "Timing Belt",
+    t_timingbelt_title: "Timing Belt & Pulley Analysis",
+    t_timingbelt_ratio_kicker: "TWO-PULLEY SYSTEM / TRANSMISSION",
+    t_timingbelt_ratio_title: "Driver → Driven",
+    t_timingbelt_rpm: "Driver Speed n₁ (rpm)",
+    t_timingbelt_pitch: "Belt Pitch t (mm)",
+    t_timingbelt_z1: "Driver Pulley Teeth Z₁",
+    t_timingbelt_z2: "Driven Pulley Teeth Z₂",
+    t_timingbelt_ratio: "Transmission Ratio",
+    t_timingbelt_n2: "Driven Speed",
+    t_timingbelt_travel: "Z₁ Travel / min",
+    t_timingbelt_length_kicker: "OPEN BELT / CENTER DISTANCE",
+    t_timingbelt_length_title: "Approx. Belt Pitch Length",
+    t_timingbelt_c: "Center Distance C (mm)",
+    t_timingbelt_note: "Diameter Basis",
+    t_timingbelt_pitch_dia: "Pitch circle diameter Ødₚ",
+    t_timingbelt_length: "~ Belt Pitch Length Lₚ",
+    t_timingbelt_note_text: "The belt-length calculation uses pitch-circle diameters. Actual pulley outside diameter depends on the tooth profile such as AT or HTD and should be checked separately.",
     t_beam_tab: "Deflection Analysis",
     t_vc_title: "Cutting Speed Analysis — Vc",
     t_unit_label: "Unit: m/min",
@@ -4237,7 +4443,37 @@ document.getElementById('v-p').addEventListener('input', calcVidali);
 document.getElementById('v-n').addEventListener('input', calcVidali); 
 document.getElementById('v-h').addEventListener('input', calcVidali);
 
-// 6. Tolerans Analizi
+// 6. Triger Kayış / Senkron Kayış Hesabı
+function calcTimingBelt() {
+  const n1 = parseFloat(document.getElementById('tb-n1')?.value);
+  const t = parseFloat(document.getElementById('tb-pitch')?.value);
+  const z1 = parseFloat(document.getElementById('tb-z1')?.value);
+  const z2 = parseFloat(document.getElementById('tb-z2')?.value);
+  const C = parseFloat(document.getElementById('tb-c')?.value);
+
+  if (![n1,t,z1,z2,C].every(Number.isFinite) || n1 <= 0 || t <= 0 || z1 <= 0 || z2 <= 0 || C <= 0) return;
+
+  const d1 = z1 * t / PI;
+  const d2 = z2 * t / PI;
+  const L = 2*C + (PI*(d1+d2))/2 + Math.pow(d2-d1,2)/(4*C);
+  const ratio = z2 / z1;
+  const n2 = n1 * z1 / z2;
+  const travelPerMin = z1 * t * n1;
+
+  document.getElementById('tb-ratio').textContent = ratio.toFixed(3);
+  document.getElementById('tb-n2').textContent = n2.toFixed(1) + ' rpm';
+  document.getElementById('tb-travel').textContent = travelPerMin.toFixed(0) + ' mm';
+  document.getElementById('tb-d1').textContent = d1.toFixed(2) + ' mm';
+  document.getElementById('tb-d2').textContent = d2.toFixed(2) + ' mm';
+  document.getElementById('tb-length').textContent = L.toFixed(2) + ' mm';
+}
+['tb-n1','tb-pitch','tb-z1','tb-z2','tb-c'].forEach(id => {
+  const el=document.getElementById(id);
+  if(el) el.addEventListener(el.tagName==='SELECT'?'change':'input', calcTimingBelt);
+});
+calcTimingBelt();
+
+// 7. Tolerans Analizi
 let tolRows = [{u: 0.05, l: -0.05}, {u: 0.05, l: 0.00}, {u: 0.00, l: -0.03}];
 function renderTolRows() {
   const container = document.getElementById('dynamic-tol-list');
