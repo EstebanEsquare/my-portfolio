@@ -1820,7 +1820,7 @@ tyle>
             <div class="tool-panel-title" data-i18n="t_timingbelt_title">Triger Kayış &amp; Kasnak Analizi</div>
             <div class="tool-panel-formula">
               i = Z₂ / Z₁ &nbsp;|&nbsp; n₂ = n₁ × Z₁ / Z₂ &nbsp;|&nbsp;
-              dₚ = Z × t / π &nbsp;|&nbsp; Lₚ = 2C + π(d₁+d₂)/2 + (d₂-d₁)²/(4C)
+              dₚ = Z × t / π &nbsp;|&nbsp; dₐ ≈ dₚ − 0.185t &nbsp;|&nbsp; Lₚ = 2C + π(d₁+d₂)/2 + (d₂-d₁)²/(4C)
             </div>
 
             <div class="timingbelt-block">
@@ -1858,7 +1858,7 @@ tyle>
                 </div>
               </div>
 
-              <div class="result-grid" style="grid-template-columns:repeat(3,1fr);">
+              <div class="result-grid" style="grid-template-columns:repeat(4,1fr);">
                 <div class="result-card highlight">
                   <span class="result-card-label" data-i18n="t_timingbelt_ratio">İletim Oranı</span>
                   <div class="result-card-value" id="tb-ratio">2.000</div>
@@ -1866,6 +1866,10 @@ tyle>
                 <div class="result-card">
                   <span class="result-card-label" data-i18n="t_timingbelt_n2">Z₂ Deviri</span>
                   <div class="result-card-value" id="tb-n2">750.0 rpm</div>
+                </div>
+                <div class="result-card">
+                  <span class="result-card-label" data-i18n="t_timingbelt_turn_path">Z₁ 1 Turda Yol</span>
+                  <div class="result-card-value" id="tb-turn-path">270.0 mm</div>
                 </div>
                 <div class="result-card">
                   <span class="result-card-label" data-i18n="t_timingbelt_travel">Z₁ 1 dk'da Yol</span>
@@ -1905,6 +1909,14 @@ tyle>
                   <span class="result-card-label">Z₂ / Ødₚ₂</span>
                   <div class="result-card-value" id="tb-d2">171.89 mm</div>
                 </div>
+                <div class="result-card">
+                  <span class="result-card-label" data-i18n="t_timingbelt_out_d1">Z₁ Diş Üstü Ødₐ₁</span>
+                  <div class="result-card-value" id="tb-da1">84.09 mm</div>
+                </div>
+                <div class="result-card">
+                  <span class="result-card-label" data-i18n="t_timingbelt_out_d2">Z₂ Diş Üstü Ødₐ₂</span>
+                  <div class="result-card-value" id="tb-da2">170.04 mm</div>
+                </div>
                 <div class="result-card highlight">
                   <span class="result-card-label" data-i18n="t_timingbelt_length">~ Kayış Boyu Lₚ</span>
                   <div class="result-card-value" id="tb-length">968.80 mm</div>
@@ -1913,7 +1925,7 @@ tyle>
 
               <div class="timingbelt-note">
                 <i class="fa-solid fa-circle-info"></i>
-                <span data-i18n="t_timingbelt_note_text">Kayış boyu hesabında bölüm dairesi çapları esas alınır. Kasnak profilinin diş üstü çapı, AT/HTD gibi profile bağlı olarak ayrıca kontrol edilmelidir.</span>
+                <span data-i18n="t_timingbelt_note_text">Kayış boyu bölüm dairesi çapları üzerinden hesaplanır. Diş üstü çapı burada AT profiline göre yaklaşık olarak tahmin edilir; gerçek kasnak geometrisi için üretici profil ölçüleri esas alınmalıdır.</span>
               </div>
             </div>
           </div>
@@ -2118,13 +2130,16 @@ const translations = {
     t_timingbelt_ratio: "İletim Oranı",
     t_timingbelt_n2: "Z₂ Deviri",
     t_timingbelt_travel: "Z₁ 1 dk'da Yol",
+    t_timingbelt_turn_path: "Z₁ 1 Turda Yol",
+    t_timingbelt_out_d1: "Z₁ Diş Üstü Ødₐ₁",
+    t_timingbelt_out_d2: "Z₂ Diş Üstü Ødₐ₂",
     t_timingbelt_length_kicker: "AÇIK KAYIŞ / EKSENLER ARASI",
     t_timingbelt_length_title: "Yaklaşık Kayış Boyu",
     t_timingbelt_c: "Eksenler Arası C (mm)",
     t_timingbelt_note: "Hesap Çapı",
     t_timingbelt_pitch_dia: "Bölüm dairesi çapı Ødₚ",
     t_timingbelt_length: "~ Kayış Boyu Lₚ",
-    t_timingbelt_note_text: "Kayış boyu hesabında bölüm dairesi çapları esas alınır. Kasnak profilinin diş üstü çapı, AT/HTD gibi profile bağlı olarak ayrıca kontrol edilmelidir.",
+    t_timingbelt_note_text: "Kayış boyu bölüm dairesi çapları üzerinden hesaplanır. Diş üstü çapı burada AT profiline göre yaklaşık olarak tahmin edilir; gerçek kasnak geometrisi için üretici profil ölçüleri esas alınmalıdır.",
     t_beam_tab: "Sehim Analizi",
     t_vc_title: "Kesme Hızı Analizi — Vc",
     t_unit_label: "Birim: m/dak",
@@ -2288,6 +2303,9 @@ const translations = {
     t_timingbelt_ratio: "Transmission Ratio",
     t_timingbelt_n2: "Driven Speed",
     t_timingbelt_travel: "Z₁ Travel / min",
+    t_timingbelt_turn_path: "Z₁ Travel / rev",
+    t_timingbelt_out_d1: "Z₁ Outside Ødₐ₁",
+    t_timingbelt_out_d2: "Z₂ Outside Ødₐ₂",
     t_timingbelt_length_kicker: "OPEN BELT / CENTER DISTANCE",
     t_timingbelt_length_title: "Approx. Belt Pitch Length",
     t_timingbelt_c: "Center Distance C (mm)",
@@ -4455,16 +4473,24 @@ function calcTimingBelt() {
 
   const d1 = z1 * t / PI;
   const d2 = z2 * t / PI;
+  // AT profilinde yaklaşık dış çap: bölüm çapından profil payı düşülür.
+  // Bu değer ön tasarım içindir; nihai ölçü üretici kasnak geometrisinden doğrulanmalıdır.
+  const da1 = d1 - 0.185 * t;
+  const da2 = d2 - 0.185 * t;
   const L = 2*C + (PI*(d1+d2))/2 + Math.pow(d2-d1,2)/(4*C);
   const ratio = z2 / z1;
   const n2 = n1 * z1 / z2;
-  const travelPerMin = z1 * t * n1;
+  const travelPerRev = z1 * t;
+  const travelPerMin = travelPerRev * n1;
 
   document.getElementById('tb-ratio').textContent = ratio.toFixed(3);
   document.getElementById('tb-n2').textContent = n2.toFixed(1) + ' rpm';
+  document.getElementById('tb-turn-path').textContent = travelPerRev.toFixed(1) + ' mm';
   document.getElementById('tb-travel').textContent = travelPerMin.toFixed(0) + ' mm';
   document.getElementById('tb-d1').textContent = d1.toFixed(2) + ' mm';
   document.getElementById('tb-d2').textContent = d2.toFixed(2) + ' mm';
+  document.getElementById('tb-da1').textContent = da1.toFixed(2) + ' mm';
+  document.getElementById('tb-da2').textContent = da2.toFixed(2) + ' mm';
   document.getElementById('tb-length').textContent = L.toFixed(2) + ' mm';
 }
 ['tb-n1','tb-pitch','tb-z1','tb-z2','tb-c'].forEach(id => {
