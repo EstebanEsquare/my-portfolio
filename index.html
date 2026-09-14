@@ -419,9 +419,62 @@ input[type="range"]::-webkit-slider-thumb { appearance: none; -webkit-appearance
   line-height:1.6;
 }
 .timingbelt-note i { color:var(--gold); margin-top:3px; }
+/* Pulley result grouping: Z1 / Z2 are visually distinct but remain in one hierarchy */
+.timingbelt-pulley-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-bottom:12px;
+}
+.timingbelt-pulley-card {
+  background:rgba(3,6,9,.34);
+  border:1px solid rgba(148,163,184,.18);
+  border-radius:8px;
+  padding:16px;
+  position:relative;
+}
+.timingbelt-pulley-card.z1 { border-color:rgba(96,165,250,.24); }
+.timingbelt-pulley-card.z2 { border-color:rgba(216,168,79,.26); }
+.timingbelt-pulley-head {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:12px;
+}
+.timingbelt-pulley-id {
+  font:700 10px 'JetBrains Mono',monospace;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  padding:4px 8px;
+  border-radius:4px;
+}
+.timingbelt-pulley-id.z1 { color:#93c5fd; background:rgba(59,130,246,.08); border:1px solid rgba(96,165,250,.22); }
+.timingbelt-pulley-id.z2 { color:var(--gold); background:rgba(216,168,79,.08); border:1px solid rgba(216,168,79,.22); }
+.timingbelt-pulley-label {
+  color:rgba(228,232,237,.55);
+  font:700 8px 'JetBrains Mono',monospace;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.timingbelt-dim-row {
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:center;
+  gap:12px;
+  padding:9px 0;
+  border-bottom:1px solid rgba(148,163,184,.10);
+}
+.timingbelt-dim-row:last-child { border-bottom:0; padding-bottom:0; }
+.timingbelt-dim-name { color:rgba(228,232,237,.62); font-size:9px; }
+.timingbelt-dim-value { color:var(--white); font:600 21px 'Space Grotesk',sans-serif; }
+.timingbelt-length-card {
+  margin-top:12px;
+}
 @media (max-width:768px) {
   .timingbelt-block { padding:16px; }
   .timingbelt-block .result-grid { grid-template-columns:1fr !important; }
+  .timingbelt-pulley-grid { grid-template-columns:1fr; }
 }
 
 /* Disclaimer */
@@ -1900,27 +1953,41 @@ tyle>
                 </div>
               </div>
 
-              <div class="result-grid" style="grid-template-columns:repeat(3,1fr);">
-                <div class="result-card">
-                  <span class="result-card-label">Z₁ / Ødₚ₁</span>
-                  <div class="result-card-value" id="tb-d1">85.94 mm</div>
+              <div class="timingbelt-pulley-grid">
+                <div class="timingbelt-pulley-card z1">
+                  <div class="timingbelt-pulley-head">
+                    <span class="timingbelt-pulley-id z1">Z₁</span>
+                    <span class="timingbelt-pulley-label" data-i18n="t_timingbelt_driver">Döndüren kasnak</span>
+                  </div>
+                  <div class="timingbelt-dim-row">
+                    <span class="timingbelt-dim-name" data-i18n="t_timingbelt_pitch_result">Bölüm dairesi Ødₚ₁</span>
+                    <strong class="timingbelt-dim-value" id="tb-d1">85.94 mm</strong>
+                  </div>
+                  <div class="timingbelt-dim-row">
+                    <span class="timingbelt-dim-name" data-i18n="t_timingbelt_out_d1_short">Diş üstü Ødₐ₁</span>
+                    <strong class="timingbelt-dim-value" id="tb-da1">84.09 mm</strong>
+                  </div>
                 </div>
-                <div class="result-card">
-                  <span class="result-card-label">Z₂ / Ødₚ₂</span>
-                  <div class="result-card-value" id="tb-d2">171.89 mm</div>
+
+                <div class="timingbelt-pulley-card z2">
+                  <div class="timingbelt-pulley-head">
+                    <span class="timingbelt-pulley-id z2">Z₂</span>
+                    <span class="timingbelt-pulley-label" data-i18n="t_timingbelt_driven">Döndürülen kasnak</span>
+                  </div>
+                  <div class="timingbelt-dim-row">
+                    <span class="timingbelt-dim-name" data-i18n="t_timingbelt_pitch_result2">Bölüm dairesi Ødₚ₂</span>
+                    <strong class="timingbelt-dim-value" id="tb-d2">171.89 mm</strong>
+                  </div>
+                  <div class="timingbelt-dim-row">
+                    <span class="timingbelt-dim-name" data-i18n="t_timingbelt_out_d2_short">Diş üstü Ødₐ₂</span>
+                    <strong class="timingbelt-dim-value" id="tb-da2">170.04 mm</strong>
+                  </div>
                 </div>
-                <div class="result-card">
-                  <span class="result-card-label" data-i18n="t_timingbelt_out_d1">Z₁ Diş Üstü Ødₐ₁</span>
-                  <div class="result-card-value" id="tb-da1">84.09 mm</div>
-                </div>
-                <div class="result-card">
-                  <span class="result-card-label" data-i18n="t_timingbelt_out_d2">Z₂ Diş Üstü Ødₐ₂</span>
-                  <div class="result-card-value" id="tb-da2">170.04 mm</div>
-                </div>
-                <div class="result-card highlight">
-                  <span class="result-card-label" data-i18n="t_timingbelt_length">~ Kayış Boyu Lₚ</span>
-                  <div class="result-card-value" id="tb-length">968.80 mm</div>
-                </div>
+              </div>
+
+              <div class="result-card highlight timingbelt-length-card">
+                <span class="result-card-label" data-i18n="t_timingbelt_length">~ Kayış Boyu Lₚ</span>
+                <div class="result-card-value" id="tb-length">968.80 mm</div>
               </div>
 
               <div class="timingbelt-note">
@@ -2131,6 +2198,12 @@ const translations = {
     t_timingbelt_n2: "Z₂ Deviri",
     t_timingbelt_travel: "Z₁ 1 dk'da Yol",
     t_timingbelt_turn_path: "Z₁ 1 Turda Yol",
+    t_timingbelt_driver: "Döndüren kasnak",
+    t_timingbelt_driven: "Döndürülen kasnak",
+    t_timingbelt_pitch_result: "Bölüm dairesi Ødₚ₁",
+    t_timingbelt_pitch_result2: "Bölüm dairesi Ødₚ₂",
+    t_timingbelt_out_d1_short: "Diş üstü Ødₐ₁",
+    t_timingbelt_out_d2_short: "Diş üstü Ødₐ₂",
     t_timingbelt_out_d1: "Z₁ Diş Üstü Ødₐ₁",
     t_timingbelt_out_d2: "Z₂ Diş Üstü Ødₐ₂",
     t_timingbelt_length_kicker: "AÇIK KAYIŞ / EKSENLER ARASI",
@@ -2304,6 +2377,12 @@ const translations = {
     t_timingbelt_n2: "Driven Speed",
     t_timingbelt_travel: "Z₁ Travel / min",
     t_timingbelt_turn_path: "Z₁ Travel / rev",
+    t_timingbelt_driver: "Driver pulley",
+    t_timingbelt_driven: "Driven pulley",
+    t_timingbelt_pitch_result: "Pitch circle Ødₚ₁",
+    t_timingbelt_pitch_result2: "Pitch circle Ødₚ₂",
+    t_timingbelt_out_d1_short: "Outside Ødₐ₁",
+    t_timingbelt_out_d2_short: "Outside Ødₐ₂",
     t_timingbelt_out_d1: "Z₁ Outside Ødₐ₁",
     t_timingbelt_out_d2: "Z₂ Outside Ødₐ₂",
     t_timingbelt_length_kicker: "OPEN BELT / CENTER DISTANCE",
